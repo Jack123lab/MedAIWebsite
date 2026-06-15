@@ -1,0 +1,552 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Happy medical AI | 医学 AI 学术与临床原型平台</title>
+    <meta
+      name="description"
+      content="Happy medical AI 汇集医学 AI 学术社区、预诊信息平台、数据后台与科室导航原型，适合通过 GitHub Pages 静态发布展示。"
+    />
+    <style>
+      :root {
+        color-scheme: light;
+        --ink: #17202a;
+        --muted: #607083;
+        --line: #d7e1ea;
+        --paper: #ffffff;
+        --paper-soft: #f4f8fb;
+        --blue: #123f5d;
+        --cyan: #168b9f;
+        --teal: #1f8a7b;
+        --gold: #b58b13;
+        --shadow: 0 24px 70px rgba(15, 31, 48, 0.14);
+        --max: 1180px;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        min-height: 100vh;
+        color: var(--ink);
+        font-family: "Noto Sans SC", "Microsoft YaHei", "PingFang SC", Arial, sans-serif;
+        background:
+          linear-gradient(rgba(18, 63, 93, 0.045) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(18, 63, 93, 0.045) 1px, transparent 1px),
+          linear-gradient(180deg, #eef5f8 0%, #fbfdff 42%, #f3f7f9 100%);
+        background-size: 32px 32px, 32px 32px, auto;
+      }
+
+      a {
+        color: inherit;
+      }
+
+      .site-header {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        border-bottom: 1px solid rgba(190, 207, 220, 0.72);
+        background: rgba(247, 251, 253, 0.86);
+        backdrop-filter: blur(14px);
+      }
+
+      .nav {
+        width: min(100%, var(--max));
+        margin: 0 auto;
+        padding: 14px 24px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
+      }
+
+      .brand-mark {
+        width: 42px;
+        height: 42px;
+        display: grid;
+        place-items: center;
+        border-radius: 8px;
+        color: #fff;
+        font-weight: 900;
+        background: linear-gradient(135deg, var(--blue), var(--teal));
+        box-shadow: 0 12px 28px rgba(18, 63, 93, 0.24);
+      }
+
+      .brand strong,
+      .brand span {
+        display: block;
+      }
+
+      .brand strong {
+        line-height: 1.1;
+      }
+
+      .brand span {
+        margin-top: 3px;
+        color: var(--muted);
+        font-size: 12px;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+
+      .nav-links a {
+        min-height: 34px;
+        display: inline-flex;
+        align-items: center;
+        border: 1px solid transparent;
+        border-radius: 6px;
+        color: #485a6c;
+        text-decoration: none;
+        padding: 0 11px;
+        font-size: 14px;
+      }
+
+      .nav-links a:hover {
+        border-color: rgba(22, 139, 159, 0.24);
+        color: var(--blue);
+        background: rgba(255, 255, 255, 0.72);
+      }
+
+      .hero {
+        color: #eaf4f8;
+        background:
+          linear-gradient(115deg, rgba(12, 33, 49, 0.94), rgba(16, 58, 78, 0.9)),
+          url("academic-community/assets/images/academic-network.svg") center / cover no-repeat;
+        border-bottom: 1px solid rgba(173, 211, 224, 0.2);
+      }
+
+      .hero-inner {
+        width: min(100%, var(--max));
+        margin: 0 auto;
+        min-height: min(760px, calc(100vh - 68px));
+        padding: 62px 24px 42px;
+        display: grid;
+        grid-template-columns: minmax(0, 1.08fr) minmax(340px, 0.92fr);
+        align-items: center;
+        gap: 40px;
+      }
+
+      .eyebrow {
+        margin: 0 0 12px;
+        color: #86ddd5;
+        font-size: 13px;
+        font-weight: 900;
+        text-transform: uppercase;
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin-top: 0;
+      }
+
+      h1 {
+        margin-bottom: 18px;
+        color: #fff;
+        font-size: 64px;
+        line-height: 1.03;
+        letter-spacing: 0;
+      }
+
+      .lead {
+        max-width: 760px;
+        color: #c7dbe5;
+        font-size: 18px;
+        line-height: 1.75;
+      }
+
+      .hero-actions,
+      .button-row {
+        display: flex;
+        gap: 12px;
+        flex-wrap: wrap;
+        margin-top: 28px;
+      }
+
+      .btn {
+        min-height: 44px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        border: 1px solid rgba(194, 223, 232, 0.38);
+        border-radius: 6px;
+        padding: 0 16px;
+        color: #eaf4f8;
+        text-decoration: none;
+        font-weight: 800;
+        background: rgba(255, 255, 255, 0.08);
+      }
+
+      .btn.primary {
+        border-color: transparent;
+        color: #06202b;
+        background: linear-gradient(135deg, #8be4dc, #f1d06a);
+      }
+
+      .hero-panel {
+        border: 1px solid rgba(202, 229, 238, 0.2);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.08);
+        box-shadow: var(--shadow);
+        backdrop-filter: blur(12px);
+        overflow: hidden;
+      }
+
+      .panel-head {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        border-bottom: 1px solid rgba(202, 229, 238, 0.18);
+        padding: 15px 18px;
+      }
+
+      .panel-head strong {
+        color: #fff;
+      }
+
+      .panel-head span {
+        color: #86ddd5;
+        font-size: 12px;
+        font-weight: 800;
+      }
+
+      .signal-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 1px;
+        background: rgba(202, 229, 238, 0.12);
+      }
+
+      .signal {
+        min-height: 130px;
+        padding: 20px;
+        background: rgba(6, 22, 33, 0.48);
+      }
+
+      .signal span {
+        display: block;
+        color: #95b9c8;
+        font-size: 12px;
+      }
+
+      .signal strong {
+        display: block;
+        margin: 8px 0;
+        color: #fff;
+        font-size: 30px;
+        line-height: 1.1;
+      }
+
+      .signal p {
+        margin: 0;
+        color: #bcd4de;
+        line-height: 1.55;
+        font-size: 13px;
+      }
+
+      .section {
+        padding: 48px 0;
+      }
+
+      .container {
+        width: min(100%, var(--max));
+        margin: 0 auto;
+        padding: 0 24px;
+      }
+
+      .section-head {
+        display: flex;
+        align-items: flex-end;
+        justify-content: space-between;
+        gap: 24px;
+        margin-bottom: 22px;
+        border-bottom: 1px solid var(--line);
+        padding-bottom: 14px;
+      }
+
+      .section-head h2 {
+        margin-bottom: 6px;
+        font-size: 28px;
+      }
+
+      .section-head p {
+        margin-bottom: 0;
+        color: var(--muted);
+      }
+
+      .portal-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .portal-card {
+        min-height: 260px;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 20px;
+        text-decoration: none;
+        background: rgba(255, 255, 255, 0.9);
+        box-shadow: 0 14px 38px rgba(17, 42, 62, 0.08);
+        transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
+      }
+
+      .portal-card:hover {
+        transform: translateY(-3px);
+        border-color: rgba(22, 139, 159, 0.42);
+        box-shadow: 0 22px 54px rgba(17, 42, 62, 0.14);
+      }
+
+      .portal-card span {
+        width: fit-content;
+        border: 1px solid #c9dce6;
+        border-radius: 999px;
+        color: var(--blue);
+        background: #eef6fa;
+        padding: 4px 9px;
+        font-size: 12px;
+        font-weight: 900;
+      }
+
+      .portal-card h3 {
+        margin: 18px 0 10px;
+        font-size: 21px;
+      }
+
+      .portal-card p {
+        color: var(--muted);
+        line-height: 1.65;
+      }
+
+      .portal-card strong {
+        color: var(--teal);
+        font-size: 14px;
+      }
+
+      .research-band {
+        border-top: 1px solid var(--line);
+        border-bottom: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.72);
+      }
+
+      .feature-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 16px;
+      }
+
+      .feature {
+        border: 1px solid var(--line);
+        border-radius: 8px;
+        padding: 20px;
+        background: #fff;
+      }
+
+      .feature h3 {
+        margin-bottom: 8px;
+      }
+
+      .feature p {
+        margin-bottom: 0;
+        color: var(--muted);
+        line-height: 1.68;
+      }
+
+      .site-footer {
+        border-top: 1px solid #173447;
+        color: #cfe0e8;
+        background: #0c2131;
+      }
+
+      .footer-inner {
+        width: min(100%, var(--max));
+        margin: 0 auto;
+        padding: 26px 24px;
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        flex-wrap: wrap;
+      }
+
+      .footer-inner strong {
+        color: #fff;
+      }
+
+      @media (max-width: 980px) {
+        .nav,
+        .hero-inner,
+        .section-head {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+
+        .hero-inner,
+        .portal-grid,
+        .feature-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .hero-inner {
+          min-height: auto;
+        }
+
+        h1 {
+          font-size: 52px;
+        }
+      }
+
+      @media (max-width: 560px) {
+        .nav,
+        .container,
+        .hero-inner,
+        .footer-inner {
+          padding-left: 16px;
+          padding-right: 16px;
+        }
+
+        .signal-grid {
+          grid-template-columns: 1fr;
+        }
+
+        h1 {
+          font-size: 40px;
+        }
+      }
+    </style>
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'><rect width='32' height='32' rx='6' fill='%23123f5d'/><path d='M9 17h14M16 10v14' stroke='white' stroke-width='4' stroke-linecap='round'/><circle cx='24' cy='8' r='3' fill='%238be4dc'/></svg>"
+    />
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav" aria-label="主导航">
+        <a class="brand" href="index.html">
+          <span class="brand-mark">H</span>
+          <span><strong>Happy medical AI</strong><span>医学 AI 学术与临床原型平台</span></span>
+        </a>
+        <div class="nav-links">
+          <a href="#portals">原型入口</a>
+          <a href="academic-community/home.html">学术社区</a>
+          <a href="docs/patient.html">患者端</a>
+          <a href="docs/index.html">医生端</a>
+          <a href="docs/data-platform.html">数据后台</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-inner">
+          <div>
+            <p class="eyebrow">Academic Clinical AI Workspace</p>
+            <h1>医学 AI 学术社区与临床信息原型</h1>
+            <p class="lead">
+              一个可通过 GitHub Pages 直接发布的静态展示平台，汇集医学 AI 学习交流、患者预诊信息采集、医生病历录入、科室导航和数据管理后台。视觉风格采用论文排版秩序、临床数据界面和科技感网格系统。
+            </p>
+            <div class="hero-actions">
+              <a class="btn primary" href="academic-community/home.html">进入学术社区</a>
+              <a class="btn" href="docs/index.html">打开临床工作台</a>
+              <a class="btn" href="#portals">查看全部入口</a>
+            </div>
+          </div>
+
+          <aside class="hero-panel" aria-label="平台能力摘要">
+            <div class="panel-head">
+              <strong>Research Console</strong>
+              <span>STATIC / GITHUB PAGES READY</span>
+            </div>
+            <div class="signal-grid">
+              <div class="signal"><span>Community</span><strong>AI 医学社区</strong><p>课程、讨论、工具案例与成果投稿。</p></div>
+              <div class="signal"><span>Clinical</span><strong>预诊协作</strong><p>患者信息采集与医生端病历录入。</p></div>
+              <div class="signal"><span>Data</span><strong>Metadata 后台</strong><p>结构化记录、筛选、统计与导出展示。</p></div>
+              <div class="signal"><span>Navigation</span><strong>科室检索</strong><p>面向症状和临床问题的科室导航。</p></div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section" id="portals">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <h2>发布入口</h2>
+              <p>根目录入口已经指向所有核心页面，GitHub Pages 发布后可直接访问。</p>
+            </div>
+          </div>
+          <div class="portal-grid">
+            <a class="portal-card" href="academic-community/home.html">
+              <div><span>Academic</span><h3>医学 AI 学术社区</h3><p>面向医生、医学生和科研人员的课程、讨论、成果与工具案例平台。</p></div>
+              <strong>进入社区</strong>
+            </a>
+            <a class="portal-card" href="docs/patient.html">
+              <div><span>Patient</span><h3>患者预诊采集</h3><p>收集基本信息、症状病史、ABCDE 快速评估与资料补充。</p></div>
+              <strong>打开患者端</strong>
+            </a>
+            <a class="portal-card" href="docs/index.html">
+              <div><span>Doctor</span><h3>医生临床工作台</h3><p>读取患者提交信息，录入医生病历，生成和保存文书草稿。</p></div>
+              <strong>打开医生端</strong>
+            </a>
+            <a class="portal-card" href="docs/data-platform.html">
+              <div><span>Data</span><h3>病例数据后台</h3><p>集中查看 metadata、模拟数据表结构、分页和 JSON 快照。</p></div>
+              <strong>进入后台</strong>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section research-band">
+        <div class="container">
+          <div class="section-head">
+            <div>
+              <h2>学术风格定位</h2>
+              <p>页面强调可信、克制、可扫描，同时保留 AI 科技产品的未来感。</p>
+            </div>
+          </div>
+          <div class="feature-grid">
+            <article class="feature">
+              <h3>论文式信息层级</h3>
+              <p>使用清晰标题、摘要式说明、数据卡片、细线分隔和有限圆角，让内容像研究平台而不是营销页。</p>
+            </article>
+            <article class="feature">
+              <h3>临床数据界面质感</h3>
+              <p>深色研究控制台、网格背景、医学蓝绿与少量金色强调，形成“学术 + 酷炫”的统一视觉语言。</p>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="footer-inner">
+        <strong>Happy medical AI</strong>
+        <span>静态页面已按 GitHub Pages 直接发布场景整理。</span>
+      </div>
+    </footer>
+  </body>
+</html>
