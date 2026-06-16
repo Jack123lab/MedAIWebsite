@@ -574,11 +574,110 @@ function injectJournalSources() {
   else document.body.appendChild(section);
 }
 
-wireDiscussionNav();
+const primaryNavItems = [
+  { href: "index.html", label: "首页", active: ["index.html", ""] },
+  { href: "community.html", label: "讨论区", active: ["community.html"] },
+  { href: "datasets-tools.html", label: "数据集和工具集", active: ["datasets-tools.html"] },
+  { href: "network.html", label: "社区", active: ["network.html"] },
+  { href: "benchmark.html", label: "Benchmark", active: ["benchmark.html"] },
+  { href: "crowdsourcing.html", label: "众包平台", active: ["crowdsourcing.html"] },
+  { href: "learning.html", label: "教学专区", active: ["learning.html"] },
+  { href: "popular-science.html", label: "科普", active: ["popular-science.html"] },
+  { href: "about.html", label: "About me", active: ["about.html"] },
+];
+
+function normalizeTopNavigation() {
+  const currentPath = window.location.pathname.split("/").pop() || "index.html";
+  document.querySelectorAll(".site-header .nav").forEach((nav) => {
+    const brand = nav.querySelector(".brand");
+    if (brand) {
+      brand.setAttribute("href", "index.html");
+      const brandText = brand.querySelector(".brand-text");
+      if (brandText) {
+        brandText.innerHTML = "<strong>Happy medical AI</strong><span>Medical AI Community</span>";
+      }
+    }
+
+    const navLinks = nav.querySelector(".nav-links");
+    if (!navLinks) return;
+    navLinks.innerHTML = primaryNavItems.map((item) => {
+      const active = item.active.includes(currentPath) ? ' class="active"' : "";
+      return `<a${active} href="${item.href}">${item.label}</a>`;
+    }).join("");
+  });
+}
+
+function injectInstitutionBar() {
+  if (document.querySelector(".institution-bar")) return;
+  const bar = document.createElement("aside");
+  bar.className = "institution-bar";
+  bar.setAttribute("aria-label", "机构背书");
+  bar.innerHTML = `
+    <div class="institution-bar-inner">
+      <span>机构背书</span>
+      <strong>CUHKSZ</strong>
+      <strong>SRIBD</strong>
+      <strong>SLAI</strong>
+    </div>`;
+  document.body.appendChild(bar);
+}
+
+function wireHomeAgent() {
+  const shell = document.querySelector("#agentWorkbench");
+  if (!shell) return;
+
+  const cards = shell.querySelectorAll("[data-model]");
+  const modelInput = shell.querySelector("#agentModel");
+  const form = shell.querySelector("#agentQuestionForm");
+  const input = shell.querySelector("#agentQuestion");
+  const output = shell.querySelector("#agentAnswer");
+
+  cards.forEach((card) => {
+    card.addEventListener("click", () => {
+      cards.forEach((item) => item.classList.toggle("active", item === card));
+      if (modelInput) modelInput.value = card.dataset.model || "";
+    });
+  });
+
+  form?.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const model = modelInput?.value || "华佗GPT";
+    const question = input?.value.trim() || "请总结今天医学 AI 领域值得关注的方向。";
+    if (output) {
+      output.innerHTML = `
+        <span>${model}</span>
+        <strong>${question}</strong>
+        <p>这是静态演示入口。正式接入后，这里会调用所选模型返回医学 AI 学习、检索、病例结构化或科研设计相关回答，并保留人工审核提示。</p>`;
+    }
+  });
+}
+
+function wireDiscussionTabs() {
+  document.querySelectorAll("[data-discussion-tabs]").forEach((group) => {
+    const groupName = group.dataset.discussionTabs;
+    const buttons = group.querySelectorAll("[data-discussion-tab]");
+    const panels = document.querySelectorAll(`[data-discussion-panel="${groupName}"]`);
+
+    buttons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const tab = button.dataset.discussionTab;
+        buttons.forEach((item) => item.classList.toggle("active", item === button));
+        panels.forEach((panel) => {
+          panel.hidden = panel.dataset.discussionValue !== tab;
+        });
+      });
+    });
+  });
+}
+
+normalizeTopNavigation();
 wireFilters();
 wireAuthForms();
 renderProfile();
 renderLikedPosts();
 wireForum();
 wireDoctorWorkspace();
+wireHomeAgent();
+wireDiscussionTabs();
 injectJournalSources();
+injectInstitutionBar();

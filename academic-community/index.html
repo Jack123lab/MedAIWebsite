@@ -3,181 +3,134 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Happy medical AI | 医学 AI 专家协作门户</title>
-    <meta name="description" content="Happy medical AI 面向临床、科研、算法、合规与产品转化专家，建设可信、可验证、可转化的医学 AI 专家协作平台。" />
+    <title>Happy medical AI | 医学 AI 智能体入口</title>
+    <meta name="description" content="Happy medical AI 医学 AI 智能体问答、讨论、数据集工具交易、社区、benchmark、众包、教学和科普入口。" />
     <link rel="stylesheet" href="assets/css/style.css" />
     <script src="assets/js/main.js" defer></script>
   </head>
-  <body class="portal-index dxy-style-index medical-workbench-index">
+  <body class="ai-portal-home">
     <header class="site-header">
       <nav class="nav" aria-label="主导航">
         <a class="brand" href="index.html">
           <span class="brand-mark">H</span>
-          <span class="brand-text"><strong>Happy medical AI</strong><span>Medical AI Expert Portal</span></span>
+          <span class="brand-text"><strong>Happy medical AI</strong><span>Medical AI Community</span></span>
         </a>
         <div class="nav-links">
           <a class="active" href="index.html">首页</a>
-          <a href="home.html">招募</a>
-          <a href="tutorials.html">课程</a>
-          <div class="nav-dropdown">
-            <a href="community.html">讨论</a>
-            <div class="nav-dept-menu" aria-label="讨论科室入口">
-              <a href="community.html#dept-internal">内科综合</a>
-              <a href="community.html#dept-surgery">外科与围术期</a>
-              <a href="community.html#dept-obgyn">妇产与生殖</a>
-              <a href="community.html#dept-pediatrics">儿科与发育</a>
-              <a href="community.html#dept-emergency">急诊重症</a>
-              <a href="community.html#dept-oncology">肿瘤与血液</a>
-              <a href="community.html#dept-imaging">影像病理</a>
-              <a href="community.html#dept-pharmacy">药学检验</a>
-            </div>
-          </div>
-          <div class="nav-dropdown">
-            <a href="doctor.html">医生</a>
-            <div class="nav-dept-menu" aria-label="医生科室入口">
-              <a href="doctor.html#doctor-dept-internal">内科资料</a>
-              <a href="doctor.html#doctor-dept-surgery">外科资料</a>
-              <a href="doctor.html#doctor-dept-obgyn">妇产资料</a>
-              <a href="doctor.html#doctor-dept-pediatrics">儿科资料</a>
-              <a href="doctor.html#doctor-dept-emergency">急诊重症</a>
-              <a href="doctor.html#doctor-dept-oncology">肿瘤血液</a>
-              <a href="doctor.html#doctor-dept-imaging">影像病理</a>
-              <a href="doctor.html#doctor-dept-pharmacy">药学检验</a>
-            </div>
-          </div>
-          <a href="research.html">成果</a>
-          <a href="demos.html">工具</a>
+          <a href="community.html">讨论区</a>
+          <a href="datasets-tools.html">数据集和工具集</a>
+          <a href="network.html">社区</a>
+          <a href="benchmark.html">Benchmark</a>
+          <a href="crowdsourcing.html">众包平台</a>
+          <a href="learning.html">教学专区</a>
+          <a href="popular-science.html">科普</a>
           <a href="about.html">About me</a>
-          <a href="auth.html">认证</a>
         </div>
       </nav>
     </header>
 
     <main>
-      <section class="masthead">
-        <div class="container masthead-grid">
-          <div>
-            <p class="eyebrow">Medical AI Workbench</p>
-            <h1>医生每天可用的医学 AI 协作工作台</h1>
-            <p>按科室聚合病例讨论、指南证据、AI 工具经验、医生资料和期刊更新，让可信医学 AI 从真实临床问题开始沉淀。</p>
-          </div>
-          <form class="portal-search" action="community.html">
-            <label for="indexSearch">搜索讨论、指南、病例或 AI 工具</label>
-            <div>
-              <input id="indexSearch" name="q" type="search" placeholder="如：心衰指南 RAG、影像报告结构化" />
-              <button type="submit">搜索</button>
-            </div>
-          </form>
-        </div>
-      </section>
-
-      <section class="portal-nav-band" aria-label="常用科室频道">
-        <div class="container portal-channel-list">
-          <a href="community.html#dept-internal">内科综合</a>
-          <a href="community.html#dept-surgery">外科与围术期</a>
-          <a href="community.html#dept-obgyn">妇产与生殖</a>
-          <a href="community.html#dept-pediatrics">儿科与发育</a>
-          <a href="community.html#dept-emergency">急诊重症</a>
-          <a href="community.html#dept-oncology">肿瘤与血液</a>
-          <a href="community.html#dept-imaging">影像病理</a>
-          <a href="community.html#dept-pharmacy">药学检验</a>
-        </div>
-      </section>
-
-      <section class="section portal-desk">
-        <div class="container portal-layout">
-          <aside class="portal-left-rail" aria-label="专科频道">
-            <section class="portal-panel">
-              <h2>专科频道</h2>
-              <nav class="category-list" aria-label="科室论坛入口">
-                <a href="community.html#dept-internal"><span>Internal</span><strong>内科综合讨论、慢病管理、指南证据</strong></a>
-                <a href="community.html#dept-surgery"><span>Surgery</span><strong>外科病例、围术期、手术资料脱敏</strong></a>
-                <a href="community.html#dept-emergency"><span>Emergency</span><strong>急诊重症、监测指标、抢救流程复盘</strong></a>
-                <a href="community.html#dept-imaging"><span>Imaging</span><strong>影像病理、多模态标注、诊断一致性</strong></a>
-              </nav>
-            </section>
-            <section class="portal-panel">
-              <h2>可信机制</h2>
-              <ul class="portal-principles">
-                <li>医生身份与科室标签优先展示。</li>
-                <li>AI 输出标注来源、证据等级和人工审核。</li>
-                <li>病例资料先脱敏，再生成可讨论版本。</li>
-                <li>精华内容沉淀到科室知识库。</li>
-              </ul>
-            </section>
-          </aside>
-
-          <section class="portal-main-feed" aria-label="医学 AI 信息流">
-            <article class="lead-story">
+      <section class="agent-hero">
+        <div class="container agent-hero-grid">
+          <div class="agent-copy">
+            <p class="eyebrow">Medical AI Agent Hub</p>
+            <h1>面向医学学习、科研和临床讨论的智能体问答入口</h1>
+            <p class="lead">在同一个入口切换不同模型，围绕文献、指南、病例结构化、数据集、工具和 benchmark 快速展开问题。</p>
+            <div class="news-ticker" aria-label="医学 AI 新闻滚动栏">
+              <span>新闻</span>
               <div>
-                <span class="story-label">今日重点</span>
-                <h2>从病例资料到论坛讨论：先脱敏，再让 AI 辅助提炼问题</h2>
-                <p>医生工作区可整理脱敏资料，讨论区按科室承接病例、指南和工具经验，形成可追溯的协作记录。</p>
-                <div class="story-actions">
-                  <a class="btn primary" href="doctor.html">进入医生工作区</a>
-                  <a class="btn" href="community.html">查看最新讨论</a>
-                </div>
+                <p>医学多模态模型评测更新，新增影像报告一致性任务。</p>
+                <p>社区计划开放数据集交易审核流程，优先支持脱敏样例和合规说明。</p>
+                <p>教学专区将收录外网课程、Hugging Face Learn 路线和虚拟病人题库。</p>
               </div>
-              <div class="lead-metrics" aria-label="平台状态">
-                <div><strong>8</strong><span>科室频道</span></div>
-                <div><strong>5</strong><span>讨论类型</span></div>
-                <div><strong>4</strong><span>AI 辅助场景</span></div>
-                <div><strong>100%</strong><span>脱敏优先</span></div>
-              </div>
-            </article>
+            </div>
+          </div>
 
-            <section class="portal-panel">
-              <div class="feed-section-head"><h2>最新专业讨论</h2><a href="community.html">进入讨论区</a></div>
-              <div class="news-feed">
-                <article class="news-item featured"><span>心血管 | 指南问答</span><h3><a href="community.html#dept-internal">心衰指南更新后，RAG 回答如何标注推荐等级？</a></h3><p>建议同时输出推荐意见、证据等级、适用人群、禁忌与引用段落，便于人工复核。</p><small>18 回复 · 426 浏览 · 人工审核中</small></article>
-                <article class="news-item"><span>影像病理 | 工具经验</span><h3><a href="community.html#dept-imaging">影像报告结构化时，哪些字段不应交给模型自由生成？</a></h3><p>讨论检查部位、影像所见、诊断印象和不确定性表达的结构化边界。</p><small>9 回复 · 212 浏览 · 含脱敏提示</small></article>
-                <article class="news-item"><span>急诊重症 | 病例讨论</span><h3><a href="community.html#dept-emergency">危重症评分能否作为 AI 分诊建议的解释层？</a></h3><p>围绕评分适用范围、实时数据缺失和责任归属展开讨论。</p><small>6 回复 · 168 浏览 · 待专家补充</small></article>
+          <section id="agentWorkbench" class="agent-workbench" aria-label="智能体问答">
+            <div class="agent-head">
+              <div>
+                <span>Agent Console</span>
+                <h2>选择模型</h2>
               </div>
-            </section>
-
-            <section class="portal-panel">
-              <div class="feed-section-head"><h2>高频工具入口</h2><a href="demos.html">全部工具</a></div>
-              <div class="service-grid">
-                <a href="demos.html"><span>Literature</span><strong>文献总结</strong><p>提取研究问题、方法、结论和局限，保留引用来源。</p></a>
-                <a href="demos.html"><span>Guideline QA</span><strong>指南问答</strong><p>按推荐等级和适用人群输出可复核答案。</p></a>
-                <a href="demos.html"><span>Case Structuring</span><strong>病历结构化</strong><p>将脱敏病例转为讨论所需字段和 PICO 问题。</p></a>
-              </div>
-            </section>
+              <strong>Preview</strong>
+            </div>
+            <div class="model-switcher" role="list" aria-label="可选模型">
+              <button class="agent-model-card active" type="button" data-model="华佗GPT">
+                <strong>华佗GPT</strong>
+                <span>医学中文问答、病例摘要、指南解释</span>
+              </button>
+              <button class="agent-model-card" type="button" data-model="ChatGPT 5.5">
+                <strong>ChatGPT 5.5</strong>
+                <span>科研拆解、工具规划、多步骤推理</span>
+              </button>
+            </div>
+            <form id="agentQuestionForm" class="agent-form">
+              <input id="agentModel" type="hidden" value="华佗GPT" />
+              <label for="agentQuestion">问题</label>
+              <textarea id="agentQuestion" rows="4" placeholder="例如：帮我把一篇临床研究论文整理成 PICO 和局限性"></textarea>
+              <button class="btn primary" type="submit">开始问答</button>
+            </form>
+            <div id="agentAnswer" class="agent-answer" aria-live="polite">
+              <span>华佗GPT</span>
+              <strong>等待问题输入</strong>
+              <p>选择模型后可以进入医学 AI 问答、资料整理、工具调用和学习路径规划。</p>
+            </div>
           </section>
+        </div>
+      </section>
 
-          <aside class="portal-right-rail" aria-label="热门与认证">
-            <section class="portal-panel apply-card">
-              <h2>医生认证</h2>
-              <p>认证后可进入专科资料台，上传脱敏病例并发起科室协作讨论。</p>
-              <a class="btn primary full-width" href="auth.html">申请认证</a>
-            </section>
-            <section class="portal-panel">
-              <div class="rail-head"><h2>热门问题</h2><a href="community.html">更多</a></div>
-              <ol class="rank-list">
-                <li><a href="community.html#dept-internal">AI 总结出院记录时如何处理时间线？</a><span>32</span></li>
-                <li><a href="community.html#dept-oncology">肿瘤分期资料能否自动生成随访摘要？</a><span>27</span></li>
-                <li><a href="community.html#dept-pharmacy">药物相互作用提示如何降低误报？</a><span>21</span></li>
-              </ol>
-            </section>
-            <section class="portal-panel">
-              <div class="rail-head"><h2>期刊更新</h2><a href="research.html">查看成果</a></div>
-              <div class="journal-mini">
-                <a href="https://www.nejm.org/" target="_blank" rel="noreferrer"><strong>NEJM</strong><span>临床 AI 验证、真实世界证据与安全性评价</span></a>
-                <a href="https://www.thelancet.com/" target="_blank" rel="noreferrer"><strong>The Lancet</strong><span>全球健康、专科前沿和医疗系统 AI 应用</span></a>
-                <a href="https://jamanetwork.com/" target="_blank" rel="noreferrer"><strong>JAMA</strong><span>医生工作流、监管政策和质量改进</span></a>
-              </div>
-            </section>
-          </aside>
+      <section class="section compact">
+        <div class="container portal-feature-grid">
+          <a class="portal-feature-card" href="community.html">
+            <span>Forum</span>
+            <strong>讨论区</strong>
+            <p>按类型和科室组织案例分享、公司动态、论文、成果和专科问题。</p>
+          </a>
+          <a class="portal-feature-card" href="datasets-tools.html">
+            <span>Marketplace</span>
+            <strong>数据集和工具集</strong>
+            <p>支持 MCP 工具、可交易数据集、付费工具集合和合规审核。</p>
+          </a>
+          <a class="portal-feature-card" href="network.html">
+            <span>Community</span>
+            <strong>医生与医院社区</strong>
+            <p>医生个人主页与医院机构主页，展示论文、获奖、任职和治疗专长。</p>
+          </a>
+          <a class="portal-feature-card" href="benchmark.html">
+            <span>Benchmark</span>
+            <strong>模型评测</strong>
+            <p>建设医学问答、虚拟病人、影像报告和工具调用 benchmark。</p>
+          </a>
+          <a class="portal-feature-card" href="crowdsourcing.html">
+            <span>Crowdsourcing</span>
+            <strong>众包平台</strong>
+            <p>面向医生、学生和机构发布标注、评测、题库和资料治理任务。</p>
+          </a>
+          <a class="portal-feature-card" href="learning.html">
+            <span>Learning</span>
+            <strong>教学专区</strong>
+            <p>外网课程搬运、tutorial 路线、自建题库和虚拟病人训练。</p>
+          </a>
+          <a class="portal-feature-card" href="popular-science.html">
+            <span>Public</span>
+            <strong>科普</strong>
+            <p>把医学 AI、数据合规、模型风险和健康知识转成公众能读懂的内容。</p>
+          </a>
+          <a class="portal-feature-card" href="about.html">
+            <span>Author</span>
+            <strong>About me</strong>
+            <p>作者介绍与项目背景。</p>
+          </a>
         </div>
       </section>
     </main>
 
     <footer class="site-footer">
       <div class="container footer-grid">
-        <div><h3>Happy medical AI</h3><p>医学 AI 专家协作门户，整合招募、学习、讨论、工具、成果与认证路径。</p></div>
-        <div><h4>核心</h4><a href="home.html">专家招募</a><a href="auth.html">申请加入</a></div>
-        <div><h4>内容</h4><a href="tutorials.html">课程</a><a href="research.html">成果</a></div>
-        <div><h4>协作</h4><a href="community.html">讨论</a><a href="contribute.html">投稿</a></div>
+        <div><h3>Happy medical AI</h3><p>医学 AI 智能体、数据、工具、社区和教学入口。</p></div>
+        <div><h4>平台</h4><a href="datasets-tools.html">数据集和工具集</a><a href="benchmark.html">Benchmark</a></div>
+        <div><h4>社区</h4><a href="community.html">讨论区</a><a href="network.html">社区</a></div>
+        <div><h4>学习</h4><a href="learning.html">教学专区</a><a href="popular-science.html">科普</a></div>
       </div>
     </footer>
   </body>

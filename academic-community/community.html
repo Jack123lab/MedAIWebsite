@@ -28,38 +28,37 @@
         </div>
       </section>
 
-      <section class="section compact forum-channel-section" aria-label="科室与内容类型导航">
-        <div class="container forum-channel-grid">
-          <section class="forum-channel-panel primary-channel">
-            <div class="channel-head">
-              <p class="eyebrow">Department First</p>
-              <h2>先选科室，再进入讨论</h2>
-              <p>面向医生的社区应按专业场景组织。科室入口承接病例、指南、工具、科研和合规讨论。</p>
+      <section class="section compact discussion-tab-section" aria-label="讨论区选项卡">
+        <div class="container">
+          <div class="section-head clean discussion-tab-head">
+            <div>
+              <p class="eyebrow">Discussion Navigator</p>
+              <h2>按类型或科室进入讨论</h2>
+              <p>讨论区保留两套入口：一套按内容类型组织，一套按医学科室组织。</p>
             </div>
-            <div class="department-strip">
-              <a href="#dept-internal">内科综合</a>
-              <a href="#dept-surgery">外科与围术期</a>
-              <a href="#dept-obgyn">妇产与生殖</a>
-              <a href="#dept-pediatrics">儿科与发育</a>
-              <a href="#dept-emergency">急诊重症</a>
-              <a href="#dept-oncology">肿瘤与血液</a>
-              <a href="#dept-imaging">影像病理</a>
-              <a href="#dept-pharmacy">药学检验</a>
+            <div class="discussion-tabs" data-discussion-tabs="discussion-category" role="tablist" aria-label="讨论入口类型">
+              <button class="discussion-tab active" type="button" data-discussion-tab="type">类型</button>
+              <button class="discussion-tab" type="button" data-discussion-tab="department">科室</button>
             </div>
-          </section>
-          <section class="forum-channel-panel">
-            <div class="channel-head compact-head">
-              <p class="eyebrow">Content Type</p>
-              <h2>内容类型</h2>
-            </div>
-            <div class="content-type-grid">
-              <button class="type-chip" type="button" data-forum-filter="clinical"><strong>病例讨论</strong><span>脱敏病例、病程摘要、诊疗路径</span></button>
-              <button class="type-chip" type="button" data-forum-filter="guideline"><strong>指南问答</strong><span>推荐等级、适用人群、证据来源</span></button>
-              <button class="type-chip" type="button" data-forum-filter="tool"><strong>AI 工具经验</strong><span>RAG、结构化、文献总结、质控</span></button>
-              <button class="type-chip" type="button" data-forum-filter="research"><strong>科研设计</strong><span>PICO、统计、检索、论文复现</span></button>
-              <button class="type-chip" type="button" data-forum-filter="ethics"><strong>合规伦理</strong><span>脱敏、授权、审计、责任边界</span></button>
-            </div>
-          </section>
+          </div>
+
+          <div class="discussion-panel-grid" data-discussion-panel="discussion-category" data-discussion-value="type">
+            <a href="#postList"><span>Case</span><strong>案例分享区</strong><p>脱敏病例、诊疗路径、随访复盘和 AI 辅助总结。</p></a>
+            <a href="#postList"><span>Company</span><strong>公司</strong><p>医学 AI 公司动态、产品方案、合作需求和落地经验。</p></a>
+            <a href="#postList"><span>Paper</span><strong>论文</strong><p>论文精读、复现讨论、方法比较和证据等级解读。</p></a>
+            <a href="#postList"><span>Outcome</span><strong>成果</strong><p>工具案例、benchmark 结果、课程产出和社区共建成果。</p></a>
+          </div>
+
+          <div class="discussion-panel-grid" data-discussion-panel="discussion-category" data-discussion-value="department" hidden>
+            <a href="#dept-internal"><span>Internal</span><strong>内科综合</strong><p>慢病管理、指南证据、病历结构化和长期随访。</p></a>
+            <a href="#dept-surgery"><span>Surgery</span><strong>外科与围术期</strong><p>手术资料脱敏、围术期记录和术后并发症复盘。</p></a>
+            <a href="#dept-obgyn"><span>OBGYN</span><strong>妇产与生殖</strong><p>产科风险、妇科肿瘤、生殖医学和围孕期用药。</p></a>
+            <a href="#dept-pediatrics"><span>Pediatrics</span><strong>儿科与发育</strong><p>儿童病例、发育评估、儿科用药和家属沟通。</p></a>
+            <a href="#dept-emergency"><span>Emergency</span><strong>急诊重症</strong><p>急诊分诊、ICU 监测、危重症评分和抢救流程。</p></a>
+            <a href="#dept-oncology"><span>Oncology</span><strong>肿瘤与血液</strong><p>肿瘤分期、治疗方案、血液病和临床试验。</p></a>
+            <a href="#dept-imaging"><span>Imaging</span><strong>影像病理</strong><p>影像报告、病理摘要、多模态标注和诊断一致性。</p></a>
+            <a href="#dept-pharmacy"><span>Pharmacy</span><strong>药学检验</strong><p>合理用药、检验解释、审方和实验室质控。</p></a>
+          </div>
         </div>
       </section>
 
