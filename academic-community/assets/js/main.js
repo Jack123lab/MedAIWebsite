@@ -14,6 +14,13 @@ const discussionDepartments = [
   { href: "community.html#dept-pharmacy", label: "药学检验", note: "合理用药、检验解释、审方与质控" },
 ];
 
+const discussionSubpages = [
+  { href: "community.html", label: "讨论首页", note: "最新帖子、科室版块、发帖入口" },
+  { href: "demos.html", label: "工具", note: "工具 Demo、使用经验、评测方法" },
+  { href: "research.html#weekly-updates", label: "论文", note: "精选论文、复现问题、共读讨论" },
+  { href: "research.html#product-watch", label: "产品成果", note: "产品动态、监管信息、落地边界" },
+];
+
 const discussionReferences = [
   { href: "https://www.nhc.gov.cn/", label: "国家卫健委" },
   { href: "https://www.aamc.org/cim/explore-options/specialty-profiles", label: "AAMC Specialty Profiles" },
@@ -121,6 +128,19 @@ function setAuthState(state) {
   writeJson(authKey, { ...getAuthState(), ...state });
 }
 
+function hasCommunityCredential(auth = getAuthState()) {
+  if (auth.status !== "verified") return false;
+  if (auth.role === "doctor") return auth.proofType === "license";
+  if (auth.role === "student") return auth.proofType === "student_card";
+  return false;
+}
+
+function communityCredentialText(auth = getAuthState()) {
+  if (auth.role === "doctor") return "已核验医师资格或执业证明";
+  if (auth.role === "student") return "已核验学生证或在读证明";
+  return "需提交医师资格或在读证明";
+}
+
 function getForumPosts() {
   const localPosts = readJson(postStorageKey, []);
   const usedIds = new Set(localPosts.map((post) => post.id));
@@ -155,7 +175,7 @@ function updateAuthCard() {
   card.innerHTML = `
     <span>${statusText}</span>
     <strong>${state.name || "访客"}</strong>
-    <p>${state.roleLabel || "完成身份信息后，可进入讨论、投稿和医生工作区演示。"}</p>
+    <p>${state.roleLabel || "完成身份信息后，可进入医疗社区、投稿和医生工作区演示。"}</p>
   `;
 }
 
@@ -179,6 +199,7 @@ function renderProfile() {
       <dt>联系方式</dt><dd>${state.contact || "待填写"}</dd>
       <dt>机构/学校</dt><dd>${state.institution || "待补充"}</dd>
       <dt>科室/专业</dt><dd>${state.specialty || "待补充"}</dd>
+      <dt>社区凭证</dt><dd>${communityCredentialText(state)}</dd>
     </dl>
   `;
 }
@@ -224,6 +245,11 @@ function wireFilters() {
 }
 
 function buildDiscussionMenu() {
+  const subpages = discussionSubpages.map((item) => `
+    <a class="nav-subpage-link" href="${item.href}">
+      <strong>${item.label}</strong>
+      <span>${item.note}</span>
+    </a>`).join("");
   const items = discussionDepartments.map((item) => `
     <a class="nav-dept-item" href="${item.href}">
       <strong>${item.label}</strong>
@@ -231,7 +257,12 @@ function buildDiscussionMenu() {
     </a>`).join("");
   const refs = discussionReferences.map((item) => `<a href="${item.href}" target="_blank" rel="noreferrer">${item.label}</a>`).join("");
   return `
-    <div class="nav-dept-menu" aria-label="按科室进入讨论">
+    <div class="nav-dept-menu" aria-label="医疗社区子页面与科室入口">
+      <div class="nav-subpage-area">
+        <div class="nav-menu-label">子页面</div>
+        <div class="nav-subpage-strip">${subpages}</div>
+      </div>
+      <div class="nav-menu-label">科室讨论</div>
       <div class="nav-dept-list">${items}</div>
       <div class="nav-reference">
         <span>划分参考</span>
@@ -254,7 +285,7 @@ function wireDiscussionNav() {
     wrapper.dataset.discussionReady = "true";
     wrapper.innerHTML = `
       <button class="nav-fold-title" type="button" aria-expanded="false" aria-haspopup="true">
-        <span>讨论</span>
+        <span>医疗社区</span>
         <span class="nav-arrow" aria-hidden="true"></span>
       </button>
       ${buildDiscussionMenu()}`;
@@ -311,27 +342,30 @@ function wireAuthForms() {
 
   const reviewForm = document.querySelector("#reviewForm");
   if (reviewForm) {
-    const roleLabels = { doctor: "执业医生", student: "医学生/研究生", researcher: "医学科研人员" };
+    const roleLabels = { doctor: "执业医生", student: "医学生/研究生" };
     reviewForm.addEventListener("submit", (event) => {
       event.preventDefault();
       const role = document.querySelector("#credentialRole").value;
+      const proofType = document.querySelector("#proofType").value;
       setAuthState({
         status: "pending",
         role,
         roleLabel: roleLabels[role],
+        proofType,
         realName: document.querySelector("#realName").value.trim(),
         institution: document.querySelector("#institution").value.trim(),
         specialty: document.querySelector("#specialty").value.trim(),
         submittedAt: new Date().toISOString(),
       });
-      document.querySelector("#reviewStatus").textContent = "资格材料已进入演示审核队列。正式环境应加密上传并人工审核。";
+      document.querySelector("#reviewStatus").textContent = "资格材料已进入演示审核队列。正式环境应加密上传，并由人工核验医师资格或在读证明。";
       updateAuthCard();
     });
 
     document.querySelector("#approveDemo")?.addEventListener("click", () => {
       const role = document.querySelector("#credentialRole").value || "doctor";
-      setAuthState({ status: "verified", role, roleLabel: roleLabels[role] });
-      document.querySelector("#reviewStatus").textContent = "演示状态已设为已认证。";
+      const proofType = role === "doctor" ? "license" : "student_card";
+      setAuthState({ status: "verified", role, proofType, roleLabel: roleLabels[role] });
+      document.querySelector("#reviewStatus").textContent = "演示状态已设为已认证，可进入医疗社区。";
       updateAuthCard();
     });
   }
@@ -348,9 +382,24 @@ function wireAuthForms() {
   });
 }
 
+function wireCommunityGate() {
+  const gate = document.querySelector("#communityGate");
+  if (!gate) return;
+
+  const auth = getAuthState();
+  const unlocked = hasCommunityCredential(auth);
+  document.body.classList.toggle("community-locked", !unlocked);
+  document.body.classList.toggle("community-unlocked", unlocked);
+
+  gate.innerHTML = unlocked
+    ? `<div class="container"><div class="community-gate-card verified"><span class="tag green">已通过社区认证</span><h2>${auth.name || "认证用户"}，欢迎进入医疗社区</h2><p>${communityCredentialText(auth)}。请继续使用脱敏资料、明确证据来源，并在发布前完成医学人工复核。</p><div class="community-credential-strip"><span>${auth.roleLabel || "认证成员"}</span><span>${auth.institution || "机构待补充"}</span><span>${auth.specialty || "专业待补充"}</span></div></div></div>`
+    : `<div class="container"><div class="community-gate-card locked"><span class="tag red">需要医生或医学生认证</span><h2>医疗社区仅对认证成员开放</h2><p>请先完成登录并提交医师资格/执业证明，或学生证/在读证明。审核通过后，才能浏览帖子列表、进入科室版块并发布或编辑讨论内容。</p><div class="button-row"><a class="btn primary" href="auth.html">前往登录/认证</a><a class="btn" href="home.html">返回首页</a></div></div></div>`;
+}
+
 function wireForum() {
   const postList = document.querySelector("#postList");
   if (!postList) return;
+  if (document.querySelector("#communityGate") && !hasCommunityCredential()) return;
 
   const state = { filter: "all", search: "", sort: "new", page: 1, pageSize: 5 };
   const modeStatus = document.querySelector("#publishModeStatus");
@@ -465,6 +514,10 @@ function wireForum() {
   document.querySelector("#newPostForm")?.addEventListener("submit", (event) => {
     event.preventDefault();
     const status = document.querySelector("#postStatus");
+    if (!hasCommunityCredential()) {
+      status.textContent = "请先通过医生或医学生认证，再发布医疗社区讨论。";
+      return;
+    }
     const body = document.querySelector("#postBody").value.trim();
     if (hasSensitivePattern(body)) {
       status.textContent = "检测到可能的身份信息，请先脱敏后再发布。";
@@ -581,7 +634,7 @@ const primaryNavItems = [
   { href: "network.html", label: "社区", active: ["network.html"] },
   { href: "benchmark.html", label: "Benchmark", active: ["benchmark.html"] },
   { href: "crowdsourcing.html", label: "众包平台", active: ["crowdsourcing.html"] },
-  { href: "learning.html", label: "教学", active: ["learning.html", "tutorials.html"] },
+  { href: "learning.html", label: "教学", active: ["learning.html", "tutorials.html", "teaching-videos.html", "teaching-open-tutorials.html", "teaching-question-bank.html", "teaching-virtual-patient.html"] },
   { href: "popular-science.html", label: "科普", active: ["popular-science.html"] },
   { href: "about.html", label: "About", active: ["about.html"] },
   { href: "auth.html", label: "登录/个人", active: ["auth.html", "profile.html"] },
@@ -676,6 +729,7 @@ wireFilters();
 wireAuthForms();
 renderProfile();
 renderLikedPosts();
+wireCommunityGate();
 wireForum();
 wireDoctorWorkspace();
 wireHomeAgent();

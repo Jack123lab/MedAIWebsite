@@ -21,7 +21,7 @@
           <div>
             <p class="eyebrow">Identity & Review</p>
             <h1>登录/个人</h1>
-            <p>登录、资格认证和个人状态合并在同一个入口。医生、医学生和医学科研人员完成审核后，可发布讨论、投稿和参与众包任务。</p>
+            <p>登录、资格认证和个人状态合并在同一个入口。医疗社区仅面向认证通过的执业医生和医学生开放浏览与发帖。医生需提交医师资格或执业证明，医学生需提交学生证或在读证明。</p>
           </div>
           <div id="authStateCard" class="auth-state-card" aria-live="polite"></div>
         </div>
@@ -50,13 +50,13 @@
             <form id="reviewForm" class="auth-form">
               <div class="form-split">
                 <label>真实姓名<input id="realName" type="text" maxlength="30" required /></label>
-                <label>身份类型<select id="credentialRole" required><option value="doctor">执业医生</option><option value="student">医学生/研究生</option><option value="researcher">医学科研人员</option></select></label>
+                <label>身份类型<select id="credentialRole" required><option value="doctor">执业医生</option><option value="student">医学生/研究生</option></select></label>
               </div>
               <div class="form-split">
                 <label>机构/学校<input id="institution" type="text" maxlength="60" placeholder="医院、大学或研究机构" required /></label>
                 <label>科室/专业<input id="specialty" type="text" maxlength="40" placeholder="如心内科、临床医学" /></label>
               </div>
-              <label>证明材料类型<select id="proofType" required><option value="license">医师执业证/资格证</option><option value="student_card">学生证/在读证明</option><option value="work_card">医院或机构工作证明</option><option value="other">其他可核验材料</option></select></label>
+              <label>证明材料类型<select id="proofType" required><option value="license">医师执业证/资格证</option><option value="student_card">学生证/在读证明</option></select></label>
               <label>证明编号或说明<input id="proofNote" type="text" maxlength="80" placeholder="静态原型不会上传真实证件，请填写演示说明" required /></label>
               <label>材料上传<input id="proofFile" type="file" accept="image/*,.pdf" /></label>
               <div class="privacy-panel light">
@@ -76,8 +76,8 @@
             <h2>发帖权限</h2>
             <div class="policy-steps">
               <div><strong>1. 登录</strong><span>保存显示名称和联系方式</span></div>
-              <div><strong>2. 提交材料</strong><span>医生资格、学生在读证明或机构证明</span></div>
-              <div><strong>3. 人工审核</strong><span>审核通过后开放发帖与投稿</span></div>
+              <div><strong>2. 提交材料</strong><span>医师资格/执业证明或学生在读证明</span></div>
+              <div><strong>3. 人工审核</strong><span>审核通过后开放医疗社区浏览与发帖</span></div>
               <div><strong>4. 脱敏检查</strong><span>发帖前检测身份证号、手机号、住院号等敏感内容</span></div>
             </div>
             <div class="notice compact-notice"><strong>隐私边界：</strong> 不建议在前端长期保存证件图片。正式环境应使用后端短期签名上传、对象存储加密、审核日志和权限隔离。</div>

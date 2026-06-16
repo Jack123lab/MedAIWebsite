@@ -3,16 +3,16 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>讨论 | Happy medical AI</title>
+    <title>医疗社区 | Happy medical AI</title>
     <link rel="stylesheet" href="assets/css/style.css" />
     <script src="assets/js/config.js"></script>
     <script src="assets/js/main.js" defer></script>
   </head>
-  <body data-requires-auth="true">
+  <body class="medical-community-page" data-requires-auth="true">
     <header class="site-header">
       <nav class="nav" aria-label="主导航">
         <a class="brand" href="home.html"><span class="brand-mark">H</span><span class="brand-text"><strong>Happy medical AI</strong><span>临床学习与交流平台</span></span></a>
-        <div class="nav-links"><a href="home.html">首页</a><a href="tutorials.html">课程</a><a class="active" href="community.html">讨论</a><a href="doctor.html">医生</a><a href="research.html">成果</a><a href="demos.html">工具</a><a href="contribute.html">投稿</a><a href="about.html">About me</a><a href="auth.html">登录/认证</a><a href="profile.html">个人</a></div>
+        <div class="nav-links"><a href="home.html">首页</a><a href="tutorials.html">课程</a><a class="active" href="community.html">医疗社区</a><a href="doctor.html">医生</a><a href="research.html">成果</a><a href="demos.html">工具</a><a href="contribute.html">投稿</a><a href="about.html">About me</a><a href="auth.html">登录/认证</a><a href="profile.html">个人</a></div>
       </nav>
     </header>
 
@@ -20,15 +20,58 @@
       <section class="page-title forum-title">
         <div class="container forum-title-grid">
           <div>
-            <p class="eyebrow">Clinical Forum</p>
-            <h1>医学 AI 讨论区</h1>
-            <p>围绕临床文本、指南问答、科研设计、工具使用和合规伦理展开讨论。请使用公开资料或脱敏信息发帖。</p>
+            <p class="eyebrow">Verified Medical Community</p>
+            <h1>医疗社区</h1>
+            <p>参考丁香园式的专业医学社区结构，围绕临床文本、指南问答、科研设计、工具使用和合规伦理展开讨论。仅认证通过的医生或医学生可浏览与编辑本页内容。</p>
           </div>
           <a class="btn primary" href="#postForm">发布讨论</a>
         </div>
       </section>
 
-      <section class="section compact discussion-tab-section" aria-label="讨论区选项卡">
+      <section class="section compact discussion-subpage-section" aria-label="讨论子页面入口">
+        <div class="container">
+          <div class="discussion-subpage-head">
+            <div>
+              <p class="eyebrow">Discussion Tags</p>
+              <h2>讨论子页面</h2>
+              <p>按工具、论文和产品成果拆分入口，保持不同内容之间的边界清楚，方便横向浏览和快速进入对应页面。</p>
+            </div>
+            <div class="subpage-arrows" aria-hidden="true"><span>‹</span><span>›</span></div>
+          </div>
+          <nav class="subpage-title-strip" aria-label="讨论子页面标题">
+            <a class="active" href="community.html">讨论首页</a>
+            <a href="demos.html">工具</a>
+            <a href="research.html#weekly-updates">论文</a>
+            <a href="research.html#product-watch">产品成果</a>
+          </nav>
+          <div class="subpage-card-row">
+            <a class="subpage-card current" href="community.html">
+              <span>Discussion</span>
+              <strong>讨论首页</strong>
+              <p>汇总最新帖子、科室版块、内容筛选和发帖入口，作为社区主工作台。</p>
+            </a>
+            <a class="subpage-card" href="demos.html">
+              <span>Tools</span>
+              <strong>工具</strong>
+              <p>沉淀 RAG、文献总结、病历结构化等工具说明，并承接工具使用经验讨论。</p>
+            </a>
+            <a class="subpage-card" href="research.html#weekly-updates">
+              <span>Papers</span>
+              <strong>论文</strong>
+              <p>进入精选论文、论文共读、复现方法和临床价值讨论，减少与产品信息混杂。</p>
+            </a>
+            <a class="subpage-card" href="research.html#product-watch">
+              <span>Products</span>
+              <strong>产品成果</strong>
+              <p>集中查看产品、监管和产业动态，讨论落地边界、适应证与合规风险。</p>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section id="communityGate" class="community-gate" aria-live="polite"></section>
+
+      <section class="section compact discussion-tab-section community-protected" aria-label="讨论区选项卡">
         <div class="container">
           <div class="section-head clean discussion-tab-head">
             <div>
@@ -62,7 +105,7 @@
         </div>
       </section>
 
-      <section class="section compact">
+      <section class="section compact community-protected">
         <div class="container forum-shell">
           <aside class="forum-sidebar" aria-label="讨论版块">
             <section class="forum-block">
@@ -166,7 +209,7 @@
         </div>
       </section>
 
-      <section class="section compact dept-forum-section" aria-label="按科室进入论坛">
+      <section class="section compact dept-forum-section community-protected" aria-label="按科室进入论坛">
         <div class="container">
           <div class="section-head clean">
             <div>
@@ -191,7 +234,7 @@
 
     <footer class="site-footer">
       <div class="container footer-grid">
-        <div><h3>Happy medical AI</h3><p>把真实临床和科研问题整理成可检索、可复用的讨论记录。</p></div>
+        <div><h3>Happy medical AI</h3><p>把认证医生和医学生的真实临床与科研问题整理成可检索、可复用的讨论记录。</p></div>
         <div><h4>学习</h4><a href="learning.html">教学</a></div>
         <div><h4>工具</h4><a href="demos.html">工具</a></div>
         <div><h4>投稿</h4><a href="contribute.html">投稿</a></div>

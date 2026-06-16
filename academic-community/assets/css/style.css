@@ -176,10 +176,10 @@ a { color: inherit; }
 }
 
 .nav-fold .nav-dept-menu {
-  width: 420px;
+  width: min(760px, calc(100vw - 48px));
   grid-template-columns: 1fr;
-  gap: 10px;
-  padding: 12px;
+  gap: 12px;
+  padding: 14px;
 }
 
 .nav-dept-menu::before {
@@ -223,6 +223,49 @@ a { color: inherit; }
   background: #f5fafb;
   font-size: 13px;
   font-weight: 800;
+}
+
+.nav-menu-label {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.nav-subpage-area {
+  display: grid;
+  gap: 8px;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 12px;
+}
+
+.nav-subpage-strip {
+  display: grid;
+  grid-auto-flow: column;
+  grid-auto-columns: minmax(132px, 1fr);
+  gap: 8px;
+  overflow-x: auto;
+  padding-bottom: 2px;
+}
+
+.nav-dept-menu .nav-subpage-link {
+  min-height: 82px;
+  display: grid;
+  align-content: start;
+  gap: 4px;
+  border-color: #cbdde3;
+  background: #ffffff;
+}
+
+.nav-subpage-link strong {
+  color: #172738;
+  font-size: 15px;
+}
+
+.nav-subpage-link span {
+  color: var(--muted);
+  font-size: 12px;
+  font-weight: 500;
+  line-height: 1.35;
 }
 
 .nav-dept-list {
@@ -4425,6 +4468,177 @@ body:not(.login-page) {
   font-size: 13px;
 }
 
+.contributor-strip {
+  display: flex;
+  gap: 18px;
+  margin: 0;
+  overflow-x: auto;
+  padding: 4px 0 12px;
+  scroll-snap-type: x proximity;
+  scrollbar-color: #b7ccd6 transparent;
+}
+
+.contributor-logo {
+  flex: 0 0 132px;
+  display: grid;
+  gap: 10px;
+  place-items: center;
+  margin: 0;
+  scroll-snap-align: start;
+}
+
+.contributor-logo span {
+  width: 96px;
+  height: 96px;
+  display: grid;
+  place-items: center;
+  overflow: hidden;
+  border: 1px solid #d8e2e8;
+  border-radius: 50%;
+  background: #ffffff;
+}
+
+.contributor-logo img {
+  width: 74%;
+  height: 74%;
+  object-fit: contain;
+}
+
+.contributor-logo figcaption {
+  max-width: 100%;
+  color: #172738;
+  font-size: 13px;
+  font-weight: 800;
+  line-height: 1.35;
+  text-align: center;
+}
+
+.discussion-subpage-section {
+  background: #ffffff;
+  border-bottom: 1px solid #d8e2e8;
+}
+
+.discussion-subpage-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 18px;
+  align-items: end;
+  margin-bottom: 14px;
+}
+
+.discussion-subpage-head h2 {
+  margin-bottom: 6px;
+  color: #172738;
+}
+
+.discussion-subpage-head p {
+  max-width: 760px;
+  margin-bottom: 0;
+  color: #536474;
+}
+
+.subpage-arrows {
+  display: inline-flex;
+  gap: 8px;
+  flex: 0 0 auto;
+}
+
+.subpage-arrows span {
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  border: 1px solid #cbdde3;
+  border-radius: 6px;
+  color: var(--primary);
+  background: #f7fbfc;
+  font-size: 22px;
+  line-height: 1;
+}
+
+.subpage-title-strip,
+.subpage-card-row {
+  display: grid;
+  grid-auto-flow: column;
+  overflow-x: auto;
+}
+
+.subpage-title-strip {
+  grid-auto-columns: max-content;
+  gap: 8px;
+  margin-bottom: 12px;
+  padding-bottom: 3px;
+}
+
+.subpage-title-strip a {
+  min-height: 36px;
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid #cbdde3;
+  border-radius: 999px;
+  padding: 0 14px;
+  color: var(--primary);
+  background: #ffffff;
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.subpage-title-strip a.active,
+.subpage-title-strip a:hover {
+  border-color: var(--primary);
+  color: #ffffff;
+  background: var(--primary);
+}
+
+.subpage-card-row {
+  grid-auto-columns: minmax(230px, 1fr);
+  gap: 12px;
+  padding-bottom: 4px;
+}
+
+.subpage-card {
+  min-height: 150px;
+  display: grid;
+  align-content: start;
+  gap: 8px;
+  border: 1px solid #d3e1e6;
+  border-radius: 8px;
+  padding: 16px;
+  color: inherit;
+  background: #ffffff;
+  text-decoration: none;
+  box-shadow: 0 14px 34px rgba(11, 55, 70, 0.05);
+}
+
+.subpage-card.current {
+  border-color: rgba(35, 130, 118, 0.42);
+  background: #f2fbfa;
+}
+
+.subpage-card span {
+  color: var(--secondary);
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.subpage-card strong {
+  color: #172738;
+  font-size: 18px;
+}
+
+.subpage-card p {
+  margin: 0;
+  color: #536474;
+  font-size: 14px;
+}
+
+.subpage-card:hover {
+  border-color: var(--primary);
+}
+
 .discussion-tab-head {
   align-items: center;
 }
@@ -4531,8 +4745,271 @@ body:not(.login-page) {
     flex-direction: column;
   }
 
+  .discussion-subpage-head {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .subpage-card-row {
+    grid-auto-columns: minmax(230px, 82vw);
+  }
+
   .institution-bar-inner {
     justify-content: flex-start;
   }
 
+  .contributor-strip {
+    gap: 14px;
+  }
+
+  .contributor-logo {
+    flex-basis: 108px;
+  }
+
+  .contributor-logo span {
+    width: 82px;
+    height: 82px;
+  }
+}
+
+/* Teaching directory cards */
+.directory-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.learning-directory {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.course-directory {
+  margin-top: 16px;
+}
+
+.directory-card {
+  min-height: 150px;
+  display: grid;
+  align-content: start;
+  gap: 10px;
+  border: 1px solid #d8e2e8;
+  border-radius: 8px;
+  padding: 18px;
+  color: var(--text);
+  text-decoration: none;
+  background: #ffffff;
+  box-shadow: 0 12px 28px rgba(7, 23, 36, 0.055);
+  transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.directory-card.featured {
+  background: #eef6f7;
+}
+
+.directory-card:hover,
+.directory-card:focus-visible {
+  transform: translateY(-2px);
+  border-color: rgba(24, 95, 121, 0.35);
+  box-shadow: 0 18px 40px rgba(7, 23, 36, 0.1);
+}
+
+.directory-card:focus-visible {
+  outline: 3px solid rgba(35, 130, 118, 0.24);
+  outline-offset: 3px;
+}
+
+.directory-card h2 {
+  margin: 0;
+  color: #172738;
+  font-size: 20px;
+  line-height: 1.35;
+}
+
+.directory-card p {
+  margin: 0;
+  color: #536474;
+  line-height: 1.72;
+}
+
+.directory-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.detail-panel {
+  min-height: 150px;
+  border: 1px solid #d8e2e8;
+  border-radius: 8px;
+  padding: 18px;
+  background: #ffffff;
+  box-shadow: 0 12px 28px rgba(7, 23, 36, 0.055);
+}
+
+.detail-panel h2 {
+  margin-bottom: 8px;
+  color: #172738;
+  font-size: 20px;
+}
+
+.detail-panel p {
+  margin: 0;
+  color: #536474;
+}
+
+@media (max-width: 1120px) {
+  .learning-directory,
+  .directory-detail-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 760px) {
+  .directory-grid,
+  .learning-directory,
+  .directory-detail-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Verified medical community gate and DXY-style clinical forum polish. */
+.medical-community-page {
+  background:
+    linear-gradient(rgba(24, 95, 121, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(24, 95, 121, 0.035) 1px, transparent 1px),
+    #eef5f6;
+  background-size: 28px 28px, 28px 28px, auto;
+}
+
+.medical-community-page .forum-title {
+  color: #eaf4f8;
+  background:
+    linear-gradient(135deg, rgba(31, 138, 123, 0.22), rgba(24, 95, 121, 0.1)),
+    #082334;
+  border-bottom-color: rgba(134, 221, 213, 0.18);
+}
+
+.medical-community-page .forum-title h1 {
+  color: #ffffff;
+}
+
+.medical-community-page .forum-title p {
+  color: #c7dbe5;
+}
+
+.medical-community-page .forum-title .eyebrow {
+  color: #86ddd5;
+}
+
+.community-gate {
+  padding: 24px 0;
+  background: #ffffff;
+  border-bottom: 1px solid #d8e2e8;
+}
+
+.community-gate-card {
+  border: 1px solid #d8e2e8;
+  border-radius: 8px;
+  padding: 22px;
+  background: #ffffff;
+}
+
+.community-gate-card.locked {
+  border-color: #eadc9b;
+  background: #fffaf0;
+}
+
+.community-gate-card.verified {
+  border-color: #bfdedb;
+  background: #f3fbfa;
+}
+
+.community-gate-card h2 {
+  margin: 10px 0 8px;
+  color: #172738;
+  font-size: 24px;
+  line-height: 1.25;
+}
+
+.community-gate-card p {
+  max-width: 860px;
+  margin-bottom: 0;
+  color: #536474;
+}
+
+.community-credential-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.community-credential-strip span {
+  min-height: 30px;
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid #cbdde3;
+  border-radius: 6px;
+  padding: 0 10px;
+  color: #185f79;
+  background: #ffffff;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.community-locked .community-protected {
+  display: none;
+}
+
+.community-unlocked .community-gate {
+  padding-bottom: 12px;
+}
+
+.medical-community-page .discussion-tab-section,
+.medical-community-page .dept-forum-section {
+  background: rgba(255, 255, 255, 0.78);
+}
+
+.medical-community-page .discussion-panel-grid a,
+.medical-community-page .forum-block,
+.medical-community-page .forum-main,
+.medical-community-page .forum-toolbar,
+.medical-community-page .post-card,
+.medical-community-page .dept-board-card {
+  border-color: #d3e1e6;
+  box-shadow: 0 14px 34px rgba(11, 55, 70, 0.06);
+}
+
+.medical-community-page .forum-block::before,
+.medical-community-page .dept-board-card::before,
+.medical-community-page .discussion-panel-grid a::before {
+  content: "";
+  display: block;
+  width: 42px;
+  height: 3px;
+  margin-bottom: 12px;
+  border-radius: 999px;
+  background: #238276;
+}
+
+.medical-community-page .post-console {
+  border-color: rgba(134, 221, 213, 0.26);
+  background:
+    linear-gradient(rgba(134, 221, 213, 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(134, 221, 213, 0.05) 1px, transparent 1px),
+    #071f2f;
+  background-size: 22px 22px, 22px 22px, auto;
+}
+
+.medical-community-page .post-console h2,
+.medical-community-page .post-console label {
+  color: #ffffff;
+}
+
+.medical-community-page .discussion-panel-grid a:hover,
+.medical-community-page .dept-board-card a:hover,
+.medical-community-page .board-link:hover,
+.medical-community-page .type-chip:hover {
+  border-color: rgba(35, 130, 118, 0.38);
+  background: #eef7f7;
 }
