@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-labelledby="title desc">
+  <title id="title">Clinical contributor logo</title>
+  <desc id="desc">Clinical contributor mark with stethoscope and medical cross.</desc>
+  <circle cx="60" cy="60" r="56" fill="#f7f3e8" />
+  <rect x="28" y="28" width="64" height="64" rx="22" fill="#ffffff" stroke="#b48916" stroke-width="4" />
+  <path d="M56 40h8v15h15v8H64v17h-8V63H41v-8h15V40Z" fill="#1f8a7b" />
+  <path d="M39 40v18c0 10 8 18 18 18s18-8 18-18V40" fill="none" stroke="#185f79" stroke-width="5" stroke-linecap="round" />
+  <circle cx="39" cy="40" r="5" fill="#185f79" />
+  <circle cx="75" cy="40" r="5" fill="#185f79" />
+  <circle cx="82" cy="74" r="8" fill="#ffffff" stroke="#185f79" stroke-width="5" />
+</svg>

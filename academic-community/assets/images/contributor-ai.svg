@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-labelledby="title desc">
+  <title id="title">AI builder contributor logo</title>
+  <desc id="desc">AI builder contributor mark with connected model nodes.</desc>
+  <circle cx="60" cy="60" r="56" fill="#edf5fb" />
+  <rect x="31" y="32" width="58" height="56" rx="18" fill="#ffffff" stroke="#185f79" stroke-width="4" />
+  <path d="M44 76 60 43l16 33" fill="none" stroke="#1f8a7b" stroke-width="7" stroke-linecap="round" stroke-linejoin="round" />
+  <path d="M50 64h20" stroke="#b48916" stroke-width="6" stroke-linecap="round" />
+  <circle cx="60" cy="43" r="7" fill="#185f79" />
+  <circle cx="44" cy="76" r="7" fill="#1f8a7b" />
+  <circle cx="76" cy="76" r="7" fill="#1f8a7b" />
+  <path d="M34 54H22M98 54H86M60 22v10M60 88v10" stroke="#b7ccd6" stroke-width="5" stroke-linecap="round" />
+</svg>
