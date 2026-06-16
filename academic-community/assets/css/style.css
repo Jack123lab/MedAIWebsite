@@ -4016,6 +4016,9 @@ body:not(.login-page) {
   display: grid;
   grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: 10px;
+  max-height: 360px;
+  overflow: auto;
+  padding-right: 2px;
 }
 
 .agent-model-card,
@@ -4029,7 +4032,7 @@ body:not(.login-page) {
 }
 
 .agent-model-card {
-  min-height: 96px;
+  min-height: 78px;
   display: grid;
   gap: 6px;
   padding: 12px;
@@ -4149,6 +4152,95 @@ body:not(.login-page) {
   34%, 62% { transform: translateY(-44px); }
   68%, 96% { transform: translateY(-88px); }
   100% { transform: translateY(0); }
+}
+
+.home-command-rows {
+  background:
+    linear-gradient(rgba(24, 95, 121, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(24, 95, 121, 0.03) 1px, transparent 1px),
+    #f8fbfc;
+  background-size: 30px 30px, 30px 30px, auto;
+}
+
+.home-news-row,
+.home-agent-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(205px, 1fr));
+  gap: 14px;
+  align-items: stretch;
+}
+
+.agent-row-head {
+  margin-top: 28px;
+}
+
+.home-news-card,
+.home-agent-card {
+  min-width: 0;
+  display: grid;
+  align-content: start;
+  gap: 8px;
+  border: 1px solid #d8e2e8;
+  border-radius: 8px;
+  background: #ffffff;
+  color: var(--text);
+  text-decoration: none;
+  box-shadow: 0 12px 28px rgba(17, 42, 62, 0.05);
+}
+
+.home-news-card {
+  min-height: 172px;
+  padding: 16px;
+}
+
+.home-agent-card {
+  min-height: 214px;
+  padding: 17px;
+}
+
+.home-news-card span,
+.home-agent-card span {
+  color: #1f796f;
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.home-news-card strong,
+.home-agent-card strong {
+  color: #172738;
+  font-size: 18px;
+  line-height: 1.35;
+}
+
+.home-news-card p,
+.home-agent-card p {
+  margin: 0;
+  padding-top: 8px;
+  border-top: 1px solid #e4ebef;
+  color: #536474;
+  font-size: 14px;
+}
+
+.home-agent-card div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+  margin-top: 2px;
+}
+
+.home-agent-card em {
+  min-height: 28px;
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid #cbdde3;
+  border-radius: 999px;
+  background: #eef6f7;
+  color: #1f796f;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 800;
+  padding: 0 9px;
 }
 
 .portal-feature-grid,
@@ -4442,4 +4534,5 @@ body:not(.login-page) {
   .institution-bar-inner {
     justify-content: flex-start;
   }
+
 }

@@ -64,6 +64,46 @@
                 <strong>ChatGPT 5.5</strong>
                 <span>科研拆解、工具规划、多步骤推理</span>
               </button>
+              <button class="agent-model-card" type="button" data-model="GPT 系列">
+                <strong>GPT 系列</strong>
+                <span>复杂任务规划、摘要生成、代码与工具调用</span>
+              </button>
+              <button class="agent-model-card" type="button" data-model="Claude 系列">
+                <strong>Claude 系列</strong>
+                <span>长文档阅读、审稿意见整理、伦理风险归纳</span>
+              </button>
+              <button class="agent-model-card" type="button" data-model="Gemini 系列">
+                <strong>Gemini 系列</strong>
+                <span>多模态资料理解、检索辅助、报告结构化</span>
+              </button>
+              <button class="agent-model-card" type="button" data-model="DeepSeek">
+                <strong>DeepSeek</strong>
+                <span>中文医学推理、低成本批量任务、科研草稿</span>
+              </button>
+              <button class="agent-model-card" type="button" data-model="Qwen">
+                <strong>Qwen</strong>
+                <span>中文场景问答、院内知识库、结构化输出</span>
+              </button>
+              <button class="agent-model-card" type="button" data-model="GLM">
+                <strong>GLM</strong>
+                <span>中文对话、合规检查、表格化资料整理</span>
+              </button>
+              <button class="agent-model-card" type="button" data-model="Llama">
+                <strong>Llama</strong>
+                <span>开源部署、私有化验证、模型对照实验</span>
+              </button>
+              <button class="agent-model-card" type="button" data-model="Mistral">
+                <strong>Mistral</strong>
+                <span>轻量推理、英文文献摘要、快速原型测试</span>
+              </button>
+              <button class="agent-model-card" type="button" data-model="MedGemma">
+                <strong>MedGemma</strong>
+                <span>医学专向任务、临床文本与证据抽取评测</span>
+              </button>
+              <button class="agent-model-card" type="button" data-model="BioGPT / PubMedBERT">
+                <strong>BioGPT / PubMedBERT</strong>
+                <span>生物医学文本、术语识别、文献分类基线</span>
+              </button>
             </div>
             <form id="agentQuestionForm" class="agent-form">
               <input id="agentModel" type="hidden" value="华佗GPT" />
@@ -77,6 +117,91 @@
               <p>选择模型后可以进入医学 AI 问答、资料整理、工具调用和学习路径规划。</p>
             </div>
           </section>
+        </div>
+      </section>
+
+      <section class="section home-command-rows" aria-label="首页横向栏目">
+        <div class="container">
+          <div class="section-head clean">
+            <div>
+              <p class="eyebrow">Row 01</p>
+              <h2>新闻栏目</h2>
+              <p>第一行横向并排展示医学 AI 新闻、模型评测、数据集工具、教学资源与社区动态，方便快速扫读更新。</p>
+            </div>
+          </div>
+          <div class="home-news-row">
+            <a class="home-news-card" href="community.html">
+              <span>医学 AI 新闻</span>
+              <strong>多模态模型评测与临床安全更新</strong>
+              <p>追踪医学基础模型、影像报告一致性、医生复核和真实世界验证。</p>
+            </a>
+            <a class="home-news-card" href="benchmark.html">
+              <span>Benchmark</span>
+              <strong>新增问答、虚拟病人与工具调用任务</strong>
+              <p>关注不同模型在医学推理、证据引用和风险识别中的表现。</p>
+            </a>
+            <a class="home-news-card" href="datasets-tools.html">
+              <span>数据集与工具</span>
+              <strong>脱敏样例、MCP 工具与交易审核流程</strong>
+              <p>汇总可复用数据、工具组件、价格信息和合规提交材料。</p>
+            </a>
+            <a class="home-news-card" href="learning.html">
+              <span>教学</span>
+              <strong>课程路线、外网教程与虚拟病人题库</strong>
+              <p>面向医学生、医生和科研人员沉淀医学 AI 学习路径。</p>
+            </a>
+            <a class="home-news-card" href="network.html">
+              <span>社区动态</span>
+              <strong>医生、医院与贡献者主页持续扩展</strong>
+              <p>展示论文、获奖、任职、治疗专长和项目贡献记录。</p>
+            </a>
+          </div>
+
+          <div class="section-head clean agent-row-head">
+            <div>
+              <p class="eyebrow">Row 02</p>
+              <h2>Agent 栏目</h2>
+              <p>第二行横向并排展示医学场景 Agent，并把大模型候选数量扩展到 12 个，支持后续按任务切换和对比。</p>
+            </div>
+          </div>
+          <div class="home-agent-row">
+            <article class="home-agent-card">
+              <span>Clinical Agent</span>
+              <strong>临床问答与病历结构化</strong>
+              <p>适合主诉整理、病历摘要、诊疗建议草稿和医生复核提示。</p>
+              <div><em>华佗GPT</em><em>GPT 系列</em><em>Qwen</em></div>
+            </article>
+            <article class="home-agent-card">
+              <span>Literature Agent</span>
+              <strong>文献阅读与证据摘要</strong>
+              <p>抽取 PICO、研究设计、证据等级、局限性和可复核引用。</p>
+              <div><em>Claude 系列</em><em>Gemini 系列</em><em>BioGPT</em></div>
+            </article>
+            <article class="home-agent-card">
+              <span>Guideline Agent</span>
+              <strong>指南 RAG 与推荐更新</strong>
+              <p>跟踪推荐强度、适用人群、更新差异和临床执行边界。</p>
+              <div><em>DeepSeek</em><em>GLM</em><em>PubMedBERT</em></div>
+            </article>
+            <article class="home-agent-card">
+              <span>Imaging Agent</span>
+              <strong>影像病理与多模态协作</strong>
+              <p>支持影像报告结构化、病理摘要、标注质控和一致性评估。</p>
+              <div><em>Gemini 系列</em><em>Llama</em><em>MedGemma</em></div>
+            </article>
+            <article class="home-agent-card">
+              <span>Research Agent</span>
+              <strong>科研设计与选题助手</strong>
+              <p>生成选题、检索词、统计检查点、实验记录和可复现计划。</p>
+              <div><em>ChatGPT 5.5</em><em>Mistral</em><em>DeepSeek</em></div>
+            </article>
+            <article class="home-agent-card">
+              <span>Governance Agent</span>
+              <strong>合规审计与风险检查</strong>
+              <p>检查隐私脱敏、责任边界、人工确认、日志留存和发布风险。</p>
+              <div><em>Claude 系列</em><em>Qwen</em><em>GLM</em></div>
+            </article>
+          </div>
         </div>
       </section>
 
