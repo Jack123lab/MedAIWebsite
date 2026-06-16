@@ -4215,6 +4215,9 @@ body:not(.login-page) {
 }
 
 .home-command-rows {
+  min-height: calc(100vh - 58px);
+  padding-top: 42px;
+  padding-bottom: 30px;
   background:
     linear-gradient(rgba(24, 95, 121, 0.03) 1px, transparent 1px),
     linear-gradient(90deg, rgba(24, 95, 121, 0.03) 1px, transparent 1px),
@@ -4233,6 +4236,10 @@ body:not(.login-page) {
   padding: 2px 2px 14px;
   scroll-snap-type: x proximity;
   scrollbar-color: #b7ccd6 transparent;
+}
+
+.home-news-row {
+  min-height: clamp(420px, 62vh, 640px);
 }
 
 .agent-row-head {
@@ -4255,8 +4262,11 @@ body:not(.login-page) {
 }
 
 .home-news-card {
-  min-height: 172px;
-  padding: 16px;
+  flex-basis: min(76vw, 720px);
+  min-width: min(76vw, 720px);
+  min-height: clamp(390px, 58vh, 590px);
+  padding: 28px;
+  scroll-snap-align: start;
 }
 
 .home-agent-card {
@@ -4264,6 +4274,7 @@ body:not(.login-page) {
   min-width: 256px;
   min-height: 214px;
   padding: 17px;
+  scroll-snap-align: start;
 }
 
 .home-news-card span,
@@ -4281,6 +4292,12 @@ body:not(.login-page) {
   line-height: 1.35;
 }
 
+.home-news-card strong {
+  max-width: 620px;
+  font-size: clamp(26px, 4vw, 42px);
+  line-height: 1.12;
+}
+
 .home-news-card p,
 .home-agent-card p {
   margin: 0;
@@ -4288,6 +4305,12 @@ body:not(.login-page) {
   border-top: 1px solid #e4ebef;
   color: #536474;
   font-size: 14px;
+}
+
+.home-news-card p {
+  max-width: 560px;
+  font-size: 17px;
+  line-height: 1.72;
 }
 
 .home-agent-card div {
