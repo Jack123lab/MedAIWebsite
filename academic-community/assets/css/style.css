@@ -3962,6 +3962,23 @@ body:not(.login-page) {
   background: #f4f7f9;
 }
 
+.ai-portal-home main {
+  display: flex;
+  flex-direction: column;
+}
+
+.ai-portal-home .home-command-rows {
+  order: 1;
+}
+
+.ai-portal-home .agent-hero {
+  order: 2;
+}
+
+.ai-portal-home main > .section.compact {
+  order: 3;
+}
+
 .agent-hero {
   padding: 34px 0 28px;
   color: #eaf4f8;
@@ -3975,18 +3992,18 @@ body:not(.login-page) {
 
 .agent-hero-grid {
   display: grid;
-  grid-template-columns: minmax(0, 1fr) minmax(360px, 0.78fr);
+  grid-template-columns: 1fr;
   gap: 24px;
   align-items: stretch;
 }
 
 .agent-copy h1 {
-  max-width: 760px;
+  max-width: 920px;
   color: #fff;
 }
 
 .agent-copy .lead {
-  max-width: 740px;
+  max-width: 920px;
   color: #c9dce5;
 }
 
