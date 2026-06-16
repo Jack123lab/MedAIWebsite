@@ -4207,10 +4207,15 @@ body:not(.login-page) {
 
 .home-news-row,
 .home-agent-row {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(205px, 1fr));
+  display: flex;
+  flex-wrap: nowrap;
   gap: 14px;
   align-items: stretch;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 2px 2px 14px;
+  scroll-snap-type: x proximity;
+  scrollbar-color: #b7ccd6 transparent;
 }
 
 .agent-row-head {
@@ -4219,7 +4224,8 @@ body:not(.login-page) {
 
 .home-news-card,
 .home-agent-card {
-  min-width: 0;
+  flex: 0 0 232px;
+  min-width: 232px;
   display: grid;
   align-content: start;
   gap: 8px;
@@ -4237,6 +4243,8 @@ body:not(.login-page) {
 }
 
 .home-agent-card {
+  flex-basis: 256px;
+  min-width: 256px;
   min-height: 214px;
   padding: 17px;
 }
