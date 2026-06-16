@@ -581,9 +581,10 @@ const primaryNavItems = [
   { href: "network.html", label: "社区", active: ["network.html"] },
   { href: "benchmark.html", label: "Benchmark", active: ["benchmark.html"] },
   { href: "crowdsourcing.html", label: "众包平台", active: ["crowdsourcing.html"] },
-  { href: "learning.html", label: "教学专区", active: ["learning.html"] },
+  { href: "learning.html", label: "教学", active: ["learning.html", "tutorials.html"] },
   { href: "popular-science.html", label: "科普", active: ["popular-science.html"] },
-  { href: "about.html", label: "About me", active: ["about.html"] },
+  { href: "about.html", label: "About", active: ["about.html"] },
+  { href: "auth.html", label: "登录/个人", active: ["auth.html", "profile.html"] },
 ];
 
 function normalizeTopNavigation() {

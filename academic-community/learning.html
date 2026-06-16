@@ -3,14 +3,22 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>教学专区 | Happy medical AI</title>
+    <title>教学 | Happy medical AI</title>
+    <meta name="description" content="Happy medical AI 教学栏目，合并课程、外网教程、自建题库和虚拟病人训练。" />
     <link rel="stylesheet" href="assets/css/style.css" />
     <script src="assets/js/main.js" defer></script>
   </head>
   <body>
     <header class="site-header"><nav class="nav" aria-label="主导航"><a class="brand" href="index.html"><span class="brand-mark">H</span><span class="brand-text"><strong>Happy medical AI</strong><span>Medical AI Community</span></span></a><div class="nav-links"></div></nav></header>
     <main>
-      <section class="page-title"><div class="container"><p class="eyebrow">Learning</p><h1>教学专区</h1><p>收录外网课程、tutorial 路线、自建题库和虚拟病人训练，服务医学 AI 学习与实操。</p></div></section>
+      <section class="page-title">
+        <div class="container">
+          <p class="eyebrow">Learning</p>
+          <h1>教学</h1>
+          <p>整合医学 AI 课程、外网 tutorial、Hugging Face Learn 路线、自建题库和虚拟病人训练。</p>
+        </div>
+      </section>
+
       <section class="section compact">
         <div class="container learning-grid">
           <article class="learning-panel featured"><span>External Videos</span><h2>外网搬运视频</h2><p>整理医学 AI、机器学习、RAG、多模态和数据治理课程视频，按主题建立学习路径。</p></article>
@@ -19,7 +27,31 @@
           <article class="learning-panel"><span>Virtual Patient</span><h2>虚拟病人</h2><p>用模拟问诊训练诊断推理、沟通、检查选择和模型评测能力。</p></article>
         </div>
       </section>
+
+      <section class="section compact alt-band">
+        <div class="container layout-with-rail">
+          <div>
+            <div class="section-head clean">
+              <div>
+                <p class="eyebrow">Merged Courses</p>
+                <h2>医学 AI 课程</h2>
+                <p>原课程页内容已合并到教学栏目。课程按临床和科研场景组织，正文后续以 Markdown 持续更新。</p>
+              </div>
+            </div>
+            <div class="course-list">
+              <article class="course-row"><span class="tag blue">基础</span><div><h2>医学 AI 入门</h2><p>了解大语言模型在医学文本、文献阅读、临床知识整理中的能力边界。</p><ul><li>适合：医生、医学生、科研入门者</li><li>重点：场景、风险、隐私、人工审核</li></ul></div><a href="content/tutorials/medical-ai-intro.md">阅读</a></article>
+              <article class="course-row"><span class="tag green">文献</span><div><h2>医学文献结构化阅读</h2><p>把临床研究论文整理为 PICO、研究设计、结局指标、主要发现和局限性。</p><ul><li>适合：组会汇报、论文精读、课题讨论</li><li>重点：不编造原文没有的信息</li></ul></div><a href="content/prompts/clinical-summary-prompts.md">模板</a></article>
+              <article class="course-row"><span class="tag gold">RAG</span><div><h2>医学 RAG 与指南问答</h2><p>从公开指南出发，学习切片、检索、来源引用和答案审核。</p><ul><li>适合：指南解读、知识库原型、工具评估</li><li>重点：来源标注和幻觉控制</li></ul></div><a href="content/tutorials/rag-for-clinical-guidelines.md">阅读</a></article>
+              <article class="course-row"><span class="tag blue">科研</span><div><h2>AI 辅助医学科研</h2><p>用于选题、检索式草拟、研究问题拆解和论文写作辅助。</p><ul><li>适合：临床科研、研究生课题、论文初稿</li><li>重点：AI 输出必须回到文献与数据核查</li></ul></div><a href="content/tutorials/ai-for-medical-research.md">阅读</a></article>
+            </div>
+          </div>
+          <aside class="rail">
+            <section class="rail-box"><h2>学习建议</h2><p>先从文献阅读、指南整理、科研选题等低风险场景开始。涉及临床判断时，应由专业医生审核。</p></section>
+            <section class="rail-box warning"><h2>隐私边界</h2><p>练习材料请使用公开资料或脱敏文本，不要输入患者姓名、住院号、联系方式、影像号等信息。</p></section>
+          </aside>
+        </div>
+      </section>
     </main>
-    <footer class="site-footer"><div class="container footer-grid"><div><h3>Happy medical AI</h3><p>教学专区把外部资料和自建训练题库连接起来。</p></div><div><h4>课程</h4><a href="tutorials.html">原课程页</a></div><div><h4>评测</h4><a href="benchmark.html">Benchmark</a></div><div><h4>科普</h4><a href="popular-science.html">科普</a></div></div></footer>
+    <footer class="site-footer"><div class="container footer-grid"><div><h3>Happy medical AI</h3><p>教学栏目把外部资料、原课程内容和自建训练题库连接起来。</p></div><div><h4>课程</h4><a href="#top">教学首页</a></div><div><h4>评测</h4><a href="benchmark.html">Benchmark</a></div><div><h4>科普</h4><a href="popular-science.html">科普</a></div></div></footer>
   </body>
 </html>

@@ -3954,6 +3954,8 @@ body:not(.login-page) {
 .task-board article,
 .learning-panel,
 .science-grid article,
+.about-panel,
+.contributor-grid article,
 .portal-feature-card,
 .discussion-panel-grid a {
   border: 1px solid #d8e2e8;
@@ -3990,6 +3992,8 @@ body:not(.login-page) {
 .benchmark-grid article > span,
 .learning-panel > span,
 .science-grid article > span,
+.about-panel > span,
+.contributor-grid article > span,
 .discussion-panel-grid span {
   color: #1f796f;
   font-size: 12px;
@@ -4054,6 +4058,8 @@ body:not(.login-page) {
 .task-board p,
 .learning-panel p,
 .science-grid p,
+.about-panel p,
+.contributor-grid p,
 .discussion-panel-grid p {
   color: #536474;
 }
@@ -4150,6 +4156,9 @@ body:not(.login-page) {
 .task-board,
 .learning-grid,
 .science-grid,
+.about-project-grid,
+.about-action-grid,
+.contributor-grid,
 .discussion-panel-grid {
   display: grid;
   gap: 14px;
@@ -4193,7 +4202,9 @@ body:not(.login-page) {
 .benchmark-grid article,
 .task-board article,
 .learning-panel,
-.science-grid article {
+.science-grid article,
+.about-panel,
+.contributor-grid article {
   padding: 18px;
 }
 
@@ -4281,6 +4292,47 @@ body:not(.login-page) {
   background: #eef6f7;
 }
 
+.about-project-grid {
+  grid-template-columns: minmax(0, 1.2fr) minmax(280px, 0.8fr);
+}
+
+.about-action-grid,
+.contributor-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.about-panel.featured {
+  color: #eaf4f8;
+  border-color: rgba(134, 221, 213, 0.24);
+  background:
+    linear-gradient(135deg, rgba(31, 138, 123, 0.18), rgba(180, 137, 22, 0.1)),
+    #0b2638;
+}
+
+.about-panel.featured h2,
+.about-panel.featured p {
+  color: #fff;
+}
+
+.wechat-card {
+  display: grid;
+  gap: 4px;
+  border: 1px dashed #b7ccd6;
+  border-radius: 8px;
+  padding: 12px;
+  background: #f8fbfc;
+}
+
+.wechat-card strong,
+.contributor-grid strong {
+  color: #172738;
+}
+
+.wechat-card span {
+  color: #536474;
+  font-size: 13px;
+}
+
 .discussion-tab-head {
   align-items: center;
 }
@@ -4350,6 +4402,8 @@ body:not(.login-page) {
   .benchmark-grid,
   .task-board,
   .science-grid,
+  .about-action-grid,
+  .contributor-grid,
   .discussion-panel-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -4368,6 +4422,9 @@ body:not(.login-page) {
   .task-board,
   .learning-grid,
   .science-grid,
+  .about-project-grid,
+  .about-action-grid,
+  .contributor-grid,
   .discussion-panel-grid,
   .market-grid {
     grid-template-columns: 1fr;
