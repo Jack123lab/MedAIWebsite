@@ -31,15 +31,105 @@
       <section class="page-title data-tools-title">
         <div class="container data-tools-title-grid">
           <div>
-            <p class="eyebrow">开放数据与免费工具</p>
+            <p class="eyebrow">Kaggle-style Datasets</p>
             <h1>数据集和工具集</h1>
-            <p>围绕医学 AI 的开放数据集、MCP 工具、开源工具和平台设计工具建立统一入口。工具面向用户免费开放，不设置工具订阅收费；每个工具都保留官网或项目链接。</p>
+            <p>围绕医学 AI 的开放数据集、浏览下载、合规共享、任务关联、MCP 工具和开源工具建立统一入口。工具面向用户免费开放，每个工具都保留官网或项目链接。</p>
           </div>
           <aside class="tool-refresh-card" aria-label="热点更新状态">
             <span>每日推送</span>
             <strong id="hotToolDate">今日热点</strong>
             <p>可通过 <code>window.HMAI_TOOL_FEED_URL</code> 接入实时工具榜单；未配置接口时展示本站精选工具。</p>
           </aside>
+        </div>
+      </section>
+
+      <section class="section compact dataset-browser-section" id="dataset-browser">
+        <div class="container">
+          <div class="section-head clean">
+            <div>
+              <p class="eyebrow">Dataset Browser</p>
+              <h2>Kaggle 式数据集展示区</h2>
+              <p>数据集以卡片形式展示，支持搜索、标签筛选、浏览下载、市场状态和任务关联，为后续众包任务和 Benchmark 发布做准备。</p>
+            </div>
+            <a class="btn primary" href="#dataset-upload">上传数据集</a>
+          </div>
+
+          <div class="dataset-toolbar" aria-label="数据集筛选">
+            <input id="datasetSearch" class="forum-search" type="search" placeholder="搜索数据集、科室、任务或标签" />
+            <div class="dataset-filter-row" role="group" aria-label="数据集标签筛选">
+              <button class="filter-btn active" type="button" data-dataset-filter="all">全部</button>
+              <button class="filter-btn" type="button" data-dataset-filter="imaging">影像</button>
+              <button class="filter-btn" type="button" data-dataset-filter="ehr">EHR</button>
+              <button class="filter-btn" type="button" data-dataset-filter="nlp">文本</button>
+              <button class="filter-btn" type="button" data-dataset-filter="benchmark">Benchmark</button>
+              <button class="filter-btn" type="button" data-dataset-filter="market">市场</button>
+            </div>
+          </div>
+
+          <div class="dataset-card-grid" aria-live="polite">
+            <article class="dataset-card" data-dataset-card data-tags="ehr nlp benchmark market">
+              <div class="dataset-card-head"><span>EHR / NLP</span><strong>脱敏门诊病历结构化样例集</strong></div>
+              <p>用于病历字段抽取、否定词识别、问题列表生成和人工复核流程设计。</p>
+              <div class="tags"><span class="tag blue">EHR</span><span class="tag green">NLP</span><span class="tag gold">Benchmark Ready</span></div>
+              <dl><dt>规模</dt><dd>3,200 条脱敏样例</dd><dt>关联任务</dt><dd>病例结构化字段校对</dd></dl>
+              <div class="dataset-actions"><a href="#dataset-task-map">关联任务</a><a href="crowdsourcing.html">发布众包</a></div>
+            </article>
+            <article class="dataset-card" data-dataset-card data-tags="imaging benchmark">
+              <div class="dataset-card-head"><span>Imaging</span><strong>胸部 CT 病灶标注数据集</strong></div>
+              <p>面向影像分割、报告一致性检查和外部验证任务，保留标注协议和质控记录。</p>
+              <div class="tags"><span class="tag blue">影像</span><span class="tag green">标注</span><span class="tag gold">外部验证</span></div>
+              <dl><dt>规模</dt><dd>820 例影像样本</dd><dt>关联任务</dt><dd>多中心标注复核</dd></dl>
+              <div class="dataset-actions"><a href="#dataset-task-map">关联任务</a><a href="benchmark.html">进入评测</a></div>
+            </article>
+            <article class="dataset-card" data-dataset-card data-tags="nlp benchmark">
+              <div class="dataset-card-head"><span>Guideline QA</span><strong>医学指南问答评测集</strong></div>
+              <p>覆盖指南推荐、证据等级、适用人群、禁忌和引用来源完整性检查。</p>
+              <div class="tags"><span class="tag blue">问答</span><span class="tag green">指南</span><span class="tag gold">Leaderboard</span></div>
+              <dl><dt>规模</dt><dd>1,500 个问题</dd><dt>关联任务</dt><dd>模型回答人工复核</dd></dl>
+              <div class="dataset-actions"><a href="#dataset-task-map">关联任务</a><a href="benchmark.html">发布 Benchmark</a></div>
+            </article>
+            <article class="dataset-card" data-dataset-card data-tags="market imaging ehr">
+              <div class="dataset-card-head"><span>Market</span><strong>医院脱敏样例数据市场</strong></div>
+              <p>用于机构挂牌脱敏样例、授权说明、质量报告和用途边界，正式共享前进入合规审核。</p>
+              <div class="tags"><span class="tag blue">市场</span><span class="tag green">授权</span><span class="tag gold">合规审核</span></div>
+              <dl><dt>状态</dt><dd>合规审核后上架</dd><dt>关联任务</dt><dd>数据质量报告撰写</dd></dl>
+              <div class="dataset-actions"><a href="#market-overview">市场说明</a><a href="crowdsourcing.html">找数据顾问</a></div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section compact alt-band" id="dataset-task-map">
+        <div class="container">
+          <div class="section-head clean">
+            <div>
+              <p class="eyebrow">Dataset + Task</p>
+              <h2>数据集与任务关联</h2>
+              <p>每个数据集都可以连接众包任务、Benchmark 和讨论区，形成从数据准备到评测发布的闭环。</p>
+            </div>
+          </div>
+          <div class="dataset-task-grid">
+            <article><span>Dataset</span><strong>数据集卡片</strong><p>授权、脱敏、字段、质量报告、标签、版本和浏览下载入口。</p></article>
+            <article><span>Task</span><strong>众包任务</strong><p>标注、复核、数据治理、模型训练、研究复现和交付验收。</p></article>
+            <article><span>Benchmark</span><strong>评测发布</strong><p>榜单、指标、错误分析、基线模型和可复查结果。</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section compact" id="dataset-upload">
+        <div class="container">
+          <div class="section-head clean">
+            <div>
+              <p class="eyebrow">Upload Roadmap</p>
+              <h2>数据集上传与上架流程</h2>
+              <p>上传能力作为未来扩展入口，正式启用前需要完成授权确认、脱敏证明、数据字典、质量报告和用途边界审核。</p>
+            </div>
+          </div>
+          <div class="dataset-task-grid">
+            <article><span>01</span><strong>提交元数据</strong><p>填写数据名称、来源机构、版本、字段说明、授权范围和联系人。</p></article>
+            <article><span>02</span><strong>合规审核</strong><p>核查隐私、伦理、脱敏、授权、访问控制和最小必要原则。</p></article>
+            <article><span>03</span><strong>关联任务</strong><p>选择是否发布标注、质控、模型训练、研究复现或 Benchmark 任务。</p></article>
+          </div>
         </div>
       </section>
 

@@ -744,6 +744,41 @@ function wireHomeAgent() {
   shell.dataset.agentReady = "true";
 }
 
+function wireDatasetBrowser() {
+  const cards = Array.from(document.querySelectorAll("[data-dataset-card]"));
+  if (!cards.length) return;
+
+  const searchInput = document.querySelector("#datasetSearch");
+  const filterButtons = Array.from(document.querySelectorAll("[data-dataset-filter]"));
+  const state = { filter: "all", search: "" };
+
+  function renderDatasetCards() {
+    const query = state.search.trim().toLowerCase();
+    cards.forEach((card) => {
+      const tags = card.dataset.tags || "";
+      const text = card.textContent.toLowerCase();
+      const matchesTag = state.filter === "all" || tags.includes(state.filter);
+      const matchesQuery = !query || text.includes(query);
+      card.hidden = !matchesTag || !matchesQuery;
+    });
+  }
+
+  filterButtons.forEach((button) => {
+    button.addEventListener("click", () => {
+      state.filter = button.dataset.datasetFilter || "all";
+      filterButtons.forEach((item) => item.classList.toggle("active", item === button));
+      renderDatasetCards();
+    });
+  });
+
+  searchInput?.addEventListener("input", (event) => {
+    state.search = event.target.value;
+    renderDatasetCards();
+  });
+
+  renderDatasetCards();
+}
+
 wireFilters();
 wireAuthForms();
 renderProfile();
@@ -751,6 +786,7 @@ renderLikedPosts();
 wireCommunityGate();
 wireForum();
 wireDoctorWorkspace();
+wireDatasetBrowser();
 wireHotToolFeed();
 injectJournalSources();
 wireHomeNewsScroll();

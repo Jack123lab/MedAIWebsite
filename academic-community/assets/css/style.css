@@ -6935,3 +6935,332 @@ p,
 .site-footer a:hover {
   color: #007f91;
 }
+
+/* Platform architecture extensions: AMiner network, Kaggle datasets/tasks, and benchmark flow. */
+.clinical-cards.three-up {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.relation-flow,
+.discussion-principles,
+.dataset-task-grid,
+.benchmark-flow,
+.system-fusion-grid,
+.profile-template-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.relation-flow article,
+.discussion-principles article,
+.dataset-task-grid article,
+.benchmark-flow article,
+.system-fusion-grid article,
+.profile-template-grid article,
+.dataset-card,
+.task-card,
+.academic-profile-card,
+.paper-link-card,
+.contributor-card,
+.researcher-card {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #ffffff;
+  box-shadow: none;
+}
+
+.relation-flow article,
+.discussion-principles article,
+.dataset-task-grid article,
+.benchmark-flow article,
+.system-fusion-grid article,
+.profile-template-grid article {
+  display: grid;
+  align-content: start;
+  gap: 8px;
+  padding: 18px;
+}
+
+.relation-flow span,
+.discussion-principles span,
+.dataset-task-grid span,
+.benchmark-flow span,
+.system-fusion-grid span,
+.profile-template-grid span,
+.dataset-card-head span,
+.task-card span,
+.paper-link-card span,
+.contributor-card span,
+.researcher-card span {
+  color: #8a6200;
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: none;
+}
+
+.relation-flow strong,
+.discussion-principles strong,
+.dataset-task-grid strong,
+.benchmark-flow strong,
+.system-fusion-grid h3,
+.profile-template-grid strong,
+.dataset-card-head strong,
+.task-card h3,
+.paper-link-card h3,
+.contributor-card h3,
+.researcher-card h3 {
+  color: #172738;
+}
+
+.relation-flow p,
+.discussion-principles p,
+.dataset-task-grid p,
+.benchmark-flow p,
+.system-fusion-grid p,
+.profile-template-grid p,
+.dataset-card p,
+.task-card p,
+.paper-link-card p,
+.contributor-card p,
+.researcher-card p {
+  margin-bottom: 0;
+  color: var(--muted);
+}
+
+.researcher-card-grid,
+.task-market-grid,
+.task-feed,
+.dataset-card-grid {
+  display: grid;
+  gap: 14px;
+}
+
+.researcher-card-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.task-market-grid {
+  grid-template-columns: minmax(280px, 1.15fr) repeat(3, minmax(0, 0.95fr));
+}
+
+.researcher-card,
+.contributor-card {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 14px;
+  align-items: start;
+  padding: 18px;
+}
+
+.researcher-avatar {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  border: 1px solid #eadb9d;
+  border-radius: 8px;
+  color: #6f4f00;
+  background: #fff8dc;
+  font-weight: 900;
+}
+
+.metric-strip {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.metric-strip span {
+  border: 1px solid #eadb9d;
+  border-radius: 999px;
+  padding: 5px 9px;
+  color: #6f4f00;
+  background: #fff8dc;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.dataset-toolbar {
+  display: grid;
+  gap: 12px;
+  margin-bottom: 16px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 14px;
+  background: #ffffff;
+}
+
+.dataset-filter-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.dataset-card-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.dataset-card,
+.task-card {
+  display: grid;
+  align-content: start;
+  gap: 12px;
+  padding: 18px;
+}
+
+.dataset-card-head {
+  display: grid;
+  gap: 5px;
+}
+
+.dataset-card dl {
+  display: grid;
+  grid-template-columns: 70px minmax(0, 1fr);
+  gap: 5px 10px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.dataset-card dt {
+  color: #172738;
+  font-weight: 800;
+}
+
+.dataset-card dd {
+  margin: 0;
+}
+
+.dataset-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  padding-top: 10px;
+  border-top: 1px solid var(--line);
+}
+
+.dataset-actions a,
+.task-card a,
+.benchmark-flow a,
+.system-fusion-grid a {
+  color: var(--primary);
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.task-card.featured {
+  background: #fffdf3;
+  border-color: #eadb9d;
+}
+
+.task-feed article {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 220px;
+  gap: 18px;
+  align-items: center;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 16px;
+  background: #ffffff;
+}
+
+.task-feed h3 {
+  margin: 8px 0 6px;
+  color: #172738;
+}
+
+.task-feed aside {
+  display: grid;
+  gap: 6px;
+  border-left: 1px solid var(--line);
+  padding-left: 16px;
+}
+
+.task-feed aside strong {
+  color: #172738;
+}
+
+.task-feed aside a {
+  color: var(--primary);
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.benchmark-table {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+.benchmark-row {
+  display: grid;
+  grid-template-columns: minmax(210px, 1.2fr) repeat(4, minmax(120px, 0.8fr));
+  gap: 12px;
+  align-items: center;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--line);
+  color: var(--muted);
+}
+
+.benchmark-row:last-child {
+  border-bottom: 0;
+}
+
+.benchmark-row.head {
+  color: #172738;
+  background: #fffdf3;
+  font-weight: 900;
+}
+
+.benchmark-row strong {
+  color: #172738;
+}
+
+@media (max-width: 1080px) {
+  .clinical-cards.three-up,
+  .relation-flow,
+  .discussion-principles,
+  .dataset-task-grid,
+  .benchmark-flow,
+  .system-fusion-grid,
+  .profile-template-grid,
+  .dataset-card-grid,
+  .task-market-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .task-feed article,
+  .benchmark-row {
+    grid-template-columns: 1fr;
+  }
+
+  .task-feed aside {
+    border-left: 0;
+    border-top: 1px solid var(--line);
+    padding-top: 12px;
+    padding-left: 0;
+  }
+}
+
+@media (max-width: 720px) {
+  .clinical-cards.three-up,
+  .relation-flow,
+  .discussion-principles,
+  .dataset-task-grid,
+  .benchmark-flow,
+  .system-fusion-grid,
+  .profile-template-grid,
+  .dataset-card-grid,
+  .researcher-card-grid,
+  .task-market-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .researcher-card,
+  .contributor-card {
+    grid-template-columns: 1fr;
+  }
+}
