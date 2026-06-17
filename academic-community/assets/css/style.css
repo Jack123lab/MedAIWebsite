@@ -6531,6 +6531,31 @@ body.case-publish-open {
   color: #536474;
 }
 
+.skill-link-cloud {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.resource-panel .skill-link-cloud a {
+  min-height: 30px;
+  display: inline-flex;
+  align-items: center;
+  width: auto;
+  border-radius: 999px;
+  padding: 0 10px;
+  color: #0b6d78;
+  background: #f4fbfb;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1;
+}
+
+.resource-panel .skill-link-cloud a:hover {
+  border-color: #0b6d78;
+  background: #e8f6f5;
+}
+
 .tool-note {
   border-left: 3px solid #eadb9d;
   padding-left: 12px;
