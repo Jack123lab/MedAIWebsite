@@ -12,7 +12,7 @@
     <header class="site-header">
       <nav class="nav" aria-label="主导航">
         <a class="brand" href="home.html"><span class="brand-mark">H</span><span class="brand-text"><strong>Happy medical AI</strong><span>临床学习与交流平台</span></span></a>
-        <div class="nav-links"><a href="home.html">首页</a><a href="tutorials.html">课程</a><a class="active" href="community.html">医疗社区</a><a href="doctor.html">医生</a><a href="research.html">成果</a><a href="demos.html">工具</a><a href="contribute.html">投稿</a><a href="about.html">About me</a><a href="auth.html">登录/认证</a><a href="profile.html">个人</a></div>
+        <div class="nav-links"><a href="home.html">首页</a><a href="tutorials.html">课程</a><a class="active" href="community.html">医疗社区</a><a href="doctor.html">医生</a><a href="research.html">成果</a><a href="demos.html">工具</a><a href="contribute.html">投稿</a><a href="auth.html">登录/认证</a><a href="profile.html">个人</a></div>
       </nav>
     </header>
 
@@ -20,19 +20,26 @@
       <section class="page-title forum-title">
         <div class="container forum-title-grid">
           <div>
-            <p class="eyebrow">Verified Medical Community</p>
+            <p class="eyebrow">认证医疗社区</p>
             <h1>医疗社区</h1>
             <p>参考丁香园式的专业医学社区结构，围绕临床文本、指南问答、科研设计、工具使用和合规伦理展开讨论。仅认证通过的医生或医学生可浏览与编辑本页内容。</p>
+            <div class="forum-hero-stats" aria-label="社区概览">
+              <span><strong>8</strong> 科室板块</span>
+              <span><strong>5</strong> 讨论类型</span>
+              <span><strong>72h</strong> 热帖周期</span>
+            </div>
           </div>
           <a class="btn primary" href="#postForm">发布讨论</a>
         </div>
       </section>
 
+      <section id="communityGate" class="community-gate" aria-live="polite"></section>
+
       <section class="section compact discussion-subpage-section" aria-label="讨论子页面入口">
         <div class="container">
           <div class="discussion-subpage-head">
             <div>
-              <p class="eyebrow">Discussion Tags</p>
+              <p class="eyebrow">讨论标签</p>
               <h2>讨论子页面</h2>
               <p>按工具、论文和产品成果拆分入口，保持不同内容之间的边界清楚，方便横向浏览和快速进入对应页面。</p>
             </div>
@@ -46,22 +53,22 @@
           </nav>
           <div class="subpage-card-row">
             <a class="subpage-card current" href="community.html">
-              <span>Discussion</span>
+              <span>讨论</span>
               <strong>讨论首页</strong>
               <p>汇总最新帖子、科室版块、内容筛选和发帖入口，作为社区主工作台。</p>
             </a>
             <a class="subpage-card" href="demos.html">
-              <span>Tools</span>
+              <span>工具</span>
               <strong>工具</strong>
               <p>沉淀 RAG、文献总结、病历结构化等工具说明，并承接工具使用经验讨论。</p>
             </a>
             <a class="subpage-card" href="research.html#weekly-updates">
-              <span>Papers</span>
+              <span>论文</span>
               <strong>论文</strong>
               <p>进入精选论文、论文共读、复现方法和临床价值讨论，减少与产品信息混杂。</p>
             </a>
             <a class="subpage-card" href="research.html#product-watch">
-              <span>Products</span>
+              <span>产品</span>
               <strong>产品成果</strong>
               <p>集中查看产品、监管和产业动态，讨论落地边界、适应证与合规风险。</p>
             </a>
@@ -69,39 +76,38 @@
         </div>
       </section>
 
-      <section id="communityGate" class="community-gate" aria-live="polite"></section>
-
-      <section class="section compact discussion-tab-section community-protected" aria-label="讨论区选项卡">
-        <div class="container">
-          <div class="section-head clean discussion-tab-head">
-            <div>
-              <p class="eyebrow">Discussion Navigator</p>
-              <h2>按类型或科室进入讨论</h2>
-              <p>讨论区保留两套入口：一套按内容类型组织，一套按医学科室组织。</p>
+      <section class="section compact forum-channel-section community-protected" aria-label="科室与内容类型导航">
+        <div class="container forum-channel-grid">
+          <section class="forum-channel-panel primary-channel">
+            <div class="channel-head">
+              <p class="eyebrow">科室优先</p>
+              <h2>先选科室，再进入讨论</h2>
+              <p>面向医生的社区应按专业场景组织。科室入口承接病例、指南、工具、科研和合规讨论。</p>
             </div>
-            <div class="discussion-tabs" data-discussion-tabs="discussion-category" role="tablist" aria-label="讨论入口类型">
-              <button class="discussion-tab active" type="button" data-discussion-tab="type">类型</button>
-              <button class="discussion-tab" type="button" data-discussion-tab="department">科室</button>
+            <div class="department-strip">
+              <a href="#dept-internal">内科综合</a>
+              <a href="#dept-surgery">外科与围术期</a>
+              <a href="#dept-obgyn">妇产与生殖</a>
+              <a href="#dept-pediatrics">儿科与发育</a>
+              <a href="#dept-emergency">急诊重症</a>
+              <a href="#dept-oncology">肿瘤与血液</a>
+              <a href="#dept-imaging">影像病理</a>
+              <a href="#dept-pharmacy">药学检验</a>
             </div>
-          </div>
-
-          <div class="discussion-panel-grid" data-discussion-panel="discussion-category" data-discussion-value="type">
-            <a href="#postList"><span>Case</span><strong>案例分享区</strong><p>脱敏病例、诊疗路径、随访复盘和 AI 辅助总结。</p></a>
-            <a href="#postList"><span>Company</span><strong>公司</strong><p>医学 AI 公司动态、产品方案、合作需求和落地经验。</p></a>
-            <a href="#postList"><span>Paper</span><strong>论文</strong><p>论文精读、复现讨论、方法比较和证据等级解读。</p></a>
-            <a href="#postList"><span>Outcome</span><strong>成果</strong><p>工具案例、benchmark 结果、课程产出和社区共建成果。</p></a>
-          </div>
-
-          <div class="discussion-panel-grid" data-discussion-panel="discussion-category" data-discussion-value="department" hidden>
-            <a href="#dept-internal"><span>Internal</span><strong>内科综合</strong><p>慢病管理、指南证据、病历结构化和长期随访。</p></a>
-            <a href="#dept-surgery"><span>Surgery</span><strong>外科与围术期</strong><p>手术资料脱敏、围术期记录和术后并发症复盘。</p></a>
-            <a href="#dept-obgyn"><span>OBGYN</span><strong>妇产与生殖</strong><p>产科风险、妇科肿瘤、生殖医学和围孕期用药。</p></a>
-            <a href="#dept-pediatrics"><span>Pediatrics</span><strong>儿科与发育</strong><p>儿童病例、发育评估、儿科用药和家属沟通。</p></a>
-            <a href="#dept-emergency"><span>Emergency</span><strong>急诊重症</strong><p>急诊分诊、ICU 监测、危重症评分和抢救流程。</p></a>
-            <a href="#dept-oncology"><span>Oncology</span><strong>肿瘤与血液</strong><p>肿瘤分期、治疗方案、血液病和临床试验。</p></a>
-            <a href="#dept-imaging"><span>Imaging</span><strong>影像病理</strong><p>影像报告、病理摘要、多模态标注和诊断一致性。</p></a>
-            <a href="#dept-pharmacy"><span>Pharmacy</span><strong>药学检验</strong><p>合理用药、检验解释、审方和实验室质控。</p></a>
-          </div>
+          </section>
+          <section class="forum-channel-panel">
+            <div class="channel-head compact-head">
+              <p class="eyebrow">内容类型</p>
+              <h2>内容类型</h2>
+            </div>
+            <div class="content-type-grid">
+              <button class="type-chip" type="button" data-forum-filter="clinical"><strong>病例讨论</strong><span>脱敏病例、病程摘要、诊疗路径</span></button>
+              <button class="type-chip" type="button" data-forum-filter="guideline"><strong>指南问答</strong><span>推荐等级、适用人群、证据来源</span></button>
+              <button class="type-chip" type="button" data-forum-filter="tool"><strong>AI 工具经验</strong><span>RAG、结构化、文献总结、质控</span></button>
+              <button class="type-chip" type="button" data-forum-filter="research"><strong>科研设计</strong><span>PICO、统计、检索、论文复现</span></button>
+              <button class="type-chip" type="button" data-forum-filter="ethics"><strong>合规伦理</strong><span>脱敏、授权、审计、责任边界</span></button>
+            </div>
+          </section>
         </div>
       </section>
 
@@ -161,7 +167,7 @@
             <section class="post-console" id="postForm">
               <div class="console-head">
                 <div>
-                  <span class="console-kicker">New Thread</span>
+                  <span class="console-kicker">新讨论</span>
                   <h2>发布讨论</h2>
                 </div>
                 <span class="console-status">本地草稿</span>
@@ -213,20 +219,20 @@
         <div class="container">
           <div class="section-head clean">
             <div>
-              <p class="eyebrow">Department Forums</p>
+              <p class="eyebrow">科室讨论区</p>
               <h2>按医学科室进入讨论</h2>
               <p>不同专科的问题、证据来源和 AI 使用边界差异很大，建议从对应科室板块发起讨论。</p>
             </div>
           </div>
           <div class="dept-board-grid">
-            <article id="dept-internal" class="dept-board-card"><span>Internal Medicine</span><h3>内科综合</h3><p>心血管、呼吸、消化、肾内、内分泌、神经内科等慢病管理、指南问答与病历结构化。</p><div class="dept-card-meta"><span>病例 28</span><span>指南 16</span><span>工具 11</span></div><a href="#postForm">在内科板块发帖</a></article>
-            <article id="dept-surgery" class="dept-board-card"><span>Surgery</span><h3>外科与围术期</h3><p>普外、骨科、泌尿、神外、胸外、麻醉围术期记录、手术资料脱敏与术后随访讨论。</p><div class="dept-card-meta"><span>病例 21</span><span>资料 14</span><span>随访 8</span></div><a href="#postForm">在外科板块发帖</a></article>
+            <article id="dept-internal" class="dept-board-card"><span>内科</span><h3>内科综合</h3><p>心血管、呼吸、消化、肾内、内分泌、神经内科等慢病管理、指南问答与病历结构化。</p><div class="dept-card-meta"><span>病例 28</span><span>指南 16</span><span>工具 11</span></div><a href="#postForm">在内科板块发帖</a></article>
+            <article id="dept-surgery" class="dept-board-card"><span>外科</span><h3>外科与围术期</h3><p>普外、骨科、泌尿、神外、胸外、麻醉围术期记录、手术资料脱敏与术后随访讨论。</p><div class="dept-card-meta"><span>病例 21</span><span>资料 14</span><span>随访 8</span></div><a href="#postForm">在外科板块发帖</a></article>
             <article id="dept-obgyn" class="dept-board-card"><span>OBGYN</span><h3>妇产与生殖</h3><p>产科风险评估、妇科肿瘤、生殖医学、围孕期用药和隐私敏感资料治理。</p><div class="dept-card-meta"><span>病例 18</span><span>用药 9</span><span>隐私 7</span></div><a href="#postForm">在妇产板块发帖</a></article>
-            <article id="dept-pediatrics" class="dept-board-card"><span>Pediatrics</span><h3>儿科与发育</h3><p>儿童常见病、发育评估、儿科用药、家属沟通文本和未成年人资料保护。</p><div class="dept-card-meta"><span>病例 15</span><span>用药 10</span><span>沟通 6</span></div><a href="#postForm">在儿科板块发帖</a></article>
+            <article id="dept-pediatrics" class="dept-board-card"><span>儿科</span><h3>儿科与发育</h3><p>儿童常见病、发育评估、儿科用药、家属沟通文本和未成年人资料保护。</p><div class="dept-card-meta"><span>病例 15</span><span>用药 10</span><span>沟通 6</span></div><a href="#postForm">在儿科板块发帖</a></article>
             <article id="dept-emergency" class="dept-board-card"><span>Emergency & ICU</span><h3>急诊重症</h3><p>急诊分诊、ICU 监测、危重症评分、抢救流程复盘和实时 AI 辅助的安全边界。</p><div class="dept-card-meta"><span>流程 17</span><span>评分 12</span><span>质控 8</span></div><a href="#postForm">在急重症板块发帖</a></article>
-            <article id="dept-oncology" class="dept-board-card"><span>Oncology</span><h3>肿瘤与血液</h3><p>肿瘤分期、治疗路径、血液病、临床试验入排标准和多学科会诊资料整理。</p><div class="dept-card-meta"><span>MDT 13</span><span>分期 10</span><span>试验 6</span></div><a href="#postForm">在肿瘤板块发帖</a></article>
-            <article id="dept-imaging" class="dept-board-card"><span>Imaging & Pathology</span><h3>影像病理</h3><p>影像报告、病理摘要、多模态资料标注、诊断一致性与模型验证指标。</p><div class="dept-card-meta"><span>报告 22</span><span>标注 13</span><span>验证 9</span></div><a href="#postForm">在影像病理板块发帖</a></article>
-            <article id="dept-pharmacy" class="dept-board-card"><span>Pharmacy & Lab</span><h3>药学检验</h3><p>合理用药、药物相互作用、检验结果解释、药学审方和实验室质控资料讨论。</p><div class="dept-card-meta"><span>审方 12</span><span>检验 11</span><span>质控 7</span></div><a href="#postForm">在药学检验板块发帖</a></article>
+            <article id="dept-oncology" class="dept-board-card"><span>肿瘤</span><h3>肿瘤与血液</h3><p>肿瘤分期、治疗路径、血液病、临床试验入排标准和多学科会诊资料整理。</p><div class="dept-card-meta"><span>MDT 13</span><span>分期 10</span><span>试验 6</span></div><a href="#postForm">在肿瘤板块发帖</a></article>
+            <article id="dept-imaging" class="dept-board-card"><span>影像病理</span><h3>影像病理</h3><p>影像报告、病理摘要、多模态资料标注、诊断一致性与模型验证指标。</p><div class="dept-card-meta"><span>报告 22</span><span>标注 13</span><span>验证 9</span></div><a href="#postForm">在影像病理板块发帖</a></article>
+            <article id="dept-pharmacy" class="dept-board-card"><span>药学检验</span><h3>药学检验</h3><p>合理用药、药物相互作用、检验结果解释、药学审方和实验室质控资料讨论。</p><div class="dept-card-meta"><span>审方 12</span><span>检验 11</span><span>质控 7</span></div><a href="#postForm">在药学检验板块发帖</a></article>
           </div>
         </div>
       </section>
@@ -235,7 +241,7 @@
     <footer class="site-footer">
       <div class="container footer-grid">
         <div><h3>Happy medical AI</h3><p>把认证医生和医学生的真实临床与科研问题整理成可检索、可复用的讨论记录。</p></div>
-        <div><h4>学习</h4><a href="learning.html">教学</a></div>
+        <div><h4>学习</h4><a href="tutorials.html">课程</a></div>
         <div><h4>工具</h4><a href="demos.html">工具</a></div>
         <div><h4>投稿</h4><a href="contribute.html">投稿</a></div>
       </div>

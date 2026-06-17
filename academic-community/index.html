@@ -3,265 +3,165 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Happy medical AI | 医学 AI 智能体入口</title>
-    <meta name="description" content="Happy medical AI 医学 AI 智能体问答、讨论、免费开放工具集、社区、benchmark、众包、教学和科普入口。" />
+    <title>Happy medical AI | 医学 AI 热点与平台简介</title>
+    <meta name="description" content="Happy medical AI 汇集医学 AI 新闻热点快讯与网站整体简介，帮助用户快速了解权威来源、研究趋势和平台入口。" />
     <link rel="stylesheet" href="assets/css/style.css" />
     <script src="assets/js/main.js" defer></script>
   </head>
-  <body class="ai-portal-home">
+  <body class="portal-index news-home-index">
     <header class="site-header">
       <nav class="nav" aria-label="主导航">
         <a class="brand" href="index.html">
           <span class="brand-mark">H</span>
-          <span class="brand-text"><strong>Happy medical AI</strong><span>Medical AI Community</span></span>
+          <span class="brand-text"><strong>Happy medical AI</strong><span>医学 AI 信息门户</span></span>
         </a>
         <div class="nav-links">
           <a class="active" href="index.html">首页</a>
-          <a href="community.html">讨论区</a>
-          <a href="datasets-tools.html">数据集和工具集</a>
-          <a href="network.html">社区</a>
-          <a href="benchmark.html">Benchmark</a>
-          <a href="crowdsourcing.html">众包平台</a>
-          <a href="learning.html">教学</a>
-          <a href="popular-science.html">科普</a>
-          <a href="about.html">About</a>
-          <a href="auth.html">登录/个人</a>
+          <a href="home.html">招募</a>
+          <a href="tutorials.html">课程</a>
+          <a href="community.html">讨论</a>
+          <a href="doctor.html">医生</a>
+          <a href="research.html">成果</a>
+          <a href="demos.html">工具</a>
+          <a href="datasets-tools.html">免费工具集</a>
+          <a href="auth.html">认证</a>
         </div>
       </nav>
     </header>
 
     <main>
-      <section class="agent-hero">
-        <div class="container agent-hero-grid">
-          <div class="agent-copy">
-            <p class="eyebrow">Medical AI Agent Hub</p>
-            <h1>面向医学学习、科研和临床讨论的智能体问答入口</h1>
-            <p class="lead">在同一个入口切换不同模型，围绕文献、指南、病例结构化、数据集、免费工具和 benchmark 快速展开问题。</p>
-            <div class="news-ticker" aria-label="医学 AI 新闻滚动栏">
-              <span>新闻</span>
-              <div>
-                <p>医学多模态模型评测更新，新增影像报告一致性任务。</p>
-                <p>社区工具不收费，开源工具和平台设计的工具将逐步向所有用户开放。</p>
-                <p>教学栏目将收录外网课程、Hugging Face Learn 路线和虚拟病人题库。</p>
-              </div>
+      <section class="news-home-hero">
+        <div class="container news-home-hero-grid">
+          <div>
+            <p class="eyebrow">医学 AI 快讯</p>
+            <h1>医学 AI 热点快讯与专家协作入口</h1>
+            <p>首页调整为两行横向栏目：第一行聚合医学 AI 新闻来源，第二行展示智能助手工作流与更丰富的大模型池。用户可以先看趋势，再选择合适的助手进入学习、讨论、免费工具和成果板块。</p>
+            <div class="hero-actions">
+              <a class="btn primary" href="#hot-news">查看新闻栏目</a>
+              <a class="btn" href="#model-agents">查看助手栏目</a>
             </div>
           </div>
-
-          <section id="agentWorkbench" class="agent-workbench" aria-label="智能体问答">
-            <div class="agent-head">
-              <div>
-                <span>Agent Console</span>
-                <h2>选择模型</h2>
-              </div>
-              <strong>Preview</strong>
-            </div>
-            <div class="model-switcher" role="list" aria-label="可选模型">
-              <button class="agent-model-card active" type="button" data-model="华佗GPT">
-                <strong>华佗GPT</strong>
-                <span>医学中文问答、病例摘要、指南解释</span>
-              </button>
-              <button class="agent-model-card" type="button" data-model="ChatGPT 5.5">
-                <strong>ChatGPT 5.5</strong>
-                <span>科研拆解、工具规划、多步骤推理</span>
-              </button>
-              <button class="agent-model-card" type="button" data-model="GPT 系列">
-                <strong>GPT 系列</strong>
-                <span>复杂任务规划、摘要生成、代码与工具调用</span>
-              </button>
-              <button class="agent-model-card" type="button" data-model="Claude 系列">
-                <strong>Claude 系列</strong>
-                <span>长文档阅读、审稿意见整理、伦理风险归纳</span>
-              </button>
-              <button class="agent-model-card" type="button" data-model="Gemini 系列">
-                <strong>Gemini 系列</strong>
-                <span>多模态资料理解、检索辅助、报告结构化</span>
-              </button>
-              <button class="agent-model-card" type="button" data-model="DeepSeek">
-                <strong>DeepSeek</strong>
-                <span>中文医学推理、低成本批量任务、科研草稿</span>
-              </button>
-              <button class="agent-model-card" type="button" data-model="Qwen">
-                <strong>Qwen</strong>
-                <span>中文场景问答、院内知识库、结构化输出</span>
-              </button>
-              <button class="agent-model-card" type="button" data-model="GLM">
-                <strong>GLM</strong>
-                <span>中文对话、合规检查、表格化资料整理</span>
-              </button>
-              <button class="agent-model-card" type="button" data-model="Llama">
-                <strong>Llama</strong>
-                <span>开源部署、私有化验证、模型对照实验</span>
-              </button>
-              <button class="agent-model-card" type="button" data-model="Mistral">
-                <strong>Mistral</strong>
-                <span>轻量推理、英文文献摘要、快速原型测试</span>
-              </button>
-              <button class="agent-model-card" type="button" data-model="MedGemma">
-                <strong>MedGemma</strong>
-                <span>医学专向任务、临床文本与证据抽取评测</span>
-              </button>
-              <button class="agent-model-card" type="button" data-model="BioGPT / PubMedBERT">
-                <strong>BioGPT / PubMedBERT</strong>
-                <span>生物医学文本、术语识别、文献分类基线</span>
-              </button>
-            </div>
-            <form id="agentQuestionForm" class="agent-form">
-              <input id="agentModel" type="hidden" value="华佗GPT" />
-              <label for="agentQuestion">问题</label>
-              <textarea id="agentQuestion" rows="4" placeholder="例如：帮我把一篇临床研究论文整理成 PICO 和局限性"></textarea>
-              <button class="btn primary" type="submit">开始问答</button>
-            </form>
-            <div id="agentAnswer" class="agent-answer" aria-live="polite">
-              <span>华佗GPT</span>
-              <strong>等待问题输入</strong>
-              <p>选择模型后可以进入医学 AI 问答、资料整理、工具调用和学习路径规划。</p>
-            </div>
-          </section>
+          <aside class="news-home-scan" aria-label="首页信息结构">
+            <div><span>01</span><strong>新闻栏目横向并排</strong><p>Nature、丁香园、Lancet、JAMA、NEJM 等来源主题。</p></div>
+            <div><span>02</span><strong>助手栏目横向并排</strong><p>临床、文献、指南、影像、科研和合规助手，接入 12+ 大模型池。</p></div>
+          </aside>
         </div>
       </section>
 
-      <section class="section home-command-rows" aria-label="首页横向栏目">
+      <section class="section hot-news-section" id="hot-news">
         <div class="container">
           <div class="section-head clean">
             <div>
-              <p class="eyebrow">Row 01</p>
-              <h2>新闻栏目</h2>
-              <p>第一行横向并排展示医学 AI 新闻、模型评测、免费开放工具、教学资源与社区动态，方便快速扫读更新。</p>
+              <p class="eyebrow">热点简报</p>
+              <h2>新闻热点快讯</h2>
+              <p>第一行以横向并排方式展示医学 AI、临床研究、医生社区与医疗政策热点来源。缩略图为本站原创视觉摘要，点击可访问对应机构来源。</p>
             </div>
-          </div>
-          <div class="home-news-row">
-            <a class="home-news-card" href="community.html">
-              <span>医学 AI 新闻</span>
-              <strong>多模态模型评测与临床安全更新</strong>
-              <p>追踪医学基础模型、影像报告一致性、医生复核和真实世界验证。</p>
-            </a>
-            <a class="home-news-card" href="benchmark.html">
-              <span>Benchmark</span>
-              <strong>新增问答、虚拟病人与工具调用任务</strong>
-              <p>关注不同模型在医学推理、证据引用和风险识别中的表现。</p>
-            </a>
-            <a class="home-news-card" href="datasets-tools.html">
-              <span>免费工具开放</span>
-              <strong>开源工具与自研设计工具免费开放</strong>
-              <p>工具不收费，汇总 MCP 组件、脱敏样例、开源项目和平台设计的医学 AI 工具，面向所有用户开放。</p>
-            </a>
-            <a class="home-news-card" href="learning.html">
-              <span>教学</span>
-              <strong>课程路线、外网教程与虚拟病人题库</strong>
-              <p>面向医学生、医生和科研人员沉淀医学 AI 学习路径。</p>
-            </a>
-            <a class="home-news-card" href="network.html">
-              <span>社区动态</span>
-              <strong>医生、医院与贡献者主页持续扩展</strong>
-              <p>展示论文、获奖、任职、治疗专长和项目贡献记录。</p>
-            </a>
           </div>
 
-          <div class="section-head clean agent-row-head">
-            <div>
-              <p class="eyebrow">Row 02</p>
-              <h2>Agent 栏目</h2>
-              <p>第二行横向并排展示医学场景 Agent，并把大模型候选数量扩展到 12 个，支持后续按任务切换和对比。</p>
-            </div>
-          </div>
-          <div class="home-agent-row">
-            <article class="home-agent-card">
-              <span>Clinical Agent</span>
-              <strong>临床问答与病历结构化</strong>
-              <p>适合主诉整理、病历摘要、诊疗建议草稿和医生复核提示。</p>
-              <div><em>华佗GPT</em><em>GPT 系列</em><em>Qwen</em></div>
-            </article>
-            <article class="home-agent-card">
-              <span>Literature Agent</span>
-              <strong>文献阅读与证据摘要</strong>
-              <p>抽取 PICO、研究设计、证据等级、局限性和可复核引用。</p>
-              <div><em>Claude 系列</em><em>Gemini 系列</em><em>BioGPT</em></div>
-            </article>
-            <article class="home-agent-card">
-              <span>Guideline Agent</span>
-              <strong>指南 RAG 与推荐更新</strong>
-              <p>跟踪推荐强度、适用人群、更新差异和临床执行边界。</p>
-              <div><em>DeepSeek</em><em>GLM</em><em>PubMedBERT</em></div>
-            </article>
-            <article class="home-agent-card">
-              <span>Imaging Agent</span>
-              <strong>影像病理与多模态协作</strong>
-              <p>支持影像报告结构化、病理摘要、标注质控和一致性评估。</p>
-              <div><em>Gemini 系列</em><em>Llama</em><em>MedGemma</em></div>
-            </article>
-            <article class="home-agent-card">
-              <span>Research Agent</span>
-              <strong>科研设计与选题助手</strong>
-              <p>生成选题、检索词、统计检查点、实验记录和可复现计划。</p>
-              <div><em>ChatGPT 5.5</em><em>Mistral</em><em>DeepSeek</em></div>
-            </article>
-            <article class="home-agent-card">
-              <span>Governance Agent</span>
-              <strong>合规审计与风险检查</strong>
-              <p>检查隐私脱敏、责任边界、人工确认、日志留存和发布风险。</p>
-              <div><em>Claude 系列</em><em>Qwen</em><em>GLM</em></div>
-            </article>
+          <div class="home-row-grid news-row-grid" aria-label="新闻栏目">
+            <a class="news-source-card" href="https://www.nature.com/nm/" target="_blank" rel="noreferrer">
+              <img src="assets/images/paper-hot-nature.svg" alt="Nature Medicine 医学 AI 热点视觉摘要" />
+              <div>
+                <span>Nature Medicine</span>
+                <strong>多模态医学 AI、临床验证与安全性评估</strong>
+                <p>关注医学基础模型、影像文本融合、真实世界评估、透明报告和医生复核流程。</p>
+              </div>
+            </a>
+            <a class="news-source-card" href="https://www.dxy.cn/" target="_blank" rel="noreferrer">
+              <img src="assets/images/paper-hot-dxy.svg" alt="丁香园临床热点视觉摘要" />
+              <div><span>丁香园</span><strong>医生社区、指南变化与用药安全</strong><p>适合追踪临床一线问题、病例讨论和医生真实工作流。</p></div>
+            </a>
+            <a class="news-source-card" href="https://www.thelancet.com/" target="_blank" rel="noreferrer">
+              <img src="assets/images/paper-hot-lancet.svg" alt="The Lancet 全球健康热点视觉摘要" />
+              <div><span>The Lancet</span><strong>全球健康、专科前沿与系统转化</strong><p>关注公共卫生、临床公平性和大规模医疗影响。</p></div>
+            </a>
+            <a class="news-source-card" href="https://jamanetwork.com/" target="_blank" rel="noreferrer">
+              <img src="assets/images/paper-hot-jama.svg" alt="JAMA 医学证据热点视觉摘要" />
+              <div><span>JAMA Network</span><strong>医疗质量、政策监管与使用边界</strong><p>观察 AI 进入真实医疗系统后的规范、审计和风险。</p></div>
+            </a>
+            <a class="news-source-card" href="https://www.nejm.org/" target="_blank" rel="noreferrer">
+              <img src="assets/images/paper-hot-nejm.svg" alt="NEJM 临床证据热点视觉摘要" />
+              <div><span>NEJM</span><strong>临床试验、患者安全与证据更新</strong><p>用于筛选医学 AI 评价框架和临床验证主题。</p></div>
+            </a>
           </div>
         </div>
       </section>
 
-      <section class="section compact">
-        <div class="container portal-feature-grid">
-          <a class="portal-feature-card" href="community.html">
-            <span>Forum</span>
-            <strong>讨论区</strong>
-            <p>按类型和科室组织案例分享、公司动态、论文、成果和专科问题。</p>
-          </a>
-          <a class="portal-feature-card" href="datasets-tools.html">
-            <span>Open Tools</span>
-            <strong>免费数据集和工具集</strong>
-            <p>开放 MCP 工具、开源工具、平台设计工具和脱敏样例，让用户可以直接学习、试用和共建。</p>
-          </a>
-          <a class="portal-feature-card" href="network.html">
-            <span>Community</span>
-            <strong>医生与医院社区</strong>
-            <p>医生个人主页与医院机构主页，展示论文、获奖、任职和治疗专长。</p>
-          </a>
-          <a class="portal-feature-card" href="benchmark.html">
-            <span>Benchmark</span>
-            <strong>模型评测</strong>
-            <p>建设医学问答、虚拟病人、影像报告和工具调用 benchmark。</p>
-          </a>
-          <a class="portal-feature-card" href="crowdsourcing.html">
-            <span>Crowdsourcing</span>
-            <strong>众包平台</strong>
-            <p>面向医生、学生和机构发布标注、评测、题库和资料治理任务。</p>
-          </a>
-          <a class="portal-feature-card" href="learning.html">
-            <span>Learning</span>
-            <strong>教学</strong>
-            <p>外网课程搬运、tutorial 路线、自建题库和虚拟病人训练。</p>
-          </a>
-          <a class="portal-feature-card" href="popular-science.html">
-            <span>Public</span>
-            <strong>科普</strong>
-            <p>把医学 AI、数据合规、模型风险和健康知识转成公众能读懂的内容。</p>
-          </a>
-          <a class="portal-feature-card" href="about.html">
-            <span>Author</span>
-            <strong>About</strong>
-            <p>项目介绍、招募、投稿、contributors 和社区微信群。</p>
-          </a>
-          <a class="portal-feature-card" href="auth.html">
-            <span>Account</span>
-            <strong>登录/个人</strong>
-            <p>登录、资格认证和个人状态合并入口。</p>
-          </a>
+      <section class="section agent-section" id="model-agents">
+        <div class="container">
+          <div class="section-head clean">
+            <div>
+              <p class="eyebrow">助手矩阵</p>
+              <h2>智能助手与大模型池</h2>
+              <p>第二行横向并排展示医学场景助手，并把可接入的大模型数量扩展为 12+，便于后续按任务选择模型、做人工复核和结果审计。</p>
+            </div>
+          </div>
+
+          <div class="home-row-grid agent-row-grid" aria-label="智能助手栏目">
+            <article class="agent-card">
+              <span>临床助手</span>
+              <strong>临床问答与病历结构化</strong>
+              <p>面向主诉整理、诊疗建议草稿、病历摘要和医生复核流程。</p>
+              <div class="model-tags"><em>GPT</em><em>Claude</em><em>Qwen</em></div>
+            </article>
+            <article class="agent-card">
+              <span>文献助手</span>
+              <strong>文献阅读与证据摘要</strong>
+              <p>提取研究设计、结局指标、证据等级、局限性和可复核引用。</p>
+              <div class="model-tags"><em>Gemini</em><em>DeepSeek</em><em>PubMedBERT</em></div>
+            </article>
+            <article class="agent-card">
+              <span>指南助手</span>
+              <strong>指南 RAG 与推荐更新</strong>
+              <p>围绕指南条目、推荐强度、适用人群和更新差异进行追踪。</p>
+              <div class="model-tags"><em>GLM</em><em>Yi</em><em>BioGPT</em></div>
+            </article>
+            <article class="agent-card">
+              <span>影像助手</span>
+              <strong>影像病理与多模态协作</strong>
+              <p>服务报告结构化、影像所见归纳、病理摘要和标注质控。</p>
+              <div class="model-tags"><em>Llama</em><em>MedGemma</em><em>GPT</em></div>
+            </article>
+            <article class="agent-card">
+              <span>科研助手</span>
+              <strong>科研设计与选题助手</strong>
+              <p>生成 PICO、检索词、研究流程、统计检查点和可复现计划。</p>
+              <div class="model-tags"><em>Claude</em><em>Mistral</em><em>DeepSeek</em></div>
+            </article>
+            <article class="agent-card">
+              <span>合规助手</span>
+              <strong>合规审计与风险检查</strong>
+              <p>检查隐私脱敏、责任边界、人工确认、日志留存和发布风险。</p>
+              <div class="model-tags"><em>Qwen</em><em>GLM</em><em>Gemini</em></div>
+            </article>
+          </div>
+
+          <div class="model-pool-panel" aria-label="大模型数量">
+            <div><span>模型池</span><strong>12+ 大模型候选池</strong><p>用于不同助手的对比测试、人工复核、医学证据抽取和合规审计。</p></div>
+            <div class="model-chip-grid">
+              <span>GPT 系列</span><span>Claude 系列</span><span>Gemini 系列</span><span>DeepSeek</span><span>Qwen</span><span>GLM</span><span>Llama</span><span>Mistral</span><span>Yi</span><span>Med-PaLM / MedGemma</span><span>BioGPT</span><span>PubMedBERT</span>
+            </div>
+          </div>
+
+          <div class="site-entry-grid compact-entry-grid" aria-label="网站入口">
+            <a href="tutorials.html"><span>学习</span><strong>课程</strong><p>医学 AI 入门、RAG、文献阅读和科研方法。</p></a>
+            <a href="community.html"><span>社区</span><strong>讨论</strong><p>临床文本、指南问答、工具经验和合规伦理。</p></a>
+            <a href="demos.html"><span>工具</span><strong>工具</strong><p>文献总结、指南问答、病历结构化和选题助手。</p></a>
+            <a href="datasets-tools.html"><span>资源</span><strong>免费数据集和工具集</strong><p>每日热点工具、官网链接、开放数据集目录和免费工具资源。</p></a>
+            <a href="research.html"><span>证据</span><strong>成果</strong><p>可复查、可复现、可持续更新的方法与案例。</p></a>
+            <a href="doctor.html"><span>医生</span><strong>医生</strong><p>认证医生工作区与医学资料脱敏管理演示。</p></a>
+            <a href="home.html"><span>共建</span><strong>招募</strong><p>临床、算法、科研、合规、教育和产品伙伴。</p></a>
+          </div>
         </div>
       </section>
     </main>
 
     <footer class="site-footer">
       <div class="container footer-grid">
-        <div><h3>Happy medical AI</h3><p>医学 AI 智能体、数据、工具、社区和教学入口。</p></div>
-        <div><h4>平台</h4><a href="datasets-tools.html">数据集和工具集</a><a href="benchmark.html">Benchmark</a></div>
-        <div><h4>社区</h4><a href="community.html">讨论区</a><a href="network.html">社区</a></div>
-        <div><h4>学习</h4><a href="learning.html">教学</a><a href="popular-science.html">科普</a></div>
+        <div><h3>Happy medical AI</h3><p>医学 AI 热点快讯与专家协作入口。</p></div>
+        <div><h4>热点</h4><a href="#hot-news">新闻快讯</a><a href="https://www.nature.com/nm/" target="_blank" rel="noreferrer">Nature Medicine</a></div>
+        <div><h4>助手</h4><a href="#model-agents">助手栏目</a><a href="datasets-tools.html">免费工具集</a></div>
+        <div><h4>协作</h4><a href="community.html">讨论</a><a href="auth.html">认证</a></div>
       </div>
     </footer>
   </body>

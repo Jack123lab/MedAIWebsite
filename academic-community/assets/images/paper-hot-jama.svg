@@ -1,0 +1,15 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img" aria-labelledby="title desc">
+  <title id="title">JAMA medical evidence visual brief</title>
+  <desc id="desc">Abstract medical evidence visualization for JAMA trend coverage.</desc>
+  <rect width="720" height="420" fill="#f3f7f8"/>
+  <rect x="52" y="52" width="616" height="316" rx="8" fill="#ffffff" stroke="#d8e2e8"/>
+  <g transform="translate(92 94)">
+    <rect x="0" y="0" width="210" height="232" rx="8" fill="#eef5f6" stroke="#c8dce4"/>
+    <path d="M44 70h120M44 112h120M44 154h82" stroke="#185f79" stroke-width="12" stroke-linecap="round"/>
+    <path d="M54 196l28 24 78-86" fill="none" stroke="#238276" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  </g>
+  <text x="354" y="126" fill="#185f79" font-family="Arial, sans-serif" font-size="18" font-weight="700">JAMA NETWORK</text>
+  <text x="354" y="180" fill="#172738" font-family="Arial, sans-serif" font-size="40" font-weight="800">Quality</text>
+  <text x="354" y="226" fill="#172738" font-family="Arial, sans-serif" font-size="40" font-weight="800">Policy</text>
+  <text x="354" y="276" fill="#536474" font-family="Arial, sans-serif" font-size="18">evidence, regulation, workflow</text>
+</svg>
