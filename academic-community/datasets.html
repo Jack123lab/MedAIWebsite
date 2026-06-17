@@ -330,6 +330,8 @@
             <button class="filter-btn" type="button" data-dataset-filter="generative">生成式 AI</button>
             <button class="filter-btn" type="button" data-dataset-filter="benchmark">Benchmark</button>
             <button class="filter-btn" type="button" data-dataset-filter="share">合规共享</button>
+            <button class="filter-btn" type="button" data-dataset-filter="rubric">Rubrics</button>
+            <button class="filter-btn" type="button" data-dataset-filter="case">案例库</button>
           </div>
 
           <div class="dataset-trending-head">
@@ -338,6 +340,33 @@
           </div>
 
           <div class="dataset-card-grid dataset-trending-list" aria-live="polite">
+            <article class="dataset-card dataset-trending-card" data-dataset-card data-tags="rubric benchmark share hospital evaluation quality nlp ehr compliance">
+              <div class="dataset-thumb" aria-hidden="true">RUB</div>
+              <div class="dataset-card-main">
+                <div class="dataset-card-head"><span>Open Hospital Rubrics · Evaluation</span><strong>Open Hospital Rubrics 医院开放评分表</strong></div>
+                <p>面向医院真实任务的开放 Rubric 样例，覆盖数据质量、脱敏合规、临床路径、模型回答审阅和多角色评分字段。</p>
+                <div class="dataset-meta-row"><span>JSON / CSV</span><span>36 套评分表</span><span>Updated 2026.06</span><span>Usability 9.2</span></div>
+              </div>
+              <aside class="dataset-card-stats"><span>浏览 8.9k</span><strong>收藏 690</strong><a href="benchmark.html">查看评测</a></aside>
+            </article>
+            <article class="dataset-card dataset-trending-card" data-dataset-card data-tags="case patienthub ehr nlp share clinical deidentified education">
+              <div class="dataset-thumb" aria-hidden="true">PH</div>
+              <div class="dataset-card-main">
+                <div class="dataset-card-head"><span>PatientHub · Case Library</span><strong>PatientHub 共享案例库</strong></div>
+                <p>共享脱敏病例、患者主诉、检查片段、诊疗路径、随访结局和教学讨论要点，适合标准病人训练与社区案例复盘。</p>
+                <div class="dataset-meta-row"><span>JSONL / PDF</span><span>260 个脱敏案例</span><span>Updated 2026.06</span><span>Usability 9.0</span></div>
+              </div>
+              <aside class="dataset-card-stats"><span>浏览 7.7k</span><strong>收藏 626</strong><a href="community.html">查看案例</a></aside>
+            </article>
+            <article class="dataset-card dataset-trending-card" data-dataset-card data-tags="imaging benchmark share project imaging x project-x projectx poject-x foundation model survey metadata modality anatomy annotation">
+              <div class="dataset-thumb" aria-hidden="true">PX</div>
+              <div class="dataset-card-main">
+                <div class="dataset-card-head"><span>arXiv 2603.27460 · Imaging Survey</span><strong>Project Imaging-X 医学影像数据集索引</strong></div>
+                <p>基于 1000+ 个开放医学影像数据集的结构化索引，按模态、任务、解剖部位、标注、局限和整合潜力组织，适合基础模型数据发现。</p>
+                <div class="dataset-meta-row"><span>Survey / Metadata</span><span>1000+ 开放影像数据集</span><span>Submitted 2026.03</span><span>Usability 9.4</span></div>
+              </div>
+              <aside class="dataset-card-stats"><span>浏览 10.2k</span><strong>收藏 820</strong><a href="https://arxiv.org/abs/2603.27460" target="_blank" rel="noreferrer">查看论文</a></aside>
+            </article>
             <article class="dataset-card dataset-trending-card" data-dataset-card data-tags="ehr benchmark share mimic icu clinical">
               <div class="dataset-thumb" aria-hidden="true">EHR</div>
               <div class="dataset-card-main">

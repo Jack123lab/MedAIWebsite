@@ -1237,7 +1237,7 @@ function wireDatasetBrowser() {
     const query = state.search.trim().toLowerCase();
     const matches = cards.filter((card) => {
       const tags = card.dataset.tags || "";
-      const text = card.textContent.toLowerCase();
+      const text = `${card.textContent} ${tags}`.toLowerCase();
       const matchesTag = state.filter === "all" || tags.includes(state.filter);
       const matchesQuery = !query || text.includes(query);
       return matchesTag && matchesQuery;
