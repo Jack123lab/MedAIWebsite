@@ -39,14 +39,15 @@
         <div class="container">
           <div class="discussion-subpage-head">
             <div>
-              <p class="eyebrow">讨论标签</p>
-              <h2>讨论子页面</h2>
-              <p>按工具、论文和产品成果拆分入口，保持不同内容之间的边界清楚，方便横向浏览和快速进入对应页面。</p>
+              <p class="eyebrow">医生社区导航</p>
+              <h2>社区内工作区</h2>
+              <p>医生资料台、讨论、工具、论文和产品成果统一放在社区入口下，保持内容边界清楚，也避免医生工作区和社区讨论彼此分离。</p>
             </div>
             <div class="subpage-arrows" aria-hidden="true"><span>‹</span><span>›</span></div>
           </div>
           <nav class="subpage-title-strip" aria-label="讨论子页面标题">
             <a class="active" href="community.html">讨论首页</a>
+            <a href="#doctor-workspace">医生资料台</a>
             <a href="demos.html">工具</a>
             <a href="research.html#weekly-updates">论文</a>
             <a href="research.html#product-watch">产品成果</a>
@@ -56,6 +57,11 @@
               <span>讨论</span>
               <strong>讨论首页</strong>
               <p>汇总最新帖子、科室版块、内容筛选和发帖入口，作为社区主工作台。</p>
+            </a>
+            <a class="subpage-card" href="#doctor-workspace">
+              <span>医生</span>
+              <strong>医生资料台</strong>
+              <p>上传脱敏病例、检查结果和协作记录，并把可公开版本转入对应科室讨论。</p>
             </a>
             <a class="subpage-card" href="demos.html">
               <span>工具</span>
@@ -235,6 +241,122 @@
             <article id="dept-pharmacy" class="dept-board-card"><span>药学检验</span><h3>药学检验</h3><p>合理用药、药物相互作用、检验结果解释、药学审方和实验室质控资料讨论。</p><div class="dept-card-meta"><span>审方 12</span><span>检验 11</span><span>质控 7</span></div><a href="#postForm">在药学检验板块发帖</a></article>
           </div>
         </div>
+      </section>
+
+      <section id="doctor-workspace" class="section compact doctor-community-section" aria-label="医生资料台">
+        <section id="doctorGate" class="doctor-gate"></section>
+
+        <section class="section compact doctor-workspace">
+          <div class="container doctor-workflow-panel" aria-label="医生资料工作流">
+            <div class="workflow-head">
+              <div>
+                <p class="eyebrow">医生资料台</p>
+                <h2>从原始资料到科室讨论</h2>
+                <p>医生资料台是社区内部工作区：先完成脱敏、复核和摘要整理，再把可公开版本投递到对应科室讨论。</p>
+              </div>
+              <a class="btn primary" href="#postForm">发布到讨论</a>
+            </div>
+            <div class="workflow-steps-grid">
+              <article><span>01</span><strong>上传资料</strong><p>选择科室、资料类型、脱敏病例编号和授权说明。</p></article>
+              <article><span>02</span><strong>脱敏核查</strong><p>检查姓名、住院号、影像号、二维码和可识别时间线。</p></article>
+              <article><span>03</span><strong>AI 提取</strong><p>生成病例摘要、关键问题、PICO 和可引用证据清单。</p></article>
+              <article><span>04</span><strong>发起讨论</strong><p>将可公开版本投递到对应科室论坛，保留人工审核记录。</p></article>
+            </div>
+          </div>
+
+          <div class="container doctor-layout">
+            <section class="doctor-panel upload-panel">
+              <div class="console-head light">
+                <div><span class="console-kicker">临床工作区</span><h2>上传医学资料</h2></div>
+                <span class="console-status pale">医生专属</span>
+              </div>
+              <form id="clinicalUploadForm" class="auth-form">
+                <div class="form-split">
+                  <label>脱敏病例编号<input id="caseCode" type="text" maxlength="40" placeholder="如 CASE-2026-001，不使用姓名/住院号" required /></label>
+                  <label>资料类型<select id="caseType" required><option>手术记录</option><option>影像检查</option><option>检验结果</option><option>病理资料</option><option>随访资料</option></select></label>
+                </div>
+                <div class="form-split">
+                  <label>科室<input id="caseDept" type="text" maxlength="40" placeholder="如普外科、骨科、心内科" /></label>
+                  <label>日期<input id="caseDate" type="date" /></label>
+                </div>
+                <label>手术照片<input id="surgeryPhotos" type="file" accept="image/*" multiple /></label>
+                <label>检查结果<input id="examReports" type="file" accept="image/*,.pdf,.txt" multiple /></label>
+                <label>病例摘要<textarea id="caseSummary" rows="5" maxlength="1000" placeholder="使用脱敏描述，避免姓名、电话、身份证号、住院号、影像号等信息。"></textarea></label>
+                <label>脱敏说明<textarea id="deidNote" rows="4" maxlength="600" placeholder="说明已删除或替换的字段，例如：姓名、住院号、检查号、具体地址、联系方式。" required></textarea></label>
+                <div class="privacy-panel light">
+                  <label class="check-line"><input type="checkbox" required /> 我确认资料已获授权并完成脱敏</label>
+                  <span>正式上线时，照片和检查结果应加密上传，并记录访问审计。</span>
+                </div>
+                <button class="btn primary full-width" type="submit">保存为本地演示记录</button>
+              </form>
+              <p id="uploadStatus" class="form-status" role="status"></p>
+            </section>
+
+            <aside class="doctor-panel safety-panel">
+              <h2>脱敏检查清单</h2>
+              <ul class="plain-list strong-list">
+                <li>移除患者姓名、身份证号、手机号、住址。</li>
+                <li>移除住院号、门诊号、检查号、影像号、条码。</li>
+                <li>手术照片需裁剪或遮挡腕带、床头卡、屏幕角落信息。</li>
+                <li>检查报告需遮挡二维码、医院内部编号和签名。</li>
+                <li>仅保留教学、科研讨论所需的最小信息。</li>
+              </ul>
+              <div class="notice compact-notice"><strong>重要：</strong> 当前页面仅为静态原型，文件不会上传服务器。真实业务必须接入后端权限、加密存储、审计日志和删除策略。</div>
+            </aside>
+          </div>
+
+          <div class="container preview-layout">
+            <section class="doctor-panel">
+              <h2>手术照片预览</h2>
+              <div id="photoPreviewGrid" class="media-grid empty-state"><span>选择图片后在此预览</span></div>
+            </section>
+            <section class="doctor-panel">
+              <h2>检查结果文件</h2>
+              <ul id="reportPreviewList" class="file-list empty-state"><li>选择检查结果后在此列出</li></ul>
+            </section>
+          </div>
+
+          <div class="container doctor-dept-area" aria-label="医生科室资料区">
+            <div class="section-head clean">
+              <div>
+                <p class="eyebrow">医生科室</p>
+                <h2>按科室管理医生资料</h2>
+                <p>认证医生可根据资料来源科室进入对应工作区，沉淀脱敏病例、检查结果和协作记录。</p>
+              </div>
+            </div>
+            <div class="dept-board-grid doctor-dept-grid">
+              <article id="doctor-dept-internal" class="dept-board-card"><span>内科</span><h3>内科资料</h3><p>心血管、呼吸、消化、肾内、内分泌和神经内科病例摘要、长期随访与指南比对。</p><div class="dept-card-meta"><span>待脱敏 6</span><span>可讨论 12</span></div><a href="#clinicalUploadForm">上传内科资料</a></article>
+              <article id="doctor-dept-surgery" class="dept-board-card"><span>外科</span><h3>外科资料</h3><p>围术期记录、手术照片、术后并发症复盘、外科路径和多学科协作材料。</p><div class="dept-card-meta"><span>待脱敏 4</span><span>可讨论 9</span></div><a href="#clinicalUploadForm">上传外科资料</a></article>
+              <article id="doctor-dept-obgyn" class="dept-board-card"><span>OBGYN</span><h3>妇产资料</h3><p>产科风险、妇科肿瘤、生殖医学和围孕期用药资料，强调隐私与授权记录。</p><div class="dept-card-meta"><span>待脱敏 3</span><span>可讨论 7</span></div><a href="#clinicalUploadForm">上传妇产资料</a></article>
+              <article id="doctor-dept-pediatrics" class="dept-board-card"><span>儿科</span><h3>儿科资料</h3><p>儿童病例、发育评估、儿科用药和家属沟通记录，保留未成年人资料保护说明。</p><div class="dept-card-meta"><span>待脱敏 5</span><span>可讨论 6</span></div><a href="#clinicalUploadForm">上传儿科资料</a></article>
+              <article id="doctor-dept-emergency" class="dept-board-card"><span>Emergency & ICU</span><h3>急诊重症</h3><p>急诊分诊、抢救流程、ICU 监测、危重症评分和时间敏感型诊疗记录。</p><div class="dept-card-meta"><span>待脱敏 4</span><span>可讨论 8</span></div><a href="#clinicalUploadForm">上传急重症资料</a></article>
+              <article id="doctor-dept-oncology" class="dept-board-card"><span>肿瘤</span><h3>肿瘤血液</h3><p>肿瘤分期、治疗方案、血液病、疗效评估和临床试验入组材料。</p><div class="dept-card-meta"><span>待脱敏 2</span><span>可讨论 10</span></div><a href="#clinicalUploadForm">上传肿瘤资料</a></article>
+              <article id="doctor-dept-imaging" class="dept-board-card"><span>影像病理</span><h3>影像病理</h3><p>影像、病理、超声、内镜和多模态标注资料，便于后续质控与模型验证。</p><div class="dept-card-meta"><span>待脱敏 9</span><span>可讨论 11</span></div><a href="#clinicalUploadForm">上传影像病理资料</a></article>
+              <article id="doctor-dept-pharmacy" class="dept-board-card"><span>药学检验</span><h3>药学检验</h3><p>用药审核、检验数据、药物相互作用、实验室质控和个体化治疗资料。</p><div class="dept-card-meta"><span>待脱敏 3</span><span>可讨论 8</span></div><a href="#clinicalUploadForm">上传药学检验资料</a></article>
+            </div>
+          </div>
+
+          <div class="container case-to-forum-grid" aria-label="资料转讨论示例">
+            <section class="doctor-panel">
+              <div class="console-head light"><div><span class="console-kicker">讨论草稿</span><h2>可讨论版本示例</h2></div><span class="console-status pale">人工复核</span></div>
+              <pre class="mini-template">科室：心血管内科
+资料类型：脱敏病例摘要
+核心问题：心衰患者合并肾功能下降时，指南推荐如何调整用药？
+AI 提取：诊疗时间线、关键检验、用药变化、待确认风险
+人工审核：医生确认后发布到内科综合板块</pre>
+            </section>
+            <section class="doctor-panel">
+              <div class="console-head light"><div><span class="console-kicker">治理</span><h2>发布前治理标签</h2></div></div>
+              <div class="governance-tags">
+                <span>已脱敏</span>
+                <span>已授权</span>
+                <span>AI 辅助生成</span>
+                <span>医生人工复核</span>
+                <span>引用来源待补充</span>
+              </div>
+            </section>
+          </div>
+        </section>
       </section>
     </main>
 
