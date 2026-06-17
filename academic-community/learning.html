@@ -36,42 +36,33 @@
         <div class="container">
           <p class="eyebrow">Content Modules</p>
           <h1>内容模块</h1>
-          <p>把医学 AI 学习材料拆成五个可直接进入的模块：Tutorial、Video、题库、标准病人和科普。每个方块都对应一个独立页面，便于快速进入具体内容。</p>
+          <p>把医学 AI 学习材料拆成五个可直接进入的模块：Tutorial、Video、题库、标准病人和科普。先从小入口进入模块，也可以查看下方热门案例和内容列表。</p>
+          <div class="learning-module-actions" aria-label="内容模块入口">
+            <a href="learning-tutorial.html"><span>Tutorial</span><strong>Freedom-AI Tutorial</strong></a>
+            <a href="learning-videos.html"><span>Video</span><strong>视频</strong></a>
+            <a href="learning-question-bank.html"><span>Question Bank</span><strong>题库</strong></a>
+            <a href="learning-standardized-patient.html"><span>Standardized Patient</span><strong>标准病人</strong></a>
+            <a href="popular-science.html"><span>Popular Science</span><strong>科普</strong></a>
+          </div>
         </div>
       </section>
 
       <section class="section compact">
-        <div class="container learning-grid content-module-grid">
-          <a class="learning-panel content-module-card featured" href="learning-tutorial.html">
-            <span>Tutorial</span>
-            <h2>Freedom-AI Tutorial</h2>
-            <p>把医学 AI 基础、文献阅读、指南问答、科研辅助和合规边界整理成可持续更新的教程路线。</p>
-            <strong>进入模块</strong>
-          </a>
-          <a class="learning-panel content-module-card" href="learning-videos.html">
-            <span>Video</span>
-            <h2>视频</h2>
-            <p>整理医学 AI 入门、RAG、多模态和数据治理相关视频，适合先建立整体框架。</p>
-            <strong>进入模块</strong>
-          </a>
-          <a class="learning-panel content-module-card" href="learning-question-bank.html">
-            <span>Question Bank</span>
-            <h2>题库</h2>
-            <p>覆盖选择题、病例题、工具调用题、指南溯源题和论文阅读题，用于自测、课堂练习和阶段测验。</p>
-            <strong>进入模块</strong>
-          </a>
-          <a class="learning-panel content-module-card" href="learning-standardized-patient.html">
-            <span>Standardized Patient</span>
-            <h2>标准病人</h2>
-            <p>通过模拟问诊、鉴别诊断、检查选择和沟通反馈，训练临床推理与表达。</p>
-            <strong>进入模块</strong>
-          </a>
-          <a class="learning-panel content-module-card" href="popular-science.html">
-            <span>Popular Science</span>
-            <h2>科普</h2>
-            <p>面向大众、患者和跨学科学习者，把医学 AI 概念、使用边界和常见误区讲清楚。</p>
-            <strong>进入模块</strong>
-          </a>
+        <div class="container">
+          <div class="section-head clean">
+            <div>
+              <p class="eyebrow">Popular Cases</p>
+              <h2>热门典型案例</h2>
+              <p>每个模块先放一个代表案例，便于快速判断从哪里开始学习。</p>
+            </div>
+          </div>
+          <div class="learning-case-grid">
+            <a class="learning-case-card" href="learning-tutorial.html"><span>Tutorial</span><h2>指南问答路线</h2><p>用一个临床指南问题演示如何拆解问题、检索证据、生成回答并标注边界。</p><strong>看教程</strong></a>
+            <a class="learning-case-card" href="learning-videos.html"><span>Video</span><h2>RAG 入门视频</h2><p>从医学资料检索到回答生成，快速理解 RAG 在医学学习中的基本流程。</p><strong>看视频</strong></a>
+            <a class="learning-case-card" href="learning-question-bank.html"><span>Question Bank</span><h2>胸痛病例题</h2><p>围绕主诉、危险信号、检查选择和指南溯源，训练结构化临床推理。</p><strong>练题库</strong></a>
+            <a class="learning-case-card" href="learning-standardized-patient.html"><span>Standardized Patient</span><h2>发热问诊脚本</h2><p>通过模拟问诊、鉴别诊断和沟通反馈，练习完整的临床表达路径。</p><strong>进训练</strong></a>
+            <a class="learning-case-card" href="popular-science.html"><span>Popular Science</span><h2>AI 辅助诊断误区</h2><p>面向患者和跨学科学习者，解释 AI 建议、医生判断和使用边界的关系。</p><strong>看科普</strong></a>
+          </div>
         </div>
       </section>
 
@@ -161,10 +152,25 @@
               <h3>影像报告结构化练习</h3>
               <p>练习从影像报告中提取关键发现、结构化字段和后续建议。</p>
             </a>
-            <a class="course-content-item" href="popular-science.html" data-course-item data-dept="general education" data-type="science">
-              <div><span class="tag green">科普</span><span class="tag blue">医学通识</span></div>
-              <h3>医学 AI 常见误区</h3>
-              <p>解释医学 AI 可以辅助什么、不能替代什么，以及普通用户应如何理解风险边界。</p>
+            <a id="science-ai-intro" class="course-content-item" href="#science-ai-intro" data-course-item data-dept="general education" data-type="science">
+              <div><span class="tag green">科普</span><span class="tag blue">入门</span></div>
+              <h3>医学 AI 是什么</h3>
+              <p>解释大语言模型、多模态模型、知识库问答和智能体的基本概念。</p>
+            </a>
+            <a id="science-ai-safety" class="course-content-item" href="#science-ai-safety" data-course-item data-dept="general education" data-type="science">
+              <div><span class="tag green">科普</span><span class="tag blue">安全</span></div>
+              <h3>为什么不能替代医生</h3>
+              <p>用真实边界说明幻觉、责任、隐私、适用人群和人工复核。</p>
+            </a>
+            <a id="science-data-deidentification" class="course-content-item" href="#science-data-deidentification" data-course-item data-dept="general education" data-type="science">
+              <div><span class="tag green">科普</span><span class="tag blue">数据</span></div>
+              <h3>医疗数据如何脱敏</h3>
+              <p>科普姓名、住院号、影像号、日期、罕见病信息等隐私风险。</p>
+            </a>
+            <a id="science-ai-response" class="course-content-item" href="#science-ai-response" data-course-item data-dept="general education" data-type="science">
+              <div><span class="tag green">科普</span><span class="tag blue">工具</span></div>
+              <h3>普通人如何看 AI 回答</h3>
+              <p>关注来源、证据等级、禁忌、建议去医院的信号和不确定表达。</p>
             </a>
           </div>
           <p class="empty-state course-empty-state" hidden>当前标签下暂无内容。</p>

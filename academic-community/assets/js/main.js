@@ -221,6 +221,20 @@ function setAuthState(state) {
   writeJson(authKey, { ...getAuthState(), ...state });
 }
 
+function getSafeNextUrl() {
+  const params = new URLSearchParams(window.location.search);
+  const next = params.get("next") || "";
+  return /^[\w.-]+\.html(?:#[\w-]+)?$/.test(next) ? next : "";
+}
+
+function redirectGuestProfile() {
+  if (!document.body.classList.contains("profile-page")) return false;
+  const state = getAuthState();
+  if (state.status && state.status !== "guest") return false;
+  window.location.replace("auth.html?next=profile.html&reason=profile");
+  return true;
+}
+
 function hasCommunityCredential(auth = getAuthState()) {
   if (auth.status !== "verified") return false;
   if (auth.role === "doctor") return auth.proofType === "license";
@@ -285,39 +299,96 @@ function renderProfile() {
   }[state.status] || "未登录";
 
   profileCard.innerHTML = `
-    <span class="tag ${state.status === "verified" ? "green" : "blue"}">${statusText}</span>
-    <h2>${state.name || "访客用户"}</h2>
-    <p>${state.roleLabel || "普通访问者"}</p>
+    <span class="tag ${state.status === "verified" ? "green" : "blue"}">${escapeHtml(statusText)}</span>
+    <h2>${escapeHtml(state.name || "访客用户")}</h2>
+    <p>${escapeHtml(state.roleLabel || "普通访问者")}</p>
     <dl class="profile-meta">
-      <dt>联系方式</dt><dd>${state.contact || "待填写"}</dd>
-      <dt>机构/学校</dt><dd>${state.institution || "待补充"}</dd>
-      <dt>科室/专业</dt><dd>${state.specialty || "待补充"}</dd>
-      <dt>社区凭证</dt><dd>${communityCredentialText(state)}</dd>
+      <dt>联系方式</dt><dd>${escapeHtml(state.contact || "待填写")}</dd>
+      <dt>机构/学校</dt><dd>${escapeHtml(state.institution || "待补充")}</dd>
+      <dt>科室/专业</dt><dd>${escapeHtml(state.specialty || "待补充")}</dd>
+      <dt>社区凭证</dt><dd>${escapeHtml(communityCredentialText(state))}</dd>
     </dl>
   `;
 }
 
-function renderLikedPosts() {
-  const list = document.querySelector("#likedPostsList");
-  if (!list) return;
-
+function profileReactionPosts(type) {
   const reactions = getReactions();
-  const likedPosts = getForumPosts().filter((post) => reactions[post.id]?.favorited);
-  list.innerHTML = likedPosts.length
-    ? likedPosts.map((post) => `
-      <a class="liked-post-item" href="community.html">
-        <span class="tag blue">${categoryLabels[post.category]}</span>
-        <strong>${post.title}</strong>
-        <p>${post.body}</p>
-        <small>${post.dept || "未标注领域"} · ${post.favorites + 1} 收藏</small>
-      </a>`).join("")
-    : '<div class="empty-state">还没有收藏的讨论。进入讨论区后点击“收藏”，会汇总到这里。</div>';
+  return getForumPosts().filter((post) => reactions[post.id]?.[type]);
+}
+
+function profileListItem(post, metaLabel) {
+  return `
+    <a class="profile-feed-item" href="community.html">
+      <span class="tag blue">${escapeHtml(categoryLabels[post.category] || "讨论")}</span>
+      <strong>${escapeHtml(post.title)}</strong>
+      <p>${escapeHtml(post.body)}</p>
+      <small>${escapeHtml(post.dept || "未标注领域")} · ${escapeHtml(metaLabel)}</small>
+    </a>`;
+}
+
+function renderProfileList(selector, posts, emptyText, metaBuilder) {
+  const list = document.querySelector(selector);
+  if (!list) return;
+  list.innerHTML = posts.length
+    ? posts.map((post) => profileListItem(post, metaBuilder(post))).join("")
+    : `<div class="empty-state">${escapeHtml(emptyText)}</div>`;
+}
+
+function renderProfileStats({ submissions, likes, dislikes, comments }) {
+  const stats = document.querySelector("#profileStats");
+  if (!stats) return;
+  const items = [
+    ["投稿", submissions.length],
+    ["点赞", likes.length],
+    ["踩", dislikes.length],
+    ["评论", comments.length],
+  ];
+  stats.innerHTML = items.map(([label, value]) => `<span><strong>${value}</strong>${label}</span>`).join("");
+}
+
+function renderProfileDesign() {
+  const list = document.querySelector("#profileDesignList");
+  if (!list) return;
+  const designItems = [
+    ["医学资料名片", "展示机构、科室、认证状态和社区凭证。"],
+    ["投稿模板", "病例、指南、工具、科研设计四类内容模板。"],
+    ["AI Agent 方案", "把个人常用 Prompt 和审核流程沉淀为方案卡。"],
+  ];
+  list.innerHTML = designItems.map(([title, text]) => `
+    <a class="profile-design-item" href="community.html#postForm">
+      <strong>${escapeHtml(title)}</strong>
+      <span>${escapeHtml(text)}</span>
+    </a>`).join("");
+}
+
+function renderLikedPosts() {
+  const state = getAuthState();
+  const posts = getForumPosts();
+  const reactions = getReactions();
+  const submissions = posts.filter((post) => state.name && post.author === state.name);
+  const likes = posts.filter((post) => reactions[post.id]?.liked || reactions[post.id]?.favorited);
+  const dislikes = profileReactionPosts("disliked");
+  const comments = submissions.filter((post) => `${post.title} ${post.body}`.includes("评论"));
+
+  renderProfileStats({ submissions, likes, dislikes, comments });
+  renderProfileDesign();
+  renderProfileList("#profileSubmissionList", submissions, "还没有投稿。发布讨论、资料或复现笔记后会出现在这里。", (post) => `${post.views || 0} 浏览 · ${post.replies || 0} 回复`);
+  renderProfileList("#profileLikesList", likes, "还没有点赞记录。点赞、收藏过的讨论会汇总到这里。", (post) => `${(post.likes || 0) + (reactions[post.id]?.liked ? 1 : 0)} 赞`);
+  renderProfileList("#profileDislikesList", dislikes, "还没有踩过的内容。对不适合的讨论点踩后会出现在这里。", (post) => `${(post.dislikes || 0) + (reactions[post.id]?.disliked ? 1 : 0)} 踩`);
+  renderProfileList("#profileCommentsList", comments, "还没有评论动态。评论式投稿会沉淀到这里。", (post) => new Date(post.createdAt).toLocaleDateString("zh-CN"));
 }
 
 function toggleReaction(postId, type) {
   const reactions = getReactions();
-  reactions[postId] = reactions[postId] || { liked: false, favorited: false };
-  if (type === "like") reactions[postId].liked = !reactions[postId].liked;
+  reactions[postId] = reactions[postId] || { liked: false, disliked: false, favorited: false };
+  if (type === "like") {
+    reactions[postId].liked = !reactions[postId].liked;
+    if (reactions[postId].liked) reactions[postId].disliked = false;
+  }
+  if (type === "dislike") {
+    reactions[postId].disliked = !reactions[postId].disliked;
+    if (reactions[postId].disliked) reactions[postId].liked = false;
+  }
   if (type === "favorite") reactions[postId].favorited = !reactions[postId].favorited;
   writeJson(reactionStorageKey, reactions);
   renderLikedPosts();
@@ -350,8 +421,10 @@ function wireAuthForms() {
         roleLabel: "已登录用户",
         loggedInAt: new Date().toISOString(),
       });
-      document.querySelector("#loginStatus").textContent = "登录状态已保存，可继续提交资格审核。";
+      const nextUrl = getSafeNextUrl();
+      document.querySelector("#loginStatus").textContent = nextUrl ? "登录状态已保存，正在返回个人页面。" : "登录状态已保存，可继续提交资格审核。";
       updateAuthCard();
+      if (nextUrl) window.setTimeout(() => { window.location.href = nextUrl; }, 320);
     });
   }
 
@@ -393,7 +466,7 @@ function wireAuthForms() {
 
   document.querySelector("#profileLogout")?.addEventListener("click", () => {
     localStorage.removeItem(authKey);
-    window.location.href = "home.html";
+    window.location.href = "auth.html?next=profile.html&reason=profile";
   });
 }
 
@@ -421,6 +494,7 @@ function wireForum() {
   function postScore(post, type) {
     const reaction = getReactions()[post.id] || {};
     if (type === "like") return post.likes + (reaction.liked ? 1 : 0);
+    if (type === "dislike") return (post.dislikes || 0) + (reaction.disliked ? 1 : 0);
     if (type === "favorite") return post.favorites + (reaction.favorited ? 1 : 0);
     return 0;
   }
@@ -475,6 +549,7 @@ function wireForum() {
       ? pagePosts.map((post) => {
         const reaction = reactions[post.id] || {};
         const liked = Boolean(reaction.liked);
+        const disliked = Boolean(reaction.disliked);
         const favorited = Boolean(reaction.favorited);
         const postTags = (post.tags || [post.category]).slice(0, 4).map((tag) => `<span>${escapeHtml(forumTagLabels[tag] || tag)}</span>`).join("");
         return `
@@ -488,6 +563,7 @@ function wireForum() {
             </div>
             <div class="post-actions" aria-label="帖子操作">
               <button class="post-action ${liked ? "active" : ""}" type="button" data-action="like" data-post-id="${post.id}" aria-pressed="${liked}"><span>赞</span><strong>${post.likes + (liked ? 1 : 0)}</strong></button>
+              <button class="post-action ${disliked ? "active negative" : ""}" type="button" data-action="dislike" data-post-id="${post.id}" aria-pressed="${disliked}"><span>踩</span><strong>${(post.dislikes || 0) + (disliked ? 1 : 0)}</strong></button>
               <button class="post-action ${favorited ? "active favorite" : ""}" type="button" data-action="favorite" data-post-id="${post.id}" aria-pressed="${favorited}"><span>收藏</span><strong>${post.favorites + (favorited ? 1 : 0)}</strong></button>
             </div>
           </article>`;
@@ -563,6 +639,7 @@ function wireForum() {
       replies: 0,
       views: 1,
       likes: 0,
+      dislikes: 0,
       favorites: 0,
       pinned: false,
       tags: [document.querySelector("#postCategory").value, "aiHealthcare"],
@@ -773,69 +850,74 @@ async function wireHotToolFeed() {
 }
 
 function wireHomeNewsScroll() {
-  const row = document.querySelector(".news-scroll-row");
-  if (!row || row.dataset.scrollReady === "true") return;
+  document.querySelectorAll("[data-news-carousel]").forEach((frame) => {
+    if (frame.dataset.scrollReady === "true") return;
 
-  const frame = row.closest("[data-news-carousel]");
-  const slides = [...row.querySelectorAll(".news-source-card")];
-  const dots = [...(frame?.querySelectorAll("[data-news-dot]") || [])];
-  let activeIndex = 0;
-  let timer = 0;
+    const row = frame.querySelector(".news-scroll-row");
+    const slides = [...(row?.querySelectorAll(".news-source-card") || [])];
+    const dots = [...frame.querySelectorAll("[data-news-dot]")];
+    const buttons = [...frame.querySelectorAll("[data-news-scroll]")];
+    if (!row || !slides.length) return;
 
-  const setActiveDot = (index) => {
-    dots.forEach((dot, dotIndex) => {
-      const active = dotIndex === index;
-      dot.classList.toggle("active", active);
-      if (active) dot.setAttribute("aria-current", "true");
-      else dot.removeAttribute("aria-current");
-    });
-  };
+    let activeIndex = 0;
+    let timer = 0;
 
-  const scrollToIndex = (index) => {
-    if (!slides.length) return;
-    activeIndex = (index + slides.length) % slides.length;
-    row.scrollTo({ left: slides[activeIndex].offsetLeft - row.offsetLeft, behavior: "smooth" });
-    setActiveDot(activeIndex);
-  };
+    const setActiveDot = (index) => {
+      dots.forEach((dot, dotIndex) => {
+        const active = dotIndex === index;
+        dot.classList.toggle("active", active);
+        if (active) dot.setAttribute("aria-current", "true");
+        else dot.removeAttribute("aria-current");
+      });
+    };
 
-  const restartAutoScroll = () => {
-    window.clearInterval(timer);
-    timer = window.setInterval(() => scrollToIndex(activeIndex + 1), 5500);
-  };
+    const scrollToIndex = (index) => {
+      activeIndex = (index + slides.length) % slides.length;
+      row.scrollTo({ left: slides[activeIndex].offsetLeft - row.offsetLeft, behavior: "smooth" });
+      setActiveDot(activeIndex);
+    };
 
-  document.querySelectorAll("[data-news-scroll]").forEach((button) => {
-    button.addEventListener("click", () => {
-      const direction = button.dataset.newsScroll === "prev" ? -1 : 1;
-      scrollToIndex(activeIndex + direction);
-      restartAutoScroll();
-    });
-  });
-
-  dots.forEach((dot) => {
-    dot.addEventListener("click", () => {
-      scrollToIndex(Number(dot.dataset.newsDot || 0));
-      restartAutoScroll();
-    });
-  });
-
-  row.addEventListener("scroll", () => {
-    window.requestAnimationFrame(() => {
-      const nextIndex = Math.round(row.scrollLeft / Math.max(1, row.clientWidth));
-      if (nextIndex !== activeIndex && slides[nextIndex]) {
-        activeIndex = nextIndex;
-        setActiveDot(activeIndex);
+    const restartAutoScroll = () => {
+      window.clearInterval(timer);
+      if (slides.length > 1) {
+        timer = window.setInterval(() => scrollToIndex(activeIndex + 1), 5500);
       }
+    };
+
+    buttons.forEach((button) => {
+      button.addEventListener("click", () => {
+        const direction = button.dataset.newsScroll === "prev" ? -1 : 1;
+        scrollToIndex(activeIndex + direction);
+        restartAutoScroll();
+      });
     });
+
+    dots.forEach((dot) => {
+      dot.addEventListener("click", () => {
+        scrollToIndex(Number(dot.dataset.newsDot || 0));
+        restartAutoScroll();
+      });
+    });
+
+    row.addEventListener("scroll", () => {
+      window.requestAnimationFrame(() => {
+        const nextIndex = Math.round(row.scrollLeft / Math.max(1, row.clientWidth));
+        if (nextIndex !== activeIndex && slides[nextIndex]) {
+          activeIndex = nextIndex;
+          setActiveDot(activeIndex);
+        }
+      });
+    });
+
+    frame.addEventListener("mouseenter", () => window.clearInterval(timer));
+    frame.addEventListener("mouseleave", restartAutoScroll);
+    frame.addEventListener("focusin", () => window.clearInterval(timer));
+    frame.addEventListener("focusout", restartAutoScroll);
+
+    setActiveDot(0);
+    restartAutoScroll();
+    frame.dataset.scrollReady = "true";
   });
-
-  frame?.addEventListener("mouseenter", () => window.clearInterval(timer));
-  frame?.addEventListener("mouseleave", restartAutoScroll);
-  frame?.addEventListener("focusin", () => window.clearInterval(timer));
-  frame?.addEventListener("focusout", restartAutoScroll);
-
-  setActiveDot(0);
-  restartAutoScroll();
-  row.dataset.scrollReady = "true";
 }
 
 function wireHomeAgent() {
@@ -1112,22 +1194,51 @@ function wireDatasetBrowser() {
 
   const searchInput = document.querySelector("#datasetSearch");
   const filterButtons = Array.from(document.querySelectorAll("[data-dataset-filter]"));
-  const state = { filter: "all", search: "" };
+  const pageList = document.querySelector("#datasetPageList");
+  const prevButton = document.querySelector("[data-dataset-page='prev']");
+  const nextButton = document.querySelector("[data-dataset-page='next']");
+  const emptyNote = document.querySelector("#datasetEmptyNote");
+  const state = { filter: "all", search: "", page: 1, pageSize: 4 };
 
   function renderDatasetCards() {
     const query = state.search.trim().toLowerCase();
-    cards.forEach((card) => {
+    const matches = cards.filter((card) => {
       const tags = card.dataset.tags || "";
       const text = card.textContent.toLowerCase();
       const matchesTag = state.filter === "all" || tags.includes(state.filter);
       const matchesQuery = !query || text.includes(query);
-      card.hidden = !matchesTag || !matchesQuery;
+      return matchesTag && matchesQuery;
     });
+
+    const hasPagination = Boolean(pageList || prevButton || nextButton);
+    const totalPages = hasPagination ? Math.max(1, Math.ceil(matches.length / state.pageSize)) : 1;
+    state.page = Math.min(state.page, totalPages);
+    const pageStart = (state.page - 1) * state.pageSize;
+    const visible = new Set(hasPagination ? matches.slice(pageStart, pageStart + state.pageSize) : matches);
+
+    cards.forEach((card) => {
+      card.hidden = !visible.has(card);
+    });
+
+    if (emptyNote) {
+      emptyNote.classList.toggle("is-visible", matches.length === 0);
+    }
+
+    if (pageList) {
+      pageList.innerHTML = Array.from({ length: totalPages }, (_, index) => {
+        const page = index + 1;
+        return `<button class="filter-btn ${page === state.page ? "active" : ""}" type="button" data-dataset-page-number="${page}" aria-current="${page === state.page ? "page" : "false"}">第${page}页</button>`;
+      }).join("");
+    }
+
+    if (prevButton) prevButton.disabled = state.page <= 1;
+    if (nextButton) nextButton.disabled = state.page >= totalPages;
   }
 
   filterButtons.forEach((button) => {
     button.addEventListener("click", () => {
       state.filter = button.dataset.datasetFilter || "all";
+      state.page = 1;
       filterButtons.forEach((item) => item.classList.toggle("active", item === button));
       renderDatasetCards();
     });
@@ -1135,6 +1246,24 @@ function wireDatasetBrowser() {
 
   searchInput?.addEventListener("input", (event) => {
     state.search = event.target.value;
+    state.page = 1;
+    renderDatasetCards();
+  });
+
+  pageList?.addEventListener("click", (event) => {
+    const button = event.target.closest("[data-dataset-page-number]");
+    if (!button) return;
+    state.page = Number(button.dataset.datasetPageNumber) || 1;
+    renderDatasetCards();
+  });
+
+  prevButton?.addEventListener("click", () => {
+    state.page = Math.max(1, state.page - 1);
+    renderDatasetCards();
+  });
+
+  nextButton?.addEventListener("click", () => {
+    state.page += 1;
     renderDatasetCards();
   });
 
@@ -1225,18 +1354,22 @@ function wireNetworkSearch() {
   renderNetworkResults();
 }
 
-wireFilters();
-wireSiteSearchForms();
-renderSiteSearchResults();
-wireAuthForms();
-renderProfile();
-renderLikedPosts();
-wireCommunityGate();
-wireForum();
-wireDoctorWorkspace();
-wireDatasetBrowser();
-wireCourseContentFilters();
-wireNetworkSearch();
-wireHotToolFeed();
-wireHomeNewsScroll();
-wireHomeAgent();
+const isProfileRedirecting = redirectGuestProfile();
+
+if (!isProfileRedirecting) {
+  wireFilters();
+  wireSiteSearchForms();
+  renderSiteSearchResults();
+  wireAuthForms();
+  renderProfile();
+  renderLikedPosts();
+  wireCommunityGate();
+  wireForum();
+  wireDoctorWorkspace();
+  wireDatasetBrowser();
+  wireCourseContentFilters();
+  wireNetworkSearch();
+  wireHotToolFeed();
+  wireHomeNewsScroll();
+  wireHomeAgent();
+}

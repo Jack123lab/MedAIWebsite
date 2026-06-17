@@ -6,6 +6,275 @@
     <title>数据集 | Freedom AI</title>
     <meta name="description" content="Freedom AI 数据集入口，展示医学 AI 开放数据集、浏览下载、合规共享、任务关联和上传流程。" />
     <link rel="stylesheet" href="assets/css/style.css" />
+    <style>
+      .data-tools-page .dataset-browser-section {
+        background: #f7faf8;
+      }
+
+      .data-tools-page .dataset-browser-panel {
+        display: grid;
+        gap: 14px;
+      }
+
+      .data-tools-page .dataset-browser-intro {
+        display: flex;
+        align-items: flex-start;
+        justify-content: space-between;
+        gap: 18px;
+        padding-bottom: 8px;
+      }
+
+      .data-tools-page .dataset-browser-intro h2 {
+        max-width: 720px;
+        margin: 4px 0 8px;
+        color: #172738;
+      }
+
+      .data-tools-page .dataset-browser-intro p {
+        max-width: 760px;
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .data-tools-page .dataset-add-btn {
+        min-height: 42px;
+        white-space: nowrap;
+      }
+
+      .data-tools-page .dataset-browser-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+        justify-content: flex-end;
+      }
+
+      .data-tools-page .dataset-add-btn span {
+        font-size: 18px;
+        font-weight: 900;
+        line-height: 1;
+      }
+
+      .data-tools-page .dataset-search-row {
+        display: grid;
+      }
+
+      .data-tools-page .dataset-search-row .forum-search {
+        width: 100%;
+        min-height: 50px;
+        border-color: #d9e4df;
+        background: #ffffff;
+        box-shadow: 0 1px 0 rgba(23, 39, 56, 0.04);
+      }
+
+      .data-tools-page .dataset-domain-tags {
+        padding-bottom: 2px;
+      }
+
+      .data-tools-page .dataset-domain-tags .filter-btn {
+        min-height: 34px;
+        border-radius: 999px;
+        border-color: #d9e4df;
+        background: #ffffff;
+        color: #405466;
+      }
+
+      .data-tools-page .dataset-domain-tags .filter-btn.active,
+      .data-tools-page .dataset-domain-tags .filter-btn:hover {
+        border-color: #0f8a6a;
+        background: #e8f7f1;
+        color: #0f6b53;
+      }
+
+      .data-tools-page .dataset-trending-head {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 12px;
+        padding-top: 4px;
+      }
+
+      .data-tools-page .dataset-trending-head h3 {
+        margin: 0;
+        color: #172738;
+        font-size: 18px;
+      }
+
+      .data-tools-page .dataset-trending-head span {
+        color: var(--muted);
+        font-size: 13px;
+        font-weight: 700;
+      }
+
+      .data-tools-page .dataset-card-grid.dataset-trending-list {
+        grid-template-columns: minmax(0, 1fr);
+        gap: 10px;
+      }
+
+      .data-tools-page .dataset-trending-card.dataset-card {
+        display: grid;
+        grid-template-columns: 56px minmax(0, 1fr) minmax(146px, auto);
+        gap: 14px;
+        align-items: center;
+        min-height: 112px;
+        padding: 14px 16px;
+        border-color: #dde6e2;
+        background: #ffffff;
+      }
+
+      .data-tools-page .dataset-trending-card[hidden] {
+        display: none !important;
+      }
+
+      .data-tools-page .dataset-thumb {
+        width: 48px;
+        height: 48px;
+        display: grid;
+        place-items: center;
+        border: 1px solid #d9e4df;
+        border-radius: 8px;
+        background: #f2f6f4;
+        color: #0f6b53;
+        font-size: 13px;
+        font-weight: 900;
+      }
+
+      .data-tools-page .dataset-card-main {
+        min-width: 0;
+        display: grid;
+        gap: 7px;
+      }
+
+      .data-tools-page .dataset-trending-card .dataset-card-head {
+        gap: 3px;
+      }
+
+      .data-tools-page .dataset-trending-card .dataset-card-head span {
+        color: #667789;
+        font-size: 12px;
+      }
+
+      .data-tools-page .dataset-trending-card .dataset-card-head strong {
+        color: #172738;
+        font-size: 16px;
+        line-height: 1.35;
+      }
+
+      .data-tools-page .dataset-trending-card p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .data-tools-page .dataset-meta-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 7px;
+      }
+
+      .data-tools-page .dataset-meta-row span {
+        border: 1px solid #e4ebe8;
+        border-radius: 999px;
+        padding: 4px 8px;
+        background: #f8faf9;
+        color: #405466;
+        font-size: 12px;
+        font-weight: 750;
+      }
+
+      .data-tools-page .dataset-card-stats {
+        display: grid;
+        gap: 6px;
+        justify-items: end;
+        color: var(--muted);
+        font-size: 12px;
+        text-align: right;
+      }
+
+      .data-tools-page .dataset-card-stats strong {
+        color: #172738;
+        font-size: 15px;
+      }
+
+      .data-tools-page .dataset-card-stats a {
+        color: var(--primary);
+        font-weight: 900;
+        text-decoration: none;
+      }
+
+      .data-tools-page .dataset-pagination {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding-top: 4px;
+      }
+
+      .data-tools-page .dataset-page-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+      }
+
+      .data-tools-page .dataset-pagination button {
+        min-height: 34px;
+        border-radius: 999px;
+      }
+
+      .data-tools-page .dataset-pagination button:disabled {
+        cursor: not-allowed;
+        opacity: 0.45;
+      }
+
+      @media (max-width: 760px) {
+        .data-tools-page .dataset-browser-intro {
+          display: grid;
+        }
+
+        .data-tools-page .dataset-add-btn {
+          justify-self: start;
+        }
+
+        .data-tools-page .dataset-browser-actions {
+          justify-content: flex-start;
+        }
+
+        .data-tools-page .dataset-trending-card.dataset-card {
+          grid-template-columns: 48px minmax(0, 1fr);
+          align-items: start;
+        }
+
+        .data-tools-page .dataset-card-stats {
+          grid-column: 1 / -1;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: flex-start;
+          justify-items: start;
+          text-align: left;
+        }
+      }
+
+      @media (max-width: 520px) {
+        .data-tools-page .dataset-trending-head,
+        .data-tools-page .dataset-pagination {
+          display: grid;
+        }
+
+        .data-tools-page .dataset-pagination {
+          align-items: stretch;
+          grid-template-columns: 1fr;
+        }
+
+        .data-tools-page .dataset-trending-card.dataset-card {
+          grid-template-columns: minmax(0, 1fr);
+        }
+
+        .data-tools-page .dataset-thumb {
+          width: 44px;
+          height: 44px;
+        }
+      }
+    </style>
     <script src="assets/js/config.js"></script>
     <script src="assets/js/main.js" defer></script>
   </head>
@@ -41,83 +310,141 @@
             <h1>数据集</h1>
             <p>围绕医学 AI 的开放数据集、浏览下载、合规共享、任务关联和上传流程建立独立入口。</p>
           </div>
-          <aside class="tool-refresh-card" aria-label="页面提示">
-            <span>Dataset Hub</span>
-            <strong>数据目录</strong>
-            <p>工具资源已移至独立 <a href="tools.html">工具库</a> 页面。</p>
-          </aside>
         </div>
       </section>
 
       <section class="section compact dataset-browser-section" id="dataset-browser">
-        <div class="container">
-          <div class="section-head clean">
+        <div class="container dataset-browser-panel">
+          <div class="dataset-browser-intro">
             <div>
               <p class="eyebrow">Dataset Browser</p>
-              <h2>Kaggle 式数据集展示区</h2>
-              <p>数据集以卡片形式展示，支持搜索、标签筛选、浏览下载、市场状态和任务关联，为后续众包任务和 Benchmark 发布做准备。</p>
+              <h2>数据集展示区</h2>
+              <p>按领域标签、任务类型和关键词快速发现数据集。每条数据集显示来源、格式、规模、更新时间、可用性和热度，方便后续关联众包任务或 Benchmark。</p>
             </div>
-            <button class="btn primary" type="button" data-upload-roadmap-open aria-controls="dataset-upload">上传数据集</button>
-          </div>
-
-          <div class="dataset-toolbar" aria-label="数据集筛选">
-            <input id="datasetSearch" class="forum-search" type="search" placeholder="搜索数据集、科室、任务或标签" />
-            <div class="dataset-filter-row" role="group" aria-label="数据集标签筛选">
-              <button class="filter-btn active" type="button" data-dataset-filter="all">全部</button>
-              <button class="filter-btn" type="button" data-dataset-filter="imaging">影像</button>
-              <button class="filter-btn" type="button" data-dataset-filter="ehr">EHR</button>
-              <button class="filter-btn" type="button" data-dataset-filter="nlp">文本</button>
-              <button class="filter-btn" type="button" data-dataset-filter="benchmark">Benchmark</button>
-              <button class="filter-btn" type="button" data-dataset-filter="market">市场</button>
+            <div class="dataset-browser-actions">
+              <button class="btn primary" type="button" data-upload-roadmap-open aria-controls="dataset-upload">上传数据集</button>
+              <a class="btn dataset-add-btn" href="contribute.html"><span aria-hidden="true">+</span> 添加数据集</a>
             </div>
           </div>
 
-          <div class="dataset-card-grid" aria-live="polite">
-            <article class="dataset-card" data-dataset-card data-tags="ehr nlp benchmark market">
-              <div class="dataset-card-head"><span>EHR / NLP</span><strong>脱敏门诊病历结构化样例集</strong></div>
-              <p>用于病历字段抽取、否定词识别、问题列表生成和人工复核流程设计。</p>
-              <div class="tags"><span class="tag blue">EHR</span><span class="tag green">NLP</span><span class="tag gold">Benchmark Ready</span></div>
-              <dl><dt>规模</dt><dd>3,200 条脱敏样例</dd><dt>关联任务</dt><dd>病例结构化字段校对</dd></dl>
-              <div class="dataset-actions"><a href="#dataset-task-map">关联任务</a><a href="crowdsourcing.html">发布众包</a></div>
+          <div class="dataset-search-row" aria-label="数据集搜索">
+            <input id="datasetSearch" class="forum-search" type="search" placeholder="搜索数据集、科室、任务、格式或标签" />
+          </div>
+
+          <div class="dataset-filter-row dataset-domain-tags" role="group" aria-label="数据集领域标签筛选">
+            <button class="filter-btn active" type="button" data-dataset-filter="all">全部</button>
+            <button class="filter-btn" type="button" data-dataset-filter="imaging">影像</button>
+            <button class="filter-btn" type="button" data-dataset-filter="ehr">病历 / EHR</button>
+            <button class="filter-btn" type="button" data-dataset-filter="nlp">文本 / NLP</button>
+            <button class="filter-btn" type="button" data-dataset-filter="signal">生理信号</button>
+            <button class="filter-btn" type="button" data-dataset-filter="omics">组学</button>
+            <button class="filter-btn" type="button" data-dataset-filter="generative">生成式 AI</button>
+            <button class="filter-btn" type="button" data-dataset-filter="benchmark">Benchmark</button>
+            <button class="filter-btn" type="button" data-dataset-filter="share">合规共享</button>
+          </div>
+
+          <div class="dataset-trending-head">
+            <h3>Trending Datasets</h3>
+            <span>按浏览、收藏和研究任务热度排序</span>
+          </div>
+
+          <div class="dataset-card-grid dataset-trending-list" aria-live="polite">
+            <article class="dataset-card dataset-trending-card" data-dataset-card data-tags="ehr benchmark share mimic icu clinical">
+              <div class="dataset-thumb" aria-hidden="true">EHR</div>
+              <div class="dataset-card-main">
+                <div class="dataset-card-head"><span>MIT Critical Data · EHR</span><strong>MIMIC-IV 重症监护临床数据库</strong></div>
+                <p>覆盖 ICU 诊疗记录、实验室检查、用药、护理和出入院信息，适合临床预测、病历结构化和可解释性研究。</p>
+                <div class="dataset-meta-row"><span>CSV</span><span>约 43 万住院记录</span><span>Updated 2026.05</span><span>Usability 9.6</span></div>
+              </div>
+              <aside class="dataset-card-stats"><span>浏览 18.4k</span><strong>收藏 1.2k</strong><a href="https://mimic.mit.edu/" target="_blank" rel="noreferrer">查看数据</a></aside>
             </article>
-            <article class="dataset-card" data-dataset-card data-tags="imaging benchmark">
-              <div class="dataset-card-head"><span>Imaging</span><strong>胸部 CT 病灶标注数据集</strong></div>
-              <p>面向影像分割、报告一致性检查和外部验证任务，保留标注协议和质控记录。</p>
-              <div class="tags"><span class="tag blue">影像</span><span class="tag green">标注</span><span class="tag gold">外部验证</span></div>
-              <dl><dt>规模</dt><dd>820 例影像样本</dd><dt>关联任务</dt><dd>多中心标注复核</dd></dl>
-              <div class="dataset-actions"><a href="#dataset-task-map">关联任务</a><a href="benchmark.html">进入评测</a></div>
+            <article class="dataset-card dataset-trending-card" data-dataset-card data-tags="imaging benchmark share ct radiology oncology">
+              <div class="dataset-thumb" aria-hidden="true">IMG</div>
+              <div class="dataset-card-main">
+                <div class="dataset-card-head"><span>TCIA · Imaging</span><strong>胸部 CT 病灶标注与影像分割数据集</strong></div>
+                <p>面向肺部病灶检测、分割、报告一致性检查和多中心外部验证，保留标注协议与质控记录。</p>
+                <div class="dataset-meta-row"><span>DICOM</span><span>820 例影像样本</span><span>Updated 2026.04</span><span>Usability 9.1</span></div>
+              </div>
+              <aside class="dataset-card-stats"><span>浏览 9.8k</span><strong>收藏 740</strong><a href="benchmark.html">进入评测</a></aside>
             </article>
-            <article class="dataset-card" data-dataset-card data-tags="nlp benchmark">
-              <div class="dataset-card-head"><span>Guideline QA</span><strong>医学指南问答评测集</strong></div>
-              <p>覆盖指南推荐、证据等级、适用人群、禁忌和引用来源完整性检查。</p>
-              <div class="tags"><span class="tag blue">问答</span><span class="tag green">指南</span><span class="tag gold">Leaderboard</span></div>
-              <dl><dt>规模</dt><dd>1,500 个问题</dd><dt>关联任务</dt><dd>模型回答人工复核</dd></dl>
-              <div class="dataset-actions"><a href="#dataset-task-map">关联任务</a><a href="benchmark.html">发布 Benchmark</a></div>
+            <article class="dataset-card dataset-trending-card" data-dataset-card data-tags="signal benchmark share ecg icu physiologic">
+              <div class="dataset-thumb" aria-hidden="true">ECG</div>
+              <div class="dataset-card-main">
+                <div class="dataset-card-head"><span>PhysioNet · Signal</span><strong>心电与生命体征时间序列数据集</strong></div>
+                <p>用于心律失常识别、ICU 早期预警、波形质量控制和多模态临床模型训练。</p>
+                <div class="dataset-meta-row"><span>WFDB / CSV</span><span>多通道波形</span><span>Updated 2026.03</span><span>Usability 9.3</span></div>
+              </div>
+              <aside class="dataset-card-stats"><span>浏览 7.6k</span><strong>收藏 612</strong><a href="https://physionet.org/" target="_blank" rel="noreferrer">查看数据</a></aside>
             </article>
-            <article class="dataset-card" data-dataset-card data-tags="market imaging ehr">
-              <div class="dataset-card-head"><span>Market</span><strong>医院脱敏样例数据市场</strong></div>
-              <p>用于机构挂牌脱敏样例、授权说明、质量报告和用途边界，正式共享前进入合规审核。</p>
-              <div class="tags"><span class="tag blue">市场</span><span class="tag green">授权</span><span class="tag gold">合规审核</span></div>
-              <dl><dt>状态</dt><dd>合规审核后上架</dd><dt>关联任务</dt><dd>数据质量报告撰写</dd></dl>
-              <div class="dataset-actions"><a href="#market-overview">市场说明</a><a href="crowdsourcing.html">找数据顾问</a></div>
+            <article class="dataset-card dataset-trending-card" data-dataset-card data-tags="nlp benchmark guideline qa text">
+              <div class="dataset-thumb" aria-hidden="true">NLP</div>
+              <div class="dataset-card-main">
+                <div class="dataset-card-head"><span>Happy medical AI · Guideline QA</span><strong>医学指南问答评测集</strong></div>
+                <p>覆盖指南推荐、证据等级、适用人群、禁忌、引用来源完整性和模型回答人工复核。</p>
+                <div class="dataset-meta-row"><span>JSONL</span><span>1,500 个问题</span><span>Updated 2026.06</span><span>Usability 8.9</span></div>
+              </div>
+              <aside class="dataset-card-stats"><span>浏览 6.4k</span><strong>收藏 488</strong><a href="benchmark.html">发布 Benchmark</a></aside>
+            </article>
+            <article class="dataset-card dataset-trending-card" data-dataset-card data-tags="imaging nlp benchmark multimodal radiology report">
+              <div class="dataset-thumb" aria-hidden="true">MM</div>
+              <div class="dataset-card-main">
+                <div class="dataset-card-head"><span>Radiology · Multimodal</span><strong>影像报告与图像配对样例集</strong></div>
+                <p>连接医学影像、报告摘要、关键发现和异常标签，适合图文检索、报告生成和多模态 RAG 评测。</p>
+                <div class="dataset-meta-row"><span>DICOM + TXT</span><span>2,400 对样例</span><span>Updated 2026.02</span><span>Usability 8.7</span></div>
+              </div>
+              <aside class="dataset-card-stats"><span>浏览 5.9k</span><strong>收藏 421</strong><a href="crowdsourcing.html">关联任务</a></aside>
+            </article>
+            <article class="dataset-card dataset-trending-card" data-dataset-card data-tags="nlp share literature entity biomedical text">
+              <div class="dataset-thumb" aria-hidden="true">BIO</div>
+              <div class="dataset-card-main">
+                <div class="dataset-card-head"><span>Biomedical Text · NLP</span><strong>生物医学文献实体标注集</strong></div>
+                <p>用于疾病、药物、基因、症状和治疗实体识别，支持文献总结、知识图谱和检索增强应用。</p>
+                <div class="dataset-meta-row"><span>JSON / BRAT</span><span>12,000 段文本</span><span>Updated 2026.01</span><span>Usability 8.5</span></div>
+              </div>
+              <aside class="dataset-card-stats"><span>浏览 4.2k</span><strong>收藏 309</strong><a href="https://www.ncbi.nlm.nih.gov/research/pubtator/" target="_blank" rel="noreferrer">查看工具</a></aside>
+            </article>
+            <article class="dataset-card dataset-trending-card" data-dataset-card data-tags="generative benchmark share huggingface diffusers metadata model ai">
+              <div class="dataset-thumb" aria-hidden="true">HF</div>
+              <div class="dataset-card-main">
+                <div class="dataset-card-head"><span>Hugging Face · Generative AI</span><strong>Diffusers Metadata 数据集</strong></div>
+                <p>汇总 diffusers 生态中的模型与管线元数据，适合生成式 AI 工具索引、模型检索和数据集元信息测试。</p>
+                <div class="dataset-meta-row"><span>Parquet / JSON</span><span>模型元数据</span><span>Updated 2026.06</span><span>Usability 8.4</span></div>
+              </div>
+              <aside class="dataset-card-stats"><span>浏览 4.0k</span><strong>收藏 294</strong><a href="https://huggingface.co/datasets/huggingface/diffusers-metadata" target="_blank" rel="noreferrer">查看数据</a></aside>
+            </article>
+            <article class="dataset-card dataset-trending-card" data-dataset-card data-tags="omics benchmark oncology genomics share">
+              <div class="dataset-thumb" aria-hidden="true">OMX</div>
+              <div class="dataset-card-main">
+                <div class="dataset-card-head"><span>Oncology · Omics</span><strong>肿瘤多组学公开样例索引</strong></div>
+                <p>整合基因表达、突变、临床分期和疗效结局字段，适合预后建模与跨模态研究设计。</p>
+                <div class="dataset-meta-row"><span>CSV / TSV</span><span>多癌种样例</span><span>Updated 2025.12</span><span>Usability 8.2</span></div>
+              </div>
+              <aside class="dataset-card-stats"><span>浏览 3.8k</span><strong>收藏 276</strong><a href="#market-overview">查看字段</a></aside>
+            </article>
+            <article class="dataset-card dataset-trending-card" data-dataset-card data-tags="ehr imaging share compliance deidentified hospital">
+              <div class="dataset-thumb" aria-hidden="true">SAFE</div>
+              <div class="dataset-card-main">
+                <div class="dataset-card-head"><span>Hospital Samples · Compliance</span><strong>医院脱敏样例数据共享区</strong></div>
+                <p>用于机构展示脱敏样例、授权说明、数据字典、质量报告和用途边界，正式共享前进入合规审核。</p>
+                <div class="dataset-meta-row"><span>CSV / PDF</span><span>审核后开放</span><span>Updated 2026.06</span><span>Usability 8.0</span></div>
+              </div>
+              <aside class="dataset-card-stats"><span>浏览 3.1k</span><strong>收藏 244</strong><a href="contribute.html">添加数据</a></aside>
             </article>
           </div>
+
+          <nav class="dataset-pagination" id="datasetPagination" aria-label="数据集分页">
+            <button class="filter-btn" type="button" data-dataset-page="prev">上一页</button>
+            <div class="dataset-page-list" id="datasetPageList" aria-live="polite"></div>
+            <button class="filter-btn" type="button" data-dataset-page="next">下一页</button>
+          </nav>
         </div>
       </section>
 
-      <section class="section compact alt-band" id="dataset-task-map">
+      <section class="section compact" id="market-overview">
         <div class="container">
-          <div class="section-head clean">
-            <div>
-              <p class="eyebrow">Dataset + Task</p>
-              <h2>数据集与任务关联</h2>
-              <p>每个数据集都可以连接众包任务、Benchmark 和讨论区，形成从数据准备到评测发布的闭环。</p>
-            </div>
-          </div>
-          <div class="dataset-task-grid">
-            <article><span>Dataset</span><strong>数据集卡片</strong><p>授权、脱敏、字段、质量报告、标签、版本和浏览下载入口。</p></article>
-            <article><span>Task</span><strong>众包任务</strong><p>标注、复核、数据治理、模型训练、研究复现和交付验收。</p></article>
-            <article><span>Benchmark</span><strong>评测发布</strong><p>榜单、指标、错误分析、基线模型和可复查结果。</p></article>
+          <div class="button-row">
+            <a class="btn primary" href="tools.html">你想用好用AI工具吗？</a>
+            <a class="btn" href="benchmark.html">你想用Benchmark检测AI吗？</a>
           </div>
         </div>
       </section>
@@ -138,7 +465,7 @@
             <article><span>02</span><strong>合规审核</strong><p>核查隐私、伦理、脱敏、授权、访问控制和最小必要原则。</p></article>
             <article><span>03</span><strong>关联任务</strong><p>选择是否发布标注、质控、模型训练、研究复现或 Benchmark 任务。</p></article>
           </div>
-          <div class="market-grid upload-roadmap-market" id="market-overview">
+          <div class="market-grid upload-roadmap-market">
             <article class="market-panel featured">
               <span class="tag green">数据集</span>
               <h2>开放数据集共享</h2>
@@ -165,7 +492,7 @@
     <footer class="site-footer">
       <div class="container footer-grid">
         <div><h3>Freedom AI</h3><p>数据集入口强调授权、脱敏、质量和可追溯。</p></div>
-        <div><h4>数据</h4><a href="datasets.html">数据集</a><a href="#dataset-upload">上传流程</a></div>
+        <div><h4>数据</h4><a href="datasets.html">数据集</a><a href="#dataset-browser">浏览数据</a></div>
         <div><h4>工具</h4><a href="tools.html">工具库</a></div>
         <div><h4>平台</h4><a href="benchmark.html">评测基准</a><a href="crowdsourcing.html">众包平台</a></div>
         <div><h4>学习</h4><a href="learning.html">教学</a><a href="community.html">讨论区</a></div>

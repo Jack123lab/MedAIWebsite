@@ -7926,6 +7926,183 @@ body.upload-roadmap-open {
   color: #536474;
 }
 
+.network-title-tail {
+  display: inline;
+}
+
+.network-topic-strip {
+  padding-top: 18px;
+  padding-bottom: 12px;
+  background: #f8fbfc;
+}
+
+.network-domain-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+}
+
+.network-domain-tag {
+  min-height: 40px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid #cbdce4;
+  border-radius: 999px;
+  padding: 7px 13px;
+  color: #172738;
+  background: #ffffff;
+  text-decoration: none;
+  transition: border-color 0.18s ease, background 0.18s ease, color 0.18s ease;
+}
+
+.network-domain-tag span {
+  color: #1f796f;
+  font-size: 11px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.network-domain-tag strong {
+  color: #172738;
+  font-size: 14px;
+  line-height: 1;
+}
+
+.network-domain-tag:hover,
+.network-domain-tag:focus {
+  border-color: #185f79;
+  color: #ffffff;
+  background: #185f79;
+  outline: 0;
+}
+
+.network-domain-tag:hover span,
+.network-domain-tag:focus span,
+.network-domain-tag:hover strong,
+.network-domain-tag:focus strong {
+  color: #ffffff;
+}
+
+.network-hot-news {
+  padding-top: 10px;
+  background: #f3f6f8;
+}
+
+.network-hot-news-head {
+  margin: 0 0 10px;
+  padding: 0;
+}
+
+.network-hot-news-head h2 {
+  margin: 0;
+  color: #172738;
+  font-size: 22px;
+  line-height: 1.2;
+}
+
+.network-news-carousel {
+  position: relative;
+}
+
+.network-page .network-news-row {
+  height: clamp(190px, 28vh, 260px);
+  min-height: 0;
+  border-radius: 10px;
+  gap: 0;
+  padding: 0;
+  overflow: hidden;
+  scrollbar-width: none;
+}
+
+.network-page .network-news-row::-webkit-scrollbar {
+  display: none;
+}
+
+.network-page .network-news-card {
+  flex: 0 0 100%;
+  min-height: 0;
+  height: 100%;
+  border: 1px solid rgba(203, 217, 226, 0.92);
+  border-radius: 10px;
+  background:
+    radial-gradient(circle at 78% 32%, rgba(118, 204, 193, 0.16), transparent 32%),
+    linear-gradient(135deg, #effcfb 0%, #f8ffff 50%, #eef8fb 100%);
+  box-shadow: 0 12px 30px rgba(17, 71, 86, 0.07);
+}
+
+.network-page .network-news-card img {
+  object-position: right center;
+  opacity: 0.52;
+  filter: saturate(0.92) contrast(0.98);
+  mix-blend-mode: multiply;
+}
+
+.network-page .network-news-card::after {
+  background:
+    linear-gradient(90deg, rgba(247, 255, 253, 0.98) 0%, rgba(247, 255, 253, 0.9) 48%, rgba(247, 255, 253, 0.24) 100%),
+    linear-gradient(135deg, rgba(118, 204, 193, 0.1), transparent 62%);
+}
+
+.network-page .network-news-card div {
+  max-width: 680px;
+  align-content: center;
+  gap: 7px;
+  padding: 16px 68px;
+}
+
+.network-page .network-news-card span {
+  width: max-content;
+  border-radius: 999px;
+  padding: 5px 10px;
+  color: #16867f;
+  background: rgba(15, 146, 139, 0.12);
+  font-size: 12px;
+}
+
+.network-page .network-news-card strong {
+  max-width: 640px;
+  color: #101820;
+  font-size: clamp(20px, 2.2vw, 28px);
+  line-height: 1.18;
+}
+
+.network-page .network-news-card p {
+  max-width: 610px;
+  display: -webkit-box;
+  overflow: hidden;
+  color: #41525d;
+  font-size: 14px;
+  line-height: 1.55;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.network-page .network-news-card p::before {
+  content: "";
+  display: block;
+  width: min(340px, 100%);
+  height: 1px;
+  margin: 8px 0 6px;
+  background: rgba(15, 146, 139, 0.32);
+}
+
+.network-page .network-news-card small {
+  width: max-content;
+  min-height: 28px;
+  display: inline-flex;
+  align-items: center;
+  margin-top: 4px;
+  border-radius: 5px;
+  padding: 0 12px;
+  color: #ffffff;
+  background: #0f928b;
+  box-shadow: 0 8px 16px rgba(15, 146, 139, 0.18);
+  font-size: 12px;
+  font-weight: 900;
+}
+
 .network-quick-search {
   max-width: 720px;
   margin-top: 22px;
@@ -8325,6 +8502,10 @@ body.upload-roadmap-open {
   .scholar-sidebar {
     position: static;
   }
+
+  .network-hot-news-head h2 {
+    font-size: 20px;
+  }
 }
 
 @media (max-width: 720px) {
@@ -8342,6 +8523,72 @@ body.upload-roadmap-open {
   .network-hero-grid,
   .scholar-hero-grid {
     padding: 28px 0;
+  }
+
+  .network-hero {
+    overflow: hidden;
+  }
+
+  .network-hero-copy h1 {
+    width: calc(100vw - 32px);
+    max-width: 100%;
+    font-size: clamp(25px, 6.8vw, 28px);
+    line-height: 1.15;
+    word-break: break-all;
+    overflow-wrap: anywhere;
+  }
+
+  .network-title-tail {
+    display: block;
+  }
+
+  .network-hero-copy p {
+    max-width: 100%;
+    font-size: 14px;
+  }
+
+  .network-domain-tag {
+    flex: 1 1 calc(50% - 8px);
+    justify-content: center;
+  }
+
+  .network-domain-tag span {
+    display: none;
+  }
+
+  .network-page .network-news-row,
+  .network-page .network-news-card {
+    height: 176px;
+  }
+
+  .network-page .network-news-card div {
+    gap: 4px;
+    padding: 8px 42px;
+  }
+
+  .network-page .network-news-card strong {
+    font-size: 16px;
+    line-height: 1.22;
+  }
+
+  .network-page .network-news-card p {
+    font-size: 12px;
+    line-height: 1.35;
+    -webkit-line-clamp: 2;
+  }
+
+  .network-page .network-news-card p::before {
+    margin: 4px 0;
+  }
+
+  .network-page .network-news-card span {
+    padding: 3px 8px;
+  }
+
+  .network-page .network-news-card small {
+    min-height: 22px;
+    margin-top: 2px;
+    padding: 0 10px;
   }
 
   .scholar-photo-panel,
@@ -8369,6 +8616,105 @@ body.upload-roadmap-open {
 .learning-grid.content-module-grid {
   grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
   align-items: stretch;
+}
+
+.learning-module-actions {
+  max-width: 920px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.learning-module-actions a {
+  min-height: 42px;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid rgba(118, 214, 203, 0.3);
+  border-radius: 6px;
+  padding: 7px 11px;
+  color: #eaf4f8;
+  background: rgba(255, 255, 255, 0.08);
+  text-decoration: none;
+}
+
+.learning-module-actions span {
+  color: #172738;
+  font-size: 11px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.learning-module-actions strong {
+  color: #ffffff;
+  font-size: 13px;
+  line-height: 1.25;
+  overflow-wrap: anywhere;
+}
+
+.learning-module-actions a:hover,
+.learning-module-actions a:focus {
+  border-color: rgba(134, 221, 213, 0.68);
+  background: rgba(42, 157, 143, 0.18);
+  outline: 0;
+}
+
+.learning-case-grid {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.learning-case-card {
+  min-height: 176px;
+  display: grid;
+  gap: 7px;
+  align-content: start;
+  border: 1px solid #d8e2e8;
+  border-radius: 8px;
+  padding: 14px;
+  color: var(--text);
+  background: #ffffff;
+  text-decoration: none;
+  transition: transform 160ms ease, border-color 160ms ease, box-shadow 160ms ease;
+}
+
+.learning-case-card span {
+  color: #1f796f;
+  font-size: 11px;
+  font-weight: 900;
+  text-transform: uppercase;
+  overflow-wrap: anywhere;
+}
+
+.learning-case-card h2 {
+  margin: 0;
+  color: #172738;
+  font-size: 16px;
+  line-height: 1.34;
+}
+
+.learning-case-card p {
+  margin: 0;
+  color: #536474;
+  font-size: 13px;
+  line-height: 1.58;
+}
+
+.learning-case-card strong {
+  align-self: end;
+  margin-top: 4px;
+  color: var(--primary);
+  font-size: 13px;
+}
+
+.learning-case-card:hover,
+.learning-case-card:focus {
+  transform: translateY(-2px);
+  border-color: rgba(24, 95, 121, 0.35);
+  box-shadow: 0 14px 30px rgba(7, 23, 36, 0.09);
+  outline: 0;
 }
 
 .learning-panel,
@@ -8592,15 +8938,30 @@ body.upload-roadmap-open {
 
 @media (max-width: 1120px) {
   .learning-grid,
+  .learning-case-grid,
   .module-detail-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .learning-case-grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }
 
 @media (max-width: 760px) {
   .learning-grid,
+  .learning-case-grid,
   .module-detail-grid {
     grid-template-columns: 1fr;
+  }
+
+  .learning-module-actions a {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .learning-case-card {
+    min-height: 0;
   }
 
   .course-filter-group,
@@ -8612,5 +8973,748 @@ body.upload-roadmap-open {
     grid-column: 1;
     grid-row: auto;
     width: max-content;
+  }
+}
+
+/* Compact mobile header across pages. */
+@media (max-width: 920px) {
+  .site-header,
+  .medical-community-page .site-header,
+  .doctor-community-page .site-header {
+    min-height: 0;
+  }
+
+  .nav {
+    min-height: 0;
+    gap: 8px;
+    justify-content: flex-start;
+    padding-top: 8px;
+    padding-bottom: 8px;
+  }
+
+  .brand {
+    gap: 8px;
+  }
+
+  .brand-mark {
+    width: 30px;
+    height: 30px;
+  }
+
+  .brand-text strong {
+    font-size: 14px;
+    line-height: 1.1;
+  }
+
+  .brand-text span {
+    font-size: 11px;
+    line-height: 1.15;
+  }
+
+  .site-search input {
+    height: 32px;
+    font-size: 13px;
+  }
+
+  .site-search {
+    flex: 0 0 auto;
+  }
+
+  .site-search button {
+    top: 3px;
+    height: 26px;
+    min-width: 40px;
+    font-size: 12px;
+  }
+
+  .nav-links {
+    gap: 3px 4px;
+    line-height: 1.2;
+  }
+
+  .nav-links a,
+  .nav-fold-title {
+    min-height: 28px;
+    padding: 4px 8px;
+    font-size: 13px;
+    line-height: 1.2;
+  }
+}
+
+@media (max-width: 560px) {
+  .nav {
+    padding-top: 7px;
+    padding-bottom: 7px;
+  }
+
+  .site-search {
+    flex: 0 0 auto;
+    margin: 0;
+  }
+
+  .nav-links a,
+  .nav-fold-title {
+    min-height: 26px;
+    padding: 3px 8px;
+    font-size: 13px;
+  }
+}
+
+/* Community page density: compact channel entry, small hot-tool rail, larger discussion body. */
+.medical-community-page .compact-community-hero {
+  padding: 18px 0 14px;
+}
+
+.medical-community-page .compact-discussion-entry {
+  grid-template-columns: minmax(0, 1fr) minmax(280px, 0.42fr);
+  gap: 16px;
+  align-items: stretch;
+}
+
+.medical-community-page .discussion-entry-copy,
+.medical-community-page .discussion-entry-actions,
+.medical-community-page .hot-news-brief,
+.medical-community-page .daily-tool-brief,
+.medical-community-page .tool-rank-panel {
+  border: 1px solid var(--forum-line);
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+.medical-community-page .discussion-entry-copy,
+.medical-community-page .discussion-entry-actions {
+  padding: 16px 18px;
+}
+
+.medical-community-page .compact-community-hero h1 {
+  margin-bottom: 6px;
+  font-size: 28px;
+  line-height: 1.18;
+}
+
+.medical-community-page .compact-community-hero p {
+  max-width: 880px;
+  font-size: 14px;
+  line-height: 1.62;
+}
+
+.discussion-mini-nav,
+.quick-publish-row,
+.compact-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.discussion-mini-nav {
+  margin-top: 12px;
+}
+
+.discussion-mini-nav a {
+  min-height: 32px;
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid var(--forum-line);
+  border-radius: 6px;
+  padding: 0 10px;
+  color: var(--forum-link);
+  background: #ffffff;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.discussion-mini-nav a.active,
+.discussion-mini-nav a:hover {
+  border-color: #e1b000;
+  color: #111827;
+  background: var(--forum-accent-soft);
+}
+
+.medical-community-page .discussion-entry-actions {
+  display: grid;
+  align-content: center;
+  gap: 12px;
+}
+
+.medical-community-page .discussion-entry-actions .forum-hero-stats {
+  margin-top: 0;
+}
+
+.medical-community-page .discussion-entry-actions .forum-hero-stats span {
+  flex: 1 1 118px;
+  justify-content: center;
+}
+
+.quick-publish-row .btn {
+  flex: 1 1 118px;
+  min-height: 38px;
+}
+
+.quick-publish-row .btn.primary,
+.daily-tool-brief .btn.primary {
+  border-color: #e1b000;
+  color: #111827;
+  background: #ffd84d;
+}
+
+.community-hot-section {
+  padding: 18px 0;
+  border-bottom: 1px solid var(--forum-line);
+  background: #ffffff;
+}
+
+.community-hot-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(250px, 0.72fr) 260px;
+  gap: 12px;
+  align-items: stretch;
+}
+
+.hot-news-brief,
+.daily-tool-brief,
+.tool-rank-panel {
+  min-width: 0;
+  padding: 14px;
+}
+
+.compact-section-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  align-items: baseline;
+  margin-bottom: 10px;
+}
+
+.compact-section-head h2 {
+  margin: 0;
+  color: #111827;
+  font-size: 19px;
+  line-height: 1.3;
+}
+
+.news-brief-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.news-brief-list article {
+  min-width: 0;
+  border: 1px solid #e6e3d8;
+  border-radius: 8px;
+  padding: 11px;
+  background: #fbfbf8;
+}
+
+.news-brief-list span,
+.daily-tool-brief > span,
+.rank-panel-head span,
+.tool-rank-list span {
+  color: #8a6200;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.news-brief-list strong,
+.daily-tool-brief h3,
+.rank-panel-head strong,
+.tool-rank-list strong {
+  display: block;
+  color: #111827;
+  line-height: 1.35;
+}
+
+.news-brief-list strong {
+  margin: 5px 0;
+  font-size: 15px;
+}
+
+.news-brief-list p,
+.daily-tool-brief p {
+  margin: 0;
+  color: var(--forum-muted);
+  font-size: 13px;
+  line-height: 1.55;
+}
+
+.daily-tool-brief {
+  display: grid;
+  align-content: start;
+  gap: 9px;
+  background: #fffdf3;
+  border-color: #eadb9d;
+}
+
+.daily-tool-brief h3 {
+  margin: 0;
+  font-size: 22px;
+}
+
+.compact-actions .btn {
+  min-height: 34px;
+  padding: 0 11px;
+  font-size: 13px;
+}
+
+.tool-rank-panel {
+  display: grid;
+  gap: 10px;
+}
+
+.rank-panel-head {
+  display: grid;
+  gap: 3px;
+}
+
+.tool-rank-list {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.tool-rank-list li {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 2px 10px;
+  align-items: center;
+  border-top: 1px solid #ece7d7;
+  padding-top: 8px;
+}
+
+.tool-rank-list span {
+  grid-column: 1 / -1;
+}
+
+.tool-rank-list a {
+  color: var(--primary);
+  font-size: 13px;
+  font-weight: 900;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.medical-community-page .forum-tag-section {
+  padding-top: 28px;
+  padding-bottom: 20px;
+  background: var(--forum-bg);
+}
+
+.medical-community-page .forum-tag-section .forum-channel-grid {
+  grid-template-columns: minmax(0, 1.12fr) minmax(320px, 0.88fr);
+}
+
+.medical-community-page .forum-tag-section .forum-channel-panel {
+  padding: 20px;
+}
+
+.medical-community-page .forum-tag-section .channel-head h2 {
+  font-size: 24px;
+}
+
+.medical-community-page .forum-shell {
+  grid-template-columns: 176px minmax(0, 1fr) 258px;
+  gap: 16px;
+}
+
+.medical-community-page .forum-main {
+  min-width: 0;
+}
+
+.medical-community-page .forum-main .forum-toolbar {
+  padding: 16px 18px;
+}
+
+.medical-community-page .post-card {
+  padding: 16px 18px;
+}
+
+.medical-community-page .dept-forum-section {
+  padding-top: 34px;
+}
+
+.medical-community-page .dept-board-grid {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.medical-community-page .dept-board-card {
+  min-height: 210px;
+  padding: 18px;
+}
+
+@media (max-width: 1080px) {
+  .community-hot-grid,
+  .medical-community-page .forum-tag-section .forum-channel-grid,
+  .medical-community-page .forum-shell,
+  .medical-community-page .dept-board-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .news-brief-list {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .medical-community-page .compact-discussion-entry {
+    grid-template-columns: 1fr;
+  }
+
+  .compact-section-head {
+    display: grid;
+  }
+
+  .medical-community-page .compact-community-hero h1 {
+    font-size: 24px;
+  }
+}
+
+/* Compact profile space inspired by creator/community account pages. */
+.profile-page {
+  font-size: 14px;
+}
+
+.profile-page .site-footer {
+  margin-top: 18px;
+}
+
+.profile-page-title {
+  padding: 20px 0 14px;
+}
+
+.profile-page-title h1 {
+  margin: 0;
+  font-size: 28px;
+  line-height: 1.2;
+}
+
+.profile-page-title h1::after {
+  display: none;
+}
+
+.profile-page-title-row,
+.profile-identity-panel,
+.profile-space-tabs,
+.profile-stat-row,
+.profile-panel-head {
+  display: flex;
+  align-items: center;
+}
+
+.profile-page-title-row {
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.profile-space-hero {
+  background: #eef5f6;
+  border-bottom: 1px solid var(--line);
+}
+
+.profile-space-shell {
+  padding-top: 16px;
+}
+
+.profile-cover-strip {
+  height: 118px;
+  border: 1px solid #d6e2e4;
+  border-radius: 8px 8px 0 0;
+  background:
+    linear-gradient(135deg, rgba(24, 95, 121, 0.88), rgba(35, 130, 118, 0.82)),
+    linear-gradient(90deg, rgba(255, 216, 77, 0.24), transparent 46%);
+}
+
+.profile-identity-panel {
+  position: relative;
+  gap: 18px;
+  min-height: 116px;
+  border: 1px solid var(--line);
+  border-top: 0;
+  padding: 16px 18px 16px 132px;
+  background: #ffffff;
+}
+
+.profile-avatar-card {
+  position: absolute;
+  left: 22px;
+  top: -40px;
+  width: 92px;
+  height: 92px;
+  display: grid;
+  place-items: center;
+  border: 4px solid #ffffff;
+  border-radius: 50%;
+  background: #fffdf3;
+  box-shadow: 0 10px 26px rgba(17, 42, 62, 0.12);
+  overflow: hidden;
+}
+
+.profile-avatar-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.primary-profile {
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.primary-profile h2 {
+  margin: 8px 0 2px;
+  font-size: 22px;
+  line-height: 1.24;
+}
+
+.primary-profile p {
+  margin-bottom: 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.profile-page .profile-meta {
+  grid-template-columns: repeat(4, auto minmax(0, 1fr));
+  gap: 5px 10px;
+  margin-top: 11px;
+  font-size: 12px;
+}
+
+.profile-page .profile-meta dd {
+  font-weight: 700;
+}
+
+.profile-stat-row {
+  flex: 0 0 auto;
+  gap: 1px;
+  border: 1px solid #e2d49b;
+  background: #e2d49b;
+}
+
+.profile-stat-row span {
+  min-width: 72px;
+  display: grid;
+  place-items: center;
+  gap: 1px;
+  padding: 8px 10px;
+  background: #fffdf3;
+  color: #6f4f00;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.profile-stat-row strong {
+  color: #172738;
+  font-size: 20px;
+  line-height: 1.1;
+}
+
+.profile-space-tabs {
+  gap: 2px;
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-top: 0;
+  border-radius: 0 0 8px 8px;
+  padding: 0 14px;
+  background: #ffffff;
+}
+
+.profile-space-tabs a {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  border-bottom: 2px solid transparent;
+  padding: 0 14px;
+  color: #536272;
+  font-size: 14px;
+  font-weight: 800;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.profile-space-tabs a:hover {
+  color: var(--primary);
+  border-bottom-color: var(--primary);
+}
+
+.profile-space-section {
+  background: #f3f6f8;
+}
+
+.profile-space-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 318px;
+  gap: 16px;
+  align-items: start;
+}
+
+.profile-main-column,
+.profile-side-column {
+  display: grid;
+  gap: 14px;
+}
+
+.profile-content-card {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 16px;
+  background: #ffffff;
+}
+
+.profile-panel-head {
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.profile-panel-head span {
+  display: block;
+  color: #8a6200;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.profile-panel-head h2 {
+  margin: 2px 0 0;
+  color: #172738;
+  font-size: 18px;
+  line-height: 1.3;
+}
+
+.profile-feed-list,
+.profile-design-list {
+  display: grid;
+}
+
+.profile-feed-item,
+.profile-design-item {
+  display: grid;
+  gap: 6px;
+  border-top: 1px solid var(--line);
+  padding: 13px 0;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.profile-feed-item:first-child,
+.profile-design-item:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.profile-feed-item:last-child,
+.profile-design-item:last-child {
+  padding-bottom: 0;
+}
+
+.profile-feed-item strong,
+.profile-design-item strong {
+  color: #172738;
+  font-size: 15px;
+  line-height: 1.35;
+}
+
+.profile-feed-item p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.56;
+}
+
+.profile-feed-item small,
+.profile-design-item span {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.profile-feed-item:hover strong,
+.profile-design-item:hover strong {
+  color: var(--primary);
+}
+
+.profile-page .access-list a {
+  padding: 10px;
+  font-size: 13px;
+}
+
+.profile-page .plain-list {
+  margin-bottom: 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.post-action.negative.active,
+.medical-community-page .post-action.negative.active {
+  border-color: rgba(163, 61, 69, 0.35);
+  background: #fbefef;
+}
+
+@media (max-width: 1080px) {
+  .profile-identity-panel {
+    align-items: flex-start;
+    flex-direction: column;
+    padding-left: 132px;
+  }
+
+  .profile-page .profile-meta {
+    grid-template-columns: 82px minmax(0, 1fr);
+  }
+
+  .profile-stat-row {
+    width: 100%;
+  }
+
+  .profile-stat-row span {
+    flex: 1 1 0;
+  }
+
+  .profile-space-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .profile-page-title-row {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .profile-cover-strip {
+    height: 92px;
+  }
+
+  .profile-identity-panel {
+    padding: 62px 14px 14px;
+  }
+
+  .profile-avatar-card {
+    left: 16px;
+    width: 78px;
+    height: 78px;
+  }
+
+  .profile-stat-row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .profile-stat-row span {
+    min-width: 0;
+  }
+
+  .profile-space-tabs {
+    padding: 0 8px;
+  }
+
+  .profile-space-tabs a {
+    padding: 0 10px;
+    font-size: 13px;
+  }
+
+  .post-actions {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }

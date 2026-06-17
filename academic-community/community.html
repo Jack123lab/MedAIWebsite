@@ -1,132 +1,127 @@
-<!doctype html>
+﻿<!doctype html>
 <html lang="zh-CN">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>社区 | Freedom AI</title>
+    <title>问答区 | Happy medical AI</title>
     <link rel="stylesheet" href="assets/css/style.css" />
     <script src="assets/js/config.js"></script>
     <script src="assets/js/main.js" defer></script>
   </head>
   <body class="medical-community-page">
-          <header class="site-header">
-        <nav class="nav" aria-label="主导航">
-          <a class="brand" href="index.html"><span class="brand-mark">F</span><span class="brand-text"><strong>Freedom AI</strong><span>医学 AI 社区</span></span></a>
-        <form class="site-search" role="search" action="search.html" method="get" aria-label="站内搜索">
-          <label class="sr-only" for="siteSearchInput">搜索</label>
-          <input id="siteSearchInput" name="q" type="search" placeholder="搜索" autocomplete="off" />
-          <button type="submit">搜索</button>
-        </form>
-          <div class="nav-links">
-            <a href="index.html">首页</a>
-            <a href="learning.html">内容</a>
-            <a href="popular-science.html">科普</a>
-            <a href="network.html">社区</a>
-            <a href="community.html">讨论区</a>
-            <a href="datasets.html">数据集</a>
-            <a href="tools.html">工具库</a>
-            <a href="benchmark.html">Benchmark</a>
-            <a href="crowdsourcing.html">众包平台</a>
-            <a href="profile.html">用户</a>
-          </div>
-        </nav>
-      </header>
+        <header class="site-header">
+      <nav class="nav" aria-label="主导航">
+        <a class="brand" href="index.html"><span class="brand-mark">H</span><span class="brand-text"><strong>Happy medical AI</strong><span>医学 AI 社区</span></span></a>
+        <div class="nav-links">
+          <a href="index.html">首页</a>
+          <a href="tutorials.html">课程</a>
+          <a href="medical-community.html">医疗社区</a>
+          <a href="discussion.html">讨论区</a>
+          <a href="datasets-tools.html">数据集</a>
+          <a href="crowdsourcing.html">众包平台</a>
+          <a href="benchmark.html">Benchmark</a>
+          <a href="profile.html">个人账户</a>
+          <a href="about.html">About（collaborator）</a>
+        </div>
+      </nav>
+    </header>
 
     <main>
-      <section class="page-title forum-title">
-        <div class="container forum-title-grid">
-          <div>
+      <section class="page-title forum-title compact-community-hero">
+        <div class="container forum-title-grid compact-discussion-entry">
+          <div class="discussion-entry-copy">
             <p class="eyebrow">讨论区</p>
             <h1>讨论区目录与问答流</h1>
-            <p>这里是 Reddit-like 的讨论 feed 入口，参考丁香园式专业医学社区密度，围绕问答、论文、工具、产品发布和成果发布展开。访问者可继续浏览下方问答流。</p>
+            <p>Reddit-like 的医学 AI 讨论入口，保留问答、论文、工具、产品发布和成果发布的专业目录，并把问答流作为当前主入口。</p>
+            <nav class="discussion-mini-nav" aria-label="讨论区目录">
+              <a class="active" href="community.html">问答区</a>
+              <a href="discussion-papers.html">论文</a>
+              <a href="discussion-tools.html">工具</a>
+              <a href="discussion-products.html">产品</a>
+              <a href="discussion-results.html">成果</a>
+            </nav>
+          </div>
+          <div class="discussion-entry-actions">
             <div class="forum-hero-stats" aria-label="社区概览">
               <span><strong>8</strong> 科室板块</span>
               <span><strong>5</strong> 讨论类型</span>
               <span><strong>72h</strong> 热帖周期</span>
             </div>
+            <div class="quick-publish-row" aria-label="发布快捷入口">
+              <a class="btn primary" href="#postForm" data-quick-post>发布讨论</a>
+              <a class="btn" href="#postBody" data-quick-comment>发表评论</a>
+            </div>
           </div>
-          <a class="btn primary" href="#postForm">发布讨论</a>
         </div>
       </section>
 
-      <section class="section hot-tool-section" id="hot-tools" data-hot-tool-feed>
-        <div class="container">
-          <div class="section-head clean">
-            <div>
-              <p class="eyebrow">热门工具动态</p>
+      <section class="section compact community-hot-section community-protected" aria-label="热点新闻区与每日最热工具">
+        <div class="container community-hot-grid">
+          <section class="hot-news-brief">
+            <div class="compact-section-head">
+              <p class="eyebrow">热点新闻区</p>
               <h2>热点新闻区与每日最热工具</h2>
-              <p>用于每天推送医学 AI 领域热度最高的免费工具、模型、开放数据平台和开源项目。正式上线后可接入后端榜单、RSS 聚合或人工编辑后台。</p>
             </div>
-            <a class="btn primary" href="tools.html">查看工具库</a>
-          </div>
-
-          <div class="hot-tool-layout">
-            <article class="hot-tool-lead">
-              <div class="live-row"><span>实时</span><strong>医学 AI 工具雷达</strong></div>
-              <h3>今日推荐：华佗 GPT</h3>
-              <p>面向中文医疗问答与医学大模型研究的代表性工具入口。页面保留官网按钮，后续可替换为实时榜单中的第一名工具。</p>
-              <div class="tool-action-row">
-                <a class="btn primary" href="https://www.huatuogpt.cn/" target="_blank" rel="noreferrer">打开华佗 GPT 官网</a>
-                <a class="btn" href="https://github.com/FreedomIntelligence/HuatuoGPT" target="_blank" rel="noreferrer">查看项目</a>
-              </div>
-            </article>
-
-            <aside class="hot-tool-toolbar" aria-label="热门工具链接栏">
-              <div class="toolbar-head">
-                <span>工具链接</span>
-                <strong>工具栏官网链接</strong>
-              </div>
-              <a href="https://www.huatuogpt.cn/" target="_blank" rel="noreferrer"><strong>华佗 GPT</strong><span>中文医学大模型问答</span></a>
-              <a href="https://github.com/FreedomIntelligence/HuatuoGPT" target="_blank" rel="noreferrer"><strong>HuatuoGPT 项目</strong><span>论文、代码与模型说明</span></a>
-              <a href="https://github.com/google-health/medgemma" target="_blank" rel="noreferrer"><strong>MedGemma</strong><span>Google Health 医学开源模型</span></a>
-              <a href="https://www.monai.io/" target="_blank" rel="noreferrer"><strong>MONAI</strong><span>医学影像 AI 工具链</span></a>
-              <a href="https://physionet.org/" target="_blank" rel="noreferrer"><strong>PhysioNet</strong><span>开放医学数据资源</span></a>
-            </aside>
-          </div>
-
-          <div id="hotToolCards" class="hot-tool-card-grid" aria-label="每日工具榜单">
-            <article class="hot-tool-card">
-              <span>第 1 名</span>
-              <strong>华佗 GPT</strong>
-              <p>中文医学问答与医疗大模型研究入口，适合作为医学 AI 工具体验区首个示例。</p>
-              <a href="https://www.huatuogpt.cn/" target="_blank" rel="noreferrer">官网链接</a>
-            </article>
-            <article class="hot-tool-card">
-              <span>第 2 名</span>
-              <strong>MedGemma</strong>
-              <p>面向医学文本和多模态任务的开放模型资源，可放入模型池和工具评测清单。</p>
-              <a href="https://github.com/google-health/medgemma" target="_blank" rel="noreferrer">项目链接</a>
-            </article>
-            <article class="hot-tool-card">
-              <span>第 3 名</span>
-              <strong>MONAI</strong>
-              <p>医学影像深度学习框架，适合影像标注、模型训练和临床科研演示。</p>
-              <a href="https://www.monai.io/" target="_blank" rel="noreferrer">官网链接</a>
-            </article>
-          </div>
+            <div class="news-brief-list">
+              <article><span>论文</span><strong>多模态病历结构化评测进入科室协作阶段</strong><p>适合在问答流中继续讨论数据字段、标注一致性和人工复核。</p></article>
+              <article><span>工具</span><strong>医学 RAG 可靠性清单更新</strong><p>关注引用来源、指南版本、适用人群和错误回收机制。</p></article>
+            </div>
+          </section>
+          <section class="daily-tool-brief">
+            <span>每日最热工具</span>
+            <h3>华佗 GPT</h3>
+            <p>中文医学问答与医疗大模型研究入口，适合作为今日工具体验与验证讨论的主帖。</p>
+            <div class="tool-action-row compact-actions">
+              <a class="btn primary" href="https://www.huatuogpt.cn/" target="_blank" rel="noreferrer">官网</a>
+              <a class="btn" href="#postForm" data-quick-post>讨论这个工具</a>
+            </div>
+          </section>
+          <aside class="tool-rank-panel" aria-label="每日工具排名">
+            <div class="rank-panel-head">
+              <span>排名</span>
+              <strong>右侧工具排名</strong>
+            </div>
+            <ol class="tool-rank-list">
+              <li><span>第一名</span><strong>华佗 GPT</strong><a href="https://www.huatuogpt.cn/" target="_blank" rel="noreferrer">官网</a></li>
+              <li><span>第二名</span><strong>MedGemma</strong><a href="https://github.com/google-health/medgemma" target="_blank" rel="noreferrer">项目</a></li>
+              <li><span>第三名</span><strong>MONAI</strong><a href="https://www.monai.io/" target="_blank" rel="noreferrer">官网</a></li>
+            </ol>
+          </aside>
         </div>
       </section>
 
-      <section class="section compact discussion-tag-section community-protected" aria-label="讨论标签筛选">
-        <div class="container">
-          <div class="discussion-tag-head">
-            <div>
-              <p class="eyebrow">Topics</p>
-              <h2>选择讨论标签</h2>
+      <section class="section compact forum-channel-section forum-tag-section community-protected" aria-label="选择讨论标签">
+        <div class="container forum-channel-grid">
+          <section class="forum-channel-panel primary-channel">
+            <div class="channel-head">
+              <p class="eyebrow">选择讨论标签</p>
+              <h2>按科室进入讨论</h2>
+              <p>问答区按专业场景组织。科室入口承接病例、指南、工具、科研和合规讨论。</p>
             </div>
-            <span id="forumTagStatus">All topics</span>
-          </div>
-          <div class="publication-tag-filter" role="tablist" aria-label="按标签筛选讨论">
-            <button class="active" type="button" data-forum-tag="all">All</button>
-            <button type="button" data-forum-tag="medicalLLM">Medical LLMs</button>
-            <button type="button" data-forum-tag="aiHealthcare">AI for Healthcare</button>
-            <button type="button" data-forum-tag="agent">Agent</button>
-            <button type="button" data-forum-tag="clinical">Clinical</button>
-            <button type="button" data-forum-tag="guideline">Guidelines</button>
-            <button type="button" data-forum-tag="tool">Tools</button>
-            <button type="button" data-forum-tag="research">Research</button>
-            <button type="button" data-forum-tag="ethics">Governance</button>
-          </div>
+            <div class="department-strip">
+              <a href="#dept-internal">内科综合</a>
+              <a href="#dept-surgery">外科与围术期</a>
+              <a href="#dept-obgyn">妇产与生殖</a>
+              <a href="#dept-pediatrics">儿科与发育</a>
+              <a href="#dept-emergency">急诊重症</a>
+              <a href="#dept-oncology">肿瘤与血液</a>
+              <a href="#dept-imaging">影像病理</a>
+              <a href="#dept-pharmacy">药学检验</a>
+            </div>
+          </section>
+          <section class="forum-channel-panel">
+            <div class="channel-head compact-head">
+              <p class="eyebrow">内容类型</p>
+              <h2>内容类型</h2>
+            </div>
+            <div class="content-type-grid">
+              <button class="type-chip" type="button" data-forum-filter="clinical"><strong>病例讨论</strong><span>脱敏病例、病程摘要、诊疗路径</span></button>
+              <button class="type-chip" type="button" data-forum-filter="guideline"><strong>指南问答</strong><span>推荐等级、适用人群、证据来源</span></button>
+              <button class="type-chip" type="button" data-forum-filter="tool"><strong>AI 工具经验</strong><span>RAG、结构化、文献总结、质控</span></button>
+              <button class="type-chip" type="button" data-forum-filter="research"><strong>科研设计</strong><span>PICO、统计、检索、论文复现</span></button>
+              <button class="type-chip" type="button" data-forum-filter="ethics"><strong>合规伦理</strong><span>脱敏、授权、审计、责任边界</span></button>
+            </div>
+          </section>
         </div>
       </section>
 
@@ -160,7 +155,7 @@
               <div>
                 <h2>最新讨论</h2>
                 <p>列表按发布时间排序，置顶帖用于规则、模板和重要资料。</p>
-                <span id="publishModeStatus" class="publish-mode-status">本地演示模式</span>
+                <span id="publishModeStatus" class="publish-mode-status">浏览器草稿模式</span>
               </div>
               <div class="forum-tools">
                 <input id="forumSearch" class="forum-search" type="search" placeholder="搜索标题或正文" />
@@ -189,7 +184,7 @@
                   <span class="console-kicker">新讨论</span>
                   <h2>发布讨论</h2>
                 </div>
-                <span class="console-status">本地草稿</span>
+                <span class="console-status">草稿</span>
               </div>
               <div class="publish-mode" aria-label="发布类型">
                 <button class="mode-chip active" type="button">问题</button>
@@ -205,7 +200,7 @@
                 <label>正文<textarea id="postBody" rows="7" maxlength="1200" placeholder="请描述问题背景、已尝试方法、希望获得的帮助。请勿输入患者可识别信息。" required></textarea></label>
                 <div class="privacy-panel">
                   <label class="check-line"><input id="privacyCheck" type="checkbox" required /> 我确认内容不包含患者可识别信息</label>
-                  <span>发布后将出现在当前讨论列表，并保存在本机浏览器。</span>
+                  <span>发布后将出现在当前讨论列表；本页面默认保存在当前浏览器。</span>
                 </div>
                 <button class="publish-btn" type="submit">发布到讨论页</button>
               </form>
@@ -233,17 +228,63 @@
           </aside>
         </div>
       </section>
+
+      <section class="section compact dept-forum-section community-protected" aria-label="按科室进入论坛">
+        <div class="container">
+          <div class="section-head clean">
+            <div>
+              <p class="eyebrow">科室讨论区</p>
+              <h2>按医学科室进入讨论</h2>
+              <p>不同专科的问题、证据来源和 AI 使用边界差异很大，建议从对应科室板块发起讨论。</p>
+            </div>
+          </div>
+          <div class="dept-board-grid">
+            <article id="dept-internal" class="dept-board-card"><span>内科</span><h3>内科综合</h3><p>心血管、呼吸、消化、肾内、内分泌、神经内科等慢病管理、指南问答与病历结构化。</p><div class="dept-card-meta"><span>病例 28</span><span>指南 16</span><span>工具 11</span></div><a href="#postForm">在内科板块发帖</a></article>
+            <article id="dept-surgery" class="dept-board-card"><span>外科</span><h3>外科与围术期</h3><p>普外、骨科、泌尿、神外、胸外、麻醉围术期记录、手术资料脱敏与术后随访讨论。</p><div class="dept-card-meta"><span>病例 21</span><span>资料 14</span><span>随访 8</span></div><a href="#postForm">在外科板块发帖</a></article>
+            <article id="dept-obgyn" class="dept-board-card"><span>OBGYN</span><h3>妇产与生殖</h3><p>产科风险评估、妇科肿瘤、生殖医学、围孕期用药和隐私敏感资料治理。</p><div class="dept-card-meta"><span>病例 18</span><span>用药 9</span><span>隐私 7</span></div><a href="#postForm">在妇产板块发帖</a></article>
+            <article id="dept-pediatrics" class="dept-board-card"><span>儿科</span><h3>儿科与发育</h3><p>儿童常见病、发育评估、儿科用药、家属沟通文本和未成年人资料保护。</p><div class="dept-card-meta"><span>病例 15</span><span>用药 10</span><span>沟通 6</span></div><a href="#postForm">在儿科板块发帖</a></article>
+            <article id="dept-emergency" class="dept-board-card"><span>Emergency & ICU</span><h3>急诊重症</h3><p>急诊分诊、ICU 监测、危重症评分、抢救流程复盘和实时 AI 辅助的安全边界。</p><div class="dept-card-meta"><span>流程 17</span><span>评分 12</span><span>质控 8</span></div><a href="#postForm">在急重症板块发帖</a></article>
+            <article id="dept-oncology" class="dept-board-card"><span>肿瘤</span><h3>肿瘤与血液</h3><p>肿瘤分期、治疗路径、血液病、临床试验入排标准和多学科会诊资料整理。</p><div class="dept-card-meta"><span>MDT 13</span><span>分期 10</span><span>试验 6</span></div><a href="#postForm">在肿瘤板块发帖</a></article>
+            <article id="dept-imaging" class="dept-board-card"><span>影像病理</span><h3>影像病理</h3><p>影像报告、病理摘要、多模态资料标注、诊断一致性与模型验证指标。</p><div class="dept-card-meta"><span>报告 22</span><span>标注 13</span><span>验证 9</span></div><a href="#postForm">在影像病理板块发帖</a></article>
+            <article id="dept-pharmacy" class="dept-board-card"><span>药学检验</span><h3>药学检验</h3><p>合理用药、药物相互作用、检验结果解释、药学审方和实验室质控资料讨论。</p><div class="dept-card-meta"><span>审方 12</span><span>检验 11</span><span>质控 7</span></div><a href="#postForm">在药学检验板块发帖</a></article>
+          </div>
+        </div>
+      </section>
+
     </main>
 
     <footer class="site-footer">
       <div class="container footer-grid">
-        <div><h3>Freedom AI</h3><p>把认证医生和医学生的真实临床与科研问题整理成可检索、可复用的讨论记录。</p></div>
-        <div><h4>学习</h4><a href="learning.html">内容</a></div>
+        <div><h3>Happy medical AI</h3><p>问答区用于沉淀医学 AI 问题、经验和可复查讨论。</p></div>
+        <div><h4>学习</h4><a href="tutorials.html">课程</a></div>
         <div><h4>工具</h4><a href="demos.html">工具</a></div>
-        <div><h4>投稿</h4><a href="contribute.html">投稿</a></div><div><h4>About</h4><a href="about.html">About（collaborator）</a></div>
+        <div><h4>个人</h4><a href="contribute.html">内容提交</a></div>
       </div>
     </footer>
+    <script>
+      (() => {
+        const title = document.querySelector("#postTitle");
+        const body = document.querySelector("#postBody");
+        const form = document.querySelector("#postForm");
+        function focusComposer(mode) {
+          if (!form || !body) return;
+          if (mode === "comment" && !body.value.trim()) {
+            body.value = "评论：\n";
+          }
+          if (mode === "post" && title && !title.value.trim()) {
+            title.placeholder = "例如：这个工具在心内科问答中如何验证可靠性？";
+          }
+          form.scrollIntoView({ behavior: "smooth", block: "start" });
+          window.setTimeout(() => (mode === "post" && title ? title : body).focus(), 220);
+        }
+        document.querySelectorAll("[data-quick-post]").forEach((item) => {
+          item.addEventListener("click", () => focusComposer("post"));
+        });
+        document.querySelectorAll("[data-quick-comment]").forEach((item) => {
+          item.addEventListener("click", () => focusComposer("comment"));
+        });
+      })();
+    </script>
   </body>
 </html>
-
 
