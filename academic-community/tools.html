@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>工具库 | Freedom AI</title>
+    <meta name="description" content="Freedom AI 工具库入口，聚合医学 AI 免费工具、MCP 工具网关、官网链接和资源上架流程。" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/main.js" defer></script>
+  </head>
+  <body class="data-tools-page">
+    <header class="site-header">
+      <nav class="nav" aria-label="主导航">
+        <a class="brand" href="index.html"><span class="brand-mark">F</span><span class="brand-text"><strong>Freedom AI</strong><span>医学 AI 社区</span></span></a>
+        <form class="site-search" role="search" action="search.html" method="get" aria-label="站内搜索">
+          <label class="sr-only" for="siteSearchInput">搜索</label>
+          <input id="siteSearchInput" name="q" type="search" placeholder="搜索" autocomplete="off" />
+          <button type="submit">搜索</button>
+        </form>
+        <div class="nav-links">
+          <a href="index.html">首页</a>
+          <a href="tutorials.html">课程</a>
+          <a href="popular-science.html">科普</a>
+          <a href="network.html">社区</a>
+          <a href="community.html">讨论区</a>
+          <a href="datasets.html">数据集</a>
+          <a class="active" href="tools.html">工具库</a>
+          <a href="crowdsourcing.html">众包平台</a>
+          <a href="benchmark.html">Benchmark</a>
+          <a href="profile.html">用户</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="page-title data-tools-title">
+        <div class="container data-tools-title-grid">
+          <div>
+            <p class="eyebrow">Tool Library</p>
+            <h1>工具库</h1>
+            <p>医学 AI 工具库独立展示 MCP 工具网关、免费工具集合、官网链接和资源上架流程。</p>
+          </div>
+          <aside class="tool-refresh-card" aria-label="热点更新状态">
+            <span>每日推送</span>
+            <strong id="hotToolDate">今日热点</strong>
+            <p>可通过 <code>window.HMAI_TOOL_FEED_URL</code> 接入实时工具榜单；未配置接口时展示本站精选工具。</p>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section compact" id="market-overview">
+        <div class="container market-grid">
+          <article class="market-panel featured">
+            <span class="tag blue">MCP</span>
+            <h2>免费医学 MCP 工具网关</h2>
+            <p>把文献检索、指南问答、病例结构化、脱敏检查、影像报告读取等能力封装为可调用工具，面向用户免费开放。</p>
+            <div class="market-meta"><span>免费使用</span><span>权限控制</span><span>审计日志</span></div>
+          </article>
+          <article class="market-panel">
+            <span class="tag gold">工具</span>
+            <h2>工具集合免费开放</h2>
+            <p>面向医生、学生、医院和研究团队开放工具包，覆盖 RAG、报告总结、评测基准和教学题库。</p>
+            <div class="price-row"><strong>工具不收费</strong><span>开源与自研工具共同开放</span></div>
+          </article>
+          <article class="market-panel">
+            <span class="tag green">数据集</span>
+            <h2>数据集独立入口</h2>
+            <p>开放数据集、脱敏样例、标注集和评测集已拆分到数据集页面。</p>
+            <div class="price-row"><strong>合规共享</strong><a href="datasets.html">查看数据集</a></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section tool-directory-section" id="tool-directory">
+        <div class="container">
+          <div class="section-head clean">
+            <div>
+              <p class="eyebrow">资源目录</p>
+              <h2>医学 AI 工具目录</h2>
+              <p>每个工具条目都保留外部链接、适用场景和合规备注。工具资源明确免费开放，便于用户学习、试用、收藏和共同完善。</p>
+            </div>
+          </div>
+
+          <div class="resource-directory-grid">
+            <article class="resource-panel">
+              <div class="resource-panel-head"><span>免费工具集</span><strong>医学 AI 免费工具集</strong></div>
+              <a href="https://www.huatuogpt.cn/" target="_blank" rel="noreferrer"><strong>华佗 GPT</strong><span>医疗问答、中文医学大模型体验</span></a>
+              <a href="https://www.monai.io/" target="_blank" rel="noreferrer"><strong>MONAI</strong><span>影像模型训练、标注与评估</span></a>
+              <a href="https://www.ncbi.nlm.nih.gov/research/pubtator/" target="_blank" rel="noreferrer"><strong>PubTator</strong><span>生物医学实体识别与文献标注</span></a>
+              <a href="https://github.com/microsoft/BiomedCLIP" target="_blank" rel="noreferrer"><strong>BiomedCLIP</strong><span>生物医学图文检索与多模态评测</span></a>
+            </article>
+
+            <article class="resource-panel">
+              <div class="resource-panel-head"><span>MCP</span><strong>医学 MCP 工具方向</strong></div>
+              <a href="#market-overview"><strong>文献检索工具</strong><span>用于医学文献查询、摘要、证据追踪和引用校验</span></a>
+              <a href="#market-overview"><strong>指南问答工具</strong><span>面向指南切片、来源引用和答案审核</span></a>
+              <a href="#market-overview"><strong>病例结构化工具</strong><span>辅助病历字段抽取、摘要生成和人工复核流程</span></a>
+              <a href="#market-overview"><strong>脱敏检查工具</strong><span>面向文本提交前的身份信息和病案标识检查</span></a>
+            </article>
+
+            <article class="resource-panel">
+              <div class="resource-panel-head"><span>流程</span><strong>上架与推送流程</strong></div>
+              <ol class="resource-flow">
+                <li><strong>采集</strong><span>编辑后台或接口写入工具名称、热度、官网链接和分类。</span></li>
+                <li><strong>审核</strong><span>检查医疗合规、数据授权和适用人群。</span></li>
+                <li><strong>推送</strong><span>每日自动更新热点卡片，同时保留人工置顶工具。</span></li>
+              </ol>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div><h3>Freedom AI</h3><p>工具库强调免费开放、官网链接、权限控制和可追溯使用。</p></div>
+        <div><h4>工具</h4><a href="tools.html">工具库</a><a href="#tool-directory">工具目录</a></div>
+        <div><h4>数据</h4><a href="datasets.html">数据集</a></div>
+        <div><h4>平台</h4><a href="benchmark.html">评测基准</a><a href="crowdsourcing.html">众包平台</a></div>
+        <div><h4>学习</h4><a href="learning.html">教学</a><a href="community.html">讨论区</a></div>
+      </div>
+    </footer>
+  </body>
+</html>

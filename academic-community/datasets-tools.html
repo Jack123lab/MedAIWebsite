@@ -3,212 +3,83 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>数据集和工具集 | Freedom AI</title>
-    <meta name="description" content="Freedom AI 数据集和工具集入口，聚合每日医学 AI 热点工具、官网链接、开放数据集和免费工具资源。" />
+    <title>数据集和工具库 | Freedom AI</title>
+    <meta name="description" content="Freedom AI 数据集和工具库已拆分为两个独立页面，可分别进入数据集目录和医学 AI 工具库。" />
     <link rel="stylesheet" href="assets/css/style.css" />
     <script src="assets/js/config.js"></script>
     <script src="assets/js/main.js" defer></script>
   </head>
   <body class="data-tools-page">
-          <header class="site-header">
-        <nav class="nav" aria-label="主导航">
-          <a class="brand" href="index.html"><span class="brand-mark">F</span><span class="brand-text"><strong>Freedom AI</strong><span>医学 AI 社区</span></span></a>
+    <header class="site-header">
+      <nav class="nav" aria-label="主导航">
+        <a class="brand" href="index.html"><span class="brand-mark">F</span><span class="brand-text"><strong>Freedom AI</strong><span>医学 AI 社区</span></span></a>
         <form class="site-search" role="search" action="search.html" method="get" aria-label="站内搜索">
           <label class="sr-only" for="siteSearchInput">搜索</label>
           <input id="siteSearchInput" name="q" type="search" placeholder="搜索" autocomplete="off" />
           <button type="submit">搜索</button>
         </form>
-          <div class="nav-links">
-            <a href="index.html">首页</a>
-            <a href="learning.html">内容</a>
-            <a href="popular-science.html">科普</a>
-            <a href="network.html">社区</a>
-            <a href="community.html">讨论区</a>
-            <a href="datasets-tools.html#dataset-browser">数据集</a>
-
-            <a href="datasets-tools.html#tool-directory">工具库</a>
-            <a href="benchmark.html">Benchmark</a>
-            <a href="crowdsourcing.html">众包平台</a>
-            <a href="profile.html">用户</a>
-          </div>
-        </nav>
-      </header>
+        <div class="nav-links">
+          <a href="index.html">首页</a>
+          <a href="tutorials.html">课程</a>
+          <a href="popular-science.html">科普</a>
+          <a href="network.html">社区</a>
+          <a href="community.html">讨论区</a>
+          <a href="datasets.html">数据集</a>
+          <a href="tools.html">工具库</a>
+          <a href="crowdsourcing.html">众包平台</a>
+          <a href="benchmark.html">Benchmark</a>
+          <a href="profile.html">用户</a>
+        </div>
+      </nav>
+    </header>
 
     <main>
       <section class="page-title data-tools-title">
         <div class="container data-tools-title-grid">
           <div>
-            <p class="eyebrow">Kaggle-style Datasets</p>
-            <h1>数据集和工具集</h1>
-            <p>围绕医学 AI 的开放数据集、浏览下载、合规共享、任务关联、MCP 工具和开源工具建立统一入口。工具面向用户免费开放，每个工具都保留官网或项目链接。</p>
+            <p class="eyebrow">Resource Gateway</p>
+            <h1>数据集和工具库已拆分</h1>
+            <p>数据集目录和医学 AI 工具库现在各自拥有独立页面，方便用户分别浏览数据资源、工具资源和对应流程。</p>
           </div>
-          <aside class="tool-refresh-card" aria-label="热点更新状态">
-            <span>每日推送</span>
-            <strong id="hotToolDate">今日热点</strong>
-            <p>可通过 <code>window.HMAI_TOOL_FEED_URL</code> 接入实时工具榜单；未配置接口时展示本站精选工具。</p>
+          <aside class="tool-refresh-card" aria-label="拆分提示">
+            <span>Two pages</span>
+            <strong>请选择入口</strong>
+            <p>顶部导航已更新为两个独立入口：数据集与工具库。</p>
           </aside>
         </div>
       </section>
 
-      <section class="section compact dataset-browser-section" id="dataset-browser">
-        <div class="container">
-          <div class="section-head clean">
-            <div>
-              <p class="eyebrow">Dataset Browser</p>
-              <h2>Kaggle 式数据集展示区</h2>
-              <p>数据集以卡片形式展示，支持搜索、标签筛选、浏览下载、市场状态和任务关联，为后续众包任务和 Benchmark 发布做准备。</p>
-            </div>
-            <a class="btn primary" href="#dataset-upload">上传数据集</a>
-          </div>
-
-          <div class="dataset-toolbar" aria-label="数据集筛选">
-            <input id="datasetSearch" class="forum-search" type="search" placeholder="搜索数据集、科室、任务或标签" />
-            <div class="dataset-filter-row" role="group" aria-label="数据集标签筛选">
-              <button class="filter-btn active" type="button" data-dataset-filter="all">全部</button>
-              <button class="filter-btn" type="button" data-dataset-filter="imaging">影像</button>
-              <button class="filter-btn" type="button" data-dataset-filter="ehr">EHR</button>
-              <button class="filter-btn" type="button" data-dataset-filter="nlp">文本</button>
-              <button class="filter-btn" type="button" data-dataset-filter="benchmark">Benchmark</button>
-              <button class="filter-btn" type="button" data-dataset-filter="market">市场</button>
-            </div>
-          </div>
-
-          <div class="dataset-card-grid" aria-live="polite">
-            <article class="dataset-card" data-dataset-card data-tags="ehr nlp benchmark market">
-              <div class="dataset-card-head"><span>EHR / NLP</span><strong>脱敏门诊病历结构化样例集</strong></div>
-              <p>用于病历字段抽取、否定词识别、问题列表生成和人工复核流程设计。</p>
-              <div class="tags"><span class="tag blue">EHR</span><span class="tag green">NLP</span><span class="tag gold">Benchmark Ready</span></div>
-              <dl><dt>规模</dt><dd>3,200 条脱敏样例</dd><dt>关联任务</dt><dd>病例结构化字段校对</dd></dl>
-              <div class="dataset-actions"><a href="#dataset-task-map">关联任务</a><a href="crowdsourcing.html">发布众包</a></div>
-            </article>
-            <article class="dataset-card" data-dataset-card data-tags="imaging benchmark">
-              <div class="dataset-card-head"><span>Imaging</span><strong>胸部 CT 病灶标注数据集</strong></div>
-              <p>面向影像分割、报告一致性检查和外部验证任务，保留标注协议和质控记录。</p>
-              <div class="tags"><span class="tag blue">影像</span><span class="tag green">标注</span><span class="tag gold">外部验证</span></div>
-              <dl><dt>规模</dt><dd>820 例影像样本</dd><dt>关联任务</dt><dd>多中心标注复核</dd></dl>
-              <div class="dataset-actions"><a href="#dataset-task-map">关联任务</a><a href="benchmark.html">进入评测</a></div>
-            </article>
-            <article class="dataset-card" data-dataset-card data-tags="nlp benchmark">
-              <div class="dataset-card-head"><span>Guideline QA</span><strong>医学指南问答评测集</strong></div>
-              <p>覆盖指南推荐、证据等级、适用人群、禁忌和引用来源完整性检查。</p>
-              <div class="tags"><span class="tag blue">问答</span><span class="tag green">指南</span><span class="tag gold">Leaderboard</span></div>
-              <dl><dt>规模</dt><dd>1,500 个问题</dd><dt>关联任务</dt><dd>模型回答人工复核</dd></dl>
-              <div class="dataset-actions"><a href="#dataset-task-map">关联任务</a><a href="benchmark.html">发布 Benchmark</a></div>
-            </article>
-            <article class="dataset-card" data-dataset-card data-tags="market imaging ehr">
-              <div class="dataset-card-head"><span>Market</span><strong>医院脱敏样例数据市场</strong></div>
-              <p>用于机构挂牌脱敏样例、授权说明、质量报告和用途边界，正式共享前进入合规审核。</p>
-              <div class="tags"><span class="tag blue">市场</span><span class="tag green">授权</span><span class="tag gold">合规审核</span></div>
-              <dl><dt>状态</dt><dd>合规审核后上架</dd><dt>关联任务</dt><dd>数据质量报告撰写</dd></dl>
-              <div class="dataset-actions"><a href="#market-overview">市场说明</a><a href="crowdsourcing.html">找数据顾问</a></div>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section compact alt-band" id="dataset-task-map">
-        <div class="container">
-          <div class="section-head clean">
-            <div>
-              <p class="eyebrow">Dataset + Task</p>
-              <h2>数据集与任务关联</h2>
-              <p>每个数据集都可以连接众包任务、Benchmark 和讨论区，形成从数据准备到评测发布的闭环。</p>
-            </div>
-          </div>
-          <div class="dataset-task-grid">
-            <article><span>Dataset</span><strong>数据集卡片</strong><p>授权、脱敏、字段、质量报告、标签、版本和浏览下载入口。</p></article>
-            <article><span>Task</span><strong>众包任务</strong><p>标注、复核、数据治理、模型训练、研究复现和交付验收。</p></article>
-            <article><span>Benchmark</span><strong>评测发布</strong><p>榜单、指标、错误分析、基线模型和可复查结果。</p></article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section compact" id="dataset-upload">
-        <div class="container">
-          <div class="section-head clean">
-            <div>
-              <p class="eyebrow">Upload Roadmap</p>
-              <h2>数据集上传与上架流程</h2>
-              <p>上传能力作为未来扩展入口，正式启用前需要完成授权确认、脱敏证明、数据字典、质量报告和用途边界审核。</p>
-            </div>
-          </div>
-          <div class="dataset-task-grid">
-            <article><span>01</span><strong>提交元数据</strong><p>填写数据名称、来源机构、版本、字段说明、授权范围和联系人。</p></article>
-            <article><span>02</span><strong>合规审核</strong><p>核查隐私、伦理、脱敏、授权、访问控制和最小必要原则。</p></article>
-            <article><span>03</span><strong>关联任务</strong><p>选择是否发布标注、质控、模型训练、研究复现或 Benchmark 任务。</p></article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section compact" id="market-overview">
+      <section class="section compact">
         <div class="container market-grid">
           <article class="market-panel featured">
-            <span class="tag blue">MCP</span>
-            <h2>免费医学 MCP 工具网关</h2>
-            <p>把文献检索、指南问答、病例结构化、脱敏检查、影像报告读取等能力封装为可调用工具，面向用户免费开放。</p>
-            <div class="market-meta"><span>免费使用</span><span>权限控制</span><span>审计日志</span></div>
-          </article>
-          <article class="market-panel">
             <span class="tag green">数据集</span>
-            <h2>开放数据集共享</h2>
-            <p>支持公开数据、脱敏样例、标注集和评测集整理，展示授权、脱敏、用途边界和质量报告。</p>
-            <div class="price-row"><strong>合规共享</strong><span>审核后开放目录</span></div>
+            <h2>数据集页面</h2>
+            <p>展示医学 AI 开放数据集、浏览筛选、任务关联、上传流程和合规共享说明。</p>
+            <div class="price-row"><strong>Dataset Hub</strong><a href="datasets.html">进入数据集</a></div>
           </article>
           <article class="market-panel">
-            <span class="tag gold">工具</span>
-            <h2>工具集合免费开放</h2>
-            <p>面向医生、学生、医院和研究团队开放工具包，覆盖 RAG、报告总结、评测基准和教学题库。</p>
-            <div class="price-row"><strong>工具不收费</strong><span>开源与自研工具共同开放</span></div>
+            <span class="tag gold">工具库</span>
+            <h2>工具库页面</h2>
+            <p>聚合医学 AI 免费工具、MCP 工具方向、官网链接和资源上架推送流程。</p>
+            <div class="price-row"><strong>Tool Library</strong><a href="tools.html">进入工具库</a></div>
           </article>
-        </div>
-      </section>
-
-      <section class="section tool-directory-section" id="tool-directory">
-        <div class="container">
-          <div class="section-head clean">
-            <div>
-              <p class="eyebrow">资源目录</p>
-              <h2>工具集与数据集目录</h2>
-              <p>每个资源条目都保留外部链接、适用场景和合规备注。工具资源明确免费开放，便于用户学习、试用、收藏和共同完善。</p>
-            </div>
-          </div>
-
-          <div class="resource-directory-grid">
-            <article class="resource-panel">
-              <div class="resource-panel-head"><span>免费工具集</span><strong>医学 AI 免费工具集</strong></div>
-              <a href="https://www.huatuogpt.cn/" target="_blank" rel="noreferrer"><strong>华佗 GPT</strong><span>医疗问答、中文医学大模型体验</span></a>
-              <a href="https://www.monai.io/" target="_blank" rel="noreferrer"><strong>MONAI</strong><span>影像模型训练、标注与评估</span></a>
-              <a href="https://www.ncbi.nlm.nih.gov/research/pubtator/" target="_blank" rel="noreferrer"><strong>PubTator</strong><span>生物医学实体识别与文献标注</span></a>
-              <a href="https://github.com/microsoft/BiomedCLIP" target="_blank" rel="noreferrer"><strong>BiomedCLIP</strong><span>生物医学图文检索与多模态评测</span></a>
-            </article>
-
-            <article class="resource-panel">
-              <div class="resource-panel-head"><span>数据集</span><strong>医学数据集入口</strong></div>
-              <a href="https://physionet.org/" target="_blank" rel="noreferrer"><strong>PhysioNet</strong><span>重症、心电、生命体征等开放数据</span></a>
-              <a href="https://www.cancerimagingarchive.net/" target="_blank" rel="noreferrer"><strong>TCIA</strong><span>癌症影像公开数据集</span></a>
-              <a href="https://mimic.mit.edu/" target="_blank" rel="noreferrer"><strong>MIMIC</strong><span>重症监护临床数据库</span></a>
-              <a href="https://huggingface.co/datasets?other=medical" target="_blank" rel="noreferrer"><strong>Hugging Face Medical Datasets</strong><span>医学 NLP 与多模态数据集合</span></a>
-            </article>
-
-            <article class="resource-panel">
-              <div class="resource-panel-head"><span>流程</span><strong>上架与推送流程</strong></div>
-              <ol class="resource-flow">
-                <li><strong>采集</strong><span>编辑后台或接口写入工具名称、热度、官网链接和分类。</span></li>
-                <li><strong>审核</strong><span>检查医疗合规、数据授权和适用人群。</span></li>
-                <li><strong>推送</strong><span>每日自动更新热点卡片，同时保留人工置顶工具。</span></li>
-              </ol>
-            </article>
-          </div>
+          <article class="market-panel">
+            <span class="tag blue">平台</span>
+            <h2>任务与评测</h2>
+            <p>数据集可以继续连接众包任务和 Benchmark，工具也可以进入社区讨论与评测。</p>
+            <div class="price-row"><strong>Workflow</strong><a href="crowdsourcing.html">查看众包平台</a></div>
+          </article>
         </div>
       </section>
     </main>
 
     <footer class="site-footer">
       <div class="container footer-grid">
-        <div><h3>Freedom AI</h3><p>数据和工具入口强调免费开放、授权、脱敏、质量和可追溯。</p></div>
-        <div><h4>热点</h4><a href="community.html#hot-tools">每日工具榜</a><a href="https://www.huatuogpt.cn/" target="_blank" rel="noreferrer">华佗 GPT</a></div>
+        <div><h3>Freedom AI</h3><p>旧入口保留为分流页，帮助用户进入新的数据集和工具库页面。</p></div>
+        <div><h4>资源</h4><a href="datasets.html">数据集</a><a href="tools.html">工具库</a></div>
         <div><h4>平台</h4><a href="benchmark.html">评测基准</a><a href="crowdsourcing.html">众包平台</a></div>
-        <div><h4>学习</h4><a href="learning.html">教学</a><a href="community.html">讨论区</a></div><div><h4>About</h4><a href="about.html">About（collaborator）</a></div>
+        <div><h4>学习</h4><a href="learning.html">教学</a><a href="community.html">讨论区</a></div>
+        <div><h4>About</h4><a href="about.html">About（collaborator）</a></div>
       </div>
     </footer>
   </body>

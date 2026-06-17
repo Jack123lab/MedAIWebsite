@@ -50,13 +50,13 @@ const siteSearchIndex = [
   },
   {
     title: "数据集",
-    url: "datasets-tools.html#dataset-browser",
+    url: "datasets.html",
     category: "数据",
     text: "数据集 dataset 医疗数据 脱敏 标注 下载 市场 状态 benchmark 任务",
   },
   {
     title: "工具库",
-    url: "datasets-tools.html#tool-directory",
+    url: "tools.html",
     category: "工具",
     text: "工具库 医学 AI 工具 MCP 文献 检索 指南 问答 报告 结构化 免费开放",
   },
