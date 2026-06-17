@@ -36,41 +36,84 @@
         <div class="container network-hero-grid network-hero-solo">
           <div class="network-hero-copy">
             <p class="eyebrow">Medical Scholar Network</p>
-            <h1>医学专家、医院与机构的知识网络</h1>
+            <h1>医学专家、医院与机构的<span class="network-title-tail">知识网络</span></h1>
             <p>模仿 AMiner 的学者检索体验，把医生、医院、机构、论文、期刊、奖项和会议放进同一个可搜索的医学 AI 社区入口。</p>
           </div>
         </div>
       </section>
 
-      <section class="section compact">
-        <div class="container network-domain-grid">
-          <a class="network-domain-card" href="#network-results" data-network-filter-trigger="doctor">
-            <span>Doctor</span>
-            <h2>医生</h2>
-            <p>认证医生主页、论文、研究方向、任职、获奖、会议报告和可合作主题。</p>
-            <strong>查看医生</strong>
-          </a>
-          <a class="network-domain-card" href="#network-results" data-network-filter-trigger="hospital">
-            <span>Hospital</span>
-            <h2>医院</h2>
-            <p>附属医院、临床中心、专科能力、数据治理、工具试点和真实世界任务。</p>
-            <strong>查看医院</strong>
-          </a>
-          <a class="network-domain-card" href="#network-results" data-network-filter-trigger="institution">
-            <span>Institution</span>
-            <h2>机构</h2>
-            <p>研究院、实验室、学会、期刊平台、会议组织和跨机构合作网络。</p>
-            <strong>查看机构</strong>
-          </a>
-          <a class="network-result-card person" href="network-yu-guangjun.html">
-            <img src="https://www.nhdisz.cn/upload/main/contentmanage/article/image/2024/03/06/babe3576bc7e4e0aaa0a19c92471a67c.jpg" alt="于广军教授" referrerpolicy="no-referrer" />
-            <div>
-              <span class="tag gold">热门例子</span>
-              <h3>于广军 / Guangjun Yu</h3>
-              <p>医疗大数据、互联网医疗、智慧医院、高危儿管理、多动症医教结合。</p>
-              <div class="network-meta-strip"><span>医生主页</span><span>论文</span><span>可认领</span></div>
+      <section class="section compact network-topic-strip" aria-label="社区入口标签">
+        <div class="container">
+          <div class="network-domain-tags" aria-label="专家网络类型">
+            <a class="network-domain-tag" href="#network-results" data-network-filter-trigger="doctor">
+              <span>Doctor</span>
+              <strong>医生</strong>
+            </a>
+            <a class="network-domain-tag" href="#network-results" data-network-filter-trigger="hospital">
+              <span>Hospital</span>
+              <strong>医院</strong>
+            </a>
+            <a class="network-domain-tag" href="#network-results" data-network-filter-trigger="institution">
+              <span>Institution</span>
+              <strong>机构</strong>
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section compact network-hot-news" aria-label="热门例子滚动栏">
+        <div class="container">
+          <div class="network-hot-news-head">
+            <h2>热门例子</h2>
+          </div>
+          <div class="news-carousel-frame network-news-carousel" data-news-carousel>
+            <button class="news-carousel-arrow prev" type="button" data-news-scroll="prev" aria-label="上一条热门例子">‹</button>
+            <div class="home-row-grid news-row-grid news-scroll-row network-news-row" aria-label="热门例子新闻栏目">
+              <a class="news-source-card network-news-card" href="network-yu-guangjun.html">
+                <img src="https://www.nhdisz.cn/upload/main/contentmanage/article/image/2024/03/06/babe3576bc7e4e0aaa0a19c92471a67c.jpg" alt="于广军教授" referrerpolicy="no-referrer" />
+                <div>
+                  <span>医生主页</span>
+                  <strong>于广军 / Guangjun Yu</strong>
+                  <p>医疗大数据、互联网医疗、智慧医院、高危儿管理、多动症医教结合。</p>
+                  <small>查看人物 →</small>
+                </div>
+              </a>
+              <a class="news-source-card network-news-card" href="network-yu-guangjun.html#affiliation-network">
+                <img src="assets/images/paper-hot-dxy.svg" alt="医院与临床协作热点视觉摘要" />
+                <div>
+                  <span>医院节点</span>
+                  <strong>香港中文大学（深圳）附属第二医院</strong>
+                  <p>从医生主页延展到临床基地、智慧医院、AI 试点和真实世界任务。</p>
+                  <small>查看机构关联 →</small>
+                </div>
+              </a>
+              <a class="news-source-card network-news-card" href="network-yu-guangjun.html#papers">
+                <img src="assets/images/paper-hot-jama.svg" alt="AI 临床决策论文热点视觉摘要" />
+                <div>
+                  <span>论文案例</span>
+                  <strong>AI 临床决策支持系统评价框架</strong>
+                  <p>把论文、期刊、作者和 Benchmark 任务连接起来，形成可追溯的学术证据链。</p>
+                  <small>查看论文 →</small>
+                </div>
+              </a>
+              <a class="news-source-card network-news-card" href="network-yu-guangjun.html#conferences">
+                <img src="assets/images/paper-hot-nature.svg" alt="医学人工智能会议热点视觉摘要" />
+                <div>
+                  <span>会议报告</span>
+                  <strong>基于大数据的医学人工智能研究与应用</strong>
+                  <p>用新闻流方式展示会议、报告、主题和后续共识研究的关联入口。</p>
+                  <small>查看报告 →</small>
+                </div>
+              </a>
             </div>
-          </a>
+            <button class="news-carousel-arrow next" type="button" data-news-scroll="next" aria-label="下一条热门例子">›</button>
+            <div class="news-carousel-dots" aria-label="热门例子位置">
+              <button class="active" type="button" data-news-dot="0" aria-label="第 1 条热门例子" aria-current="true"></button>
+              <button type="button" data-news-dot="1" aria-label="第 2 条热门例子"></button>
+              <button type="button" data-news-dot="2" aria-label="第 3 条热门例子"></button>
+              <button type="button" data-news-dot="3" aria-label="第 4 条热门例子"></button>
+            </div>
+          </div>
         </div>
       </section>
 
