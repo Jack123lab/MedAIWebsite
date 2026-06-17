@@ -9472,6 +9472,23 @@ body.upload-roadmap-open {
   background: #ffffff;
 }
 
+.course-search-bar input {
+  width: 100%;
+  min-height: 42px;
+  border: 1px solid #d8e2e8;
+  border-radius: 8px;
+  padding: 0 14px;
+  color: var(--text);
+  background: #f8fbfc;
+  font: inherit;
+}
+
+.course-search-bar input:focus {
+  outline: 2px solid rgba(24, 95, 121, 0.16);
+  border-color: #185f79;
+  background: #ffffff;
+}
+
 .course-filter-group {
   display: grid;
   grid-template-columns: 86px minmax(0, 1fr);

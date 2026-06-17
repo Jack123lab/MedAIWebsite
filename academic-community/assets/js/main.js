@@ -1338,17 +1338,21 @@ function wireCourseContentFilters() {
   const items = Array.from(document.querySelectorAll("[data-course-item]"));
   if (!root || !items.length) return;
 
-  const state = { dept: "all", type: "all" };
+  const state = { dept: "all", type: "all", query: "" };
+  const searchInput = root.querySelector("[data-course-search]");
   const emptyState = document.querySelector(".course-empty-state");
 
   function renderCourseItems() {
+    const query = state.query.trim().toLowerCase();
     let visibleCount = 0;
     items.forEach((item) => {
       const depts = item.dataset.dept || "";
       const types = item.dataset.type || "";
+      const text = `${item.textContent} ${depts} ${types}`.toLowerCase();
       const matchesDept = state.dept === "all" || depts.split(" ").includes(state.dept);
       const matchesType = state.type === "all" || types.split(" ").includes(state.type);
-      const visible = matchesDept && matchesType;
+      const matchesQuery = !query || text.includes(query);
+      const visible = matchesDept && matchesType && matchesQuery;
       item.hidden = !visible;
       if (visible) visibleCount += 1;
     });
@@ -1365,6 +1369,11 @@ function wireCourseContentFilters() {
         .forEach((item) => item.classList.toggle("active", item === button));
       renderCourseItems();
     });
+  });
+
+  searchInput?.addEventListener("input", (event) => {
+    state.query = event.target.value || "";
+    renderCourseItems();
   });
 
   renderCourseItems();
