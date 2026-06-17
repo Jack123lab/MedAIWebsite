@@ -3,68 +3,6 @@ const postStorageKey = "hmaiForumPosts";
 const reactionStorageKey = "hmaiPostReactions";
 const apiBase = (window.HMAI_API_BASE || "").replace(/\/$/, "");
 
-function injectPageLanguageFilter() {
-  if (document.querySelector(".page-language-filter")) return;
-  const filter = document.createElement("nav");
-  filter.className = "page-language-filter";
-  filter.setAttribute("aria-label", "语言筛选");
-  filter.innerHTML = `
-    <button class="active" type="button" data-language-filter="zh" aria-pressed="true">中文</button>
-    <button type="button" data-language-filter="en" aria-pressed="false">英文</button>
-  `;
-  filter.addEventListener("click", (event) => {
-    const button = event.target.closest("[data-language-filter]");
-    if (!button) return;
-    filter.querySelectorAll("[data-language-filter]").forEach((item) => {
-      const active = item === button;
-      item.classList.toggle("active", active);
-      item.setAttribute("aria-pressed", String(active));
-    });
-    filter.dataset.activeLanguage = button.dataset.languageFilter || "";
-  });
-  document.body.prepend(filter);
-}
-
-function injectLanguageSwitch() {
-  if (document.documentElement.lang !== "zh-CN") return;
-  document.querySelectorAll(".nav-links").forEach((navLinks) => {
-    if (navLinks.querySelector(".language-switch")) return;
-    const currentPage = window.location.pathname.split("/").pop() || "index.html";
-    const switcher = document.createElement("span");
-    switcher.className = "language-switch";
-    switcher.setAttribute("aria-label", "语言切换");
-    switcher.innerHTML = `
-      <span aria-current="page">中文</span>
-      <a href="en/${currentPage}">英文</a>
-    `;
-    navLinks.appendChild(switcher);
-  });
-}
-
-const discussionDepartments = [
-  { href: "community.html#dept-internal", label: "内科综合", note: "心血管、呼吸、消化、肾内、内分泌、神经" },
-  { href: "community.html#dept-surgery", label: "外科与围术期", note: "普外、骨科、泌尿、神外、胸外、麻醉" },
-  { href: "community.html#dept-obgyn", label: "妇产与生殖", note: "妇科、产科、生殖医学、围孕期用药" },
-  { href: "community.html#dept-pediatrics", label: "儿科与发育", note: "儿内、儿外、新生儿、发育评估" },
-  { href: "community.html#dept-emergency", label: "急诊重症", note: "急诊、ICU、胸痛、卒中、创伤" },
-  { href: "community.html#dept-oncology", label: "肿瘤与血液", note: "肿瘤分期、血液病、疗效评估" },
-  { href: "community.html#dept-imaging", label: "影像病理", note: "影像、病理、超声、内镜、多模态标注" },
-  { href: "community.html#dept-pharmacy", label: "药学检验", note: "合理用药、检验解释、审方与质控" },
-];
-
-const discussionSubpages = [
-  { href: "community.html", label: "讨论首页", note: "最新帖子、科室版块、发帖入口" },
-  { href: "demos.html", label: "工具", note: "工具演示、使用经验、评测方法" },
-  { href: "research.html#weekly-updates", label: "论文", note: "精选论文、复现问题、共读讨论" },
-  { href: "research.html#product-watch", label: "产品成果", note: "产品动态、监管信息、落地边界" },
-];
-
-const discussionReferences = [
-  { href: "https://www.nhc.gov.cn/", label: "国家卫健委" },
-  { href: "https://www.aamc.org/cim/explore-options/specialty-profiles", label: "AAMC 专科介绍" },
-  { href: "https://www.nhs.uk/nhs-services/", label: "NHS 医疗服务" },
-];
-
 const categoryLabels = {
   clinical: "临床文本",
   guideline: "指南问答",
@@ -278,84 +216,6 @@ function wireFilters() {
       cards.forEach((card) => {
         card.hidden = filter !== "all" && !card.dataset.category.includes(filter);
       });
-    });
-  });
-}
-
-function buildDiscussionMenu() {
-  const subpages = discussionSubpages.map((item) => `
-    <a class="nav-subpage-link" href="${item.href}">
-      <strong>${item.label}</strong>
-      <span>${item.note}</span>
-    </a>`).join("");
-  const items = discussionDepartments.map((item) => `
-    <a class="nav-dept-item" href="${item.href}">
-      <strong>${item.label}</strong>
-      <span>${item.note}</span>
-    </a>`).join("");
-  const refs = discussionReferences.map((item) => `<a href="${item.href}" target="_blank" rel="noreferrer">${item.label}</a>`).join("");
-  return `
-    <div class="nav-dept-menu" aria-label="医疗社区子页面与科室入口">
-      <div class="nav-subpage-area">
-        <div class="nav-menu-label">子页面</div>
-        <div class="nav-subpage-strip">${subpages}</div>
-      </div>
-      <div class="nav-menu-label">科室讨论</div>
-      <div class="nav-dept-list">${items}</div>
-      <div class="nav-reference">
-        <span>划分参考</span>
-        <div>${refs}</div>
-      </div>
-    </div>`;
-}
-
-function wireDiscussionNav() {
-  document.querySelectorAll(".nav-links").forEach((navLinks) => {
-    const existingDropdown = navLinks.querySelector(".nav-dropdown:has(> a[href='community.html'])");
-    const directLink = navLinks.querySelector(":scope > a[href='community.html']");
-    const target = existingDropdown || directLink;
-    if (!target || target.dataset.discussionReady === "true") return;
-
-    const currentPath = window.location.pathname.split("/").pop() || "index.html";
-    const active = currentPath === "community.html" || target.querySelector?.("a.active") || target.classList?.contains("active");
-    const wrapper = document.createElement("div");
-    wrapper.className = `nav-dropdown nav-fold discussion-fold${active ? " active" : ""}`;
-    wrapper.dataset.discussionReady = "true";
-    wrapper.innerHTML = `
-      <button class="nav-fold-title" type="button" aria-expanded="false" aria-haspopup="true">
-        <span>医疗社区</span>
-        <span class="nav-arrow" aria-hidden="true"></span>
-      </button>
-      ${buildDiscussionMenu()}`;
-
-    target.replaceWith(wrapper);
-
-    const button = wrapper.querySelector(".nav-fold-title");
-    button.addEventListener("click", (event) => {
-      event.stopPropagation();
-      const isOpen = wrapper.classList.toggle("is-open");
-      button.setAttribute("aria-expanded", String(isOpen));
-      document.querySelectorAll(".discussion-fold.is-open").forEach((item) => {
-        if (item === wrapper) return;
-        item.classList.remove("is-open");
-        item.querySelector(".nav-fold-title")?.setAttribute("aria-expanded", "false");
-      });
-    });
-  });
-
-  document.addEventListener("click", (event) => {
-    document.querySelectorAll(".discussion-fold.is-open").forEach((item) => {
-      if (item.contains(event.target)) return;
-      item.classList.remove("is-open");
-      item.querySelector(".nav-fold-title")?.setAttribute("aria-expanded", "false");
-    });
-  });
-
-  document.addEventListener("keydown", (event) => {
-    if (event.key !== "Escape") return;
-    document.querySelectorAll(".discussion-fold.is-open").forEach((item) => {
-      item.classList.remove("is-open");
-      item.querySelector(".nav-fold-title")?.setAttribute("aria-expanded", "false");
     });
   });
 }
@@ -884,9 +744,6 @@ function wireHomeAgent() {
   shell.dataset.agentReady = "true";
 }
 
-injectPageLanguageFilter();
-injectLanguageSwitch();
-wireDiscussionNav();
 wireFilters();
 wireAuthForms();
 renderProfile();

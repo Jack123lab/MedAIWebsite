@@ -195,6 +195,11 @@ a { color: inherit; }
   background: var(--surface-blue);
 }
 
+.page-language-filter,
+.language-switch {
+  display: none !important;
+}
+
 .nav-dropdown {
   position: relative;
   display: inline-flex;
