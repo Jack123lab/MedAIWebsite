@@ -4301,32 +4301,39 @@ body:not(.login-page) {
   min-height: clamp(390px, 58vh, 590px);
   overflow: hidden;
   padding: 28px;
+  background: #071724;
   scroll-snap-align: start;
   isolation: isolate;
+}
+
+.home-news-card > * {
+  position: relative;
+  z-index: 1;
 }
 
 .home-news-card::before {
   position: absolute;
   inset: 0;
-  z-index: -2;
+  z-index: 0;
   content: "";
   background-image:
-    linear-gradient(115deg, rgba(5, 18, 28, 0.92), rgba(5, 18, 28, 0.56) 48%, rgba(5, 18, 28, 0.18)),
+    linear-gradient(115deg, rgba(5, 18, 28, 0.95), rgba(5, 18, 28, 0.62) 48%, rgba(5, 18, 28, 0.18)),
     var(--news-image);
-  background-position: center, right 34px center;
+  background-position: center, right 42px center;
   background-repeat: no-repeat;
-  background-size: cover, min(360px, 58%) auto;
+  background-size: cover, min(420px, 62%) auto;
 }
 
 .home-news-card::after {
   position: absolute;
   inset: auto 24px 22px auto;
-  z-index: -1;
+  z-index: 0;
   width: 180px;
   height: 180px;
   content: "";
   border-radius: 50%;
   background: radial-gradient(circle, rgba(134, 221, 213, 0.22), transparent 70%);
+  pointer-events: none;
 }
 
 .home-news-card:nth-child(1) {
