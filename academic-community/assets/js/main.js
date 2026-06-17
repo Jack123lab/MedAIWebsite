@@ -496,30 +496,6 @@ function wireDoctorWorkspace() {
   });
 }
 
-function injectJournalSources() {
-  if (document.querySelector(".journal-sources")) return;
-  const section = document.createElement("section");
-  section.className = "journal-sources";
-  section.innerHTML = `
-    <div class="journal-source-inner">
-      <div class="journal-source-head">
-        <h2>权威来源</h2>
-        <span>每周期刊观察参考来源</span>
-      </div>
-      <div class="source-logo-row" aria-label="权威医学期刊来源">
-        <a class="source-logo" href="https://www.nejm.org/" target="_blank" rel="noreferrer">NEJM</a>
-        <a class="source-logo" href="https://www.thelancet.com/" target="_blank" rel="noreferrer">The Lancet</a>
-        <a class="source-logo" href="https://jamanetwork.com/" target="_blank" rel="noreferrer">JAMA</a>
-        <a class="source-logo" href="https://www.bmj.com/" target="_blank" rel="noreferrer">BMJ</a>
-        <a class="source-logo" href="https://www.nature.com/nm/" target="_blank" rel="noreferrer">Nature Medicine</a>
-        <a class="source-logo" href="https://www.cell.com/" target="_blank" rel="noreferrer">Cell</a>
-      </div>
-    </div>`;
-  const footer = document.querySelector(".site-footer");
-  if (footer) footer.before(section);
-  else document.body.appendChild(section);
-}
-
 const fallbackHotTools = [
   {
     rank: "第 1 名",
@@ -783,6 +759,5 @@ wireForum();
 wireDoctorWorkspace();
 wireDatasetBrowser();
 wireHotToolFeed();
-injectJournalSources();
 wireHomeNewsScroll();
 wireHomeAgent();
