@@ -8609,6 +8609,15 @@ body.upload-roadmap-open {
   gap: 14px;
 }
 
+.learning-title-compact {
+  padding-top: 24px;
+  padding-bottom: 16px;
+}
+
+.learning-title-compact h1 {
+  margin-bottom: 6px;
+}
+
 .learning-grid {
   grid-template-columns: minmax(0, 1.1fr) repeat(3, minmax(0, 0.9fr));
 }
