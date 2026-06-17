@@ -1719,6 +1719,56 @@ body:not(.login-page) {
   background: linear-gradient(135deg, #185f79, #238276);
 }
 
+.discussion-tag-section {
+  padding-top: 18px;
+}
+
+.discussion-tag-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  align-items: flex-end;
+  margin-bottom: 10px;
+}
+
+.discussion-tag-head h2 {
+  margin: 0;
+  font-size: 22px;
+}
+
+.discussion-tag-head > span {
+  color: var(--muted);
+  font-size: 13px;
+  white-space: nowrap;
+}
+
+.publication-tag-filter {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 14px;
+  align-items: center;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 10px;
+}
+
+.publication-tag-filter button {
+  border: 0;
+  border-radius: 0;
+  background: transparent;
+  color: var(--muted);
+  padding: 4px 0;
+  font: inherit;
+  font-size: 14px;
+  line-height: 1.3;
+  cursor: pointer;
+}
+
+.publication-tag-filter button:hover,
+.publication-tag-filter button.active {
+  color: var(--primary);
+  box-shadow: inset 0 -2px 0 var(--primary);
+}
+
 .forum-toolbar {
   display: flex;
   justify-content: space-between;
@@ -1782,6 +1832,23 @@ body:not(.login-page) {
 
 .post-main p {
   color: var(--muted);
+}
+
+.post-tag-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin: 10px 0 12px;
+}
+
+.post-tag-list span {
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  padding: 3px 8px;
+  color: var(--muted);
+  background: #f8fafb;
+  font-size: 12px;
+  line-height: 1.3;
 }
 
 .post-actions {
@@ -1962,6 +2029,8 @@ body:not(.login-page) {
   .login-hero-panel { min-height: 360px; }
   .forum-toolbar,
   .forum-tools { flex-direction: column; align-items: stretch; }
+  .discussion-tag-head { align-items: flex-start; flex-direction: column; }
+  .discussion-tag-head > span { white-space: normal; }
   .forum-search { min-width: 0; }
   .post-actions { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 }
@@ -7147,6 +7216,22 @@ p,
 .medical-community-page .post-action.favorite.active {
   border-color: #57d8bd;
   background: #e6fbff;
+}
+
+.medical-community-page .publication-tag-filter {
+  border-bottom-color: rgba(0, 127, 145, 0.16);
+}
+
+.medical-community-page .publication-tag-filter button:hover,
+.medical-community-page .publication-tag-filter button.active {
+  color: #007f91;
+  box-shadow: inset 0 -2px 0 #15a985;
+}
+
+.medical-community-page .post-tag-list span {
+  color: #075766;
+  background: #e6fbff;
+  border-color: rgba(0, 127, 145, 0.16);
 }
 
 .live-row span {

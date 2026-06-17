@@ -11,6 +11,19 @@ const categoryLabels = {
   ethics: "合规伦理",
 };
 
+const forumTagLabels = {
+  all: "All",
+  clinical: "Clinical",
+  guideline: "Guidelines",
+  tool: "Tools",
+  research: "Research",
+  ethics: "Governance",
+  medicalLLM: "Medical LLMs",
+  agent: "Agent",
+  aiHealthcare: "AI for Healthcare",
+  multimodal: "Multi-modal",
+};
+
 const siteSearchIndex = [
   {
     title: "首页",
@@ -118,6 +131,7 @@ const seedPosts = [
     likes: 32,
     favorites: 21,
     pinned: true,
+    tags: ["clinical", "medicalLLM", "aiHealthcare", "ethics"],
   },
   {
     id: "seed-guideline-rag",
@@ -132,6 +146,7 @@ const seedPosts = [
     likes: 27,
     favorites: 18,
     pinned: false,
+    tags: ["guideline", "medicalLLM", "aiHealthcare"],
   },
   {
     id: "seed-pico-screening",
@@ -146,6 +161,7 @@ const seedPosts = [
     likes: 19,
     favorites: 15,
     pinned: false,
+    tags: ["research", "agent", "aiHealthcare"],
   },
   {
     id: "seed-tool-eval",
@@ -160,6 +176,7 @@ const seedPosts = [
     likes: 16,
     favorites: 10,
     pinned: false,
+    tags: ["tool", "medicalLLM", "agent"],
   },
   {
     id: "seed-ethics-review",
@@ -174,6 +191,7 @@ const seedPosts = [
     likes: 24,
     favorites: 19,
     pinned: false,
+    tags: ["ethics", "aiHealthcare"],
   },
 ];
 
@@ -387,7 +405,7 @@ function wireForum() {
   if (!postList) return;
   if (document.querySelector("#communityGate") && !hasCommunityCredential()) return;
 
-  const state = { filter: "all", search: "", sort: "new", page: 1, pageSize: 5 };
+  const state = { filter: "all", tag: "all", search: "", sort: "new", page: 1, pageSize: 5 };
   const modeStatus = document.querySelector("#publishModeStatus");
   if (modeStatus) {
     modeStatus.textContent = apiBase ? "在线发布模式" : "本地演示模式";
@@ -418,8 +436,11 @@ function wireForum() {
     const search = state.search.trim().toLowerCase();
     const posts = getForumPosts().filter((post) => {
       const matchesFilter = state.filter === "all" || post.category === state.filter;
-      const text = `${post.title} ${post.body} ${post.dept} ${post.author}`.toLowerCase();
-      return matchesFilter && (!search || text.includes(search));
+      const tags = post.tags || [post.category];
+      const matchesTag = state.tag === "all" || tags.includes(state.tag);
+      const tagText = tags.map((tag) => forumTagLabels[tag] || tag).join(" ");
+      const text = `${post.title} ${post.body} ${post.dept} ${post.author} ${tagText}`.toLowerCase();
+      return matchesFilter && matchesTag && (!search || text.includes(search));
     });
     posts.sort((a, b) => {
       if (a.pinned !== b.pinned) return a.pinned ? -1 : 1;
@@ -435,6 +456,11 @@ function wireForum() {
   function renderPosts() {
     updateCounts();
     const posts = filteredPosts();
+    const tagStatus = document.querySelector("#forumTagStatus");
+    if (tagStatus) {
+      const label = forumTagLabels[state.tag] || state.tag;
+      tagStatus.textContent = state.tag === "all" ? `All topics · ${posts.length} 条讨论` : `${label} · ${posts.length} 条讨论`;
+    }
     const totalPages = Math.max(1, Math.ceil(posts.length / state.pageSize));
     state.page = Math.min(state.page, totalPages);
     const pagePosts = posts.slice((state.page - 1) * state.pageSize, state.page * state.pageSize);
@@ -444,12 +470,14 @@ function wireForum() {
         const reaction = reactions[post.id] || {};
         const liked = Boolean(reaction.liked);
         const favorited = Boolean(reaction.favorited);
+        const postTags = (post.tags || [post.category]).slice(0, 4).map((tag) => `<span>${escapeHtml(forumTagLabels[tag] || tag)}</span>`).join("");
         return `
           <article class="post-card" data-post-id="${post.id}">
             <div class="post-main">
               <div class="post-meta"><span class="tag blue">${categoryLabels[post.category]}</span>${post.pinned ? '<span class="tag gold">置顶</span>' : ""}<span>${post.dept || "未标注领域"}</span></div>
               <h3>${post.title}</h3>
               <p>${post.body}</p>
+              <div class="post-tag-list">${postTags}</div>
               <div class="post-foot"><span>${post.author}</span><span>${new Date(post.createdAt).toLocaleDateString("zh-CN")}</span><span>${post.replies} 回复</span><span>${post.views} 浏览</span></div>
             </div>
             <div class="post-actions" aria-label="帖子操作">
@@ -469,6 +497,14 @@ function wireForum() {
       state.filter = button.dataset.forumFilter;
       state.page = 1;
       document.querySelectorAll("[data-forum-filter]").forEach((item) => item.classList.toggle("active", item === button));
+      renderPosts();
+    });
+  });
+  document.querySelectorAll("[data-forum-tag]").forEach((button) => {
+    button.addEventListener("click", () => {
+      state.tag = button.dataset.forumTag || "all";
+      state.page = 1;
+      document.querySelectorAll("[data-forum-tag]").forEach((item) => item.classList.toggle("active", item === button));
       renderPosts();
     });
   });
@@ -523,6 +559,7 @@ function wireForum() {
       likes: 0,
       favorites: 0,
       pinned: false,
+      tags: [document.querySelector("#postCategory").value, "aiHealthcare"],
     };
     writeJson(postStorageKey, [post, ...readJson(postStorageKey, [])]);
     status.textContent = "已保存到本地演示讨论列表。";
