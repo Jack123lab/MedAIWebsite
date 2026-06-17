@@ -940,6 +940,7 @@ function wireDatasetBrowser() {
   const pageList = document.querySelector("#datasetPageList");
   const prevButton = document.querySelector("[data-dataset-page='prev']");
   const nextButton = document.querySelector("[data-dataset-page='next']");
+  const emptyNote = document.querySelector("#datasetEmptyNote");
   const state = { filter: "all", search: "", page: 1, pageSize: 4 };
 
   function renderDatasetCards() {
@@ -952,14 +953,19 @@ function wireDatasetBrowser() {
       return matchesTag && matchesQuery;
     });
 
-    const totalPages = Math.max(1, Math.ceil(matches.length / state.pageSize));
+    const hasPagination = Boolean(pageList || prevButton || nextButton);
+    const totalPages = hasPagination ? Math.max(1, Math.ceil(matches.length / state.pageSize)) : 1;
     state.page = Math.min(state.page, totalPages);
     const pageStart = (state.page - 1) * state.pageSize;
-    const visible = new Set(matches.slice(pageStart, pageStart + state.pageSize));
+    const visible = new Set(hasPagination ? matches.slice(pageStart, pageStart + state.pageSize) : matches);
 
     cards.forEach((card) => {
       card.hidden = !visible.has(card);
     });
+
+    if (emptyNote) {
+      emptyNote.classList.toggle("is-visible", matches.length === 0);
+    }
 
     if (pageList) {
       pageList.innerHTML = Array.from({ length: totalPages }, (_, index) => {
