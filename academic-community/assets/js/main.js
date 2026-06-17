@@ -25,7 +25,7 @@ const forumTagLabels = {
 };
 
 const siteNavItems = [
-  { href: "index.html", label: "首页", active: ["index.html", ""] },
+  { href: "index.html", label: "首页", active: ["index.html", "gmai-license.html", ""] },
   { href: "learning.html", label: "内容", active: ["learning.html", "tutorials.html", "learning-videos.html", "learning-tutorial.html", "learning-question-bank.html", "learning-standardized-patient.html", "teaching-open-tutorials.html", "teaching-question-bank.html", "teaching-videos.html", "teaching-virtual-patient.html"] },
   { href: "network.html", label: "社区", active: ["network.html", "network-yu-guangjun.html"] },
   { href: "community.html", label: "讨论区", active: ["community.html"] },
@@ -87,6 +87,12 @@ const siteSearchIndex = [
     url: "popular-science.html",
     category: "公众",
     text: "科普 医学 AI 是什么 不能替代医生 医疗数据脱敏 普通人 如何看 AI 回答 风险提示",
+  },
+  {
+    title: "GMAI License",
+    url: "gmai-license.html",
+    category: "协议",
+    text: "GMAI License Generalist Medical AI 协议 医学 AI 许可 模型 数据 工具 评测 隐私 安全 人工监督 合规",
   },
   {
     title: "社区",

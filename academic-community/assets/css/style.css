@@ -5100,7 +5100,7 @@ body.case-publish-open {
 }
 
 .home-footer-grid {
-  grid-template-columns: minmax(180px, 1fr) minmax(280px, 1.4fr) minmax(220px, 1fr);
+  grid-template-columns: minmax(160px, 0.85fr) minmax(260px, 1.35fr) minmax(150px, 0.6fr) minmax(220px, 0.95fr);
   align-items: center;
   gap: 20px;
   padding: 14px 24px;
@@ -5209,9 +5209,97 @@ body.case-publish-open {
   word-break: break-word;
 }
 
+.footer-license a {
+  font-weight: 900;
+}
+
+.license-meta-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.license-meta-row span {
+  border: 1px solid #d6e6e9;
+  border-radius: 8px;
+  padding: 7px 10px;
+  color: #00616d;
+  background: #f6fbfc;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.license-layout {
+  display: grid;
+  grid-template-columns: minmax(240px, 0.75fr) minmax(0, 1.5fr);
+  gap: 16px;
+  align-items: start;
+}
+
+.license-summary-card,
+.license-clause-grid article,
+.license-block {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: #ffffff;
+}
+
+.license-summary-card {
+  position: sticky;
+  top: 92px;
+  display: grid;
+  gap: 12px;
+  padding: 18px;
+}
+
+.license-summary-card span,
+.license-clause-grid span {
+  color: #8a6200;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.license-summary-card h2,
+.license-clause-grid h2,
+.license-block h3 {
+  margin: 0;
+  color: #172738;
+}
+
+.license-summary-card p,
+.license-clause-grid p,
+.license-block p {
+  margin-bottom: 0;
+  color: var(--muted);
+}
+
+.license-clause-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.license-clause-grid article,
+.license-block {
+  display: grid;
+  gap: 8px;
+  padding: 18px;
+}
+
+.license-document {
+  display: grid;
+  gap: 12px;
+}
+
+.license-note {
+  background: #fffdf3;
+  border-color: #eadb9d;
+}
+
 @media (max-width: 760px) {
   .agent-home-main {
-    padding-bottom: 132px;
+    padding-bottom: 198px;
   }
 
   .agent-home-index .home-news-only {
@@ -5313,9 +5401,17 @@ body.case-publish-open {
     text-align: right;
   }
 
-  .footer-institutions {
+  .footer-license {
     grid-column: 1 / -1;
     grid-row: 2;
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .footer-institutions {
+    grid-column: 1 / -1;
+    grid-row: 3;
     justify-content: center;
   }
 
@@ -5353,11 +5449,20 @@ body.case-publish-open {
   .institution-logo em {
     font-size: 12px;
   }
+
+  .license-layout,
+  .license-clause-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .license-summary-card {
+    position: static;
+  }
 }
 
 @media (max-width: 480px) {
   .agent-home-main {
-    padding-bottom: 112px;
+    padding-bottom: 212px;
   }
 
   .institution-logo {
