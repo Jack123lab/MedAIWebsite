@@ -760,6 +760,43 @@ function wireDatasetBrowser() {
   renderDatasetCards();
 }
 
+function wireCourseContentFilters() {
+  const root = document.querySelector("[data-course-filters]");
+  const items = Array.from(document.querySelectorAll("[data-course-item]"));
+  if (!root || !items.length) return;
+
+  const state = { dept: "all", type: "all" };
+  const emptyState = document.querySelector(".course-empty-state");
+
+  function renderCourseItems() {
+    let visibleCount = 0;
+    items.forEach((item) => {
+      const depts = item.dataset.dept || "";
+      const types = item.dataset.type || "";
+      const matchesDept = state.dept === "all" || depts.split(" ").includes(state.dept);
+      const matchesType = state.type === "all" || types.split(" ").includes(state.type);
+      const visible = matchesDept && matchesType;
+      item.hidden = !visible;
+      if (visible) visibleCount += 1;
+    });
+    if (emptyState) emptyState.hidden = visibleCount > 0;
+  }
+
+  root.querySelectorAll("[data-course-filter]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const group = button.dataset.courseFilter;
+      if (!group) return;
+      state[group] = button.dataset.filterValue || "all";
+      root
+        .querySelectorAll(`[data-course-filter="${group}"]`)
+        .forEach((item) => item.classList.toggle("active", item === button));
+      renderCourseItems();
+    });
+  });
+
+  renderCourseItems();
+}
+
 wireFilters();
 wireAuthForms();
 renderProfile();
@@ -768,6 +805,7 @@ wireCommunityGate();
 wireForum();
 wireDoctorWorkspace();
 wireDatasetBrowser();
+wireCourseContentFilters();
 wireHotToolFeed();
 wireHomeNewsScroll();
 wireHomeAgent();
