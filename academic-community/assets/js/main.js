@@ -27,7 +27,6 @@ const forumTagLabels = {
 const siteNavItems = [
   { href: "index.html", label: "首页", active: ["index.html", ""] },
   { href: "learning.html", label: "内容", active: ["learning.html", "tutorials.html", "learning-videos.html", "learning-tutorial.html", "learning-question-bank.html", "learning-standardized-patient.html", "teaching-open-tutorials.html", "teaching-question-bank.html", "teaching-videos.html", "teaching-virtual-patient.html"] },
-  { href: "popular-science.html", label: "科普", active: ["popular-science.html"] },
   { href: "network.html", label: "社区", active: ["network.html", "network-yu-guangjun.html"] },
   { href: "community.html", label: "讨论区", active: ["community.html"] },
   { href: "datasets.html", label: "数据集", active: ["datasets.html"] },
@@ -35,7 +34,6 @@ const siteNavItems = [
   { href: "benchmark.html", label: "Benchmark", active: ["benchmark.html"] },
   { href: "crowdsourcing.html", label: "众包平台", active: ["crowdsourcing.html"] },
   { href: "profile.html", label: "用户", active: ["profile.html", "auth.html", "doctor.html"] },
-  { href: "about.html", label: "About", active: ["about.html"] },
 ];
 
 function normalizeSiteHeader() {
@@ -155,12 +153,6 @@ const siteSearchIndex = [
     url: "profile.html",
     category: "账号",
     text: "用户 个人 登录 认证 资格审核 医师资格 学生证 访问权限",
-  },
-  {
-    title: "About（collaborator）",
-    url: "about.html",
-    category: "项目",
-    text: "About collaborator 项目介绍 共建者 社群 招募 联系 平台结构",
   },
 ];
 
