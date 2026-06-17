@@ -2,31 +2,26 @@ const authKey = "hmaiAuthState";
 const postStorageKey = "hmaiForumPosts";
 const reactionStorageKey = "hmaiPostReactions";
 const apiBase = (window.HMAI_API_BASE || "").replace(/\/$/, "");
-const englishPageFiles = new Set([
-  "index.html",
-  "home.html",
-  "tutorials.html",
-  "community.html",
-  "doctor.html",
-  "research.html",
-  "demos.html",
-  "datasets-tools.html",
-  "contribute.html",
-  "auth.html",
-  "profile.html",
-]);
 
 function injectPageLanguageFilter() {
   if (document.querySelector(".page-language-filter")) return;
-  const currentPage = window.location.pathname.split("/").pop() || "index.html";
-  const englishHref = englishPageFiles.has(currentPage) ? `en/${currentPage}` : "en/index.html";
   const filter = document.createElement("nav");
   filter.className = "page-language-filter";
   filter.setAttribute("aria-label", "语言筛选");
   filter.innerHTML = `
-    <a class="active" href="${currentPage}" aria-current="page">中文</a>
-    <a href="${englishHref}">英文</a>
+    <button class="active" type="button" data-language-filter="zh" aria-pressed="true">中文</button>
+    <button type="button" data-language-filter="en" aria-pressed="false">英文</button>
   `;
+  filter.addEventListener("click", (event) => {
+    const button = event.target.closest("[data-language-filter]");
+    if (!button) return;
+    filter.querySelectorAll("[data-language-filter]").forEach((item) => {
+      const active = item === button;
+      item.classList.toggle("active", active);
+      item.setAttribute("aria-pressed", String(active));
+    });
+    filter.dataset.activeLanguage = button.dataset.languageFilter || "";
+  });
   document.body.prepend(filter);
 }
 

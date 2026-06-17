@@ -292,14 +292,23 @@ function currentChineseHref() {
 
 function injectPageLanguageFilter() {
   if (document.querySelector(".page-language-filter")) return;
-  const file = window.location.pathname.split("/").pop() || "index.html";
   const filter = document.createElement("nav");
   filter.className = "page-language-filter";
   filter.setAttribute("aria-label", "Language filter");
   filter.innerHTML = `
-    <a href="../${file}">Chinese</a>
-    <a class="active" href="${file}" aria-current="page">English</a>
+    <button type="button" data-language-filter="zh" aria-pressed="false">Chinese</button>
+    <button class="active" type="button" data-language-filter="en" aria-pressed="true">English</button>
   `;
+  filter.addEventListener("click", (event) => {
+    const button = event.target.closest("[data-language-filter]");
+    if (!button) return;
+    filter.querySelectorAll("[data-language-filter]").forEach((item) => {
+      const active = item === button;
+      item.classList.toggle("active", active);
+      item.setAttribute("aria-pressed", String(active));
+    });
+    filter.dataset.activeLanguage = button.dataset.languageFilter || "";
+  });
   document.body.prepend(filter);
 }
 
