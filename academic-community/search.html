@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>搜索 | Freedom AI</title>
+    <meta name="description" content="Freedom AI 站内搜索，快速查找内容、科普、社区、数据集、工具库、众包和 Benchmark 入口。" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <script src="assets/js/main.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav" aria-label="主导航">
+        <a class="brand" href="index.html"><span class="brand-mark">F</span><span class="brand-text"><strong>Freedom AI</strong><span>医学 AI 社区</span></span></a>
+        <form class="site-search" role="search" action="search.html" method="get" aria-label="站内搜索">
+          <label class="sr-only" for="siteSearchInput">搜索</label>
+          <input id="siteSearchInput" name="q" type="search" placeholder="搜索" autocomplete="off" />
+          <button type="submit">搜索</button>
+        </form>
+        <div class="nav-links">
+          <a href="index.html">首页</a>
+          <a href="learning.html">内容</a>
+          <a href="popular-science.html">科普</a>
+          <a href="network.html">社区</a>
+          <a href="community.html">讨论区</a>
+          <a href="datasets.html">数据集</a>
+          <a href="tools.html">工具库</a>
+          <a href="benchmark.html">Benchmark</a>
+          <a href="crowdsourcing.html">众包平台</a>
+          <a href="profile.html">用户</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="page-title">
+        <div class="container">
+          <p class="eyebrow">Search</p>
+          <h1>搜索</h1>
+          <p id="siteSearchSummary">输入关键词后查看站内栏目结果。</p>
+        </div>
+      </section>
+      <section class="section compact">
+        <div class="container">
+          <div id="siteSearchResults" class="site-search-results" aria-live="polite"></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer"><div class="container footer-grid"><div><h3>Freedom AI</h3><p>站内搜索帮助快速进入医学 AI 学习、社区、数据和工具模块。</p></div><div><h4>内容</h4><a href="learning.html">内容模块</a><a href="learning-tutorial.html">开放教程</a></div><div><h4>平台</h4><a href="datasets.html">数据集</a><a href="tools.html">工具库</a></div><div><h4>社区</h4><a href="community.html">讨论区</a><a href="network.html">社区</a></div><div><h4>About</h4><a href="about.html">About（collaborator）</a></div></div></footer>
+  </body>
+</html>

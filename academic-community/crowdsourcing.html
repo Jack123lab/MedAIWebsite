@@ -3,24 +3,31 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>众包平台 | Happy medical AI</title>
+    <title>众包平台 | Freedom AI</title>
     <link rel="stylesheet" href="assets/css/style.css" />
     <script src="assets/js/main.js" defer></script>
   </head>
   <body>
           <header class="site-header">
         <nav class="nav" aria-label="主导航">
-          <a class="brand" href="index.html"><span class="brand-mark">H</span><span class="brand-text"><strong>Happy medical AI</strong><span>医学 AI 社区</span></span></a>
+          <a class="brand" href="index.html"><span class="brand-mark">F</span><span class="brand-text"><strong>Freedom AI</strong><span>医学 AI 社区</span></span></a>
+        <form class="site-search" role="search" action="search.html" method="get" aria-label="站内搜索">
+          <label class="sr-only" for="siteSearchInput">搜索</label>
+          <input id="siteSearchInput" name="q" type="search" placeholder="搜索" autocomplete="off" />
+          <button type="submit">搜索</button>
+        </form>
           <div class="nav-links">
             <a href="index.html">首页</a>
-            <a href="tutorials.html">课程</a>
-            <a href="network.html">医疗社区</a>
+            <a href="learning.html">内容</a>
+            <a href="popular-science.html">科普</a>
+            <a href="network.html">社区</a>
             <a href="community.html">讨论区</a>
-            <a href="datasets-tools.html">数据集</a>
-            <a href="crowdsourcing.html">众包平台</a>
+            <a href="datasets.html">数据集</a>
+
+            <a href="tools.html">工具库</a>
             <a href="benchmark.html">Benchmark</a>
-            <a href="profile.html">个人账户</a>
-            <a href="about.html">About（collaborator）</a>
+            <a href="crowdsourcing.html">众包平台</a>
+            <a href="profile.html">用户</a>
           </div>
         </nav>
       </header>
@@ -45,7 +52,7 @@
           </div>
           <div class="task-market-grid">
             <article class="task-card featured"><span>Competition</span><h3>医疗 AI 任务竞赛</h3><p>公开数据集、统一指标、榜单排名、基线模型和最终评审。</p><div class="metric-strip"><span>Leaderboard</span><span>Baseline</span><span>Prize / Credit</span></div><a href="benchmark.html">关联 Benchmark</a></article>
-            <article class="task-card"><span>Data Task</span><h3>数据任务</h3><p>脱敏、标注、质控、字段映射、数据字典和质量报告。</p><a href="datasets-tools.html">关联数据集</a></article>
+            <article class="task-card"><span>Data Task</span><h3>数据任务</h3><p>脱敏、标注、质控、字段映射、数据字典和质量报告。</p><a href="datasets.html">关联数据集</a></article>
             <article class="task-card"><span>Model Task</span><h3>模型任务</h3><p>训练、微调、评测、错误分析、提示词优化和系统接入。</p><a href="benchmark.html">进入评测</a></article>
             <article class="task-card"><span>Research Task</span><h3>研究任务</h3><p>论文复现、统计分析、文献证据整理、PICO 设计和投稿材料。</p><a href="research.html">论文讨论</a></article>
           </div>
@@ -62,13 +69,13 @@
             </div>
           </div>
           <div class="task-feed">
-            <article><div><span class="tag blue">数据任务</span><h3>脱敏病历结构化字段校对</h3><p>发布方：心血管医生团队。交付物：字段一致性报告、错误样例、修订建议。</p></div><aside><strong>关联数据集</strong><a href="datasets-tools.html#dataset-browser">门诊病历样例集</a></aside></article>
+            <article><div><span class="tag blue">数据任务</span><h3>脱敏病历结构化字段校对</h3><p>发布方：心血管医生团队。交付物：字段一致性报告、错误样例、修订建议。</p></div><aside><strong>关联数据集</strong><a href="datasets.html">门诊病历样例集</a></aside></article>
             <article><div><span class="tag green">模型任务</span><h3>指南问答模型人工复核</h3><p>发布方：医学 AI 评测组。交付物：答案评分、引用完整性、风险提示标注。</p></div><aside><strong>关联 Benchmark</strong><a href="benchmark.html">指南 QA 榜单</a></aside></article>
             <article><div><span class="tag gold">研究任务</span><h3>胸部 CT 分割论文复现</h3><p>发布方：影像中心。交付物：复现记录、外部验证指标、失败样例分析。</p></div><aside><strong>关联讨论</strong><a href="community.html">讨论区</a></aside></article>
           </div>
         </div>
       </section>
     </main>
-    <footer class="site-footer"><div class="container footer-grid"><div><h3>Happy medical AI</h3><p>众包平台把真实专家经验转化为可训练、可评测的数据资产。</p></div><div><h4>评测</h4><a href="benchmark.html">Benchmark</a></div><div><h4>数据</h4><a href="datasets-tools.html">数据集和工具集</a></div><div><h4>社区</h4><a href="network.html">社区</a></div></div></footer>
+    <footer class="site-footer"><div class="container footer-grid"><div><h3>Freedom AI</h3><p>众包平台把真实专家经验转化为可训练、可评测的数据资产。</p></div><div><h4>评测</h4><a href="benchmark.html">Benchmark</a></div><div><h4>资源</h4><a href="datasets.html">数据集</a><a href="tools.html">工具库</a></div><div><h4>社区</h4><a href="network.html">社区</a></div><div><h4>About</h4><a href="about.html">About（collaborator）</a></div></div></footer>
   </body>
 </html>

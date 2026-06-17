@@ -11,6 +11,118 @@ const categoryLabels = {
   ethics: "合规伦理",
 };
 
+const forumTagLabels = {
+  all: "All",
+  clinical: "Clinical",
+  guideline: "Guidelines",
+  tool: "Tools",
+  research: "Research",
+  ethics: "Governance",
+  medicalLLM: "Medical LLMs",
+  agent: "Agent",
+  aiHealthcare: "AI for Healthcare",
+  multimodal: "Multi-modal",
+};
+
+const siteSearchIndex = [
+  {
+    title: "首页",
+    url: "index.html",
+    category: "入口",
+    text: "Freedom AI 医学 AI 新闻 Agent 对话框 热点 期刊 临床验证 安全性评估",
+  },
+  {
+    title: "课程",
+    url: "learning.html",
+    category: "学习",
+    text: "课程 教学 视频 Tutorial 题库 标准病人 医学 AI 入门 RAG 多模态 数据治理 临床科研",
+  },
+  {
+    title: "开放教程",
+    url: "tutorials.html",
+    category: "学习",
+    text: "教程 课程 medical ai intro clinical guidelines rag ai for medical research",
+  },
+  {
+    title: "科普",
+    url: "popular-science.html",
+    category: "公众",
+    text: "科普 医学 AI 是什么 不能替代医生 医疗数据脱敏 普通人 如何看 AI 回答 风险提示",
+  },
+  {
+    title: "社区",
+    url: "network.html",
+    category: "社区",
+    text: "社区 医生 医院 研究者 个人主页 论文 获奖 任职 治疗专长 专家网络",
+  },
+  {
+    title: "于广军",
+    url: "network-yu-guangjun.html",
+    category: "医生",
+    text: "于广军 Guangjun Yu 医生 教授 医疗大数据 互联网医疗 智慧医院 高危儿管理 多动症 医教结合 论文 奖项 会议 认领主页",
+  },
+  {
+    title: "讨论区",
+    url: "community.html",
+    category: "社区",
+    text: "讨论区 病例 指南 问答 临床文本 科研设计 工具经验 合规伦理 医生 医学生 认证",
+  },
+  {
+    title: "数据集",
+    url: "datasets.html",
+    category: "数据",
+    text: "数据集 dataset 医疗数据 脱敏 标注 下载 市场 状态 benchmark 任务",
+  },
+  {
+    title: "工具库",
+    url: "tools.html",
+    category: "工具",
+    text: "工具库 医学 AI 工具 MCP 文献 检索 指南 问答 报告 结构化 免费开放",
+  },
+  {
+    title: "工具示例",
+    url: "demos.html",
+    category: "工具",
+    text: "工具 示例 科研选题 文献总结 指南问答 临床记录结构化 prototype demo",
+  },
+  {
+    title: "Benchmark",
+    url: "benchmark.html",
+    category: "评测",
+    text: "benchmark 模型评测 医学问答 虚拟病人 影像报告 工具调用 准确性 鲁棒性 安全边界",
+  },
+  {
+    title: "众包平台",
+    url: "crowdsourcing.html",
+    category: "协作",
+    text: "众包 标注 评测 题库 资料治理 医生 学生 机构 任务 合作",
+  },
+  {
+    title: "成果",
+    url: "research.html",
+    category: "研究",
+    text: "成果 论文讨论 产品发布 研究更新 证据 方法路径 来源 局限性",
+  },
+  {
+    title: "投稿",
+    url: "contribute.html",
+    category: "共建",
+    text: "投稿 提交 教程 病例讨论 工具说明 Prompt 模板 论文复现 科普稿 benchmark",
+  },
+  {
+    title: "个人与认证",
+    url: "profile.html",
+    category: "账号",
+    text: "用户 个人 登录 认证 资格审核 医师资格 学生证 访问权限",
+  },
+  {
+    title: "About（collaborator）",
+    url: "about.html",
+    category: "项目",
+    text: "About collaborator 项目介绍 共建者 社群 招募 联系 平台结构",
+  },
+];
+
 const seedPosts = [
   {
     id: "seed-privacy-note",
@@ -25,6 +137,7 @@ const seedPosts = [
     likes: 32,
     favorites: 21,
     pinned: true,
+    tags: ["clinical", "medicalLLM", "aiHealthcare", "ethics"],
   },
   {
     id: "seed-guideline-rag",
@@ -39,6 +152,7 @@ const seedPosts = [
     likes: 27,
     favorites: 18,
     pinned: false,
+    tags: ["guideline", "medicalLLM", "aiHealthcare"],
   },
   {
     id: "seed-pico-screening",
@@ -53,6 +167,7 @@ const seedPosts = [
     likes: 19,
     favorites: 15,
     pinned: false,
+    tags: ["research", "agent", "aiHealthcare"],
   },
   {
     id: "seed-tool-eval",
@@ -67,6 +182,7 @@ const seedPosts = [
     likes: 16,
     favorites: 10,
     pinned: false,
+    tags: ["tool", "medicalLLM", "agent"],
   },
   {
     id: "seed-ethics-review",
@@ -81,6 +197,7 @@ const seedPosts = [
     likes: 24,
     favorites: 19,
     pinned: false,
+    tags: ["ethics", "aiHealthcare"],
   },
 ];
 
@@ -151,7 +268,7 @@ function updateAuthCard() {
   card.innerHTML = `
     <span>${statusText}</span>
     <strong>${state.name || "访客"}</strong>
-    <p>${state.roleLabel || "完成身份信息后，可进入医疗社区、投稿和医生工作区演示。"}</p>
+    <p>${state.roleLabel || "完成身份信息后，可进入社区、投稿和医生工作区演示。"}</p>
   `;
 }
 
@@ -263,7 +380,7 @@ function wireAuthForms() {
       const role = document.querySelector("#credentialRole").value || "doctor";
       const proofType = role === "doctor" ? "license" : "student_card";
       setAuthState({ status: "verified", role, proofType, roleLabel: roleLabels[role] });
-      document.querySelector("#reviewStatus").textContent = "演示状态已设为已认证，可进入医疗社区。";
+      document.querySelector("#reviewStatus").textContent = "演示状态已设为已认证，可进入社区。";
       updateAuthCard();
     });
   }
@@ -284,14 +401,9 @@ function wireCommunityGate() {
   const gate = document.querySelector("#communityGate");
   if (!gate) return;
 
-  const auth = getAuthState();
-  const unlocked = hasCommunityCredential(auth);
-  document.body.classList.toggle("community-locked", !unlocked);
-  document.body.classList.toggle("community-unlocked", unlocked);
-
-  gate.innerHTML = unlocked
-    ? `<div class="container"><div class="community-gate-card verified"><span class="tag green">已通过社区认证</span><h2>${auth.name || "认证用户"}，欢迎进入医疗社区</h2><p>${communityCredentialText(auth)}。请继续使用脱敏资料、明确证据来源，并在发布前完成医学人工复核。</p><div class="community-credential-strip"><span>${auth.roleLabel || "认证成员"}</span><span>${auth.institution || "机构待补充"}</span><span>${auth.specialty || "专业待补充"}</span></div></div></div>`
-    : `<div class="container"><div class="community-gate-card locked"><span class="tag red">需要医生或医学生认证</span><h2>医疗社区仅对认证成员开放</h2><p>请先完成登录并提交医师资格/执业证明，或学生证/在读证明。审核通过后，才能浏览帖子列表、进入科室版块并发布或编辑讨论内容。</p><div class="button-row"><a class="btn primary" href="auth.html">前往登录/认证</a><a class="btn" href="home.html">返回首页</a></div></div></div>`;
+  document.body.classList.remove("community-locked");
+  document.body.classList.add("community-unlocked");
+  gate.remove();
 }
 
 function wireForum() {
@@ -299,7 +411,7 @@ function wireForum() {
   if (!postList) return;
   if (document.querySelector("#communityGate") && !hasCommunityCredential()) return;
 
-  const state = { filter: "all", search: "", sort: "new", page: 1, pageSize: 5 };
+  const state = { filter: "all", tag: "all", search: "", sort: "new", page: 1, pageSize: 5 };
   const modeStatus = document.querySelector("#publishModeStatus");
   if (modeStatus) {
     modeStatus.textContent = apiBase ? "在线发布模式" : "本地演示模式";
@@ -330,8 +442,11 @@ function wireForum() {
     const search = state.search.trim().toLowerCase();
     const posts = getForumPosts().filter((post) => {
       const matchesFilter = state.filter === "all" || post.category === state.filter;
-      const text = `${post.title} ${post.body} ${post.dept} ${post.author}`.toLowerCase();
-      return matchesFilter && (!search || text.includes(search));
+      const tags = post.tags || [post.category];
+      const matchesTag = state.tag === "all" || tags.includes(state.tag);
+      const tagText = tags.map((tag) => forumTagLabels[tag] || tag).join(" ");
+      const text = `${post.title} ${post.body} ${post.dept} ${post.author} ${tagText}`.toLowerCase();
+      return matchesFilter && matchesTag && (!search || text.includes(search));
     });
     posts.sort((a, b) => {
       if (a.pinned !== b.pinned) return a.pinned ? -1 : 1;
@@ -347,6 +462,11 @@ function wireForum() {
   function renderPosts() {
     updateCounts();
     const posts = filteredPosts();
+    const tagStatus = document.querySelector("#forumTagStatus");
+    if (tagStatus) {
+      const label = forumTagLabels[state.tag] || state.tag;
+      tagStatus.textContent = state.tag === "all" ? `All topics · ${posts.length} 条讨论` : `${label} · ${posts.length} 条讨论`;
+    }
     const totalPages = Math.max(1, Math.ceil(posts.length / state.pageSize));
     state.page = Math.min(state.page, totalPages);
     const pagePosts = posts.slice((state.page - 1) * state.pageSize, state.page * state.pageSize);
@@ -356,12 +476,14 @@ function wireForum() {
         const reaction = reactions[post.id] || {};
         const liked = Boolean(reaction.liked);
         const favorited = Boolean(reaction.favorited);
+        const postTags = (post.tags || [post.category]).slice(0, 4).map((tag) => `<span>${escapeHtml(forumTagLabels[tag] || tag)}</span>`).join("");
         return `
           <article class="post-card" data-post-id="${post.id}">
             <div class="post-main">
               <div class="post-meta"><span class="tag blue">${categoryLabels[post.category]}</span>${post.pinned ? '<span class="tag gold">置顶</span>' : ""}<span>${post.dept || "未标注领域"}</span></div>
               <h3>${post.title}</h3>
               <p>${post.body}</p>
+              <div class="post-tag-list">${postTags}</div>
               <div class="post-foot"><span>${post.author}</span><span>${new Date(post.createdAt).toLocaleDateString("zh-CN")}</span><span>${post.replies} 回复</span><span>${post.views} 浏览</span></div>
             </div>
             <div class="post-actions" aria-label="帖子操作">
@@ -381,6 +503,14 @@ function wireForum() {
       state.filter = button.dataset.forumFilter;
       state.page = 1;
       document.querySelectorAll("[data-forum-filter]").forEach((item) => item.classList.toggle("active", item === button));
+      renderPosts();
+    });
+  });
+  document.querySelectorAll("[data-forum-tag]").forEach((button) => {
+    button.addEventListener("click", () => {
+      state.tag = button.dataset.forumTag || "all";
+      state.page = 1;
+      document.querySelectorAll("[data-forum-tag]").forEach((item) => item.classList.toggle("active", item === button));
       renderPosts();
     });
   });
@@ -413,7 +543,7 @@ function wireForum() {
     event.preventDefault();
     const status = document.querySelector("#postStatus");
     if (!hasCommunityCredential()) {
-      status.textContent = "请先通过医生或医学生认证，再发布医疗社区讨论。";
+      status.textContent = "请先通过医生或医学生认证，再发布社区讨论。";
       return;
     }
     const body = document.querySelector("#postBody").value.trim();
@@ -435,6 +565,7 @@ function wireForum() {
       likes: 0,
       favorites: 0,
       pinned: false,
+      tags: [document.querySelector("#postCategory").value, "aiHealthcare"],
     };
     writeJson(postStorageKey, [post, ...readJson(postStorageKey, [])]);
     status.textContent = "已保存到本地演示讨论列表。";
@@ -501,30 +632,6 @@ function wireDoctorWorkspace() {
   });
 }
 
-function injectJournalSources() {
-  if (document.querySelector(".journal-sources")) return;
-  const section = document.createElement("section");
-  section.className = "journal-sources";
-  section.innerHTML = `
-    <div class="journal-source-inner">
-      <div class="journal-source-head">
-        <h2>权威来源</h2>
-        <span>每周期刊观察参考来源</span>
-      </div>
-      <div class="source-logo-row" aria-label="权威医学期刊来源">
-        <a class="source-logo" href="https://www.nejm.org/" target="_blank" rel="noreferrer">NEJM</a>
-        <a class="source-logo" href="https://www.thelancet.com/" target="_blank" rel="noreferrer">The Lancet</a>
-        <a class="source-logo" href="https://jamanetwork.com/" target="_blank" rel="noreferrer">JAMA</a>
-        <a class="source-logo" href="https://www.bmj.com/" target="_blank" rel="noreferrer">BMJ</a>
-        <a class="source-logo" href="https://www.nature.com/nm/" target="_blank" rel="noreferrer">Nature Medicine</a>
-        <a class="source-logo" href="https://www.cell.com/" target="_blank" rel="noreferrer">Cell</a>
-      </div>
-    </div>`;
-  const footer = document.querySelector(".site-footer");
-  if (footer) footer.before(section);
-  else document.body.appendChild(section);
-}
-
 const fallbackHotTools = [
   {
     rank: "第 1 名",
@@ -556,6 +663,71 @@ function escapeHtml(value) {
     .replace(/>/g, "&gt;")
     .replace(/"/g, "&quot;")
     .replace(/'/g, "&#39;");
+}
+
+function getSiteSearchQuery() {
+  return (new URLSearchParams(window.location.search).get("q") || "").trim();
+}
+
+function wireSiteSearchForms() {
+  const query = getSiteSearchQuery();
+  document.querySelectorAll(".site-search").forEach((form) => {
+    const input = form.querySelector('input[name="q"]');
+    if (input && query) input.value = query;
+    form.addEventListener("submit", (event) => {
+      const value = input?.value.trim() || "";
+      if (value) return;
+      event.preventDefault();
+      input?.focus();
+    });
+  });
+}
+
+function getSiteSearchScore(entry, terms) {
+  const title = entry.title.toLowerCase();
+  const category = entry.category.toLowerCase();
+  const text = `${entry.title} ${entry.category} ${entry.text}`.toLowerCase();
+  return terms.reduce((score, term) => {
+    if (!term) return score;
+    if (title.includes(term)) return score + 8;
+    if (category.includes(term)) return score + 5;
+    if (text.includes(term)) return score + 2;
+    return score;
+  }, 0);
+}
+
+function renderSiteSearchResults() {
+  const resultsRoot = document.querySelector("#siteSearchResults");
+  if (!resultsRoot) return;
+
+  const summary = document.querySelector("#siteSearchSummary");
+  const query = getSiteSearchQuery();
+  if (!query) {
+    if (summary) summary.textContent = "输入关键词后查看站内栏目结果。";
+    resultsRoot.innerHTML = '<div class="empty-state">请输入搜索关键词。</div>';
+    return;
+  }
+
+  const terms = query.toLowerCase().split(/\s+/).filter(Boolean);
+  const results = siteSearchIndex
+    .map((entry) => ({ ...entry, score: getSiteSearchScore(entry, terms) }))
+    .filter((entry) => entry.score > 0)
+    .sort((a, b) => b.score - a.score || a.title.localeCompare(b.title, "zh-CN"));
+
+  if (summary) {
+    summary.textContent = results.length
+      ? `找到 ${results.length} 个相关入口。`
+      : "没有找到匹配入口，可以换一个关键词。";
+  }
+
+  resultsRoot.innerHTML = results.length
+    ? results.map((entry) => `
+      <a class="site-search-result" href="${entry.url}">
+        <span>${escapeHtml(entry.category)}</span>
+        <strong>${escapeHtml(entry.title)}</strong>
+        <p>${escapeHtml(entry.text)}</p>
+      </a>`).join("")
+    : '<div class="empty-state">没有找到匹配入口。</div>';
 }
 
 function renderHotTools(tools) {
@@ -679,6 +851,7 @@ function wireHomeAgent() {
   const form = shell.querySelector("#agentQuestionForm");
   const input = shell.querySelector("#agentQuestion");
   const output = shell.querySelector("#agentAnswer");
+  const newsSection = document.querySelector("#hot-news");
 
   const setMenuOpen = (open) => {
     if (!trigger || !menu) return;
@@ -696,12 +869,7 @@ function wireHomeAgent() {
       item.classList.toggle("active", active);
       item.setAttribute("aria-selected", String(active));
     });
-    if (output) {
-      output.innerHTML = `
-        <span>${escapeHtml(model)}</span>
-        <strong>已选择 ${escapeHtml(model)}</strong>
-        <p>可以继续输入医学 AI 学习、文献整理、病例结构化、工具调用或科研设计相关问题。</p>`;
-    }
+    if (output?.dataset.submitted === "true") output.querySelector("span").textContent = model;
   };
 
   trigger?.addEventListener("click", (event) => {
@@ -729,16 +897,30 @@ function wireHomeAgent() {
 
   if (modelInput?.value) selectModel(modelInput.value);
 
+  input?.addEventListener("keydown", (event) => {
+    if (event.key !== "Enter" || event.shiftKey || event.isComposing) return;
+    event.preventDefault();
+    form?.requestSubmit();
+  });
+
+  input?.addEventListener("input", () => {
+    input.style.height = "auto";
+    input.style.height = `${Math.min(input.scrollHeight, 140)}px`;
+  });
+
   form?.addEventListener("submit", (event) => {
     event.preventDefault();
     const model = modelInput?.value || "GPT-5.5";
     const question = input?.value.trim() || "请总结今天医学 AI 领域值得关注的方向。";
-      if (output) {
-        output.innerHTML = `
+    newsSection?.classList.add("is-hidden");
+    if (output) {
+      output.hidden = false;
+      output.dataset.submitted = "true";
+      output.innerHTML = `
         <span>${escapeHtml(model)}</span>
         <strong>${escapeHtml(question)}</strong>
-        <p>这是静态演示入口。正式接入后，这里会调用所选模型返回医学 AI 学习、检索、病例结构化或科研设计相关回答，并保留人工审核提示。</p>`;
-      }
+        <p>已进入静态演示。正式接入后会在这里返回回答。</p>`;
+    }
   });
 
   shell.dataset.agentReady = "true";
@@ -820,7 +1002,93 @@ function wireDatasetBrowser() {
   renderDatasetCards();
 }
 
+function wireCourseContentFilters() {
+  const root = document.querySelector("[data-course-filters]");
+  const items = Array.from(document.querySelectorAll("[data-course-item]"));
+  if (!root || !items.length) return;
+
+  const state = { dept: "all", type: "all" };
+  const emptyState = document.querySelector(".course-empty-state");
+
+  function renderCourseItems() {
+    let visibleCount = 0;
+    items.forEach((item) => {
+      const depts = item.dataset.dept || "";
+      const types = item.dataset.type || "";
+      const matchesDept = state.dept === "all" || depts.split(" ").includes(state.dept);
+      const matchesType = state.type === "all" || types.split(" ").includes(state.type);
+      const visible = matchesDept && matchesType;
+      item.hidden = !visible;
+      if (visible) visibleCount += 1;
+    });
+    if (emptyState) emptyState.hidden = visibleCount > 0;
+  }
+
+  root.querySelectorAll("[data-course-filter]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const group = button.dataset.courseFilter;
+      if (!group) return;
+      state[group] = button.dataset.filterValue || "all";
+      root
+        .querySelectorAll(`[data-course-filter="${group}"]`)
+        .forEach((item) => item.classList.toggle("active", item === button));
+      renderCourseItems();
+    });
+  });
+
+  renderCourseItems();
+}
+
+function wireNetworkSearch() {
+  const root = document.querySelector("[data-network-search-root]");
+  const results = Array.from(document.querySelectorAll("[data-network-result]"));
+  const searchInput = document.querySelector("[data-network-search]");
+  const filterButtons = Array.from(document.querySelectorAll("[data-network-filter]"));
+  const emptyState = document.querySelector(".network-empty-state");
+  if (!root || !results.length) return;
+
+  const state = { filter: "all", search: "" };
+
+  function renderNetworkResults() {
+    const query = state.search.trim().toLowerCase();
+    let visibleCount = 0;
+    results.forEach((item) => {
+      const type = item.dataset.type || "";
+      const haystack = `${item.textContent} ${item.dataset.keywords || ""}`.toLowerCase();
+      const matchesType = state.filter === "all" || type === state.filter;
+      const matchesQuery = !query || haystack.includes(query);
+      const visible = matchesType && matchesQuery;
+      item.hidden = !visible;
+      if (visible) visibleCount += 1;
+    });
+    if (emptyState) emptyState.hidden = visibleCount > 0;
+  }
+
+  function setNetworkFilter(filter) {
+    state.filter = filter || "all";
+    filterButtons.forEach((button) => button.classList.toggle("active", button.dataset.networkFilter === state.filter));
+    renderNetworkResults();
+  }
+
+  filterButtons.forEach((button) => {
+    button.addEventListener("click", () => setNetworkFilter(button.dataset.networkFilter || "all"));
+  });
+
+  document.querySelectorAll("[data-network-filter-trigger]").forEach((trigger) => {
+    trigger.addEventListener("click", () => setNetworkFilter(trigger.dataset.networkFilterTrigger || "all"));
+  });
+
+  searchInput?.addEventListener("input", (event) => {
+    state.search = event.target.value;
+    renderNetworkResults();
+  });
+
+  renderNetworkResults();
+}
+
 wireFilters();
+wireSiteSearchForms();
+renderSiteSearchResults();
 wireAuthForms();
 renderProfile();
 renderLikedPosts();
@@ -828,7 +1096,8 @@ wireCommunityGate();
 wireForum();
 wireDoctorWorkspace();
 wireDatasetBrowser();
+wireCourseContentFilters();
+wireNetworkSearch();
 wireHotToolFeed();
-injectJournalSources();
 wireHomeNewsScroll();
 wireHomeAgent();

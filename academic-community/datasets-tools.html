@@ -3,563 +3,83 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>数据集和工具集 | Happy medical AI</title>
-    <meta name="description" content="Happy medical AI 数据集和工具集入口，聚合每日医学 AI 热点工具、官网链接、开放数据集和免费工具资源。" />
+    <title>数据集和工具库 | Freedom AI</title>
+    <meta name="description" content="Freedom AI 数据集和工具库已拆分为两个独立页面，可分别进入数据集目录和医学 AI 工具库。" />
     <link rel="stylesheet" href="assets/css/style.css" />
-    <style>
-      .data-tools-page .dataset-browser-section {
-        background: #f7faf8;
-      }
-
-      .data-tools-page .dataset-browser-panel {
-        display: grid;
-        gap: 14px;
-      }
-
-      .data-tools-page .dataset-browser-intro {
-        display: flex;
-        align-items: flex-start;
-        justify-content: space-between;
-        gap: 18px;
-        padding-bottom: 8px;
-      }
-
-      .data-tools-page .dataset-browser-intro h2 {
-        max-width: 720px;
-        margin: 4px 0 8px;
-        color: #172738;
-      }
-
-      .data-tools-page .dataset-browser-intro p {
-        max-width: 760px;
-        margin: 0;
-        color: var(--muted);
-      }
-
-      .data-tools-page .dataset-add-btn {
-        min-height: 42px;
-        white-space: nowrap;
-      }
-
-      .data-tools-page .dataset-add-btn span {
-        font-size: 18px;
-        font-weight: 900;
-        line-height: 1;
-      }
-
-      .data-tools-page .dataset-search-row {
-        display: grid;
-      }
-
-      .data-tools-page .dataset-search-row .forum-search {
-        width: 100%;
-        min-height: 50px;
-        border-color: #d9e4df;
-        background: #ffffff;
-        box-shadow: 0 1px 0 rgba(23, 39, 56, 0.04);
-      }
-
-      .data-tools-page .dataset-domain-tags {
-        padding-bottom: 2px;
-      }
-
-      .data-tools-page .dataset-domain-tags .filter-btn {
-        min-height: 34px;
-        border-radius: 999px;
-        border-color: #d9e4df;
-        background: #ffffff;
-        color: #405466;
-      }
-
-      .data-tools-page .dataset-domain-tags .filter-btn.active,
-      .data-tools-page .dataset-domain-tags .filter-btn:hover {
-        border-color: #0f8a6a;
-        background: #e8f7f1;
-        color: #0f6b53;
-      }
-
-      .data-tools-page .dataset-trending-head {
-        display: flex;
-        align-items: baseline;
-        justify-content: space-between;
-        gap: 12px;
-        padding-top: 4px;
-      }
-
-      .data-tools-page .dataset-trending-head h3 {
-        margin: 0;
-        color: #172738;
-        font-size: 18px;
-      }
-
-      .data-tools-page .dataset-trending-head span {
-        color: var(--muted);
-        font-size: 13px;
-        font-weight: 700;
-      }
-
-      .data-tools-page .dataset-card-grid.dataset-trending-list {
-        grid-template-columns: minmax(0, 1fr);
-        gap: 10px;
-      }
-
-      .data-tools-page .dataset-trending-card.dataset-card {
-        display: grid;
-        grid-template-columns: 56px minmax(0, 1fr) minmax(146px, auto);
-        gap: 14px;
-        align-items: center;
-        min-height: 112px;
-        padding: 14px 16px;
-        border-color: #dde6e2;
-        background: #ffffff;
-      }
-
-      .data-tools-page .dataset-trending-card[hidden] {
-        display: none !important;
-      }
-
-      .data-tools-page .dataset-thumb {
-        width: 48px;
-        height: 48px;
-        display: grid;
-        place-items: center;
-        border: 1px solid #d9e4df;
-        border-radius: 8px;
-        background: #f2f6f4;
-        color: #0f6b53;
-        font-size: 13px;
-        font-weight: 900;
-      }
-
-      .data-tools-page .dataset-card-main {
-        min-width: 0;
-        display: grid;
-        gap: 7px;
-      }
-
-      .data-tools-page .dataset-trending-card .dataset-card-head {
-        gap: 3px;
-      }
-
-      .data-tools-page .dataset-trending-card .dataset-card-head span {
-        color: #667789;
-        font-size: 12px;
-      }
-
-      .data-tools-page .dataset-trending-card .dataset-card-head strong {
-        color: #172738;
-        font-size: 16px;
-        line-height: 1.35;
-      }
-
-      .data-tools-page .dataset-trending-card p {
-        margin: 0;
-        color: var(--muted);
-        font-size: 14px;
-      }
-
-      .data-tools-page .dataset-meta-row {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 7px;
-      }
-
-      .data-tools-page .dataset-meta-row span {
-        border: 1px solid #e4ebe8;
-        border-radius: 999px;
-        padding: 4px 8px;
-        background: #f8faf9;
-        color: #405466;
-        font-size: 12px;
-        font-weight: 750;
-      }
-
-      .data-tools-page .dataset-card-stats {
-        display: grid;
-        gap: 6px;
-        justify-items: end;
-        color: var(--muted);
-        font-size: 12px;
-        text-align: right;
-      }
-
-      .data-tools-page .dataset-card-stats strong {
-        color: #172738;
-        font-size: 15px;
-      }
-
-      .data-tools-page .dataset-card-stats a {
-        color: var(--primary);
-        font-weight: 900;
-        text-decoration: none;
-      }
-
-      .data-tools-page .dataset-pagination {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        gap: 8px;
-        padding-top: 4px;
-      }
-
-      .data-tools-page .dataset-page-list {
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 8px;
-      }
-
-      .data-tools-page .dataset-pagination button {
-        min-height: 34px;
-        border-radius: 999px;
-      }
-
-      .data-tools-page .dataset-pagination button:disabled {
-        cursor: not-allowed;
-        opacity: 0.45;
-      }
-
-      @media (max-width: 760px) {
-        .data-tools-page .dataset-browser-intro {
-          display: grid;
-        }
-
-        .data-tools-page .dataset-add-btn {
-          justify-self: start;
-        }
-
-        .data-tools-page .dataset-trending-card.dataset-card {
-          grid-template-columns: 48px minmax(0, 1fr);
-          align-items: start;
-        }
-
-        .data-tools-page .dataset-card-stats {
-          grid-column: 1 / -1;
-          display: flex;
-          flex-wrap: wrap;
-          justify-content: flex-start;
-          justify-items: start;
-          text-align: left;
-        }
-      }
-
-      @media (max-width: 520px) {
-        .data-tools-page .dataset-trending-head {
-          display: grid;
-        }
-
-        .data-tools-page .dataset-pagination {
-          align-items: stretch;
-          display: grid;
-          grid-template-columns: 1fr;
-        }
-
-        .data-tools-page .dataset-trending-card.dataset-card {
-          grid-template-columns: minmax(0, 1fr);
-        }
-
-        .data-tools-page .dataset-thumb {
-          width: 44px;
-          height: 44px;
-        }
-      }
-    </style>
     <script src="assets/js/config.js"></script>
     <script src="assets/js/main.js" defer></script>
   </head>
   <body class="data-tools-page">
-          <header class="site-header">
-        <nav class="nav" aria-label="主导航">
-          <a class="brand" href="index.html"><span class="brand-mark">H</span><span class="brand-text"><strong>Happy medical AI</strong><span>医学 AI 社区</span></span></a>
-          <div class="nav-links">
-            <a href="index.html">首页</a>
-            <a href="tutorials.html">课程</a>
-            <a href="network.html">医疗社区</a>
-            <a href="community.html">讨论区</a>
-            <a href="datasets-tools.html">数据集</a>
-            <a href="crowdsourcing.html">众包平台</a>
-            <a href="benchmark.html">Benchmark</a>
-            <a href="profile.html">个人账户</a>
-            <a href="about.html">About（collaborator）</a>
-          </div>
-        </nav>
-      </header>
+    <header class="site-header">
+      <nav class="nav" aria-label="主导航">
+        <a class="brand" href="index.html"><span class="brand-mark">F</span><span class="brand-text"><strong>Freedom AI</strong><span>医学 AI 社区</span></span></a>
+        <form class="site-search" role="search" action="search.html" method="get" aria-label="站内搜索">
+          <label class="sr-only" for="siteSearchInput">搜索</label>
+          <input id="siteSearchInput" name="q" type="search" placeholder="搜索" autocomplete="off" />
+          <button type="submit">搜索</button>
+        </form>
+        <div class="nav-links">
+          <a href="index.html">首页</a>
+          <a href="tutorials.html">课程</a>
+          <a href="popular-science.html">科普</a>
+          <a href="network.html">社区</a>
+          <a href="community.html">讨论区</a>
+          <a href="datasets.html">数据集</a>
+          <a href="tools.html">工具库</a>
+          <a href="crowdsourcing.html">众包平台</a>
+          <a href="benchmark.html">Benchmark</a>
+          <a href="profile.html">用户</a>
+        </div>
+      </nav>
+    </header>
 
     <main>
       <section class="page-title data-tools-title">
         <div class="container data-tools-title-grid">
           <div>
-            <p class="eyebrow">Kaggle-style Datasets</p>
-            <h1>数据集和工具集</h1>
-            <p>围绕医学 AI 的开放数据集、浏览下载、合规共享、任务关联、MCP 工具和开源工具建立统一入口。工具面向用户免费开放，每个工具都保留官网或项目链接。</p>
+            <p class="eyebrow">Resource Gateway</p>
+            <h1>数据集和工具库已拆分</h1>
+            <p>数据集目录和医学 AI 工具库现在各自拥有独立页面，方便用户分别浏览数据资源、工具资源和对应流程。</p>
           </div>
-          <aside class="tool-refresh-card" aria-label="热点更新状态">
-            <span>每日推送</span>
-            <strong id="hotToolDate">今日热点</strong>
-            <p>可通过 <code>window.HMAI_TOOL_FEED_URL</code> 接入实时工具榜单；未配置接口时展示本站精选工具。</p>
+          <aside class="tool-refresh-card" aria-label="拆分提示">
+            <span>Two pages</span>
+            <strong>请选择入口</strong>
+            <p>顶部导航已更新为两个独立入口：数据集与工具库。</p>
           </aside>
         </div>
       </section>
 
-      <section class="section compact dataset-browser-section" id="dataset-browser">
-        <div class="container dataset-browser-panel">
-          <div class="dataset-browser-intro">
-            <div>
-              <p class="eyebrow">Dataset Browser</p>
-              <h2>数据集展示区</h2>
-              <p>按领域标签、任务类型和关键词快速发现数据集。每条数据集显示来源、格式、规模、更新时间、可用性和热度，方便后续关联众包任务或 Benchmark。</p>
-            </div>
-            <a class="btn primary dataset-add-btn" href="contribute.html"><span aria-hidden="true">+</span> 添加数据集</a>
-          </div>
-
-          <div class="dataset-search-row" aria-label="数据集搜索">
-            <input id="datasetSearch" class="forum-search" type="search" placeholder="搜索数据集、科室、任务、格式或标签" />
-          </div>
-
-          <div class="dataset-filter-row dataset-domain-tags" role="group" aria-label="数据集领域标签筛选">
-            <button class="filter-btn active" type="button" data-dataset-filter="all">全部</button>
-            <button class="filter-btn" type="button" data-dataset-filter="imaging">影像</button>
-            <button class="filter-btn" type="button" data-dataset-filter="ehr">病历 / EHR</button>
-            <button class="filter-btn" type="button" data-dataset-filter="nlp">文本 / NLP</button>
-            <button class="filter-btn" type="button" data-dataset-filter="signal">生理信号</button>
-            <button class="filter-btn" type="button" data-dataset-filter="omics">组学</button>
-            <button class="filter-btn" type="button" data-dataset-filter="generative">生成式 AI</button>
-            <button class="filter-btn" type="button" data-dataset-filter="benchmark">Benchmark</button>
-            <button class="filter-btn" type="button" data-dataset-filter="share">合规共享</button>
-          </div>
-
-          <div class="dataset-trending-head">
-            <h3>Trending Datasets</h3>
-            <span>按浏览、收藏和研究任务热度排序</span>
-          </div>
-
-          <div class="dataset-card-grid dataset-trending-list" aria-live="polite">
-            <article class="dataset-card dataset-trending-card" data-dataset-card data-tags="ehr benchmark share mimic icu clinical">
-              <div class="dataset-thumb" aria-hidden="true">EHR</div>
-              <div class="dataset-card-main">
-                <div class="dataset-card-head"><span>MIT Critical Data · EHR</span><strong>MIMIC-IV 重症监护临床数据库</strong></div>
-                <p>覆盖 ICU 诊疗记录、实验室检查、用药、护理和出入院信息，适合临床预测、病历结构化和可解释性研究。</p>
-                <div class="dataset-meta-row"><span>CSV</span><span>约 43 万住院记录</span><span>Updated 2026.05</span><span>Usability 9.6</span></div>
-              </div>
-              <aside class="dataset-card-stats"><span>浏览 18.4k</span><strong>收藏 1.2k</strong><a href="https://mimic.mit.edu/" target="_blank" rel="noreferrer">查看数据</a></aside>
-            </article>
-
-            <article class="dataset-card dataset-trending-card" data-dataset-card data-tags="imaging benchmark share ct radiology oncology">
-              <div class="dataset-thumb" aria-hidden="true">IMG</div>
-              <div class="dataset-card-main">
-                <div class="dataset-card-head"><span>TCIA · Imaging</span><strong>胸部 CT 病灶标注与影像分割数据集</strong></div>
-                <p>面向肺部病灶检测、分割、报告一致性检查和多中心外部验证，保留标注协议与质控记录。</p>
-                <div class="dataset-meta-row"><span>DICOM</span><span>820 例影像样本</span><span>Updated 2026.04</span><span>Usability 9.1</span></div>
-              </div>
-              <aside class="dataset-card-stats"><span>浏览 9.8k</span><strong>收藏 740</strong><a href="benchmark.html">进入评测</a></aside>
-            </article>
-
-            <article class="dataset-card dataset-trending-card" data-dataset-card data-tags="signal benchmark share ecg icu physiologic">
-              <div class="dataset-thumb" aria-hidden="true">ECG</div>
-              <div class="dataset-card-main">
-                <div class="dataset-card-head"><span>PhysioNet · Signal</span><strong>心电与生命体征时间序列数据集</strong></div>
-                <p>用于心律失常识别、ICU 早期预警、波形质量控制和多模态临床模型训练。</p>
-                <div class="dataset-meta-row"><span>WFDB / CSV</span><span>多通道波形</span><span>Updated 2026.03</span><span>Usability 9.3</span></div>
-              </div>
-              <aside class="dataset-card-stats"><span>浏览 7.6k</span><strong>收藏 612</strong><a href="https://physionet.org/" target="_blank" rel="noreferrer">查看数据</a></aside>
-            </article>
-
-            <article class="dataset-card dataset-trending-card" data-dataset-card data-tags="nlp benchmark guideline qa text">
-              <div class="dataset-thumb" aria-hidden="true">NLP</div>
-              <div class="dataset-card-main">
-                <div class="dataset-card-head"><span>Happy medical AI · Guideline QA</span><strong>医学指南问答评测集</strong></div>
-                <p>覆盖指南推荐、证据等级、适用人群、禁忌、引用来源完整性和模型回答人工复核。</p>
-                <div class="dataset-meta-row"><span>JSONL</span><span>1,500 个问题</span><span>Updated 2026.06</span><span>Usability 8.9</span></div>
-              </div>
-              <aside class="dataset-card-stats"><span>浏览 6.4k</span><strong>收藏 488</strong><a href="benchmark.html">发布 Benchmark</a></aside>
-            </article>
-
-            <article class="dataset-card dataset-trending-card" data-dataset-card data-tags="imaging nlp benchmark multimodal radiology report">
-              <div class="dataset-thumb" aria-hidden="true">MM</div>
-              <div class="dataset-card-main">
-                <div class="dataset-card-head"><span>Radiology · Multimodal</span><strong>影像报告与图像配对样例集</strong></div>
-                <p>连接医学影像、报告摘要、关键发现和异常标签，适合图文检索、报告生成和多模态 RAG 评测。</p>
-                <div class="dataset-meta-row"><span>DICOM + TXT</span><span>2,400 对样例</span><span>Updated 2026.02</span><span>Usability 8.7</span></div>
-              </div>
-              <aside class="dataset-card-stats"><span>浏览 5.9k</span><strong>收藏 421</strong><a href="crowdsourcing.html">关联任务</a></aside>
-            </article>
-
-            <article class="dataset-card dataset-trending-card" data-dataset-card data-tags="nlp share literature entity biomedical text">
-              <div class="dataset-thumb" aria-hidden="true">BIO</div>
-              <div class="dataset-card-main">
-                <div class="dataset-card-head"><span>Biomedical Text · NLP</span><strong>生物医学文献实体标注集</strong></div>
-                <p>用于疾病、药物、基因、症状和治疗实体识别，支持文献总结、知识图谱和检索增强应用。</p>
-                <div class="dataset-meta-row"><span>JSON / BRAT</span><span>12,000 段文本</span><span>Updated 2026.01</span><span>Usability 8.5</span></div>
-              </div>
-              <aside class="dataset-card-stats"><span>浏览 4.2k</span><strong>收藏 309</strong><a href="https://www.ncbi.nlm.nih.gov/research/pubtator/" target="_blank" rel="noreferrer">查看工具</a></aside>
-            </article>
-
-            <article class="dataset-card dataset-trending-card" data-dataset-card data-tags="generative benchmark share huggingface diffusers metadata model ai">
-              <div class="dataset-thumb" aria-hidden="true">HF</div>
-              <div class="dataset-card-main">
-                <div class="dataset-card-head"><span>Hugging Face · Generative AI</span><strong>Diffusers Metadata 数据集</strong></div>
-                <p>汇总 diffusers 生态中的模型与管线元数据，适合生成式 AI 工具索引、模型检索和数据集元信息测试。</p>
-                <div class="dataset-meta-row"><span>Parquet / JSON</span><span>模型元数据</span><span>Updated 2026.06</span><span>Usability 8.4</span></div>
-              </div>
-              <aside class="dataset-card-stats"><span>浏览 4.0k</span><strong>收藏 294</strong><a href="https://huggingface.co/datasets/huggingface/diffusers-metadata" target="_blank" rel="noreferrer">查看数据</a></aside>
-            </article>
-
-            <article class="dataset-card dataset-trending-card" data-dataset-card data-tags="omics benchmark oncology genomics share">
-              <div class="dataset-thumb" aria-hidden="true">OMX</div>
-              <div class="dataset-card-main">
-                <div class="dataset-card-head"><span>Oncology · Omics</span><strong>肿瘤多组学公开样例索引</strong></div>
-                <p>整合基因表达、突变、临床分期和疗效结局字段，适合预后建模与跨模态研究设计。</p>
-                <div class="dataset-meta-row"><span>CSV / TSV</span><span>多癌种样例</span><span>Updated 2025.12</span><span>Usability 8.2</span></div>
-              </div>
-              <aside class="dataset-card-stats"><span>浏览 3.8k</span><strong>收藏 276</strong><a href="#tool-directory">查看字段</a></aside>
-            </article>
-
-            <article class="dataset-card dataset-trending-card" data-dataset-card data-tags="ehr imaging share compliance deidentified hospital">
-              <div class="dataset-thumb" aria-hidden="true">SAFE</div>
-              <div class="dataset-card-main">
-                <div class="dataset-card-head"><span>Hospital Samples · Compliance</span><strong>医院脱敏样例数据共享区</strong></div>
-                <p>用于机构展示脱敏样例、授权说明、数据字典、质量报告和用途边界，正式共享前进入合规审核。</p>
-                <div class="dataset-meta-row"><span>CSV / PDF</span><span>审核后开放</span><span>Updated 2026.06</span><span>Usability 8.0</span></div>
-              </div>
-              <aside class="dataset-card-stats"><span>浏览 3.1k</span><strong>收藏 244</strong><a href="contribute.html">添加数据</a></aside>
-            </article>
-          </div>
-
-          <nav class="dataset-pagination" id="datasetPagination" aria-label="数据集分页">
-            <button class="filter-btn" type="button" data-dataset-page="prev">上一页</button>
-            <div class="dataset-page-list" id="datasetPageList" aria-live="polite"></div>
-            <button class="filter-btn" type="button" data-dataset-page="next">下一页</button>
-          </nav>
-        </div>
-      </section>
-
-      <section class="section hot-tool-section" id="hot-tools" data-hot-tool-feed>
-        <div class="container">
-          <div class="section-head clean">
-            <div>
-              <p class="eyebrow">热门工具动态</p>
-              <h2>热点新闻区与每日最热工具</h2>
-              <p>用于每天推送医学 AI 领域热度最高的免费工具、模型、开放数据平台和开源项目。正式上线后可接入后端榜单、RSS 聚合或人工编辑后台。</p>
-            </div>
-            <a class="btn primary" href="#tool-directory">查看工具库</a>
-          </div>
-
-          <div class="hot-tool-layout">
-            <article class="hot-tool-lead">
-              <div class="live-row"><span>实时</span><strong>医学 AI 工具雷达</strong></div>
-              <h3>今日推荐：华佗 GPT</h3>
-              <p>面向中文医疗问答与医学大模型研究的代表性工具入口。页面保留官网按钮，后续可替换为实时榜单中的第一名工具。</p>
-              <div class="tool-action-row">
-                <a class="btn primary" href="https://www.huatuogpt.cn/" target="_blank" rel="noreferrer">打开华佗 GPT 官网</a>
-                <a class="btn" href="https://github.com/FreedomIntelligence/HuatuoGPT" target="_blank" rel="noreferrer">查看项目</a>
-              </div>
-            </article>
-
-            <aside class="hot-tool-toolbar" aria-label="热门工具链接栏">
-              <div class="toolbar-head">
-                <span>工具链接</span>
-                <strong>工具栏官网链接</strong>
-              </div>
-              <a href="https://www.huatuogpt.cn/" target="_blank" rel="noreferrer"><strong>华佗 GPT</strong><span>中文医学大模型问答</span></a>
-              <a href="https://github.com/FreedomIntelligence/HuatuoGPT" target="_blank" rel="noreferrer"><strong>HuatuoGPT 项目</strong><span>论文、代码与模型说明</span></a>
-              <a href="https://github.com/google-health/medgemma" target="_blank" rel="noreferrer"><strong>MedGemma</strong><span>Google Health 医学开源模型</span></a>
-              <a href="https://www.monai.io/" target="_blank" rel="noreferrer"><strong>MONAI</strong><span>医学影像 AI 工具链</span></a>
-              <a href="https://physionet.org/" target="_blank" rel="noreferrer"><strong>PhysioNet</strong><span>开放医学数据资源</span></a>
-            </aside>
-          </div>
-
-          <div id="hotToolCards" class="hot-tool-card-grid" aria-label="每日工具榜单">
-            <article class="hot-tool-card">
-              <span>第 1 名</span>
-              <strong>华佗 GPT</strong>
-              <p>中文医学问答与医疗大模型研究入口，适合作为医学 AI 工具体验区首个示例。</p>
-              <a href="https://www.huatuogpt.cn/" target="_blank" rel="noreferrer">官网链接</a>
-            </article>
-            <article class="hot-tool-card">
-              <span>第 2 名</span>
-              <strong>MedGemma</strong>
-              <p>面向医学文本和多模态任务的开放模型资源，可放入模型池和工具评测清单。</p>
-              <a href="https://github.com/google-health/medgemma" target="_blank" rel="noreferrer">项目链接</a>
-            </article>
-            <article class="hot-tool-card">
-              <span>第 3 名</span>
-              <strong>MONAI</strong>
-              <p>医学影像深度学习框架，适合影像标注、模型训练和临床科研演示。</p>
-              <a href="https://www.monai.io/" target="_blank" rel="noreferrer">官网链接</a>
-            </article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section compact" id="market-overview">
+      <section class="section compact">
         <div class="container market-grid">
           <article class="market-panel featured">
-            <span class="tag blue">MCP</span>
-            <h2>免费医学 MCP 工具网关</h2>
-            <p>把文献检索、指南问答、病例结构化、脱敏检查、影像报告读取等能力封装为可调用工具，面向用户免费开放。</p>
-            <div class="market-meta"><span>免费使用</span><span>权限控制</span><span>审计日志</span></div>
-          </article>
-          <article class="market-panel">
             <span class="tag green">数据集</span>
-            <h2>开放数据集共享</h2>
-            <p>支持公开数据、脱敏样例、标注集和评测集整理，展示授权、脱敏、用途边界和质量报告。</p>
-            <div class="price-row"><strong>合规共享</strong><span>审核后开放目录</span></div>
+            <h2>数据集页面</h2>
+            <p>展示医学 AI 开放数据集、浏览筛选、任务关联、上传流程和合规共享说明。</p>
+            <div class="price-row"><strong>Dataset Hub</strong><a href="datasets.html">进入数据集</a></div>
           </article>
           <article class="market-panel">
-            <span class="tag gold">工具</span>
-            <h2>工具集合免费开放</h2>
-            <p>面向医生、学生、医院和研究团队开放工具包，覆盖 RAG、报告总结、评测基准和教学题库。</p>
-            <div class="price-row"><strong>工具不收费</strong><span>开源与自研工具共同开放</span></div>
+            <span class="tag gold">工具库</span>
+            <h2>工具库页面</h2>
+            <p>聚合医学 AI 免费工具、MCP 工具方向、官网链接和资源上架推送流程。</p>
+            <div class="price-row"><strong>Tool Library</strong><a href="tools.html">进入工具库</a></div>
           </article>
-        </div>
-      </section>
-
-      <section class="section tool-directory-section" id="tool-directory">
-        <div class="container">
-          <div class="section-head clean">
-            <div>
-              <p class="eyebrow">资源目录</p>
-              <h2>工具集与数据集目录</h2>
-              <p>每个资源条目都保留外部链接、适用场景和合规备注。工具资源明确免费开放，便于用户学习、试用、收藏和共同完善。</p>
-            </div>
-          </div>
-
-          <div class="resource-directory-grid">
-            <article class="resource-panel">
-              <div class="resource-panel-head"><span>免费工具集</span><strong>医学 AI 免费工具集</strong></div>
-              <a href="https://www.huatuogpt.cn/" target="_blank" rel="noreferrer"><strong>华佗 GPT</strong><span>医疗问答、中文医学大模型体验</span></a>
-              <a href="https://www.monai.io/" target="_blank" rel="noreferrer"><strong>MONAI</strong><span>影像模型训练、标注与评估</span></a>
-              <a href="https://www.ncbi.nlm.nih.gov/research/pubtator/" target="_blank" rel="noreferrer"><strong>PubTator</strong><span>生物医学实体识别与文献标注</span></a>
-              <a href="https://github.com/microsoft/BiomedCLIP" target="_blank" rel="noreferrer"><strong>BiomedCLIP</strong><span>生物医学图文检索与多模态评测</span></a>
-            </article>
-
-            <article class="resource-panel">
-              <div class="resource-panel-head"><span>数据集</span><strong>医学数据集入口</strong></div>
-              <a href="https://physionet.org/" target="_blank" rel="noreferrer"><strong>PhysioNet</strong><span>重症、心电、生命体征等开放数据</span></a>
-              <a href="https://www.cancerimagingarchive.net/" target="_blank" rel="noreferrer"><strong>TCIA</strong><span>癌症影像公开数据集</span></a>
-              <a href="https://mimic.mit.edu/" target="_blank" rel="noreferrer"><strong>MIMIC</strong><span>重症监护临床数据库</span></a>
-              <a href="https://huggingface.co/datasets?other=medical" target="_blank" rel="noreferrer"><strong>Hugging Face Medical Datasets</strong><span>医学 NLP 与多模态数据集合</span></a>
-            </article>
-
-            <article class="resource-panel">
-              <div class="resource-panel-head"><span>流程</span><strong>上架与推送流程</strong></div>
-              <ol class="resource-flow">
-                <li><strong>采集</strong><span>编辑后台或接口写入工具名称、热度、官网链接和分类。</span></li>
-                <li><strong>审核</strong><span>检查医疗合规、数据授权、隐私边界和适用人群。</span></li>
-                <li><strong>推送</strong><span>每日自动更新热点卡片，同时保留人工置顶工具。</span></li>
-              </ol>
-            </article>
-          </div>
+          <article class="market-panel">
+            <span class="tag blue">平台</span>
+            <h2>任务与评测</h2>
+            <p>数据集可以继续连接众包任务和 Benchmark，工具也可以进入社区讨论与评测。</p>
+            <div class="price-row"><strong>Workflow</strong><a href="crowdsourcing.html">查看众包平台</a></div>
+          </article>
         </div>
       </section>
     </main>
 
     <footer class="site-footer">
       <div class="container footer-grid">
-        <div><h3>Happy medical AI</h3><p>数据和工具入口强调免费开放、授权、脱敏、质量和可追溯。</p></div>
-        <div><h4>热点</h4><a href="#hot-tools">每日工具榜</a><a href="https://www.huatuogpt.cn/" target="_blank" rel="noreferrer">华佗 GPT</a></div>
+        <div><h3>Freedom AI</h3><p>旧入口保留为分流页，帮助用户进入新的数据集和工具库页面。</p></div>
+        <div><h4>资源</h4><a href="datasets.html">数据集</a><a href="tools.html">工具库</a></div>
         <div><h4>平台</h4><a href="benchmark.html">评测基准</a><a href="crowdsourcing.html">众包平台</a></div>
         <div><h4>学习</h4><a href="learning.html">教学</a><a href="community.html">讨论区</a></div>
+        <div><h4>About</h4><a href="about.html">About（collaborator）</a></div>
       </div>
     </footer>
   </body>

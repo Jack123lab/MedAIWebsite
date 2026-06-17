@@ -3,25 +3,32 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Happy medical AI | 医学 AI 新闻与 Agent</title>
-    <meta name="description" content="Happy medical AI 首页仅保留医学 AI 新闻滚动图片栏和 Agent 对话框，方便快速查看热点并进入模型问答。" />
+    <title>Freedom AI | 医学 AI 新闻与 Agent</title>
+    <meta name="description" content="Freedom AI 首页仅保留医学 AI 新闻滚动图片栏和 Agent 对话框，方便快速查看热点并进入模型问答。" />
     <link rel="stylesheet" href="assets/css/style.css" />
     <script src="assets/js/main.js" defer></script>
   </head>
   <body class="portal-index agent-home-index">
           <header class="site-header">
         <nav class="nav" aria-label="主导航">
-          <a class="brand" href="index.html"><span class="brand-mark">H</span><span class="brand-text"><strong>Happy medical AI</strong><span>医学 AI 社区</span></span></a>
+          <a class="brand" href="index.html"><span class="brand-mark">F</span><span class="brand-text"><strong>Freedom AI</strong><span>医学 AI 社区</span></span></a>
+        <form class="site-search" role="search" action="search.html" method="get" aria-label="站内搜索">
+          <label class="sr-only" for="siteSearchInput">搜索</label>
+          <input id="siteSearchInput" name="q" type="search" placeholder="搜索" autocomplete="off" />
+          <button type="submit">搜索</button>
+        </form>
           <div class="nav-links">
             <a href="index.html">首页</a>
-            <a href="tutorials.html">课程</a>
-            <a href="network.html">医疗社区</a>
+            <a href="learning.html">内容</a>
+            <a href="popular-science.html">科普</a>
+            <a href="network.html">社区</a>
             <a href="community.html">讨论区</a>
-            <a href="datasets-tools.html">数据集</a>
-            <a href="crowdsourcing.html">众包平台</a>
+            <a href="datasets.html">数据集</a>
+
+            <a href="tools.html">工具库</a>
             <a href="benchmark.html">Benchmark</a>
-            <a href="profile.html">个人账户</a>
-            <a href="about.html">About（collaborator）</a>
+            <a href="crowdsourcing.html">众包平台</a>
+            <a href="profile.html">用户</a>
           </div>
         </nav>
       </header>
@@ -29,14 +36,6 @@
     <main class="agent-home-main">
       <section class="section home-news-only" id="hot-news" aria-label="新闻滚动图片栏">
         <div class="container">
-          <div class="section-head clean">
-            <div>
-              <p class="eyebrow">最新动态</p>
-              <h1>了解平台最新资讯与进展</h1>
-              <p>新闻自动滚动，也支持左右箭头和底部分页手动切换。每条新闻占满展示区域，保持简洁、专业的阅读体验。</p>
-            </div>
-          </div>
-
           <div class="news-carousel-frame" data-news-carousel>
             <button class="news-carousel-arrow prev" type="button" data-news-scroll="prev" aria-label="上一条新闻">‹</button>
             <div class="home-row-grid news-row-grid news-scroll-row" aria-label="新闻栏目">
@@ -101,51 +100,61 @@
       <section class="section home-agent-only" id="agentWorkbench" aria-label="Agent 对话框">
         <div class="container">
           <div class="agent-workbench">
-            <div class="agent-head">
-              <div>
-                <span>Agent Console</span>
-                <h2>Agent 对话框</h2>
-              </div>
-              <strong>Preview</strong>
-            </div>
-
-            <div class="agent-model-select" data-model-picker>
-              <button class="agent-model-trigger" type="button" aria-haspopup="listbox" aria-expanded="false">
-                <span>模型</span>
-                <strong data-selected-model>GPT-5.5</strong>
-                <em aria-hidden="true">⌄</em>
-              </button>
-              <div class="agent-model-menu" role="listbox" aria-label="选择模型" hidden>
-                <button class="active" type="button" role="option" aria-selected="true" data-model="GPT-5.5">GPT-5.5</button>
-                <button type="button" role="option" aria-selected="false" data-model="GPT-5.4">GPT-5.4</button>
-                <button type="button" role="option" aria-selected="false" data-model="GPT-5.4-Mini">GPT-5.4-Mini</button>
-                <button type="button" role="option" aria-selected="false" data-model="GPT-5.3-Codex-Spark">GPT-5.3-Codex-Spark</button>
-                <button type="button" role="option" aria-selected="false" data-model="华佗GPT">华佗GPT</button>
-                <button type="button" role="option" aria-selected="false" data-model="Claude 系列">Claude 系列</button>
-                <button type="button" role="option" aria-selected="false" data-model="Gemini 系列">Gemini 系列</button>
-                <button type="button" role="option" aria-selected="false" data-model="DeepSeek">DeepSeek</button>
-                <button type="button" role="option" aria-selected="false" data-model="Qwen">Qwen</button>
-                <button type="button" role="option" aria-selected="false" data-model="GLM">GLM</button>
-                <button type="button" role="option" aria-selected="false" data-model="Llama">Llama</button>
-                <button type="button" role="option" aria-selected="false" data-model="MedGemma">MedGemma</button>
-              </div>
-            </div>
-
             <form id="agentQuestionForm" class="agent-form">
               <input id="agentModel" type="hidden" value="GPT-5.5" />
-              <label for="agentQuestion">问题</label>
-              <textarea id="agentQuestion" rows="4" placeholder="例如：帮我把一篇临床研究论文整理成 PICO 和局限性"></textarea>
-              <button class="btn primary" type="submit">开始问答</button>
+              <div class="agent-input-shell">
+                <label class="visually-hidden" for="agentQuestion">输入问题</label>
+                <textarea id="agentQuestion" rows="1" placeholder="给 Freedom AI 发送消息"></textarea>
+                <div class="agent-composer-actions">
+                  <div class="agent-model-select" data-model-picker>
+                    <button class="agent-model-trigger" type="button" aria-haspopup="listbox" aria-expanded="false">
+                      <strong data-selected-model>GPT-5.5</strong>
+                      <em aria-hidden="true">⌄</em>
+                    </button>
+                    <div class="agent-model-menu" role="listbox" aria-label="选择模型" hidden>
+                      <button class="active" type="button" role="option" aria-selected="true" data-model="GPT-5.5">GPT-5.5</button>
+                      <button type="button" role="option" aria-selected="false" data-model="GPT-5.4">GPT-5.4</button>
+                      <button type="button" role="option" aria-selected="false" data-model="GPT-5.4-Mini">GPT-5.4-Mini</button>
+                      <button type="button" role="option" aria-selected="false" data-model="GPT-5.3-Codex-Spark">GPT-5.3-Codex-Spark</button>
+                      <button type="button" role="option" aria-selected="false" data-model="华佗GPT">华佗GPT</button>
+                      <button type="button" role="option" aria-selected="false" data-model="Claude 系列">Claude 系列</button>
+                      <button type="button" role="option" aria-selected="false" data-model="Gemini 系列">Gemini 系列</button>
+                      <button type="button" role="option" aria-selected="false" data-model="DeepSeek">DeepSeek</button>
+                      <button type="button" role="option" aria-selected="false" data-model="Qwen">Qwen</button>
+                      <button type="button" role="option" aria-selected="false" data-model="GLM">GLM</button>
+                      <button type="button" role="option" aria-selected="false" data-model="Llama">Llama</button>
+                      <button type="button" role="option" aria-selected="false" data-model="MedGemma">MedGemma</button>
+                    </div>
+                  </div>
+                  <button class="agent-send" type="submit" aria-label="发送">↑</button>
+                </div>
+              </div>
             </form>
 
-            <div id="agentAnswer" class="agent-answer" aria-live="polite">
+            <div id="agentAnswer" class="agent-answer" aria-live="polite" hidden>
               <span>GPT-5.5</span>
-              <strong>等待问题输入</strong>
-              <p>选择模型后可以进入医学 AI 问答、资料整理、工具调用和学习路径规划。</p>
+              <p>输入问题后按 Enter 开始。</p>
             </div>
           </div>
         </div>
       </section>
+
     </main>
+
+    <footer class="site-footer home-page-footer">
+      <div class="container footer-grid home-footer-grid">
+        <div><h3>Freedom AI</h3><p>医学 AI 新闻、工具和社区入口。</p></div>
+        <div class="footer-institutions">
+          <h4>机构</h4>
+          <div class="institution-logo-list" aria-label="机构 Logo">
+            <span class="institution-logo" aria-label="国健院"><b aria-hidden="true">国</b><em>国健院</em></span>
+            <span class="institution-logo" aria-label="SRIBD"><b aria-hidden="true">SR</b><em>SRIBD</em></span>
+            <span class="institution-logo" aria-label="CUHKSZ"><b aria-hidden="true">CU</b><em>CUHKSZ</em></span>
+            <span class="institution-logo" aria-label="SLAI"><b aria-hidden="true">AI</b><em>SLAI</em></span>
+          </div>
+        </div>
+        <div><h4>联系</h4><a href="mailto:ydexiang1@gmail.com">联系人：ydexiang1@gmail.com</a></div>
+      </div>
+    </footer>
   </body>
 </html>

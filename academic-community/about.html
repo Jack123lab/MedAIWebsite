@@ -3,30 +3,37 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>About（collaborator） | Happy medical AI</title>
+    <title>About（collaborator） | Freedom AI</title>
     <link rel="stylesheet" href="assets/css/style.css" />
     <script src="assets/js/main.js" defer></script>
   </head>
   <body>
           <header class="site-header">
         <nav class="nav" aria-label="主导航">
-          <a class="brand" href="index.html"><span class="brand-mark">H</span><span class="brand-text"><strong>Happy medical AI</strong><span>医学 AI 社区</span></span></a>
+          <a class="brand" href="index.html"><span class="brand-mark">F</span><span class="brand-text"><strong>Freedom AI</strong><span>医学 AI 社区</span></span></a>
+        <form class="site-search" role="search" action="search.html" method="get" aria-label="站内搜索">
+          <label class="sr-only" for="siteSearchInput">搜索</label>
+          <input id="siteSearchInput" name="q" type="search" placeholder="搜索" autocomplete="off" />
+          <button type="submit">搜索</button>
+        </form>
           <div class="nav-links">
             <a href="index.html">首页</a>
-            <a href="tutorials.html">课程</a>
-            <a href="network.html">医疗社区</a>
+            <a href="learning.html">内容</a>
+            <a href="popular-science.html">科普</a>
+            <a href="network.html">社区</a>
             <a href="community.html">讨论区</a>
-            <a href="datasets-tools.html">数据集</a>
-            <a href="crowdsourcing.html">众包平台</a>
+            <a href="datasets.html">数据集</a>
+
+            <a href="tools.html">工具库</a>
             <a href="benchmark.html">Benchmark</a>
-            <a href="profile.html">个人账户</a>
-            <a href="about.html">About（collaborator）</a>
+            <a href="crowdsourcing.html">众包平台</a>
+            <a href="profile.html">用户</a>
           </div>
         </nav>
       </header>
 
     <main>
-      <section class="page-title"><div class="container"><p class="eyebrow">About（collaborator）</p><h1>全站结构、共建者与社区入口</h1><p>Happy medical AI 是医疗 + AI + 数据 + 众包协作平台，融合 Reddit 的内容社区、Kaggle 的数据与任务市场、AMiner 的医生与学术网络。</p></div></section>
+      <section class="page-title"><div class="container"><p class="eyebrow">About（collaborator）</p><h1>全站结构、共建者与社区入口</h1><p>Freedom AI 是医疗 + AI + 数据 + 众包协作平台，融合 Reddit 的内容社区、Kaggle 的数据与任务市场、AMiner 的医生与学术网络。</p></div></section>
 
       <section class="section compact" aria-labelledby="project-index-title">
         <div class="container">
@@ -37,15 +44,15 @@
               <p>以下入口与顶部导航保持一致，用于快速进入全站主要模块。</p>
             </div>
           </div>
-          <div class="site-entry-grid" aria-label="Happy medical AI 项目目录">
+          <div class="site-entry-grid" aria-label="Freedom AI 项目目录">
             <a href="index.html"><span>01 / Home</span><strong>首页</strong><p>平台首页与核心信息入口。</p></a>
-            <a href="tutorials.html"><span>02 / Courses</span><strong>课程</strong><p>医学 AI 课程、教程和学习路径。</p></a>
-            <a href="network.html"><span>03 / Medical Community</span><strong>医疗社区</strong><p>医生、医院与 AMiner 风格学术网络。</p></a>
+            <a href="learning.html"><span>02 / Content</span><strong>内容</strong><p>医学 AI 内容、教程和学习路径。</p></a>
+            <a href="network.html"><span>03 / Medical Community</span><strong>社区</strong><p>医生、医院与 AMiner 风格学术网络。</p></a>
             <a href="community.html"><span>04 / Discussion</span><strong>讨论区</strong><p>Reddit-like 问答 / 论文 / 工具 / 产品 / 成果 feed。</p></a>
-            <a href="datasets-tools.html"><span>05 / Datasets</span><strong>数据集</strong><p>Kaggle-style 数据集展示、浏览、交易与任务关联。</p></a>
+            <a href="datasets.html"><span>05 / Datasets</span><strong>数据集</strong><p>Kaggle-style 数据集展示、浏览、交易与任务关联。</p></a>
             <a href="crowdsourcing.html"><span>06 / Crowdsourcing</span><strong>众包平台</strong><p>Kaggle 竞赛 + 医疗 AI 任务外包市场。</p></a>
             <a href="benchmark.html"><span>07 / Benchmark</span><strong>Benchmark</strong><p>模型、工具与系统评测、榜单和任务发布。</p></a>
-            <a href="profile.html"><span>08 / Account</span><strong>个人账户</strong><p>登录状态、资格审核与个人功能。</p></a>
+            <a href="profile.html"><span>08 / Account</span><strong>用户</strong><p>登录状态、资格审核与个人功能。</p></a>
             <a href="about.html"><span>09 / About</span><strong>About</strong><p>项目说明、共建者与合作入口集合页。</p></a>
           </div>
         </div>
@@ -62,8 +69,8 @@
           </div>
           <div class="system-fusion-grid" aria-label="三大系统融合">
             <article><span>Reddit</span><h3>内容社区</h3><p>讨论区采用目录页 + 子讨论流结构，承接问答、论文、工具、产品发布和成果发布。</p><a href="community.html">查看讨论区</a></article>
-            <article><span>Kaggle</span><h3>数据与任务</h3><p>数据集模块展示数据，众包平台承接任务竞赛、数据治理、模型开发和研究复现。</p><a href="datasets-tools.html">查看数据集</a></article>
-            <article><span>AMiner</span><h3>学术与医生网络</h3><p>医疗社区展示医生、医院、研究者档案、论文成果、学术影响力和机构关联。</p><a href="network.html#academic-network">查看学术网络</a></article>
+            <article><span>Kaggle</span><h3>数据与任务</h3><p>数据集模块展示数据，众包平台承接任务竞赛、数据治理、模型开发和研究复现。</p><a href="datasets.html">查看数据集</a></article>
+            <article><span>AMiner</span><h3>学术与医生网络</h3><p>社区展示医生、医院、研究者档案、论文成果、学术影响力和机构关联。</p><a href="network.html#academic-network">查看学术网络</a></article>
           </div>
         </div>
       </section>
@@ -77,9 +84,9 @@
             </div>
           </div>
           <div class="clinical-cards two-up">
-            <article class="clinical-card"><span>Project</span><h3>项目本身</h3><p>把医学 AI 的课程、讨论、数据集、众包评测和工具验证放在稳定导航结构里，便于长期维护。</p></article>
+            <article class="clinical-card"><span>Project</span><h3>项目本身</h3><p>把医学 AI 的内容、讨论、数据集、众包评测和工具验证放在稳定导航结构里，便于长期维护。</p></article>
             <article class="clinical-card"><span>Collaborator</span><h3>合作方</h3><p>欢迎医院、医生团队、AI 工程团队、数据治理机构、教育伙伴和产品转化伙伴参与共建。</p></article>
-            <article class="clinical-card"><span>Contribution</span><h3>贡献方式</h3><p>可以提交课程、讨论整理、数据集、工具说明、评测任务、产品试点和成果发布。</p><a href="contribute.html">查看投稿说明</a></article>
+            <article class="clinical-card"><span>Contribution</span><h3>贡献方式</h3><p>可以提交教程、讨论整理、数据集、工具说明、评测任务、产品试点和成果发布。</p><a href="contribute.html">查看投稿说明</a></article>
             <article class="clinical-card"><span>Contact</span><h3>合作联系</h3><p>合作信息可由项目维护者后续补充，包括机构介绍、联系方式、贡献范围和署名方式。</p></article>
           </div>
         </div>
@@ -91,7 +98,7 @@
             <div>
               <p class="eyebrow">Contributor</p>
               <h2 id="contributors-title">Contributor / 共建者</h2>
-              <p>共建者按贡献类型展示，便于项目长期记录课程、讨论、数据、工具和评测贡献。</p>
+              <p>共建者按贡献类型展示，便于项目长期记录内容、讨论、数据、工具和评测贡献。</p>
             </div>
           </div>
           <div class="clinical-cards two-up" aria-label="共建者列表">
@@ -144,6 +151,6 @@
       </section>
     </main>
 
-    <footer class="site-footer"><div class="container footer-grid"><div><h3>Happy medical AI</h3><p>About 页面汇总项目介绍、导航索引、共建者、社群与招聘入口。</p></div><div><h4>医疗社区</h4><a href="network.html">医生与医院</a></div><div><h4>众包</h4><a href="crowdsourcing.html">合作任务</a></div><div><h4>账号</h4><a href="profile.html">个人账户</a></div></div></footer>
+    <footer class="site-footer"><div class="container footer-grid"><div><h3>Freedom AI</h3><p>About 页面汇总项目介绍、导航索引、共建者、社群与招聘入口。</p></div><div><h4>社区</h4><a href="network.html">医生与医院</a></div><div><h4>众包</h4><a href="crowdsourcing.html">合作任务</a></div><div><h4>账号</h4><a href="profile.html">用户</a></div><div><h4>About</h4><a href="about.html">About（collaborator）</a></div></div></footer>
   </body>
 </html>

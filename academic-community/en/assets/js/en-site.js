@@ -291,25 +291,7 @@ function currentChineseHref() {
 }
 
 function injectPageLanguageFilter() {
-  if (document.querySelector(".page-language-filter")) return;
-  const filter = document.createElement("nav");
-  filter.className = "page-language-filter";
-  filter.setAttribute("aria-label", "Language filter");
-  filter.innerHTML = `
-    <button type="button" data-language-filter="zh" aria-pressed="false">Chinese</button>
-    <button class="active" type="button" data-language-filter="en" aria-pressed="true">English</button>
-  `;
-  filter.addEventListener("click", (event) => {
-    const button = event.target.closest("[data-language-filter]");
-    if (!button) return;
-    filter.querySelectorAll("[data-language-filter]").forEach((item) => {
-      const active = item === button;
-      item.classList.toggle("active", active);
-      item.setAttribute("aria-pressed", String(active));
-    });
-    filter.dataset.activeLanguage = button.dataset.languageFilter || "";
-  });
-  document.body.prepend(filter);
+  document.querySelectorAll(".page-language-filter").forEach((filter) => filter.remove());
 }
 
 function renderNav() {
@@ -317,8 +299,8 @@ function renderNav() {
     <header class="site-header">
       <nav class="nav" aria-label="Primary navigation">
         <a class="brand" href="index.html">
-          <span class="brand-mark">H</span>
-          <span class="brand-text"><strong>Happy medical AI</strong><span>Medical AI Expert Network</span></span>
+          <span class="brand-mark">F</span>
+          <span class="brand-text"><strong>Freedom AI</strong><span>Medical AI Expert Network</span></span>
         </a>
         <div class="nav-links">
           ${navItems.map(([href, label]) => `<a class="${href === `${pageKey}.html` ? "active" : ""}" href="${href}">${label}</a>`).join("")}
@@ -358,7 +340,7 @@ function renderSection(section, index) {
 
 function renderPage() {
   const data = pageData[pageKey] || pageData.index;
-  document.title = `${data.title} | Happy medical AI`;
+  document.title = `${data.title} | Freedom AI`;
   document.body.className = `en-page en-${pageKey}`;
   document.querySelector("#enApp").innerHTML = `
     ${renderNav()}
@@ -377,7 +359,7 @@ function renderPage() {
     </main>
     <footer class="site-footer">
       <div class="container footer-grid">
-        <div><h3>Happy medical AI</h3><p>Evidence minded medical AI collaboration for clinical, research, governance, and product work.</p></div>
+        <div><h3>Freedom AI</h3><p>Evidence minded medical AI collaboration for clinical, research, governance, and product work.</p></div>
         <div><h4>Platform</h4><a href="home.html">Experts</a><a href="community.html">Community</a></div>
         <div><h4>Knowledge</h4><a href="tutorials.html">Courses</a><a href="research.html">Evidence</a></div>
         <div><h4>Build</h4><a href="demos.html">Tools</a><a href="contribute.html">Submit</a></div>

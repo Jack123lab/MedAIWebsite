@@ -3,24 +3,30 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>投稿 | Happy medical AI</title>
+    <title>投稿 | Freedom AI</title>
     <link rel="stylesheet" href="assets/css/style.css" />
     <script src="assets/js/main.js" defer></script>
   </head>
   <body data-requires-auth="true">
           <header class="site-header">
         <nav class="nav" aria-label="主导航">
-          <a class="brand" href="index.html"><span class="brand-mark">H</span><span class="brand-text"><strong>Happy medical AI</strong><span>医学 AI 社区</span></span></a>
+          <a class="brand" href="index.html"><span class="brand-mark">F</span><span class="brand-text"><strong>Freedom AI</strong><span>医学 AI 社区</span></span></a>
+        <form class="site-search" role="search" action="search.html" method="get" aria-label="站内搜索">
+          <label class="sr-only" for="siteSearchInput">搜索</label>
+          <input id="siteSearchInput" name="q" type="search" placeholder="搜索" autocomplete="off" />
+          <button type="submit">搜索</button>
+        </form>
           <div class="nav-links">
             <a href="index.html">首页</a>
-            <a href="tutorials.html">课程</a>
-            <a href="network.html">医疗社区</a>
+            <a href="learning.html">内容</a>
+            <a href="popular-science.html">科普</a>
+            <a href="network.html">社区</a>
             <a href="community.html">讨论区</a>
-            <a href="datasets-tools.html">数据集</a>
-            <a href="crowdsourcing.html">众包平台</a>
+            <a href="datasets.html">数据集</a>
+            <a href="tools.html">工具库</a>
             <a href="benchmark.html">Benchmark</a>
-            <a href="profile.html">个人账户</a>
-            <a href="about.html">About（collaborator）</a>
+            <a href="crowdsourcing.html">众包平台</a>
+            <a href="profile.html">用户</a>
           </div>
         </nav>
       </header>
@@ -30,18 +36,18 @@
         <div>
           <div class="section-head clean"><div><h2>收录类型</h2><p>每份内容都应说明来源、适用场景、限制和审核方式。</p></div></div>
           <div class="clinical-cards two-up">
-            <article class="clinical-card"><span>01</span><h3>课程与教程</h3><p>医学 AI 基础、文献阅读、指南问答、RAG、科研写作和合规基础。</p></article>
+            <article class="clinical-card"><span>01</span><h3>内容与教程</h3><p>医学 AI 基础、文献阅读、指南问答、RAG、科研写作和合规基础。</p></article>
             <article class="clinical-card"><span>02</span><h3>讨论整理</h3><p>将临床或科研问题整理为可复查的讨论记录，保留资料来源。</p></article>
             <article class="clinical-card"><span>03</span><h3>工具与流程</h3><p>工具演示、开源仓库、输入输出示例、风险提示和人工审核流程。</p></article>
             <article class="clinical-card"><span>04</span><h3>Prompt 模板</h3><p>适用场景、输入样例、输出格式、限制说明和反例。</p></article>
           </div>
         </div>
-        <aside class="rail"><section class="rail-box warning"><h2>投稿前检查</h2><p>不得包含患者姓名、身份证号、联系方式、住院号、影像号、具体住址等可识别信息。</p></section><section class="rail-box"><h2>推荐流程</h2><p>先发讨论，再提交模板或 PR。管理员审核后进入课程、成果或工具页面。</p></section></aside>
+        <aside class="rail"><section class="rail-box warning"><h2>投稿前检查</h2><p>不得包含患者姓名、身份证号、联系方式、住院号、影像号、具体住址等可识别信息。</p></section><section class="rail-box"><h2>推荐流程</h2><p>先发讨论，再提交模板或 PR。管理员审核后进入内容、成果或工具页面。</p></section></aside>
       </div></section>
       <section class="section compact alt-band"><div class="container"><div class="section-head clean"><div><h2>提交模板</h2><p>复制到 GitHub 议题、合并请求描述或讨论帖中。</p></div></div><pre class="template">标题：
 作者：
 机构/科室：
-内容类型：课程 / 讨论整理 / 工具 / Prompt / 论文复现 / 应用案例
+内容类型：教程 / 讨论整理 / 工具 / Prompt / 论文复现 / 应用案例
 适用场景：
 资料来源：
 方法概述：
@@ -52,7 +58,7 @@ GitHub 链接：
 演示或附件链接：
 合规声明：</pre><div class="button-row"><a class="btn primary" href="#">替换为 GitHub 议题链接</a><a class="btn" href="community.html">先发起讨论</a><a class="btn" href="research.html">查看收录示例</a></div></div></section>
     </main>
-    <footer class="site-footer"><div class="container footer-grid"><div><h3>Happy medical AI</h3><p>投稿标准越清楚，社区内容越容易长期维护和引用。</p></div><div><h4>课程</h4><a href="tutorials.html">课程</a></div><div><h4>讨论</h4><a href="community.html">讨论</a></div><div><h4>工具</h4><a href="demos.html">工具</a></div></div></footer>
+    <footer class="site-footer"><div class="container footer-grid"><div><h3>Freedom AI</h3><p>投稿标准越清楚，社区内容越容易长期维护和引用。</p></div><div><h4>内容</h4><a href="learning.html">内容</a></div><div><h4>讨论</h4><a href="community.html">讨论</a></div><div><h4>工具</h4><a href="demos.html">工具</a></div><div><h4>About</h4><a href="about.html">About（collaborator）</a></div></div></footer>
   </body>
 </html>
 
