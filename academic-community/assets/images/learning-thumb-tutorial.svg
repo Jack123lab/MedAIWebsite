@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 300" role="img" aria-labelledby="title desc">
+  <title id="title">Medical AI tutorial thumbnail</title>
+  <desc id="desc">A tutorial cover with a document, AI nodes, and clinical evidence lines.</desc>
+  <rect width="480" height="300" fill="#edf6f4"/>
+  <rect x="28" y="28" width="424" height="244" rx="16" fill="#ffffff" stroke="#c9dce0"/>
+  <rect x="58" y="58" width="176" height="184" rx="10" fill="#f8fbfc" stroke="#d8e2e8"/>
+  <rect x="82" y="86" width="94" height="10" rx="5" fill="#185f79"/>
+  <rect x="82" y="118" width="126" height="8" rx="4" fill="#8fa0ac"/>
+  <rect x="82" y="144" width="98" height="8" rx="4" fill="#a7b4bd"/>
+  <rect x="82" y="170" width="118" height="8" rx="4" fill="#a7b4bd"/>
+  <rect x="82" y="196" width="78" height="8" rx="4" fill="#2a9d8f"/>
+  <g fill="none" stroke="#c7d7dc" stroke-width="3" stroke-linecap="round">
+    <path d="M274 98 C318 58 376 70 405 112"/>
+    <path d="M268 196 C316 164 358 226 412 182"/>
+    <path d="M288 148 L342 116 L396 154"/>
+  </g>
+  <g fill="#ffffff" stroke-width="5">
+    <circle cx="288" cy="148" r="20" stroke="#2a9d8f"/>
+    <circle cx="342" cy="116" r="20" stroke="#185f79"/>
+    <circle cx="396" cy="154" r="20" stroke="#b08900"/>
+  </g>
+  <path d="M330 214h62" stroke="#185f79" stroke-width="10" stroke-linecap="round"/>
+  <path d="M302 238h90" stroke="#2a9d8f" stroke-width="8" stroke-linecap="round"/>
+</svg>

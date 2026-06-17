@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 300" role="img" aria-labelledby="title desc">
+  <title id="title">Medical AI question bank thumbnail</title>
+  <desc id="desc">A question bank cover with quiz cards, checkmarks, and scoring blocks.</desc>
+  <rect width="480" height="300" fill="#fff8e8"/>
+  <rect x="34" y="30" width="412" height="240" rx="16" fill="#ffffff" stroke="#e1d4b6"/>
+  <rect x="66" y="62" width="164" height="176" rx="12" fill="#f9fbfc" stroke="#d8e2e8"/>
+  <rect x="92" y="92" width="92" height="10" rx="5" fill="#b08900"/>
+  <rect x="92" y="126" width="110" height="8" rx="4" fill="#9aa8b4"/>
+  <rect x="92" y="150" width="86" height="8" rx="4" fill="#b7c2ca"/>
+  <path d="M98 198l22 20 50-66" fill="none" stroke="#2a9d8f" stroke-width="11" stroke-linecap="round" stroke-linejoin="round"/>
+  <g transform="translate(270 78)">
+    <rect x="0" y="0" width="108" height="42" rx="9" fill="#185f79"/>
+    <rect x="0" y="62" width="108" height="42" rx="9" fill="#2a9d8f"/>
+    <rect x="0" y="124" width="108" height="42" rx="9" fill="#b08900"/>
+    <circle cx="24" cy="21" r="8" fill="#ffffff"/>
+    <circle cx="24" cy="83" r="8" fill="#ffffff"/>
+    <circle cx="24" cy="145" r="8" fill="#ffffff"/>
+    <path d="M48 21h36M48 83h36M48 145h36" stroke="#ffffff" stroke-width="7" stroke-linecap="round"/>
+  </g>
+</svg>

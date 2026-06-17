@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 300" role="img" aria-labelledby="title desc">
+  <title id="title">Medical AI video keyframe</title>
+  <desc id="desc">A video keyframe cover with a play button, waveform, and medical monitor lines.</desc>
+  <rect width="480" height="300" fill="#f4f7fb"/>
+  <rect x="32" y="34" width="416" height="232" rx="16" fill="#172738"/>
+  <rect x="56" y="58" width="368" height="166" rx="12" fill="#f7fbfc"/>
+  <path d="M88 160 C116 104 148 184 176 132 C206 78 226 188 258 118 C282 68 312 188 348 126 C370 88 386 132 402 104" fill="none" stroke="#2a9d8f" stroke-width="7" stroke-linecap="round"/>
+  <circle cx="240" cy="142" r="44" fill="#185f79" opacity="0.96"/>
+  <path d="M229 120 L229 164 L264 142 Z" fill="#ffffff"/>
+  <rect x="70" y="238" width="260" height="8" rx="4" fill="#d8e2e8"/>
+  <rect x="70" y="238" width="116" height="8" rx="4" fill="#2a9d8f"/>
+  <circle cx="192" cy="242" r="9" fill="#ffffff" stroke="#2a9d8f" stroke-width="4"/>
+  <rect x="360" y="234" width="42" height="16" rx="8" fill="#ffffff" opacity="0.9"/>
+</svg>

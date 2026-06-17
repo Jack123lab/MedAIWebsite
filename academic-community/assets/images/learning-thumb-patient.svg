@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 300" role="img" aria-labelledby="title desc">
+  <title id="title">Standardized patient training thumbnail</title>
+  <desc id="desc">A standardized patient cover with two avatars, dialogue bubbles, and a clinical chart.</desc>
+  <rect width="480" height="300" fill="#eef5fb"/>
+  <rect x="32" y="34" width="416" height="232" rx="16" fill="#ffffff" stroke="#d4e0e7"/>
+  <circle cx="130" cy="118" r="42" fill="#d7ece9"/>
+  <circle cx="130" cy="104" r="18" fill="#185f79"/>
+  <path d="M88 168 C100 132 160 132 172 168" fill="#2a9d8f"/>
+  <circle cx="344" cy="118" r="42" fill="#f5ead0"/>
+  <circle cx="344" cy="104" r="18" fill="#b08900"/>
+  <path d="M302 168 C314 132 374 132 386 168" fill="#185f79"/>
+  <rect x="186" y="82" width="96" height="44" rx="14" fill="#f8fbfc" stroke="#d8e2e8"/>
+  <path d="M204 104h56" stroke="#8ea0ab" stroke-width="7" stroke-linecap="round"/>
+  <rect x="198" y="154" width="96" height="44" rx="14" fill="#edf6f4" stroke="#bddbd6"/>
+  <path d="M216 176h48" stroke="#2a9d8f" stroke-width="7" stroke-linecap="round"/>
+  <rect x="106" y="210" width="268" height="22" rx="11" fill="#f8fbfc" stroke="#d8e2e8"/>
+  <path d="M134 221h62M218 221h94M334 221h22" stroke="#8fa0ac" stroke-width="7" stroke-linecap="round"/>
+</svg>
