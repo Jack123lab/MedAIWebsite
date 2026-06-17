@@ -1,0 +1,34 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img" aria-labelledby="title desc">
+  <title id="title">Nature Medicine medical AI visual brief</title>
+  <desc id="desc">Abstract medical AI visualization for Nature Medicine trend coverage.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#06202b"/>
+      <stop offset="0.58" stop-color="#0b4152"/>
+      <stop offset="1" stop-color="#1f8a7b"/>
+    </linearGradient>
+    <linearGradient id="gold" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#86ddd5"/>
+      <stop offset="1" stop-color="#f1d06a"/>
+    </linearGradient>
+  </defs>
+  <rect width="720" height="420" rx="0" fill="url(#bg)"/>
+  <g opacity="0.16" stroke="#dff7f4" stroke-width="1">
+    <path d="M0 70h720M0 140h720M0 210h720M0 280h720M0 350h720"/>
+    <path d="M90 0v420M180 0v420M270 0v420M360 0v420M450 0v420M540 0v420M630 0v420"/>
+  </g>
+  <g transform="translate(70 72)">
+    <rect width="250" height="276" rx="8" fill="rgba(255,255,255,0.08)" stroke="rgba(223,247,244,0.28)"/>
+    <path d="M54 185c35-75 72-104 113-87 33 14 37 60 6 82-28 20-68 7-78-28" fill="none" stroke="url(#gold)" stroke-width="14" stroke-linecap="round"/>
+    <circle cx="126" cy="136" r="54" fill="none" stroke="rgba(134,221,213,0.44)" stroke-width="2"/>
+    <path d="M70 226h110M70 250h150" stroke="#c9dce5" stroke-width="8" stroke-linecap="round" opacity="0.72"/>
+  </g>
+  <g transform="translate(374 78)">
+    <text x="0" y="0" fill="#86ddd5" font-family="Arial, sans-serif" font-size="18" font-weight="700">NATURE MEDICINE</text>
+    <text x="0" y="58" fill="#ffffff" font-family="Arial, sans-serif" font-size="42" font-weight="800">Multimodal</text>
+    <text x="0" y="106" fill="#ffffff" font-family="Arial, sans-serif" font-size="42" font-weight="800">Medical AI</text>
+    <text x="0" y="158" fill="#c9dce5" font-family="Arial, sans-serif" font-size="18">clinical validation</text>
+    <text x="0" y="188" fill="#c9dce5" font-family="Arial, sans-serif" font-size="18">safety evaluation</text>
+    <text x="0" y="218" fill="#c9dce5" font-family="Arial, sans-serif" font-size="18">transparent reporting</text>
+  </g>
+</svg>

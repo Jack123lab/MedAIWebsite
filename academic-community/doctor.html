@@ -7,11 +7,11 @@
     <link rel="stylesheet" href="assets/css/style.css" />
     <script src="assets/js/main.js" defer></script>
   </head>
-  <body data-requires-auth="true">
+  <body class="doctor-community-page" data-requires-auth="true">
     <header class="site-header">
       <nav class="nav" aria-label="主导航">
         <a class="brand" href="home.html"><span class="brand-mark">H</span><span class="brand-text"><strong>Happy medical AI</strong><span>临床学习与交流平台</span></span></a>
-        <div class="nav-links"><a href="home.html">首页</a><a href="tutorials.html">课程</a><a href="community.html">讨论</a><a class="active" href="doctor.html">医生</a><a href="research.html">成果</a><a href="demos.html">工具</a><a href="contribute.html">投稿</a><a href="about.html">About me</a><a href="auth.html">登录/认证</a><a href="profile.html">个人</a></div>
+        <div class="nav-links"><a href="home.html">首页</a><a href="tutorials.html">课程</a><a href="community.html">讨论</a><a class="active" href="doctor.html">医生</a><a href="research.html">成果</a><a href="demos.html">工具</a><a href="contribute.html">投稿</a><a href="auth.html">登录/认证</a><a href="profile.html">个人</a></div>
       </nav>
     </header>
 
@@ -22,7 +22,7 @@
         <div class="container doctor-workflow-panel" aria-label="医生资料工作流">
           <div class="workflow-head">
             <div>
-              <p class="eyebrow">Clinical Data Workflow</p>
+              <p class="eyebrow">临床资料流程</p>
               <h2>从原始资料到科室讨论</h2>
               <p>医生资料台不只是上传文件，而是把资料整理为可脱敏、可复核、可讨论、可沉淀的专业协作素材。</p>
             </div>
@@ -39,7 +39,7 @@
         <div class="container doctor-layout">
           <section class="doctor-panel upload-panel">
             <div class="console-head light">
-              <div><span class="console-kicker">Clinical Workspace</span><h2>上传医学资料</h2></div>
+              <div><span class="console-kicker">临床工作区</span><h2>上传医学资料</h2></div>
               <span class="console-status pale">医生专属</span>
             </div>
             <form id="clinicalUploadForm" class="auth-form">
@@ -91,26 +91,26 @@
         <div class="container doctor-dept-area" aria-label="医生科室资料区">
           <div class="section-head clean">
             <div>
-              <p class="eyebrow">Doctor Departments</p>
+              <p class="eyebrow">医生科室</p>
               <h2>按科室管理医生资料</h2>
               <p>认证医生可根据资料来源科室进入对应工作区，沉淀脱敏病例、检查结果和协作记录。</p>
             </div>
           </div>
           <div class="dept-board-grid doctor-dept-grid">
-            <article id="doctor-dept-internal" class="dept-board-card"><span>Internal Medicine</span><h3>内科资料</h3><p>心血管、呼吸、消化、肾内、内分泌和神经内科病例摘要、长期随访与指南比对。</p><div class="dept-card-meta"><span>待脱敏 6</span><span>可讨论 12</span></div><a href="#clinicalUploadForm">上传内科资料</a></article>
-            <article id="doctor-dept-surgery" class="dept-board-card"><span>Surgery</span><h3>外科资料</h3><p>围术期记录、手术照片、术后并发症复盘、外科路径和多学科协作材料。</p><div class="dept-card-meta"><span>待脱敏 4</span><span>可讨论 9</span></div><a href="#clinicalUploadForm">上传外科资料</a></article>
+            <article id="doctor-dept-internal" class="dept-board-card"><span>内科</span><h3>内科资料</h3><p>心血管、呼吸、消化、肾内、内分泌和神经内科病例摘要、长期随访与指南比对。</p><div class="dept-card-meta"><span>待脱敏 6</span><span>可讨论 12</span></div><a href="#clinicalUploadForm">上传内科资料</a></article>
+            <article id="doctor-dept-surgery" class="dept-board-card"><span>外科</span><h3>外科资料</h3><p>围术期记录、手术照片、术后并发症复盘、外科路径和多学科协作材料。</p><div class="dept-card-meta"><span>待脱敏 4</span><span>可讨论 9</span></div><a href="#clinicalUploadForm">上传外科资料</a></article>
             <article id="doctor-dept-obgyn" class="dept-board-card"><span>OBGYN</span><h3>妇产资料</h3><p>产科风险、妇科肿瘤、生殖医学和围孕期用药资料，强调隐私与授权记录。</p><div class="dept-card-meta"><span>待脱敏 3</span><span>可讨论 7</span></div><a href="#clinicalUploadForm">上传妇产资料</a></article>
-            <article id="doctor-dept-pediatrics" class="dept-board-card"><span>Pediatrics</span><h3>儿科资料</h3><p>儿童病例、发育评估、儿科用药和家属沟通记录，保留未成年人资料保护说明。</p><div class="dept-card-meta"><span>待脱敏 5</span><span>可讨论 6</span></div><a href="#clinicalUploadForm">上传儿科资料</a></article>
+            <article id="doctor-dept-pediatrics" class="dept-board-card"><span>儿科</span><h3>儿科资料</h3><p>儿童病例、发育评估、儿科用药和家属沟通记录，保留未成年人资料保护说明。</p><div class="dept-card-meta"><span>待脱敏 5</span><span>可讨论 6</span></div><a href="#clinicalUploadForm">上传儿科资料</a></article>
             <article id="doctor-dept-emergency" class="dept-board-card"><span>Emergency & ICU</span><h3>急诊重症</h3><p>急诊分诊、抢救流程、ICU 监测、危重症评分和时间敏感型诊疗记录。</p><div class="dept-card-meta"><span>待脱敏 4</span><span>可讨论 8</span></div><a href="#clinicalUploadForm">上传急重症资料</a></article>
-            <article id="doctor-dept-oncology" class="dept-board-card"><span>Oncology</span><h3>肿瘤血液</h3><p>肿瘤分期、治疗方案、血液病、疗效评估和临床试验入组材料。</p><div class="dept-card-meta"><span>待脱敏 2</span><span>可讨论 10</span></div><a href="#clinicalUploadForm">上传肿瘤资料</a></article>
-            <article id="doctor-dept-imaging" class="dept-board-card"><span>Imaging & Pathology</span><h3>影像病理</h3><p>影像、病理、超声、内镜和多模态标注资料，便于后续质控与模型验证。</p><div class="dept-card-meta"><span>待脱敏 9</span><span>可讨论 11</span></div><a href="#clinicalUploadForm">上传影像病理资料</a></article>
-            <article id="doctor-dept-pharmacy" class="dept-board-card"><span>Pharmacy & Lab</span><h3>药学检验</h3><p>用药审核、检验数据、药物相互作用、实验室质控和个体化治疗资料。</p><div class="dept-card-meta"><span>待脱敏 3</span><span>可讨论 8</span></div><a href="#clinicalUploadForm">上传药学检验资料</a></article>
+            <article id="doctor-dept-oncology" class="dept-board-card"><span>肿瘤</span><h3>肿瘤血液</h3><p>肿瘤分期、治疗方案、血液病、疗效评估和临床试验入组材料。</p><div class="dept-card-meta"><span>待脱敏 2</span><span>可讨论 10</span></div><a href="#clinicalUploadForm">上传肿瘤资料</a></article>
+            <article id="doctor-dept-imaging" class="dept-board-card"><span>影像病理</span><h3>影像病理</h3><p>影像、病理、超声、内镜和多模态标注资料，便于后续质控与模型验证。</p><div class="dept-card-meta"><span>待脱敏 9</span><span>可讨论 11</span></div><a href="#clinicalUploadForm">上传影像病理资料</a></article>
+            <article id="doctor-dept-pharmacy" class="dept-board-card"><span>药学检验</span><h3>药学检验</h3><p>用药审核、检验数据、药物相互作用、实验室质控和个体化治疗资料。</p><div class="dept-card-meta"><span>待脱敏 3</span><span>可讨论 8</span></div><a href="#clinicalUploadForm">上传药学检验资料</a></article>
           </div>
         </div>
 
         <div class="container case-to-forum-grid" aria-label="资料转讨论示例">
           <section class="doctor-panel">
-            <div class="console-head light"><div><span class="console-kicker">Discussion Draft</span><h2>可讨论版本示例</h2></div><span class="console-status pale">人工复核</span></div>
+            <div class="console-head light"><div><span class="console-kicker">讨论草稿</span><h2>可讨论版本示例</h2></div><span class="console-status pale">人工复核</span></div>
             <pre class="mini-template">科室：心血管内科
 资料类型：脱敏病例摘要
 核心问题：心衰患者合并肾功能下降时，指南推荐如何调整用药？
@@ -118,7 +118,7 @@ AI 提取：诊疗时间线、关键检验、用药变化、待确认风险
 人工审核：医生确认后发布到内科综合板块</pre>
           </section>
           <section class="doctor-panel">
-            <div class="console-head light"><div><span class="console-kicker">Governance</span><h2>发布前治理标签</h2></div></div>
+            <div class="console-head light"><div><span class="console-kicker">治理</span><h2>发布前治理标签</h2></div></div>
             <div class="governance-tags">
               <span>已脱敏</span>
               <span>已授权</span>

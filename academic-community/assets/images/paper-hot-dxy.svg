@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img" aria-labelledby="title desc">
+  <title id="title">DXY clinical community visual brief</title>
+  <desc id="desc">Abstract clinical community visualization for DXY trend coverage.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#eef7f6"/>
+      <stop offset="1" stop-color="#dbeef2"/>
+    </linearGradient>
+  </defs>
+  <rect width="720" height="420" fill="url(#bg)"/>
+  <rect x="44" y="46" width="632" height="328" rx="8" fill="#ffffff" stroke="#c8dce4"/>
+  <rect x="78" y="82" width="190" height="210" rx="8" fill="#0b2638"/>
+  <path d="M130 160h88M174 116v88" stroke="#86ddd5" stroke-width="18" stroke-linecap="round"/>
+  <circle cx="174" cy="224" r="34" fill="none" stroke="#f1d06a" stroke-width="8"/>
+  <g fill="#185f79" font-family="Arial, sans-serif" font-weight="800">
+    <text x="314" y="126" font-size="36">DXY Clinical</text>
+    <text x="314" y="172" font-size="36">Hot Topics</text>
+  </g>
+  <g fill="#536474" font-family="Arial, sans-serif" font-size="18">
+    <text x="314" y="224">guidelines</text>
+    <text x="314" y="258">case discussion</text>
+    <text x="314" y="292">drug safety</text>
+  </g>
+  <g stroke="#238276" stroke-width="7" stroke-linecap="round" opacity="0.55">
+    <path d="M510 242l28 28 60-72"/>
+  </g>
+</svg>

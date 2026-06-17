@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img" aria-labelledby="title desc">
+  <title id="title">The Lancet global health visual brief</title>
+  <desc id="desc">Abstract global health visualization for The Lancet trend coverage.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0c2131"/>
+      <stop offset="1" stop-color="#185f79"/>
+    </linearGradient>
+  </defs>
+  <rect width="720" height="420" fill="url(#bg)"/>
+  <circle cx="222" cy="210" r="116" fill="none" stroke="#86ddd5" stroke-width="3" opacity="0.7"/>
+  <path d="M106 210h232M222 94c48 52 48 180 0 232M222 94c-48 52-48 180 0 232" fill="none" stroke="#86ddd5" stroke-width="3" opacity="0.55"/>
+  <path d="M142 136c62 26 113 26 160 0M142 284c62-26 113-26 160 0" fill="none" stroke="#86ddd5" stroke-width="3" opacity="0.55"/>
+  <circle cx="160" cy="176" r="10" fill="#f1d06a"/>
+  <circle cx="264" cy="246" r="10" fill="#f1d06a"/>
+  <circle cx="222" cy="124" r="8" fill="#f1d06a"/>
+  <text x="390" y="118" fill="#86ddd5" font-family="Arial, sans-serif" font-size="18" font-weight="700">THE LANCET</text>
+  <text x="390" y="174" fill="#ffffff" font-family="Arial, sans-serif" font-size="42" font-weight="800">Global</text>
+  <text x="390" y="222" fill="#ffffff" font-family="Arial, sans-serif" font-size="42" font-weight="800">Health AI</text>
+  <text x="390" y="274" fill="#c9dce5" font-family="Arial, sans-serif" font-size="18">equity and systems impact</text>
+</svg>

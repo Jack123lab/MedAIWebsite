@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 160" role="img" aria-labelledby="title desc">
+  <title id="title">Happy medical AI login avatar</title>
+  <desc id="desc">A friendly medical AI profile avatar with a clinician silhouette and health cross.</desc>
+  <defs>
+    <linearGradient id="avatarBg" x1="20" y1="18" x2="136" y2="148" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#fff9e4"/>
+      <stop offset=".55" stop-color="#eef7f6"/>
+      <stop offset="1" stop-color="#dbeaf0"/>
+    </linearGradient>
+    <linearGradient id="coat" x1="48" y1="82" x2="112" y2="150" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffffff"/>
+      <stop offset="1" stop-color="#e8f0f4"/>
+    </linearGradient>
+    <filter id="softShadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="0" dy="10" stdDeviation="10" flood-color="#1f2933" flood-opacity=".14"/>
+    </filter>
+  </defs>
+  <circle cx="80" cy="80" r="76" fill="url(#avatarBg)"/>
+  <circle cx="80" cy="80" r="72" fill="none" stroke="#eadb9d" stroke-width="3"/>
+  <g filter="url(#softShadow)">
+    <path d="M42 135c4-30 19-46 38-46s34 16 38 46H42Z" fill="url(#coat)"/>
+    <path d="M62 100l18 35 18-35c-5-6-11-9-18-9s-13 3-18 9Z" fill="#fff8dc"/>
+    <path d="M72 101h16l-8 18-8-18Z" fill="#ffd84d"/>
+    <circle cx="80" cy="62" r="27" fill="#f3c69f"/>
+    <path d="M53 61c3-20 14-32 31-32 14 0 24 9 27 24-12 2-25-1-37-8-5 8-12 13-21 16Z" fill="#4b5563"/>
+    <path d="M55 64c3-5 7-8 12-10 0 13 8 23 19 28-3 4-8 7-14 7-11 0-20-11-17-25Z" fill="#f1b98e" opacity=".55"/>
+    <path d="M62 135c1-15 4-27 9-36M98 135c-1-15-4-27-9-36" fill="none" stroke="#cfd9df" stroke-width="3" stroke-linecap="round"/>
+  </g>
+  <g>
+    <circle cx="118" cy="42" r="18" fill="#ffffff" stroke="#eadb9d" stroke-width="3"/>
+    <path d="M118 31v22M107 42h22" stroke="#d29b20" stroke-width="5" stroke-linecap="round"/>
+  </g>
+  <g fill="#4b5563" opacity=".7">
+    <circle cx="61" cy="63" r="2.4"/>
+    <circle cx="91" cy="63" r="2.4"/>
+  </g>
+  <path d="M70 76c6 5 14 5 20 0" fill="none" stroke="#9b5f3f" stroke-width="3" stroke-linecap="round"/>
+</svg>

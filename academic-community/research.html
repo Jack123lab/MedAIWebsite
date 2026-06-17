@@ -1,24 +1,215 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="zh-CN">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>成果 | Happy medical AI</title>
+    <title>论文与产品周更 | Happy medical AI</title>
     <link rel="stylesheet" href="assets/css/style.css" />
     <script src="assets/js/main.js" defer></script>
   </head>
   <body data-requires-auth="true">
-    <header class="site-header"><nav class="nav" aria-label="主导航"><a class="brand" href="home.html"><span class="brand-mark">H</span><span class="brand-text"><strong>Happy medical AI</strong><span>临床学习与交流平台</span></span></a><div class="nav-links"><a href="home.html">首页</a><a href="tutorials.html">课程</a><a href="community.html">讨论</a><a href="doctor.html">医生</a><a class="active" href="research.html">成果</a><a href="demos.html">工具</a><a href="contribute.html">投稿</a><a href="about.html">About me</a><a href="auth.html">登录/认证</a><a href="profile.html">个人</a></div></nav></header>
+    <header class="site-header"><nav class="nav" aria-label="主导航"><a class="brand" href="home.html"><span class="brand-mark">H</span><span class="brand-text"><strong>Happy medical AI</strong><span>临床学习与交流平台</span></span></a><div class="nav-links"><a href="home.html">首页</a><a href="tutorials.html">课程</a><a href="community.html">讨论</a><a href="doctor.html">医生</a><a class="active" href="research.html">成果</a><a href="demos.html">工具</a><a href="contribute.html">投稿</a><a href="auth.html">登录/认证</a><a href="profile.html">个人</a></div></nav></header>
     <main>
-      <section class="page-title"><div class="container"><p class="eyebrow">Research & Cases</p><h1>成果收录</h1><p>收录医学 AI 教学、科研和应用案例。页面更关注资料来源、方法路径和可复现性，而不是单纯展示结论。</p></div></section>
-      <section class="section compact"><div class="container"><div class="filters filter-group"><button class="filter-btn active" data-filter="all">全部</button><button class="filter-btn" data-filter="paper">论文/综述</button><button class="filter-btn" data-filter="case">案例</button><button class="filter-btn" data-filter="tool">工具</button><button class="filter-btn" data-filter="prompt">模板</button></div><div class="record-list">
+      <section class="page-title research-watch-title">
+        <div class="container research-title-grid">
+          <div>
+            <p class="eyebrow">每周医学 AI 观察</p>
+            <h1>每周医疗 AI 论文与产品更新</h1>
+            <p>聚合权威期刊、预印本、监管机构、顶会和主流产品发布信息，按临床价值、证据质量、可复现性和讨论价值筛选，形成可追踪的周更栏目。</p>
+          </div>
+          <div class="watch-status-card">
+            <span>本周更新</span>
+            <strong>2026 第 25 周</strong>
+            <p>论文 4 篇 · 产品/监管 3 条 · 讨论议题 7 个</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section compact weekly-mechanism-section">
+        <div class="container weekly-mechanism-grid">
+          <section class="weekly-panel">
+            <div class="section-head clean"><div><p class="eyebrow">编辑标准</p><h2>收录标准</h2><p>每条更新必须有可追溯来源，并标注为何值得医学 AI 社区讨论。</p></div></div>
+            <div class="standard-grid">
+              <article><span>01</span><strong>权威来源</strong><p>期刊、顶会、监管机构、公司官方发布、注册研究或主流预印本。</p></article>
+              <article><span>02</span><strong>医学相关</strong><p>直接涉及临床诊疗、医学科研、医院工作流、医疗数据或患者安全。</p></article>
+              <article><span>03</span><strong>证据可审</strong><p>能看到方法、数据来源、评价指标、局限性或监管状态。</p></article>
+              <article><span>04</span><strong>可讨论</strong><p>能引出临床价值、落地风险、合规伦理、产品设计或验证方法讨论。</p></article>
+            </div>
+          </section>
+
+          <aside class="weekly-panel source-panel">
+            <div class="section-head clean"><div><p class="eyebrow">来源地图</p><h2>重点来源平台</h2></div></div>
+            <div class="source-map">
+              <a href="https://www.nejm.org/" target="_blank" rel="noreferrer">NEJM</a>
+              <a href="https://www.thelancet.com/" target="_blank" rel="noreferrer">The Lancet</a>
+              <a href="https://jamanetwork.com/" target="_blank" rel="noreferrer">JAMA</a>
+              <a href="https://www.nature.com/nm/" target="_blank" rel="noreferrer">Nature Medicine</a>
+              <a href="https://www.bmj.com/" target="_blank" rel="noreferrer">BMJ</a>
+              <a href="https://arxiv.org/list/cs.CV/recent" target="_blank" rel="noreferrer">arXiv</a>
+              <a href="https://www.medrxiv.org/" target="_blank" rel="noreferrer">medRxiv</a>
+              <a href="https://clinicaltrials.gov/" target="_blank" rel="noreferrer">ClinicalTrials.gov</a>
+              <a href="https://www.fda.gov/medical-devices/digital-health-center-excellence/artificial-intelligence-and-machine-learning-medical-devices" target="_blank" rel="noreferrer">FDA AI/ML</a>
+              <a href="https://www.nmpa.gov.cn/" target="_blank" rel="noreferrer">NMPA</a>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section compact physician-ai-radar-section" id="physician-ai-radar">
+        <div class="container">
+          <div class="section-head clean">
+            <div>
+              <p class="eyebrow">医生需求雷达</p>
+              <h2>医生需求驱动的 AI 热点雷达</h2>
+              <p>根据 PubMed、ClinicalTrials.gov、arXiv 等公开来源检索结果，将医学 AI 热点按医生真实工作流重排：先看是否影响诊疗、文书、风险与科室协作，再进入论文或产品讨论。</p>
+            </div>
+            <a class="btn" href="community.html#dept-internal">发起医生讨论</a>
+          </div>
+          <div class="physician-radar-grid">
+            <article class="radar-card urgent">
+              <div class="radar-card-head"><span class="tag blue">文书减负</span><strong>PubMed</strong></div>
+              <h3>AI 病历记录助手进入全科与门诊病历书写场景</h3>
+              <p>近期 PubMed 条目出现关于挪威全科 AI 病历记录助手的质性研究，提示医生最关心的不是“自动写完”，而是医患沟通、责任归属、病历准确性和审核成本。</p>
+              <dl><dt>医生需求</dt><dd>减少键盘时间，保留医生最终审核权。</dd><dt>风险检查</dt><dd>错写否认症状、遗漏用药史、录音授权和数据出境。</dd></dl>
+              <div class="watch-actions"><a href="https://pubmed.ncbi.nlm.nih.gov/42235527/" target="_blank" rel="noreferrer">查看 PubMed</a><a href="community.html#dept-internal">讨论门诊落地</a></div>
+            </article>
+            <article class="radar-card">
+              <div class="radar-card-head"><span class="tag green">急诊决策</span><strong>ClinicalTrials.gov</strong></div>
+              <h3>急诊 AI 决策支持正在进入临床试验验证</h3>
+              <p>ClinicalTrials.gov 可见急诊科 AI 决策工具、围术期液体管理、HFrEF 治疗决策支持等注册研究，说明热点正在从离线评测走向真实流程验证。</p>
+              <dl><dt>医生需求</dt><dd>快速汇总 EHR、检验和病程，给出可追溯建议。</dd><dt>风险检查</dt><dd>延误抢救、过度报警、责任边界和医嘱覆盖。</dd></dl>
+              <div class="watch-actions"><a href="https://clinicaltrials.gov/study/NCT06902675" target="_blank" rel="noreferrer">急诊试验</a><a href="https://clinicaltrials.gov/study/NCT07380555" target="_blank" rel="noreferrer">心衰试验</a></div>
+            </article>
+            <article class="radar-card">
+              <div class="radar-card-head"><span class="tag gold">安全审计</span><strong>arXiv</strong></div>
+              <h3>医学大模型热点转向 EHR 推理失败与幻觉压力测试</h3>
+              <p>arXiv 近期出现 EHR 问答组合推理失败、医学 LLM 安全压力测试、医疗幻觉缓解等主题。医生侧应关注复杂病程、多步推理和不确定性提示。</p>
+              <dl><dt>医生需求</dt><dd>知道模型何时不可靠，而不仅是平均准确率。</dd><dt>风险检查</dt><dd>把错误答案包装成合理解释，或漏标证据来源。</dd></dl>
+              <div class="watch-actions"><a href="https://arxiv.org/abs/2606.16890v1" target="_blank" rel="noreferrer">EHR 推理</a><a href="https://arxiv.org/abs/2606.01301" target="_blank" rel="noreferrer">幻觉控制</a></div>
+            </article>
+            <article class="radar-card">
+              <div class="radar-card-head"><span class="tag blue">肿瘤治理</span><strong>PubMed</strong></div>
+              <h3>肿瘤临床 AI 审计与护理领导力成为治理议题</h3>
+              <p>肿瘤场景更容易同时涉及分期、治疗线、合并症、随访和患者教育。PubMed 近期条目强调保障框架，适合作为科室级 AI 使用制度讨论。</p>
+              <dl><dt>医生需求</dt><dd>把模型建议嵌入 MDT、随访和护理路径。</dd><dt>风险检查</dt><dd>亚组偏倚、治疗线误判、患者解释和审计记录。</dd></dl>
+              <div class="watch-actions"><a href="https://pubmed.ncbi.nlm.nih.gov/42199817/" target="_blank" rel="noreferrer">查看 PubMed</a><a href="community.html#dept-oncology">肿瘤讨论</a></div>
+            </article>
+            <article class="radar-card">
+              <div class="radar-card-head"><span class="tag green">影像皮肤</span><strong>ClinicalTrials.gov</strong></div>
+              <h3>皮肤、乳腺、影像类 AI 仍是最容易临床验证的热点</h3>
+              <p>皮肤病诊断辅助、黑色素瘤厚度评估、乳腺筛查等研究持续出现，医生应重点看外部验证、亚组表现、假阴性处理和是否改变诊疗路径。</p>
+              <dl><dt>医生需求</dt><dd>提高初筛效率，给基层或专科门诊提供第二意见。</dd><dt>风险检查</dt><dd>图像质量、肤色/设备偏倚、转诊阈值和解释不足。</dd></dl>
+              <div class="watch-actions"><a href="https://clinicaltrials.gov/study/NCT06788665" target="_blank" rel="noreferrer">黑色素瘤设备</a><a href="community.html#dept-imaging">影像讨论</a></div>
+            </article>
+            <article class="radar-card">
+              <div class="radar-card-head"><span class="tag gold">监管产品</span><strong>FDA / NMPA</strong></div>
+              <h3>医生需要追踪“能不能用”而不只是“模型有多强”</h3>
+              <p>医疗 AI 热点最终会落在适应证、审批状态、医院采购、数据合规和不良事件反馈上。周更应固定记录监管入口、产品说明书和真实世界监测要求。</p>
+              <dl><dt>医生需求</dt><dd>判断工具是否可用于本科室，以及是否需要患者告知。</dd><dt>风险检查</dt><dd>越适应证使用、黑箱更新、责任转移和审计缺失。</dd></dl>
+              <div class="watch-actions"><a href="https://www.fda.gov/medical-devices/digital-health-center-excellence/artificial-intelligence-and-machine-learning-medical-devices" target="_blank" rel="noreferrer">FDA AI/ML</a><a href="https://www.nmpa.gov.cn/" target="_blank" rel="noreferrer">NMPA</a></div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section compact weekly-update-section" id="weekly-updates">
+        <div class="container">
+          <div class="section-head clean">
+            <div>
+              <p class="eyebrow">本周精选</p>
+              <h2>本周精选论文</h2>
+              <p>下列为栏目样例，正式周更时替换标题、来源、链接和讨论问题。</p>
+            </div>
+            <a class="btn" href="contribute.html">提交论文线索</a>
+          </div>
+          <div class="watch-card-grid">
+            <article class="watch-card" data-category="paper">
+              <div class="watch-card-head"><span class="tag blue">临床验证</span><strong>NEJM / JAMA / Lancet 级别优先</strong></div>
+              <h3>医学大模型在真实临床工作流中的安全性与有效性评价</h3>
+              <p>关注终点设计、医生介入方式、错误类型、患者安全事件和真实世界部署边界。</p>
+              <dl><dt>讨论问题</dt><dd>模型建议是否改变医生决策？错误如何被发现和纠正？</dd><dt>建议板块</dt><dd>内科综合 / 合规伦理 / 工具经验</dd></dl>
+              <div class="watch-actions"><a href="community.html#dept-internal">进入讨论</a><a href="contribute.html">补充来源</a></div>
+            </article>
+            <article class="watch-card" data-category="paper">
+              <div class="watch-card-head"><span class="tag green">多模态 AI</span><strong>Nature Medicine / Radiology 等来源</strong></div>
+              <h3>影像、病理与文本联合建模在诊断辅助中的表现</h3>
+              <p>重点记录数据集来源、外部验证、亚组表现、临床可解释性和偏倚风险。</p>
+              <dl><dt>讨论问题</dt><dd>多模态模型的“增益”来自图像、文本还是数据泄漏？</dd><dt>建议板块</dt><dd>影像病理 / 科研设计</dd></dl>
+              <div class="watch-actions"><a href="community.html#dept-imaging">进入讨论</a><a href="contribute.html">补充来源</a></div>
+            </article>
+            <article class="watch-card" data-category="paper">
+              <div class="watch-card-head"><span class="tag gold">临床科研</span><strong>medRxiv / arXiv 预印本需标注未同行评议</strong></div>
+              <h3>AI 辅助临床试验筛选与患者匹配方法</h3>
+              <p>关注入排标准解析、召回率/准确率、人工复核成本和伦理授权机制。</p>
+              <dl><dt>讨论问题</dt><dd>自动筛选是否会放大人群偏倚？如何保留人工可解释路径？</dd><dt>建议板块</dt><dd>肿瘤与血液 / 科研设计 / 合规伦理</dd></dl>
+              <div class="watch-actions"><a href="community.html#dept-oncology">进入讨论</a><a href="contribute.html">补充来源</a></div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section compact product-watch-section" id="product-watch">
+        <div class="container">
+          <div class="section-head clean">
+            <div>
+              <p class="eyebrow">产品与监管</p>
+              <h2>本周产品、监管与产业动态</h2>
+              <p>只收录来自监管机构、公司官方、医院/学会正式发布或可信媒体引用官方信息的动态。</p>
+            </div>
+          </div>
+          <div class="product-watch-list">
+            <article class="product-watch-row">
+              <span class="tag blue">监管</span>
+              <div><h3>AI/ML 医疗器械软件监管更新</h3><p>记录审批状态、适应证、风险等级、更新控制计划和真实世界监测要求。</p></div>
+              <a href="community.html#dept-pharmacy">讨论监管影响</a>
+            </article>
+            <article class="product-watch-row">
+              <span class="tag green">产品</span>
+              <div><h3>医疗机构部署的临床 AI 助手或病历生成工具</h3><p>关注是否有医生审核、数据出境、审计日志、错误反馈和患者告知机制。</p></div>
+              <a href="community.html#dept-internal">讨论落地边界</a>
+            </article>
+            <article class="product-watch-row">
+              <span class="tag gold">平台</span>
+              <div><h3>医学影像、药学审方、科研检索产品更新</h3><p>记录产品能力变化、适用科室、证据来源、验证数据和可替代工作流。</p></div>
+              <a href="community.html#dept-imaging">讨论产品体验</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section compact discussion-column-section" id="paper-discussion">
+        <div class="container discussion-column-grid">
+          <section class="weekly-panel">
+            <div class="section-head clean"><div><p class="eyebrow">讨论栏目</p><h2>论文讨论栏目设计</h2><p>每条周更内容都应有对应讨论区，便于医生、科研人员和产品团队按同一标准交流。</p></div></div>
+            <div class="discussion-column-list">
+              <a href="community.html#dept-internal"><strong>临床价值讨论</strong><span>临床终点、医生工作流、患者安全、适用科室</span></a>
+              <a href="community.html#dept-imaging"><strong>技术方法讨论</strong><span>数据集、模型、外部验证、偏倚、可解释性</span></a>
+              <a href="community.html#dept-oncology"><strong>科研设计讨论</strong><span>PICO、统计方法、试验入排、真实世界证据</span></a>
+              <a href="community.html#dept-pharmacy"><strong>产品与合规讨论</strong><span>监管路径、隐私授权、审计、产品责任边界</span></a>
+            </div>
+          </section>
+          <aside class="weekly-panel update-template-panel">
+            <div class="section-head clean"><div><p class="eyebrow">周更模板</p><h2>周更模板</h2></div></div>
+            <pre class="mini-template">标题：
+来源：期刊/会议/监管/官方产品发布
+链接：
+类型：论文 / 产品 / 监管 / 预印本
+科室：
+核心结论：
+证据等级或状态：
+局限性：
+建议讨论问题：
+责任编辑：</pre>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section compact"><div class="container"><div class="section-head clean"><div><p class="eyebrow">成果归档</p><h2>成果收录</h2><p>保留原有教学、科研和应用案例，作为周更内容的沉淀区。</p></div></div><div class="filters filter-group"><button class="filter-btn active" data-filter="all">全部</button><button class="filter-btn" data-filter="paper">论文/综述</button><button class="filter-btn" data-filter="case">案例</button><button class="filter-btn" data-filter="tool">工具</button><button class="filter-btn" data-filter="prompt">模板</button></div><div class="record-list">
         <article class="record-row" data-category="tool case"><div><span class="tag blue">工具案例</span><h2>临床指南问答系统原型</h2><p>基于公开临床指南构建问答流程，展示文档切片、检索、来源引用和回答边界。</p><div class="meta"><span class="tag">公开指南</span><span class="tag green">RAG</span><span class="tag">教学演示</span></div></div><a href="demos.html">查看</a></article>
         <article class="record-row" data-category="prompt"><div><span class="tag gold">模板</span><h2>医学文献结构化总结 Prompt</h2><p>用于临床研究论文精读，覆盖 PICO、研究设计、主要结局、局限性和临床意义。</p><div class="meta"><span class="tag">文献阅读</span><span class="tag">组会汇报</span></div></div><a href="content/prompts/clinical-summary-prompts.md">查看</a></article>
         <article class="record-row" data-category="paper case"><div><span class="tag green">方法案例</span><h2>AI 辅助科研选题流程</h2><p>围绕疾病领域、未满足问题、数据来源和检索策略，形成可人工审核的选题草案。</p><div class="meta"><span class="tag">PICO</span><span class="tag">检索式</span><span class="tag">研究设计</span></div></div><a href="contribute.html">投稿</a></article>
       </div></div></section>
     </main>
-    <footer class="site-footer"><div class="container footer-grid"><div><h3>Happy medical AI</h3><p>成果收录区用于保存可复查、可复现、可交流的方法和案例。</p></div><div><h4>投稿</h4><a href="contribute.html">投稿</a></div><div><h4>讨论</h4><a href="community.html">讨论</a></div><div><h4>工具</h4><a href="demos.html">工具</a></div></div></footer>
+    <footer class="site-footer"><div class="container footer-grid"><div><h3>Happy medical AI</h3><p>论文与产品周更区用于保存可复查、可讨论、可追踪的医学 AI 进展。</p></div><div><h4>周更</h4><a href="#weekly-updates">论文更新</a><a href="#product-watch">产品动态</a></div><div><h4>讨论</h4><a href="#paper-discussion">论文讨论</a><a href="community.html">讨论区</a></div><div><h4>投稿</h4><a href="contribute.html">提交线索</a></div></div></footer>
   </body>
 </html>
-
-

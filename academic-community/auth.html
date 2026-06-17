@@ -3,7 +3,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>登录/个人 | Happy medical AI</title>
+    <title>登录与资格审核 | Happy medical AI</title>
     <link rel="stylesheet" href="assets/css/style.css" />
     <script src="assets/js/main.js" defer></script>
   </head>
@@ -11,7 +11,7 @@
     <header class="site-header">
       <nav class="nav" aria-label="主导航">
         <a class="brand" href="home.html"><span class="brand-mark">H</span><span class="brand-text"><strong>Happy medical AI</strong><span>临床学习与交流平台</span></span></a>
-        <div class="nav-links"><a href="home.html">首页</a><a href="tutorials.html">课程</a><a href="community.html">讨论</a><a href="doctor.html">医生</a><a href="research.html">成果</a><a href="demos.html">工具</a><a href="contribute.html">投稿</a><a href="about.html">About me</a><a class="active" href="auth.html">登录/认证</a><a href="profile.html">个人</a></div>
+        <div class="nav-links"><a href="home.html">首页</a><a href="tutorials.html">课程</a><a href="community.html">讨论</a><a href="doctor.html">医生</a><a href="research.html">成果</a><a href="demos.html">工具</a><a href="contribute.html">投稿</a><a class="active" href="auth.html">登录/认证</a><a href="profile.html">个人</a></div>
       </nav>
     </header>
 
@@ -19,9 +19,9 @@
       <section class="page-title auth-title">
         <div class="container auth-title-grid">
           <div>
-            <p class="eyebrow">Identity & Review</p>
-            <h1>登录/个人</h1>
-            <p>登录、资格认证和个人状态合并在同一个入口。医疗社区仅面向认证通过的执业医生和医学生开放浏览与发帖。医生需提交医师资格或执业证明，医学生需提交学生证或在读证明。</p>
+            <p class="eyebrow">身份与审核</p>
+            <h1>登录与资格审核</h1>
+            <p>医疗社区仅面向认证通过的执业医生和医学生开放浏览与发帖。医生需提交医师资格或执业证明，医学生需提交学生证或在读证明。</p>
           </div>
           <div id="authStateCard" class="auth-state-card" aria-live="polite"></div>
         </div>
@@ -30,8 +30,11 @@
       <section class="section compact">
         <div class="container auth-grid">
           <section class="auth-panel">
+            <div class="login-avatar-card" aria-label="登录头像">
+              <img src="assets/images/login-avatar.svg" alt="Happy medical AI 登录头像" />
+            </div>
             <div class="console-head light">
-              <div><span class="console-kicker">Account</span><h2>账号登录</h2></div>
+              <div><span class="console-kicker">账号</span><h2>账号登录</h2></div>
             </div>
             <form id="loginForm" class="auth-form">
               <label>显示名称<input id="loginName" type="text" maxlength="30" placeholder="用于讨论区显示" required /></label>
@@ -39,12 +42,11 @@
               <button class="btn primary full-width" type="submit">保存登录状态</button>
             </form>
             <p class="form-status" id="loginStatus" role="status"></p>
-            <div class="button-row compact-row"><a class="btn" href="profile.html">查看个人页面</a></div>
           </section>
 
           <section class="auth-panel review-panel">
             <div class="console-head light">
-              <div><span class="console-kicker">Credential Review</span><h2>资格审核</h2></div>
+              <div><span class="console-kicker">资格审核</span><h2>资格审核</h2></div>
               <span class="console-status pale">人工审核</span>
             </div>
             <form id="reviewForm" class="auth-form">
@@ -86,7 +88,7 @@
       </section>
     </main>
 
-    <footer class="site-footer"><div class="container footer-grid"><div><h3>Happy medical AI</h3><p>通过资格审核和脱敏检查，让讨论区更适合医学场景的大规模使用。</p></div><div><h4>讨论</h4><a href="community.html">进入讨论区</a></div><div><h4>教学</h4><a href="learning.html">教学</a></div><div><h4>个人</h4><a href="profile.html">个人页面</a></div></div></footer>
+    <footer class="site-footer"><div class="container footer-grid"><div><h3>Happy medical AI</h3><p>通过资格审核和脱敏检查，让讨论区更适合医学场景的大规模使用。</p></div><div><h4>讨论</h4><a href="community.html">进入讨论区</a></div><div><h4>课程</h4><a href="tutorials.html">课程</a></div><div><h4>工具</h4><a href="demos.html">工具</a></div></div></footer>
   </body>
 </html>
 

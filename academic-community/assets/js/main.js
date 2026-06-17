@@ -2,6 +2,49 @@ const authKey = "hmaiAuthState";
 const postStorageKey = "hmaiForumPosts";
 const reactionStorageKey = "hmaiPostReactions";
 const apiBase = (window.HMAI_API_BASE || "").replace(/\/$/, "");
+const englishPageFiles = new Set([
+  "index.html",
+  "home.html",
+  "tutorials.html",
+  "community.html",
+  "doctor.html",
+  "research.html",
+  "demos.html",
+  "datasets-tools.html",
+  "contribute.html",
+  "auth.html",
+  "profile.html",
+]);
+
+function injectPageLanguageFilter() {
+  if (document.querySelector(".page-language-filter")) return;
+  const currentPage = window.location.pathname.split("/").pop() || "index.html";
+  const englishHref = englishPageFiles.has(currentPage) ? `en/${currentPage}` : "en/index.html";
+  const filter = document.createElement("nav");
+  filter.className = "page-language-filter";
+  filter.setAttribute("aria-label", "语言筛选");
+  filter.innerHTML = `
+    <a class="active" href="${currentPage}" aria-current="page">中文</a>
+    <a href="${englishHref}">英文</a>
+  `;
+  document.body.prepend(filter);
+}
+
+function injectLanguageSwitch() {
+  if (document.documentElement.lang !== "zh-CN") return;
+  document.querySelectorAll(".nav-links").forEach((navLinks) => {
+    if (navLinks.querySelector(".language-switch")) return;
+    const currentPage = window.location.pathname.split("/").pop() || "index.html";
+    const switcher = document.createElement("span");
+    switcher.className = "language-switch";
+    switcher.setAttribute("aria-label", "语言切换");
+    switcher.innerHTML = `
+      <span aria-current="page">中文</span>
+      <a href="en/${currentPage}">英文</a>
+    `;
+    navLinks.appendChild(switcher);
+  });
+}
 
 const discussionDepartments = [
   { href: "community.html#dept-internal", label: "内科综合", note: "心血管、呼吸、消化、肾内、内分泌、神经" },
@@ -611,7 +654,7 @@ function injectJournalSources() {
     <div class="journal-source-inner">
       <div class="journal-source-head">
         <h2>权威来源</h2>
-        <span>Weekly journal watch references</span>
+        <span>每周期刊观察参考来源</span>
       </div>
       <div class="source-logo-row" aria-label="权威医学期刊来源">
         <a class="source-logo" href="https://www.nejm.org/" target="_blank" rel="noreferrer">NEJM</a>
@@ -625,128 +668,6 @@ function injectJournalSources() {
   const footer = document.querySelector(".site-footer");
   if (footer) footer.before(section);
   else document.body.appendChild(section);
-}
-
-const primaryNavItems = [
-  { href: "index.html", label: "首页", active: ["index.html", ""] },
-  { href: "community.html", label: "讨论区", active: ["community.html"] },
-  { href: "datasets-tools.html", label: "数据集和工具集", active: ["datasets-tools.html"] },
-  { href: "network.html", label: "社区", active: ["network.html"] },
-  { href: "benchmark.html", label: "评测基准", active: ["benchmark.html"] },
-  { href: "crowdsourcing.html", label: "众包平台", active: ["crowdsourcing.html"] },
-  { href: "learning.html", label: "教学", active: ["learning.html", "tutorials.html", "teaching-videos.html", "teaching-open-tutorials.html", "teaching-question-bank.html", "teaching-virtual-patient.html"] },
-  { href: "popular-science.html", label: "科普", active: ["popular-science.html"] },
-  { href: "about.html", label: "About", active: ["about.html"] },
-  { href: "auth.html", label: "登录/个人", active: ["auth.html", "profile.html"] },
-];
-
-function normalizeTopNavigation() {
-  const currentPath = window.location.pathname.split("/").pop() || "index.html";
-  document.querySelectorAll(".site-header .nav").forEach((nav) => {
-    const brand = nav.querySelector(".brand");
-    if (brand) {
-      brand.setAttribute("href", "index.html");
-      const brandText = brand.querySelector(".brand-text");
-      if (brandText) {
-        brandText.innerHTML = "<strong>Happy medical AI</strong><span>Medical AI Community</span>";
-      }
-    }
-
-    const navLinks = nav.querySelector(".nav-links");
-    if (!navLinks) return;
-    navLinks.innerHTML = primaryNavItems.map((item) => {
-      const active = item.active.includes(currentPath) ? ' class="active"' : "";
-      return `<a${active} href="${item.href}">${item.label}</a>`;
-    }).join("");
-  });
-}
-
-function injectInstitutionBar() {
-  if (document.querySelector(".institution-bar")) return;
-  const bar = document.createElement("aside");
-  bar.className = "institution-bar";
-  bar.setAttribute("aria-label", "机构背书");
-  bar.innerHTML = `
-    <div class="institution-bar-inner">
-      <span>机构背书</span>
-      <strong>CUHKSZ</strong>
-      <strong>SRIBD</strong>
-      <strong>SLAI</strong>
-    </div>`;
-  document.body.appendChild(bar);
-}
-
-function wireHomeAgent() {
-  const shell = document.querySelector("#agentWorkbench");
-  if (!shell) return;
-
-  const cards = shell.querySelectorAll("[data-model]");
-  const modelInput = shell.querySelector("#agentModel");
-  const form = shell.querySelector("#agentQuestionForm");
-  const input = shell.querySelector("#agentQuestion");
-  const output = shell.querySelector("#agentAnswer");
-
-  cards.forEach((card) => {
-    card.addEventListener("click", () => {
-      cards.forEach((item) => item.classList.toggle("active", item === card));
-      if (modelInput) modelInput.value = card.dataset.model || "";
-    });
-  });
-
-  form?.addEventListener("submit", (event) => {
-    event.preventDefault();
-    const model = modelInput?.value || "华佗GPT";
-    const question = input?.value.trim() || "请总结今天医学 AI 领域值得关注的方向。";
-    if (output) {
-      output.innerHTML = `
-        <span>${model}</span>
-        <strong>${question}</strong>
-        <p>这是静态演示入口。正式接入后，这里会调用所选模型返回医学 AI 学习、检索、病例结构化或科研设计相关回答，并保留人工审核提示。</p>`;
-    }
-  });
-}
-
-function wireHomeNewsCarousel() {
-  const row = document.querySelector(".home-news-row");
-  if (!row || row.dataset.carouselReady === "true") return;
-
-  const stage = document.createElement("div");
-  stage.className = "home-news-stage";
-  row.before(stage);
-  stage.appendChild(row);
-
-  ["prev", "next"].forEach((direction) => {
-    const button = document.createElement("button");
-    button.className = `home-news-arrow ${direction}`;
-    button.type = "button";
-    button.setAttribute("aria-label", direction === "prev" ? "上一条新闻" : "下一条新闻");
-    button.textContent = direction === "prev" ? "‹" : "›";
-    button.addEventListener("click", () => {
-      const amount = row.clientWidth * 0.86 * (direction === "prev" ? -1 : 1);
-      row.scrollBy({ left: amount, behavior: "smooth" });
-    });
-    stage.appendChild(button);
-  });
-
-  row.dataset.carouselReady = "true";
-}
-
-function wireDiscussionTabs() {
-  document.querySelectorAll("[data-discussion-tabs]").forEach((group) => {
-    const groupName = group.dataset.discussionTabs;
-    const buttons = group.querySelectorAll("[data-discussion-tab]");
-    const panels = document.querySelectorAll(`[data-discussion-panel="${groupName}"]`);
-
-    buttons.forEach((button) => {
-      button.addEventListener("click", () => {
-        const tab = button.dataset.discussionTab;
-        buttons.forEach((item) => item.classList.toggle("active", item === button));
-        panels.forEach((panel) => {
-          panel.hidden = panel.dataset.discussionValue !== tab;
-        });
-      });
-    });
-  });
 }
 
 const fallbackHotTools = [
@@ -824,7 +745,9 @@ async function wireHotToolFeed() {
   }
 }
 
-normalizeTopNavigation();
+injectPageLanguageFilter();
+injectLanguageSwitch();
+wireDiscussionNav();
 wireFilters();
 wireAuthForms();
 renderProfile();
@@ -832,9 +755,5 @@ renderLikedPosts();
 wireCommunityGate();
 wireForum();
 wireDoctorWorkspace();
-wireHomeAgent();
-wireHomeNewsCarousel();
-wireDiscussionTabs();
 wireHotToolFeed();
 injectJournalSources();
-injectInstitutionBar();

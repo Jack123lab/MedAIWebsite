@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 720 420" role="img" aria-labelledby="title desc">
+  <title id="title">NEJM clinical evidence visual brief</title>
+  <desc id="desc">Abstract clinical evidence visualization for NEJM trend coverage.</desc>
+  <rect width="720" height="420" fill="#071724"/>
+  <g opacity="0.18" stroke="#dff7f4" stroke-width="1">
+    <path d="M0 84h720M0 168h720M0 252h720M0 336h720"/>
+    <path d="M120 0v420M240 0v420M360 0v420M480 0v420M600 0v420"/>
+  </g>
+  <g transform="translate(76 92)">
+    <path d="M10 126c34-68 72-68 112 0s78 68 112 0" fill="none" stroke="#86ddd5" stroke-width="12" stroke-linecap="round"/>
+    <path d="M10 176c34-68 72-68 112 0s78 68 112 0" fill="none" stroke="#f1d06a" stroke-width="12" stroke-linecap="round" opacity="0.86"/>
+    <circle cx="24" cy="126" r="9" fill="#ffffff"/>
+    <circle cx="246" cy="176" r="9" fill="#ffffff"/>
+  </g>
+  <text x="384" y="118" fill="#86ddd5" font-family="Arial, sans-serif" font-size="18" font-weight="700">NEJM</text>
+  <text x="384" y="174" fill="#ffffff" font-family="Arial, sans-serif" font-size="42" font-weight="800">Clinical</text>
+  <text x="384" y="222" fill="#ffffff" font-family="Arial, sans-serif" font-size="42" font-weight="800">Evidence</text>
+  <text x="384" y="274" fill="#c9dce5" font-family="Arial, sans-serif" font-size="18">trials, safety, patient outcomes</text>
+</svg>
