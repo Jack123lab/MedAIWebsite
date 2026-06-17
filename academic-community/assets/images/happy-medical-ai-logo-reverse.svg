@@ -1,5 +1,5 @@
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 386 96" role="img" aria-labelledby="title desc">
-  <title id="title">Happy Medical AI reverse logo</title>
+  <title id="title">Freedom AI reverse logo</title>
   <desc id="desc">Reverse horizontal logo for dark backgrounds.</desc>
   <defs>
     <linearGradient id="bg" x1="10" y1="8" x2="56" y2="58" gradientUnits="userSpaceOnUse">
@@ -14,6 +14,6 @@
   <circle cx="44" cy="34" r="3.2" fill="#f1d06a" />
   <circle cx="55" cy="40.5" r="3.2" fill="#e8fffb" />
   <path d="M34 59c5.2 5.2 14.8 5.2 20 0" fill="none" stroke="#f1d06a" stroke-width="3.4" stroke-linecap="round" />
-  <text x="96" y="47" fill="#ffffff" font-family="Noto Sans SC, Microsoft YaHei, Arial, sans-serif" font-size="25" font-weight="800" letter-spacing="0">Happy Medical AI</text>
+  <text x="96" y="47" fill="#ffffff" font-family="Noto Sans SC, Microsoft YaHei, Arial, sans-serif" font-size="25" font-weight="800" letter-spacing="0">Freedom AI</text>
   <text x="97" y="69" fill="#c7dbe5" font-family="Noto Sans SC, Microsoft YaHei, Arial, sans-serif" font-size="13" font-weight="600" letter-spacing="0">Medical AI Platform</text>
 </svg>

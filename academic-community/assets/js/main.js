@@ -151,7 +151,7 @@ function updateAuthCard() {
   card.innerHTML = `
     <span>${statusText}</span>
     <strong>${state.name || "访客"}</strong>
-    <p>${state.roleLabel || "完成身份信息后，可进入医疗社区、投稿和医生工作区演示。"}</p>
+    <p>${state.roleLabel || "完成身份信息后，可进入社区、投稿和医生工作区演示。"}</p>
   `;
 }
 
@@ -263,7 +263,7 @@ function wireAuthForms() {
       const role = document.querySelector("#credentialRole").value || "doctor";
       const proofType = role === "doctor" ? "license" : "student_card";
       setAuthState({ status: "verified", role, proofType, roleLabel: roleLabels[role] });
-      document.querySelector("#reviewStatus").textContent = "演示状态已设为已认证，可进入医疗社区。";
+      document.querySelector("#reviewStatus").textContent = "演示状态已设为已认证，可进入社区。";
       updateAuthCard();
     });
   }
@@ -408,7 +408,7 @@ function wireForum() {
     event.preventDefault();
     const status = document.querySelector("#postStatus");
     if (!hasCommunityCredential()) {
-      status.textContent = "请先通过医生或医学生认证，再发布医疗社区讨论。";
+      status.textContent = "请先通过医生或医学生认证，再发布社区讨论。";
       return;
     }
     const body = document.querySelector("#postBody").value.trim();

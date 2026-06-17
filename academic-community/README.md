@@ -1,8 +1,8 @@
-# Happy medical AI Academic Community
+# Freedom AI Academic Community
 
-此目录是 Happy medical AI 的学术社区门户 MVP，位置为：
+此目录是 Freedom AI 的学术社区门户 MVP，位置为：
 
-`C:\Users\Administrator\Documents\Happy medical AI医疗项目\academic-community`
+`C:\Users\Administrator\Documents\Freedom AI医疗项目\academic-community`
 
 ## 页面
 

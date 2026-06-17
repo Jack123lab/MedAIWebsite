@@ -299,8 +299,8 @@ function renderNav() {
     <header class="site-header">
       <nav class="nav" aria-label="Primary navigation">
         <a class="brand" href="index.html">
-          <span class="brand-mark">H</span>
-          <span class="brand-text"><strong>Happy medical AI</strong><span>Medical AI Expert Network</span></span>
+          <span class="brand-mark">F</span>
+          <span class="brand-text"><strong>Freedom AI</strong><span>Medical AI Expert Network</span></span>
         </a>
         <div class="nav-links">
           ${navItems.map(([href, label]) => `<a class="${href === `${pageKey}.html` ? "active" : ""}" href="${href}">${label}</a>`).join("")}
@@ -340,7 +340,7 @@ function renderSection(section, index) {
 
 function renderPage() {
   const data = pageData[pageKey] || pageData.index;
-  document.title = `${data.title} | Happy medical AI`;
+  document.title = `${data.title} | Freedom AI`;
   document.body.className = `en-page en-${pageKey}`;
   document.querySelector("#enApp").innerHTML = `
     ${renderNav()}
@@ -359,7 +359,7 @@ function renderPage() {
     </main>
     <footer class="site-footer">
       <div class="container footer-grid">
-        <div><h3>Happy medical AI</h3><p>Evidence minded medical AI collaboration for clinical, research, governance, and product work.</p></div>
+        <div><h3>Freedom AI</h3><p>Evidence minded medical AI collaboration for clinical, research, governance, and product work.</p></div>
         <div><h4>Platform</h4><a href="home.html">Experts</a><a href="community.html">Community</a></div>
         <div><h4>Knowledge</h4><a href="tutorials.html">Courses</a><a href="research.html">Evidence</a></div>
         <div><h4>Build</h4><a href="demos.html">Tools</a><a href="contribute.html">Submit</a></div>
