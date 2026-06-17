@@ -3,79 +3,538 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>众包平台 | Freedom AI</title>
+    <title>众包平台 | Happy medical AI</title>
+    <meta name="description" content="Happy medical AI 众包平台任务搜索页，面向医学标注、脱敏、模型复核、统计分析和医疗 AI 工程外包。" />
     <link rel="stylesheet" href="assets/css/style.css" />
-    <script src="assets/js/main.js" defer></script>
+    <style>
+      .crowd-search-page {
+        background: #f6f8fa;
+      }
+
+      .crowd-search-shell {
+        padding: 24px 0 42px;
+      }
+
+      .crowd-title-bar {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 18px;
+        align-items: end;
+        margin-bottom: 18px;
+      }
+
+      .crowd-title-bar h1 {
+        margin: 0 0 6px;
+        color: #172738;
+        font-size: 34px;
+        line-height: 1.15;
+      }
+
+      .crowd-title-bar p {
+        max-width: 760px;
+        margin: 0;
+        color: #667585;
+      }
+
+      .crowd-post-btn {
+        min-height: 42px;
+        white-space: nowrap;
+      }
+
+      .crowd-search-panel {
+        display: grid;
+        gap: 12px;
+        margin-bottom: 20px;
+        border: 1px solid #dce4ea;
+        border-radius: 8px;
+        padding: 14px;
+        background: #ffffff;
+      }
+
+      .crowd-search-row {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 10px;
+      }
+
+      .crowd-search-input {
+        width: 100%;
+        min-height: 48px;
+        border: 1px solid #d7e0e7;
+        border-radius: 8px;
+        background: #ffffff;
+        color: #172738;
+        padding: 11px 13px;
+        font: inherit;
+        font-size: 15px;
+      }
+
+      .crowd-filter-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+      }
+
+      .crowd-filter-btn {
+        min-height: 34px;
+        border: 1px solid #d7e0e7;
+        border-radius: 999px;
+        padding: 0 14px;
+        background: #ffffff;
+        color: #405466;
+        font: inherit;
+        font-size: 14px;
+        cursor: pointer;
+      }
+
+      .crowd-filter-btn.active,
+      .crowd-filter-btn:hover {
+        border-color: #1b75bb;
+        background: #eaf4ff;
+        color: #125a92;
+      }
+
+      .crowd-results-head {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 10px;
+      }
+
+      .crowd-results-head h2 {
+        margin: 0;
+        color: #172738;
+        font-size: 22px;
+      }
+
+      .crowd-results-head span {
+        color: #667585;
+        font-size: 13px;
+        font-weight: 700;
+      }
+
+      .crowd-result-list {
+        display: grid;
+        gap: 10px;
+      }
+
+      .crowd-result-card {
+        display: grid;
+        grid-template-columns: 58px minmax(0, 1fr) minmax(190px, auto);
+        gap: 14px;
+        align-items: center;
+        min-height: 122px;
+        border: 1px solid #dce4ea;
+        border-radius: 8px;
+        padding: 14px 16px;
+        background: #ffffff;
+      }
+
+      .crowd-result-card[hidden] {
+        display: none !important;
+      }
+
+      .crowd-task-badge {
+        width: 50px;
+        height: 50px;
+        display: grid;
+        place-items: center;
+        border: 1px solid #d7e0e7;
+        border-radius: 8px;
+        background: #f1f5f8;
+        color: #125a92;
+        font-size: 13px;
+        font-weight: 900;
+      }
+
+      .crowd-result-main {
+        min-width: 0;
+        display: grid;
+        gap: 7px;
+      }
+
+      .crowd-result-kicker {
+        color: #667585;
+        font-size: 12px;
+        font-weight: 800;
+      }
+
+      .crowd-result-main h3 {
+        margin: 0;
+        color: #172738;
+        font-size: 18px;
+        line-height: 1.35;
+      }
+
+      .crowd-result-main p {
+        margin: 0;
+        color: #667585;
+        font-size: 14px;
+        line-height: 1.55;
+      }
+
+      .crowd-tag-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 7px;
+      }
+
+      .crowd-tag-row span {
+        border: 1px solid #e3e9ee;
+        border-radius: 999px;
+        padding: 3px 8px;
+        background: #f8fafb;
+        color: #405466;
+        font-size: 12px;
+        font-weight: 750;
+      }
+
+      .crowd-result-side {
+        display: grid;
+        gap: 5px;
+        justify-items: end;
+        color: #667585;
+        font-size: 12px;
+        text-align: right;
+        white-space: nowrap;
+      }
+
+      .crowd-result-side strong {
+        color: #172738;
+        font-size: 15px;
+      }
+
+      .crowd-result-side a {
+        color: #125a92;
+        font-weight: 900;
+        text-decoration: none;
+      }
+
+      .crowd-empty-note {
+        display: none;
+        margin-top: 10px;
+        border: 1px dashed #cfd8df;
+        border-radius: 8px;
+        padding: 18px;
+        color: #667585;
+        background: #ffffff;
+      }
+
+      .crowd-empty-note.is-visible {
+        display: block;
+      }
+
+      .crowd-trade-footer {
+        margin-top: 0;
+        background: #ffffff;
+        color: #405466;
+      }
+
+      .trade-endorsement {
+        display: grid;
+        gap: 16px;
+        padding: 30px 0 34px;
+      }
+
+      .trade-endorsement h2 {
+        max-width: 760px;
+        margin-bottom: 0;
+        color: #172738;
+        font-size: 24px;
+      }
+
+      .trade-note-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .trade-note {
+        border: 1px solid #dce4ea;
+        border-radius: 8px;
+        padding: 14px;
+        background: #f8fafb;
+      }
+
+      .trade-note strong {
+        display: block;
+        margin-bottom: 6px;
+        color: #172738;
+      }
+
+      .trade-note p {
+        margin: 0;
+        color: #667585;
+        font-size: 13px;
+        line-height: 1.55;
+      }
+
+      @media (max-width: 860px) {
+        .crowd-title-bar,
+        .crowd-result-card,
+        .trade-note-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .crowd-post-btn {
+          justify-self: start;
+        }
+
+        .crowd-result-side {
+          justify-items: start;
+          text-align: left;
+          white-space: normal;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .crowd-search-page .nav {
+          display: grid;
+          grid-template-columns: 1fr;
+          gap: 12px;
+        }
+
+        .crowd-search-page .brand,
+        .crowd-search-page .nav-links {
+          min-width: 0;
+        }
+
+        .crowd-search-page .nav-links {
+          justify-content: flex-start;
+        }
+
+        .crowd-search-page .nav-links a {
+          padding: 6px 8px;
+          font-size: 13px;
+        }
+
+        .crowd-search-row,
+        .crowd-results-head {
+          grid-template-columns: 1fr;
+          display: grid;
+        }
+
+        .crowd-filter-row {
+          gap: 7px;
+        }
+
+        .crowd-filter-btn {
+          padding: 0 11px;
+          font-size: 13px;
+        }
+
+        .crowd-result-card {
+          min-width: 0;
+          padding: 14px;
+        }
+
+        .crowd-result-main,
+        .crowd-result-side {
+          min-width: 0;
+        }
+
+        .crowd-result-main h3,
+        .crowd-result-main p,
+        .crowd-result-side span,
+        .crowd-result-side strong,
+        .crowd-result-side a {
+          overflow-wrap: anywhere;
+        }
+
+        .crowd-result-main p {
+          word-break: break-all;
+        }
+
+        .crowd-title-bar h1 {
+          font-size: 29px;
+        }
+      }
+    </style>
   </head>
-  <body>
-          <header class="site-header">
-        <nav class="nav" aria-label="主导航">
-          <a class="brand" href="index.html"><span class="brand-mark">F</span><span class="brand-text"><strong>Freedom AI</strong><span>医学 AI 社区</span></span></a>
-        <form class="site-search" role="search" action="search.html" method="get" aria-label="站内搜索">
-          <label class="sr-only" for="siteSearchInput">搜索</label>
-          <input id="siteSearchInput" name="q" type="search" placeholder="搜索" autocomplete="off" />
-          <button type="submit">搜索</button>
+  <body class="crowd-search-page">
+    <header class="site-header">
+      <nav class="nav" aria-label="主导航">
+        <a class="brand" href="index.html"><span class="brand-mark">H</span><span class="brand-text"><strong>Happy medical AI</strong><span>医学 AI 社区</span></span></a>
+        <div class="nav-links">
+          <a href="index.html">首页</a>
+          <a href="tutorials.html">课程</a>
+          <a href="network.html">社区</a>
+          <a href="community.html">讨论区</a>
+          <a href="datasets-tools.html">数据集</a>
+          <a href="crowdsourcing.html" class="active">众包平台</a>
+          <a href="benchmark.html">Benchmark</a>
+          <a href="profile.html">个人账户</a>
+          <a href="about.html">About（collaborator）</a>
+        </div>
+      </nav>
+    </header>
+
+    <main class="crowd-search-shell">
+      <section class="container" aria-label="众包任务搜索">
+        <div class="crowd-title-bar">
+          <div>
+            <p class="eyebrow">Kaggle-style Task Search</p>
+            <h1>众包平台</h1>
+            <p>搜索医学标注、脱敏、人工复核、统计分析和医疗 AI 工程任务，按标签快速筛选可承接项目。</p>
+          </div>
+          <a class="btn primary crowd-post-btn" href="contribute.html">发布任务</a>
+        </div>
+
+        <form class="crowd-search-panel" id="crowdSearchForm">
+          <div class="crowd-search-row">
+            <input id="crowdSearchInput" class="crowd-search-input" type="search" value="标注" aria-label="搜索众包任务" placeholder="搜索标注、脱敏、模型复核、统计分析或工具开发" />
+            <button class="btn primary" type="submit">搜索</button>
+          </div>
+          <div class="crowd-filter-row" role="group" aria-label="任务标签筛选">
+            <button class="crowd-filter-btn active" type="button" data-crowd-filter="all">全部</button>
+            <button class="crowd-filter-btn" type="button" data-crowd-filter="annotation">标注</button>
+            <button class="crowd-filter-btn" type="button" data-crowd-filter="deid">脱敏</button>
+            <button class="crowd-filter-btn" type="button" data-crowd-filter="review">医学复核</button>
+            <button class="crowd-filter-btn" type="button" data-crowd-filter="engineering">工程开发</button>
+            <button class="crowd-filter-btn" type="button" data-crowd-filter="statistics">统计分析</button>
+          </div>
         </form>
-          <div class="nav-links">
-            <a href="index.html">首页</a>
-            <a href="learning.html">内容</a>
-            <a href="popular-science.html">科普</a>
-            <a href="network.html">社区</a>
-            <a href="community.html">讨论区</a>
-            <a href="datasets.html">数据集</a>
 
-            <a href="tools.html">工具库</a>
-            <a href="benchmark.html">Benchmark</a>
-            <a href="crowdsourcing.html">众包平台</a>
-            <a href="profile.html">用户</a>
-          </div>
-        </nav>
-      </header>
-    <main>
-      <section class="page-title"><div class="container"><p class="eyebrow">Kaggle-style Task Marketplace</p><h1>医学 AI 任务竞赛与外包市场</h1><p>医疗机构和医生发布数据任务、模型任务与研究任务，AI 工程师、数据治理人员、医学统计人员和专业审核者在市场中接单协作。</p></div></section>
-      <section class="section compact">
-        <div class="container market-grid">
-          <article class="market-panel featured"><span class="tag gold">需求方</span><h2>医生 / 医院发布任务</h2><p>需求可包含数据脱敏、标注、工具开发、模型评测、课程题库、科研复现和院内流程设计。</p><div class="market-meta"><span>医疗机构</span><span>医生团队</span><span>验收标准</span><span>合规说明</span></div></article>
-          <article class="market-panel"><span class="tag blue">供给方</span><h2>AI 工程师 / 专业人员接单</h2><p>算法、工程、产品、数据标注、医学统计和合规顾问按能力标签匹配任务。</p><div class="price-row"><strong>能力匹配</strong><span>按任务报价</span></div></article>
-          <article class="market-panel"><span class="tag green">任务流</span><h2>从数据到交付</h2><p>需求先明确医学边界，再进入任务拆解、报价、执行、评测、验收和成果发布。</p><div class="price-row"><strong>交付闭环</strong><a href="community.html">发布动态</a></div></article>
+        <div class="crowd-results-head">
+          <h2>搜索结果</h2>
+          <span id="crowdResultCount">6 个匹配任务</span>
         </div>
-      </section>
 
-      <section class="section compact alt-band">
-        <div class="container">
-          <div class="section-head clean">
-            <div>
-              <p class="eyebrow">Competition + Marketplace</p>
-              <h2>医疗 AI 任务类型</h2>
-              <p>既支持类似 Kaggle Competitions 的竞赛型任务，也支持医疗 AI 外包市场中的交付型任务。</p>
+        <div class="crowd-result-list" id="crowdResultList" aria-live="polite">
+          <article class="crowd-result-card" data-crowd-card data-tags="annotation review imaging ct radiology mask">
+            <div class="crowd-task-badge" aria-hidden="true">IMG</div>
+            <div class="crowd-result-main">
+              <span class="crowd-result-kicker">影像中心 · 医学影像标注</span>
+              <h3>胸部 CT 病灶分割标注与质控</h3>
+              <p>对脱敏胸部 CT 样例进行病灶轮廓标注、双人一致性复核和失败样例说明。</p>
+              <div class="crowd-tag-row"><span>标注</span><span>DICOM</span><span>医生复核</span><span>质控报告</span></div>
             </div>
-          </div>
-          <div class="task-market-grid">
-            <article class="task-card featured"><span>Competition</span><h3>医疗 AI 任务竞赛</h3><p>公开数据集、统一指标、榜单排名、基线模型和最终评审。</p><div class="metric-strip"><span>Leaderboard</span><span>Baseline</span><span>Prize / Credit</span></div><a href="benchmark.html">关联 Benchmark</a></article>
-            <article class="task-card"><span>Data Task</span><h3>数据任务</h3><p>脱敏、标注、质控、字段映射、数据字典和质量报告。</p><a href="datasets.html">关联数据集</a></article>
-            <article class="task-card"><span>Model Task</span><h3>模型任务</h3><p>训练、微调、评测、错误分析、提示词优化和系统接入。</p><a href="benchmark.html">进入评测</a></article>
-            <article class="task-card"><span>Research Task</span><h3>研究任务</h3><p>论文复现、统计分析、文献证据整理、PICO 设计和投稿材料。</p><a href="research.html">论文讨论</a></article>
-          </div>
-        </div>
-      </section>
+            <aside class="crowd-result-side"><span>预算 ¥8,000-12,000</span><strong>交付 14 天</strong><a href="community.html">查看任务</a></aside>
+          </article>
 
-      <section class="section compact">
-        <div class="container">
-          <div class="section-head clean">
-            <div>
-              <p class="eyebrow">Task Feed</p>
-              <h2>任务市场示例</h2>
-              <p>任务卡片用于显示发布方、任务类型、交付物、预算状态和关联数据集。</p>
+          <article class="crowd-result-card" data-crowd-card data-tags="annotation deid ehr nlp structured clinical">
+            <div class="crowd-task-badge" aria-hidden="true">EHR</div>
+            <div class="crowd-result-main">
+              <span class="crowd-result-kicker">心血管团队 · 病历字段标注</span>
+              <h3>门诊病历结构化字段校对</h3>
+              <p>校对主诉、现病史、检查、诊断、治疗路径和随访字段，输出字段一致性报告。</p>
+              <div class="crowd-tag-row"><span>标注</span><span>脱敏文本</span><span>结构化</span><span>一致性</span></div>
             </div>
-          </div>
-          <div class="task-feed">
-            <article><div><span class="tag blue">数据任务</span><h3>脱敏病历结构化字段校对</h3><p>发布方：心血管医生团队。交付物：字段一致性报告、错误样例、修订建议。</p></div><aside><strong>关联数据集</strong><a href="datasets.html">门诊病历样例集</a></aside></article>
-            <article><div><span class="tag green">模型任务</span><h3>指南问答模型人工复核</h3><p>发布方：医学 AI 评测组。交付物：答案评分、引用完整性、风险提示标注。</p></div><aside><strong>关联 Benchmark</strong><a href="benchmark.html">指南 QA 榜单</a></aside></article>
-            <article><div><span class="tag gold">研究任务</span><h3>胸部 CT 分割论文复现</h3><p>发布方：影像中心。交付物：复现记录、外部验证指标、失败样例分析。</p></div><aside><strong>关联讨论</strong><a href="community.html">讨论区</a></aside></article>
-          </div>
+            <aside class="crowd-result-side"><span>预算 ¥3,000-6,000</span><strong>交付 7 天</strong><a href="datasets-tools.html">关联数据</a></aside>
+          </article>
+
+          <article class="crowd-result-card" data-crowd-card data-tags="review annotation guideline qa model benchmark">
+            <div class="crowd-task-badge" aria-hidden="true">QA</div>
+            <div class="crowd-result-main">
+              <span class="crowd-result-kicker">医学 AI 评测组 · 回答标注</span>
+              <h3>指南问答模型人工复核</h3>
+              <p>标注模型回答的证据完整性、适用人群、禁忌提示和临床风险等级。</p>
+              <div class="crowd-tag-row"><span>人工复核</span><span>标注</span><span>Benchmark</span><span>指南 QA</span></div>
+            </div>
+            <aside class="crowd-result-side"><span>预算 ¥5,000-9,000</span><strong>交付 10 天</strong><a href="benchmark.html">进入评测</a></aside>
+          </article>
+
+          <article class="crowd-result-card" data-crowd-card data-tags="engineering deid annotation audit privacy script">
+            <div class="crowd-task-badge" aria-hidden="true">SAFE</div>
+            <div class="crowd-result-main">
+              <span class="crowd-result-kicker">医院数据办 · 脱敏标注规则</span>
+              <h3>病例文本脱敏规则与审计脚本</h3>
+              <p>梳理姓名、电话、住院号、地址等识别字段标注规则，并交付可复核审计脚本。</p>
+              <div class="crowd-tag-row"><span>脱敏</span><span>标注规则</span><span>审计</span><span>Python</span></div>
+            </div>
+            <aside class="crowd-result-side"><span>预算 ¥10,000-18,000</span><strong>交付 21 天</strong><a href="contribute.html">提交方案</a></aside>
+          </article>
+
+          <article class="crowd-result-card" data-crowd-card data-tags="statistics annotation rwe endpoint cohort">
+            <div class="crowd-task-badge" aria-hidden="true">STAT</div>
+            <div class="crowd-result-main">
+              <span class="crowd-result-kicker">真实世界研究组 · 结局标注</span>
+              <h3>随访结局字段标注与统计分析</h3>
+              <p>对脱敏随访记录标注主要结局、缺失原因和时间窗，并完成描述性统计表。</p>
+              <div class="crowd-tag-row"><span>统计分析</span><span>结局标注</span><span>RWE</span><span>表格交付</span></div>
+            </div>
+            <aside class="crowd-result-side"><span>预算 ¥6,000-10,000</span><strong>交付 12 天</strong><a href="research.html">查看讨论</a></aside>
+          </article>
+
+          <article class="crowd-result-card" data-crowd-card data-tags="engineering annotation virtual patient education script">
+            <div class="crowd-task-badge" aria-hidden="true">EDU</div>
+            <div class="crowd-result-main">
+              <span class="crowd-result-kicker">教学团队 · 脚本标注</span>
+              <h3>虚拟病人问诊路径与评分点标注</h3>
+              <p>共建问诊脚本、关键追问、干扰项、标准答案和评分点，面向医学教学演练。</p>
+              <div class="crowd-tag-row"><span>脚本标注</span><span>教学</span><span>问诊路径</span><span>评分标准</span></div>
+            </div>
+            <aside class="crowd-result-side"><span>预算 ¥4,000-8,000</span><strong>交付 9 天</strong><a href="tutorials.html">查看课程</a></aside>
+          </article>
         </div>
+
+        <p id="crowdEmptyNote" class="crowd-empty-note" role="status">没有找到匹配任务，请更换搜索词或标签。</p>
       </section>
     </main>
-    <footer class="site-footer"><div class="container footer-grid"><div><h3>Freedom AI</h3><p>众包平台把真实专家经验转化为可训练、可评测的数据资产。</p></div><div><h4>评测</h4><a href="benchmark.html">Benchmark</a></div><div><h4>资源</h4><a href="datasets.html">数据集</a><a href="tools.html">工具库</a></div><div><h4>社区</h4><a href="network.html">社区</a></div><div><h4>About</h4><a href="about.html">About（collaborator）</a></div></div></footer>
+
+    <footer class="site-footer crowd-trade-footer">
+      <div class="container">
+        <section class="trade-endorsement" aria-label="交易注意事项">
+          <div>
+            <p class="eyebrow">交易注意事项 · 平台背书</p>
+            <h2>任务交易需先确认数据边界、验收标准和付款节点，医疗结论必须保留人工复核。</h2>
+          </div>
+          <div class="trade-note-grid">
+            <article class="trade-note"><strong>实名与资质</strong><p>发布方、承接方需保留真实身份和机构信息，医生复核类任务应明确专业资质。</p></article>
+            <article class="trade-note"><strong>隐私与脱敏</strong><p>不得上传可识别患者信息；样例、日志和交付物应经过脱敏、授权和用途限定。</p></article>
+            <article class="trade-note"><strong>里程碑验收</strong><p>建议按试标、批量交付、抽检复核、最终验收拆分节点，避免一次性交付争议。</p></article>
+            <article class="trade-note"><strong>责任边界</strong><p>平台展示任务与交易背书，不替代临床判断；诊疗相关输出需由医生最终确认。</p></article>
+          </div>
+        </section>
+      </div>
+    </footer>
+
+    <script>
+      (() => {
+        const form = document.querySelector("#crowdSearchForm");
+        const input = document.querySelector("#crowdSearchInput");
+        const count = document.querySelector("#crowdResultCount");
+        const empty = document.querySelector("#crowdEmptyNote");
+        const cards = Array.from(document.querySelectorAll("[data-crowd-card]"));
+        const buttons = Array.from(document.querySelectorAll("[data-crowd-filter]"));
+        const state = { filter: "all" };
+
+        function render() {
+          const query = input.value.trim().toLowerCase();
+          let visibleCount = 0;
+
+          cards.forEach((card) => {
+            const tags = card.dataset.tags || "";
+            const text = `${card.textContent} ${tags}`.toLowerCase();
+            const matchesQuery = !query || text.includes(query);
+            const matchesFilter = state.filter === "all" || tags.includes(state.filter);
+            const visible = matchesQuery && matchesFilter;
+            card.hidden = !visible;
+            if (visible) visibleCount += 1;
+          });
+
+          count.textContent = `${visibleCount} 个匹配任务`;
+          empty.classList.toggle("is-visible", visibleCount === 0);
+        }
+
+        form.addEventListener("submit", (event) => {
+          event.preventDefault();
+          render();
+        });
+
+        input.addEventListener("input", render);
+
+        buttons.forEach((button) => {
+          button.addEventListener("click", () => {
+            state.filter = button.dataset.crowdFilter || "all";
+            buttons.forEach((item) => item.classList.toggle("active", item === button));
+            render();
+          });
+        });
+
+        render();
+      })();
+    </script>
   </body>
 </html>
