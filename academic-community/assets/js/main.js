@@ -650,6 +650,7 @@ function wireHomeAgent() {
   const form = shell.querySelector("#agentQuestionForm");
   const input = shell.querySelector("#agentQuestion");
   const output = shell.querySelector("#agentAnswer");
+  const newsSection = document.querySelector("#hot-news");
 
   const setMenuOpen = (open) => {
     if (!trigger || !menu) return;
@@ -667,12 +668,7 @@ function wireHomeAgent() {
       item.classList.toggle("active", active);
       item.setAttribute("aria-selected", String(active));
     });
-    if (output) {
-      output.innerHTML = `
-        <span>${escapeHtml(model)}</span>
-        <strong>已选择 ${escapeHtml(model)}</strong>
-        <p>可以继续输入医学 AI 学习、文献整理、病例结构化、工具调用或科研设计相关问题。</p>`;
-    }
+    if (output?.dataset.submitted === "true") output.querySelector("span").textContent = model;
   };
 
   trigger?.addEventListener("click", (event) => {
@@ -700,16 +696,30 @@ function wireHomeAgent() {
 
   if (modelInput?.value) selectModel(modelInput.value);
 
+  input?.addEventListener("keydown", (event) => {
+    if (event.key !== "Enter" || event.shiftKey || event.isComposing) return;
+    event.preventDefault();
+    form?.requestSubmit();
+  });
+
+  input?.addEventListener("input", () => {
+    input.style.height = "auto";
+    input.style.height = `${Math.min(input.scrollHeight, 140)}px`;
+  });
+
   form?.addEventListener("submit", (event) => {
     event.preventDefault();
     const model = modelInput?.value || "GPT-5.5";
     const question = input?.value.trim() || "请总结今天医学 AI 领域值得关注的方向。";
-      if (output) {
-        output.innerHTML = `
+    newsSection?.classList.add("is-hidden");
+    if (output) {
+      output.hidden = false;
+      output.dataset.submitted = "true";
+      output.innerHTML = `
         <span>${escapeHtml(model)}</span>
         <strong>${escapeHtml(question)}</strong>
-        <p>这是静态演示入口。正式接入后，这里会调用所选模型返回医学 AI 学习、检索、病例结构化或科研设计相关回答，并保留人工审核提示。</p>`;
-      }
+        <p>已进入静态演示。正式接入后会在这里返回回答。</p>`;
+    }
   });
 
   shell.dataset.agentReady = "true";
