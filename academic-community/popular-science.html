@@ -4,6 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>科普 | Freedom AI</title>
+    <meta name="description" content="Freedom AI 内容模块下的科普页面，聚合科普视频和科普视频生成工具。" />
     <link rel="stylesheet" href="assets/css/style.css" />
     <script src="assets/js/main.js" defer></script>
   </head>
@@ -32,16 +33,96 @@
         </nav>
       </header>
     <main>
-      <section class="page-title"><div class="container"><h1>科普</h1><p>面向公众解释医学 AI 能做什么、不能做什么，以及如何理解医疗数据、模型回答和风险提示。</p></div></section>
-      <section class="section compact">
-        <div class="container science-grid">
-          <article><span>入门</span><h2>医学 AI 是什么</h2><p>解释大语言模型、多模态模型、知识库问答和智能体的基本概念。</p></article>
-          <article><span>安全</span><h2>为什么不能替代医生</h2><p>用真实边界说明幻觉、责任、隐私、适用人群和人工复核。</p></article>
-          <article><span>数据</span><h2>医疗数据如何脱敏</h2><p>科普姓名、住院号、影像号、日期、罕见病信息等隐私风险。</p></article>
-          <article><span>工具</span><h2>普通人如何看 AI 回答</h2><p>关注来源、证据等级、禁忌、建议去医院的信号和不确定表达。</p></article>
+      <section class="page-title">
+        <div class="container">
+          <p class="eyebrow">Content Modules / Popular Science</p>
+          <h1>科普</h1>
+          <p>该页作为内容模块下的科普入口，聚合面向公众、患者和跨学科学习者的医学 AI 科普视频，并提供科普视频生成工具的脚本、分镜、字幕和合规检查流程。</p>
+          <div class="learning-module-actions" aria-label="科普页面入口">
+            <a href="#science-videos"><span>Popular Science Videos</span><strong>科普视频</strong></a>
+            <a href="#science-video-tools"><span>Video Generator Tools</span><strong>科普视频生成工具</strong></a>
+            <a href="learning.html"><span>Content Module</span><strong>返回内容模块</strong></a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section compact" id="science-videos">
+        <div class="container">
+          <div class="section-head clean">
+            <div>
+              <p class="eyebrow">Popular Science Videos</p>
+              <h2>科普视频</h2>
+              <p>用短视频解释医学 AI 的能力边界、数据安全、临床复核和患者沟通，让复杂概念更容易被普通用户理解。</p>
+            </div>
+          </div>
+          <div class="module-detail-grid">
+            <article class="module-detail-panel"><span>01</span><h2>AI 辅助诊断误区</h2><p>说明 AI 建议、医生判断和真实诊疗责任之间的关系，避免把模型回答当成最终诊断。</p></article>
+            <article class="module-detail-panel"><span>02</span><h2>医疗数据与隐私</h2><p>解释姓名、住院号、影像号、日期和罕见病信息为什么需要脱敏后再进入工具流程。</p></article>
+            <article class="module-detail-panel"><span>03</span><h2>如何阅读 AI 回答</h2><p>引导用户关注来源、证据等级、禁忌、不确定表达和需要线下就医的危险信号。</p></article>
+            <article class="module-detail-panel"><span>04</span><h2>医生如何复核 AI</h2><p>展示医生在病史补充、检查选择、用药安全和随访建议中的人工复核节点。</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section compact alt-band">
+        <div class="container">
+          <div class="course-list">
+            <article class="course-row"><span class="tag blue">入门</span><div><h2>医学 AI 是什么</h2><p>解释大语言模型、多模态模型、知识库问答和智能体的基本概念。</p><ul><li>适合公众科普、课堂导入和患者教育</li><li>重点强调 AI 只是辅助信息来源</li></ul></div><a href="learning-videos.html">看视频</a></article>
+            <article class="course-row"><span class="tag green">安全</span><div><h2>为什么不能替代医生</h2><p>用常见场景说明幻觉、责任、隐私、适用人群和人工复核的必要性。</p><ul><li>适合诊前宣教和平台使用提示</li><li>把风险边界讲清楚，不制造过度承诺</li></ul></div><a href="learning-videos.html">看清单</a></article>
+            <article class="course-row"><span class="tag gold">数据</span><div><h2>医疗数据如何脱敏</h2><p>科普身份信息、病案标识、影像信息和小样本人群数据的隐私风险。</p><ul><li>适合数据提交前的用户教育</li><li>可与工具库中的脱敏检查流程联动</li></ul></div><a href="tools.html">看工具</a></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section compact" id="science-video-tools">
+        <div class="container">
+          <div class="section-head clean">
+            <div>
+              <p class="eyebrow">Video Generator Tools</p>
+              <h2>科普视频生成工具</h2>
+              <p>把医学主题转成适合短视频的脚本、分镜、旁白和字幕检查清单，便于医生、教师和运营同学协作生成可审核的科普内容。</p>
+            </div>
+          </div>
+          <div class="agent-workbench" id="agentWorkbench" aria-label="科普视频生成工具演示">
+            <form id="agentQuestionForm" class="agent-form">
+              <input id="agentModel" type="hidden" value="GPT-5.5" />
+              <div class="agent-input-shell">
+                <label class="visually-hidden" for="agentQuestion">输入科普视频主题</label>
+                <textarea id="agentQuestion" rows="1" placeholder="输入疾病主题、目标人群和时长，例如：高血压患者 60 秒 科普短视频"></textarea>
+                <div class="agent-composer-actions">
+                  <div class="agent-model-select" data-model-picker>
+                    <button class="agent-model-trigger" type="button" aria-haspopup="listbox" aria-expanded="false">
+                      <strong data-selected-model>GPT-5.5</strong>
+                      <em aria-hidden="true">⌄</em>
+                    </button>
+                    <div class="agent-model-menu" role="listbox" aria-label="选择模型" hidden>
+                      <button class="active" type="button" role="option" aria-selected="true" data-model="GPT-5.5">GPT-5.5</button>
+                      <button type="button" role="option" aria-selected="false" data-model="GPT-5.4">GPT-5.4</button>
+                      <button type="button" role="option" aria-selected="false" data-model="GPT-5.4-Mini">GPT-5.4-Mini</button>
+                      <button type="button" role="option" aria-selected="false" data-model="华佗GPT">华佗GPT</button>
+                      <button type="button" role="option" aria-selected="false" data-model="Qwen">Qwen</button>
+                      <button type="button" role="option" aria-selected="false" data-model="MedGemma">MedGemma</button>
+                    </div>
+                  </div>
+                  <button class="agent-send" type="submit" aria-label="生成">↑</button>
+                </div>
+              </div>
+            </form>
+
+            <div id="agentAnswer" class="agent-answer" aria-live="polite" hidden>
+              <span>GPT-5.5</span>
+              <p>输入科普主题后按 Enter 生成脚本草案。</p>
+            </div>
+          </div>
+
+          <div class="course-list">
+            <article class="course-row"><span class="tag blue">脚本</span><div><h2>科普脚本生成</h2><p>把一个医学 AI 或疾病管理主题拆成开场、核心解释、风险边界和行动建议。</p><ul><li>输出 30 秒、60 秒、3 分钟三种版本</li><li>自动加入“不能替代医生”的边界提示</li></ul></div><a href="demos.html">查看示例</a></article>
+            <article class="course-row"><span class="tag green">分镜</span><div><h2>视频分镜与画面提示</h2><p>根据脚本生成镜头表、画面元素、字幕节奏和适合公众理解的类比表达。</p><ul><li>适合短视频、课件和患者宣教</li><li>保留医生审核和医学术语校对环节</li></ul></div><a href="tools.html">打开工具库</a></article>
+            <article class="course-row"><span class="tag gold">审核</span><div><h2>字幕与合规检查</h2><p>检查绝对化表述、诊断承诺、隐私风险、药品误导和缺失的就医提示。</p><ul><li>发布前生成复核清单</li><li>标记需要医生确认的医学结论</li></ul></div><a href="community.html">提交讨论</a></article>
+          </div>
         </div>
       </section>
     </main>
-    <footer class="site-footer"><div class="container footer-grid"><div><h3>Freedom AI</h3><p>科普内容强调清楚、审慎、可验证。</p></div><div><h4>学习</h4><a href="learning.html">教学</a></div><div><h4>讨论</h4><a href="community.html">讨论区</a></div><div><h4>项目</h4><a href="about.html">About（collaborator）</a></div></div></footer>
+    <footer class="site-footer"><div class="container footer-grid"><div><h3>Freedom AI</h3><p>科普页面作为内容模块子入口，连接科普视频和视频生成工具。</p></div><div><h4>内容</h4><a href="learning.html">内容模块</a><a href="#science-videos">科普视频</a></div><div><h4>工具</h4><a href="#science-video-tools">科普视频生成工具</a><a href="tools.html">工具库</a></div><div><h4>讨论</h4><a href="community.html">讨论区</a></div><div><h4>项目</h4><a href="about.html">About（collaborator）</a></div></div></footer>
   </body>
 </html>
