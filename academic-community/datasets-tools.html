@@ -194,6 +194,31 @@
         text-decoration: none;
       }
 
+      .data-tools-page .dataset-pagination {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 8px;
+        padding-top: 4px;
+      }
+
+      .data-tools-page .dataset-page-list {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 8px;
+      }
+
+      .data-tools-page .dataset-pagination button {
+        min-height: 34px;
+        border-radius: 999px;
+      }
+
+      .data-tools-page .dataset-pagination button:disabled {
+        cursor: not-allowed;
+        opacity: 0.45;
+      }
+
       @media (max-width: 760px) {
         .data-tools-page .dataset-browser-intro {
           display: grid;
@@ -221,6 +246,12 @@
       @media (max-width: 520px) {
         .data-tools-page .dataset-trending-head {
           display: grid;
+        }
+
+        .data-tools-page .dataset-pagination {
+          align-items: stretch;
+          display: grid;
+          grid-template-columns: 1fr;
         }
 
         .data-tools-page .dataset-trending-card.dataset-card {
@@ -278,7 +309,7 @@
               <h2>数据集展示区</h2>
               <p>按领域标签、任务类型和关键词快速发现数据集。每条数据集显示来源、格式、规模、更新时间、可用性和热度，方便后续关联众包任务或 Benchmark。</p>
             </div>
-            <a class="btn primary dataset-add-btn" href="#dataset-upload"><span aria-hidden="true">+</span> 添加数据集</a>
+            <a class="btn primary dataset-add-btn" href="contribute.html"><span aria-hidden="true">+</span> 添加数据集</a>
           </div>
 
           <div class="dataset-search-row" aria-label="数据集搜索">
@@ -350,7 +381,7 @@
                 <p>连接医学影像、报告摘要、关键发现和异常标签，适合图文检索、报告生成和多模态 RAG 评测。</p>
                 <div class="dataset-meta-row"><span>DICOM + TXT</span><span>2,400 对样例</span><span>Updated 2026.02</span><span>Usability 8.7</span></div>
               </div>
-              <aside class="dataset-card-stats"><span>浏览 5.9k</span><strong>收藏 421</strong><a href="#dataset-task-map">关联任务</a></aside>
+              <aside class="dataset-card-stats"><span>浏览 5.9k</span><strong>收藏 421</strong><a href="crowdsourcing.html">关联任务</a></aside>
             </article>
 
             <article class="dataset-card dataset-trending-card" data-dataset-card data-tags="nlp share literature entity biomedical text">
@@ -380,7 +411,7 @@
                 <p>整合基因表达、突变、临床分期和疗效结局字段，适合预后建模与跨模态研究设计。</p>
                 <div class="dataset-meta-row"><span>CSV / TSV</span><span>多癌种样例</span><span>Updated 2025.12</span><span>Usability 8.2</span></div>
               </div>
-              <aside class="dataset-card-stats"><span>浏览 3.8k</span><strong>收藏 276</strong><a href="#dataset-task-map">查看字段</a></aside>
+              <aside class="dataset-card-stats"><span>浏览 3.8k</span><strong>收藏 276</strong><a href="#tool-directory">查看字段</a></aside>
             </article>
 
             <article class="dataset-card dataset-trending-card" data-dataset-card data-tags="ehr imaging share compliance deidentified hospital">
@@ -390,43 +421,15 @@
                 <p>用于机构展示脱敏样例、授权说明、数据字典、质量报告和用途边界，正式共享前进入合规审核。</p>
                 <div class="dataset-meta-row"><span>CSV / PDF</span><span>审核后开放</span><span>Updated 2026.06</span><span>Usability 8.0</span></div>
               </div>
-              <aside class="dataset-card-stats"><span>浏览 3.1k</span><strong>收藏 244</strong><a href="#dataset-upload">添加数据</a></aside>
+              <aside class="dataset-card-stats"><span>浏览 3.1k</span><strong>收藏 244</strong><a href="contribute.html">添加数据</a></aside>
             </article>
           </div>
-        </div>
-      </section>
 
-      <section class="section compact alt-band" id="dataset-task-map">
-        <div class="container">
-          <div class="section-head clean">
-            <div>
-              <p class="eyebrow">Dataset + Task</p>
-              <h2>数据集与任务关联</h2>
-              <p>每个数据集都可以连接众包任务、Benchmark 和讨论区，形成从数据准备到评测发布的闭环。</p>
-            </div>
-          </div>
-          <div class="dataset-task-grid">
-            <article><span>Dataset</span><strong>数据集卡片</strong><p>授权、脱敏、字段、质量报告、标签、版本和浏览下载入口。</p></article>
-            <article><span>Task</span><strong>众包任务</strong><p>标注、复核、数据治理、模型训练、研究复现和交付验收。</p></article>
-            <article><span>Benchmark</span><strong>评测发布</strong><p>榜单、指标、错误分析、基线模型和可复查结果。</p></article>
-          </div>
-        </div>
-      </section>
-
-      <section class="section compact" id="dataset-upload">
-        <div class="container">
-          <div class="section-head clean">
-            <div>
-              <p class="eyebrow">Upload Roadmap</p>
-              <h2>数据集上传与上架流程</h2>
-              <p>上传能力作为未来扩展入口，正式启用前需要完成授权确认、脱敏证明、数据字典、质量报告和用途边界审核。</p>
-            </div>
-          </div>
-          <div class="dataset-task-grid">
-            <article><span>01</span><strong>提交元数据</strong><p>填写数据名称、来源机构、版本、字段说明、授权范围和联系人。</p></article>
-            <article><span>02</span><strong>合规审核</strong><p>核查隐私、伦理、脱敏、授权、访问控制和最小必要原则。</p></article>
-            <article><span>03</span><strong>关联任务</strong><p>选择是否发布标注、质控、模型训练、研究复现或 Benchmark 任务。</p></article>
-          </div>
+          <nav class="dataset-pagination" id="datasetPagination" aria-label="数据集分页">
+            <button class="filter-btn" type="button" data-dataset-page="prev">上一页</button>
+            <div class="dataset-page-list" id="datasetPageList" aria-live="polite"></div>
+            <button class="filter-btn" type="button" data-dataset-page="next">下一页</button>
+          </nav>
         </div>
       </section>
 

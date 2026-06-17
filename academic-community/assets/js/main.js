@@ -750,22 +750,45 @@ function wireDatasetBrowser() {
 
   const searchInput = document.querySelector("#datasetSearch");
   const filterButtons = Array.from(document.querySelectorAll("[data-dataset-filter]"));
-  const state = { filter: "all", search: "" };
+  const pageList = document.querySelector("#datasetPageList");
+  const prevButton = document.querySelector("[data-dataset-page='prev']");
+  const nextButton = document.querySelector("[data-dataset-page='next']");
+  const state = { filter: "all", search: "", page: 1, pageSize: 4 };
 
   function renderDatasetCards() {
     const query = state.search.trim().toLowerCase();
-    cards.forEach((card) => {
+    const matches = cards.filter((card) => {
       const tags = card.dataset.tags || "";
       const text = card.textContent.toLowerCase();
       const matchesTag = state.filter === "all" || tags.includes(state.filter);
       const matchesQuery = !query || text.includes(query);
-      card.hidden = !matchesTag || !matchesQuery;
+      return matchesTag && matchesQuery;
     });
+
+    const totalPages = Math.max(1, Math.ceil(matches.length / state.pageSize));
+    state.page = Math.min(state.page, totalPages);
+    const pageStart = (state.page - 1) * state.pageSize;
+    const visible = new Set(matches.slice(pageStart, pageStart + state.pageSize));
+
+    cards.forEach((card) => {
+      card.hidden = !visible.has(card);
+    });
+
+    if (pageList) {
+      pageList.innerHTML = Array.from({ length: totalPages }, (_, index) => {
+        const page = index + 1;
+        return `<button class="filter-btn ${page === state.page ? "active" : ""}" type="button" data-dataset-page-number="${page}" aria-current="${page === state.page ? "page" : "false"}">第${page}页</button>`;
+      }).join("");
+    }
+
+    if (prevButton) prevButton.disabled = state.page <= 1;
+    if (nextButton) nextButton.disabled = state.page >= totalPages;
   }
 
   filterButtons.forEach((button) => {
     button.addEventListener("click", () => {
       state.filter = button.dataset.datasetFilter || "all";
+      state.page = 1;
       filterButtons.forEach((item) => item.classList.toggle("active", item === button));
       renderDatasetCards();
     });
@@ -773,6 +796,24 @@ function wireDatasetBrowser() {
 
   searchInput?.addEventListener("input", (event) => {
     state.search = event.target.value;
+    state.page = 1;
+    renderDatasetCards();
+  });
+
+  pageList?.addEventListener("click", (event) => {
+    const button = event.target.closest("[data-dataset-page-number]");
+    if (!button) return;
+    state.page = Number(button.dataset.datasetPageNumber) || 1;
+    renderDatasetCards();
+  });
+
+  prevButton?.addEventListener("click", () => {
+    state.page = Math.max(1, state.page - 1);
+    renderDatasetCards();
+  });
+
+  nextButton?.addEventListener("click", () => {
+    state.page += 1;
     renderDatasetCards();
   });
 
