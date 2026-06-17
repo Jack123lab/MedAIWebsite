@@ -740,6 +740,58 @@ async function wireHotToolFeed() {
   }
 }
 
+function wireHomeNewsScroll() {
+  const row = document.querySelector(".news-scroll-row");
+  if (!row || row.dataset.scrollReady === "true") return;
+
+  document.querySelectorAll("[data-news-scroll]").forEach((button) => {
+    button.addEventListener("click", () => {
+      const direction = button.dataset.newsScroll === "prev" ? -1 : 1;
+      row.scrollBy({ left: row.clientWidth * 0.86 * direction, behavior: "smooth" });
+    });
+  });
+
+  row.dataset.scrollReady = "true";
+}
+
+function wireHomeAgent() {
+  const shell = document.querySelector("#agentWorkbench");
+  if (!shell || shell.dataset.agentReady === "true") return;
+
+  const cards = shell.querySelectorAll(".agent-model-card");
+  const modelInput = shell.querySelector("#agentModel");
+  const form = shell.querySelector("#agentQuestionForm");
+  const input = shell.querySelector("#agentQuestion");
+  const output = shell.querySelector("#agentAnswer");
+
+  cards.forEach((card) => {
+    card.addEventListener("click", () => {
+      cards.forEach((item) => item.classList.toggle("active", item === card));
+      if (modelInput) modelInput.value = card.dataset.model || "";
+      if (output) {
+        output.innerHTML = `
+          <span>${escapeHtml(card.dataset.model || "Agent")}</span>
+          <strong>已选择 ${escapeHtml(card.dataset.model || "Agent")}</strong>
+          <p>可以继续输入医学 AI 学习、文献整理、病例结构化、工具调用或科研设计相关问题。</p>`;
+      }
+    });
+  });
+
+  form?.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const model = modelInput?.value || "华佗GPT";
+    const question = input?.value.trim() || "请总结今天医学 AI 领域值得关注的方向。";
+    if (output) {
+      output.innerHTML = `
+        <span>${escapeHtml(model)}</span>
+        <strong>${escapeHtml(question)}</strong>
+        <p>这是静态演示入口。正式接入后，这里会调用所选模型返回医学 AI 学习、检索、病例结构化或科研设计相关回答，并保留人工审核提示。</p>`;
+    }
+  });
+
+  shell.dataset.agentReady = "true";
+}
+
 injectPageLanguageFilter();
 injectLanguageSwitch();
 wireDiscussionNav();
@@ -752,3 +804,5 @@ wireForum();
 wireDoctorWorkspace();
 wireHotToolFeed();
 injectJournalSources();
+wireHomeNewsScroll();
+wireHomeAgent();
