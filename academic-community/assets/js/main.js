@@ -758,35 +758,75 @@ function wireHomeAgent() {
   const shell = document.querySelector("#agentWorkbench");
   if (!shell || shell.dataset.agentReady === "true") return;
 
-  const cards = shell.querySelectorAll(".agent-model-card");
+  const picker = shell.querySelector("[data-model-picker]");
+  const trigger = picker?.querySelector(".agent-model-trigger");
+  const menu = picker?.querySelector(".agent-model-menu");
+  const options = picker?.querySelectorAll("[data-model]");
+  const selectedModel = picker?.querySelector("[data-selected-model]");
   const modelInput = shell.querySelector("#agentModel");
   const form = shell.querySelector("#agentQuestionForm");
   const input = shell.querySelector("#agentQuestion");
   const output = shell.querySelector("#agentAnswer");
 
-  cards.forEach((card) => {
-    card.addEventListener("click", () => {
-      cards.forEach((item) => item.classList.toggle("active", item === card));
-      if (modelInput) modelInput.value = card.dataset.model || "";
-      if (output) {
-        output.innerHTML = `
-          <span>${escapeHtml(card.dataset.model || "Agent")}</span>
-          <strong>已选择 ${escapeHtml(card.dataset.model || "Agent")}</strong>
-          <p>可以继续输入医学 AI 学习、文献整理、病例结构化、工具调用或科研设计相关问题。</p>`;
-      }
-    });
-  });
+  const setMenuOpen = (open) => {
+    if (!trigger || !menu) return;
+    trigger.setAttribute("aria-expanded", String(open));
+    menu.hidden = !open;
+    picker?.classList.toggle("is-open", open);
+  };
 
-  form?.addEventListener("submit", (event) => {
-    event.preventDefault();
-    const model = modelInput?.value || "华佗GPT";
-    const question = input?.value.trim() || "请总结今天医学 AI 领域值得关注的方向。";
+  const selectModel = (model) => {
+    if (!model) return;
+    if (modelInput) modelInput.value = model;
+    if (selectedModel) selectedModel.textContent = model;
+    options?.forEach((item) => {
+      const active = item.dataset.model === model;
+      item.classList.toggle("active", active);
+      item.setAttribute("aria-selected", String(active));
+    });
     if (output) {
       output.innerHTML = `
         <span>${escapeHtml(model)}</span>
+        <strong>已选择 ${escapeHtml(model)}</strong>
+        <p>可以继续输入医学 AI 学习、文献整理、病例结构化、工具调用或科研设计相关问题。</p>`;
+    }
+  };
+
+  trigger?.addEventListener("click", (event) => {
+    event.stopPropagation();
+    setMenuOpen(menu?.hidden ?? true);
+  });
+
+  options?.forEach((option) => {
+    option.addEventListener("click", () => {
+      selectModel(option.dataset.model || "");
+      setMenuOpen(false);
+      trigger?.focus();
+    });
+  });
+
+  document.addEventListener("click", (event) => {
+    if (!picker || picker.contains(event.target)) return;
+    setMenuOpen(false);
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key !== "Escape") return;
+    setMenuOpen(false);
+  });
+
+  if (modelInput?.value) selectModel(modelInput.value);
+
+  form?.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const model = modelInput?.value || "GPT-5.5";
+    const question = input?.value.trim() || "请总结今天医学 AI 领域值得关注的方向。";
+      if (output) {
+        output.innerHTML = `
+        <span>${escapeHtml(model)}</span>
         <strong>${escapeHtml(question)}</strong>
         <p>这是静态演示入口。正式接入后，这里会调用所选模型返回医学 AI 学习、检索、病例结构化或科研设计相关回答，并保留人工审核提示。</p>`;
-    }
+      }
   });
 
   shell.dataset.agentReady = "true";

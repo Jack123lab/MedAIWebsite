@@ -100,66 +100,37 @@
               <strong>Preview</strong>
             </div>
 
-            <div class="model-switcher" role="list" aria-label="可选模型">
-              <button class="agent-model-card active" type="button" data-model="华佗GPT">
-                <strong>华佗GPT</strong>
-                <span>医学中文问答、病例摘要、指南解释</span>
+            <div class="agent-model-select" data-model-picker>
+              <button class="agent-model-trigger" type="button" aria-haspopup="listbox" aria-expanded="false">
+                <span>模型</span>
+                <strong data-selected-model>GPT-5.5</strong>
+                <em aria-hidden="true">⌄</em>
               </button>
-              <button class="agent-model-card" type="button" data-model="GPT 系列">
-                <strong>GPT 系列</strong>
-                <span>复杂任务规划、摘要生成、代码与工具调用</span>
-              </button>
-              <button class="agent-model-card" type="button" data-model="Claude 系列">
-                <strong>Claude 系列</strong>
-                <span>长文档阅读、审稿意见整理、伦理风险归纳</span>
-              </button>
-              <button class="agent-model-card" type="button" data-model="Gemini 系列">
-                <strong>Gemini 系列</strong>
-                <span>多模态资料理解、检索辅助、报告结构化</span>
-              </button>
-              <button class="agent-model-card" type="button" data-model="DeepSeek">
-                <strong>DeepSeek</strong>
-                <span>中文医学推理、低成本批量任务、科研草稿</span>
-              </button>
-              <button class="agent-model-card" type="button" data-model="Qwen">
-                <strong>Qwen</strong>
-                <span>中文场景问答、院内知识库、结构化输出</span>
-              </button>
-              <button class="agent-model-card" type="button" data-model="GLM">
-                <strong>GLM</strong>
-                <span>中文对话、合规检查、表格化资料整理</span>
-              </button>
-              <button class="agent-model-card" type="button" data-model="Llama">
-                <strong>Llama</strong>
-                <span>开源部署、私有化验证、模型对照实验</span>
-              </button>
-              <button class="agent-model-card" type="button" data-model="Mistral">
-                <strong>Mistral</strong>
-                <span>轻量推理、英文文献摘要、快速原型测试</span>
-              </button>
-              <button class="agent-model-card" type="button" data-model="MedGemma">
-                <strong>MedGemma</strong>
-                <span>医学专向任务、临床文本与证据抽取评测</span>
-              </button>
-              <button class="agent-model-card" type="button" data-model="BioGPT / PubMedBERT">
-                <strong>BioGPT / PubMedBERT</strong>
-                <span>生物医学文本、术语识别、文献分类基线</span>
-              </button>
-              <button class="agent-model-card" type="button" data-model="Yi">
-                <strong>Yi</strong>
-                <span>中文长文本、科研材料整理、问答对照</span>
-              </button>
+              <div class="agent-model-menu" role="listbox" aria-label="选择模型" hidden>
+                <button class="active" type="button" role="option" aria-selected="true" data-model="GPT-5.5">GPT-5.5</button>
+                <button type="button" role="option" aria-selected="false" data-model="GPT-5.4">GPT-5.4</button>
+                <button type="button" role="option" aria-selected="false" data-model="GPT-5.4-Mini">GPT-5.4-Mini</button>
+                <button type="button" role="option" aria-selected="false" data-model="GPT-5.3-Codex-Spark">GPT-5.3-Codex-Spark</button>
+                <button type="button" role="option" aria-selected="false" data-model="华佗GPT">华佗GPT</button>
+                <button type="button" role="option" aria-selected="false" data-model="Claude 系列">Claude 系列</button>
+                <button type="button" role="option" aria-selected="false" data-model="Gemini 系列">Gemini 系列</button>
+                <button type="button" role="option" aria-selected="false" data-model="DeepSeek">DeepSeek</button>
+                <button type="button" role="option" aria-selected="false" data-model="Qwen">Qwen</button>
+                <button type="button" role="option" aria-selected="false" data-model="GLM">GLM</button>
+                <button type="button" role="option" aria-selected="false" data-model="Llama">Llama</button>
+                <button type="button" role="option" aria-selected="false" data-model="MedGemma">MedGemma</button>
+              </div>
             </div>
 
             <form id="agentQuestionForm" class="agent-form">
-              <input id="agentModel" type="hidden" value="华佗GPT" />
+              <input id="agentModel" type="hidden" value="GPT-5.5" />
               <label for="agentQuestion">问题</label>
               <textarea id="agentQuestion" rows="4" placeholder="例如：帮我把一篇临床研究论文整理成 PICO 和局限性"></textarea>
               <button class="btn primary" type="submit">开始问答</button>
             </form>
 
             <div id="agentAnswer" class="agent-answer" aria-live="polite">
-              <span>华佗GPT</span>
+              <span>GPT-5.5</span>
               <strong>等待问题输入</strong>
               <p>选择模型后可以进入医学 AI 问答、资料整理、工具调用和学习路径规划。</p>
             </div>
