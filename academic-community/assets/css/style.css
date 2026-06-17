@@ -4242,6 +4242,39 @@ body:not(.login-page) {
   min-height: clamp(420px, 62vh, 640px);
 }
 
+.home-news-stage {
+  position: relative;
+}
+
+.home-news-arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 5;
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  border: 1px solid rgba(255, 255, 255, 0.36);
+  border-radius: 50%;
+  color: #ffffff;
+  background: rgba(7, 23, 36, 0.72);
+  box-shadow: 0 18px 34px rgba(7, 23, 36, 0.24);
+  cursor: pointer;
+  transform: translateY(-50%);
+}
+
+.home-news-arrow:hover {
+  background: rgba(24, 95, 121, 0.92);
+}
+
+.home-news-arrow.prev {
+  left: 14px;
+}
+
+.home-news-arrow.next {
+  right: 14px;
+}
+
 .agent-row-head {
   margin-top: 28px;
 }
@@ -4264,9 +4297,56 @@ body:not(.login-page) {
 .home-news-card {
   flex-basis: min(76vw, 720px);
   min-width: min(76vw, 720px);
+  position: relative;
   min-height: clamp(390px, 58vh, 590px);
+  overflow: hidden;
   padding: 28px;
   scroll-snap-align: start;
+  isolation: isolate;
+}
+
+.home-news-card::before {
+  position: absolute;
+  inset: 0;
+  z-index: -2;
+  content: "";
+  background-image:
+    linear-gradient(115deg, rgba(5, 18, 28, 0.92), rgba(5, 18, 28, 0.56) 48%, rgba(5, 18, 28, 0.18)),
+    var(--news-image);
+  background-position: center, right 34px center;
+  background-repeat: no-repeat;
+  background-size: cover, min(360px, 58%) auto;
+}
+
+.home-news-card::after {
+  position: absolute;
+  inset: auto 24px 22px auto;
+  z-index: -1;
+  width: 180px;
+  height: 180px;
+  content: "";
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(134, 221, 213, 0.22), transparent 70%);
+}
+
+.home-news-card:nth-child(1) {
+  --news-image: url("https://huggingface.co/front/assets/huggingface_logo-noborder.svg");
+}
+
+.home-news-card:nth-child(2) {
+  --news-image: url("https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png");
+}
+
+.home-news-card:nth-child(3) {
+  --news-image: url("https://github.githubassets.com/images/modules/logos_page/Octocat.png");
+}
+
+.home-news-card:nth-child(4) {
+  --news-image: url("https://huggingface.co/front/assets/huggingface_logo-noborder.svg");
+}
+
+.home-news-card:nth-child(5) {
+  --news-image: url("https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png");
 }
 
 .home-agent-card {
@@ -4292,8 +4372,13 @@ body:not(.login-page) {
   line-height: 1.35;
 }
 
+.home-news-card span {
+  color: #86ddd5;
+}
+
 .home-news-card strong {
   max-width: 620px;
+  color: #ffffff;
   font-size: clamp(26px, 4vw, 42px);
   line-height: 1.12;
 }
@@ -4309,6 +4394,8 @@ body:not(.login-page) {
 
 .home-news-card p {
   max-width: 560px;
+  border-top-color: rgba(255, 255, 255, 0.18);
+  color: #d7e9ef;
   font-size: 17px;
   line-height: 1.72;
 }

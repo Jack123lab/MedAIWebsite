@@ -706,6 +706,31 @@ function wireHomeAgent() {
   });
 }
 
+function wireHomeNewsCarousel() {
+  const row = document.querySelector(".home-news-row");
+  if (!row || row.dataset.carouselReady === "true") return;
+
+  const stage = document.createElement("div");
+  stage.className = "home-news-stage";
+  row.before(stage);
+  stage.appendChild(row);
+
+  ["prev", "next"].forEach((direction) => {
+    const button = document.createElement("button");
+    button.className = `home-news-arrow ${direction}`;
+    button.type = "button";
+    button.setAttribute("aria-label", direction === "prev" ? "上一条新闻" : "下一条新闻");
+    button.textContent = direction === "prev" ? "‹" : "›";
+    button.addEventListener("click", () => {
+      const amount = row.clientWidth * 0.86 * (direction === "prev" ? -1 : 1);
+      row.scrollBy({ left: amount, behavior: "smooth" });
+    });
+    stage.appendChild(button);
+  });
+
+  row.dataset.carouselReady = "true";
+}
+
 function wireDiscussionTabs() {
   document.querySelectorAll("[data-discussion-tabs]").forEach((group) => {
     const groupName = group.dataset.discussionTabs;
@@ -733,6 +758,7 @@ wireCommunityGate();
 wireForum();
 wireDoctorWorkspace();
 wireHomeAgent();
+wireHomeNewsCarousel();
 wireDiscussionTabs();
 injectJournalSources();
 injectInstitutionBar();
