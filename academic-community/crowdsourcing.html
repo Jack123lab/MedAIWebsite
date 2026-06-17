@@ -25,12 +25,47 @@
         </nav>
       </header>
     <main>
-      <section class="page-title"><div class="container"><p class="eyebrow">Crowdsourcing</p><h1>众包平台</h1><p>面向医生、医学生、研究者和机构发布医学 AI 数据治理、标注、评测和教学任务。</p></div></section>
+      <section class="page-title"><div class="container"><p class="eyebrow">Kaggle-style Task Marketplace</p><h1>医学 AI 任务竞赛与外包市场</h1><p>医疗机构和医生发布数据任务、模型任务与研究任务，AI 工程师、数据治理人员、医学统计人员和专业审核者在市场中接单协作。</p></div></section>
       <section class="section compact">
-        <div class="container task-board">
-          <article><span class="tag blue">标注</span><h2>病例结构化字段校对</h2><p>审核主诉、现病史、检查、诊断、治疗路径和随访字段。</p><strong>按条计费</strong></article>
-          <article><span class="tag green">评测</span><h2>模型回答人工复核</h2><p>医生根据证据、适用人群和风险提示对回答评分。</p><strong>按任务包结算</strong></article>
-          <article><span class="tag gold">题库</span><h2>虚拟病人脚本众包</h2><p>共建问诊路径、关键追问、干扰项和标准答案。</p><strong>署名贡献</strong></article>
+        <div class="container market-grid">
+          <article class="market-panel featured"><span class="tag gold">需求方</span><h2>医生 / 医院发布任务</h2><p>需求可包含数据脱敏、标注、工具开发、模型评测、课程题库、科研复现和院内流程设计。</p><div class="market-meta"><span>医疗机构</span><span>医生团队</span><span>验收标准</span><span>合规说明</span></div></article>
+          <article class="market-panel"><span class="tag blue">供给方</span><h2>AI 工程师 / 专业人员接单</h2><p>算法、工程、产品、数据标注、医学统计和合规顾问按能力标签匹配任务。</p><div class="price-row"><strong>能力匹配</strong><span>按任务报价</span></div></article>
+          <article class="market-panel"><span class="tag green">任务流</span><h2>从数据到交付</h2><p>需求先明确医学边界，再进入任务拆解、报价、执行、评测、验收和成果发布。</p><div class="price-row"><strong>交付闭环</strong><a href="community.html">发布动态</a></div></article>
+        </div>
+      </section>
+
+      <section class="section compact alt-band">
+        <div class="container">
+          <div class="section-head clean">
+            <div>
+              <p class="eyebrow">Competition + Marketplace</p>
+              <h2>医疗 AI 任务类型</h2>
+              <p>既支持类似 Kaggle Competitions 的竞赛型任务，也支持医疗 AI 外包市场中的交付型任务。</p>
+            </div>
+          </div>
+          <div class="task-market-grid">
+            <article class="task-card featured"><span>Competition</span><h3>医疗 AI 任务竞赛</h3><p>公开数据集、统一指标、榜单排名、基线模型和最终评审。</p><div class="metric-strip"><span>Leaderboard</span><span>Baseline</span><span>Prize / Credit</span></div><a href="benchmark.html">关联 Benchmark</a></article>
+            <article class="task-card"><span>Data Task</span><h3>数据任务</h3><p>脱敏、标注、质控、字段映射、数据字典和质量报告。</p><a href="datasets-tools.html">关联数据集</a></article>
+            <article class="task-card"><span>Model Task</span><h3>模型任务</h3><p>训练、微调、评测、错误分析、提示词优化和系统接入。</p><a href="benchmark.html">进入评测</a></article>
+            <article class="task-card"><span>Research Task</span><h3>研究任务</h3><p>论文复现、统计分析、文献证据整理、PICO 设计和投稿材料。</p><a href="research.html">论文讨论</a></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section compact">
+        <div class="container">
+          <div class="section-head clean">
+            <div>
+              <p class="eyebrow">Task Feed</p>
+              <h2>任务市场示例</h2>
+              <p>任务卡片用于显示发布方、任务类型、交付物、预算状态和关联数据集。</p>
+            </div>
+          </div>
+          <div class="task-feed">
+            <article><div><span class="tag blue">数据任务</span><h3>脱敏病历结构化字段校对</h3><p>发布方：心血管医生团队。交付物：字段一致性报告、错误样例、修订建议。</p></div><aside><strong>关联数据集</strong><a href="datasets-tools.html#dataset-browser">门诊病历样例集</a></aside></article>
+            <article><div><span class="tag green">模型任务</span><h3>指南问答模型人工复核</h3><p>发布方：医学 AI 评测组。交付物：答案评分、引用完整性、风险提示标注。</p></div><aside><strong>关联 Benchmark</strong><a href="benchmark.html">指南 QA 榜单</a></aside></article>
+            <article><div><span class="tag gold">研究任务</span><h3>胸部 CT 分割论文复现</h3><p>发布方：影像中心。交付物：复现记录、外部验证指标、失败样例分析。</p></div><aside><strong>关联讨论</strong><a href="community.html">讨论区</a></aside></article>
+          </div>
         </div>
       </section>
     </main>

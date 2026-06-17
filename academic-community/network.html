@@ -28,16 +28,56 @@
       <section class="page-title">
         <div class="container">
           <p class="eyebrow">Medical Network</p>
-          <h1>医生与医院社区</h1>
-          <p>医生作为个体、医院作为机构，形成可认领、可展示、可协作的医学 AI 社区主页。</p>
+          <h1>医生、医院与学术网络</h1>
+          <p>医疗社区采用 AMiner 风格结构，把医生、医院、研究者档案、论文成果和机构关系放在同一张专业网络里。讨论内容仍统一进入讨论区，再进入具体讨论流。</p>
         </div>
       </section>
+      <section class="section compact">
+        <div class="container clinical-cards three-up">
+          <article class="clinical-card">
+            <span>Doctor</span>
+            <h3>医生模块</h3>
+            <p>医生认证、资料台、脱敏资料管理、临床成果和个人学术主页入口，保留原有医生工作区流程。</p>
+            <a href="doctor.html">进入医生模块</a>
+          </article>
+          <article class="clinical-card">
+            <span>Hospital</span>
+            <h3>医院模块</h3>
+            <p>医院侧需求、院内场景、数据治理、工具试点和项目外包需求的统一入口。</p>
+            <a href="crowdsourcing.html">发布医院任务</a>
+          </article>
+          <article class="clinical-card">
+            <span>AMiner Network</span>
+            <h3>学术主页 / 研究者档案</h3>
+            <p>展示医生与研究者的论文、临床成果、学术影响力，并建立作者、论文、机构之间的关联结构。</p>
+            <a href="#academic-network">查看学术网络</a>
+          </article>
+        </div>
+      </section>
+
+      <section class="section compact alt-band" id="academic-network">
+        <div class="container">
+          <div class="section-head clean">
+            <div>
+              <p class="eyebrow">AMiner-style Graph</p>
+              <h2>作者 - 论文 - 机构关联结构</h2>
+              <p>医疗社区不只是名录，而是把临床专家、研究方向、论文成果、医院机构和可合作任务串联起来，支持个人学术主页化展示。</p>
+            </div>
+          </div>
+          <div class="relation-flow">
+            <article><span>Author</span><strong>医生 / 研究者</strong><p>临床专长、研究方向、论文列表、影响力指标和可合作主题。</p></article>
+            <article><span>Paper</span><strong>论文 / 临床成果</strong><p>论文共读、复现材料、数据来源、Benchmark 任务和成果发布入口。</p></article>
+            <article><span>Institution</span><strong>医院 / 机构</strong><p>科室、研究平台、数据治理能力、试点需求和共建任务市场。</p></article>
+          </div>
+        </div>
+      </section>
+
       <section class="section compact">
         <div class="container network-layout">
           <article class="profile-showcase doctor-profile">
             <span>Doctor Profile</span>
             <h2>医生个人主页</h2>
-            <p>展示获奖、论文、任职、治疗专长、学术方向、AI 工具使用经验和可合作主题。</p>
+            <p>展示获奖、论文、任职、治疗专长、学术方向、AI 工具使用经验、临床成果和可合作主题。</p>
             <dl>
               <dt>获奖</dt><dd>临床技能、科研竞赛、学术会议报告</dd>
               <dt>论文</dt><dd>SCI、中文核心、病例报告、综述</dd>
@@ -58,7 +98,39 @@
           </article>
         </div>
       </section>
+
+      <section class="section compact alt-band">
+        <div class="container">
+          <div class="section-head clean">
+            <div>
+              <p class="eyebrow">Researcher Profiles</p>
+              <h2>个人学术主页化展示</h2>
+              <p>研究者档案用于沉淀临床成果、论文、研究主题和机构关系，后续可扩展为可认领主页。</p>
+            </div>
+          </div>
+          <div class="researcher-card-grid">
+            <article class="researcher-card">
+              <div class="researcher-avatar">陈</div>
+              <div>
+                <span>心血管内科 / 医学 AI 评测</span>
+                <h3>陈医生</h3>
+                <p>方向：指南问答、心衰随访、临床文本结构化。关联论文 18 篇，Benchmark 任务 3 个。</p>
+                <div class="metric-strip"><span>论文 18</span><span>引用 426</span><span>H-index 9</span></div>
+              </div>
+            </article>
+            <article class="researcher-card">
+              <div class="researcher-avatar">林</div>
+              <div>
+                <span>影像中心 / 多模态模型</span>
+                <h3>林研究员</h3>
+                <p>方向：胸部影像、病灶分割、外部验证。关联数据集 4 个，众包标注任务 2 个。</p>
+                <div class="metric-strip"><span>论文 24</span><span>引用 812</span><span>H-index 13</span></div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
     </main>
-    <footer class="site-footer"><div class="container footer-grid"><div><h3>Happy medical AI</h3><p>社区主页用于连接医生、医院、研究者和工具开发者。</p></div><div><h4>讨论</h4><a href="community.html">讨论区</a></div><div><h4>数据</h4><a href="datasets-tools.html">数据集和工具集</a></div><div><h4>众包</h4><a href="crowdsourcing.html">众包平台</a></div></div></footer>
+    <footer class="site-footer"><div class="container footer-grid"><div><h3>Happy medical AI</h3><p>社区主页用于连接医生、医院、研究者、论文成果和工具开发者。</p></div><div><h4>讨论</h4><a href="community.html">讨论区</a></div><div><h4>数据</h4><a href="datasets-tools.html">数据集和工具集</a></div><div><h4>众包</h4><a href="crowdsourcing.html">众包平台</a></div></div></footer>
   </body>
 </html>
