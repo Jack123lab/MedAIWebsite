@@ -4148,19 +4148,6 @@ body.medical-workbench-index,
   grid-template-rows: minmax(260px, auto) 1fr;
 }
 
-.home-news-card::before {
-  position: absolute;
-  inset: 0;
-  z-index: 0;
-  content: "";
-  background-image:
-    linear-gradient(115deg, rgba(5, 18, 28, 0.96), rgba(5, 18, 28, 0.72) 52%, rgba(5, 18, 28, 0.34)),
-    var(--news-image);
-  background-position: center, center;
-  background-repeat: no-repeat;
-  background-size: cover, cover;
-}
-
 .hot-lead-card img,
 .hot-news-card img {
   width: 100%;
@@ -4300,45 +4287,72 @@ body.medical-workbench-index,
 .news-source-card {
   min-width: 0;
   display: grid;
-  grid-template-rows: 132px 1fr;
-  color: inherit;
+  grid-template-rows: 1fr;
+  position: relative;
+  min-height: clamp(320px, 45vh, 520px);
+  color: #ffffff;
   text-decoration: none;
   overflow: hidden;
+  isolation: isolate;
 }
 
 .news-source-card img {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
   background: #0b2638;
 }
 
+.news-source-card::after {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  content: "";
+  background: linear-gradient(180deg, rgba(5, 18, 28, 0.12), rgba(5, 18, 28, 0.78));
+  pointer-events: none;
+}
+
 .news-source-card div {
   display: grid;
-  align-content: start;
-  gap: 7px;
-  padding: 15px;
+  align-content: end;
+  gap: 9px;
+  position: relative;
+  z-index: 1;
+  padding: 22px;
 }
 
 .news-source-card span,
 .agent-card span,
 .model-pool-panel span,
 .model-pool-panel > div:first-child span {
-  color: var(--secondary);
   font-size: 12px;
   font-weight: 900;
   text-transform: uppercase;
+}
+
+.agent-card span,
+.model-pool-panel span,
+.model-pool-panel > div:first-child span {
+  color: var(--secondary);
 }
 
 .news-source-card strong,
 .agent-card strong,
 .model-pool-panel strong {
   display: block;
-  color: #172738;
   line-height: 1.35;
 }
 
+.agent-card strong,
+.model-pool-panel strong {
+  color: #172738;
+}
+
 .news-source-card strong {
+  color: #ffffff;
   font-size: 17px;
 }
 
@@ -4346,8 +4360,20 @@ body.medical-workbench-index,
 .agent-card p,
 .model-pool-panel p {
   margin: 0;
-  color: #667585;
   font-size: 14px;
+}
+
+.agent-card p,
+.model-pool-panel p {
+  color: #667585;
+}
+
+.news-source-card span {
+  color: #86ddd5;
+}
+
+.news-source-card p {
+  color: #d7e9ef;
 }
 
 .agent-section {
