@@ -6030,3 +6030,437 @@ body:not(.login-page) {
     font-size: 28px;
   }
 }
+
+/* Youth refresh: brighter medical-tech palette with lighter surfaces and livelier states. */
+:root {
+  --bg: #f2fbf8;
+  --surface: #ffffff;
+  --surface-soft: #eaf9f3;
+  --surface-blue: #e8f7ff;
+  --text: #17212b;
+  --muted: #60717f;
+  --line: #cbe5e2;
+  --primary: #007f91;
+  --primary-dark: #075766;
+  --secondary: #15a985;
+  --gold: #ffb340;
+  --danger: #e05265;
+}
+
+body:not(.login-page) {
+  background:
+    linear-gradient(rgba(0, 127, 145, 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 127, 145, 0.04) 1px, transparent 1px),
+    linear-gradient(180deg, #f7fffc 0%, #effaf7 52%, #f6fbff 100%);
+  background-size: 34px 34px, 34px 34px, auto;
+}
+
+.site-header,
+.medical-community-page .site-header,
+.doctor-community-page .site-header {
+  background: rgba(255, 255, 255, 0.86);
+  border-bottom-color: rgba(0, 127, 145, 0.14);
+  box-shadow: 0 12px 32px rgba(0, 82, 92, 0.08);
+  backdrop-filter: blur(16px);
+}
+
+.brand-mark {
+  border-radius: 8px;
+  background-color: #d9fff4;
+  box-shadow: 0 8px 18px rgba(21, 169, 133, 0.2);
+}
+
+.brand-text strong,
+h1,
+h2,
+h3,
+.page-title h1,
+.clinical-hero h1,
+.product-hero h1,
+.news-home-hero h1,
+.lead-panel h1,
+.medical-community-page .forum-title h1,
+.doctor-community-page .workflow-head h2 {
+  color: #10202a;
+}
+
+.brand-text span,
+p,
+.lead,
+.page-title p,
+.clinical-hero p,
+.clinical-hero .lead,
+.product-hero .lead,
+.news-home-hero p,
+.medical-community-page .forum-title p {
+  color: var(--muted);
+}
+
+.nav-links a,
+.nav-fold-title {
+  color: #405466;
+  border: 1px solid transparent;
+}
+
+.nav-links a:hover,
+.nav-links a.active,
+.nav-fold-title:hover,
+.nav-fold.active .nav-fold-title,
+.nav-fold.is-open .nav-fold-title {
+  color: #054c58;
+  border-color: rgba(0, 127, 145, 0.16);
+  background: #e6fbff;
+  box-shadow: 0 8px 18px rgba(0, 127, 145, 0.08);
+}
+
+.page-title,
+.clinical-hero,
+.hero,
+.calm-hero,
+.product-hero,
+.news-home-hero,
+.login-page {
+  color: var(--text);
+  background:
+    linear-gradient(135deg, rgba(216, 255, 244, 0.92), rgba(232, 247, 255, 0.82)),
+    #ffffff;
+  border-bottom-color: rgba(0, 127, 145, 0.13);
+}
+
+.news-home-hero {
+  background:
+    linear-gradient(rgba(255, 255, 255, 0.16) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.14) 1px, transparent 1px),
+    linear-gradient(135deg, #dffcf5 0%, #e8f7ff 48%, #fff4e9 100%);
+  background-size: 32px 32px, 32px 32px, auto;
+}
+
+.eyebrow,
+.page-title .eyebrow,
+.clinical-hero .eyebrow,
+.hero .eyebrow,
+.calm-hero .eyebrow,
+.console-kicker,
+.dashboard-card span,
+.site-module-card span,
+.agent-card span,
+.expert-card span,
+.module-card span,
+.dept-board-card span,
+.resource-panel-head span,
+.model-pool-panel span,
+.model-pool-panel > div:first-child span,
+.medical-community-page .forum-title .eyebrow,
+.doctor-community-page .eyebrow,
+.medical-community-page .eyebrow {
+  color: #007f91;
+  text-transform: none;
+}
+
+.btn,
+.forum-row > a,
+.record-row > a,
+.course-row > a,
+.tool-panel > a,
+.hot-tool-card a,
+.subpage-title-strip a,
+.medical-community-page .subpage-title-strip a,
+.medical-community-page .department-strip a,
+.medical-community-page .type-chip,
+.medical-community-page .board-link,
+.medical-community-page .post-action,
+.medical-community-page .page-btn,
+.doctor-community-page .governance-tags span,
+.doctor-community-page .dept-card-meta span {
+  border-color: rgba(0, 127, 145, 0.18);
+  border-radius: 8px;
+  color: #075766;
+  background: rgba(255, 255, 255, 0.84);
+}
+
+.btn.primary,
+.filter-btn.active,
+.filter-btn:hover,
+.step-card::before,
+.mode-chip.active,
+.publish-btn,
+.medical-community-page .mode-chip.active,
+.medical-community-page .publish-btn,
+.doctor-community-page .btn.primary {
+  color: #05262c;
+  background: linear-gradient(135deg, #5ef2cb 0%, #c7f464 100%);
+  border-color: #57d8bd;
+  box-shadow: 0 10px 22px rgba(21, 169, 133, 0.2);
+}
+
+.btn.primary:hover,
+.publish-btn:hover {
+  color: #05262c;
+  background: linear-gradient(135deg, #47e5c0 0%, #b8ed55 100%);
+}
+
+.btn:hover,
+.card-link,
+.subtle-link,
+.clinical-card a,
+.paper-list a,
+.hot-tool-card a {
+  color: #007f91;
+  border-color: rgba(0, 127, 145, 0.28);
+}
+
+.card,
+.clinical-card,
+.forum-row,
+.record-row,
+.course-row,
+.tool-panel,
+.paper-list a,
+.profile-card,
+.auth-panel,
+.doctor-panel,
+.rail-box,
+.liked-post-item,
+.forum-block,
+.post-console,
+.dashboard-card,
+.site-module-card,
+.agent-card,
+.expert-card,
+.module-card,
+.journal-card,
+.news-source-card,
+.model-pool-panel,
+.site-entry-grid a,
+.hot-tool-card,
+.resource-panel,
+.market-panel,
+.weekly-panel,
+.radar-card,
+.watch-card,
+.product-watch-row,
+.dept-board-card,
+.tool-refresh-card,
+.hot-tool-lead,
+.hot-tool-toolbar,
+.hero-product-panel,
+.news-home-scan,
+.lead-panel,
+.side-panel,
+.medical-community-page .community-gate-card,
+.doctor-community-page .gate-card,
+.medical-community-page .subpage-card,
+.medical-community-page .forum-channel-panel,
+.medical-community-page .forum-block,
+.medical-community-page .forum-main,
+.medical-community-page .forum-toolbar,
+.medical-community-page .post-card,
+.medical-community-page .dept-board-card,
+.doctor-community-page .doctor-workflow-panel,
+.doctor-community-page .doctor-panel,
+.doctor-community-page .dept-board-card {
+  border-color: rgba(0, 127, 145, 0.14);
+  background: rgba(255, 255, 255, 0.88);
+  box-shadow: 0 16px 34px rgba(0, 78, 92, 0.08);
+}
+
+.card:hover,
+.clinical-card:hover,
+.forum-row:hover,
+.record-row:hover,
+.course-row:hover,
+.tool-panel:hover,
+.paper-list a:hover,
+.liked-post-item:hover,
+.dashboard-card:hover,
+.site-module-card:hover,
+.agent-card:hover,
+.expert-card:hover,
+.module-card:hover,
+.journal-card:hover,
+.news-source-card:hover,
+.site-entry-grid a:hover,
+.dept-board-card:hover,
+.medical-community-page .post-card:hover,
+.doctor-community-page .dept-board-card:hover,
+.doctor-community-page .doctor-panel:hover {
+  transform: translateY(-2px);
+  border-color: rgba(0, 127, 145, 0.32);
+  box-shadow: 0 20px 42px rgba(0, 78, 92, 0.12);
+}
+
+.news-home-scan div,
+.medical-workbench-index .lead-metrics,
+.medical-workbench-index .lead-metrics div,
+.model-pool-panel,
+.resource-flow li,
+.market-meta span,
+.medical-community-page .subpage-card.current,
+.medical-community-page .community-gate-card.verified,
+.doctor-community-page .gate-card.verified,
+.medical-community-page .mini-template,
+.doctor-community-page .workflow-steps-grid article {
+  color: var(--text) !important;
+  background: linear-gradient(135deg, rgba(232, 247, 255, 0.94), rgba(234, 249, 243, 0.94)) !important;
+  border-color: rgba(0, 127, 145, 0.18) !important;
+}
+
+.hero-product-panel,
+.post-console,
+.market-panel.featured,
+.login-hero-panel,
+.medical-workbench-index .masthead,
+.medical-workbench-index .lead-story,
+.medical-workbench-index .apply-card,
+.hot-tool-section,
+.hot-tool-lead,
+.data-tools-page .page-title,
+.research-watch-title,
+.doctor-workflow-panel,
+.forum-channel-panel.primary-channel {
+  color: var(--text) !important;
+  background: linear-gradient(135deg, #e8f7ff 0%, #e9fbf4 64%, #fff4e9 100%) !important;
+  border-color: rgba(0, 127, 145, 0.16) !important;
+  box-shadow: 0 18px 42px rgba(0, 78, 92, 0.1) !important;
+}
+
+.hero-product-panel strong,
+.post-console h2,
+.post-console label,
+.market-panel.featured h2,
+.market-panel.featured p,
+.market-panel.featured .market-meta span,
+.side-panel h2,
+.side-panel a,
+.medical-workbench-index .masthead h1,
+.medical-workbench-index .masthead p,
+.medical-workbench-index .lead-story h2,
+.medical-workbench-index .lead-story p,
+.medical-workbench-index .apply-card h2,
+.medical-workbench-index .apply-card p,
+.hot-tool-section .section-head h2,
+.hot-tool-section .section-head p,
+.hot-tool-lead h3,
+.hot-tool-lead p,
+.data-tools-page .page-title h1,
+.data-tools-page .page-title p,
+.research-watch-title h1,
+.research-watch-title p {
+  color: inherit !important;
+}
+
+.tag.blue,
+.tag.green,
+.tag.gold,
+.console-status.pale,
+.publish-mode-status.online,
+.medical-community-page .tag.blue,
+.medical-community-page .tag.green,
+.medical-community-page .tag.gold,
+.doctor-community-page .tag.blue,
+.doctor-community-page .tag.green,
+.doctor-community-page .tag.gold {
+  color: #075766;
+  background: #e6fbff;
+  border-color: rgba(0, 127, 145, 0.18);
+}
+
+.tag.red {
+  color: #a02739;
+  background: #fff0f2;
+  border-color: rgba(224, 82, 101, 0.22);
+}
+
+.board-link.active,
+.board-link:hover,
+.medical-community-page .subpage-title-strip a.active,
+.medical-community-page .subpage-title-strip a:hover,
+.medical-community-page .board-link.active,
+.medical-community-page .board-link:hover,
+.medical-community-page .type-chip:hover,
+.medical-community-page .department-strip a:hover,
+.medical-community-page .dept-board-card a:hover,
+.medical-community-page .page-btn:hover,
+.doctor-community-page .dept-board-card a:hover {
+  color: #05262c;
+  border-color: #57d8bd;
+  background: #d9fff4;
+}
+
+.medical-community-page,
+.doctor-community-page {
+  --forum-bg: #f2fbf8;
+  --forum-surface: #ffffff;
+  --forum-soft: #e8f7ff;
+  --forum-line: rgba(0, 127, 145, 0.15);
+  --forum-text: #17212b;
+  --forum-muted: #60717f;
+  --forum-accent: #15a985;
+  --forum-accent-soft: #d9fff4;
+  --forum-link: #075766;
+  background:
+    linear-gradient(rgba(0, 127, 145, 0.04) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 127, 145, 0.035) 1px, transparent 1px),
+    #f2fbf8;
+  background-size: 32px 32px, 32px 32px, auto;
+}
+
+.medical-community-page .forum-title {
+  background: linear-gradient(135deg, #dffcf5 0%, #e8f7ff 64%, #fff4e9 100%);
+  border-bottom-color: rgba(0, 127, 145, 0.13);
+}
+
+.forum-hero-stats span {
+  color: #075766;
+  background: rgba(255, 255, 255, 0.72);
+  border-color: rgba(0, 127, 145, 0.18);
+}
+
+.forum-hero-stats strong,
+.medical-community-page .post-main h3,
+.medical-community-page .forum-toolbar h2,
+.medical-community-page .dept-board-card span,
+.medical-community-page .dept-board-card h3,
+.doctor-community-page .dept-board-card span,
+.doctor-community-page .dept-board-card h3 {
+  color: #10202a;
+}
+
+.medical-community-page .forum-channel-panel::before,
+.medical-community-page .forum-block::before,
+.medical-community-page .dept-board-card::before {
+  width: 36px;
+  height: 3px;
+  background: linear-gradient(90deg, #15a985, #ff8a5c);
+}
+
+.medical-community-page .post-action.active,
+.medical-community-page .post-action.favorite.active {
+  border-color: #57d8bd;
+  background: #e6fbff;
+}
+
+.live-row span {
+  color: #05262c;
+  background: #c7f464;
+}
+
+.site-footer {
+  color: #60717f;
+  background: #f8fffc;
+  border-top-color: rgba(0, 127, 145, 0.14);
+}
+
+.site-footer h3,
+.site-footer h4 {
+  color: #10202a;
+}
+
+.site-footer p,
+.site-footer a {
+  color: #60717f;
+}
+
+.site-footer a:hover {
+  color: #007f91;
+}
