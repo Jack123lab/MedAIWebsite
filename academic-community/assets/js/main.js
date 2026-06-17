@@ -744,13 +744,65 @@ function wireHomeNewsScroll() {
   const row = document.querySelector(".news-scroll-row");
   if (!row || row.dataset.scrollReady === "true") return;
 
+  const frame = row.closest("[data-news-carousel]");
+  const slides = [...row.querySelectorAll(".news-source-card")];
+  const dots = [...(frame?.querySelectorAll("[data-news-dot]") || [])];
+  let activeIndex = 0;
+  let timer = 0;
+
+  const setActiveDot = (index) => {
+    dots.forEach((dot, dotIndex) => {
+      const active = dotIndex === index;
+      dot.classList.toggle("active", active);
+      if (active) dot.setAttribute("aria-current", "true");
+      else dot.removeAttribute("aria-current");
+    });
+  };
+
+  const scrollToIndex = (index) => {
+    if (!slides.length) return;
+    activeIndex = (index + slides.length) % slides.length;
+    row.scrollTo({ left: slides[activeIndex].offsetLeft - row.offsetLeft, behavior: "smooth" });
+    setActiveDot(activeIndex);
+  };
+
+  const restartAutoScroll = () => {
+    window.clearInterval(timer);
+    timer = window.setInterval(() => scrollToIndex(activeIndex + 1), 5500);
+  };
+
   document.querySelectorAll("[data-news-scroll]").forEach((button) => {
     button.addEventListener("click", () => {
       const direction = button.dataset.newsScroll === "prev" ? -1 : 1;
-      row.scrollBy({ left: row.clientWidth * 0.86 * direction, behavior: "smooth" });
+      scrollToIndex(activeIndex + direction);
+      restartAutoScroll();
     });
   });
 
+  dots.forEach((dot) => {
+    dot.addEventListener("click", () => {
+      scrollToIndex(Number(dot.dataset.newsDot || 0));
+      restartAutoScroll();
+    });
+  });
+
+  row.addEventListener("scroll", () => {
+    window.requestAnimationFrame(() => {
+      const nextIndex = Math.round(row.scrollLeft / Math.max(1, row.clientWidth));
+      if (nextIndex !== activeIndex && slides[nextIndex]) {
+        activeIndex = nextIndex;
+        setActiveDot(activeIndex);
+      }
+    });
+  });
+
+  frame?.addEventListener("mouseenter", () => window.clearInterval(timer));
+  frame?.addEventListener("mouseleave", restartAutoScroll);
+  frame?.addEventListener("focusin", () => window.clearInterval(timer));
+  frame?.addEventListener("focusout", restartAutoScroll);
+
+  setActiveDot(0);
+  restartAutoScroll();
   row.dataset.scrollReady = "true";
 }
 

@@ -34,57 +34,69 @@
         <div class="container">
           <div class="section-head clean">
             <div>
-              <p class="eyebrow">医学 AI 快讯</p>
-              <h1>新闻滚动图片栏</h1>
-              <p>横向滚动展示医学 AI、临床研究、医生社区与医疗政策热点来源。每张新闻图作为整卡背景铺满展示。</p>
-            </div>
-            <div class="news-scroll-actions" aria-label="新闻滚动控制">
-              <button type="button" data-news-scroll="prev" aria-label="上一条新闻">‹</button>
-              <button type="button" data-news-scroll="next" aria-label="下一条新闻">›</button>
+              <p class="eyebrow">最新动态</p>
+              <h1>了解平台最新资讯与进展</h1>
+              <p>新闻自动滚动，也支持左右箭头和底部分页手动切换。每条新闻占满展示区域，保持简洁、专业的阅读体验。</p>
             </div>
           </div>
 
-          <div class="home-row-grid news-row-grid news-scroll-row" aria-label="新闻栏目">
-            <a class="news-source-card" href="https://www.nature.com/nm/" target="_blank" rel="noreferrer">
-              <img src="assets/images/paper-hot-nature.svg" alt="Nature Medicine 医学 AI 热点视觉摘要" />
-              <div>
-                <span>Nature Medicine</span>
-                <strong>多模态医学 AI、临床验证与安全性评估</strong>
-                <p>关注医学基础模型、影像文本融合、真实世界评估、透明报告和医生复核流程。</p>
-              </div>
-            </a>
-            <a class="news-source-card" href="https://www.dxy.cn/" target="_blank" rel="noreferrer">
-              <img src="assets/images/paper-hot-dxy.svg" alt="丁香园临床热点视觉摘要" />
-              <div>
-                <span>丁香园</span>
-                <strong>医生社区、指南变化与用药安全</strong>
-                <p>追踪临床一线问题、病例讨论和医生真实工作流。</p>
-              </div>
-            </a>
-            <a class="news-source-card" href="https://www.thelancet.com/" target="_blank" rel="noreferrer">
-              <img src="assets/images/paper-hot-lancet.svg" alt="The Lancet 全球健康热点视觉摘要" />
-              <div>
-                <span>The Lancet</span>
-                <strong>全球健康、专科前沿与系统转化</strong>
-                <p>关注公共卫生、临床公平性和大规模医疗影响。</p>
-              </div>
-            </a>
-            <a class="news-source-card" href="https://jamanetwork.com/" target="_blank" rel="noreferrer">
-              <img src="assets/images/paper-hot-jama.svg" alt="JAMA 医学证据热点视觉摘要" />
-              <div>
-                <span>JAMA Network</span>
-                <strong>医疗质量、政策监管与使用边界</strong>
-                <p>观察 AI 进入真实医疗系统后的规范、审计和风险。</p>
-              </div>
-            </a>
-            <a class="news-source-card" href="https://www.nejm.org/" target="_blank" rel="noreferrer">
-              <img src="assets/images/paper-hot-nejm.svg" alt="NEJM 临床证据热点视觉摘要" />
-              <div>
-                <span>NEJM</span>
-                <strong>临床试验、患者安全与证据更新</strong>
-                <p>用于筛选医学 AI 评价框架和临床验证主题。</p>
-              </div>
-            </a>
+          <div class="news-carousel-frame" data-news-carousel>
+            <button class="news-carousel-arrow prev" type="button" data-news-scroll="prev" aria-label="上一条新闻">‹</button>
+            <div class="home-row-grid news-row-grid news-scroll-row" aria-label="新闻栏目">
+              <a class="news-source-card" href="https://www.nature.com/nm/" target="_blank" rel="noreferrer">
+                <img src="assets/images/paper-hot-nature.svg" alt="Nature Medicine 医学 AI 热点视觉摘要" />
+                <div>
+                  <span>Nature Medicine</span>
+                  <strong>多模态医学 AI、临床验证与安全性评估</strong>
+                  <p>关注医学基础模型、影像文本融合、真实世界评估、透明报告和医生复核流程。</p>
+                  <small>查看详情 →</small>
+                </div>
+              </a>
+              <a class="news-source-card" href="https://www.dxy.cn/" target="_blank" rel="noreferrer">
+                <img src="assets/images/paper-hot-dxy.svg" alt="丁香园临床热点视觉摘要" />
+                <div>
+                  <span>丁香园</span>
+                  <strong>医生社区、指南变化与用药安全</strong>
+                  <p>追踪临床一线问题、病例讨论和医生真实工作流。</p>
+                  <small>查看详情 →</small>
+                </div>
+              </a>
+              <a class="news-source-card" href="https://www.thelancet.com/" target="_blank" rel="noreferrer">
+                <img src="assets/images/paper-hot-lancet.svg" alt="The Lancet 全球健康热点视觉摘要" />
+                <div>
+                  <span>The Lancet</span>
+                  <strong>全球健康、专科前沿与系统转化</strong>
+                  <p>关注公共卫生、临床公平性和大规模医疗影响。</p>
+                  <small>查看详情 →</small>
+                </div>
+              </a>
+              <a class="news-source-card" href="https://jamanetwork.com/" target="_blank" rel="noreferrer">
+                <img src="assets/images/paper-hot-jama.svg" alt="JAMA 医学证据热点视觉摘要" />
+                <div>
+                  <span>JAMA Network</span>
+                  <strong>医疗质量、政策监管与使用边界</strong>
+                  <p>观察 AI 进入真实医疗系统后的规范、审计和风险。</p>
+                  <small>查看详情 →</small>
+                </div>
+              </a>
+              <a class="news-source-card" href="https://www.nejm.org/" target="_blank" rel="noreferrer">
+                <img src="assets/images/paper-hot-nejm.svg" alt="NEJM 临床证据热点视觉摘要" />
+                <div>
+                  <span>NEJM</span>
+                  <strong>临床试验、患者安全与证据更新</strong>
+                  <p>用于筛选医学 AI 评价框架和临床验证主题。</p>
+                  <small>查看详情 →</small>
+                </div>
+              </a>
+            </div>
+            <button class="news-carousel-arrow next" type="button" data-news-scroll="next" aria-label="下一条新闻">›</button>
+            <div class="news-carousel-dots" aria-label="新闻位置">
+              <button class="active" type="button" data-news-dot="0" aria-label="第 1 条新闻" aria-current="true"></button>
+              <button type="button" data-news-dot="1" aria-label="第 2 条新闻"></button>
+              <button type="button" data-news-dot="2" aria-label="第 3 条新闻"></button>
+              <button type="button" data-news-dot="3" aria-label="第 4 条新闻"></button>
+              <button type="button" data-news-dot="4" aria-label="第 5 条新闻"></button>
+            </div>
           </div>
         </div>
       </section>

@@ -4410,8 +4410,8 @@ body.medical-workbench-index,
 }
 
 .agent-home-index .home-news-only {
-  padding-top: 34px;
-  padding-bottom: 24px;
+  padding-top: 30px;
+  padding-bottom: 26px;
 }
 
 .agent-home-index .home-agent-only {
@@ -4420,53 +4420,145 @@ body.medical-workbench-index,
   background: transparent;
 }
 
-.news-scroll-actions {
-  display: inline-flex;
-  gap: 8px;
-  flex: 0 0 auto;
+.news-carousel-frame {
+  position: relative;
 }
 
-.news-scroll-actions button {
-  width: 38px;
-  height: 38px;
+.news-carousel-arrow {
+  position: absolute;
+  top: 50%;
+  z-index: 6;
+  width: 56px;
+  height: 56px;
   display: grid;
   place-items: center;
-  border: 1px solid #cbdde3;
+  border: 2px solid rgba(255, 255, 255, 0.9);
   border-radius: 50%;
-  color: #185f79;
-  background: #ffffff;
+  color: #ffffff;
+  background: rgba(15, 54, 97, 0.12);
   cursor: pointer;
   font: inherit;
-  font-size: 24px;
+  font-size: 42px;
   font-weight: 900;
   line-height: 1;
+  transform: translateY(-50%);
+  backdrop-filter: blur(4px);
 }
 
-.news-scroll-actions button:hover {
-  color: #ffffff;
-  border-color: #185f79;
-  background: #185f79;
+.news-carousel-arrow:hover {
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.news-carousel-arrow.prev {
+  left: 24px;
+}
+
+.news-carousel-arrow.next {
+  right: 24px;
+}
+
+.news-carousel-dots {
+  min-height: 34px;
+  display: flex;
+  justify-content: center;
+  gap: 14px;
+  align-items: center;
+  padding-top: 20px;
+}
+
+.news-carousel-dots button {
+  width: 12px;
+  height: 12px;
+  border: 0;
+  border-radius: 999px;
+  padding: 0;
+  background: #d4d8dc;
+  cursor: pointer;
+}
+
+.news-carousel-dots button.active {
+  width: 18px;
+  background: #1e5f9f;
 }
 
 .agent-home-index .news-scroll-row {
-  min-height: clamp(430px, 62vh, 650px);
+  min-height: clamp(460px, 64vh, 680px);
+  border-radius: 12px;
+  gap: 0;
+  padding: 0;
+  scrollbar-width: none;
+}
+
+.agent-home-index .news-scroll-row::-webkit-scrollbar {
+  display: none;
 }
 
 .agent-home-index .news-source-card {
-  flex-basis: min(82vw, 820px);
-  min-height: clamp(430px, 62vh, 650px);
+  flex: 0 0 100%;
+  min-height: clamp(460px, 64vh, 680px);
+  border-radius: 12px;
+  background: #163f78;
+  box-shadow: none;
 }
 
 .agent-home-index .news-source-card strong {
   max-width: 680px;
-  font-size: clamp(27px, 4vw, 46px);
+  font-size: clamp(34px, 5vw, 58px);
   line-height: 1.12;
 }
 
 .agent-home-index .news-source-card p {
   max-width: 620px;
-  font-size: 17px;
+  font-size: 20px;
   line-height: 1.72;
+}
+
+.agent-home-index .news-source-card img {
+  object-position: right center;
+  opacity: 0.58;
+}
+
+.agent-home-index .news-source-card::after {
+  background:
+    linear-gradient(90deg, rgba(18, 57, 107, 0.96) 0%, rgba(22, 63, 120, 0.9) 42%, rgba(22, 63, 120, 0.46) 100%),
+    linear-gradient(135deg, rgba(255, 255, 255, 0.05), transparent 62%);
+}
+
+.agent-home-index .news-source-card div {
+  max-width: 680px;
+  align-content: center;
+  padding: clamp(44px, 9vw, 150px);
+}
+
+.agent-home-index .news-source-card span {
+  width: max-content;
+  border-radius: 999px;
+  padding: 7px 14px;
+  color: #eaf4f8;
+  background: rgba(255, 255, 255, 0.16);
+}
+
+.agent-home-index .news-source-card p::before {
+  content: "";
+  display: block;
+  width: min(420px, 100%);
+  height: 1px;
+  margin: 26px 0 24px;
+  background: rgba(255, 255, 255, 0.32);
+}
+
+.agent-home-index .news-source-card small {
+  width: max-content;
+  min-height: 46px;
+  display: inline-flex;
+  align-items: center;
+  margin-top: 26px;
+  border-radius: 5px;
+  padding: 0 30px;
+  color: #10202a;
+  background: #ffffff;
+  font-size: 15px;
+  font-weight: 900;
 }
 
 .agent-workbench {
@@ -4660,13 +4752,33 @@ body.medical-workbench-index,
   }
 
   .agent-home-index .news-source-card {
-    flex-basis: min(88vw, 620px);
     min-height: 430px;
   }
 
-  .news-scroll-actions {
-    width: 100%;
-    justify-content: flex-start;
+  .agent-home-index .news-source-card div {
+    padding: 32px 64px;
+  }
+
+  .agent-home-index .news-source-card strong {
+    font-size: 28px;
+  }
+
+  .agent-home-index .news-source-card p {
+    font-size: 15px;
+  }
+
+  .news-carousel-arrow {
+    width: 42px;
+    height: 42px;
+    font-size: 30px;
+  }
+
+  .news-carousel-arrow.prev {
+    left: 12px;
+  }
+
+  .news-carousel-arrow.next {
+    right: 12px;
   }
 
   .agent-model-select {
