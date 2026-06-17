@@ -9140,3 +9140,349 @@ p,
     font-size: 24px;
   }
 }
+
+/* Compact profile space inspired by creator/community account pages. */
+.profile-page {
+  font-size: 14px;
+}
+
+.profile-page .site-footer {
+  margin-top: 18px;
+}
+
+.profile-page-title {
+  padding: 20px 0 14px;
+}
+
+.profile-page-title h1 {
+  margin: 0;
+  font-size: 28px;
+  line-height: 1.2;
+}
+
+.profile-page-title h1::after {
+  display: none;
+}
+
+.profile-page-title-row,
+.profile-identity-panel,
+.profile-space-tabs,
+.profile-stat-row,
+.profile-panel-head {
+  display: flex;
+  align-items: center;
+}
+
+.profile-page-title-row {
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.profile-space-hero {
+  background: #eef5f6;
+  border-bottom: 1px solid var(--line);
+}
+
+.profile-space-shell {
+  padding-top: 16px;
+}
+
+.profile-cover-strip {
+  height: 118px;
+  border: 1px solid #d6e2e4;
+  border-radius: 8px 8px 0 0;
+  background:
+    linear-gradient(135deg, rgba(24, 95, 121, 0.88), rgba(35, 130, 118, 0.82)),
+    linear-gradient(90deg, rgba(255, 216, 77, 0.24), transparent 46%);
+}
+
+.profile-identity-panel {
+  position: relative;
+  gap: 18px;
+  min-height: 116px;
+  border: 1px solid var(--line);
+  border-top: 0;
+  padding: 16px 18px 16px 132px;
+  background: #ffffff;
+}
+
+.profile-avatar-card {
+  position: absolute;
+  left: 22px;
+  top: -40px;
+  width: 92px;
+  height: 92px;
+  display: grid;
+  place-items: center;
+  border: 4px solid #ffffff;
+  border-radius: 50%;
+  background: #fffdf3;
+  box-shadow: 0 10px 26px rgba(17, 42, 62, 0.12);
+  overflow: hidden;
+}
+
+.profile-avatar-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.primary-profile {
+  min-width: 0;
+  flex: 1 1 auto;
+}
+
+.primary-profile h2 {
+  margin: 8px 0 2px;
+  font-size: 22px;
+  line-height: 1.24;
+}
+
+.primary-profile p {
+  margin-bottom: 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.profile-page .profile-meta {
+  grid-template-columns: repeat(4, auto minmax(0, 1fr));
+  gap: 5px 10px;
+  margin-top: 11px;
+  font-size: 12px;
+}
+
+.profile-page .profile-meta dd {
+  font-weight: 700;
+}
+
+.profile-stat-row {
+  flex: 0 0 auto;
+  gap: 1px;
+  border: 1px solid #e2d49b;
+  background: #e2d49b;
+}
+
+.profile-stat-row span {
+  min-width: 72px;
+  display: grid;
+  place-items: center;
+  gap: 1px;
+  padding: 8px 10px;
+  background: #fffdf3;
+  color: #6f4f00;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.profile-stat-row strong {
+  color: #172738;
+  font-size: 20px;
+  line-height: 1.1;
+}
+
+.profile-space-tabs {
+  gap: 2px;
+  overflow-x: auto;
+  border: 1px solid var(--line);
+  border-top: 0;
+  border-radius: 0 0 8px 8px;
+  padding: 0 14px;
+  background: #ffffff;
+}
+
+.profile-space-tabs a {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  border-bottom: 2px solid transparent;
+  padding: 0 14px;
+  color: #536272;
+  font-size: 14px;
+  font-weight: 800;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.profile-space-tabs a:hover {
+  color: var(--primary);
+  border-bottom-color: var(--primary);
+}
+
+.profile-space-section {
+  background: #f3f6f8;
+}
+
+.profile-space-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 318px;
+  gap: 16px;
+  align-items: start;
+}
+
+.profile-main-column,
+.profile-side-column {
+  display: grid;
+  gap: 14px;
+}
+
+.profile-content-card {
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 16px;
+  background: #ffffff;
+}
+
+.profile-panel-head {
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.profile-panel-head span {
+  display: block;
+  color: #8a6200;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.profile-panel-head h2 {
+  margin: 2px 0 0;
+  color: #172738;
+  font-size: 18px;
+  line-height: 1.3;
+}
+
+.profile-feed-list,
+.profile-design-list {
+  display: grid;
+}
+
+.profile-feed-item,
+.profile-design-item {
+  display: grid;
+  gap: 6px;
+  border-top: 1px solid var(--line);
+  padding: 13px 0;
+  color: var(--text);
+  text-decoration: none;
+}
+
+.profile-feed-item:first-child,
+.profile-design-item:first-child {
+  border-top: 0;
+  padding-top: 0;
+}
+
+.profile-feed-item:last-child,
+.profile-design-item:last-child {
+  padding-bottom: 0;
+}
+
+.profile-feed-item strong,
+.profile-design-item strong {
+  color: #172738;
+  font-size: 15px;
+  line-height: 1.35;
+}
+
+.profile-feed-item p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.56;
+}
+
+.profile-feed-item small,
+.profile-design-item span {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.profile-feed-item:hover strong,
+.profile-design-item:hover strong {
+  color: var(--primary);
+}
+
+.profile-page .access-list a {
+  padding: 10px;
+  font-size: 13px;
+}
+
+.profile-page .plain-list {
+  margin-bottom: 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.post-action.negative.active,
+.medical-community-page .post-action.negative.active {
+  border-color: rgba(163, 61, 69, 0.35);
+  background: #fbefef;
+}
+
+@media (max-width: 1080px) {
+  .profile-identity-panel {
+    align-items: flex-start;
+    flex-direction: column;
+    padding-left: 132px;
+  }
+
+  .profile-page .profile-meta {
+    grid-template-columns: 82px minmax(0, 1fr);
+  }
+
+  .profile-stat-row {
+    width: 100%;
+  }
+
+  .profile-stat-row span {
+    flex: 1 1 0;
+  }
+
+  .profile-space-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 720px) {
+  .profile-page-title-row {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .profile-cover-strip {
+    height: 92px;
+  }
+
+  .profile-identity-panel {
+    padding: 62px 14px 14px;
+  }
+
+  .profile-avatar-card {
+    left: 16px;
+    width: 78px;
+    height: 78px;
+  }
+
+  .profile-stat-row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .profile-stat-row span {
+    min-width: 0;
+  }
+
+  .profile-space-tabs {
+    padding: 0 8px;
+  }
+
+  .profile-space-tabs a {
+    padding: 0 10px;
+    font-size: 13px;
+  }
+
+  .post-actions {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}

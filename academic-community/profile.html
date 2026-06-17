@@ -8,39 +8,129 @@
     <script src="assets/js/config.js"></script>
     <script src="assets/js/main.js" defer></script>
   </head>
-  <body data-requires-auth="true">
-          <header class="site-header">
-        <nav class="nav" aria-label="主导航">
-          <a class="brand" href="index.html"><span class="brand-mark">F</span><span class="brand-text"><strong>Freedom AI</strong><span>医学 AI 社区</span></span></a>
+  <body class="profile-page" data-requires-auth="true">
+    <header class="site-header">
+      <nav class="nav" aria-label="主导航">
+        <a class="brand" href="index.html"><span class="brand-mark">F</span><span class="brand-text"><strong>Freedom AI</strong><span>医学 AI 社区</span></span></a>
         <form class="site-search" role="search" action="search.html" method="get" aria-label="站内搜索">
           <label class="sr-only" for="siteSearchInput">搜索</label>
           <input id="siteSearchInput" name="q" type="search" placeholder="搜索" autocomplete="off" />
           <button type="submit">搜索</button>
         </form>
-          <div class="nav-links">
-            <a href="index.html">首页</a>
-            <a href="learning.html">内容</a>
-            <a href="popular-science.html">科普</a>
-            <a href="network.html">社区</a>
-            <a href="community.html">讨论区</a>
-            <a href="datasets.html">数据集</a>
-            <a href="tools.html">工具库</a>
-            <a href="benchmark.html">Benchmark</a>
-            <a href="crowdsourcing.html">众包平台</a>
-            <a href="profile.html">用户</a>
-          </div>
-        </nav>
-      </header>
+        <div class="nav-links">
+          <a href="index.html">首页</a>
+          <a href="learning.html">内容</a>
+          <a href="popular-science.html">科普</a>
+          <a href="network.html">社区</a>
+          <a href="community.html">讨论区</a>
+          <a href="datasets.html">数据集</a>
+          <a href="tools.html">工具库</a>
+          <a href="benchmark.html">Benchmark</a>
+          <a href="crowdsourcing.html">众包平台</a>
+          <a class="active" href="profile.html">用户</a>
+        </div>
+      </nav>
+    </header>
+
     <main>
-      <section class="page-title profile-title"><div class="container profile-title-grid"><div><p class="eyebrow">个人中心</p><h1>个人页面</h1><p>查看登录状态、资格审核进度和可访问功能。</p></div><button id="profileLogout" class="btn" type="button">退出登录</button></div></section>
-      <section class="section compact"><div class="container profile-grid">
-        <section class="profile-card primary-profile" id="profileCard"></section>
-        <section class="profile-card"><h2>可用功能</h2><div class="access-list"><a href="home.html"><strong>资料首页</strong><span>内容、工具和成果索引</span></a><a href="community.html"><strong>讨论区</strong><span>认证后可发布讨论</span></a><a href="doctor.html"><strong>医生工作区</strong><span>仅执业医生认证通过后进入</span></a><a href="auth.html"><strong>资格审核</strong><span>提交医生资格或在读证明</span></a></div></section>
-        <section class="profile-card"><h2>脱敏提醒</h2><ul class="plain-list strong-list"><li>发帖和上传资料前移除姓名、住院号、检查号。</li><li>手术照片需遮挡腕带、床头卡和屏幕角落信息。</li><li>讨论内容不构成诊疗建议。</li></ul></section>
-        <section class="profile-card liked-profile"><div class="section-head clean"><div><h2>我喜欢的帖子</h2><p>在讨论区点击“喜欢”的帖子会显示在这里。</p></div><a class="subtle-link" href="community.html">去讨论区</a></div><div id="likedPostsList" class="liked-posts-list"></div></section>
-      </div></section>
+      <section class="page-title profile-page-title">
+        <div class="container profile-page-title-row">
+          <h1>个人页面</h1>
+          <button id="profileLogout" class="btn" type="button">退出登录</button>
+        </div>
+      </section>
+
+      <section class="profile-space-hero">
+        <div class="container profile-space-shell">
+          <div class="profile-cover-strip" aria-hidden="true"></div>
+          <div class="profile-identity-panel">
+            <div class="profile-avatar-card">
+              <img src="assets/images/login-avatar.svg" alt="个人头像" />
+            </div>
+            <section class="primary-profile" id="profileCard" aria-live="polite"></section>
+            <div id="profileStats" class="profile-stat-row" aria-label="个人数据"></div>
+          </div>
+          <nav class="profile-space-tabs" aria-label="个人页面栏目">
+            <a href="#profile-submissions">投稿</a>
+            <a href="#profile-likes">点赞</a>
+            <a href="#profile-dislikes">踩</a>
+            <a href="#profile-design">个人设计</a>
+            <a href="#profile-comments">评论</a>
+          </nav>
+        </div>
+      </section>
+
+      <section class="section compact profile-space-section">
+        <div class="container profile-space-layout">
+          <div class="profile-main-column">
+            <section id="profile-submissions" class="profile-content-card">
+              <div class="profile-panel-head">
+                <div><span>投稿</span><h2>我的投稿</h2></div>
+                <a class="subtle-link" href="community.html#postForm">发布</a>
+              </div>
+              <div id="profileSubmissionList" class="profile-feed-list"></div>
+            </section>
+
+            <section id="profile-likes" class="profile-content-card">
+              <div class="profile-panel-head">
+                <div><span>点赞</span><h2>点赞记录</h2></div>
+                <a class="subtle-link" href="community.html">讨论区</a>
+              </div>
+              <div id="profileLikesList" class="profile-feed-list"></div>
+            </section>
+
+            <section id="profile-dislikes" class="profile-content-card">
+              <div class="profile-panel-head">
+                <div><span>踩</span><h2>踩过的内容</h2></div>
+                <a class="subtle-link" href="community.html">重新查看</a>
+              </div>
+              <div id="profileDislikesList" class="profile-feed-list"></div>
+            </section>
+
+            <section id="profile-comments" class="profile-content-card">
+              <div class="profile-panel-head">
+                <div><span>评论</span><h2>评论动态</h2></div>
+                <a class="subtle-link" href="community.html#postForm">写评论</a>
+              </div>
+              <div id="profileCommentsList" class="profile-feed-list"></div>
+            </section>
+          </div>
+
+          <aside class="profile-side-column">
+            <section id="profile-design" class="profile-content-card">
+              <div class="profile-panel-head">
+                <div><span>个人设计</span><h2>个人设计</h2></div>
+              </div>
+              <div id="profileDesignList" class="profile-design-list"></div>
+            </section>
+
+            <section class="profile-content-card">
+              <div class="profile-panel-head">
+                <div><span>功能</span><h2>可用功能</h2></div>
+              </div>
+              <div class="access-list">
+                <a href="home.html"><strong>资料首页</strong><span>内容、工具和成果索引</span></a>
+                <a href="community.html"><strong>讨论区</strong><span>认证后可发布讨论</span></a>
+                <a href="doctor.html"><strong>医生工作区</strong><span>执业医生认证通过后进入</span></a>
+                <a href="auth.html"><strong>资格审核</strong><span>提交医生资格或在读证明</span></a>
+              </div>
+            </section>
+
+            <section class="profile-content-card">
+              <div class="profile-panel-head">
+                <div><span>安全</span><h2>脱敏提醒</h2></div>
+              </div>
+              <ul class="plain-list strong-list">
+                <li>发帖和上传资料前移除姓名、住院号、检查号。</li>
+                <li>手术照片需遮挡腕带、床头卡和屏幕角落信息。</li>
+                <li>讨论内容不构成诊疗建议。</li>
+              </ul>
+            </section>
+          </aside>
+        </div>
+      </section>
     </main>
-    <footer class="site-footer"><div class="container footer-grid"><div><h3>Freedom AI</h3><p>个人页面用于汇总登录、审核与访问权限。</p></div><div><h4>认证</h4><a href="auth.html">资格审核</a></div><div><h4>讨论</h4><a href="community.html">讨论区</a></div><div><h4>医生</h4><a href="doctor.html">医生工作区</a></div><div><h4>About</h4><a href="about.html">About（collaborator）</a></div></div></footer>
+
+    <footer class="site-footer"><div class="container footer-grid"><div><h3>Freedom AI</h3><p>个人页面用于汇总登录、审核、投稿和互动记录。</p></div><div><h4>认证</h4><a href="auth.html">资格审核</a></div><div><h4>讨论</h4><a href="community.html">讨论区</a></div><div><h4>医生</h4><a href="doctor.html">医生工作区</a></div><div><h4>About</h4><a href="about.html">About（collaborator）</a></div></div></footer>
   </body>
 </html>
-
