@@ -6349,12 +6349,262 @@ body.case-publish-open {
 
 .resource-flow strong { color: #172738; }
 
+.tool-reference {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 16px;
+}
+
+.tool-reference a {
+  display: inline-flex;
+  align-items: center;
+  min-height: 36px;
+  border: 1px solid #d7ddd6;
+  border-radius: 999px;
+  padding: 0 14px;
+  color: #172738;
+  background: #fffdf3;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.tool-reference a:hover {
+  border-color: var(--secondary);
+  background: #fff8dc;
+}
+
+.tool-stack-grid,
+.skill-examples-grid {
+  display: grid;
+  gap: 14px;
+}
+
+.tool-stack-grid {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.skill-examples-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.tool-stack-card,
+.skill-example-card {
+  gap: 12px;
+}
+
+.tool-link-list {
+  display: grid;
+  gap: 10px;
+}
+
+.tool-link-list a {
+  display: grid;
+  gap: 4px;
+  border: 1px solid #d8e2e8;
+  border-radius: 6px;
+  padding: 11px 12px;
+  color: inherit;
+  background: #f8fbfc;
+  text-decoration: none;
+}
+
+.tool-link-list a:hover {
+  border-color: var(--primary);
+  background: #eef5fb;
+}
+
+.tool-link-list a strong {
+  color: #172738;
+  line-height: 1.28;
+}
+
+.tool-link-list a span,
+.tool-stack-card p,
+.skill-example-card p {
+  margin: 0;
+  color: #536474;
+}
+
+.tool-note {
+  border-left: 3px solid #eadb9d;
+  padding-left: 12px;
+  font-size: 14px;
+}
+
+.medical-tool-grid,
+.registration-api-grid {
+  display: grid;
+  gap: 14px;
+}
+
+.medical-tool-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.registration-api-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.medical-tool-card,
+.registration-api-card {
+  display: grid;
+  align-content: start;
+  gap: 12px;
+  border: 1px solid #d8e2e8;
+  border-radius: 8px;
+  padding: 18px;
+  background: #ffffff;
+  box-shadow: 0 14px 34px rgba(11, 55, 70, 0.06);
+}
+
+.medical-tool-card p,
+.registration-api-card p {
+  margin: 0;
+  color: #536474;
+}
+
+.tool-chip-row,
+.api-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tool-chip-row span,
+.api-meta span {
+  border: 1px solid #d8e2e8;
+  border-radius: 999px;
+  padding: 5px 9px;
+  color: #536474;
+  background: #f8fbfc;
+  font-size: 12px;
+  font-weight: 700;
+}
+
+.mock-query-box {
+  display: grid;
+  gap: 6px;
+  border: 1px solid #e4ebef;
+  border-radius: 6px;
+  padding: 11px 12px;
+  background: #fbf9ef;
+}
+
+.mock-query-box span {
+  color: #8a6200;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.mock-query-box code,
+.api-path code,
+.registration-api-card code {
+  overflow-wrap: anywhere;
+}
+
+.medical-tool-action,
+.mock-data-link {
+  min-height: 36px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  justify-self: start;
+  border: 1px solid #cbdde3;
+  border-radius: 6px;
+  padding: 0 12px;
+  color: var(--primary);
+  background: #ffffff;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.medical-tool-action:hover,
+.mock-data-link:hover {
+  border-color: var(--primary);
+  background: #eef5fb;
+}
+
+.mock-api-section {
+  background: rgba(255, 255, 255, 0.62);
+}
+
+.registration-api-card.api-overview {
+  grid-column: span 2;
+  grid-template-columns: minmax(0, 0.9fr) minmax(260px, 1.1fr);
+  align-items: start;
+  background: #fffdf3;
+}
+
+.registration-api-card h3 {
+  margin: 8px 0 8px;
+  color: #172738;
+  font-size: 21px;
+}
+
+.api-path {
+  display: grid;
+  gap: 8px;
+}
+
+.api-method {
+  width: max-content;
+  display: inline-flex;
+  align-items: center;
+  min-height: 24px;
+  border-radius: 6px;
+  padding: 0 8px;
+  font-size: 11px;
+  font-weight: 900;
+  letter-spacing: 0;
+}
+
+.api-method.get {
+  color: #0a5f55;
+  background: #dff5ed;
+}
+
+.api-method.post {
+  color: #7a5200;
+  background: #fff1c7;
+}
+
+.api-method.neutral {
+  color: #17445d;
+  background: #e8f4fb;
+}
+
+.api-code {
+  margin: 0;
+  overflow-x: auto;
+  border-radius: 6px;
+  padding: 12px;
+  color: #eaf4f8;
+  background: #102536;
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.api-code code {
+  color: inherit;
+}
+
 @media (max-width: 920px) {
   .data-tools-title-grid,
   .hot-tool-layout,
   .hot-tool-card-grid,
+  .tool-stack-grid,
+  .skill-examples-grid,
+  .medical-tool-grid,
+  .registration-api-grid,
   .resource-directory-grid,
   .market-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .registration-api-card.api-overview {
+    grid-column: auto;
     grid-template-columns: 1fr;
   }
 
@@ -9012,6 +9262,14 @@ body.upload-roadmap-open {
   flex-wrap: wrap;
   gap: 8px;
   margin-top: 18px;
+}
+
+.learning-direction-buttons {
+  margin-top: 18px;
+}
+
+.learning-direction-buttons .btn {
+  min-width: 116px;
 }
 
 .learning-module-actions a {

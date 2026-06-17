@@ -1,0 +1,136 @@
+{
+  "name": "Freedom AI Mock Registration API",
+  "updatedAt": "2026-06-17",
+  "notice": "Mock data only. Do not send real identity numbers, phone numbers, medical record numbers, or payment data.",
+  "basePath": "/mock/register",
+  "libraries": {
+    "doctorDb": {
+      "query": "doctor?hospital=CUHK-Shenzhen&tag=互联网医疗",
+      "fields": ["doctorId", "name", "title", "hospitalId", "department", "specialties", "rankingTags"]
+    },
+    "drugDb": {
+      "query": "drug?keyword=阿莫西林&field=interaction",
+      "fields": ["drugId", "genericName", "brandNames", "indications", "contraindications", "interactions", "insurance"]
+    },
+    "hospitalDb": {
+      "query": "hospital?city=深圳&district=龙岗区&service=挂号",
+      "fields": ["hospitalId", "name", "district", "level", "departments", "bookingChannels", "aiCollaborationTags"]
+    }
+  },
+  "endpoints": [
+    {
+      "method": "GET",
+      "path": "/mock/register/hospitals",
+      "description": "Search hospitals by city, district, level, keyword, and registration channel.",
+      "sampleQuery": {
+        "city": "深圳",
+        "district": "龙岗区",
+        "service": "挂号"
+      },
+      "sampleResponse": {
+        "items": [
+          {
+            "hospitalId": "hosp-cuhksz-2",
+            "name": "香港中文大学（深圳）附属第二医院",
+            "district": "龙岗区",
+            "level": "三级",
+            "tags": ["智慧医院", "互联网医疗", "临床基地"],
+            "bookingChannels": ["mock-web", "hospital-app"]
+          },
+          {
+            "hospitalId": "hosp-longgang-central",
+            "name": "深圳市龙岗中心医院",
+            "district": "龙岗区",
+            "level": "三级",
+            "tags": ["综合医院", "急诊", "专科门诊"],
+            "bookingChannels": ["mock-web"]
+          }
+        ]
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/mock/register/departments",
+      "description": "List bookable departments for a hospital.",
+      "sampleQuery": {
+        "hospitalId": "hosp-cuhksz-2"
+      },
+      "sampleResponse": {
+        "items": [
+          {
+            "departmentId": "dept-pediatrics",
+            "name": "儿科",
+            "onlineFollowUp": true,
+            "availableDays": ["2026-06-18", "2026-06-19"]
+          },
+          {
+            "departmentId": "dept-general",
+            "name": "全科医学科",
+            "onlineFollowUp": true,
+            "availableDays": ["2026-06-18"]
+          }
+        ]
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/mock/register/doctors",
+      "description": "Filter doctors by hospital, department, title, specialty, and ranking tags.",
+      "sampleQuery": {
+        "hospitalId": "hosp-cuhksz-2",
+        "dept": "儿科",
+        "rank": "chief"
+      },
+      "sampleResponse": {
+        "items": [
+          {
+            "doctorId": "doc-yu-guangjun",
+            "name": "于广军",
+            "title": "教授",
+            "department": "儿科与智慧医院方向",
+            "specialties": ["医疗大数据", "互联网医疗", "高危儿管理"],
+            "rankingTags": ["学术影响力", "智慧医院", "可合作"]
+          }
+        ]
+      }
+    },
+    {
+      "method": "GET",
+      "path": "/mock/register/slots",
+      "description": "Return available appointment slots for a doctor and date.",
+      "sampleQuery": {
+        "doctorId": "doc-yu-guangjun",
+        "date": "2026-06-18"
+      },
+      "sampleResponse": {
+        "items": [
+          {
+            "slotId": "slot_20260618_am_03",
+            "date": "2026-06-18",
+            "period": "上午",
+            "timeRange": "10:00-10:30",
+            "remaining": 3,
+            "feeCny": 0,
+            "status": "available"
+          }
+        ]
+      }
+    },
+    {
+      "method": "POST",
+      "path": "/mock/register/appointments",
+      "description": "Create a draft appointment. This mock endpoint never creates a real registration order.",
+      "sampleBody": {
+        "patientToken": "demo_patient_001",
+        "doctorId": "doc-yu-guangjun",
+        "slotId": "slot_20260618_am_03",
+        "visitIntent": "儿科互联网医疗咨询"
+      },
+      "sampleResponse": {
+        "appointmentId": "appt_mock_20260617_001",
+        "status": "draft_pending_user_confirmation",
+        "safetyNotice": "已使用脱敏 token；请勿上传身份证、手机号、病案号或支付信息。"
+      }
+    }
+  ]
+}

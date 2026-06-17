@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>工具库 | Freedom AI</title>
-    <meta name="description" content="Freedom AI 工具库入口，聚合医学 AI 免费工具、MCP 工具网关、官网链接和资源上架流程。" />
+    <meta name="description" content="Freedom AI 工具库聚合 OpenClaw Medical Skills、医学 MCP、医生库、药品库、医院库、挂号网站 Mock API 和医院 AI 工作流示例。" />
     <link rel="stylesheet" href="assets/css/style.css" />
     <script src="assets/js/config.js"></script>
     <script src="assets/js/main.js" defer></script>
@@ -38,13 +38,152 @@
           <div>
             <p class="eyebrow">Tool Library</p>
             <h1>工具库</h1>
-            <p>医学 AI 工具库独立展示 MCP 工具网关、免费工具集合、官网链接和资源上架流程。</p>
+            <p>把 OpenClaw Medical Skills、医学 MCP、医生库、药品库、医院库、挂号网站 Mock API 和医院 AI 工作流放到同一张工具地图里，方便从研究、循证、临床到系统集成连续查看。</p>
+            <div class="tool-reference">
+              <a href="https://github.com/FreedomIntelligence/OpenClaw-Medical-Skills" target="_blank" rel="noreferrer">OpenClaw Medical Skills</a>
+              <a href="https://jack123lab.github.io/MedAIWebsite/academic-community/tools.html" target="_blank" rel="noreferrer">当前页面预览</a>
+            </div>
           </div>
           <aside class="tool-refresh-card" aria-label="热点更新状态">
-            <span>每日推送</span>
-            <strong id="hotToolDate">今日热点</strong>
-            <p>可通过 <code>window.HMAI_TOOL_FEED_URL</code> 接入实时工具榜单；未配置接口时展示本站精选工具。</p>
+            <span>OpenClaw Skills</span>
+            <strong id="hotToolDate">869 个技能</strong>
+            <p>聚合 Clinical、Research、Bioinformatics、Regulatory 等方向。这里重点展示循证医疗 API、虚拟医院、Agentic hospital、AI-native HIS、AI-native Up2date 与中医知识图谱的代表性组合。</p>
           </aside>
+        </div>
+      </section>
+
+      <section class="section compact" id="market-overview">
+        <div class="container market-grid">
+          <article class="market-panel featured">
+            <span class="tag blue">OpenClaw</span>
+            <h2>医学技能库接入层</h2>
+            <p>基于 OpenClaw Medical Skills 的 869 个技能，把文献、指南、ClinicalTrials、FHIR、知识图谱和代理工作流收纳成可复用的 agent 能力模块。</p>
+            <div class="market-meta"><span>869 skills</span><span>MCP-ready</span><span>开源可扩展</span></div>
+          </article>
+          <article class="market-panel">
+            <span class="tag gold">Evidence</span>
+            <h2>循证医疗 API 与 MCP</h2>
+            <p>围绕 PubMed、ClinicalTrials.gov、OpenFDA、NICE、WHO、NCCN 等来源构建统一入口，适合做带引用的医学问答、证据检索和指南追踪。</p>
+            <div class="price-row"><strong>统一证据入口</strong><span>适合医生 Copilot 与研究助手</span></div>
+          </article>
+          <article class="market-panel">
+            <span class="tag green">Hospital</span>
+            <h2>AI-native 医院应用层</h2>
+            <p>从虚拟医院、Agentic hospital 到 AI-native HIS 与 AI-native Up2date，页面把 skills 组织成可以直接转成产品方案的模块化组合。</p>
+            <div class="price-row"><strong>从技能到产品</strong><a href="#tool-scenarios">查看场景</a></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section compact" id="medical-base-tools">
+        <div class="container">
+          <div class="section-head clean">
+            <div>
+              <p class="eyebrow">Clinical Data Tools</p>
+              <h2>医生库、药品库、医院库</h2>
+              <p>把常用医学基础库做成可搜索、可筛选、可接入流程的工具，供医生主页、医院主页、问答助手和挂号原型调用。</p>
+            </div>
+          </div>
+
+          <div class="medical-tool-grid">
+            <article class="medical-tool-card" id="doctor-library-tool">
+              <div class="resource-panel-head"><span>Doctor DB</span><strong>医生库</strong></div>
+              <p>按姓名、医院、科室、疾病方向、论文、任职和医生排名筛选，支持医生主页自动补全和合作主题推荐。</p>
+              <div class="tool-chip-row" aria-label="医生库标签">
+                <span>主任医师</span><span>儿科</span><span>智慧医院</span><span>论文 150+</span>
+              </div>
+              <div class="mock-query-box">
+                <span>样例查询</span>
+                <code>doctor?hospital=CUHK-Shenzhen&amp;tag=互联网医疗</code>
+              </div>
+              <a class="medical-tool-action" href="network.html#network-results">进入医生库样例</a>
+            </article>
+
+            <article class="medical-tool-card" id="drug-library-tool">
+              <div class="resource-panel-head"><span>Drug DB</span><strong>药品库</strong></div>
+              <p>聚合通用名、商品名、适应症、禁忌、相互作用、医保属性和说明书摘要，用于临床问答前的来源校验。</p>
+              <div class="tool-chip-row" aria-label="药品库标签">
+                <span>适应症</span><span>禁忌</span><span>相互作用</span><span>医保</span>
+              </div>
+              <div class="mock-query-box">
+                <span>样例查询</span>
+                <code>drug?keyword=阿莫西林&amp;field=interaction</code>
+              </div>
+              <a class="medical-tool-action" href="#mock-registration-api">查看 API 接入方式</a>
+            </article>
+
+            <article class="medical-tool-card" id="hospital-library-tool">
+              <div class="resource-panel-head"><span>Hospital DB</span><strong>医院库</strong></div>
+              <p>支持按地区、等级、专科能力、挂号渠道和 AI 合作方向检索，默认展示深圳龙岗区医院样例。</p>
+              <div class="tool-chip-row" aria-label="医院库标签">
+                <span>龙岗区</span><span>三甲/三级</span><span>专科能力</span><span>可认领</span>
+              </div>
+              <div class="mock-query-box">
+                <span>样例查询</span>
+                <code>hospital?city=深圳&amp;district=龙岗区&amp;service=挂号</code>
+              </div>
+              <a class="medical-tool-action" href="network.html#network-results">进入医院库样例</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section compact mock-api-section" id="mock-registration-api">
+        <div class="container">
+          <div class="section-head clean">
+            <div>
+              <p class="eyebrow">Mock Registration API</p>
+              <h2>挂号网站 Mock API</h2>
+              <p>用于演示医院检索、科室选择、医生排班、号源查询和预约草稿创建。全部为脱敏演示数据，不接入真实挂号系统。</p>
+            </div>
+            <a class="mock-data-link" href="assets/data/mock-registration-api.json" target="_blank" rel="noreferrer">查看 Mock JSON</a>
+          </div>
+
+          <div class="registration-api-grid">
+            <article class="registration-api-card api-overview">
+              <div>
+                <span class="api-method neutral">MOCK</span>
+                <h3>接入约定</h3>
+                <p>患者信息只使用 <code>patientToken</code>、<code>visitIntent</code> 和脱敏就诊偏好。预约创建默认返回草稿，需要用户确认后才进入后续流程。</p>
+              </div>
+              <pre class="api-code"><code>{
+  "patientToken": "demo_patient_001",
+  "doctorId": "doc-yu-guangjun",
+  "slotId": "slot_20260618_am_03",
+  "visitIntent": "儿科互联网医疗咨询"
+}</code></pre>
+            </article>
+
+            <article class="registration-api-card">
+              <div class="api-path"><span class="api-method get">GET</span><code>/mock/register/hospitals</code></div>
+              <p>按城市、区县、等级和关键词搜索医院。</p>
+              <div class="api-meta"><span>city=深圳</span><span>district=龙岗区</span></div>
+            </article>
+
+            <article class="registration-api-card">
+              <div class="api-path"><span class="api-method get">GET</span><code>/mock/register/departments</code></div>
+              <p>返回医院下可预约科室、开放时段和是否支持线上复诊。</p>
+              <div class="api-meta"><span>hospitalId=hosp-cuhksz-2</span></div>
+            </article>
+
+            <article class="registration-api-card">
+              <div class="api-path"><span class="api-method get">GET</span><code>/mock/register/doctors</code></div>
+              <p>按科室、职称、擅长疾病和医生排名筛选可预约医生。</p>
+              <div class="api-meta"><span>dept=儿科</span><span>rank=chief</span></div>
+            </article>
+
+            <article class="registration-api-card">
+              <div class="api-path"><span class="api-method get">GET</span><code>/mock/register/slots</code></div>
+              <p>查询某医生某天可预约号源，返回时间段、剩余号源和费用字段。</p>
+              <div class="api-meta"><span>date=2026-06-18</span><span>status=available</span></div>
+            </article>
+
+            <article class="registration-api-card">
+              <div class="api-path"><span class="api-method post">POST</span><code>/mock/register/appointments</code></div>
+              <p>创建预约草稿，返回待确认订单号、就诊提醒和脱敏安全提示。</p>
+              <div class="api-meta"><span>no real booking</span><span>draft only</span></div>
+            </article>
+          </div>
         </div>
       </section>
 
@@ -53,68 +192,180 @@
           <div class="section-head clean">
             <div>
               <p class="eyebrow">资源目录</p>
-              <h2>医学 AI 工具目录</h2>
-              <p>每个工具条目都保留外部链接、适用场景和合规备注。工具资源明确免费开放，便于用户学习、试用、收藏和共同完善。</p>
+              <h2>OpenClaw 医学工具目录</h2>
+              <p>这里不只列官网，而是把 GitHub skills 的真实能力、适用场景和组合方法一起摆出来，便于快速从“能用什么”走到“怎么落地”。</p>
             </div>
           </div>
 
           <div class="resource-directory-grid">
             <article class="resource-panel">
-              <div class="resource-panel-head"><span>免费工具集</span><strong>医学 AI 免费工具集</strong></div>
-              <a href="https://www.huatuogpt.cn/" target="_blank" rel="noreferrer"><strong>华佗 GPT</strong><span>医疗问答、中文医学大模型体验</span></a>
-              <a href="https://www.monai.io/" target="_blank" rel="noreferrer"><strong>MONAI</strong><span>影像模型训练、标注与评估</span></a>
-              <a href="https://www.ncbi.nlm.nih.gov/research/pubtator/" target="_blank" rel="noreferrer"><strong>PubTator</strong><span>生物医学实体识别与文献标注</span></a>
-              <a href="https://github.com/microsoft/BiomedCLIP" target="_blank" rel="noreferrer"><strong>BiomedCLIP</strong><span>生物医学图文检索与多模态评测</span></a>
+              <div class="resource-panel-head"><span>精选技能</span><strong>OpenClaw 医学技能例子</strong></div>
+              <a href="https://github.com/FreedomIntelligence/OpenClaw-Medical-Skills/tree/main/skills/medical-research-toolkit" target="_blank" rel="noreferrer"><strong>medical-research-toolkit</strong><span>统一 MCP 入口连接 14+ 生物医学数据库，适合药物发现、证据检索与疾病研究。</span></a>
+              <a href="https://github.com/FreedomIntelligence/OpenClaw-Medical-Skills/tree/main/skills/biomcp-server" target="_blank" rel="noreferrer"><strong>biomcp-server</strong><span>把 PubMed、PMC、PubTator3、ClinicalTrials.gov 等能力标准化成 MCP 服务。</span></a>
+              <a href="https://github.com/FreedomIntelligence/OpenClaw-Medical-Skills/tree/main/skills/tooluniverse-clinical-guidelines" target="_blank" rel="noreferrer"><strong>tooluniverse-clinical-guidelines</strong><span>面向 NICE、WHO、ADA、AHA、NCCN 等 12+ 指南来源的搜索与引用。</span></a>
+              <a href="https://github.com/FreedomIntelligence/OpenClaw-Medical-Skills/tree/main/skills/digital-twin-clinical-agent" target="_blank" rel="noreferrer"><strong>digital-twin-clinical-agent</strong><span>构建患者数字孪生，用于治疗响应预测、临床试验模拟和个体化医学。</span></a>
+              <a href="https://github.com/FreedomIntelligence/OpenClaw-Medical-Skills/tree/main/skills/trialgpt-matching" target="_blank" rel="noreferrer"><strong>trialgpt-matching</strong><span>把患者画像映射为临床试验 shortlist，并输出缺失信息与排序解释。</span></a>
             </article>
 
             <article class="resource-panel">
-              <div class="resource-panel-head"><span>MCP</span><strong>医学 MCP 工具方向</strong></div>
-              <a href="#market-overview"><strong>文献检索工具</strong><span>用于医学文献查询、摘要、证据追踪和引用校验</span></a>
-              <a href="#market-overview"><strong>指南问答工具</strong><span>面向指南切片、来源引用和答案审核</span></a>
-              <a href="#market-overview"><strong>病例结构化工具</strong><span>辅助病历字段抽取、摘要生成和人工复核流程</span></a>
-              <a href="#market-overview"><strong>脱敏检查工具</strong><span>面向文本提交前的身份信息和病案标识检查</span></a>
+              <div class="resource-panel-head"><span>场景地图</span><strong>工具与 MCP 产品方向</strong></div>
+              <a href="#scenario-evidence"><strong>循证医疗 API</strong><span>多数据库、多指南、多证据等级的检索与引用层。</span></a>
+              <a href="#scenario-virtual-hospital"><strong>虚拟医院</strong><span>面向病人数字孪生、病例回放、医学生训练与模拟验证。</span></a>
+              <a href="#scenario-agentic-hospital"><strong>Agentic hospital</strong><span>把分诊、病历总结、检验追踪、随访和决策支持串成代理链。</span></a>
+              <a href="#scenario-his"><strong>AI-native HIS</strong><span>将 FHIR/EHR、病历 Copilot 和结构化数据流对接到医院信息系统。</span></a>
+              <a href="#scenario-up2date"><strong>AI-native Up2date</strong><span>做类 UpToDate 的持续更新型指南与文献助手。</span></a>
+              <a href="#scenario-tcm-kg"><strong>中医知识图谱</strong><span>连接证候、方剂、药材、症状与现代知识图谱推理。</span></a>
+              <a href="#medical-base-tools"><strong>医生 / 药品 / 医院库</strong><span>把基础库检索和 mock 挂号 API 接到医生主页、医院主页和问答助手。</span></a>
             </article>
 
             <article class="resource-panel">
-              <div class="resource-panel-head"><span>流程</span><strong>上架与推送流程</strong></div>
+              <div class="resource-panel-head"><span>落地方式</span><strong>从 skill 到产品的三层组合</strong></div>
               <ol class="resource-flow">
-                <li><strong>采集</strong><span>编辑后台或接口写入工具名称、热度、官网链接和分类。</span></li>
-                <li><strong>审核</strong><span>检查医疗合规、数据授权和适用人群。</span></li>
-                <li><strong>推送</strong><span>每日自动更新热点卡片，同时保留人工置顶工具。</span></li>
+                <li><strong>第一层：工具与 API</strong><span>接入 PubMed、ClinicalTrials.gov、OpenFDA、FHIR、知识图谱和医学指南等基础能力。</span></li>
+                <li><strong>第二层：代理工作流</strong><span>用 summarization、care coordination、trial matching、clinical decision support 组织任务链。</span></li>
+                <li><strong>第三层：产品界面</strong><span>包装成医生 Copilot、虚拟医院、AI-native HIS、AI-native Up2date 或中医 Graph-RAG 产品。</span></li>
               </ol>
             </article>
           </div>
         </div>
       </section>
 
-      <section class="section compact" id="market-overview">
-        <div class="container market-grid">
-          <article class="market-panel featured">
-            <span class="tag blue">MCP</span>
-            <h2>免费医学 MCP 工具网关</h2>
-            <p>把文献检索、指南问答、病例结构化、脱敏检查、影像报告读取等能力封装为可调用工具，面向用户免费开放。</p>
-            <div class="market-meta"><span>免费使用</span><span>权限控制</span><span>审计日志</span></div>
-          </article>
-          <article class="market-panel">
-            <span class="tag gold">工具</span>
-            <h2>工具集合免费开放</h2>
-            <p>面向医生、学生、医院和研究团队开放工具包，覆盖 RAG、报告总结、评测基准和教学题库。</p>
-            <div class="price-row"><strong>工具不收费</strong><span>开源与自研工具共同开放</span></div>
-          </article>
-          <article class="market-panel">
-            <span class="tag green">数据集</span>
-            <h2>数据集独立入口</h2>
-            <p>开放数据集、脱敏样例、标注集和评测集已拆分到数据集页面。</p>
-            <div class="price-row"><strong>合规共享</strong><a href="datasets.html">查看数据集</a></div>
-          </article>
+      <section class="section compact" id="tool-scenarios">
+        <div class="container">
+          <div class="section-head clean">
+            <div>
+              <p class="eyebrow">Scenario Stack</p>
+              <h2>工具与 MCP 场景栈</h2>
+              <p>每个方向都给出可直接引用的 skill 例子，帮助把 GitHub 仓库里的能力转成网站上的可理解产品模块。</p>
+            </div>
+          </div>
+
+          <div class="tool-stack-grid">
+            <article class="resource-panel tool-stack-card" id="scenario-evidence">
+              <div class="resource-panel-head"><span>循证医疗</span><strong>循证医疗 API</strong></div>
+              <p>围绕多数据库检索、指南搜索和临床证据引用，适合做 evidence copilot、院内文献助手和标准化问答接口。</p>
+              <div class="market-meta"><span>PubMed</span><span>ClinicalTrials</span><span>OpenFDA</span><span>NICE / WHO / NCCN</span></div>
+              <div class="tool-link-list">
+                <a href="https://github.com/FreedomIntelligence/OpenClaw-Medical-Skills/tree/main/skills/medical-research-toolkit" target="_blank" rel="noreferrer"><strong>medical-research-toolkit</strong><span>统一 MCP 端点聚合 ChEMBL、PubMed、ClinicalTrials.gov、OpenTargets、OpenFDA、OMIM 等来源。</span></a>
+                <a href="https://github.com/FreedomIntelligence/OpenClaw-Medical-Skills/tree/main/skills/tooluniverse-clinical-guidelines" target="_blank" rel="noreferrer"><strong>tooluniverse-clinical-guidelines</strong><span>跨 NICE、WHO、ADA、AHA、NCCN、GIN、TRIP 等 12+ 权威指南源做检索与回引。</span></a>
+                <a href="https://github.com/FreedomIntelligence/OpenClaw-Medical-Skills/tree/main/skills/biomcp-server" target="_blank" rel="noreferrer"><strong>biomcp-server</strong><span>标准化暴露 PubMed/PMC、PubTator3、ClinicalTrials.gov 与变异查询能力。</span></a>
+              </div>
+              <p class="tool-note">例子：给“重症肌无力免疫治疗”输出带 PubMed、ClinicalTrials.gov、OpenFDA 引用的证据摘要与正在招募的试验列表。</p>
+            </article>
+
+            <article class="resource-panel tool-stack-card" id="scenario-virtual-hospital">
+              <div class="resource-panel-head"><span>Simulation</span><strong>虚拟医院</strong></div>
+              <p>面向病例回放、患者数字孪生、训练环境和多角色协作，适合教学、方案模拟和新流程验证。</p>
+              <div class="market-meta"><span>Patient twin</span><span>EHR chat</span><span>Virtual lab</span></div>
+              <div class="tool-link-list">
+                <a href="https://github.com/FreedomIntelligence/OpenClaw-Medical-Skills/tree/main/skills/digital-twin-clinical-agent" target="_blank" rel="noreferrer"><strong>digital-twin-clinical-agent</strong><span>基于临床记录、多组学与影像构建患者数字孪生，用于反事实治疗模拟。</span></a>
+                <a href="https://github.com/FreedomIntelligence/OpenClaw-Medical-Skills/tree/main/skills/chatehr-clinician-assistant" target="_blank" rel="noreferrer"><strong>chatehr-clinician-assistant</strong><span>让临床人员通过自然语言检索病历、汇总病程并生成出院摘要。</span></a>
+                <a href="https://github.com/FreedomIntelligence/OpenClaw-Medical-Skills/tree/main/skills/virtual-lab-agent" target="_blank" rel="noreferrer"><strong>virtual-lab-agent</strong><span>组织 PI、免疫学家、计算生物学家和 ML 专家等多 agent 团队做实验设计。</span></a>
+              </div>
+              <p class="tool-note">例子：做一个“虚拟病区”，让医生或学生先在数字孪生患者上试跑治疗方案、病程总结和多学科讨论。</p>
+            </article>
+
+            <article class="resource-panel tool-stack-card" id="scenario-agentic-hospital">
+              <div class="resource-panel-head"><span>Workflow</span><strong>Agentic hospital</strong></div>
+              <p>把分诊、病历整理、检验结果追踪、照护协调和决策支持做成一条自动接力的医院代理流水线。</p>
+              <div class="market-meta"><span>Summarization</span><span>Coordination</span><span>CDS</span><span>Labs</span></div>
+              <div class="tool-link-list">
+                <a href="https://github.com/FreedomIntelligence/OpenClaw-Medical-Skills/tree/main/skills/clinical-note-summarization" target="_blank" rel="noreferrer"><strong>clinical-note-summarization</strong><span>把原始病历结构化成 SOAP，总结矛盾点、缺失项和 ICD 关联判断。</span></a>
+                <a href="https://github.com/FreedomIntelligence/OpenClaw-Medical-Skills/tree/main/skills/care-coordination" target="_blank" rel="noreferrer"><strong>care-coordination</strong><span>适合接管转诊、会诊、随访和跨科室任务编排。</span></a>
+                <a href="https://github.com/FreedomIntelligence/OpenClaw-Medical-Skills/tree/main/skills/lab-results" target="_blank" rel="noreferrer"><strong>lab-results</strong><span>聚焦检验结果解释与工作流联动，适合异常结果追踪和触发提醒。</span></a>
+                <a href="https://github.com/FreedomIntelligence/OpenClaw-Medical-Skills/tree/main/skills/clinical-decision-support" target="_blank" rel="noreferrer"><strong>clinical-decision-support</strong><span>面向证据等级、治疗建议和临床决策报告的生成。</span></a>
+              </div>
+              <p class="tool-note">例子：门诊分诊后自动生成 SOAP，拉取异常化验，整理随访任务，再把决策支持结果推给医生复核。</p>
+            </article>
+
+            <article class="resource-panel tool-stack-card" id="scenario-his">
+              <div class="resource-panel-head"><span>System</span><strong>AI-native HIS</strong></div>
+              <p>把 FHIR、EHR、病历 Copilot 和结构化数据服务接到 HIS 中，让 AI 不只是外部助手，而是系统原生能力。</p>
+              <div class="market-meta"><span>FHIR</span><span>EHR</span><span>Copilot</span></div>
+              <div class="tool-link-list">
+                <a href="https://github.com/FreedomIntelligence/OpenClaw-Medical-Skills/tree/main/skills/ehr-fhir-integration" target="_blank" rel="noreferrer"><strong>ehr-fhir-integration</strong><span>通过 HL7 FHIR 对患者、诊断、用药、检验等资源做检索、读取和导出。</span></a>
+                <a href="https://github.com/FreedomIntelligence/OpenClaw-Medical-Skills/tree/main/skills/chatehr-clinician-assistant" target="_blank" rel="noreferrer"><strong>chatehr-clinician-assistant</strong><span>把自然语言查询、图表摘要和病历问答嵌到临床工作站。</span></a>
+                <a href="https://github.com/FreedomIntelligence/OpenClaw-Medical-Skills/tree/main/skills/clinical-note-summarization" target="_blank" rel="noreferrer"><strong>clinical-note-summarization</strong><span>可作为 HIS 中病历结构化、质控和编码前处理的一层。</span></a>
+              </div>
+              <p class="tool-note">例子：在 HIS 里直接问“最近一次肌酐是多少”“总结最近 3 次肿瘤科门诊”，系统返回结构化答案并保留审计链。</p>
+            </article>
+
+            <article class="resource-panel tool-stack-card" id="scenario-up2date">
+              <div class="resource-panel-head"><span>Knowledge</span><strong>AI-native Up2date</strong></div>
+              <p>做一个持续更新、自动带来源、支持指南和最新研究并读的 AI-native 临床知识系统，而不只是静态文档库。</p>
+              <div class="market-meta"><span>Guidelines</span><span>Research lookup</span><span>Daily brief</span></div>
+              <div class="tool-link-list">
+                <a href="https://github.com/FreedomIntelligence/OpenClaw-Medical-Skills/tree/main/skills/tooluniverse-clinical-guidelines" target="_blank" rel="noreferrer"><strong>tooluniverse-clinical-guidelines</strong><span>提供权威指南层，适合查询标准治疗、筛查策略和药物基因组推荐。</span></a>
+                <a href="https://github.com/FreedomIntelligence/OpenClaw-Medical-Skills/tree/main/skills/medical-specialty-briefs" target="_blank" rel="noreferrer"><strong>medical-specialty-briefs</strong><span>按专科生成每日或按需更新的研究简报，适合持续追踪高影响力论文。</span></a>
+                <a href="https://github.com/FreedomIntelligence/OpenClaw-Medical-Skills/tree/main/skills/research-lookup" target="_blank" rel="noreferrer"><strong>research-lookup</strong><span>实时查询最新论文、技术文档和当前研究趋势，适合补足“最新研究”层。</span></a>
+              </div>
+              <p class="tool-note">例子：给心内科做一个“AI-native Up2date”，每天自动整理过去 7 天的新指南、RCT、JAMA/NEJM 文章并生成一句话临床 takeaway。</p>
+            </article>
+
+            <article class="resource-panel tool-stack-card" id="scenario-tcm-kg">
+              <div class="resource-panel-head"><span>TCM</span><strong>中医知识图谱</strong></div>
+              <p>把中医体质、证候、症状、方剂、药材与现代知识图谱推理结合，做成适合教育、研究和临床知识检索的 Graph-RAG 模块。</p>
+              <div class="market-meta"><span>体质辨识</span><span>Graph-RAG</span><span>多跳推理</span></div>
+              <div class="tool-link-list">
+                <a href="https://github.com/FreedomIntelligence/OpenClaw-Medical-Skills/tree/main/skills/tcm-constitution-analyzer" target="_blank" rel="noreferrer"><strong>tcm-constitution-analyzer</strong><span>适合做中医体质辨识、养生建议和体质特征分析的起点模块。</span></a>
+                <a href="https://github.com/FreedomIntelligence/OpenClaw-Medical-Skills/tree/main/skills/kragen-knowledge-graph" target="_blank" rel="noreferrer"><strong>kragen-knowledge-graph</strong><span>提供 Graph-of-Thoughts 风格的知识图谱增强 RAG，可扩展到证候与方剂关系推理。</span></a>
+              </div>
+              <p class="tool-note">例子：构建“证候 - 症状 - 方剂 - 药材 - 现代机制”五层图谱，用 Graph-RAG 回答复方配伍和疾病机制的多跳问题。</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section compact" id="example-gallery">
+        <div class="container">
+          <div class="section-head clean">
+            <div>
+              <p class="eyebrow">Examples</p>
+              <h2>展示例子</h2>
+              <p>下面这些例子可以直接作为页面里的“可做什么”说明，也方便后续继续扩成 demo、MCP 网关或产品介绍。</p>
+            </div>
+          </div>
+
+          <div class="skill-examples-grid">
+            <article class="resource-panel skill-example-card">
+              <div class="resource-panel-head"><span>Example 01</span><strong>Evidence Copilot</strong></div>
+              <p>输入疾病名后，同时检索 PubMed、ClinicalTrials.gov、OpenFDA 和主流指南，输出证据摘要、试验列表和风险信号。</p>
+              <p class="tool-note">组合：medical-research-toolkit + tooluniverse-clinical-guidelines + biomcp-server</p>
+            </article>
+            <article class="resource-panel skill-example-card">
+              <div class="resource-panel-head"><span>Example 02</span><strong>Virtual Hospital Sandbox</strong></div>
+              <p>用数字孪生患者、病历聊天和多 agent 实验设计，做住院流程、MDT 或医学生训练的模拟环境。</p>
+              <p class="tool-note">组合：digital-twin-clinical-agent + chatehr-clinician-assistant + virtual-lab-agent</p>
+            </article>
+            <article class="resource-panel skill-example-card">
+              <div class="resource-panel-head"><span>Example 03</span><strong>Agentic Ward Coordinator</strong></div>
+              <p>接收原始病历和检验结果后，自动输出 SOAP、异常提醒、照护协调任务和决策支持建议。</p>
+              <p class="tool-note">组合：clinical-note-summarization + lab-results + care-coordination + clinical-decision-support</p>
+            </article>
+            <article class="resource-panel skill-example-card">
+              <div class="resource-panel-head"><span>Example 04</span><strong>AI-native HIS Layer</strong></div>
+              <p>将 FHIR 数据、病历问答和结构化摘要做成 HIS 的原生智能层，支持临床查询、编码和审计留痕。</p>
+              <p class="tool-note">组合：ehr-fhir-integration + chatehr-clinician-assistant + clinical-note-summarization</p>
+            </article>
+            <article class="resource-panel skill-example-card">
+              <div class="resource-panel-head"><span>Example 05</span><strong>AI-native Up2date</strong></div>
+              <p>每天按专科自动追踪最新研究与指南，生成带来源链接的一句话总结和临床 relevance 标签。</p>
+              <p class="tool-note">组合：tooluniverse-clinical-guidelines + medical-specialty-briefs + research-lookup</p>
+            </article>
+            <article class="resource-panel skill-example-card">
+              <div class="resource-panel-head"><span>Example 06</span><strong>TCM Graph-RAG</strong></div>
+              <p>将中医体质、症状、证候和方剂连成图谱，再结合现代医学实体做跨体系多跳问答和知识发现。</p>
+              <p class="tool-note">组合：tcm-constitution-analyzer + kragen-knowledge-graph</p>
+            </article>
+          </div>
         </div>
       </section>
     </main>
 
     <footer class="site-footer">
       <div class="container footer-grid">
-        <div><h3>Freedom AI</h3><p>工具库强调免费开放、官网链接、权限控制和可追溯使用。</p></div>
-        <div><h4>工具</h4><a href="tools.html">工具库</a><a href="#tool-directory">工具目录</a></div>
+        <div><h3>Freedom AI</h3><p>工具库现在同时强调 OpenClaw skills、医学 MCP、可组合工作流和可追溯的临床知识服务。</p></div>
+        <div><h4>工具</h4><a href="tools.html">工具库</a><a href="#medical-base-tools">基础库工具</a><a href="#mock-registration-api">Mock 挂号 API</a><a href="#tool-scenarios">场景栈</a></div>
         <div><h4>数据</h4><a href="datasets.html">数据集</a></div>
         <div><h4>平台</h4><a href="benchmark.html">评测基准</a><a href="crowdsourcing.html">众包平台</a></div>
         <div><h4>学习</h4><a href="learning.html">教学</a><a href="community.html">讨论区</a></div>
