@@ -24,6 +24,47 @@ const forumTagLabels = {
   multimodal: "Multi-modal",
 };
 
+const siteNavItems = [
+  { href: "index.html", label: "首页", active: ["index.html", ""] },
+  { href: "learning.html", label: "内容", active: ["learning.html", "tutorials.html", "learning-videos.html", "learning-tutorial.html", "learning-question-bank.html", "learning-standardized-patient.html", "teaching-open-tutorials.html", "teaching-question-bank.html", "teaching-videos.html", "teaching-virtual-patient.html"] },
+  { href: "popular-science.html", label: "科普", active: ["popular-science.html"] },
+  { href: "network.html", label: "社区", active: ["network.html", "network-yu-guangjun.html"] },
+  { href: "community.html", label: "讨论区", active: ["community.html"] },
+  { href: "datasets.html", label: "数据集", active: ["datasets.html"] },
+  { href: "tools.html", label: "工具库", active: ["tools.html", "demos.html", "datasets-tools.html"] },
+  { href: "benchmark.html", label: "Benchmark", active: ["benchmark.html"] },
+  { href: "crowdsourcing.html", label: "众包平台", active: ["crowdsourcing.html"] },
+  { href: "profile.html", label: "用户", active: ["profile.html", "auth.html", "doctor.html"] },
+  { href: "about.html", label: "About", active: ["about.html"] },
+];
+
+function normalizeSiteHeader() {
+  const currentPath = window.location.pathname.split("/").pop() || "index.html";
+  document.querySelectorAll(".site-header .nav").forEach((nav) => {
+    const brand = nav.querySelector(".brand");
+    if (brand) {
+      brand.setAttribute("href", "index.html");
+      brand.innerHTML = '<span class="brand-mark">F</span><span class="brand-text"><strong>Freedom AI</strong><span>医学 AI 社区</span></span>';
+    }
+
+    const search = nav.querySelector(".site-search");
+    if (search) {
+      search.setAttribute("action", "search.html");
+      search.setAttribute("method", "get");
+      search.setAttribute("role", "search");
+      search.setAttribute("aria-label", "站内搜索");
+      search.innerHTML = '<label class="sr-only" for="siteSearchInput">搜索</label><input id="siteSearchInput" name="q" type="search" placeholder="搜索" autocomplete="off" /><button type="submit">搜索</button>';
+    }
+
+    const links = nav.querySelector(".nav-links");
+    if (!links) return;
+    links.innerHTML = siteNavItems.map((item) => {
+      const active = item.active.includes(currentPath) ? ' class="active"' : "";
+      return `<a${active} href="${item.href}">${item.label}</a>`;
+    }).join("");
+  });
+}
+
 const siteSearchIndex = [
   {
     title: "首页",
@@ -1357,6 +1398,7 @@ function wireNetworkSearch() {
 const isProfileRedirecting = redirectGuestProfile();
 
 if (!isProfileRedirecting) {
+  normalizeSiteHeader();
   wireFilters();
   wireSiteSearchForms();
   renderSiteSearchResults();
