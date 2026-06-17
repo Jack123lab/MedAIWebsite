@@ -33,25 +33,12 @@
     </header>
     <main>
       <section class="network-hero">
-        <div class="container network-hero-grid">
+        <div class="container network-hero-grid network-hero-solo">
           <div class="network-hero-copy">
             <p class="eyebrow">Medical Scholar Network</p>
             <h1>医学专家、医院与机构的知识网络</h1>
             <p>模仿 AMiner 的学者检索体验，把医生、医院、机构、论文、期刊、奖项和会议放进同一个可搜索的医学 AI 社区入口。</p>
-            <div class="network-quick-search">
-              <label class="sr-only" for="networkSearchInput">搜索医生、医院、机构、论文、期刊、奖项、会议</label>
-              <input id="networkSearchInput" type="search" placeholder="搜索：于广军、智慧医院、JMIR、白玉兰奖..." data-network-search />
-            </div>
           </div>
-          <aside class="network-feature-card">
-            <img src="https://www.nhdisz.cn/upload/main/contentmanage/article/image/2024/03/06/babe3576bc7e4e0aaa0a19c92471a67c.jpg" alt="于广军教授" referrerpolicy="no-referrer" />
-            <div>
-              <span>Featured Doctor</span>
-              <h2>于广军</h2>
-              <p>医疗大数据、互联网医疗、智慧医院、高危儿管理、多动症医教结合。</p>
-              <a href="network-yu-guangjun.html">查看个人主页</a>
-            </div>
-          </aside>
         </div>
       </section>
 
@@ -75,6 +62,15 @@
             <p>研究院、实验室、学会、期刊平台、会议组织和跨机构合作网络。</p>
             <strong>查看机构</strong>
           </a>
+          <a class="network-result-card person" href="network-yu-guangjun.html">
+            <img src="https://www.nhdisz.cn/upload/main/contentmanage/article/image/2024/03/06/babe3576bc7e4e0aaa0a19c92471a67c.jpg" alt="于广军教授" referrerpolicy="no-referrer" />
+            <div>
+              <span class="tag gold">热门例子</span>
+              <h3>于广军 / Guangjun Yu</h3>
+              <p>医疗大数据、互联网医疗、智慧医院、高危儿管理、多动症医教结合。</p>
+              <div class="network-meta-strip"><span>医生主页</span><span>论文</span><span>可认领</span></div>
+            </div>
+          </a>
         </div>
       </section>
 
@@ -86,6 +82,10 @@
               <h2>医学网络检索</h2>
               <p>结果可以是医生、医院、机构，也可以是论文、期刊、奖项和会议。当前是静态演示，后续可接入真实作者库和论文索引。</p>
             </div>
+          </div>
+          <div class="network-quick-search">
+            <label class="sr-only" for="networkSearchInput">搜索医生、医院、机构、论文、期刊、奖项、会议</label>
+            <input id="networkSearchInput" type="search" placeholder="搜索：于广军、智慧医院、JMIR、白玉兰奖..." data-network-search />
           </div>
           <div class="network-filter-row" aria-label="医学网络结果类型">
             <button class="active" type="button" data-network-filter="all">全部</button>

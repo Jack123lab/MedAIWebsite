@@ -7676,6 +7676,10 @@ p,
   padding: 44px 0;
 }
 
+.network-hero-grid.network-hero-solo {
+  grid-template-columns: minmax(0, 1fr);
+}
+
 .network-hero-copy h1,
 .scholar-identity h1 {
   margin: 10px 0 14px;
