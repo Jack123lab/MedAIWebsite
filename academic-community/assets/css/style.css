@@ -807,6 +807,8 @@ h1 {
   text-decoration: none;
   font-weight: 700;
   font-size: 14px;
+  font-family: inherit;
+  cursor: pointer;
 }
 
 .btn.primary {
@@ -4946,12 +4948,12 @@ body.medical-workbench-index,
 
 .agent-answer {
   display: grid;
-  gap: 4px;
+  gap: 8px;
   border: 0;
   border-radius: 0;
   padding: 0 8px;
   background: transparent;
-  text-align: center;
+  text-align: left;
 }
 
 .agent-answer strong {
@@ -4963,6 +4965,124 @@ body.medical-workbench-index,
   margin: 0;
   color: #536474;
   font-size: 13px;
+}
+
+.agent-answer-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+body.case-publish-open {
+  overflow: hidden;
+}
+
+.case-publish-dialog[hidden] {
+  display: none;
+}
+
+.case-publish-dialog {
+  position: fixed;
+  inset: 0;
+  z-index: 130;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  overflow: auto;
+}
+
+.case-publish-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(12, 28, 42, 0.58);
+}
+
+.case-publish-panel {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 860px);
+  max-height: calc(100vh - 48px);
+  overflow: auto;
+  border: 1px solid rgba(0, 127, 145, 0.18);
+  border-radius: 8px;
+  padding: 24px;
+  background: #ffffff;
+  box-shadow: 0 24px 70px rgba(12, 28, 42, 0.24);
+}
+
+.case-publish-panel .section-head.clean {
+  margin-bottom: 16px;
+  padding-right: 44px;
+}
+
+.case-publish-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 2;
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: #172738;
+  background: #ffffff;
+  cursor: pointer;
+  font: inherit;
+  font-size: 24px;
+  line-height: 1;
+}
+
+.case-publish-close:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.case-publish-form,
+.case-template-preview {
+  display: grid;
+  gap: 12px;
+}
+
+.case-publish-form input[type="file"] {
+  width: 100%;
+  min-height: 42px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 9px 12px;
+  background: #ffffff;
+  font: inherit;
+}
+
+.case-privacy-panel {
+  margin: 0;
+}
+
+.case-template-head,
+.case-publish-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.case-template-head strong {
+  color: #172738;
+}
+
+.case-template-preview textarea {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 12px;
+  color: var(--text);
+  background: #f8fbfc;
+  font: inherit;
+  line-height: 1.6;
+  resize: vertical;
 }
 
 .agent-home-index .home-page-footer {
@@ -5121,6 +5241,24 @@ body.medical-workbench-index,
 
   .agent-workbench {
     padding: 0;
+  }
+
+  .case-publish-dialog {
+    padding: 14px;
+  }
+
+  .case-publish-panel {
+    max-height: calc(100vh - 28px);
+    padding: 18px;
+  }
+
+  .case-publish-panel .section-head.clean {
+    padding-right: 34px;
+  }
+
+  .case-publish-close {
+    top: 12px;
+    right: 12px;
   }
 
   .home-footer-grid {
@@ -7538,6 +7676,80 @@ p,
   text-decoration: none;
 }
 
+body.upload-roadmap-open {
+  overflow: hidden;
+}
+
+.dataset-upload-dialog[hidden] {
+  display: none;
+}
+
+.dataset-upload-dialog {
+  position: fixed;
+  inset: 0;
+  z-index: 120;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  overflow: auto;
+}
+
+.dataset-upload-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(12, 28, 42, 0.58);
+}
+
+.dataset-upload-panel {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 980px);
+  max-height: calc(100vh - 48px);
+  overflow: auto;
+  border: 1px solid rgba(0, 127, 145, 0.18);
+  border-radius: 8px;
+  padding: 24px;
+  background: #ffffff;
+  box-shadow: 0 24px 70px rgba(12, 28, 42, 0.24);
+}
+
+.dataset-upload-panel .section-head.clean {
+  margin-bottom: 16px;
+  padding-right: 44px;
+}
+
+.dataset-upload-close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  z-index: 2;
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  color: #172738;
+  background: #ffffff;
+  cursor: pointer;
+  font: inherit;
+  font-size: 24px;
+  line-height: 1;
+}
+
+.dataset-upload-close:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.upload-roadmap-grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+
+.upload-roadmap-market {
+  margin-top: 14px;
+}
+
 .task-card.featured {
   background: #fffdf3;
   border-color: #eadb9d;
@@ -7615,6 +7827,7 @@ p,
   .benchmark-flow,
   .system-fusion-grid,
   .profile-template-grid,
+  .upload-roadmap-grid,
   .dataset-card-grid,
   .task-market-grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -7641,10 +7854,29 @@ p,
   .benchmark-flow,
   .system-fusion-grid,
   .profile-template-grid,
+  .upload-roadmap-grid,
   .dataset-card-grid,
   .researcher-card-grid,
   .task-market-grid {
     grid-template-columns: 1fr;
+  }
+
+  .dataset-upload-dialog {
+    padding: 14px;
+  }
+
+  .dataset-upload-panel {
+    max-height: calc(100vh - 28px);
+    padding: 18px;
+  }
+
+  .dataset-upload-panel .section-head.clean {
+    padding-right: 34px;
+  }
+
+  .dataset-upload-close {
+    top: 12px;
+    right: 12px;
   }
 
   .researcher-card,

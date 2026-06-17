@@ -57,7 +57,7 @@
               <h2>Kaggle 式数据集展示区</h2>
               <p>数据集以卡片形式展示，支持搜索、标签筛选、浏览下载、市场状态和任务关联，为后续众包任务和 Benchmark 发布做准备。</p>
             </div>
-            <a class="btn primary" href="#dataset-upload">上传数据集</a>
+            <button class="btn primary" type="button" data-upload-roadmap-open aria-controls="dataset-upload">上传数据集</button>
           </div>
 
           <div class="dataset-toolbar" aria-label="数据集筛选">
@@ -122,45 +122,44 @@
         </div>
       </section>
 
-      <section class="section compact" id="dataset-upload">
-        <div class="container">
+      <div class="dataset-upload-dialog" id="dataset-upload" role="dialog" aria-modal="true" aria-labelledby="dataset-upload-title" hidden>
+        <div class="dataset-upload-backdrop" data-upload-roadmap-close></div>
+        <div class="dataset-upload-panel" role="document">
+          <button class="dataset-upload-close" type="button" data-upload-roadmap-close aria-label="关闭上传流程">×</button>
           <div class="section-head clean">
             <div>
               <p class="eyebrow">Upload Roadmap</p>
-              <h2>数据集上传与上架流程</h2>
+              <h2 id="dataset-upload-title">数据集上传与上架流程</h2>
               <p>上传能力作为未来扩展入口，正式启用前需要完成授权确认、脱敏证明、数据字典、质量报告和用途边界审核。</p>
             </div>
           </div>
-          <div class="dataset-task-grid">
+          <div class="dataset-task-grid upload-roadmap-grid">
             <article><span>01</span><strong>提交元数据</strong><p>填写数据名称、来源机构、版本、字段说明、授权范围和联系人。</p></article>
             <article><span>02</span><strong>合规审核</strong><p>核查隐私、伦理、脱敏、授权、访问控制和最小必要原则。</p></article>
             <article><span>03</span><strong>关联任务</strong><p>选择是否发布标注、质控、模型训练、研究复现或 Benchmark 任务。</p></article>
           </div>
+          <div class="market-grid upload-roadmap-market" id="market-overview">
+            <article class="market-panel featured">
+              <span class="tag green">数据集</span>
+              <h2>开放数据集共享</h2>
+              <p>支持公开数据、脱敏样例、标注集和评测集整理，展示授权、脱敏、用途边界和质量报告。</p>
+              <div class="market-meta"><span>合规共享</span><span>版本记录</span><span>任务关联</span></div>
+            </article>
+            <article class="market-panel">
+              <span class="tag gold">工具</span>
+              <h2>工具库独立入口</h2>
+              <p>医学 AI 工具、MCP 网关和开源项目目录已拆分到工具库页面。</p>
+              <div class="price-row"><strong>免费开放</strong><a href="tools.html">查看工具库</a></div>
+            </article>
+            <article class="market-panel">
+              <span class="tag blue">Benchmark</span>
+              <h2>评测集发布</h2>
+              <p>数据集可连接 Benchmark、众包任务和讨论区，形成可复查的数据到评测流程。</p>
+              <div class="price-row"><strong>可追溯</strong><a href="benchmark.html">进入 Benchmark</a></div>
+            </article>
+          </div>
         </div>
-      </section>
-
-      <section class="section compact" id="market-overview">
-        <div class="container market-grid">
-          <article class="market-panel featured">
-            <span class="tag green">数据集</span>
-            <h2>开放数据集共享</h2>
-            <p>支持公开数据、脱敏样例、标注集和评测集整理，展示授权、脱敏、用途边界和质量报告。</p>
-            <div class="market-meta"><span>合规共享</span><span>版本记录</span><span>任务关联</span></div>
-          </article>
-          <article class="market-panel">
-            <span class="tag gold">工具</span>
-            <h2>工具库独立入口</h2>
-            <p>医学 AI 工具、MCP 网关和开源项目目录已拆分到工具库页面。</p>
-            <div class="price-row"><strong>免费开放</strong><a href="tools.html">查看工具库</a></div>
-          </article>
-          <article class="market-panel">
-            <span class="tag blue">Benchmark</span>
-            <h2>评测集发布</h2>
-            <p>数据集可连接 Benchmark、众包任务和讨论区，形成可复查的数据到评测流程。</p>
-            <div class="price-row"><strong>可追溯</strong><a href="benchmark.html">进入 Benchmark</a></div>
-          </article>
-        </div>
-      </section>
+      </div>
     </main>
 
     <footer class="site-footer">

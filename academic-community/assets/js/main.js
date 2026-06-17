@@ -478,7 +478,7 @@ function wireForum() {
         const favorited = Boolean(reaction.favorited);
         const postTags = (post.tags || [post.category]).slice(0, 4).map((tag) => `<span>${escapeHtml(forumTagLabels[tag] || tag)}</span>`).join("");
         return `
-          <article class="post-card" data-post-id="${post.id}">
+          <article class="post-card" id="${escapeHtml(post.id)}" data-post-id="${escapeHtml(post.id)}">
             <div class="post-main">
               <div class="post-meta"><span class="tag blue">${categoryLabels[post.category]}</span>${post.pinned ? '<span class="tag gold">置顶</span>' : ""}<span>${post.dept || "未标注领域"}</span></div>
               <h3>${post.title}</h3>
@@ -852,6 +852,16 @@ function wireHomeAgent() {
   const input = shell.querySelector("#agentQuestion");
   const output = shell.querySelector("#agentAnswer");
   const newsSection = document.querySelector("#hot-news");
+  const caseDialog = document.querySelector("#casePublishDialog");
+  const caseForm = document.querySelector("#casePublishForm");
+  const casePreview = document.querySelector("#caseTemplatePreview");
+  const caseStatus = document.querySelector("#casePublishStatus");
+  const caseFiles = document.querySelector("#caseFiles");
+  const caseDept = document.querySelector("#caseDept");
+  const caseCategory = document.querySelector("#caseCategory");
+  const caseNote = document.querySelector("#caseNote");
+  let latestAgentCase = { model: modelInput?.value || "GPT-5.5", question: "", answer: "" };
+  let casePreviousFocus = null;
 
   const setMenuOpen = (open) => {
     if (!trigger || !menu) return;
@@ -870,6 +880,68 @@ function wireHomeAgent() {
       item.setAttribute("aria-selected", String(active));
     });
     if (output?.dataset.submitted === "true") output.querySelector("span").textContent = model;
+  };
+
+  const buildAgentReply = (question, model) => {
+    const trimmedQuestion = question.trim();
+    return [
+      "已收到。我先按脱敏病例讨论的方式整理：",
+      "1. 先确认资料不含患者姓名、电话、身份证号、住院号、门诊号等可识别信息。",
+      "2. 建议补充背景、关键检查/文本、已尝试方法和希望社区判断的问题。",
+      `3. 可用 ${model} 生成讨论区模板，再由你确认后发布。`,
+      `问题摘要：${trimmedQuestion}`,
+    ].join("\n");
+  };
+
+  const getUploadedFileSummary = () => {
+    const files = Array.from(caseFiles?.files || []);
+    if (!files.length) return "未上传附件";
+    return files.slice(0, 6).map((file) => `${file.name}（${Math.ceil(file.size / 1024)} KB）`).join("；");
+  };
+
+  const buildCaseTemplate = () => {
+    const dept = caseDept?.value.trim() || "未标注领域";
+    const note = caseNote?.value.trim() || "暂无补充说明";
+    const categoryText = categoryLabels[caseCategory?.value || "clinical"] || "临床文本";
+    return [
+      `【脱敏病例讨论】${latestAgentCase.question || "医学 AI 辅助病例讨论"}`,
+      "",
+      `版块：${categoryText}`,
+      `科室/领域：${dept}`,
+      "是否脱敏：是，用户确认不包含患者可识别信息",
+      `涉及资料：${getUploadedFileSummary()}`,
+      "",
+      "问题背景：",
+      latestAgentCase.question || "用户希望围绕该案例整理讨论问题。",
+      "",
+      "AI 初步整理：",
+      latestAgentCase.answer || "已生成静态演示回复，等待人工确认。",
+      "",
+      "补充说明：",
+      note,
+      "",
+      "希望社区帮助：",
+      "请从资料完整性、风险边界、下一步信息整理和人工复核角度给出建议。",
+    ].join("\n");
+  };
+
+  const refreshCasePreview = () => {
+    if (casePreview) casePreview.value = buildCaseTemplate();
+  };
+
+  const setCaseDialogOpen = (open) => {
+    if (!caseDialog) return;
+    if (open) {
+      casePreviousFocus = document.activeElement;
+      caseDialog.hidden = false;
+      document.body.classList.add("case-publish-open");
+      refreshCasePreview();
+      caseDialog.querySelector(".case-publish-close")?.focus();
+      return;
+    }
+    caseDialog.hidden = true;
+    document.body.classList.remove("case-publish-open");
+    casePreviousFocus?.focus?.();
   };
 
   trigger?.addEventListener("click", (event) => {
@@ -912,6 +984,8 @@ function wireHomeAgent() {
     event.preventDefault();
     const model = modelInput?.value || "GPT-5.5";
     const question = input?.value.trim() || "请总结今天医学 AI 领域值得关注的方向。";
+    const reply = buildAgentReply(question, model);
+    latestAgentCase = { model, question, answer: reply };
     newsSection?.classList.add("is-hidden");
     if (output) {
       output.hidden = false;
@@ -919,14 +993,120 @@ function wireHomeAgent() {
       output.innerHTML = `
         <span>${escapeHtml(model)}</span>
         <strong>${escapeHtml(question)}</strong>
-        <p>已进入静态演示。正式接入后会在这里返回回答。</p>`;
+        <p>${escapeHtml(reply).replace(/\n/g, "<br>")}</p>
+        <div class="agent-answer-actions">
+          <button class="btn primary" type="button" data-case-publish-open>发布这个案例到讨论区</button>
+        </div>`;
     }
+  });
+
+  output?.addEventListener("click", (event) => {
+    if (!event.target.closest("[data-case-publish-open]")) return;
+    setCaseDialogOpen(true);
+  });
+
+  document.querySelectorAll("[data-case-publish-close]").forEach((button) => {
+    button.addEventListener("click", () => setCaseDialogOpen(false));
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && caseDialog && !caseDialog.hidden) {
+      setCaseDialogOpen(false);
+    }
+  });
+
+  document.querySelector("#casePreviewButton")?.addEventListener("click", refreshCasePreview);
+  [caseFiles, caseDept, caseCategory, caseNote].forEach((field) => {
+    field?.addEventListener("input", refreshCasePreview);
+    field?.addEventListener("change", refreshCasePreview);
+  });
+
+  caseForm?.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const template = casePreview?.value.trim() || buildCaseTemplate();
+    if (hasSensitivePattern(template)) {
+      if (caseStatus) caseStatus.textContent = "检测到可能的姓名、电话、身份证号或病案标识，请进一步脱敏后再发布。";
+      return;
+    }
+    const auth = getAuthState();
+    const category = caseCategory?.value || "clinical";
+    const title = template.split("\n").find(Boolean)?.replace(/^【脱敏病例讨论】/, "").slice(0, 80) || "脱敏病例讨论";
+    const post = {
+      id: `agent-case-${Date.now()}`,
+      title,
+      category,
+      dept: caseDept?.value.trim() || "未标注领域",
+      body: template,
+      author: auth.name && auth.name !== "访客" ? auth.name : "Agent 案例助手",
+      createdAt: new Date().toISOString(),
+      replies: 0,
+      views: 1,
+      likes: 0,
+      favorites: 0,
+      pinned: false,
+      tags: [category, "agent", "aiHealthcare"],
+    };
+    writeJson(postStorageKey, [post, ...readJson(postStorageKey, [])]);
+    if (caseStatus) caseStatus.textContent = "已发布到讨论区，正在跳转。";
+    window.setTimeout(() => {
+      window.location.href = `community.html?from=agent-case#${post.id}`;
+    }, 450);
   });
 
   shell.dataset.agentReady = "true";
 }
 
 function wireDatasetBrowser() {
+  const uploadDialog = document.querySelector("#dataset-upload");
+  const uploadOpenButtons = Array.from(document.querySelectorAll("[data-upload-roadmap-open]"));
+  const uploadCloseButtons = Array.from(document.querySelectorAll("[data-upload-roadmap-close]"));
+  const uploadHashes = new Set(["#dataset-upload", "#market-overview"]);
+  let uploadPreviousFocus = null;
+
+  function setUploadRoadmapOpen(isOpen, syncHash = true) {
+    if (!uploadDialog) return;
+    if (isOpen) {
+      uploadPreviousFocus = document.activeElement;
+      uploadDialog.hidden = false;
+      document.body.classList.add("upload-roadmap-open");
+      if (syncHash && !uploadHashes.has(window.location.hash)) {
+        history.pushState(null, "", "#dataset-upload");
+      }
+      uploadDialog.querySelector(".dataset-upload-close")?.focus();
+      return;
+    }
+
+    uploadDialog.hidden = true;
+    document.body.classList.remove("upload-roadmap-open");
+    if (syncHash && uploadHashes.has(window.location.hash)) {
+      history.replaceState(null, "", `${window.location.pathname}${window.location.search}`);
+    }
+    uploadPreviousFocus?.focus?.();
+  }
+
+  uploadOpenButtons.forEach((button) => {
+    button.addEventListener("click", () => setUploadRoadmapOpen(true));
+  });
+
+  uploadCloseButtons.forEach((button) => {
+    button.addEventListener("click", () => setUploadRoadmapOpen(false));
+  });
+
+  document.addEventListener("keydown", (event) => {
+    if (event.key === "Escape" && uploadDialog && !uploadDialog.hidden) {
+      setUploadRoadmapOpen(false);
+    }
+  });
+
+  window.addEventListener("hashchange", () => {
+    if (!uploadDialog) return;
+    setUploadRoadmapOpen(uploadHashes.has(window.location.hash), false);
+  });
+
+  if (uploadHashes.has(window.location.hash)) {
+    setUploadRoadmapOpen(true, false);
+  }
+
   const cards = Array.from(document.querySelectorAll("[data-dataset-card]"));
   if (!cards.length) return;
 

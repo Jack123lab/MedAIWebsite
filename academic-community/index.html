@@ -139,6 +139,44 @@
         </div>
       </section>
 
+      <div class="case-publish-dialog" id="casePublishDialog" role="dialog" aria-modal="true" aria-labelledby="casePublishTitle" hidden>
+        <div class="case-publish-backdrop" data-case-publish-close></div>
+        <div class="case-publish-panel" role="document">
+          <button class="case-publish-close" type="button" data-case-publish-close aria-label="关闭发布窗口">×</button>
+          <div class="section-head clean">
+            <div>
+              <p class="eyebrow">Case to Forum</p>
+              <h2 id="casePublishTitle">发布这个案例到讨论区</h2>
+              <p>系统会按脱敏病例讨论模板整理内容。请确认不包含姓名、电话、身份证号、住院号、门诊号等可识别信息。</p>
+            </div>
+          </div>
+          <form id="casePublishForm" class="case-publish-form">
+            <div class="privacy-panel case-privacy-panel">
+              <label class="check-line"><input id="caseDeidCheck" type="checkbox" required /> 我确认案例已经脱敏，可用于社区讨论</label>
+              <span>上传资料仅用于本地演示生成模板，不会发送到服务器。</span>
+            </div>
+            <div class="form-split">
+              <label>科室/领域<input id="caseDept" type="text" maxlength="30" placeholder="如心内科、肿瘤、影像" /></label>
+              <label>资料类型<select id="caseCategory"><option value="clinical">临床文本</option><option value="guideline">指南问答</option><option value="research">科研设计</option><option value="tool">工具经验</option><option value="ethics">合规伦理</option></select></label>
+            </div>
+            <label>补充资料<input id="caseFiles" type="file" multiple required /></label>
+            <label>补充说明<textarea id="caseNote" rows="4" maxlength="600" placeholder="请补充病例背景、已尝试处理方式、希望社区帮助判断的问题。"></textarea></label>
+            <div class="case-template-preview">
+              <div class="case-template-head">
+                <strong>待确认模板</strong>
+                <button class="btn" type="button" id="casePreviewButton">整理模板</button>
+              </div>
+              <textarea id="caseTemplatePreview" rows="10" maxlength="1500" required></textarea>
+            </div>
+            <div class="case-publish-actions">
+              <button class="btn" type="button" data-case-publish-close>取消</button>
+              <button class="btn primary" type="submit">确认并发布到讨论区</button>
+            </div>
+            <p id="casePublishStatus" class="form-status" role="status"></p>
+          </form>
+        </div>
+      </div>
+
     </main>
 
     <footer class="site-footer home-page-footer">
