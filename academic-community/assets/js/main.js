@@ -31,7 +31,7 @@ const siteNavItems = [
   { href: "community.html", label: "讨论区", active: ["community.html"] },
   { href: "datasets.html", label: "数据集", active: ["datasets.html"] },
   { href: "tools.html", label: "工具库", active: ["tools.html", "demos.html", "datasets-tools.html"] },
-  { href: "benchmark.html", label: "Benchmark", active: ["benchmark.html"] },
+  { href: "benchmark.html", label: "Benchmark", active: ["benchmark.html", "benchmark-gdb.html", "benchmark-liveclin.html", "benchmark-healthbench-tcm.html", "benchmark-doctors-last-exam.html", "benchmark-cmb.html"] },
   { href: "crowdsourcing.html", label: "众包平台", active: ["crowdsourcing.html"] },
   { href: "profile.html", label: "用户", active: ["profile.html", "auth.html", "doctor.html"] },
 ];
@@ -129,6 +129,36 @@ const siteSearchIndex = [
     url: "benchmark.html",
     category: "评测",
     text: "benchmark 模型评测 医学问答 虚拟病人 影像报告 工具调用 准确性 鲁棒性 安全边界",
+  },
+  {
+    title: "GDB / GlobalDentBench",
+    url: "benchmark-gdb.html",
+    category: "评测",
+    text: "GDB GlobalDentBench dental benchmark dentistry clinical reasoning 牙科 临床推理 多国家 专家校准 安全风险",
+  },
+  {
+    title: "LIVECLIN",
+    url: "benchmark-liveclin.html",
+    category: "评测",
+    text: "LIVECLIN LiveClin live clinical benchmark leakage case reports questions 多模态 病例 临床路径 半年更新",
+  },
+  {
+    title: "HealthBench-TCM",
+    url: "benchmark-healthbench-tcm.html",
+    category: "评测",
+    text: "HealthBench TCM 中医 健康咨询 rubric 医生评分 安全性 语义一致性 风险提示",
+  },
+  {
+    title: "Doctors Last Exam",
+    url: "benchmark-doctors-last-exam.html",
+    category: "评测",
+    text: "Doctors Last Exam expert exam medical benchmark 高难度 医生基线 专家审核 题库 临床综合推理",
+  },
+  {
+    title: "CMB",
+    url: "benchmark-cmb.html",
+    category: "评测",
+    text: "CMB Comprehensive Medical Benchmark Chinese 中文医学 benchmark 医学考试 临床咨询 本土语境 中医",
   },
   {
     title: "众包平台",

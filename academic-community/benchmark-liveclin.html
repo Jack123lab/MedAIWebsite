@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>LIVECLIN | Freedom AI Benchmark</title>
+    <meta name="description" content="LIVECLIN 医学 AI benchmark 详情页，聚焦真实病例、抗数据泄漏、多阶段临床推理和医生评测基线。" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <script src="assets/js/main.js" defer></script>
+  </head>
+  <body class="benchmark-detail-page">
+    <header class="site-header">
+      <nav class="nav" aria-label="主导航">
+        <a class="brand" href="index.html"><span class="brand-mark">F</span><span class="brand-text"><strong>Freedom AI</strong><span>医学 AI 社区</span></span></a>
+        <form class="site-search" role="search" action="search.html" method="get" aria-label="站内搜索">
+          <label class="sr-only" for="siteSearchInput">搜索</label>
+          <input id="siteSearchInput" name="q" type="search" placeholder="搜索" autocomplete="off" />
+          <button type="submit">搜索</button>
+        </form>
+        <div class="nav-links">
+          <a href="index.html">首页</a>
+          <a href="learning.html">内容</a>
+          <a href="network.html">社区</a>
+          <a href="community.html">讨论区</a>
+          <a href="datasets.html">数据集</a>
+          <a href="tools.html">工具库</a>
+          <a href="benchmark.html">Benchmark</a>
+          <a href="crowdsourcing.html">众包平台</a>
+          <a href="profile.html">用户</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="page-title">
+        <div class="container">
+          <p class="eyebrow">Live Clinical Cases</p>
+          <h1>LIVECLIN</h1>
+          <p>面向真实临床病例的动态 benchmark，通过医生参与的流程把病例转成多阶段、多模态的评测任务，强调时效性与抗数据泄漏。</p>
+          <div class="benchmark-detail-meta">
+            <span>1,407 case reports</span>
+            <span>6,605 questions</span>
+            <span>239 physicians</span>
+            <span>biannual update</span>
+          </div>
+          <div class="button-row">
+            <a class="btn primary" href="https://arxiv.org/pdf/2602.16747" target="_blank" rel="noreferrer">查看 PDF</a>
+            <a class="btn" href="benchmark.html">返回 Benchmark</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section compact">
+        <div class="container benchmark-detail-grid">
+          <article class="benchmark-detail-card">
+            <span>01</span>
+            <h2>评测对象</h2>
+            <p>适合评估医学 VLM、临床推理 LLM、病历问答系统和多模态病例 Agent。</p>
+            <dl><dt>输入</dt><dd>病例叙述、检查结果、医学图像、表格或随访信息。</dd><dt>输出</dt><dd>按临床路径逐步回答诊断、处理、并发症和随访问题。</dd></dl>
+          </article>
+          <article class="benchmark-detail-card">
+            <span>02</span>
+            <h2>任务结构</h2>
+            <ul class="benchmark-detail-list">
+              <li><strong>病例背景</strong>从真实 case report 转换成可评测场景。</li>
+              <li><strong>阶段问题</strong>覆盖初诊、检查、诊断、治疗和后续管理。</li>
+              <li><strong>多模态证据</strong>保留图像、表格和临床文本的联合推理。</li>
+            </ul>
+          </article>
+          <article class="benchmark-detail-card">
+            <span>03</span>
+            <h2>指标设计</h2>
+            <p>LIVECLIN 更适合看 case-level 表现，而不是只看单题正确率；一个阶段错可能影响后续全部临床路径。</p>
+            <dl><dt>核心</dt><dd>Case Accuracy、question accuracy、stage-level score。</dd><dt>风险</dt><dd>诊断偏差、误导治疗、忽略危险信号、图像证据误读。</dd></dl>
+          </article>
+          <article class="benchmark-detail-card">
+            <span>04</span>
+            <h2>站内落地</h2>
+            <p>站内可把 LIVECLIN 做成动态任务：记录病例发布时间、模型提交时间和更新批次，减少训练集污染带来的虚高分数。</p>
+            <ul class="benchmark-detail-list">
+              <li><strong>提交窗口</strong>按批次冻结评测集和 leaderboard。</li>
+              <li><strong>医生基线</strong>展示医生、住培和模型的对照结果。</li>
+              <li><strong>错误讨论</strong>把病例失败点沉淀成教学材料。</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="section compact alt-band">
+        <div class="container">
+          <article class="benchmark-detail-source">
+            <h2>来源与复现入口</h2>
+            <p>页面信息依据 LIVECLIN 论文摘要和 PDF 整理，后续可补充数据集入口、榜单提交规则和病例复核页面。</p>
+            <div class="button-row"><a class="btn primary" href="https://arxiv.org/abs/2602.16747" target="_blank" rel="noreferrer">arXiv 摘要</a><a class="btn" href="https://arxiv.org/pdf/2602.16747" target="_blank" rel="noreferrer">论文 PDF</a></div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer"><div class="container footer-grid"><div><h3>Freedom AI</h3><p>Benchmark 关注准确性、证据、鲁棒性和安全边界。</p></div><div><h4>资源</h4><a href="datasets.html">数据集</a><a href="tools.html">工具库</a></div><div><h4>众包</h4><a href="crowdsourcing.html">评测任务</a></div><div><h4>学习</h4><a href="learning.html">教学</a></div></div></footer>
+  </body>
+</html>

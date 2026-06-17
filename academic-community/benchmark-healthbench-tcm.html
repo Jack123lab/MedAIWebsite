@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>HealthBench-TCM | Freedom AI Benchmark</title>
+    <meta name="description" content="HealthBench-TCM 站内 benchmark 样例页，聚焦中医健康咨询、rubric 评分、安全边界和语义一致性。" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <script src="assets/js/main.js" defer></script>
+  </head>
+  <body class="benchmark-detail-page">
+    <header class="site-header">
+      <nav class="nav" aria-label="主导航">
+        <a class="brand" href="index.html"><span class="brand-mark">F</span><span class="brand-text"><strong>Freedom AI</strong><span>医学 AI 社区</span></span></a>
+        <form class="site-search" role="search" action="search.html" method="get" aria-label="站内搜索">
+          <label class="sr-only" for="siteSearchInput">搜索</label>
+          <input id="siteSearchInput" name="q" type="search" placeholder="搜索" autocomplete="off" />
+          <button type="submit">搜索</button>
+        </form>
+        <div class="nav-links">
+          <a href="index.html">首页</a>
+          <a href="learning.html">内容</a>
+          <a href="network.html">社区</a>
+          <a href="community.html">讨论区</a>
+          <a href="datasets.html">数据集</a>
+          <a href="tools.html">工具库</a>
+          <a href="benchmark.html">Benchmark</a>
+          <a href="crowdsourcing.html">众包平台</a>
+          <a href="profile.html">用户</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="page-title">
+        <div class="container">
+          <p class="eyebrow">Rubric + TCM</p>
+          <h1>HealthBench-TCM</h1>
+          <p>这是 Freedom AI 面向中医健康咨询场景的站内评测样例，借鉴 HealthBench 的医生 rubric 思路，评估回答是否安全、清楚、符合中医语义并尊重就医边界。</p>
+          <div class="benchmark-detail-meta">
+            <span>站内样例</span>
+            <span>rubric-based grading</span>
+            <span>TCM health consultation</span>
+            <span>safety first</span>
+          </div>
+          <div class="button-row">
+            <a class="btn primary" href="https://openai.com/index/healthbench/" target="_blank" rel="noreferrer">参考 HealthBench</a>
+            <a class="btn" href="benchmark.html">返回 Benchmark</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section compact">
+        <div class="container benchmark-detail-grid">
+          <article class="benchmark-detail-card">
+            <span>01</span>
+            <h2>评测对象</h2>
+            <p>适合评估中文健康问答模型、中医知识助手、面向患者教育的 RAG 系统和咨询分流工具。</p>
+            <dl><dt>场景</dt><dd>体质辨识、症状解释、养生建议、用药风险、何时就医。</dd><dt>边界</dt><dd>不鼓励替代诊断，不给出危险的自行治疗承诺。</dd></dl>
+          </article>
+          <article class="benchmark-detail-card">
+            <span>02</span>
+            <h2>任务结构</h2>
+            <ul class="benchmark-detail-list">
+              <li><strong>多轮咨询</strong>用户先描述症状，再补充年龄、病史、用药和危险信号。</li>
+              <li><strong>rubric 评分</strong>每个样例有医生或中医专家写出的加分项、扣分项和风险项。</li>
+              <li><strong>来源记录</strong>如果使用指南、教材或药品说明，应保留引用来源。</li>
+            </ul>
+          </article>
+          <article class="benchmark-detail-card">
+            <span>03</span>
+            <h2>指标设计</h2>
+            <p>中医类健康咨询不应只看答案是否“像中医”，还要看是否能识别风险、避免夸大疗效，并给出可执行但不过度的建议。</p>
+            <dl><dt>核心</dt><dd>安全性、语义一致性、上下文意识、沟通清晰度。</dd><dt>风险</dt><dd>延误就医、药物相互作用、虚假疗效、忽略急症。</dd></dl>
+          </article>
+          <article class="benchmark-detail-card">
+            <span>04</span>
+            <h2>站内落地</h2>
+            <p>可以先作为站内样例集，用众包平台邀请医生和中医专家共写 rubric，再逐步形成公开任务和榜单。</p>
+            <ul class="benchmark-detail-list">
+              <li><strong>专家协作</strong>医生、中医师、药师分别审核不同维度。</li>
+              <li><strong>样例版本</strong>每次更新保留任务版本和评分规则。</li>
+              <li><strong>公众科普</strong>可把优秀回答同步到科普页作为安全示范。</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="section compact alt-band">
+        <div class="container">
+          <article class="benchmark-detail-source">
+            <h2>来源与复现入口</h2>
+            <p>本页是站内中医方向评测样例，评分设计参考 HealthBench 的真实健康对话与医生 rubric 思路。后续可接入站内数据集、众包标注和公开榜单。</p>
+            <div class="button-row"><a class="btn primary" href="https://openai.com/index/healthbench/" target="_blank" rel="noreferrer">HealthBench 介绍</a><a class="btn" href="crowdsourcing.html">发起 rubric 众包</a></div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer"><div class="container footer-grid"><div><h3>Freedom AI</h3><p>Benchmark 关注准确性、证据、鲁棒性和安全边界。</p></div><div><h4>资源</h4><a href="datasets.html">数据集</a><a href="tools.html">工具库</a></div><div><h4>众包</h4><a href="crowdsourcing.html">评测任务</a></div><div><h4>学习</h4><a href="learning.html">教学</a></div></div></footer>
+  </body>
+</html>

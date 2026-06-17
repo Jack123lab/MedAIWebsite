@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Doctors Last Exam | Freedom AI Benchmark</title>
+    <meta name="description" content="Doctors Last Exam 站内 benchmark 样例页，聚焦专家级医学题库、医生基线、身份审核和高难临床综合推理。" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <script src="assets/js/main.js" defer></script>
+  </head>
+  <body class="benchmark-detail-page">
+    <header class="site-header">
+      <nav class="nav" aria-label="主导航">
+        <a class="brand" href="index.html"><span class="brand-mark">F</span><span class="brand-text"><strong>Freedom AI</strong><span>医学 AI 社区</span></span></a>
+        <form class="site-search" role="search" action="search.html" method="get" aria-label="站内搜索">
+          <label class="sr-only" for="siteSearchInput">搜索</label>
+          <input id="siteSearchInput" name="q" type="search" placeholder="搜索" autocomplete="off" />
+          <button type="submit">搜索</button>
+        </form>
+        <div class="nav-links">
+          <a href="index.html">首页</a>
+          <a href="learning.html">内容</a>
+          <a href="network.html">社区</a>
+          <a href="community.html">讨论区</a>
+          <a href="datasets.html">数据集</a>
+          <a href="tools.html">工具库</a>
+          <a href="benchmark.html">Benchmark</a>
+          <a href="crowdsourcing.html">众包平台</a>
+          <a href="profile.html">用户</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="page-title">
+        <div class="container">
+          <p class="eyebrow">Expert Exam</p>
+          <h1>Doctors Last Exam</h1>
+          <p>这是 Freedom AI 面向专家级医学题目的站内考试型评测页，用来组织高难临床综合推理、医生基线和专家复核流程。</p>
+          <div class="benchmark-detail-meta">
+            <span>站内挑战页</span>
+            <span>expert-level cases</span>
+            <span>doctor baseline</span>
+            <span>verified review</span>
+          </div>
+          <div class="button-row">
+            <a class="btn primary" href="crowdsourcing.html">提交高难题目</a>
+            <a class="btn" href="benchmark.html">返回 Benchmark</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section compact">
+        <div class="container benchmark-detail-grid">
+          <article class="benchmark-detail-card">
+            <span>01</span>
+            <h2>评测对象</h2>
+            <p>适合评估已经在普通医学考试上接近饱和的模型，重点看复杂、不确定和高风险场景中的临床判断。</p>
+            <dl><dt>对象</dt><dd>医学 LLM、临床 Agent、RAG 系统、专科模型。</dd><dt>问题</dt><dd>罕见病、指南冲突、多病共存、检查取舍和治疗风险。</dd></dl>
+          </article>
+          <article class="benchmark-detail-card">
+            <span>02</span>
+            <h2>题目形态</h2>
+            <ul class="benchmark-detail-list">
+              <li><strong>封闭题</strong>用于稳定榜单和跨模型对比。</li>
+              <li><strong>开放题</strong>要求模型写出鉴别诊断、检查计划和不确定性。</li>
+              <li><strong>答辩题</strong>专家追问模型推理链中的关键假设。</li>
+            </ul>
+          </article>
+          <article class="benchmark-detail-card">
+            <span>03</span>
+            <h2>指标设计</h2>
+            <p>这类任务的关键不是“答对一道题”，而是模型能否在专家追问下保持一致、承认证据不足并避免危险建议。</p>
+            <dl><dt>核心</dt><dd>专家通过率、解释质量、风险错误等级、校准程度。</dd><dt>基线</dt><dd>住院医、主治医、专科专家和模型结果分层展示。</dd></dl>
+          </article>
+          <article class="benchmark-detail-card">
+            <span>04</span>
+            <h2>站内落地</h2>
+            <p>站内可以把 Doctors Last Exam 做成认证挑战：题目提交、专家审核、模型盲测、医生基线和榜单发布分开管理。</p>
+            <ul class="benchmark-detail-list">
+              <li><strong>身份核验</strong>题目贡献者和复核者需要认证。</li>
+              <li><strong>盲测机制</strong>先隐藏答案与来源，提交后再开放解析。</li>
+              <li><strong>讨论沉淀</strong>争议题进入讨论区，保留专家意见。</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="section compact alt-band">
+        <div class="container">
+          <article class="benchmark-detail-source">
+            <h2>页面状态</h2>
+            <p>本页先作为站内高难医学考试型 benchmark 模板。后续可以接入题库数据、专家审核后台、医生基线统计和模型提交入口。</p>
+            <div class="button-row"><a class="btn primary" href="profile.html">认证专家身份</a><a class="btn" href="community.html">进入讨论区</a></div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer"><div class="container footer-grid"><div><h3>Freedom AI</h3><p>Benchmark 关注准确性、证据、鲁棒性和安全边界。</p></div><div><h4>资源</h4><a href="datasets.html">数据集</a><a href="tools.html">工具库</a></div><div><h4>众包</h4><a href="crowdsourcing.html">评测任务</a></div><div><h4>学习</h4><a href="learning.html">教学</a></div></div></footer>
+  </body>
+</html>

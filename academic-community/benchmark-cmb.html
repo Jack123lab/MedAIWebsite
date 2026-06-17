@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>CMB | Freedom AI Benchmark</title>
+    <meta name="description" content="CMB 中文综合医学 benchmark 详情页，聚焦中文医学考试、临床咨询、本土医疗语境和中医知识覆盖。" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <script src="assets/js/main.js" defer></script>
+  </head>
+  <body class="benchmark-detail-page">
+    <header class="site-header">
+      <nav class="nav" aria-label="主导航">
+        <a class="brand" href="index.html"><span class="brand-mark">F</span><span class="brand-text"><strong>Freedom AI</strong><span>医学 AI 社区</span></span></a>
+        <form class="site-search" role="search" action="search.html" method="get" aria-label="站内搜索">
+          <label class="sr-only" for="siteSearchInput">搜索</label>
+          <input id="siteSearchInput" name="q" type="search" placeholder="搜索" autocomplete="off" />
+          <button type="submit">搜索</button>
+        </form>
+        <div class="nav-links">
+          <a href="index.html">首页</a>
+          <a href="learning.html">内容</a>
+          <a href="network.html">社区</a>
+          <a href="community.html">讨论区</a>
+          <a href="datasets.html">数据集</a>
+          <a href="tools.html">工具库</a>
+          <a href="benchmark.html">Benchmark</a>
+          <a href="crowdsourcing.html">众包平台</a>
+          <a href="profile.html">用户</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="page-title">
+        <div class="container">
+          <p class="eyebrow">Chinese Medical Benchmark</p>
+          <h1>CMB</h1>
+          <p>CMB 是中文综合医学 benchmark，覆盖医学考试知识与复杂临床咨询，适合评估模型在中文医疗语境、本土医学知识和咨询能力上的表现。</p>
+          <div class="benchmark-detail-meta">
+            <span>280,839 MCQs</span>
+            <span>74 case consultations</span>
+            <span>Chinese medical context</span>
+            <span>exam + clinic</span>
+          </div>
+          <div class="button-row">
+            <a class="btn primary" href="https://cmedbenchmark.llmzoo.com/" target="_blank" rel="noreferrer">CMB 官网</a>
+            <a class="btn" href="benchmark.html">返回 Benchmark</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section compact">
+        <div class="container benchmark-detail-grid">
+          <article class="benchmark-detail-card">
+            <span>01</span>
+            <h2>评测对象</h2>
+            <p>适合评估中文医学大模型、通用中文 LLM、医学知识增强模型和面向中文患者咨询的 Agent。</p>
+            <dl><dt>语言</dt><dd>中文问题、中文答案、本土医学表达和考试语境。</dd><dt>能力</dt><dd>医学知识、临床咨询、解释质量和文化语境适配。</dd></dl>
+          </article>
+          <article class="benchmark-detail-card">
+            <span>02</span>
+            <h2>任务结构</h2>
+            <ul class="benchmark-detail-list">
+              <li><strong>CMB-Exam</strong>多层级医学考试选择题，覆盖医师、护理、药学和医技等方向。</li>
+              <li><strong>CMB-Clin</strong>复杂临床咨询问题，检查模型是否能组织中文医学建议。</li>
+              <li><strong>本土知识</strong>包含中国医疗语境和中医相关内容，但中医不是全部。</li>
+            </ul>
+          </article>
+          <article class="benchmark-detail-card">
+            <span>03</span>
+            <h2>指标设计</h2>
+            <p>CMB 适合同时看知识题准确率和咨询回答质量，尤其适合分析“英文 benchmark 翻译到中文”无法覆盖的本土语境差异。</p>
+            <dl><dt>核心</dt><dd>MCQ accuracy、consultation quality、localization score。</dd><dt>切片</dt><dd>专业类别、考试层级、临床科室、中医相关题目。</dd></dl>
+          </article>
+          <article class="benchmark-detail-card">
+            <span>04</span>
+            <h2>站内落地</h2>
+            <p>Freedom AI 可把 CMB 作为中文医学评测入口，用于比较中文模型、通用模型和医学专用模型，并沉淀中文错误分析。</p>
+            <ul class="benchmark-detail-list">
+              <li><strong>中文榜单</strong>按考试题和咨询题分榜展示。</li>
+              <li><strong>错误分析</strong>标注常见中文医学表达误解和本土知识缺口。</li>
+              <li><strong>教学复用</strong>把典型题目连接到题库和课程模块。</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="section compact alt-band">
+        <div class="container">
+          <article class="benchmark-detail-source">
+            <h2>来源与复现入口</h2>
+            <p>页面信息依据 CMB 官方站点和 NAACL 论文页整理，后续可补充 Hugging Face、GitHub、模型提交和站内榜单入口。</p>
+            <div class="button-row"><a class="btn primary" href="https://cmedbenchmark.llmzoo.com/" target="_blank" rel="noreferrer">官方站点</a><a class="btn" href="https://aclanthology.org/2024.naacl-long.343/" target="_blank" rel="noreferrer">论文页面</a></div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer"><div class="container footer-grid"><div><h3>Freedom AI</h3><p>Benchmark 关注准确性、证据、鲁棒性和安全边界。</p></div><div><h4>资源</h4><a href="datasets.html">数据集</a><a href="tools.html">工具库</a></div><div><h4>众包</h4><a href="crowdsourcing.html">评测任务</a></div><div><h4>学习</h4><a href="learning.html">教学</a></div></div></footer>
+  </body>
+</html>

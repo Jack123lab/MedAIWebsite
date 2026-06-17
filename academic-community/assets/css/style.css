@@ -7827,6 +7827,123 @@ body.upload-roadmap-open {
   text-decoration: none;
 }
 
+.benchmark-example-grid,
+.benchmark-detail-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+}
+
+.benchmark-example-card,
+.benchmark-detail-card,
+.benchmark-detail-source {
+  display: grid;
+  align-content: start;
+  gap: 12px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 18px;
+  background: #ffffff;
+}
+
+.benchmark-example-card:last-child {
+  grid-column: span 2;
+}
+
+.benchmark-example-card span,
+.benchmark-detail-card > span {
+  color: #8a6200;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.benchmark-example-card h3,
+.benchmark-detail-card h2,
+.benchmark-detail-source h2 {
+  margin: 0;
+  color: #172738;
+}
+
+.benchmark-example-card p,
+.benchmark-detail-card p,
+.benchmark-detail-source p {
+  margin-bottom: 0;
+  color: var(--muted);
+}
+
+.benchmark-example-card dl,
+.benchmark-detail-card dl {
+  display: grid;
+  grid-template-columns: 76px minmax(0, 1fr);
+  gap: 6px 10px;
+  margin: 0;
+  color: var(--muted);
+  font-size: 13px;
+}
+
+.benchmark-example-card dt,
+.benchmark-detail-card dt {
+  color: #172738;
+  font-weight: 800;
+}
+
+.benchmark-example-card dd,
+.benchmark-detail-card dd {
+  margin: 0;
+}
+
+.benchmark-example-card .button-row {
+  margin-top: auto;
+}
+
+.benchmark-detail-page .page-title .button-row {
+  margin-top: 18px;
+}
+
+.benchmark-detail-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.benchmark-detail-meta span,
+.benchmark-detail-list li {
+  border: 1px solid #d6e6e9;
+  border-radius: 8px;
+  background: #f6fbfc;
+}
+
+.benchmark-detail-meta span {
+  padding: 7px 10px;
+  color: #00616d;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.benchmark-detail-list {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.benchmark-detail-list li {
+  padding: 10px 12px;
+  color: var(--muted);
+}
+
+.benchmark-detail-list strong {
+  display: block;
+  margin-bottom: 3px;
+  color: #172738;
+}
+
+.benchmark-detail-source {
+  margin-top: 14px;
+}
+
 .benchmark-table {
   overflow: hidden;
   border: 1px solid var(--line);
@@ -7863,6 +7980,8 @@ body.upload-roadmap-open {
   .relation-flow,
   .discussion-principles,
   .dataset-task-grid,
+  .benchmark-example-grid,
+  .benchmark-detail-grid,
   .benchmark-flow,
   .system-fusion-grid,
   .profile-template-grid,
@@ -7890,6 +8009,8 @@ body.upload-roadmap-open {
   .relation-flow,
   .discussion-principles,
   .dataset-task-grid,
+  .benchmark-example-grid,
+  .benchmark-detail-grid,
   .benchmark-flow,
   .system-fusion-grid,
   .profile-template-grid,
@@ -7921,6 +8042,10 @@ body.upload-roadmap-open {
   .researcher-card,
   .contributor-card {
     grid-template-columns: 1fr;
+  }
+
+  .benchmark-example-card:last-child {
+    grid-column: auto;
   }
 }
 

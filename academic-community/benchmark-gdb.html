@@ -1,0 +1,102 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>GDB / GlobalDentBench | Freedom AI Benchmark</title>
+    <meta name="description" content="GDB / GlobalDentBench 医学 AI benchmark 详情页，聚焦牙科临床推理、多国家样本、专家校准与安全风险分析。" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <script src="assets/js/main.js" defer></script>
+  </head>
+  <body class="benchmark-detail-page">
+    <header class="site-header">
+      <nav class="nav" aria-label="主导航">
+        <a class="brand" href="index.html"><span class="brand-mark">F</span><span class="brand-text"><strong>Freedom AI</strong><span>医学 AI 社区</span></span></a>
+        <form class="site-search" role="search" action="search.html" method="get" aria-label="站内搜索">
+          <label class="sr-only" for="siteSearchInput">搜索</label>
+          <input id="siteSearchInput" name="q" type="search" placeholder="搜索" autocomplete="off" />
+          <button type="submit">搜索</button>
+        </form>
+        <div class="nav-links">
+          <a href="index.html">首页</a>
+          <a href="learning.html">内容</a>
+          <a href="network.html">社区</a>
+          <a href="community.html">讨论区</a>
+          <a href="datasets.html">数据集</a>
+          <a href="tools.html">工具库</a>
+          <a href="benchmark.html">Benchmark</a>
+          <a href="crowdsourcing.html">众包平台</a>
+          <a href="profile.html">用户</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="page-title">
+        <div class="container">
+          <p class="eyebrow">Dental Benchmark</p>
+          <h1>GDB / GlobalDentBench</h1>
+          <p>面向牙科临床推理的多国家 benchmark，用专家校准题目比较模型在知识回忆、常规推理和个体化病例判断中的可靠性。</p>
+          <div class="benchmark-detail-meta">
+            <span>8,978 questions</span>
+            <span>88 countries and regions</span>
+            <span>14 dental specialties</span>
+            <span>L1-L3 reasoning levels</span>
+          </div>
+          <div class="button-row">
+            <a class="btn primary" href="https://arxiv.org/pdf/2605.24636" target="_blank" rel="noreferrer">查看 PDF</a>
+            <a class="btn" href="benchmark.html">返回 Benchmark</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section compact">
+        <div class="container benchmark-detail-grid">
+          <article class="benchmark-detail-card">
+            <span>01</span>
+            <h2>评测对象</h2>
+            <p>适合评估通用 LLM、医学 LLM、牙科专科模型和带检索增强的临床问答系统。</p>
+            <dl><dt>领域</dt><dd>牙体牙髓、口腔颌面、正畸、牙周、种植等牙科专科。</dd><dt>输出</dt><dd>答案、推理过程、风险提示和必要的置信度说明。</dd></dl>
+          </article>
+          <article class="benchmark-detail-card">
+            <span>02</span>
+            <h2>任务结构</h2>
+            <ul class="benchmark-detail-list">
+              <li><strong>选择题</strong>用于可比对的知识回忆和常规判断。</li>
+              <li><strong>短答题</strong>检查模型能否表达关键诊疗理由。</li>
+              <li><strong>病例题</strong>关注复杂场景下的个体化推理和安全边界。</li>
+            </ul>
+          </article>
+          <article class="benchmark-detail-card">
+            <span>03</span>
+            <h2>指标设计</h2>
+            <p>除准确率外，应拆分推理层级、专科方向、国家地区来源和错误风险等级，避免一个总分掩盖关键失败模式。</p>
+            <dl><dt>核心</dt><dd>Accuracy、reasoning-level score、safety error rate。</dd><dt>分析</dt><dd>按专科、题型、语言和高风险错误做切片。</dd></dl>
+          </article>
+          <article class="benchmark-detail-card">
+            <span>04</span>
+            <h2>站内落地</h2>
+            <p>Freedom AI 可把 GDB 作为牙科临床推理示例任务，接入众包复核、榜单对比和错误样例讨论。</p>
+            <ul class="benchmark-detail-list">
+              <li><strong>数据版本</strong>记录题目版本、语言和授权状态。</li>
+              <li><strong>专家复核</strong>保留牙科医生对争议答案的审核记录。</li>
+              <li><strong>讨论入口</strong>把高风险错误同步到讨论区。</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="section compact alt-band">
+        <div class="container">
+          <article class="benchmark-detail-source">
+            <h2>来源与复现入口</h2>
+            <p>页面信息依据 GlobalDentBench 论文摘要和 PDF 整理，适合后续补充数据下载、模型提交和站内评测任务入口。</p>
+            <div class="button-row"><a class="btn primary" href="https://arxiv.org/abs/2605.24636" target="_blank" rel="noreferrer">arXiv 摘要</a><a class="btn" href="https://arxiv.org/pdf/2605.24636" target="_blank" rel="noreferrer">论文 PDF</a></div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer"><div class="container footer-grid"><div><h3>Freedom AI</h3><p>Benchmark 关注准确性、证据、鲁棒性和安全边界。</p></div><div><h4>资源</h4><a href="datasets.html">数据集</a><a href="tools.html">工具库</a></div><div><h4>众包</h4><a href="crowdsourcing.html">评测任务</a></div><div><h4>学习</h4><a href="learning.html">教学</a></div></div></footer>
+  </body>
+</html>
