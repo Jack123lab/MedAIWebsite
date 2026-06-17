@@ -56,6 +56,12 @@ const siteSearchIndex = [
     text: "社区 医生 医院 研究者 个人主页 论文 获奖 任职 治疗专长 专家网络",
   },
   {
+    title: "于广军",
+    url: "network-yu-guangjun.html",
+    category: "医生",
+    text: "于广军 Guangjun Yu 医生 教授 医疗大数据 互联网医疗 智慧医院 高危儿管理 多动症 医教结合 论文 奖项 会议 认领主页",
+  },
+  {
     title: "讨论区",
     url: "community.html",
     category: "社区",
@@ -992,6 +998,53 @@ function wireCourseContentFilters() {
   renderCourseItems();
 }
 
+function wireNetworkSearch() {
+  const root = document.querySelector("[data-network-search-root]");
+  const results = Array.from(document.querySelectorAll("[data-network-result]"));
+  const searchInput = document.querySelector("[data-network-search]");
+  const filterButtons = Array.from(document.querySelectorAll("[data-network-filter]"));
+  const emptyState = document.querySelector(".network-empty-state");
+  if (!root || !results.length) return;
+
+  const state = { filter: "all", search: "" };
+
+  function renderNetworkResults() {
+    const query = state.search.trim().toLowerCase();
+    let visibleCount = 0;
+    results.forEach((item) => {
+      const type = item.dataset.type || "";
+      const haystack = `${item.textContent} ${item.dataset.keywords || ""}`.toLowerCase();
+      const matchesType = state.filter === "all" || type === state.filter;
+      const matchesQuery = !query || haystack.includes(query);
+      const visible = matchesType && matchesQuery;
+      item.hidden = !visible;
+      if (visible) visibleCount += 1;
+    });
+    if (emptyState) emptyState.hidden = visibleCount > 0;
+  }
+
+  function setNetworkFilter(filter) {
+    state.filter = filter || "all";
+    filterButtons.forEach((button) => button.classList.toggle("active", button.dataset.networkFilter === state.filter));
+    renderNetworkResults();
+  }
+
+  filterButtons.forEach((button) => {
+    button.addEventListener("click", () => setNetworkFilter(button.dataset.networkFilter || "all"));
+  });
+
+  document.querySelectorAll("[data-network-filter-trigger]").forEach((trigger) => {
+    trigger.addEventListener("click", () => setNetworkFilter(trigger.dataset.networkFilterTrigger || "all"));
+  });
+
+  searchInput?.addEventListener("input", (event) => {
+    state.search = event.target.value;
+    renderNetworkResults();
+  });
+
+  renderNetworkResults();
+}
+
 wireFilters();
 wireSiteSearchForms();
 renderSiteSearchResults();
@@ -1003,6 +1056,7 @@ wireForum();
 wireDoctorWorkspace();
 wireDatasetBrowser();
 wireCourseContentFilters();
+wireNetworkSearch();
 wireHotToolFeed();
 wireHomeNewsScroll();
 wireHomeAgent();

@@ -4,140 +4,195 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>社区 | Freedom AI</title>
+    <meta name="description" content="Freedom AI 医学专家网络，展示医生、医院、机构，并支持论文、期刊、奖项和会议等学术内容检索。" />
     <link rel="stylesheet" href="assets/css/style.css" />
     <script src="assets/js/main.js" defer></script>
   </head>
-  <body>
-          <header class="site-header">
-        <nav class="nav" aria-label="主导航">
-          <a class="brand" href="index.html"><span class="brand-mark">F</span><span class="brand-text"><strong>Freedom AI</strong><span>医学 AI 社区</span></span></a>
+  <body class="network-page">
+    <header class="site-header">
+      <nav class="nav" aria-label="主导航">
+        <a class="brand" href="index.html"><span class="brand-mark">F</span><span class="brand-text"><strong>Freedom AI</strong><span>医学 AI 社区</span></span></a>
         <form class="site-search" role="search" action="search.html" method="get" aria-label="站内搜索">
           <label class="sr-only" for="siteSearchInput">搜索</label>
           <input id="siteSearchInput" name="q" type="search" placeholder="搜索" autocomplete="off" />
           <button type="submit">搜索</button>
         </form>
-          <div class="nav-links">
-            <a href="index.html">首页</a>
-            <a href="learning.html">内容</a>
-            <a href="popular-science.html">科普</a>
-            <a href="network.html">社区</a>
-            <a href="community.html">讨论区</a>
-            <a href="datasets.html">数据集</a>
-
-            <a href="tools.html">工具库</a>
-            <a href="benchmark.html">Benchmark</a>
-            <a href="crowdsourcing.html">众包平台</a>
-            <a href="profile.html">用户</a>
-          </div>
-        </nav>
-      </header>
+        <div class="nav-links">
+          <a href="index.html">首页</a>
+          <a href="learning.html">内容</a>
+          <a href="popular-science.html">科普</a>
+          <a class="active" href="network.html">社区</a>
+          <a href="community.html">讨论区</a>
+          <a href="datasets.html">数据集</a>
+          <a href="tools.html">工具库</a>
+          <a href="benchmark.html">Benchmark</a>
+          <a href="crowdsourcing.html">众包平台</a>
+          <a href="profile.html">用户</a>
+        </div>
+      </nav>
+    </header>
     <main>
-      <section class="page-title">
-        <div class="container">
-          <p class="eyebrow">Medical Network</p>
-          <h1>医生、医院与学术网络</h1>
-          <p>社区采用 AMiner 风格结构，把医生、医院、研究者档案、论文成果和机构关系放在同一张专业网络里。讨论内容仍统一进入讨论区，再进入具体讨论流。</p>
+      <section class="network-hero">
+        <div class="container network-hero-grid">
+          <div class="network-hero-copy">
+            <p class="eyebrow">Medical Scholar Network</p>
+            <h1>医学专家、医院与机构的知识网络</h1>
+            <p>模仿 AMiner 的学者检索体验，把医生、医院、机构、论文、期刊、奖项和会议放进同一个可搜索的医学 AI 社区入口。</p>
+            <div class="network-quick-search">
+              <label class="sr-only" for="networkSearchInput">搜索医生、医院、机构、论文、期刊、奖项、会议</label>
+              <input id="networkSearchInput" type="search" placeholder="搜索：于广军、智慧医院、JMIR、白玉兰奖..." data-network-search />
+            </div>
+          </div>
+          <aside class="network-feature-card">
+            <img src="https://www.nhdisz.cn/upload/main/contentmanage/article/image/2024/03/06/babe3576bc7e4e0aaa0a19c92471a67c.jpg" alt="于广军教授" referrerpolicy="no-referrer" />
+            <div>
+              <span>Featured Doctor</span>
+              <h2>于广军</h2>
+              <p>医疗大数据、互联网医疗、智慧医院、高危儿管理、多动症医教结合。</p>
+              <a href="network-yu-guangjun.html">查看个人主页</a>
+            </div>
+          </aside>
         </div>
       </section>
+
       <section class="section compact">
-        <div class="container clinical-cards three-up">
-          <article class="clinical-card">
+        <div class="container network-domain-grid">
+          <a class="network-domain-card" href="#network-results" data-network-filter-trigger="doctor">
             <span>Doctor</span>
-            <h3>医生模块</h3>
-            <p>医生认证、资料台、脱敏资料管理、临床成果和个人学术主页入口，保留原有医生工作区流程。</p>
-            <a href="doctor.html">进入医生模块</a>
-          </article>
-          <article class="clinical-card">
+            <h2>医生</h2>
+            <p>认证医生主页、论文、研究方向、任职、获奖、会议报告和可合作主题。</p>
+            <strong>查看医生</strong>
+          </a>
+          <a class="network-domain-card" href="#network-results" data-network-filter-trigger="hospital">
             <span>Hospital</span>
-            <h3>医院模块</h3>
-            <p>医院侧需求、院内场景、数据治理、工具试点和项目外包需求的统一入口。</p>
-            <a href="crowdsourcing.html">发布医院任务</a>
-          </article>
-          <article class="clinical-card">
-            <span>AMiner Network</span>
-            <h3>学术主页 / 研究者档案</h3>
-            <p>展示医生与研究者的论文、临床成果、学术影响力，并建立作者、论文、机构之间的关联结构。</p>
-            <a href="#academic-network">查看学术网络</a>
-          </article>
+            <h2>医院</h2>
+            <p>附属医院、临床中心、专科能力、数据治理、工具试点和真实世界任务。</p>
+            <strong>查看医院</strong>
+          </a>
+          <a class="network-domain-card" href="#network-results" data-network-filter-trigger="institution">
+            <span>Institution</span>
+            <h2>机构</h2>
+            <p>研究院、实验室、学会、期刊平台、会议组织和跨机构合作网络。</p>
+            <strong>查看机构</strong>
+          </a>
         </div>
       </section>
 
-      <section class="section compact alt-band" id="academic-network">
-        <div class="container">
+      <section class="section compact alt-band" id="network-results">
+        <div class="container network-search-shell" data-network-search-root>
           <div class="section-head clean">
             <div>
-              <p class="eyebrow">AMiner-style Graph</p>
-              <h2>作者 - 论文 - 机构关联结构</h2>
-              <p>社区不只是名录，而是把临床专家、研究方向、论文成果、医院机构和可合作任务串联起来，支持个人学术主页化展示。</p>
+              <p class="eyebrow">AMiner-style Search</p>
+              <h2>医学网络检索</h2>
+              <p>结果可以是医生、医院、机构，也可以是论文、期刊、奖项和会议。当前是静态演示，后续可接入真实作者库和论文索引。</p>
             </div>
           </div>
-          <div class="relation-flow">
-            <article><span>Author</span><strong>医生 / 研究者</strong><p>临床专长、研究方向、论文列表、影响力指标和可合作主题。</p></article>
-            <article><span>Paper</span><strong>论文 / 临床成果</strong><p>论文共读、复现材料、数据来源、Benchmark 任务和成果发布入口。</p></article>
-            <article><span>Institution</span><strong>医院 / 机构</strong><p>科室、研究平台、数据治理能力、试点需求和共建任务市场。</p></article>
+          <div class="network-filter-row" aria-label="医学网络结果类型">
+            <button class="active" type="button" data-network-filter="all">全部</button>
+            <button type="button" data-network-filter="doctor">医生</button>
+            <button type="button" data-network-filter="hospital">医院</button>
+            <button type="button" data-network-filter="institution">机构</button>
+            <button type="button" data-network-filter="paper">论文</button>
+            <button type="button" data-network-filter="journal">期刊</button>
+            <button type="button" data-network-filter="award">奖项</button>
+            <button type="button" data-network-filter="conference">会议</button>
           </div>
+          <div class="network-result-list">
+            <a class="network-result-card person" href="network-yu-guangjun.html" data-network-result data-type="doctor" data-keywords="于广军 guangjun yu 医生 教授 医疗大数据 互联网医疗 智慧医院 高危儿 多动症 医教结合 cuhk">
+              <img src="https://www.nhdisz.cn/upload/main/contentmanage/article/image/2024/03/06/babe3576bc7e4e0aaa0a19c92471a67c.jpg" alt="于广军教授" referrerpolicy="no-referrer" />
+              <div>
+                <span class="tag green">医生</span>
+                <h3>于广军 / Guangjun Yu</h3>
+                <p>港中大（深圳）医学院副院长，国家健康医疗大数据研究院（深圳）院长，研究方向包括医疗大数据、互联网医疗和智慧医院。</p>
+                <div class="network-meta-strip"><span>论文 150+</span><span>专著 10+</span><span>可认领</span></div>
+              </div>
+            </a>
+            <a class="network-result-card" href="network-yu-guangjun.html#affiliation-network" data-network-result data-type="hospital" data-keywords="香港中文大学深圳附属第二医院 医院 第二附属医院 智慧医院 医疗大数据">
+              <div>
+                <span class="tag blue">医院</span>
+                <h3>香港中文大学（深圳）附属第二医院</h3>
+                <p>医生主页关联的临床机构，可展示专科能力、真实世界数据、AI 试点和院内任务。</p>
+                <div class="network-meta-strip"><span>临床基地</span><span>智慧医院</span><span>可认领</span></div>
+              </div>
+            </a>
+            <a class="network-result-card" href="network-yu-guangjun.html#affiliation-network" data-network-result data-type="institution" data-keywords="国家健康医疗大数据研究院 深圳 机构 医疗人工智能 医疗信息化">
+              <div>
+                <span class="tag gold">机构</span>
+                <h3>国家健康医疗大数据研究院（深圳）</h3>
+                <p>面向医疗大数据、医疗人工智能和医疗信息化的研究机构，可作为论文、项目、会议和人才网络的组织节点。</p>
+                <div class="network-meta-strip"><span>研究院</span><span>医疗 AI</span><span>机构主页</span></div>
+              </div>
+            </a>
+            <a class="network-result-card" href="network-yu-guangjun.html#papers" data-network-result data-type="paper" data-keywords="paper 论文 evaluation framework artificial intelligence clinical decision support systems mixed methods JMIR medical internet research">
+              <div>
+                <span class="tag green">论文</span>
+                <h3>Evaluation Framework for Successful Artificial Intelligence-Enabled Clinical Decision Support Systems</h3>
+                <p>JMIR 2021，围绕 AI 临床决策支持系统的评价框架，可连接医生、机构、期刊和 Benchmark 任务。</p>
+                <div class="network-meta-strip"><span>JMIR</span><span>AI-CDSS</span><span>2021</span></div>
+              </div>
+            </a>
+            <a class="network-result-card" href="network-yu-guangjun.html#papers" data-network-result data-type="paper" data-keywords="paper 论文 wechat calling system outpatient services shanghai children's hospital pak j med sci">
+              <div>
+                <span class="tag green">论文</span>
+                <h3>Improvement in outpatient services using the WeChat calling system</h3>
+                <p>Pak J Med Sci 2021，展示互联网医疗和门诊服务流程优化方向。</p>
+                <div class="network-meta-strip"><span>门诊服务</span><span>WeChat</span><span>2021</span></div>
+              </div>
+            </a>
+            <a class="network-result-card" href="network-yu-guangjun.html#journals" data-network-result data-type="journal" data-keywords="journal 期刊 JMIR World Journal of Pediatrics Frontiers Pediatrics Gut Microbes Orphanet">
+              <div>
+                <span class="tag blue">期刊</span>
+                <h3>Journal of Medical Internet Research / World Journal of Pediatrics</h3>
+                <p>个人主页可按期刊聚合论文，帮助快速查看互联网医疗、儿科和医学 AI 相关发表渠道。</p>
+                <div class="network-meta-strip"><span>JMIR</span><span>WJP</span><span>Front Pediatr</span></div>
+              </div>
+            </a>
+            <a class="network-result-card" href="network-yu-guangjun.html#awards" data-network-result data-type="award" data-keywords="award 奖项 国家百千万人才 有突出贡献专家 白玉兰奖 科技进步二等奖 领军人才">
+              <div>
+                <span class="tag gold">奖项</span>
+                <h3>国家百千万人才工程 / 上海儿童工作白玉兰奖</h3>
+                <p>奖项与人才计划作为人物主页的重要可信度信号，可被机构主页和会议页面引用。</p>
+                <div class="network-meta-strip"><span>人才计划</span><span>政府奖项</span><span>团队荣誉</span></div>
+              </div>
+            </a>
+            <a class="network-result-card" href="network-yu-guangjun.html#conferences" data-network-result data-type="conference" data-keywords="conference 会议 学术报告 医学人工智能 PRIMARY-AI 基于大数据的医学人工智能研究与应用">
+              <div>
+                <span class="tag green">会议</span>
+                <h3>基于大数据的医学人工智能研究与应用</h3>
+                <p>会议/报告条目可聚合演讲主题、主办机构、相关论文和后续共识研究。</p>
+                <div class="network-meta-strip"><span>学术报告</span><span>医学 AI</span><span>大数据</span></div>
+              </div>
+            </a>
+          </div>
+          <p class="empty-state network-empty-state" hidden>暂无匹配结果。</p>
         </div>
       </section>
 
       <section class="section compact">
-        <div class="container network-layout">
-          <article class="profile-showcase doctor-profile">
-            <span>Doctor Profile</span>
-            <h2>医生个人主页</h2>
-            <p>展示获奖、论文、任职、治疗专长、学术方向、AI 工具使用经验、临床成果和可合作主题。</p>
-            <dl>
-              <dt>获奖</dt><dd>临床技能、科研竞赛、学术会议报告</dd>
-              <dt>论文</dt><dd>SCI、中文核心、病例报告、综述</dd>
-              <dt>任职</dt><dd>科室岗位、协会任职、期刊审稿</dd>
-              <dt>治疗专场</dt><dd>按疾病、技术、术式或管理路径聚合</dd>
-            </dl>
+        <div class="container network-graph-grid">
+          <article>
+            <span>Author</span>
+            <h3>医生与研究者</h3>
+            <p>围绕身份、职务、论文、临床专长和项目角色建立可认领主页。</p>
           </article>
-          <article class="profile-showcase hospital-profile">
-            <span>Hospital Claim</span>
-            <h2>医院机构主页</h2>
-            <p>机构可自动认领主页，补充科室、团队、研究平台、临床试验、数据能力和 AI 合作方向。</p>
-            <div class="claim-flow">
-              <strong>自动认领</strong>
-              <span>域名邮箱验证</span>
-              <span>执业资质匹配</span>
-              <span>管理员审核</span>
-            </div>
+          <article>
+            <span>Paper / Journal</span>
+            <h3>论文与期刊</h3>
+            <p>把论文、期刊、引用、主题和可复现实验连接到医生与机构。</p>
           </article>
-        </div>
-      </section>
-
-      <section class="section compact alt-band">
-        <div class="container">
-          <div class="section-head clean">
-            <div>
-              <p class="eyebrow">Researcher Profiles</p>
-              <h2>个人学术主页化展示</h2>
-              <p>研究者档案用于沉淀临床成果、论文、研究主题和机构关系，后续可扩展为可认领主页。</p>
-            </div>
-          </div>
-          <div class="researcher-card-grid">
-            <article class="researcher-card">
-              <div class="researcher-avatar">陈</div>
-              <div>
-                <span>心血管内科 / 医学 AI 评测</span>
-                <h3>陈医生</h3>
-                <p>方向：指南问答、心衰随访、临床文本结构化。关联论文 18 篇，Benchmark 任务 3 个。</p>
-                <div class="metric-strip"><span>论文 18</span><span>引用 426</span><span>H-index 9</span></div>
-              </div>
-            </article>
-            <article class="researcher-card">
-              <div class="researcher-avatar">林</div>
-              <div>
-                <span>影像中心 / 多模态模型</span>
-                <h3>林研究员</h3>
-                <p>方向：胸部影像、病灶分割、外部验证。关联数据集 4 个，众包标注任务 2 个。</p>
-                <div class="metric-strip"><span>论文 24</span><span>引用 812</span><span>H-index 13</span></div>
-              </div>
-            </article>
-          </div>
+          <article>
+            <span>Award / Conference</span>
+            <h3>奖项与会议</h3>
+            <p>把人才计划、政府奖项、学术会议和报告作为可信度证据链。</p>
+          </article>
+          <article>
+            <span>Hospital / Institute</span>
+            <h3>医院与机构</h3>
+            <p>沉淀专科能力、研究平台、数据治理能力和真实场景合作需求。</p>
+          </article>
         </div>
       </section>
     </main>
-    <footer class="site-footer"><div class="container footer-grid"><div><h3>Freedom AI</h3><p>社区主页用于连接医生、医院、研究者、论文成果和工具开发者。</p></div><div><h4>讨论</h4><a href="community.html">讨论区</a></div><div><h4>资源</h4><a href="datasets.html">数据集</a><a href="tools.html">工具库</a></div><div><h4>众包</h4><a href="crowdsourcing.html">众包平台</a></div><div><h4>About</h4><a href="about.html">About（collaborator）</a></div></div></footer>
+    <footer class="site-footer"><div class="container footer-grid"><div><h3>Freedom AI</h3><p>社区主页用于连接医生、医院、机构、论文、期刊、奖项和会议。</p></div><div><h4>医生</h4><a href="network-yu-guangjun.html">于广军主页</a></div><div><h4>资源</h4><a href="datasets.html">数据集</a><a href="tools.html">工具库</a></div><div><h4>讨论</h4><a href="community.html">讨论区</a></div><div><h4>About</h4><a href="about.html">About（collaborator）</a></div></div></footer>
   </body>
 </html>
