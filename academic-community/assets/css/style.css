@@ -7512,6 +7512,11 @@ p,
   grid-template-columns: minmax(0, 1.1fr) repeat(3, minmax(0, 0.9fr));
 }
 
+.learning-grid.content-module-grid {
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  align-items: stretch;
+}
+
 .learning-panel,
 .module-detail-panel {
   border: 1px solid #d8e2e8;
@@ -7527,6 +7532,40 @@ p,
   padding: 18px;
   color: var(--text);
   text-decoration: none;
+}
+
+.content-module-card {
+  position: relative;
+  min-height: 224px;
+  overflow: hidden;
+}
+
+.content-module-card::before {
+  content: "";
+  width: 42px;
+  height: 4px;
+  border-radius: 999px;
+  background: var(--module-accent, #1f796f);
+}
+
+.content-module-card:nth-child(1) {
+  --module-accent: #1f796f;
+}
+
+.content-module-card:nth-child(2) {
+  --module-accent: #2b6f9f;
+}
+
+.content-module-card:nth-child(3) {
+  --module-accent: #9a6a16;
+}
+
+.content-module-card:nth-child(4) {
+  --module-accent: #6f5a95;
+}
+
+.content-module-card:nth-child(5) {
+  --module-accent: #47733e;
 }
 
 .learning-panel > span,
@@ -7552,6 +7591,8 @@ p,
 }
 
 .learning-panel strong {
+  align-self: end;
+  margin-top: auto;
   color: var(--primary);
   font-size: 14px;
 }

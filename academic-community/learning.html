@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>课程模块 | Freedom AI</title>
-    <meta name="description" content="Freedom AI 课程分为 Happy-Medical-AI Tutorial、视频、题库和标准病人训练四个模块。" />
+    <title>内容模块 | Freedom AI</title>
+    <meta name="description" content="Freedom AI 内容分为 Tutorial、Video、题库、标准病人和科普五个模块，每个模块都有独立页面。" />
     <link rel="stylesheet" href="assets/css/style.css" />
     <script src="assets/js/main.js" defer></script>
   </head>
@@ -19,7 +19,7 @@
         </form>
         <div class="nav-links">
           <a href="index.html">首页</a>
-          <a class="active" href="learning.html">课程</a>
+          <a class="active" href="learning.html">内容</a>
           <a href="popular-science.html">科普</a>
           <a href="network.html">社区</a>
           <a href="community.html">讨论区</a>
@@ -34,18 +34,44 @@
     <main>
       <section class="page-title">
         <div class="container">
-          <p class="eyebrow">Course Modules</p>
-          <h1>课程模块</h1>
-          <p>课程分为 Happy-Medical-AI Tutorial、视频、题库和标准病人训练四个模块。每个模块都可以进入独立页面，快速了解里面的内容。</p>
+          <p class="eyebrow">Content Modules</p>
+          <h1>内容模块</h1>
+          <p>把医学 AI 学习材料拆成五个可直接进入的模块：Tutorial、Video、题库、标准病人和科普。每个方块都对应一个独立页面，便于快速进入具体内容。</p>
         </div>
       </section>
 
       <section class="section compact">
-        <div class="container learning-grid">
-          <a class="learning-panel featured" href="learning-tutorial.html"><span>Happy-Medical-AI Tutorial</span><h2>Happy-Medical-AI Tutorial</h2><p>把医学 AI 基础、文献阅读、指南问答和科研辅助整理成可持续更新的教程路线。</p><strong>查看内容</strong></a>
-          <a class="learning-panel" href="learning-videos.html"><span>Video</span><h2>视频</h2><p>整理医学 AI 入门、RAG、多模态和数据治理相关视频，适合先建立整体框架。</p><strong>查看内容</strong></a>
-          <a class="learning-panel" href="learning-question-bank.html"><span>Question Bank</span><h2>题库</h2><p>覆盖选择题、病例题、工具调用题、指南溯源题和论文阅读题，用于自测与课堂练习。</p><strong>查看内容</strong></a>
-          <a class="learning-panel" href="learning-standardized-patient.html"><span>Standardized Patient</span><h2>标准病人训练</h2><p>通过模拟问诊、鉴别诊断、检查选择和沟通反馈，训练临床推理与表达。</p><strong>查看内容</strong></a>
+        <div class="container learning-grid content-module-grid">
+          <a class="learning-panel content-module-card featured" href="learning-tutorial.html">
+            <span>Tutorial</span>
+            <h2>Freedom-AI Tutorial</h2>
+            <p>把医学 AI 基础、文献阅读、指南问答、科研辅助和合规边界整理成可持续更新的教程路线。</p>
+            <strong>进入模块</strong>
+          </a>
+          <a class="learning-panel content-module-card" href="learning-videos.html">
+            <span>Video</span>
+            <h2>视频</h2>
+            <p>整理医学 AI 入门、RAG、多模态和数据治理相关视频，适合先建立整体框架。</p>
+            <strong>进入模块</strong>
+          </a>
+          <a class="learning-panel content-module-card" href="learning-question-bank.html">
+            <span>Question Bank</span>
+            <h2>题库</h2>
+            <p>覆盖选择题、病例题、工具调用题、指南溯源题和论文阅读题，用于自测、课堂练习和阶段测验。</p>
+            <strong>进入模块</strong>
+          </a>
+          <a class="learning-panel content-module-card" href="learning-standardized-patient.html">
+            <span>Standardized Patient</span>
+            <h2>标准病人</h2>
+            <p>通过模拟问诊、鉴别诊断、检查选择和沟通反馈，训练临床推理与表达。</p>
+            <strong>进入模块</strong>
+          </a>
+          <a class="learning-panel content-module-card" href="popular-science.html">
+            <span>Popular Science</span>
+            <h2>科普</h2>
+            <p>面向大众、患者和跨学科学习者，把医学 AI 概念、使用边界和常见误区讲清楚。</p>
+            <strong>进入模块</strong>
+          </a>
         </div>
       </section>
 
@@ -55,7 +81,7 @@
             <div>
               <p class="eyebrow">Content List</p>
               <h2>内容列表</h2>
-              <p>按科室和内容类型筛选具体内容，点击条目进入对应视频、教程、题库或标准病人训练。</p>
+              <p>按科室和内容类型筛选具体条目，点击后进入对应的教程、视频、题库、标准病人训练或科普页面。</p>
             </div>
           </div>
 
@@ -79,6 +105,7 @@
                 <button type="button" data-course-filter="type" data-filter-value="video">视频</button>
                 <button type="button" data-course-filter="type" data-filter-value="question">题库</button>
                 <button type="button" data-course-filter="type" data-filter-value="patient">标准病人</button>
+                <button type="button" data-course-filter="type" data-filter-value="science">科普</button>
               </div>
             </div>
           </div>
@@ -92,7 +119,7 @@
             <a class="course-content-item" href="https://www.bilibili.com/video/BV1eyJp6gES4" target="_blank" rel="noreferrer" data-course-item data-dept="general education" data-type="video">
               <div><span class="tag blue">视频</span><span class="tag gold">医学通识</span></div>
               <h3>医学 AI 视频导入</h3>
-              <p>通过视频快速进入 Happy-Medical-AI 课程语境，适合课前预习和专题导入。</p>
+              <p>通过视频快速进入 Freedom AI 内容语境，适合课前预习和专题导入。</p>
             </a>
             <a class="course-content-item" href="content/tutorials/rag-for-clinical-guidelines.md" data-course-item data-dept="general cardiology" data-type="tutorial">
               <div><span class="tag green">Tutorial</span><span class="tag blue">心血管</span></div>
@@ -134,11 +161,16 @@
               <h3>影像报告结构化练习</h3>
               <p>练习从影像报告中提取关键发现、结构化字段和后续建议。</p>
             </a>
+            <a class="course-content-item" href="popular-science.html" data-course-item data-dept="general education" data-type="science">
+              <div><span class="tag green">科普</span><span class="tag blue">医学通识</span></div>
+              <h3>医学 AI 常见误区</h3>
+              <p>解释医学 AI 可以辅助什么、不能替代什么，以及普通用户应如何理解风险边界。</p>
+            </a>
           </div>
           <p class="empty-state course-empty-state" hidden>当前标签下暂无内容。</p>
         </div>
       </section>
     </main>
-    <footer class="site-footer"><div class="container footer-grid"><div><h3>Freedom AI</h3><p>课程模块把视频、教程、题库和标准病人训练连接起来。</p></div><div><h4>课程</h4><a href="learning.html">模块首页</a><a href="learning-tutorial.html">Tutorial</a></div><div><h4>训练</h4><a href="learning-question-bank.html">题库</a><a href="learning-standardized-patient.html">标准病人</a></div><div><h4>科普</h4><a href="popular-science.html">科普</a></div><div><h4>About</h4><a href="about.html">About（collaborator）</a></div></div></footer>
+    <footer class="site-footer"><div class="container footer-grid"><div><h3>Freedom AI</h3><p>内容模块把 Tutorial、视频、题库、标准病人和科普连接起来。</p></div><div><h4>内容</h4><a href="learning.html">模块首页</a><a href="learning-tutorial.html">Tutorial</a></div><div><h4>训练</h4><a href="learning-question-bank.html">题库</a><a href="learning-standardized-patient.html">标准病人</a></div><div><h4>科普</h4><a href="popular-science.html">科普</a></div><div><h4>About</h4><a href="about.html">About（collaborator）</a></div></div></footer>
   </body>
 </html>
