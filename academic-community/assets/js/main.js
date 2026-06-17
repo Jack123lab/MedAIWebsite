@@ -16,15 +16,15 @@ const discussionDepartments = [
 
 const discussionSubpages = [
   { href: "community.html", label: "讨论首页", note: "最新帖子、科室版块、发帖入口" },
-  { href: "demos.html", label: "工具", note: "工具 Demo、使用经验、评测方法" },
+  { href: "demos.html", label: "工具", note: "工具演示、使用经验、评测方法" },
   { href: "research.html#weekly-updates", label: "论文", note: "精选论文、复现问题、共读讨论" },
   { href: "research.html#product-watch", label: "产品成果", note: "产品动态、监管信息、落地边界" },
 ];
 
 const discussionReferences = [
   { href: "https://www.nhc.gov.cn/", label: "国家卫健委" },
-  { href: "https://www.aamc.org/cim/explore-options/specialty-profiles", label: "AAMC Specialty Profiles" },
-  { href: "https://www.nhs.uk/nhs-services/", label: "NHS services" },
+  { href: "https://www.aamc.org/cim/explore-options/specialty-profiles", label: "AAMC 专科介绍" },
+  { href: "https://www.nhs.uk/nhs-services/", label: "NHS 医疗服务" },
 ];
 
 const categoryLabels = {
@@ -632,7 +632,7 @@ const primaryNavItems = [
   { href: "community.html", label: "讨论区", active: ["community.html"] },
   { href: "datasets-tools.html", label: "数据集和工具集", active: ["datasets-tools.html"] },
   { href: "network.html", label: "社区", active: ["network.html"] },
-  { href: "benchmark.html", label: "Benchmark", active: ["benchmark.html"] },
+  { href: "benchmark.html", label: "评测基准", active: ["benchmark.html"] },
   { href: "crowdsourcing.html", label: "众包平台", active: ["crowdsourcing.html"] },
   { href: "learning.html", label: "教学", active: ["learning.html", "tutorials.html", "teaching-videos.html", "teaching-open-tutorials.html", "teaching-question-bank.html", "teaching-virtual-patient.html"] },
   { href: "popular-science.html", label: "科普", active: ["popular-science.html"] },
@@ -749,6 +749,81 @@ function wireDiscussionTabs() {
   });
 }
 
+const fallbackHotTools = [
+  {
+    rank: "第 1 名",
+    name: "华佗 GPT",
+    summary: "中文医学问答与医疗大模型研究入口，适合作为医学 AI 工具体验区首个示例。",
+    url: "https://www.huatuogpt.cn/",
+    action: "官网链接",
+  },
+  {
+    rank: "第 2 名",
+    name: "MedGemma",
+    summary: "面向医学文本和多模态任务的开放模型资源，可放入模型池和工具评测清单。",
+    url: "https://github.com/google-health/medgemma",
+    action: "项目链接",
+  },
+  {
+    rank: "第 3 名",
+    name: "MONAI",
+    summary: "医学影像深度学习框架，适合影像标注、模型训练和临床科研演示。",
+    url: "https://www.monai.io/",
+    action: "官网链接",
+  },
+];
+
+function escapeHtml(value) {
+  return String(value || "")
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#39;");
+}
+
+function renderHotTools(tools) {
+  const container = document.querySelector("#hotToolCards");
+  if (!container) return;
+  container.innerHTML = tools.slice(0, 6).map((tool, index) => `
+    <article class="hot-tool-card">
+      <span>${escapeHtml(tool.rank || `第 ${index + 1} 名`)}</span>
+      <strong>${escapeHtml(tool.name)}</strong>
+      <p>${escapeHtml(tool.summary)}</p>
+      <a href="${escapeHtml(tool.url)}" target="_blank" rel="noreferrer">${escapeHtml(tool.action || "官网链接")}</a>
+    </article>`).join("");
+}
+
+async function wireHotToolFeed() {
+  const section = document.querySelector("[data-hot-tool-feed]");
+  if (!section) return;
+
+  const date = document.querySelector("#hotToolDate");
+  if (date) {
+    date.textContent = new Intl.DateTimeFormat("zh-CN", {
+      timeZone: "Asia/Shanghai",
+      month: "long",
+      day: "numeric",
+      weekday: "short",
+    }).format(new Date());
+  }
+
+  renderHotTools(fallbackHotTools);
+  const feedUrl = (window.HMAI_TOOL_FEED_URL || "").trim();
+  if (!feedUrl) return;
+
+  try {
+    const response = await fetch(feedUrl, { cache: "no-store" });
+    if (!response.ok) throw new Error("tool feed unavailable");
+    const payload = await response.json();
+    const tools = Array.isArray(payload) ? payload : payload.items;
+    const validTools = (tools || []).filter((tool) => tool?.name && tool?.url);
+    if (validTools.length) renderHotTools(validTools);
+  } catch {
+    section.dataset.feedState = "fallback";
+  }
+}
+
 normalizeTopNavigation();
 wireFilters();
 wireAuthForms();
@@ -760,5 +835,6 @@ wireDoctorWorkspace();
 wireHomeAgent();
 wireHomeNewsCarousel();
 wireDiscussionTabs();
+wireHotToolFeed();
 injectJournalSources();
 injectInstitutionBar();

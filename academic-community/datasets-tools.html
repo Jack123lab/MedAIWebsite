@@ -4,20 +4,97 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>数据集和工具集 | Happy medical AI</title>
+    <meta name="description" content="Happy medical AI 数据集和工具集入口，聚合每日医学 AI 热点工具、官网链接、数据集交易和工具包订阅。" />
     <link rel="stylesheet" href="assets/css/style.css" />
+    <script src="assets/js/config.js"></script>
     <script src="assets/js/main.js" defer></script>
   </head>
-  <body>
-    <header class="site-header"><nav class="nav" aria-label="主导航"><a class="brand" href="index.html"><span class="brand-mark">H</span><span class="brand-text"><strong>Happy medical AI</strong><span>Medical AI Community</span></span></a><div class="nav-links"></div></nav></header>
+  <body class="data-tools-page">
+    <header class="site-header">
+      <nav class="nav" aria-label="主导航">
+        <a class="brand" href="index.html">
+          <span class="brand-mark">H</span>
+          <span class="brand-text"><strong>Happy medical AI</strong><span>Medical AI Community</span></span>
+        </a>
+        <div class="nav-links"></div>
+      </nav>
+    </header>
+
     <main>
-      <section class="page-title">
-        <div class="container">
-          <p class="eyebrow">Dataset & Tool Market</p>
-          <h1>数据集和工具集</h1>
-          <p>围绕医学 AI 的数据、MCP 工具、付费工具集合和合规交易流程建立统一入口。</p>
+      <section class="page-title data-tools-title">
+        <div class="container data-tools-title-grid">
+          <div>
+            <p class="eyebrow">数据与工具市场</p>
+            <h1>数据集和工具集</h1>
+            <p>围绕医学 AI 的数据集、MCP 工具、付费工具包和合规交易流程建立统一入口。页面开头预留每日热点推送区，每个工具都保留官网或项目链接。</p>
+          </div>
+          <aside class="tool-refresh-card" aria-label="热点更新状态">
+            <span>每日推送</span>
+            <strong id="hotToolDate">今日热点</strong>
+            <p>可通过 <code>window.HMAI_TOOL_FEED_URL</code> 接入实时工具榜单；未配置接口时展示本站精选工具。</p>
+          </aside>
         </div>
       </section>
-      <section class="section compact">
+
+      <section class="section hot-tool-section" id="hot-tools" data-hot-tool-feed>
+        <div class="container">
+          <div class="section-head clean">
+            <div>
+              <p class="eyebrow">热门工具动态</p>
+              <h2>热点新闻区与每日最热工具</h2>
+              <p>用于每天推送医学 AI 领域热度最高的工具、模型、数据平台和开源项目。正式上线后可接入后端榜单、RSS 聚合或人工编辑后台。</p>
+            </div>
+            <a class="btn primary" href="#tool-directory">查看工具库</a>
+          </div>
+
+          <div class="hot-tool-layout">
+            <article class="hot-tool-lead">
+              <div class="live-row"><span>实时</span><strong>医学 AI 工具雷达</strong></div>
+              <h3>今日推荐：华佗 GPT</h3>
+              <p>面向中文医疗问答与医学大模型研究的代表性工具入口。页面保留官网按钮，后续可替换为实时榜单中的第一名工具。</p>
+              <div class="tool-action-row">
+                <a class="btn primary" href="https://www.huatuogpt.cn/" target="_blank" rel="noreferrer">打开华佗 GPT 官网</a>
+                <a class="btn" href="https://github.com/FreedomIntelligence/HuatuoGPT" target="_blank" rel="noreferrer">查看项目</a>
+              </div>
+            </article>
+
+            <aside class="hot-tool-toolbar" aria-label="热门工具链接栏">
+              <div class="toolbar-head">
+                <span>工具链接</span>
+                <strong>工具栏官网链接</strong>
+              </div>
+              <a href="https://www.huatuogpt.cn/" target="_blank" rel="noreferrer"><strong>华佗 GPT</strong><span>中文医学大模型问答</span></a>
+              <a href="https://github.com/FreedomIntelligence/HuatuoGPT" target="_blank" rel="noreferrer"><strong>HuatuoGPT 项目</strong><span>论文、代码与模型说明</span></a>
+              <a href="https://github.com/google-health/medgemma" target="_blank" rel="noreferrer"><strong>MedGemma</strong><span>Google Health 医学开源模型</span></a>
+              <a href="https://www.monai.io/" target="_blank" rel="noreferrer"><strong>MONAI</strong><span>医学影像 AI 工具链</span></a>
+              <a href="https://physionet.org/" target="_blank" rel="noreferrer"><strong>PhysioNet</strong><span>开放医学数据资源</span></a>
+            </aside>
+          </div>
+
+          <div id="hotToolCards" class="hot-tool-card-grid" aria-label="每日工具榜单">
+            <article class="hot-tool-card">
+              <span>第 1 名</span>
+              <strong>华佗 GPT</strong>
+              <p>中文医学问答与医疗大模型研究入口，适合作为医学 AI 工具体验区首个示例。</p>
+              <a href="https://www.huatuogpt.cn/" target="_blank" rel="noreferrer">官网链接</a>
+            </article>
+            <article class="hot-tool-card">
+              <span>第 2 名</span>
+              <strong>MedGemma</strong>
+              <p>面向医学文本和多模态任务的开放模型资源，可放入模型池和工具评测清单。</p>
+              <a href="https://github.com/google-health/medgemma" target="_blank" rel="noreferrer">项目链接</a>
+            </article>
+            <article class="hot-tool-card">
+              <span>第 3 名</span>
+              <strong>MONAI</strong>
+              <p>医学影像深度学习框架，适合影像标注、模型训练和临床科研演示。</p>
+              <a href="https://www.monai.io/" target="_blank" rel="noreferrer">官网链接</a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section compact" id="market-overview">
         <div class="container market-grid">
           <article class="market-panel featured">
             <span class="tag blue">MCP</span>
@@ -26,20 +103,67 @@
             <div class="market-meta"><span>API 调用</span><span>权限控制</span><span>审计日志</span></div>
           </article>
           <article class="market-panel">
-            <span class="tag green">Dataset</span>
+            <span class="tag green">数据集</span>
             <h2>数据集交易</h2>
             <p>支持公开数据、脱敏样例、标注集和评测集挂牌，交易前展示授权、脱敏、用途边界和质量报告。</p>
             <div class="price-row"><strong>可交易</strong><span>合规审核后上架</span></div>
           </article>
           <article class="market-panel">
-            <span class="tag gold">Tools</span>
+            <span class="tag gold">工具</span>
             <h2>工具集合收费</h2>
-            <p>面向医生、医院和研究团队提供工具包订阅，覆盖 RAG、报告总结、benchmark 评测和教学题库。</p>
+            <p>面向医生、医院和研究团队提供工具包订阅，覆盖 RAG、报告总结、评测基准和教学题库。</p>
             <div class="price-row"><strong>付费工具集</strong><span>按席位或调用计费</span></div>
           </article>
         </div>
       </section>
+
+      <section class="section tool-directory-section" id="tool-directory">
+        <div class="container">
+          <div class="section-head clean">
+            <div>
+              <p class="eyebrow">资源目录</p>
+              <h2>工具集与数据集目录</h2>
+              <p>每个资源条目都保留外部链接、适用场景和合规备注，便于后续接入审核、付费和收藏功能。</p>
+            </div>
+          </div>
+
+          <div class="resource-directory-grid">
+            <article class="resource-panel">
+              <div class="resource-panel-head"><span>工具集</span><strong>医学 AI 工具集</strong></div>
+              <a href="https://www.huatuogpt.cn/" target="_blank" rel="noreferrer"><strong>华佗 GPT</strong><span>医疗问答、中文医学大模型体验</span></a>
+              <a href="https://www.monai.io/" target="_blank" rel="noreferrer"><strong>MONAI</strong><span>影像模型训练、标注与评估</span></a>
+              <a href="https://www.ncbi.nlm.nih.gov/research/pubtator/" target="_blank" rel="noreferrer"><strong>PubTator</strong><span>生物医学实体识别与文献标注</span></a>
+              <a href="https://github.com/microsoft/BiomedCLIP" target="_blank" rel="noreferrer"><strong>BiomedCLIP</strong><span>生物医学图文检索与多模态评测</span></a>
+            </article>
+
+            <article class="resource-panel">
+              <div class="resource-panel-head"><span>数据集</span><strong>医学数据集入口</strong></div>
+              <a href="https://physionet.org/" target="_blank" rel="noreferrer"><strong>PhysioNet</strong><span>重症、心电、生命体征等开放数据</span></a>
+              <a href="https://www.cancerimagingarchive.net/" target="_blank" rel="noreferrer"><strong>TCIA</strong><span>癌症影像公开数据集</span></a>
+              <a href="https://mimic.mit.edu/" target="_blank" rel="noreferrer"><strong>MIMIC</strong><span>重症监护临床数据库</span></a>
+              <a href="https://huggingface.co/datasets?other=medical" target="_blank" rel="noreferrer"><strong>Hugging Face Medical Datasets</strong><span>医学 NLP 与多模态数据集合</span></a>
+            </article>
+
+            <article class="resource-panel">
+              <div class="resource-panel-head"><span>流程</span><strong>上架与推送流程</strong></div>
+              <ol class="resource-flow">
+                <li><strong>采集</strong><span>编辑后台或接口写入工具名称、热度、官网链接和分类。</span></li>
+                <li><strong>审核</strong><span>检查医疗合规、数据授权、隐私边界和适用人群。</span></li>
+                <li><strong>推送</strong><span>每日自动更新热点卡片，同时保留人工置顶工具。</span></li>
+              </ol>
+            </article>
+          </div>
+        </div>
+      </section>
     </main>
-    <footer class="site-footer"><div class="container footer-grid"><div><h3>Happy medical AI</h3><p>数据和工具入口强调授权、脱敏、质量和可追溯。</p></div><div><h4>平台</h4><a href="benchmark.html">Benchmark</a></div><div><h4>协作</h4><a href="crowdsourcing.html">众包平台</a></div><div><h4>学习</h4><a href="learning.html">教学</a></div></div></footer>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div><h3>Happy medical AI</h3><p>数据和工具入口强调授权、脱敏、质量和可追溯。</p></div>
+        <div><h4>热点</h4><a href="#hot-tools">每日工具榜</a><a href="https://www.huatuogpt.cn/" target="_blank" rel="noreferrer">华佗 GPT</a></div>
+        <div><h4>平台</h4><a href="benchmark.html">评测基准</a><a href="crowdsourcing.html">众包平台</a></div>
+        <div><h4>学习</h4><a href="learning.html">教学</a><a href="community.html">讨论区</a></div>
+      </div>
+    </footer>
   </body>
 </html>
