@@ -284,14 +284,9 @@ function wireCommunityGate() {
   const gate = document.querySelector("#communityGate");
   if (!gate) return;
 
-  const auth = getAuthState();
-  const unlocked = hasCommunityCredential(auth);
-  document.body.classList.toggle("community-locked", !unlocked);
-  document.body.classList.toggle("community-unlocked", unlocked);
-
-  gate.innerHTML = unlocked
-    ? `<div class="container"><div class="community-gate-card verified"><span class="tag green">已通过社区认证</span><h2>${auth.name || "认证用户"}，欢迎进入医疗社区</h2><p>${communityCredentialText(auth)}。请继续使用脱敏资料、明确证据来源，并在发布前完成医学人工复核。</p><div class="community-credential-strip"><span>${auth.roleLabel || "认证成员"}</span><span>${auth.institution || "机构待补充"}</span><span>${auth.specialty || "专业待补充"}</span></div></div></div>`
-    : `<div class="container"><div class="community-gate-card locked"><span class="tag red">需要医生或医学生认证</span><h2>医疗社区仅对认证成员开放</h2><p>请先完成登录并提交医师资格/执业证明，或学生证/在读证明。审核通过后，才能浏览帖子列表、进入科室版块并发布或编辑讨论内容。</p><div class="button-row"><a class="btn primary" href="auth.html">前往登录/认证</a><a class="btn" href="home.html">返回首页</a></div></div></div>`;
+  document.body.classList.remove("community-locked");
+  document.body.classList.add("community-unlocked");
+  gate.remove();
 }
 
 function wireForum() {
