@@ -8310,6 +8310,13 @@ body.upload-roadmap-open {
   gap: 10px;
 }
 
+.network-workspace {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(360px, 0.55fr);
+  gap: 16px;
+  align-items: start;
+}
+
 .network-result-card {
   display: grid;
   gap: 10px 16px;
@@ -8367,6 +8374,187 @@ body.upload-roadmap-open {
 
 .network-graph-grid article {
   padding: 18px;
+}
+
+.people-graph-panel {
+  position: sticky;
+  top: 82px;
+  display: grid;
+  gap: 14px;
+  border: 1px solid #d8e2e8;
+  border-radius: 8px;
+  padding: 16px;
+  background: #ffffff;
+}
+
+.people-graph-head {
+  display: grid;
+  gap: 5px;
+}
+
+.people-graph-head span {
+  color: #1f796f;
+  font-size: 12px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.people-graph-head h3 {
+  margin: 0;
+  color: #172738;
+  font-size: 18px;
+  line-height: 1.3;
+}
+
+.people-graph-head p {
+  margin: 0;
+  color: #536474;
+  font-size: 13px;
+}
+
+.people-graph {
+  width: 100%;
+  min-height: 310px;
+  overflow: visible;
+  border: 1px solid #e4ebef;
+  border-radius: 8px;
+  background:
+    linear-gradient(rgba(24, 95, 121, 0.035) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(24, 95, 121, 0.035) 1px, transparent 1px),
+    #f8fbfc;
+  background-size: 24px 24px, 24px 24px, auto;
+}
+
+.graph-links path {
+  fill: none;
+  stroke-width: 2.4;
+  stroke-linecap: round;
+  marker-end: url("#graphArrow");
+}
+
+#graphArrow path {
+  fill: #7c8b96;
+}
+
+.relation.affiliation { stroke: #237f72; }
+.relation.coworker { stroke: #6f8ca6; }
+.relation.coauthor { stroke: #185f79; }
+.relation.paper { stroke: #b08900; }
+.relation.venue { stroke: #7c8b96; }
+
+.graph-node {
+  color: inherit;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.graph-node circle,
+.graph-node rect {
+  stroke-width: 2;
+  filter: drop-shadow(0 6px 12px rgba(17, 42, 62, 0.12));
+  transition: stroke-width 0.16s ease, transform 0.16s ease;
+}
+
+.graph-node-main circle {
+  fill: #185f79;
+  stroke: #0f4053;
+}
+
+.graph-node-person circle {
+  fill: #eef6f7;
+  stroke: #185f79;
+}
+
+.graph-node-organization rect {
+  fill: #eef6f7;
+  stroke: #237f72;
+}
+
+.graph-node-paper rect {
+  fill: #fff9df;
+  stroke: #b08900;
+}
+
+.graph-node-venue rect {
+  fill: #ffffff;
+  stroke: #7c8b96;
+}
+
+.graph-node text {
+  fill: #172738;
+  font-size: 17px;
+  font-weight: 900;
+  text-anchor: middle;
+  pointer-events: none;
+}
+
+.graph-node-main text {
+  fill: #ffffff;
+}
+
+.graph-node:hover circle,
+.graph-node:focus circle,
+.graph-node:hover rect,
+.graph-node:focus rect {
+  stroke-width: 4;
+}
+
+.graph-edge-labels text {
+  fill: #536474;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.people-graph-legend,
+.people-graph-notes {
+  display: grid;
+  gap: 8px;
+}
+
+.people-graph-legend {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.people-graph-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  color: #536474;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.people-graph-legend i {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.legend-person { background: #185f79; }
+.legend-organization { background: #237f72; }
+.legend-paper { background: #b08900; }
+.legend-venue { background: #7c8b96; }
+
+.people-graph-notes a {
+  display: grid;
+  gap: 2px;
+  border: 1px solid #e4ebef;
+  border-radius: 8px;
+  padding: 10px;
+  color: inherit;
+  background: #f8fbfc;
+  text-decoration: none;
+}
+
+.people-graph-notes strong {
+  color: #172738;
+  font-size: 13px;
+}
+
+.people-graph-notes span {
+  color: #536474;
+  font-size: 12px;
+  line-height: 1.45;
 }
 
 .scholar-hero-grid {
@@ -8547,9 +8735,20 @@ body.upload-roadmap-open {
   }
 }
 
+@media (max-width: 640px) {
+  .network-workspace {
+    grid-template-columns: 1fr;
+  }
+
+  .people-graph-panel {
+    position: static;
+  }
+}
+
 @media (max-width: 720px) {
   .network-domain-grid,
   .network-graph-grid,
+  .people-graph-legend,
   .scholar-fact-grid,
   .journal-topic-grid,
   .affiliation-map,
@@ -8593,6 +8792,22 @@ body.upload-roadmap-open {
 
   .network-domain-tag span {
     display: none;
+  }
+
+  .people-graph-panel {
+    padding: 12px;
+  }
+
+  .people-graph {
+    min-height: 260px;
+  }
+
+  .graph-node text {
+    font-size: 14px;
+  }
+
+  .graph-edge-labels text {
+    font-size: 11px;
   }
 
   .network-page .network-news-row,
