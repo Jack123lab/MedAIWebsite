@@ -291,25 +291,7 @@ function currentChineseHref() {
 }
 
 function injectPageLanguageFilter() {
-  if (document.querySelector(".page-language-filter")) return;
-  const filter = document.createElement("nav");
-  filter.className = "page-language-filter";
-  filter.setAttribute("aria-label", "Language filter");
-  filter.innerHTML = `
-    <button type="button" data-language-filter="zh" aria-pressed="false">Chinese</button>
-    <button class="active" type="button" data-language-filter="en" aria-pressed="true">English</button>
-  `;
-  filter.addEventListener("click", (event) => {
-    const button = event.target.closest("[data-language-filter]");
-    if (!button) return;
-    filter.querySelectorAll("[data-language-filter]").forEach((item) => {
-      const active = item === button;
-      item.classList.toggle("active", active);
-      item.setAttribute("aria-pressed", String(active));
-    });
-    filter.dataset.activeLanguage = button.dataset.languageFilter || "";
-  });
-  document.body.prepend(filter);
+  document.querySelectorAll(".page-language-filter").forEach((filter) => filter.remove());
 }
 
 function renderNav() {
