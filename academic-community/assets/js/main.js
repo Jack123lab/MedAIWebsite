@@ -11,6 +11,99 @@ const categoryLabels = {
   ethics: "合规伦理",
 };
 
+const siteSearchIndex = [
+  {
+    title: "首页",
+    url: "index.html",
+    category: "入口",
+    text: "Freedom AI 医学 AI 新闻 Agent 对话框 热点 期刊 临床验证 安全性评估",
+  },
+  {
+    title: "课程",
+    url: "learning.html",
+    category: "学习",
+    text: "课程 教学 视频 Tutorial 题库 标准病人 医学 AI 入门 RAG 多模态 数据治理 临床科研",
+  },
+  {
+    title: "开放教程",
+    url: "tutorials.html",
+    category: "学习",
+    text: "教程 课程 medical ai intro clinical guidelines rag ai for medical research",
+  },
+  {
+    title: "科普",
+    url: "popular-science.html",
+    category: "公众",
+    text: "科普 医学 AI 是什么 不能替代医生 医疗数据脱敏 普通人 如何看 AI 回答 风险提示",
+  },
+  {
+    title: "社区",
+    url: "network.html",
+    category: "社区",
+    text: "社区 医生 医院 研究者 个人主页 论文 获奖 任职 治疗专长 专家网络",
+  },
+  {
+    title: "讨论区",
+    url: "community.html",
+    category: "社区",
+    text: "讨论区 病例 指南 问答 临床文本 科研设计 工具经验 合规伦理 医生 医学生 认证",
+  },
+  {
+    title: "数据集",
+    url: "datasets-tools.html#dataset-browser",
+    category: "数据",
+    text: "数据集 dataset 医疗数据 脱敏 标注 下载 市场 状态 benchmark 任务",
+  },
+  {
+    title: "工具库",
+    url: "datasets-tools.html#tool-directory",
+    category: "工具",
+    text: "工具库 医学 AI 工具 MCP 文献 检索 指南 问答 报告 结构化 免费开放",
+  },
+  {
+    title: "工具示例",
+    url: "demos.html",
+    category: "工具",
+    text: "工具 示例 科研选题 文献总结 指南问答 临床记录结构化 prototype demo",
+  },
+  {
+    title: "Benchmark",
+    url: "benchmark.html",
+    category: "评测",
+    text: "benchmark 模型评测 医学问答 虚拟病人 影像报告 工具调用 准确性 鲁棒性 安全边界",
+  },
+  {
+    title: "众包平台",
+    url: "crowdsourcing.html",
+    category: "协作",
+    text: "众包 标注 评测 题库 资料治理 医生 学生 机构 任务 合作",
+  },
+  {
+    title: "成果",
+    url: "research.html",
+    category: "研究",
+    text: "成果 论文讨论 产品发布 研究更新 证据 方法路径 来源 局限性",
+  },
+  {
+    title: "投稿",
+    url: "contribute.html",
+    category: "共建",
+    text: "投稿 提交 教程 病例讨论 工具说明 Prompt 模板 论文复现 科普稿 benchmark",
+  },
+  {
+    title: "个人与认证",
+    url: "profile.html",
+    category: "账号",
+    text: "用户 个人 登录 认证 资格审核 医师资格 学生证 访问权限",
+  },
+  {
+    title: "About（collaborator）",
+    url: "about.html",
+    category: "项目",
+    text: "About collaborator 项目介绍 共建者 社群 招募 联系 平台结构",
+  },
+];
+
 const seedPosts = [
   {
     id: "seed-privacy-note",
@@ -529,6 +622,71 @@ function escapeHtml(value) {
     .replace(/'/g, "&#39;");
 }
 
+function getSiteSearchQuery() {
+  return (new URLSearchParams(window.location.search).get("q") || "").trim();
+}
+
+function wireSiteSearchForms() {
+  const query = getSiteSearchQuery();
+  document.querySelectorAll(".site-search").forEach((form) => {
+    const input = form.querySelector('input[name="q"]');
+    if (input && query) input.value = query;
+    form.addEventListener("submit", (event) => {
+      const value = input?.value.trim() || "";
+      if (value) return;
+      event.preventDefault();
+      input?.focus();
+    });
+  });
+}
+
+function getSiteSearchScore(entry, terms) {
+  const title = entry.title.toLowerCase();
+  const category = entry.category.toLowerCase();
+  const text = `${entry.title} ${entry.category} ${entry.text}`.toLowerCase();
+  return terms.reduce((score, term) => {
+    if (!term) return score;
+    if (title.includes(term)) return score + 8;
+    if (category.includes(term)) return score + 5;
+    if (text.includes(term)) return score + 2;
+    return score;
+  }, 0);
+}
+
+function renderSiteSearchResults() {
+  const resultsRoot = document.querySelector("#siteSearchResults");
+  if (!resultsRoot) return;
+
+  const summary = document.querySelector("#siteSearchSummary");
+  const query = getSiteSearchQuery();
+  if (!query) {
+    if (summary) summary.textContent = "输入关键词后查看站内栏目结果。";
+    resultsRoot.innerHTML = '<div class="empty-state">请输入搜索关键词。</div>';
+    return;
+  }
+
+  const terms = query.toLowerCase().split(/\s+/).filter(Boolean);
+  const results = siteSearchIndex
+    .map((entry) => ({ ...entry, score: getSiteSearchScore(entry, terms) }))
+    .filter((entry) => entry.score > 0)
+    .sort((a, b) => b.score - a.score || a.title.localeCompare(b.title, "zh-CN"));
+
+  if (summary) {
+    summary.textContent = results.length
+      ? `找到 ${results.length} 个相关入口。`
+      : "没有找到匹配入口，可以换一个关键词。";
+  }
+
+  resultsRoot.innerHTML = results.length
+    ? results.map((entry) => `
+      <a class="site-search-result" href="${entry.url}">
+        <span>${escapeHtml(entry.category)}</span>
+        <strong>${escapeHtml(entry.title)}</strong>
+        <p>${escapeHtml(entry.text)}</p>
+      </a>`).join("")
+    : '<div class="empty-state">没有找到匹配入口。</div>';
+}
+
 function renderHotTools(tools) {
   const container = document.querySelector("#hotToolCards");
   if (!container) return;
@@ -798,6 +956,8 @@ function wireCourseContentFilters() {
 }
 
 wireFilters();
+wireSiteSearchForms();
+renderSiteSearchResults();
 wireAuthForms();
 renderProfile();
 renderLikedPosts();
