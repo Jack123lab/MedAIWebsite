@@ -4275,6 +4275,17 @@ body.medical-workbench-index,
   align-items: stretch;
 }
 
+.news-row-grid {
+  display: flex;
+  flex-wrap: nowrap;
+  gap: 16px;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 2px 2px 14px;
+  scroll-snap-type: x proximity;
+  scrollbar-color: #b7ccd6 transparent;
+}
+
 .news-source-card,
 .agent-card,
 .model-pool-panel {
@@ -4285,15 +4296,17 @@ body.medical-workbench-index,
 }
 
 .news-source-card {
+  flex: 0 0 min(78vw, 760px);
   min-width: 0;
   display: grid;
   grid-template-rows: 1fr;
   position: relative;
-  min-height: clamp(320px, 45vh, 520px);
+  min-height: clamp(390px, 58vh, 600px);
   color: #ffffff;
   text-decoration: none;
   overflow: hidden;
   isolation: isolate;
+  scroll-snap-align: start;
 }
 
 .news-source-card img {
