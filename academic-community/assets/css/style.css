@@ -6537,6 +6537,136 @@ body.case-publish-open {
   gap: 8px;
 }
 
+.tool-skill-column {
+  display: grid;
+  gap: 18px;
+  margin-bottom: 18px;
+  border: 1px solid #d8e2e8;
+  border-left: 4px solid #f0b429;
+  border-radius: 8px;
+  padding: 20px;
+  background: #ffffff;
+  box-shadow: 0 14px 34px rgba(11, 55, 70, 0.06);
+}
+
+.tool-skill-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.tool-skill-head > div {
+  display: grid;
+  gap: 8px;
+}
+
+.tool-skill-head h3 {
+  margin: 0;
+  color: #172738;
+  font-size: 24px;
+}
+
+.tool-skill-head p,
+.tool-skill-column li,
+.tool-skill-tags span,
+.tool-skill-stats span {
+  color: #536474;
+}
+
+.tool-skill-head p {
+  margin: 0;
+  line-height: 1.75;
+}
+
+.tool-skill-head a {
+  min-height: 36px;
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid #cbdde3;
+  border-radius: 999px;
+  padding: 0 14px;
+  color: var(--primary);
+  background: #ffffff;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 900;
+  white-space: nowrap;
+}
+
+.tool-skill-head a:hover {
+  border-color: var(--primary);
+  background: #eef5fb;
+}
+
+.tool-skill-stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.tool-skill-stats div {
+  display: grid;
+  gap: 2px;
+  border: 1px solid #e4ebef;
+  border-radius: 8px;
+  padding: 12px;
+  background: #f8fbfc;
+}
+
+.tool-skill-stats strong {
+  color: #172738;
+  font-size: 20px;
+}
+
+.tool-skill-stats span {
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.tool-skill-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 16px;
+}
+
+.tool-skill-column section {
+  display: grid;
+  align-content: start;
+  gap: 10px;
+}
+
+.tool-skill-column h4 {
+  margin: 0;
+  color: #172738;
+  font-size: 16px;
+}
+
+.tool-skill-column ul {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding-left: 18px;
+}
+
+.tool-skill-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tool-skill-tags span {
+  min-height: 28px;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  padding: 0 10px;
+  background: #f8fbfc;
+  border: 1px solid #e4ebef;
+  font-size: 12px;
+  font-weight: 800;
+}
+
 .resource-panel .skill-link-cloud a {
   min-height: 30px;
   display: inline-flex;
@@ -6726,11 +6856,17 @@ body.case-publish-open {
   .hot-tool-card-grid,
   .tool-stack-grid,
   .skill-examples-grid,
+  .tool-skill-grid,
+  .tool-skill-stats,
   .medical-tool-grid,
   .registration-api-grid,
   .resource-directory-grid,
   .market-grid {
     grid-template-columns: 1fr;
+  }
+
+  .tool-skill-head {
+    flex-direction: column;
   }
 
   .registration-api-card.api-overview {

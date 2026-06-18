@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>工具库 | Freedom AI</title>
-    <meta name="description" content="Freedom AI 工具库以来源、基础工具和产品场景三层整理 OpenClaw Medical Skills、医学 MCP、医生库、药品库、医院库、挂号 Mock API 和医院 AI 工作流。" />
+    <meta name="description" content="Freedom AI 工具库以基础工具、挂号 Mock API、Skill 专栏和医学 AI 产品场景整理医生库、药品库、医院库与医院 AI 工作流。" />
     <link rel="stylesheet" href="assets/css/style.css" />
     <script src="assets/js/config.js"></script>
     <script src="assets/js/main.js" defer></script>
@@ -38,19 +38,19 @@
           <div>
             <p class="eyebrow">Tool Library</p>
             <h1>工具库</h1>
-            <p>页面按三层组织：先看能力来源，再看基础库与 Mock API，最后看可以组合成什么产品场景。具体 skills、接口和例子都保留，但路径更短。</p>
+            <p>页面按三层组织：先看基础库与 Mock API，再看可复用 Skill 专栏，最后看可以组合成什么产品场景。具体接口和例子都保留，但路径更短。</p>
             <div class="tool-reference">
               <a href="#market-overview">三层逻辑</a>
               <a href="#medical-base-tools">基础库</a>
               <a href="#mock-registration-api">Mock API</a>
+              <a href="#skill-column">Skill 专栏</a>
               <a href="#tool-scenarios">场景方案</a>
-              <a href="https://github.com/FreedomIntelligence/OpenClaw-Medical-Skills" target="_blank" rel="noreferrer">OpenClaw Skills</a>
             </div>
           </div>
-          <aside class="tool-refresh-card" aria-label="工具库组织方式">
-            <span>OpenClaw Skills</span>
-            <strong>869 个技能</strong>
-            <p>这里重点把 Clinical、Research、Bioinformatics、Regulatory 等方向整理成循证 API、虚拟医院、Agentic hospital、AI-native HIS、AI-native Up2date 和中医知识图谱六类方案。</p>
+          <aside class="tool-refresh-card" aria-label="工具库重点方案">
+            <span>Clinical / Research / Bioinformatics / Regulatory</span>
+            <strong>六类重点方案</strong>
+            <p>循证 API、虚拟医院、Agentic hospital、AI-native HIS、AI-native Up2date 和中医知识图谱。</p>
           </aside>
         </div>
       </section>
@@ -60,8 +60,8 @@
           <article class="market-panel featured">
             <span class="tag blue">01 Source</span>
             <h2>能力来源</h2>
-            <p>OpenClaw Medical Skills 提供 869 个可复用医学技能，覆盖文献、指南、ClinicalTrials、FHIR、知识图谱和代理工作流。</p>
-            <div class="market-meta"><span>OpenClaw</span><span>MCP-ready</span><span>开源可扩展</span></div>
+            <p>把医学 AI 能力拆成基础数据、Mock API、可复用 Skill 和场景方案四层，便于医院原型、医生主页和智能体工作流调用。</p>
+            <div class="market-meta"><span>Skill-ready</span><span>MCP-ready</span><span>开源可扩展</span></div>
           </article>
           <article class="market-panel">
             <span class="tag gold">02 Base Tools</span>
@@ -72,7 +72,7 @@
           <article class="market-panel">
             <span class="tag green">03 Scenarios</span>
             <h2>产品场景</h2>
-            <p>把 skills 和基础库按任务组合，形成循证医疗 API、虚拟医院、Agentic hospital、AI-native HIS、AI-native Up2date 和 TCM Graph-RAG。</p>
+            <p>把 Skill 和基础库按任务组合，形成循证医疗 API、虚拟医院、Agentic hospital、AI-native HIS、AI-native Up2date 和 TCM Graph-RAG。</p>
             <div class="price-row"><strong>再组装产品</strong><a href="#tool-scenarios">查看场景</a></div>
           </article>
         </div>
@@ -142,6 +142,44 @@
             <a class="mock-data-link" href="assets/data/mock-registration-api.json" target="_blank" rel="noreferrer">查看 Mock JSON</a>
           </div>
 
+          <article class="tool-skill-column" id="skill-column">
+            <div class="tool-skill-head">
+              <div>
+                <p class="eyebrow">Skill Store</p>
+                <h3>Skill 专栏</h3>
+                <p>摘录自 anbeime/skill：它把官方 Agent Skills、本地中文技能、备份包和 ClawHub CLI 组织成技能商店，适合迁移为医学 AI 工具库的能力索引、技能分发和工作流说明。</p>
+              </div>
+              <a href="https://github.com/anbeime/skill" target="_blank" rel="noreferrer">GitHub</a>
+            </div>
+            <div class="tool-skill-stats" aria-label="anbeime skill 数据摘录">
+              <div><strong>243</strong><span>总技能</span></div>
+              <div><strong>182</strong><span>官方技能</span></div>
+              <div><strong>61</strong><span>本地技能</span></div>
+              <div><strong>24h</strong><span>自动同步</span></div>
+            </div>
+            <div class="tool-skill-grid">
+              <section>
+                <h4>知识和库摘录</h4>
+                <ul>
+                  <li>官方技能来源包括 Anthropic、Vercel、Cloudflare、Hugging Face、Trail of Bits、Sentry 等团队。</li>
+                  <li>本地中文技能覆盖内容创作、视频、PPT、语音、文档处理、智能体协作、产品管理和可视化。</li>
+                  <li>支持 JSON / CSV 数据导出，可用于工具目录、能力画像和二次开发。</li>
+                </ul>
+              </section>
+              <section>
+                <h4>适合医学 AI 工具库的技能方向</h4>
+                <div class="tool-skill-tags">
+                  <span>docx / xlsx / pdf / pptx 文档处理</span>
+                  <span>paper-analysis-assistant 论文分析</span>
+                  <span>agent-team 多智能体协作</span>
+                  <span>ai-drawio 流程图绘制</span>
+                  <span>frontend-design 工具界面设计</span>
+                  <span>tts / asr 语音转写与合成</span>
+                </div>
+              </section>
+            </div>
+          </article>
+
           <div class="registration-api-grid">
             <article class="registration-api-card api-overview">
               <div>
@@ -196,7 +234,7 @@
             <div>
               <p class="eyebrow">Scenario Stack</p>
               <h2>六个产品方向</h2>
-              <p>每个方向都压缩成三件事：用途、可组合的 OpenClaw skills、一个能直接讲给用户听的例子。</p>
+              <p>每个方向都压缩成三件事：用途、可组合的技能能力、一个能直接讲给用户听的例子。</p>
             </div>
           </div>
 
@@ -280,7 +318,7 @@
 
     <footer class="site-footer">
       <div class="container footer-grid">
-        <div><h3>Freedom AI</h3><p>工具库现在按来源、基础工具和产品场景组织，强调 OpenClaw skills、医学 MCP、可组合工作流和可追溯临床知识服务。</p></div>
+        <div><h3>Freedom AI</h3><p>工具库现在按来源、基础工具、Skill 专栏和产品场景组织，强调医学 MCP、可组合工作流和可追溯临床知识服务。</p></div>
         <div><h4>工具</h4><a href="tools.html">工具库</a><a href="#medical-base-tools">基础库工具</a><a href="#mock-registration-api">Mock 挂号 API</a><a href="#tool-scenarios">场景方案</a></div>
         <div><h4>数据</h4><a href="datasets.html">数据集</a></div>
         <div><h4>平台</h4><a href="benchmark.html">评测基准</a><a href="crowdsourcing.html">众包平台</a></div>
