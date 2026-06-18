@@ -7457,6 +7457,97 @@ body:not(.login-page) {
   color: var(--forum-text);
 }
 
+.post-composer-open {
+  overflow: hidden;
+}
+
+.post-composer-popover {
+  position: fixed;
+  inset: 0;
+  z-index: 120;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-end;
+  padding: 74px 28px 28px;
+  pointer-events: none;
+  visibility: hidden;
+}
+
+.post-composer-popover.is-open {
+  pointer-events: auto;
+  visibility: visible;
+}
+
+.post-composer-backdrop {
+  position: absolute;
+  inset: 0;
+  border: 0;
+  background: rgba(10, 20, 30, 0.18);
+  opacity: 0;
+  cursor: default;
+  transition: opacity 0.18s ease;
+}
+
+.post-composer-popover.is-open .post-composer-backdrop {
+  opacity: 1;
+}
+
+.medical-community-page .post-composer-card {
+  position: relative;
+  z-index: 1;
+  width: min(430px, calc(100vw - 32px));
+  max-height: calc(100vh - 96px);
+  overflow: auto;
+  border-radius: 8px;
+  padding: 18px;
+  box-shadow: 0 22px 60px rgba(15, 39, 52, 0.2);
+  opacity: 0;
+  transform: translateY(-10px) scale(0.98);
+  transition: opacity 0.18s ease, transform 0.18s ease;
+}
+
+.post-composer-popover.is-open .post-composer-card {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.composer-head-actions {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.composer-close {
+  width: 30px;
+  height: 30px;
+  border: 1px solid #eadb9d;
+  border-radius: 50%;
+  color: #4b5563;
+  background: #ffffff;
+  font-size: 20px;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.composer-close:hover,
+.composer-close:focus-visible {
+  border-color: #e1b000;
+  background: #fff8dc;
+}
+
+.medical-community-page .post-composer-card .console-head {
+  align-items: flex-start;
+  margin-bottom: 14px;
+}
+
+.medical-community-page .post-composer-card .post-form {
+  gap: 12px;
+}
+
+.medical-community-page .post-composer-card .post-form textarea {
+  min-height: 132px;
+}
+
 .medical-community-page .mode-chip,
 .medical-community-page .publish-btn {
   border-radius: 6px;
@@ -10438,6 +10529,25 @@ body.upload-roadmap-open {
 
   .medical-community-page .compact-community-hero h1 {
     font-size: 24px;
+  }
+
+  .post-composer-popover {
+    align-items: flex-end;
+    padding: 14px;
+  }
+
+  .medical-community-page .post-composer-card {
+    width: 100%;
+    max-height: calc(100vh - 28px);
+    transform: translateY(14px);
+  }
+
+  .post-composer-popover.is-open .post-composer-card {
+    transform: translateY(0);
+  }
+
+  .medical-community-page .post-composer-card .form-split {
+    grid-template-columns: 1fr;
   }
 }
 

@@ -148,35 +148,6 @@
           </section>
 
           <aside class="forum-right" aria-label="讨论辅助信息">
-            <section class="post-console" id="postForm">
-              <div class="console-head">
-                <div>
-                  <span class="console-kicker">新讨论</span>
-                  <h2>发布讨论</h2>
-                </div>
-                <span class="console-status">草稿</span>
-              </div>
-              <div class="publish-mode" aria-label="发布类型">
-                <button class="mode-chip active" type="button">问题</button>
-                <button class="mode-chip" type="button">经验</button>
-                <button class="mode-chip" type="button">资料</button>
-              </div>
-              <form id="newPostForm" class="post-form">
-                <label>标题<input id="postTitle" type="text" maxlength="80" placeholder="例如：指南问答如何标注证据来源？" required /></label>
-                <div class="form-split">
-                  <label>版块<select id="postCategory" required><option value="clinical">临床文本</option><option value="guideline">指南问答</option><option value="research">科研设计</option><option value="tool">工具经验</option><option value="ethics">合规伦理</option></select></label>
-                  <label>科室/领域<input id="postDept" type="text" maxlength="30" placeholder="如心内科、肿瘤、影像" /></label>
-                </div>
-                <label>正文<textarea id="postBody" rows="7" maxlength="1200" placeholder="请描述问题背景、已尝试方法、希望获得的帮助。请勿输入患者可识别信息。" required></textarea></label>
-                <div class="privacy-panel">
-                  <label class="check-line"><input id="privacyCheck" type="checkbox" required /> 我确认内容不包含患者可识别信息</label>
-                  <span>发布后将出现在当前讨论列表；本页面默认保存在当前浏览器。</span>
-                </div>
-                <button class="publish-btn" type="submit">发布到讨论页</button>
-              </form>
-              <p id="postStatus" class="form-status" role="status"></p>
-            </section>
-
             <section class="forum-block">
               <h2>热门讨论</h2>
               <ol class="hot-list">
@@ -210,19 +181,54 @@
             </div>
           </div>
           <div class="dept-board-grid">
-            <article id="dept-internal" class="dept-board-card"><span>内科</span><h3>内科综合</h3><p>心血管、呼吸、消化、肾内、内分泌、神经内科等慢病管理、指南问答与病历结构化。</p><div class="dept-card-meta"><span>病例 28</span><span>指南 16</span><span>工具 11</span></div><a href="#postForm">在内科板块发帖</a></article>
-            <article id="dept-surgery" class="dept-board-card"><span>外科</span><h3>外科与围术期</h3><p>普外、骨科、泌尿、神外、胸外、麻醉围术期记录、手术资料脱敏与术后随访讨论。</p><div class="dept-card-meta"><span>病例 21</span><span>资料 14</span><span>随访 8</span></div><a href="#postForm">在外科板块发帖</a></article>
-            <article id="dept-obgyn" class="dept-board-card"><span>OBGYN</span><h3>妇产与生殖</h3><p>产科风险评估、妇科肿瘤、生殖医学、围孕期用药和隐私敏感资料治理。</p><div class="dept-card-meta"><span>病例 18</span><span>用药 9</span><span>隐私 7</span></div><a href="#postForm">在妇产板块发帖</a></article>
-            <article id="dept-pediatrics" class="dept-board-card"><span>儿科</span><h3>儿科与发育</h3><p>儿童常见病、发育评估、儿科用药、家属沟通文本和未成年人资料保护。</p><div class="dept-card-meta"><span>病例 15</span><span>用药 10</span><span>沟通 6</span></div><a href="#postForm">在儿科板块发帖</a></article>
-            <article id="dept-emergency" class="dept-board-card"><span>Emergency & ICU</span><h3>急诊重症</h3><p>急诊分诊、ICU 监测、危重症评分、抢救流程复盘和实时 AI 辅助的安全边界。</p><div class="dept-card-meta"><span>流程 17</span><span>评分 12</span><span>质控 8</span></div><a href="#postForm">在急重症板块发帖</a></article>
-            <article id="dept-oncology" class="dept-board-card"><span>肿瘤</span><h3>肿瘤与血液</h3><p>肿瘤分期、治疗路径、血液病、临床试验入排标准和多学科会诊资料整理。</p><div class="dept-card-meta"><span>MDT 13</span><span>分期 10</span><span>试验 6</span></div><a href="#postForm">在肿瘤板块发帖</a></article>
-            <article id="dept-imaging" class="dept-board-card"><span>影像病理</span><h3>影像病理</h3><p>影像报告、病理摘要、多模态资料标注、诊断一致性与模型验证指标。</p><div class="dept-card-meta"><span>报告 22</span><span>标注 13</span><span>验证 9</span></div><a href="#postForm">在影像病理板块发帖</a></article>
-            <article id="dept-pharmacy" class="dept-board-card"><span>药学检验</span><h3>药学检验</h3><p>合理用药、药物相互作用、检验结果解释、药学审方和实验室质控资料讨论。</p><div class="dept-card-meta"><span>审方 12</span><span>检验 11</span><span>质控 7</span></div><a href="#postForm">在药学检验板块发帖</a></article>
+            <article id="dept-internal" class="dept-board-card"><span>内科</span><h3>内科综合</h3><p>心血管、呼吸、消化、肾内、内分泌、神经内科等慢病管理、指南问答与病历结构化。</p><div class="dept-card-meta"><span>病例 28</span><span>指南 16</span><span>工具 11</span></div><a href="#postForm" data-quick-post>在内科板块发帖</a></article>
+            <article id="dept-surgery" class="dept-board-card"><span>外科</span><h3>外科与围术期</h3><p>普外、骨科、泌尿、神外、胸外、麻醉围术期记录、手术资料脱敏与术后随访讨论。</p><div class="dept-card-meta"><span>病例 21</span><span>资料 14</span><span>随访 8</span></div><a href="#postForm" data-quick-post>在外科板块发帖</a></article>
+            <article id="dept-obgyn" class="dept-board-card"><span>OBGYN</span><h3>妇产与生殖</h3><p>产科风险评估、妇科肿瘤、生殖医学、围孕期用药和隐私敏感资料治理。</p><div class="dept-card-meta"><span>病例 18</span><span>用药 9</span><span>隐私 7</span></div><a href="#postForm" data-quick-post>在妇产板块发帖</a></article>
+            <article id="dept-pediatrics" class="dept-board-card"><span>儿科</span><h3>儿科与发育</h3><p>儿童常见病、发育评估、儿科用药、家属沟通文本和未成年人资料保护。</p><div class="dept-card-meta"><span>病例 15</span><span>用药 10</span><span>沟通 6</span></div><a href="#postForm" data-quick-post>在儿科板块发帖</a></article>
+            <article id="dept-emergency" class="dept-board-card"><span>Emergency & ICU</span><h3>急诊重症</h3><p>急诊分诊、ICU 监测、危重症评分、抢救流程复盘和实时 AI 辅助的安全边界。</p><div class="dept-card-meta"><span>流程 17</span><span>评分 12</span><span>质控 8</span></div><a href="#postForm" data-quick-post>在急重症板块发帖</a></article>
+            <article id="dept-oncology" class="dept-board-card"><span>肿瘤</span><h3>肿瘤与血液</h3><p>肿瘤分期、治疗路径、血液病、临床试验入排标准和多学科会诊资料整理。</p><div class="dept-card-meta"><span>MDT 13</span><span>分期 10</span><span>试验 6</span></div><a href="#postForm" data-quick-post>在肿瘤板块发帖</a></article>
+            <article id="dept-imaging" class="dept-board-card"><span>影像病理</span><h3>影像病理</h3><p>影像报告、病理摘要、多模态资料标注、诊断一致性与模型验证指标。</p><div class="dept-card-meta"><span>报告 22</span><span>标注 13</span><span>验证 9</span></div><a href="#postForm" data-quick-post>在影像病理板块发帖</a></article>
+            <article id="dept-pharmacy" class="dept-board-card"><span>药学检验</span><h3>药学检验</h3><p>合理用药、药物相互作用、检验结果解释、药学审方和实验室质控资料讨论。</p><div class="dept-card-meta"><span>审方 12</span><span>检验 11</span><span>质控 7</span></div><a href="#postForm" data-quick-post>在药学检验板块发帖</a></article>
           </div>
         </div>
       </section>
 
     </main>
+
+    <div class="post-composer-popover" id="postComposer" aria-hidden="true">
+      <button class="post-composer-backdrop" type="button" data-close-post-composer aria-label="关闭发布讨论"></button>
+      <section class="post-console post-composer-card" id="postForm" role="dialog" aria-modal="true" aria-labelledby="postComposerTitle">
+        <div class="console-head">
+          <div>
+            <span class="console-kicker">新讨论</span>
+            <h2 id="postComposerTitle">发布讨论</h2>
+          </div>
+          <div class="composer-head-actions">
+            <span class="console-status">草稿</span>
+            <button class="composer-close" type="button" data-close-post-composer aria-label="关闭">×</button>
+          </div>
+        </div>
+        <div class="publish-mode" aria-label="发布类型">
+          <button class="mode-chip active" type="button">问题</button>
+          <button class="mode-chip" type="button">经验</button>
+          <button class="mode-chip" type="button">资料</button>
+        </div>
+        <form id="newPostForm" class="post-form">
+          <label>标题<input id="postTitle" type="text" maxlength="80" placeholder="例如：这个工具在心内科问答中如何验证可靠性？" required /></label>
+          <div class="form-split">
+            <label>版块<select id="postCategory" required><option value="clinical">临床文本</option><option value="guideline">指南问答</option><option value="research">科研设计</option><option value="tool">工具经验</option><option value="ethics">合规伦理</option></select></label>
+            <label>科室/领域<input id="postDept" type="text" maxlength="30" placeholder="如心内科、肿瘤、影像" /></label>
+          </div>
+          <label>正文<textarea id="postBody" rows="7" maxlength="1200" placeholder="请描述问题背景、已尝试方法、希望获得的帮助。请勿输入患者可识别信息。" required></textarea></label>
+          <div class="privacy-panel">
+            <label class="check-line"><input id="privacyCheck" type="checkbox" required /> 我确认内容不包含患者可识别信息</label>
+            <span>发布后将出现在当前讨论列表；本页面默认保存在当前浏览器。</span>
+          </div>
+          <button class="publish-btn" type="submit">发布到讨论页</button>
+        </form>
+        <p id="postStatus" class="form-status" role="status"></p>
+      </section>
+    </div>
 
     <footer class="site-footer">
       <div class="container footer-grid">
@@ -237,6 +243,18 @@
         const title = document.querySelector("#postTitle");
         const body = document.querySelector("#postBody");
         const form = document.querySelector("#postForm");
+        const composer = document.querySelector("#postComposer");
+        const closeButtons = document.querySelectorAll("[data-close-post-composer]");
+        let lastTrigger = null;
+
+        function closeComposer() {
+          if (!composer) return;
+          composer.classList.remove("is-open");
+          composer.setAttribute("aria-hidden", "true");
+          document.body.classList.remove("post-composer-open");
+          if (lastTrigger) lastTrigger.focus();
+        }
+
         function focusComposer(mode) {
           if (!form || !body) return;
           if (mode === "comment" && !body.value.trim()) {
@@ -245,14 +263,32 @@
           if (mode === "post" && title && !title.value.trim()) {
             title.placeholder = "例如：这个工具在心内科问答中如何验证可靠性？";
           }
-          form.scrollIntoView({ behavior: "smooth", block: "start" });
-          window.setTimeout(() => (mode === "post" && title ? title : body).focus(), 220);
+          if (composer) {
+            composer.classList.add("is-open");
+            composer.setAttribute("aria-hidden", "false");
+            document.body.classList.add("post-composer-open");
+          }
+          window.setTimeout(() => (mode === "post" && title ? title : body).focus(), 120);
         }
         document.querySelectorAll("[data-quick-post]").forEach((item) => {
-          item.addEventListener("click", () => focusComposer("post"));
+          item.addEventListener("click", (event) => {
+            event.preventDefault();
+            lastTrigger = item;
+            focusComposer("post");
+          });
         });
         document.querySelectorAll("[data-quick-comment]").forEach((item) => {
-          item.addEventListener("click", () => focusComposer("comment"));
+          item.addEventListener("click", (event) => {
+            event.preventDefault();
+            lastTrigger = item;
+            focusComposer("comment");
+          });
+        });
+        closeButtons.forEach((button) => {
+          button.addEventListener("click", closeComposer);
+        });
+        document.addEventListener("keydown", (event) => {
+          if (event.key === "Escape") closeComposer();
         });
       })();
     </script>
