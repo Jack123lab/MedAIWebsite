@@ -1,0 +1,243 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>内容详情 | Freedom AI</title>
+    <meta name="description" content="Freedom AI 内容详情页，嵌入课程视频并连接教程、题库、标准病人和科普资源。" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <script src="assets/js/main.js" defer></script>
+  </head>
+  <body>
+    <header class="site-header">
+      <nav class="nav" aria-label="主导航">
+        <a class="brand" href="index.html"><span class="brand-mark">F</span><span class="brand-text"><strong>Freedom AI</strong><span>医学 AI 社区</span></span></a>
+        <form class="site-search" role="search" action="search.html" method="get" aria-label="站内搜索">
+          <label class="sr-only" for="siteSearchInput">搜索</label>
+          <input id="siteSearchInput" name="q" type="search" placeholder="搜索" autocomplete="off" />
+          <button type="submit">搜索</button>
+        </form>
+        <div class="nav-links">
+          <a href="index.html">首页</a>
+          <a href="learning.html">内容</a>
+          <a href="network.html">社区</a>
+          <a href="community.html">讨论区</a>
+          <a href="datasets.html">数据集</a>
+          <a href="tools.html">工具库</a>
+          <a href="benchmark.html">Benchmark</a>
+          <a href="crowdsourcing.html">众包平台</a>
+          <a href="profile.html">用户</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="page-title learning-title-compact">
+        <div class="container">
+          <p class="eyebrow" id="courseEyebrow">Content Detail</p>
+          <h1 id="courseTitle">医学 AI 入门</h1>
+          <p id="courseSummary">理解大语言模型在医学文本、知识整理和临床学习中的基本能力边界。</p>
+          <div class="button-row learning-direction-buttons">
+            <a class="btn primary" id="courseSourceLink" href="https://www.bilibili.com/video/BV1eyJp6gES4/" target="_blank" rel="noreferrer">打开 B 站原视频</a>
+            <a class="btn" href="learning.html">返回内容列表</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section compact alt-band">
+        <div class="container learning-detail-grid">
+          <article class="learning-video-panel">
+            <div class="learning-video-frame">
+              <iframe
+                id="courseVideoFrame"
+                src="https://player.bilibili.com/player.html?bvid=BV1eyJp6gES4&page=1&high_quality=1&autoplay=0"
+                title="课程视频播放器"
+                scrolling="no"
+                border="0"
+                frameborder="no"
+                framespacing="0"
+                allow="fullscreen; picture-in-picture"
+                allowfullscreen="true"
+                referrerpolicy="no-referrer-when-downgrade">
+              </iframe>
+            </div>
+          </article>
+
+          <aside class="learning-detail-aside">
+            <div class="learning-detail-card">
+              <span>Course Tags</span>
+              <div class="learning-detail-tags" id="courseTags" aria-label="课程标签"></div>
+            </div>
+            <div class="learning-detail-card">
+              <span>Learning Points</span>
+              <h2>学习要点</h2>
+              <ul class="learning-outline-list" id="courseOutline"></ul>
+            </div>
+            <div class="learning-detail-card">
+              <span>Next Step</span>
+              <h2>配套资源</h2>
+              <div class="learning-resource-list">
+                <a id="courseMaterialLink" href="content/tutorials/medical-ai-intro.md">阅读配套材料</a>
+                <a href="learning-question-bank.html">进入题库自测</a>
+                <a href="learning-standardized-patient.html">进入标准病人训练</a>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer"><div class="container footer-grid"><div><h3>Freedom AI</h3><p>内容详情页把视频、教程、题库和训练入口放在同一个学习场景里。</p></div><div><h4>内容</h4><a href="learning.html">模块首页</a><a href="learning-videos.html">视频</a></div><div><h4>训练</h4><a href="learning-question-bank.html">题库</a><a href="learning-standardized-patient.html">标准病人</a></div><div><h4>科普</h4><a href="popular-science.html">科普</a></div></div></footer>
+
+    <script>
+      const courseVideo = {
+        bvid: "BV1eyJp6gES4",
+        sourceUrl: "https://www.bilibili.com/video/BV1eyJp6gES4/",
+      };
+
+      const courses = {
+        "medical-ai-intro": {
+          title: "医学 AI 入门",
+          eyebrow: "Tutorial / 医学通识",
+          summary: "理解大语言模型在医学文本、知识整理和临床学习中的基本能力边界。",
+          tags: ["Tutorial", "医学通识", "入门"],
+          materialUrl: "content/tutorials/medical-ai-intro.md",
+          materialLabel: "阅读医学 AI 入门教程",
+          outline: ["区分医学 AI 与通用 AI 的使用边界", "认识文本、影像、检验和病理等医学数据类型", "建立隐私保护、脱敏和人工复核意识"],
+        },
+        "medical-ai-video-intro": {
+          title: "医学 AI 视频导入",
+          eyebrow: "Video / 医学通识",
+          summary: "通过视频快速进入 Freedom AI 内容语境，适合课前预习和专题导入。",
+          tags: ["视频", "医学通识", "导入"],
+          materialUrl: "learning-videos.html",
+          materialLabel: "查看视频模块",
+          outline: ["用视频建立课程整体框架", "识别医学 AI 的典型应用场景", "记录后续需要配套自测的概念"],
+        },
+        "clinical-rag-guidelines": {
+          title: "医学 RAG 与指南问答",
+          eyebrow: "Tutorial / 心血管",
+          summary: "学习指南切片、检索、来源引用和答案审核，支持专科指南学习。",
+          tags: ["Tutorial", "心血管", "RAG"],
+          materialUrl: "content/tutorials/rag-for-clinical-guidelines.md",
+          materialLabel: "阅读 RAG 教程",
+          outline: ["理解指南切片和检索召回", "练习把答案回到来源段落", "区分教学问答和临床决策支持"],
+        },
+        "literature-structured-reading": {
+          title: "医学文献结构化阅读",
+          eyebrow: "Tutorial / 临床科研",
+          summary: "把论文整理为研究设计、结局指标、主要发现和局限性，服务组会与科研训练。",
+          tags: ["Tutorial", "临床科研", "文献阅读"],
+          materialUrl: "content/prompts/clinical-summary-prompts.md",
+          materialLabel: "查看结构化阅读提示词",
+          outline: ["提取研究问题、设计和人群", "整理主要结局和统计结果", "复盘局限性和外推边界"],
+        },
+        "medical-ai-concept-quiz": {
+          title: "医学 AI 基础概念自测",
+          eyebrow: "Question Bank / 医学通识",
+          summary: "围绕 LLM、RAG、prompt、评测指标和医学 AI 基础概念进行快速检查。",
+          tags: ["题库", "医学通识", "自测"],
+          materialUrl: "learning-question-bank.html",
+          materialLabel: "进入题库模块",
+          outline: ["检查核心概念是否掌握", "区分 prompt、embedding 和 RAG", "复盘模型评测与安全指标"],
+        },
+        "evidence-tracing-quiz": {
+          title: "论文阅读与证据溯源题",
+          eyebrow: "Question Bank / 临床科研",
+          summary: "训练 PICO、研究设计、证据等级、引用来源和外推限制的判断。",
+          tags: ["题库", "临床科研", "证据"],
+          materialUrl: "learning-question-bank.html",
+          materialLabel: "进入证据溯源题库",
+          outline: ["拆解 PICO 和研究设计", "判断证据等级与偏倚风险", "把结论追溯到来源和适用人群"],
+        },
+        "first-visit-history-taking": {
+          title: "初诊问诊路径训练",
+          eyebrow: "Standardized Patient / 医学教育",
+          summary: "用标准病人脚本练习开放式问诊、重点追问、病史完整性和沟通反馈。",
+          tags: ["标准病人", "医学教育", "问诊"],
+          materialUrl: "learning-standardized-patient.html",
+          materialLabel: "进入标准病人训练",
+          outline: ["从开放式问题进入主诉", "补全现病史、既往史和用药史", "用反馈表检查遗漏信息"],
+        },
+        "chest-pain-red-flags": {
+          title: "胸痛问诊与危险信号",
+          eyebrow: "Standardized Patient / 心血管",
+          summary: "围绕胸痛标准化病例，训练鉴别诊断、危险信号识别和下一步检查选择。",
+          tags: ["标准病人", "心血管", "胸痛"],
+          materialUrl: "learning-standardized-patient.html",
+          materialLabel: "进入胸痛训练入口",
+          outline: ["识别胸痛危险信号", "形成鉴别诊断清单", "选择下一步检查和转诊路径"],
+        },
+        "multimodal-medical-ai-video": {
+          title: "多模态医学 AI 视频清单",
+          eyebrow: "Video / 影像病理",
+          summary: "整理影像、病理、报告和多源数据整合相关视频，支持多模态专题学习。",
+          tags: ["视频", "影像病理", "多模态"],
+          materialUrl: "learning-videos.html",
+          materialLabel: "查看多模态视频模块",
+          outline: ["理解影像、病理和文本的融合方式", "观察报告结构化任务", "连接模型评测和临床工作流"],
+        },
+        "imaging-report-structure": {
+          title: "影像报告结构化练习",
+          eyebrow: "Question Bank / 影像病理",
+          summary: "练习从影像报告中提取关键发现、结构化字段和后续建议。",
+          tags: ["题库", "影像病理", "报告结构化"],
+          materialUrl: "learning-question-bank.html",
+          materialLabel: "进入影像报告练习",
+          outline: ["提取部位、发现和结论", "区分已证实事实与建议", "检查结构化字段完整性"],
+        },
+        "science-ai-intro": {
+          title: "医学 AI 是什么",
+          eyebrow: "Popular Science / 入门",
+          summary: "解释大语言模型、多模态模型、知识库问答和智能体的基本概念。",
+          tags: ["科普", "入门", "公众"],
+          materialUrl: "popular-science.html",
+          materialLabel: "查看科普模块",
+          outline: ["用公众语言解释模型能力", "区分问答、检索和智能体", "说明医学场景中的人工复核"],
+        },
+        "science-ai-safety": {
+          title: "为什么不能替代医生",
+          eyebrow: "Popular Science / 安全",
+          summary: "用真实边界说明幻觉、责任、隐私、适用人群和人工复核。",
+          tags: ["科普", "安全", "边界"],
+          materialUrl: "popular-science.html",
+          materialLabel: "查看医学 AI 安全科普",
+          outline: ["理解幻觉和不确定表达", "识别需要就医的危险信号", "知道 AI 回答不能替代诊疗"],
+        },
+        "science-data-deidentification": {
+          title: "医疗数据如何脱敏",
+          eyebrow: "Popular Science / 数据",
+          summary: "科普姓名、住院号、影像号、日期、罕见病信息等隐私风险。",
+          tags: ["科普", "数据", "脱敏"],
+          materialUrl: "popular-science.html",
+          materialLabel: "查看数据脱敏科普",
+          outline: ["识别直接和间接身份信息", "理解日期、地点和罕见病风险", "建立共享数据前的检查清单"],
+        },
+        "science-ai-response": {
+          title: "普通人如何看 AI 回答",
+          eyebrow: "Popular Science / 工具",
+          summary: "关注来源、证据等级、禁忌、建议去医院的信号和不确定表达。",
+          tags: ["科普", "工具", "AI 回答"],
+          materialUrl: "popular-science.html",
+          materialLabel: "查看 AI 回答解读科普",
+          outline: ["先看来源和适用人群", "关注禁忌和红旗症状", "用不确定表达判断回答质量"],
+        },
+      };
+
+      const selectedKey = new URLSearchParams(window.location.search).get("course") || "medical-ai-intro";
+      const course = courses[selectedKey] || courses["medical-ai-intro"];
+      const videoUrl = `https://player.bilibili.com/player.html?bvid=${courseVideo.bvid}&page=1&high_quality=1&autoplay=0`;
+
+      document.title = `${course.title} | Freedom AI`;
+      document.querySelector("#courseEyebrow").textContent = course.eyebrow;
+      document.querySelector("#courseTitle").textContent = course.title;
+      document.querySelector("#courseSummary").textContent = course.summary;
+      document.querySelector("#courseVideoFrame").src = videoUrl;
+      document.querySelector("#courseSourceLink").href = courseVideo.sourceUrl;
+      document.querySelector("#courseMaterialLink").href = course.materialUrl;
+      document.querySelector("#courseMaterialLink").textContent = course.materialLabel;
+      document.querySelector("#courseTags").innerHTML = course.tags.map((tag) => `<span class="tag green">${tag}</span>`).join("");
+      document.querySelector("#courseOutline").innerHTML = course.outline.map((item) => `<li>${item}</li>`).join("");
+    </script>
+  </body>
+</html>

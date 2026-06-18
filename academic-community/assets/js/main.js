@@ -26,7 +26,7 @@ const forumTagLabels = {
 
 const siteNavItems = [
   { href: "index.html", label: "首页", active: ["index.html", "gmai-license.html", ""] },
-  { href: "learning.html", label: "内容", active: ["learning.html", "tutorials.html", "learning-videos.html", "learning-tutorial.html", "learning-question-bank.html", "learning-standardized-patient.html", "teaching-open-tutorials.html", "teaching-question-bank.html", "teaching-videos.html", "teaching-virtual-patient.html"] },
+  { href: "learning.html", label: "内容", active: ["learning.html", "learning-item.html", "tutorials.html", "learning-videos.html", "learning-tutorial.html", "learning-question-bank.html", "learning-standardized-patient.html", "teaching-open-tutorials.html", "teaching-question-bank.html", "teaching-videos.html", "teaching-virtual-patient.html"] },
   { href: "network.html", label: "社区", active: ["network.html", "network-yu-guangjun.html"] },
   { href: "community.html", label: "讨论区", active: ["community.html"] },
   { href: "datasets.html", label: "数据集", active: ["datasets.html"] },
