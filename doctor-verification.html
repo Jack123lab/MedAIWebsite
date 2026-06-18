@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>医生与医学生认证 | Happy medical AI</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/main.js" defer></script>
+  </head>
+  <body class="medical-community-page verification-page">
+    <header class="site-header">
+      <nav class="nav" aria-label="主导航">
+        <a class="brand" href="index.html"><span class="brand-mark">H</span><span class="brand-text"><strong>Happy medical AI</strong><span>医学 AI 社区</span></span></a>
+        <div class="nav-links">
+          <a href="index.html">首页</a>
+          <a href="tutorials.html">课程</a>
+          <a href="community.html">医疗社区</a>
+          <a href="community.html">讨论区</a>
+          <a href="datasets-tools.html">数据集</a>
+          <a href="crowdsourcing.html">众包平台</a>
+          <a href="benchmark.html">Benchmark</a>
+          <a href="profile.html">个人账户</a>
+          <a href="about.html">About（collaborator）</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="page-title verification-title">
+        <div class="container auth-title-grid">
+          <div>
+            <p class="eyebrow">资格认证</p>
+            <h1>医生与医学生认证</h1>
+            <p>进入科室区域讨论前，请提交医生资格认证或医学生在读证明。认证通过后再开放发帖与专业讨论权限。</p>
+          </div>
+          <div class="auth-state-card">
+            <span>当前状态</span>
+            <strong>待认证</strong>
+            <p>仅用于社区权限审核，请上传清晰、可核验的证明材料。</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="section compact">
+        <div class="container verification-shell">
+          <section class="auth-panel verification-form-panel">
+            <div class="console-head light">
+              <div><span class="console-kicker">提交资料</span><h2>认证申请</h2></div>
+              <span class="console-status pale">人工审核</span>
+            </div>
+            <form class="auth-form" id="verificationForm">
+              <div class="form-split">
+                <label>真实姓名<input type="text" name="realName" maxlength="30" required /></label>
+                <label>身份类型<select name="role" required><option value="doctor">医生</option><option value="student">医学生</option></select></label>
+              </div>
+              <div class="form-split">
+                <label>医院/学校<input type="text" name="institution" maxlength="60" required /></label>
+                <label>科室/专业<input type="text" name="specialty" maxlength="40" placeholder="如心内科、临床医学" /></label>
+              </div>
+              <label>证明类型<select name="proofType" required><option value="doctor_license">医师资格证或执业证明</option><option value="student_proof">学生证或在读证明</option></select></label>
+              <label>上传证明<input type="file" name="proofFile" accept="image/*,.pdf" required /></label>
+              <div class="privacy-panel light">
+                <label class="check-line"><input type="checkbox" required /> 我确认提交材料真实有效，并同意仅用于社区资格审核</label>
+                <span>请遮盖与认证无关的证件号码、住址等敏感信息；审核完成后按平台规则处理材料。</span>
+              </div>
+              <button class="btn primary full-width" type="submit">提交认证申请</button>
+            </form>
+            <p class="form-status" id="verificationStatus" role="status"></p>
+          </section>
+
+          <aside class="auth-panel verification-note-panel">
+            <h2>准入要求</h2>
+            <div class="policy-steps">
+              <div><strong>医生</strong><span>提交医师资格证、执业证明或医院在职证明。</span></div>
+              <div><strong>医学生</strong><span>提交学生证、学信网信息或学校在读证明。</span></div>
+              <div><strong>审核后</strong><span>通过后可进入科室区域发帖、评论和参与专业讨论。</span></div>
+            </div>
+            <a class="btn" href="community.html#postForm">返回讨论区</a>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div><h3>Happy medical AI</h3><p>通过资格审核与脱敏提醒，让科室讨论更适合专业医学场景。</p></div>
+        <div><h4>讨论</h4><a href="community.html">问答区</a></div>
+        <div><h4>学习</h4><a href="tutorials.html">课程</a></div>
+        <div><h4>个人</h4><a href="profile.html">个人账户</a></div>
+      </div>
+    </footer>
+    <script>
+      (() => {
+        const form = document.querySelector("#verificationForm");
+        const status = document.querySelector("#verificationStatus");
+        form?.addEventListener("submit", (event) => {
+          event.preventDefault();
+          status.textContent = "认证申请已提交，等待人工审核。";
+          form.reset();
+        });
+      })();
+    </script>
+  </body>
+</html>
