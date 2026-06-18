@@ -38,74 +38,156 @@
         <div class="container data-tools-title-grid">
           <div>
             <p class="eyebrow">Tool Library</p>
-            <h1>工具库</h1>
-            <p>医学 AI 工具库独立展示 MCP 工具网关、免费工具集合、官网链接和资源上架流程。</p>
+            <h1>医学 AI 工具库</h1>
+            <p>按 Kaggle Competitions 的浏览体验重整：左侧筛选方向，右侧以任务卡片展示可落地的医学 AI 方案、证据要求和建设状态。</p>
+            <div class="competition-tabs" aria-label="工具库视图">
+              <a class="active" href="#tool-directory">全部方案</a>
+              <a href="#tool-directory">临床工作流</a>
+              <a href="#tool-directory">研究与数据</a>
+              <a href="#tool-directory">治理合规</a>
+              <a href="#skill-column">Skill 专栏</a>
+            </div>
           </div>
-          <aside class="tool-refresh-card" aria-label="热点更新状态">
-            <span>每日推送</span>
-            <strong id="hotToolDate">今日热点</strong>
-            <p>可通过 <code>window.HMAI_TOOL_FEED_URL</code> 接入实时工具榜单；未配置接口时展示本站精选工具。</p>
+          <aside class="solution-focus-card" aria-label="六类方案">
+            <span>Clinical / Research / Bioinformatics / Regulatory</span>
+            <strong>六类重点方案</strong>
+            <p>循证 API、虚拟医院、Agentic hospital、AI-native HIS、AI-native Up2date、中医知识图谱。</p>
           </aside>
         </div>
       </section>
 
-      <section class="section compact" id="market-overview">
-        <div class="container market-grid">
-          <article class="market-panel featured">
-            <span class="tag blue">MCP</span>
-            <h2>免费医学 MCP 工具网关</h2>
-            <p>把文献检索、指南问答、病例结构化、脱敏检查、影像报告读取等能力封装为可调用工具，面向用户免费开放。</p>
-            <div class="market-meta"><span>免费使用</span><span>权限控制</span><span>审计日志</span></div>
-          </article>
-          <article class="market-panel">
-            <span class="tag gold">工具</span>
-            <h2>工具集合免费开放</h2>
-            <p>面向医生、学生、医院和研究团队开放工具包，覆盖 RAG、报告总结、评测基准和教学题库。</p>
-            <div class="price-row"><strong>工具不收费</strong><span>开源与自研工具共同开放</span></div>
-          </article>
-          <article class="market-panel">
-            <span class="tag green">数据集</span>
-            <h2>数据集独立入口</h2>
-            <p>开放数据集、脱敏样例、标注集和评测集已拆分到数据集页面。</p>
-            <div class="price-row"><strong>合规共享</strong><a href="datasets.html">查看数据集</a></div>
-          </article>
-        </div>
-      </section>
-
-      <section class="section tool-directory-section" id="tool-directory">
-        <div class="container">
-          <div class="section-head clean">
+      <section class="section compact tool-market-section" id="market-overview">
+        <div class="container tool-market-layout">
+          <aside class="competition-filter-panel" aria-label="工具筛选">
             <div>
-              <p class="eyebrow">资源目录</p>
-              <h2>医学 AI 工具目录</h2>
-              <p>每个工具条目都保留外部链接、适用场景和合规备注。工具资源明确免费开放，便于用户学习、试用、收藏和共同完善。</p>
+              <span class="filter-label">方向</span>
+              <a class="active" href="#tool-directory"><strong>全部方案</strong><em>7</em></a>
+              <a href="#tool-directory"><strong>Clinical</strong><em>3</em></a>
+              <a href="#tool-directory"><strong>Research</strong><em>2</em></a>
+              <a href="#tool-directory"><strong>Bioinformatics</strong><em>1</em></a>
+              <a href="#tool-directory"><strong>Regulatory</strong><em>2</em></a>
+              <a href="#skill-column"><strong>Skill</strong><em>1</em></a>
             </div>
-          </div>
+            <div>
+              <span class="filter-label">状态</span>
+              <label><input type="checkbox" checked /> 可试用</label>
+              <label><input type="checkbox" checked /> 共建中</label>
+              <label><input type="checkbox" /> 合规评估</label>
+            </div>
+          </aside>
 
-          <div class="resource-directory-grid">
-            <article class="resource-panel">
-              <div class="resource-panel-head"><span>免费工具集</span><strong>医学 AI 免费工具集</strong></div>
-              <a href="https://www.huatuogpt.cn/" target="_blank" rel="noreferrer"><strong>华佗 GPT</strong><span>医疗问答、中文医学大模型体验</span></a>
-              <a href="https://www.monai.io/" target="_blank" rel="noreferrer"><strong>MONAI</strong><span>影像模型训练、标注与评估</span></a>
-              <a href="https://www.ncbi.nlm.nih.gov/research/pubtator/" target="_blank" rel="noreferrer"><strong>PubTator</strong><span>生物医学实体识别与文献标注</span></a>
-              <a href="https://github.com/microsoft/BiomedCLIP" target="_blank" rel="noreferrer"><strong>BiomedCLIP</strong><span>生物医学图文检索与多模态评测</span></a>
+          <div class="competition-list" id="tool-directory">
+            <div class="competition-list-head">
+              <div>
+                <p class="eyebrow">Solutions</p>
+                <h2>医学 AI 六类方案</h2>
+              </div>
+              <a href="datasets.html">查看数据集</a>
+            </div>
+
+            <article class="tool-title-card" aria-label="挂号网站 Mock API">
+              <span class="competition-type">API Mock · Registration</span>
+              <h3>挂号网站 Mock API</h3>
+              <p>用于演示挂号网站的科室、医生、号源、预约、取消和支付前置流程，可作为虚拟医院与 HIS 原型的接口沙盒。</p>
+              <div class="competition-tags"><span>科室号源</span><span>预约流程</span><span>接口沙盒</span></div>
             </article>
 
-            <article class="resource-panel">
-              <div class="resource-panel-head"><span>MCP</span><strong>医学 MCP 工具方向</strong></div>
-              <a href="#market-overview"><strong>文献检索工具</strong><span>用于医学文献查询、摘要、证据追踪和引用校验</span></a>
-              <a href="#market-overview"><strong>指南问答工具</strong><span>面向指南切片、来源引用和答案审核</span></a>
-              <a href="#market-overview"><strong>病例结构化工具</strong><span>辅助病历字段抽取、摘要生成和人工复核流程</span></a>
-              <a href="#market-overview"><strong>脱敏检查工具</strong><span>面向文本提交前的身份信息和病案标识检查</span></a>
+            <article class="skill-column-card" id="skill-column">
+              <div class="skill-column-head">
+                <div>
+                  <span class="competition-type">Skill Store · anbeime/skill</span>
+                  <h3>Skill 专栏</h3>
+                  <p>摘录自 anbeime/skill：一个聚合官方 Agent Skills、本地中文技能、备份包和 ClawHub CLI 的技能商店，可为医学 AI 工具库提供可复用的技能分类、索引和分发方式。</p>
+                </div>
+                <a href="https://github.com/anbeime/skill" target="_blank" rel="noreferrer">GitHub</a>
+              </div>
+              <div class="skill-summary-grid">
+                <div><strong>243</strong><span>总技能</span></div>
+                <div><strong>182</strong><span>官方技能</span></div>
+                <div><strong>61</strong><span>本地技能</span></div>
+                <div><strong>24h</strong><span>自动同步</span></div>
+              </div>
+              <div class="skill-column-grid">
+                <section>
+                  <h4>知识结构</h4>
+                  <ul>
+                    <li>官方技能来自 Anthropic、Vercel、Cloudflare、Hugging Face、Trail of Bits、Sentry 等团队。</li>
+                    <li>本地中文技能覆盖内容创作、视频、PPT、语音、文档处理、智能体协作、产品管理和可视化。</li>
+                    <li>支持 JSON / CSV 数据导出，适合做工具目录、能力画像和二次开发。</li>
+                  </ul>
+                </section>
+                <section>
+                  <h4>可摘录到医学 AI 的库</h4>
+                  <div class="skill-library-list">
+                    <span>docx / xlsx / pdf / pptx 文档处理</span>
+                    <span>paper-analysis-assistant 论文分析</span>
+                    <span>agent-team 多智能体协作</span>
+                    <span>ai-drawio 流程图绘制</span>
+                    <span>frontend-design 工具界面设计</span>
+                    <span>tts / asr 语音转写与合成</span>
+                  </div>
+                </section>
+              </div>
             </article>
 
-            <article class="resource-panel">
-              <div class="resource-panel-head"><span>流程</span><strong>上架与推送流程</strong></div>
-              <ol class="resource-flow">
-                <li><strong>采集</strong><span>编辑后台或接口写入工具名称、热度、官网链接和分类。</span></li>
-                <li><strong>审核</strong><span>检查医疗合规、数据授权和适用人群。</span></li>
-                <li><strong>推送</strong><span>每日自动更新热点卡片，同时保留人工置顶工具。</span></li>
-              </ol>
+            <article class="competition-card featured">
+              <div class="competition-card-main">
+                <span class="competition-type">Clinical · Evidence API</span>
+                <h3>循证 API</h3>
+                <p>把指南、系统综述、真实世界证据和本地知识库封装为可审计 API，支持临床问答、路径推荐、引用溯源和人工复核。</p>
+                <div class="competition-tags"><span>指南引用</span><span>证据分级</span><span>审计日志</span></div>
+              </div>
+              <div class="competition-stats"><strong>Clinical</strong><span>Ready for pilot</span></div>
+            </article>
+
+            <article class="competition-card">
+              <div class="competition-card-main">
+                <span class="competition-type">Clinical · Simulation</span>
+                <h3>虚拟医院</h3>
+                <p>用虚拟患者、科室角色和教学病例构建训练场景，服务医学生问诊、病历书写、诊疗路径演练和 OSCE 训练。</p>
+                <div class="competition-tags"><span>虚拟患者</span><span>教学题库</span><span>评测反馈</span></div>
+              </div>
+              <div class="competition-stats"><strong>Clinical</strong><span>Prototype</span></div>
+            </article>
+
+            <article class="competition-card">
+              <div class="competition-card-main">
+                <span class="competition-type">Clinical · Multi-agent</span>
+                <h3>Agentic hospital</h3>
+                <p>将导诊、病历摘要、检查解读、科研助理和质控 Agent 接入医院流程，由权限、日志和医生确认共同约束边界。</p>
+                <div class="competition-tags"><span>多 Agent</span><span>任务编排</span><span>医生确认</span></div>
+              </div>
+              <div class="competition-stats"><strong>Regulatory</strong><span>In design</span></div>
+            </article>
+
+            <article class="competition-card">
+              <div class="competition-card-main">
+                <span class="competition-type">Hospital IT · HIS</span>
+                <h3>AI-native HIS</h3>
+                <p>以 AI 原生方式重构医嘱、病历、质控、随访和运营分析界面，让 HIS 从记录系统升级为智能协同工作台。</p>
+                <div class="competition-tags"><span>病历结构化</span><span>质控规则</span><span>随访运营</span></div>
+              </div>
+              <div class="competition-stats"><strong>Clinical</strong><span>Roadmap</span></div>
+            </article>
+
+            <article class="competition-card">
+              <div class="competition-card-main">
+                <span class="competition-type">Research · Knowledge update</span>
+                <h3>AI-native Up2date</h3>
+                <p>面向医生的持续知识更新系统，聚合论文、指南、药品说明书和临床试验进展，输出可追踪、可复核的更新摘要。</p>
+                <div class="competition-tags"><span>文献监测</span><span>指南更新</span><span>个性化订阅</span></div>
+              </div>
+              <div class="competition-stats"><strong>Research</strong><span>Beta plan</span></div>
+            </article>
+
+            <article class="competition-card">
+              <div class="competition-card-main">
+                <span class="competition-type">Bioinformatics · TCM KG</span>
+                <h3>中医知识图谱</h3>
+                <p>整理证候、方剂、中药、症状、现代研究和安全性证据，形成可检索、可解释、可与现代医学知识互联的知识图谱。</p>
+                <div class="competition-tags"><span>知识图谱</span><span>方证关联</span><span>安全证据</span></div>
+              </div>
+              <div class="competition-stats"><strong>Bioinformatics</strong><span>Dataset needed</span></div>
             </article>
           </div>
         </div>
