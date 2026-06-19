@@ -1,0 +1,363 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>添加数据集 | Freedom AI</title>
+    <meta name="description" content="Freedom AI 数据集上传页面，收集数据集文件、元数据、许可、可见性、版本说明和合规审核信息。" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <style>
+      .dataset-upload-page .upload-hero {
+        background: #f7faf8;
+      }
+
+      .dataset-upload-page .upload-shell {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 320px;
+        gap: 24px;
+        align-items: start;
+      }
+
+      .dataset-upload-page .upload-form-card,
+      .dataset-upload-page .upload-side-panel {
+        border: 1px solid #dce7e2;
+        border-radius: 8px;
+        background: #ffffff;
+        box-shadow: 0 10px 26px rgba(23, 39, 56, 0.06);
+      }
+
+      .dataset-upload-page .upload-form-card {
+        padding: 22px;
+      }
+
+      .dataset-upload-page .upload-side-panel {
+        display: grid;
+        gap: 18px;
+        padding: 18px;
+        position: sticky;
+        top: 92px;
+      }
+
+      .dataset-upload-page .upload-step {
+        display: grid;
+        gap: 14px;
+        padding: 20px 0;
+        border-bottom: 1px solid #e7efeb;
+      }
+
+      .dataset-upload-page .upload-step:first-child {
+        padding-top: 0;
+      }
+
+      .dataset-upload-page .upload-step:last-child {
+        border-bottom: 0;
+        padding-bottom: 0;
+      }
+
+      .dataset-upload-page .upload-step h2,
+      .dataset-upload-page .upload-side-panel h2 {
+        margin: 0;
+        color: #172738;
+        font-size: 20px;
+      }
+
+      .dataset-upload-page .upload-step p,
+      .dataset-upload-page .upload-side-panel p {
+        margin: 0;
+        color: var(--muted);
+      }
+
+      .dataset-upload-page .upload-grid {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .dataset-upload-page .upload-field {
+        display: grid;
+        gap: 7px;
+      }
+
+      .dataset-upload-page .upload-field.full {
+        grid-column: 1 / -1;
+      }
+
+      .dataset-upload-page .upload-field label,
+      .dataset-upload-page .upload-check label {
+        color: #172738;
+        font-size: 13px;
+        font-weight: 850;
+      }
+
+      .dataset-upload-page .upload-field input,
+      .dataset-upload-page .upload-field select,
+      .dataset-upload-page .upload-field textarea {
+        width: 100%;
+        border: 1px solid #d5e2dd;
+        border-radius: 8px;
+        padding: 11px 12px;
+        background: #ffffff;
+        color: #172738;
+        font: inherit;
+      }
+
+      .dataset-upload-page .upload-field textarea {
+        min-height: 110px;
+        resize: vertical;
+      }
+
+      .dataset-upload-page .upload-dropzone {
+        display: grid;
+        place-items: center;
+        min-height: 170px;
+        border: 1px dashed #9fcbbb;
+        border-radius: 8px;
+        padding: 22px;
+        background: #f8fcfa;
+        text-align: center;
+      }
+
+      .dataset-upload-page .upload-dropzone strong {
+        color: #172738;
+      }
+
+      .dataset-upload-page .upload-dropzone span {
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .dataset-upload-page .upload-checks {
+        display: grid;
+        gap: 10px;
+      }
+
+      .dataset-upload-page .upload-check {
+        display: grid;
+        grid-template-columns: 18px minmax(0, 1fr);
+        gap: 10px;
+        align-items: start;
+        border: 1px solid #e1ebe6;
+        border-radius: 8px;
+        padding: 12px;
+        background: #fbfdfc;
+      }
+
+      .dataset-upload-page .upload-check input {
+        margin-top: 2px;
+      }
+
+      .dataset-upload-page .upload-side-list {
+        display: grid;
+        gap: 10px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .dataset-upload-page .upload-side-list li {
+        border: 1px solid #e4ebe8;
+        border-radius: 8px;
+        padding: 11px;
+        color: #405466;
+        font-size: 13px;
+        font-weight: 750;
+      }
+
+      @media (max-width: 900px) {
+        .dataset-upload-page .upload-shell {
+          grid-template-columns: 1fr;
+        }
+
+        .dataset-upload-page .upload-side-panel {
+          position: static;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .dataset-upload-page .upload-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .dataset-upload-page .upload-form-card {
+          padding: 16px;
+        }
+      }
+    </style>
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/main.js" defer></script>
+  </head>
+  <body class="dataset-upload-page">
+    <header class="site-header">
+      <nav class="nav" aria-label="主导航">
+        <a class="brand" href="index.html"><span class="brand-mark">F</span><span class="brand-text"><strong>Freedom AI</strong><span>医学 AI 社区</span></span></a>
+        <form class="site-search" role="search" action="search.html" method="get" aria-label="站内搜索">
+          <label class="sr-only" for="siteSearchInput">搜索</label>
+          <input id="siteSearchInput" name="q" type="search" placeholder="搜索" autocomplete="off" />
+          <button type="submit">搜索</button>
+        </form>
+        <div class="nav-links">
+          <a href="index.html">首页</a>
+          <a href="learning.html">内容</a>
+          <a href="network.html">社区</a>
+          <a href="community.html">讨论区</a>
+          <a href="datasets.html">数据集</a>
+          <a href="tools.html">工具库</a>
+          <a href="benchmark.html">Benchmark</a>
+          <a href="crowdsourcing.html">众包平台</a>
+          <a href="profile.html">用户</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="page-title upload-hero">
+        <div class="container">
+          <p class="eyebrow">New Dataset</p>
+          <h1>添加数据集</h1>
+          <p>参考 Kaggle 的数据集发布流程，先完成文件、元数据、标签、许可、可见性和版本说明，再进入医学数据合规审核。</p>
+          <div class="button-row"><a class="btn" href="datasets.html">返回数据集</a><a class="btn" href="contribute.html">投稿与收录</a></div>
+        </div>
+      </section>
+
+      <section class="section compact">
+        <div class="container upload-shell">
+          <form class="upload-form-card" action="#" method="post">
+            <section class="upload-step">
+              <div>
+                <p class="eyebrow">Step 1</p>
+                <h2>上传文件</h2>
+                <p>支持上传压缩包、CSV、JSONL、Parquet、DICOM 清单或数据字典。公开前仅保存为待审核草稿。</p>
+              </div>
+              <label class="upload-dropzone" for="datasetFiles">
+                <span><strong>选择数据文件或拖拽到这里</strong><br />建议同时上传 README、数据字典和样例记录</span>
+                <input id="datasetFiles" name="datasetFiles" type="file" multiple />
+              </label>
+            </section>
+
+            <section class="upload-step">
+              <div>
+                <p class="eyebrow">Step 2</p>
+                <h2>数据集信息</h2>
+              </div>
+              <div class="upload-grid">
+                <div class="upload-field">
+                  <label for="datasetTitle">标题</label>
+                  <input id="datasetTitle" name="datasetTitle" type="text" placeholder="例如：胸部 CT 病灶标注样例集" />
+                </div>
+                <div class="upload-field">
+                  <label for="datasetSlug">URL 标识</label>
+                  <input id="datasetSlug" name="datasetSlug" type="text" placeholder="chest-ct-lesion-sample" />
+                </div>
+                <div class="upload-field">
+                  <label for="datasetDomain">医学领域</label>
+                  <select id="datasetDomain" name="datasetDomain">
+                    <option>影像</option>
+                    <option>病历 / EHR</option>
+                    <option>文本 / NLP</option>
+                    <option>生理信号</option>
+                    <option>组学</option>
+                    <option>Benchmark</option>
+                  </select>
+                </div>
+                <div class="upload-field">
+                  <label for="datasetTask">任务类型</label>
+                  <select id="datasetTask" name="datasetTask">
+                    <option>分类 / 预测</option>
+                    <option>分割 / 检测</option>
+                    <option>问答 / RAG</option>
+                    <option>标注 / 质控</option>
+                    <option>模型评测</option>
+                    <option>研究复现</option>
+                  </select>
+                </div>
+                <div class="upload-field full">
+                  <label for="datasetSummary">摘要</label>
+                  <textarea id="datasetSummary" name="datasetSummary" placeholder="说明数据来源、样本规模、字段、标注方法、适用场景和主要限制。"></textarea>
+                </div>
+                <div class="upload-field">
+                  <label for="datasetTags">标签</label>
+                  <input id="datasetTags" name="datasetTags" type="text" placeholder="CT, DICOM, segmentation, deidentified" />
+                </div>
+                <div class="upload-field">
+                  <label for="datasetLicense">许可</label>
+                  <select id="datasetLicense" name="datasetLicense">
+                    <option>需审核后开放</option>
+                    <option>CC BY 4.0</option>
+                    <option>CC BY-NC 4.0</option>
+                    <option>研究用途授权</option>
+                    <option>机构内部协作</option>
+                  </select>
+                </div>
+                <div class="upload-field">
+                  <label for="datasetVisibility">可见性</label>
+                  <select id="datasetVisibility" name="datasetVisibility">
+                    <option>草稿</option>
+                    <option>公开元数据，文件需申请</option>
+                    <option>公开样例</option>
+                    <option>仅限受邀协作者</option>
+                  </select>
+                </div>
+                <div class="upload-field">
+                  <label for="datasetVersion">版本说明</label>
+                  <input id="datasetVersion" name="datasetVersion" type="text" placeholder="v1.0 初始提交，含 200 例脱敏样例" />
+                </div>
+              </div>
+            </section>
+
+            <section class="upload-step">
+              <div>
+                <p class="eyebrow">Step 3</p>
+                <h2>医学数据合规检查</h2>
+              </div>
+              <div class="upload-checks">
+                <div class="upload-check"><input id="checkDeid" type="checkbox" /><label for="checkDeid">已移除患者姓名、身份证号、联系方式、住院号、影像号、具体地址等可识别信息。</label></div>
+                <div class="upload-check"><input id="checkAuth" type="checkbox" /><label for="checkAuth">已确认数据来源、授权范围、伦理审批或公开许可，不上传无权共享的数据。</label></div>
+                <div class="upload-check"><input id="checkDictionary" type="checkbox" /><label for="checkDictionary">已提供数据字典、字段解释、采集时间范围、缺失值说明和质量控制记录。</label></div>
+                <div class="upload-check"><input id="checkUse" type="checkbox" /><label for="checkUse">已说明用途边界、禁止用途、引用方式和人工审核联系人。</label></div>
+              </div>
+            </section>
+
+            <section class="upload-step">
+              <div>
+                <p class="eyebrow">Step 4</p>
+                <h2>发布前操作</h2>
+              </div>
+              <div class="button-row">
+                <button class="btn primary" type="submit">保存为待审核草稿</button>
+                <a class="btn" href="datasets.html">取消</a>
+              </div>
+            </section>
+          </form>
+
+          <aside class="upload-side-panel">
+            <section>
+              <p class="eyebrow">Publishing checklist</p>
+              <h2>上架标准</h2>
+              <p>数据集页面会展示标题、摘要、任务、标签、文件格式、许可、更新时间、可用性评分、版本和关联任务。</p>
+            </section>
+            <ul class="upload-side-list">
+              <li>文件：数据主体、README、数据字典、样例记录</li>
+              <li>发现：搜索关键词、领域标签、任务类型、格式</li>
+              <li>许可：共享范围、引用方式、禁止用途</li>
+              <li>合规：脱敏证明、授权说明、人工复核</li>
+              <li>后续：关联众包、Benchmark 或讨论区</li>
+            </ul>
+            <div class="button-row">
+              <a class="btn" href="crowdsourcing.html">关联众包任务</a>
+              <a class="btn" href="benchmark.html">发布评测集</a>
+            </div>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div><h3>Freedom AI</h3><p>数据集上传以元数据完整、授权清晰、脱敏可复核为前提。</p></div>
+        <div><h4>数据</h4><a href="datasets.html">数据集</a><a href="dataset-upload.html">添加数据集</a></div>
+        <div><h4>内容</h4><a href="learning.html">内容</a><a href="contribute.html">投稿与收录</a></div>
+        <div><h4>任务</h4><a href="crowdsourcing.html">众包平台</a><a href="benchmark.html">Benchmark</a></div>
+      </div>
+    </footer>
+  </body>
+</html>

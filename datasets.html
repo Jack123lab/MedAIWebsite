@@ -121,6 +121,19 @@
         background: #ffffff;
       }
 
+      .data-tools-page .dataset-trending-card.dataset-card[data-card-link-ready="true"] {
+        cursor: pointer;
+        transition: border-color 0.18s ease, box-shadow 0.18s ease, transform 0.18s ease;
+      }
+
+      .data-tools-page .dataset-trending-card.dataset-card[data-card-link-ready="true"]:hover,
+      .data-tools-page .dataset-trending-card.dataset-card[data-card-link-ready="true"]:focus-visible {
+        border-color: #0f8a6a;
+        box-shadow: 0 10px 26px rgba(23, 39, 56, 0.09);
+        transform: translateY(-1px);
+        outline: none;
+      }
+
       .data-tools-page .dataset-trending-card[hidden] {
         display: none !important;
       }
@@ -312,7 +325,7 @@
             </div>
             <div class="dataset-browser-actions">
               <button class="btn primary" type="button" data-upload-roadmap-open aria-controls="dataset-upload">上传数据集</button>
-              <a class="btn dataset-add-btn" href="contribute.html"><span aria-hidden="true">+</span> 添加数据集</a>
+              <a class="btn dataset-add-btn" href="dataset-upload.html"><span aria-hidden="true">+</span> 添加数据集</a>
             </div>
           </div>
 
@@ -446,7 +459,7 @@
                 <p>用于机构展示脱敏样例、授权说明、数据字典、质量报告和用途边界，正式共享前进入合规审核。</p>
                 <div class="dataset-meta-row"><span>CSV / PDF</span><span>审核后开放</span><span>Updated 2026.06</span><span>Usability 8.0</span></div>
               </div>
-              <aside class="dataset-card-stats"><span>浏览 3.1k</span><strong>收藏 244</strong><a href="contribute.html">添加数据</a></aside>
+              <aside class="dataset-card-stats"><span>浏览 3.1k</span><strong>收藏 244</strong><a href="dataset-upload.html">添加数据</a></aside>
             </article>
           </div>
 
@@ -510,7 +523,7 @@
     <footer class="site-footer">
       <div class="container footer-grid">
         <div><h3>Freedom AI</h3><p>数据集入口强调授权、脱敏、质量和可追溯。</p></div>
-        <div><h4>数据</h4><a href="datasets.html">数据集</a><a href="#dataset-browser">浏览数据</a></div>
+        <div><h4>数据</h4><a href="datasets.html">数据集</a><a href="dataset-upload.html">添加数据集</a></div>
         <div><h4>工具</h4><a href="tools.html">工具库</a></div>
         <div><h4>平台</h4><a href="benchmark.html">评测基准</a><a href="crowdsourcing.html">众包平台</a></div>
         <div><h4>学习</h4><a href="learning.html">教学</a><a href="community.html">讨论区</a></div>

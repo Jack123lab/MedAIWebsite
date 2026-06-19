@@ -6,6 +6,44 @@
     <title>内容模块 | Freedom AI</title>
     <meta name="description" content="Freedom AI 内容分为 Tutorial、Video、题库、标准病人和科普五个模块，每个模块都有独立页面。" />
     <link rel="stylesheet" href="assets/css/style.css" />
+    <style>
+      .learning-title-compact .container {
+        position: relative;
+      }
+
+      .learning-submit-tag {
+        position: absolute;
+        top: 0;
+        right: 0;
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        min-height: 36px;
+        border: 1px solid #c8eadf;
+        border-radius: 999px;
+        padding: 0 14px;
+        background: #ecfbf5;
+        color: #0f6b53;
+        font-size: 13px;
+        font-weight: 900;
+        text-decoration: none;
+        box-shadow: 0 8px 18px rgba(15, 107, 83, 0.08);
+      }
+
+      .learning-submit-tag:hover,
+      .learning-submit-tag:focus {
+        border-color: #0f8a6a;
+        color: #0b5a46;
+        outline: none;
+      }
+
+      @media (max-width: 760px) {
+        .learning-submit-tag {
+          position: static;
+          margin-bottom: 14px;
+        }
+      }
+    </style>
     <script src="assets/js/main.js" defer></script>
   </head>
   <body>
@@ -33,6 +71,7 @@
     <main>
       <section class="page-title learning-title-compact">
         <div class="container">
+          <a class="learning-submit-tag" href="contribute.html">投稿与收录</a>
           <p class="eyebrow">Content Modules</p>
           <h1>内容模块</h1>
           <p>五个内容方向：Tutorial、Video、题库、标准病人和科普。可在下方内容列表继续筛选。</p>
