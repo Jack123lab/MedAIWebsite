@@ -1860,28 +1860,53 @@ body:not(.login-page) {
 }
 
 .post-action {
-  min-height: 40px;
+  min-height: 34px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  background: #f8fafb;
-  color: var(--text);
-  padding: 0 10px;
+  justify-content: center;
+  gap: 6px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--muted);
+  padding: 0 8px;
   cursor: pointer;
   font-weight: 800;
+  transition: color 0.16s ease, background 0.16s ease;
+}
+
+.post-action:hover {
+  color: #00aeec;
+  background: rgba(0, 174, 236, 0.08);
+}
+
+.post-action-icon {
+  width: 20px;
+  height: 20px;
+  flex: 0 0 20px;
+  display: block;
+  stroke-linecap: round;
+}
+
+.post-action strong {
+  min-width: 1.4em;
+  font-size: 13px;
+  line-height: 1;
 }
 
 .post-action.active {
-  border-color: rgba(215, 38, 61, 0.28);
-  background: #fff1f3;
+  color: #00aeec;
+  background: rgba(0, 174, 236, 0.12);
+}
+
+.post-action.negative.active {
+  color: #00aeec;
+  background: rgba(0, 174, 236, 0.12);
 }
 
 .post-action.favorite.active {
-  border-color: rgba(176, 137, 0, 0.35);
-  background: #fff9df;
+  color: #ff6699;
+  background: rgba(255, 102, 153, 0.12);
 }
 
 .pagination-bar {
@@ -10848,8 +10873,29 @@ body.upload-roadmap-open {
 
 .post-action.negative.active,
 .medical-community-page .post-action.negative.active {
-  border-color: rgba(163, 61, 69, 0.35);
-  background: #fbefef;
+  color: #00aeec;
+  background: rgba(0, 174, 236, 0.12);
+}
+
+.medical-community-page .post-action {
+  border: 0;
+  color: var(--muted);
+  background: transparent;
+}
+
+.medical-community-page .post-action:hover {
+  color: #00aeec;
+  background: rgba(0, 174, 236, 0.08);
+}
+
+.medical-community-page .post-action.active {
+  color: #00aeec;
+  background: rgba(0, 174, 236, 0.12);
+}
+
+.medical-community-page .post-action.favorite.active {
+  color: #ff6699;
+  background: rgba(255, 102, 153, 0.12);
 }
 
 @media (max-width: 1080px) {
