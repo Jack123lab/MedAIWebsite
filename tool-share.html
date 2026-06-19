@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>分享工具 | Freedom AI</title>
+    <meta name="description" content="Freedom AI 分享工具入口，用于提交医学 AI 工具、开源项目、MCP、Prompt、Agent workflow 和临床数据工具。" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <style>
+      .tool-share-page { background: #f7faf8; }
+      .tool-share-hero { background: #ffffff; border-bottom: 1px solid #dce7e2; }
+      .tool-share-grid { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 22px; align-items: start; }
+      .tool-share-card, .tool-share-side { border: 1px solid #dce7e2; border-radius: 8px; background: #fff; box-shadow: 0 10px 24px rgba(23,39,56,.05); }
+      .tool-share-card { padding: 22px; }
+      .tool-share-side { display: grid; gap: 16px; padding: 18px; position: sticky; top: 92px; }
+      .tool-step { display: grid; gap: 14px; padding: 20px 0; border-bottom: 1px solid #e7efeb; }
+      .tool-step:first-child { padding-top: 0; }
+      .tool-step:last-child { border-bottom: 0; padding-bottom: 0; }
+      .tool-step h2, .tool-share-side h2 { margin: 0; color: #172738; font-size: 20px; }
+      .tool-step p, .tool-share-side p { margin: 0; color: var(--muted); }
+      .tool-form-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+      .tool-field { display: grid; gap: 7px; }
+      .tool-field.full { grid-column: 1 / -1; }
+      .tool-field label { color: #172738; font-size: 13px; font-weight: 850; }
+      .tool-field input, .tool-field select, .tool-field textarea { width: 100%; border: 1px solid #d5e2dd; border-radius: 8px; padding: 11px 12px; background: #fff; color: #172738; font: inherit; }
+      .tool-field textarea { min-height: 110px; resize: vertical; }
+      .tool-check-list { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
+      .tool-check-list li { border: 1px solid #e4ebe8; border-radius: 8px; padding: 11px; background: #fbfdfc; color: #405466; font-size: 13px; font-weight: 750; }
+      .tool-preview { display: grid; align-content: end; min-height: 130px; border: 1px solid #cfe3dc; border-radius: 8px; padding: 14px; color: #fff; background: radial-gradient(circle at 26% 22%, rgba(255,255,255,.85), transparent 17%), linear-gradient(135deg, #0f8a6a, #315f9f 58%, #18293d); }
+      .tool-preview span { width: fit-content; border-radius: 999px; padding: 4px 8px; background: rgba(7,28,42,.62); font-size: 12px; font-weight: 900; }
+      @media (max-width: 900px) { .tool-share-grid { grid-template-columns: 1fr; } .tool-share-side { position: static; } }
+      @media (max-width: 640px) { .tool-form-grid { grid-template-columns: 1fr; } .tool-share-card { padding: 16px; } }
+    </style>
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/main.js" defer></script>
+  </head>
+  <body class="tool-share-page">
+    <header class="site-header">
+      <nav class="nav" aria-label="主导航">
+        <a class="brand" href="index.html"><span class="brand-mark">F</span><span class="brand-text"><strong>Freedom AI</strong><span>医学 AI 社区</span></span></a>
+        <form class="site-search" role="search" action="search.html" method="get" aria-label="站内搜索">
+          <label class="sr-only" for="siteSearchInput">搜索</label>
+          <input id="siteSearchInput" name="q" type="search" placeholder="搜索" autocomplete="off" />
+          <button type="submit">搜索</button>
+        </form>
+        <div class="nav-links">
+          <a href="index.html">首页</a>
+          <a href="learning.html">内容</a>
+          <a href="network.html">社区</a>
+          <a href="community.html">讨论区</a>
+          <a href="datasets.html">数据集</a>
+          <a href="tools.html">工具库</a>
+          <a href="benchmark.html">Benchmark</a>
+          <a href="crowdsourcing.html">众包平台</a>
+          <a href="profile.html">用户</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="page-title tool-share-hero">
+        <div class="container">
+          <p class="eyebrow">Share Tool</p>
+          <h1>分享工具</h1>
+          <p>提交医学 AI 工具、开源项目、MCP、Prompt、Agent workflow 或临床数据工具。审核后可进入工具库、数据集关联、Benchmark 或众包任务。</p>
+          <div class="button-row"><a class="btn" href="datasets.html">返回数据集</a><a class="btn" href="tools.html">查看工具库</a></div>
+        </div>
+      </section>
+
+      <section class="section compact">
+        <div class="container tool-share-grid">
+          <form class="tool-share-card" action="#" method="post">
+            <section class="tool-step">
+              <div><p class="eyebrow">Step 1</p><h2>工具身份</h2></div>
+              <div class="tool-form-grid">
+                <div class="tool-field"><label for="toolName">工具名称</label><input id="toolName" name="toolName" type="text" placeholder="例如：医学指南 RAG 助手" /></div>
+                <div class="tool-field"><label for="toolType">工具类型</label><select id="toolType" name="toolType"><option>Web 工具</option><option>开源项目</option><option>MCP / API</option><option>Prompt 模板</option><option>Agent workflow</option><option>临床数据工具</option></select></div>
+                <div class="tool-field"><label for="toolUrl">工具链接</label><input id="toolUrl" name="toolUrl" type="url" placeholder="https://github.com/example/tool" /></div>
+                <div class="tool-field"><label for="toolLicense">许可 / 访问</label><select id="toolLicense" name="toolLicense"><option>免费开放</option><option>开源许可</option><option>需申请</option><option>机构内部</option><option>商业产品</option></select></div>
+                <div class="tool-field full"><label for="toolSummary">工具说明</label><textarea id="toolSummary" name="toolSummary" placeholder="说明适用场景、输入输出、依赖数据、限制、风险和人工审核方式。"></textarea></div>
+              </div>
+            </section>
+
+            <section class="tool-step">
+              <div><p class="eyebrow">Step 2</p><h2>医学适配与审核</h2></div>
+              <div class="tool-form-grid">
+                <div class="tool-field"><label for="toolScenario">适用场景</label><select id="toolScenario" name="toolScenario"><option>临床文本处理</option><option>指南问答</option><option>科研检索</option><option>医学教育</option><option>数据治理</option><option>模型评测</option></select></div>
+                <div class="tool-field"><label for="toolEvidence">证据等级</label><select id="toolEvidence" name="toolEvidence"><option>演示原型</option><option>开源可复现</option><option>真实场景试点</option><option>论文 / Benchmark 支持</option></select></div>
+                <div class="tool-field full"><label for="toolReview">审核说明</label><textarea id="toolReview" name="toolReview" placeholder="说明是否处理医疗数据、是否需要脱敏、是否有引用来源、是否需要医生复核。"></textarea></div>
+              </div>
+            </section>
+
+            <section class="tool-step">
+              <div><p class="eyebrow">Step 3</p><h2>提交</h2></div>
+              <div class="button-row"><button class="btn primary" type="submit">保存为待审核工具</button><a class="btn" href="tools.html">取消</a></div>
+            </section>
+          </form>
+
+          <aside class="tool-share-side">
+            <section><p class="eyebrow">Tool Card</p><h2>展示方式</h2><p>审核通过后，工具会形成独立卡片，显示名称、类型、入口、适用场景、许可、风险提示和关联数据集。</p></section>
+            <div class="tool-preview" aria-hidden="true"><span>工具封面 / 图标位</span></div>
+            <ul class="tool-check-list">
+              <li>提供可访问链接、仓库或 API 文档。</li>
+              <li>说明输入输出、限制和人工复核流程。</li>
+              <li>若处理医疗数据，需说明脱敏与授权边界。</li>
+              <li>可关联数据集、Benchmark 或众包任务。</li>
+            </ul>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div><h3>Freedom AI</h3><p>分享工具入口用于沉淀医学 AI 工具、技能和工作流。</p></div>
+        <div><h4>工具</h4><a href="tools.html">工具库</a><a href="tool-share.html">分享工具</a></div>
+        <div><h4>数据</h4><a href="datasets.html">数据集</a><a href="dataset-upload.html">添加数据集</a></div>
+        <div><h4>任务</h4><a href="benchmark.html">Benchmark</a><a href="crowdsourcing.html">众包平台</a></div>
+      </div>
+    </footer>
+  </body>
+</html>
