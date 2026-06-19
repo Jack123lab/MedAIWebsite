@@ -34,47 +34,62 @@
 
     <main>
       <section class="page-title data-tools-title">
-        <div class="container data-tools-title-grid">
-          <div>
+        <div class="container tools-learn-hero">
+          <div class="tools-learn-copy">
             <p class="eyebrow">Tool Library</p>
             <h1>工具库</h1>
-            <p>页面按三层组织：先看基础库与 Mock API，再看可复用 Skill 专栏，最后看可以组合成什么产品场景。具体接口和例子都保留，但路径更短。</p>
-            <div class="tool-reference">
-              <a href="#market-overview">三层逻辑</a>
-              <a href="#medical-base-tools">基础库</a>
-              <a href="#mock-registration-api">Mock API</a>
-              <a href="#skill-column">Skill 专栏</a>
-              <a href="#tool-scenarios">场景方案</a>
-            </div>
+            <p>像学习路径一样浏览医学 AI 工具：先选一个入口，再进入基础库、Mock API、Skill 专栏或产品场景。每个模块都保留可直接跳转的链接和可复用接口说明。</p>
           </div>
-          <aside class="tool-refresh-card" aria-label="工具库重点方案">
-            <span>Clinical / Research / Bioinformatics / Regulatory</span>
-            <strong>六类重点方案</strong>
-            <p>循证 API、虚拟医院、Agentic hospital、AI-native HIS、AI-native Up2date 和中医知识图谱。</p>
-          </aside>
+          <nav class="tool-reference tools-learn-tabs" aria-label="工具库路径导航">
+            <a href="#market-overview">全部路径</a>
+            <a href="#medical-base-tools">基础库</a>
+            <a href="#mock-registration-api">Mock API</a>
+            <a href="#skill-column">Skill 专栏</a>
+            <a href="#tool-scenarios">场景方案</a>
+          </nav>
         </div>
       </section>
 
       <section class="section compact" id="market-overview">
-        <div class="container market-grid">
-          <article class="market-panel featured">
-            <span class="tag blue">01 Source</span>
-            <h2>能力来源</h2>
-            <p>把医学 AI 能力拆成基础数据、Mock API、可复用 Skill 和场景方案四层，便于医院原型、医生主页和智能体工作流调用。</p>
-            <div class="market-meta"><span>Skill-ready</span><span>MCP-ready</span><span>开源可扩展</span></div>
-          </article>
-          <article class="market-panel">
-            <span class="tag gold">02 Base Tools</span>
-            <h2>基础工具</h2>
-            <p>医生库、药品库、医院库和挂号 Mock API 是页面里的基础数据层，可被医生主页、医院主页、问答助手和预约原型调用。</p>
-            <div class="price-row"><strong>先查基础事实</strong><a href="#medical-base-tools">查看基础库</a></div>
-          </article>
-          <article class="market-panel">
-            <span class="tag green">03 Scenarios</span>
-            <h2>产品场景</h2>
-            <p>把 Skill 和基础库按任务组合，形成循证医疗 API、虚拟医院、Agentic hospital、AI-native HIS、AI-native Up2date 和 TCM Graph-RAG。</p>
-            <div class="price-row"><strong>再组装产品</strong><a href="#tool-scenarios">查看场景</a></div>
-          </article>
+        <div class="container">
+          <div class="tools-learn-heading">
+            <div>
+              <p class="eyebrow">Learning Paths</p>
+              <h2>选择一个工具路径</h2>
+            </div>
+            <p>参考课程目录的组织方式，把页面拆成可以直接进入的四类路径；每张卡片对应一个真实模块，而不是抽象介绍。</p>
+          </div>
+
+          <div class="tools-learn-grid">
+            <a class="tools-learn-card" href="#medical-base-tools">
+              <span class="tools-learn-icon">DB</span>
+              <small>Clinical Data Tools</small>
+              <strong>基础库工具</strong>
+              <p>医生库、药品库、医院库，负责为检索、问答、挂号和医院 AI 工作流提供可追溯事实。</p>
+              <em>进入基础库</em>
+            </a>
+            <a class="tools-learn-card" href="#mock-registration-api">
+              <span class="tools-learn-icon">API</span>
+              <small>Mock Registration API</small>
+              <strong>挂号网站 Mock API</strong>
+              <p>演示医院检索、科室选择、医生排班、号源查询和预约草稿创建，并提供在线 Mock JSON。</p>
+              <em>查看 Mock 接口</em>
+            </a>
+            <a class="tools-learn-card" href="#skill-column">
+              <span class="tools-learn-icon">SK</span>
+              <small>Skill Store</small>
+              <strong>Skill 专栏</strong>
+              <p>保留现有 Skill 专栏结构，用作医学 AI 工具库的能力索引、技能分发和工作流说明入口。</p>
+              <em>进入 Skill 专栏</em>
+            </a>
+            <a class="tools-learn-card" href="#tool-scenarios">
+              <span class="tools-learn-icon">AI</span>
+              <small>Product & Scenario Plans</small>
+              <strong>产品或场景方案</strong>
+              <p>把基础库和 Skill 组合成循证 API、虚拟医院、Agentic hospital、AI-native HIS 等方案。</p>
+              <em>查看场景方案</em>
+            </a>
+          </div>
         </div>
       </section>
 
