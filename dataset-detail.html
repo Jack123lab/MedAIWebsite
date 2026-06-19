@@ -30,8 +30,11 @@
       .dataset-stat span { color: #667789; font-size: 12px; font-weight: 800; }
       .dataset-stat strong { display: block; margin-top: 4px; color: #172738; font-size: 18px; }
       .file-table { display: grid; gap: 8px; }
-      .file-row { display: grid; grid-template-columns: minmax(0, 1fr) 90px 110px; gap: 10px; align-items: center; border: 1px solid #e4ebe8; border-radius: 8px; padding: 11px 12px; background: #fbfdfc; color: #405466; font-size: 13px; }
+      .file-row { display: grid; grid-template-columns: minmax(0, 1fr) 90px 110px; gap: 10px; align-items: center; border: 1px solid #e4ebe8; border-radius: 8px; padding: 11px 12px; background: #fbfdfc; color: #405466; font-size: 13px; text-decoration: none; }
+      .file-row.file-link { grid-template-columns: minmax(0, 1fr) 90px 110px 76px; transition: border-color .18s ease, box-shadow .18s ease, transform .18s ease; }
+      .file-row.file-link:hover, .file-row.file-link:focus-visible { border-color: #0f8a6a; box-shadow: 0 10px 20px rgba(15, 138, 106, .12); color: #0f6b53; transform: translateY(-1px); outline: none; }
       .file-row strong { color: #172738; }
+      .file-row .file-action { justify-self: end; color: #0f6b53; font-weight: 900; }
       .readme-list { margin: 0; padding-left: 18px; color: #405466; }
       .readme-list li { margin: 7px 0; }
       .side-meta-list { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
@@ -157,6 +160,7 @@
       const params = new URLSearchParams(window.location.search);
       const id = params.get("id") || "rubrics";
       const data = datasets[id] || datasets.rubrics;
+      const ncdbSourceUrl = "https://www.facs.org/quality-programs/cancer-programs/national-cancer-database/ncdb-data-submission/";
       const [title, category, owner, format, scale, usability, access, summary, cover] = data;
       document.title = `${title} | Freedom AI`;
       datasetTitle.textContent = title;
@@ -174,12 +178,21 @@
       usabilityText.textContent = "包含数据说明、文件结构、许可、版本记录、用途边界和任务连接。";
       readmeIntro.textContent = summary;
       citationBox.textContent = `Freedom AI Community. ${title}. Version 1.0, 2026.`;
+      if (id === "ncdb") {
+        primaryAction.href = ncdbSourceUrl;
+        primaryAction.target = "_blank";
+        primaryAction.rel = "noopener noreferrer";
+        primaryAction.textContent = "访问 ACS NCDB 数据提交页面";
+      }
       fileTable.innerHTML = [
-        ["README.md", "8 KB", "说明文档"],
-        ["data_dictionary.csv", "42 KB", "字段字典"],
-        ["sample_records", scale, format],
-        ["quality_report.pdf", "1.8 MB", "质量报告"]
-      ].map((row) => `<div class="file-row"><strong>${row[0]}</strong><span>${row[1]}</span><span>${row[2]}</span></div>`).join("");
+        ["README.md", "8 KB", "说明文档", id === "ncdb" ? ncdbSourceUrl : ""],
+        ["data_dictionary.csv", "42 KB", "字段字典", id === "ncdb" ? ncdbSourceUrl : ""],
+        ["sample_records", scale, format, id === "ncdb" ? ncdbSourceUrl : ""],
+        ["quality_report.pdf", "1.8 MB", "质量报告", id === "ncdb" ? ncdbSourceUrl : ""]
+      ].map((row) => row[3]
+        ? `<a class="file-row file-link" href="${row[3]}" target="_blank" rel="noopener noreferrer"><strong>${row[0]}</strong><span>${row[1]}</span><span>${row[2]}</span><span class="file-action">Open</span></a>`
+        : `<div class="file-row"><strong>${row[0]}</strong><span>${row[1]}</span><span>${row[2]}</span></div>`
+      ).join("");
       versionTable.innerHTML = [
         ["v1.0", "2026.06", "当前版本"],
         ["v0.2", "2026.05", "内部质控"]
