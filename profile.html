@@ -44,7 +44,11 @@
           <div class="profile-cover-strip" aria-hidden="true"></div>
           <div class="profile-identity-panel">
             <div class="profile-avatar-card">
-              <img src="assets/images/login-avatar.svg" alt="个人头像" />
+              <button id="profileAvatarButton" class="profile-avatar-button" type="button" aria-label="修改头像">
+                <img id="profileAvatarImage" src="assets/images/login-avatar.svg" alt="个人头像" />
+                <span class="profile-avatar-overlay">修改头像</span>
+              </button>
+              <input id="profileAvatarInput" class="profile-avatar-input" type="file" accept="image/*" />
             </div>
             <section class="primary-profile" id="profileCard" aria-live="polite"></section>
             <div id="profileStats" class="profile-stat-row" aria-label="个人数据"></div>

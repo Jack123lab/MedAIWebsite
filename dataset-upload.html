@@ -3,8 +3,8 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>添加数据集 | Freedom AI</title>
-    <meta name="description" content="Freedom AI 数据集上传页面，收集数据集文件、元数据、许可、可见性、版本说明和合规审核信息。" />
+    <title>上传内容 | Freedom AI</title>
+    <meta name="description" content="Freedom AI 内容上传页面，先选择 Tutorial、Video、题库、标准病人或科普栏目，再提交文件、元数据、来源和合规审核信息。" />
     <link rel="stylesheet" href="assets/css/style.css" />
     <style>
       .dataset-upload-page .upload-hero {
@@ -16,6 +16,52 @@
         grid-template-columns: minmax(0, 1fr) 320px;
         gap: 24px;
         align-items: start;
+      }
+
+      .dataset-upload-page .content-type-grid {
+        display: grid;
+        grid-template-columns: repeat(5, minmax(0, 1fr));
+        gap: 12px;
+        margin-bottom: 22px;
+      }
+
+      .dataset-upload-page .content-type-card {
+        display: grid;
+        gap: 8px;
+        min-height: 138px;
+        border: 1px solid #dce7e2;
+        border-radius: 8px;
+        padding: 15px;
+        background: #ffffff;
+        color: #172738;
+        text-decoration: none;
+        box-shadow: 0 10px 24px rgba(23, 39, 56, 0.05);
+        transition: border-color 160ms ease, box-shadow 160ms ease, transform 160ms ease;
+      }
+
+      .dataset-upload-page .content-type-card:hover,
+      .dataset-upload-page .content-type-card:focus-visible,
+      .dataset-upload-page .content-type-card.is-selected {
+        border-color: #2f8f70;
+        box-shadow: 0 14px 28px rgba(47, 143, 112, 0.14);
+        transform: translateY(-2px);
+      }
+
+      .dataset-upload-page .content-type-card span {
+        color: #2f8f70;
+        font-size: 12px;
+        font-weight: 850;
+        text-transform: uppercase;
+      }
+
+      .dataset-upload-page .content-type-card strong {
+        font-size: 18px;
+      }
+
+      .dataset-upload-page .content-type-card p {
+        margin: 0;
+        color: var(--muted);
+        font-size: 13px;
       }
 
       .dataset-upload-page .upload-form-card,
@@ -197,6 +243,10 @@
       }
 
       @media (max-width: 900px) {
+        .dataset-upload-page .content-type-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
         .dataset-upload-page .upload-shell {
           grid-template-columns: 1fr;
         }
@@ -207,6 +257,10 @@
       }
 
       @media (max-width: 640px) {
+        .dataset-upload-page .content-type-grid {
+          grid-template-columns: 1fr;
+        }
+
         .dataset-upload-page .upload-grid {
           grid-template-columns: 1fr;
         }
@@ -249,75 +303,83 @@
     <main>
       <section class="page-title upload-hero">
         <div class="container">
-          <p class="eyebrow">New Dataset</p>
-          <h1>添加数据集</h1>
-          <p>参考 Kaggle 的数据集发布流程，先完成文件、元数据、标签、许可、可见性和版本说明，再进入医学数据合规审核。</p>
-          <div class="button-row"><a class="btn" href="datasets.html">返回数据集</a><a class="btn" href="contribute.html">投稿与收录</a></div>
+          <p class="eyebrow">New Content</p>
+          <h1>上传内容</h1>
+          <p>先选择内容栏目，再提交文件、标题、来源、摘要和合规声明。管理员审核后进入对应的学习或科普页面。</p>
+          <div class="button-row"><a class="btn" href="learning.html">返回内容页</a><a class="btn" href="contribute.html">投稿与收录</a></div>
         </div>
       </section>
 
       <section class="section compact">
+        <div class="container">
+          <div class="section-head clean"><div><h2>选择上传栏目</h2><p>点击一个栏目后，页面会跳转到上传框并自动填入内容类型。</p></div></div>
+          <div class="content-type-grid" aria-label="选择内容类型">
+            <a class="content-type-card" href="#contentUploadForm" data-content-type="Tutorial" data-content-url="learning-tutorial.html"><span>Learning</span><strong>Tutorial</strong><p>教程、学习路径、操作指南和案例复盘。</p></a>
+            <a class="content-type-card" href="#contentUploadForm" data-content-type="Video" data-content-url="learning-videos.html"><span>Media</span><strong>Video</strong><p>课程视频、演示录屏、讲座资料和字幕说明。</p></a>
+            <a class="content-type-card" href="#contentUploadForm" data-content-type="题库" data-content-url="learning-question-bank.html"><span>Practice</span><strong>题库</strong><p>试题、解析、知识点标签和适用人群。</p></a>
+            <a class="content-type-card" href="#contentUploadForm" data-content-type="标准病人" data-content-url="learning-standardized-patient.html"><span>Simulation</span><strong>标准病人</strong><p>病例脚本、对话流程、评估标准和使用边界。</p></a>
+            <a class="content-type-card" href="#contentUploadForm" data-content-type="科普" data-content-url="popular-science.html"><span>Public</span><strong>科普</strong><p>面向公众的医学 AI 解读、风险提示和参考来源。</p></a>
+          </div>
+        </div>
         <div class="container upload-shell">
-          <form class="upload-form-card" action="#" method="post">
+          <form class="upload-form-card" id="contentUploadForm" action="#" method="post">
             <section class="upload-step">
               <div>
                 <p class="eyebrow">Step 1</p>
-                <h2>上传文件</h2>
-                <p>支持上传压缩包、CSV、JSONL、Parquet、DICOM 清单或数据字典。公开前仅保存为待审核草稿。</p>
+                <h2>上传内容文件</h2>
+                <p>支持上传 Markdown、PDF、PPT、视频、题库表格、病例脚本、图片素材或压缩包。公开前仅保存为待审核草稿。</p>
               </div>
-              <label class="upload-dropzone" for="datasetFiles">
-                <span><strong>选择数据文件或拖拽到这里</strong><br />建议同时上传 README、数据字典和样例记录</span>
-                <input id="datasetFiles" name="datasetFiles" type="file" multiple />
+              <label class="upload-dropzone" for="contentFiles">
+                <span><strong>选择内容文件或拖拽到这里</strong><br />建议同时上传封面图、参考来源、授权说明和必要附件</span>
+                <input id="contentFiles" name="contentFiles" type="file" multiple />
               </label>
             </section>
 
             <section class="upload-step">
               <div>
                 <p class="eyebrow">Step 2</p>
-                <h2>数据集信息</h2>
+                <h2>内容信息</h2>
               </div>
               <div class="upload-grid">
                 <div class="upload-field">
-                  <label for="datasetTitle">标题</label>
-                  <input id="datasetTitle" name="datasetTitle" type="text" placeholder="例如：胸部 CT 病灶标注样例集" />
-                </div>
-                <div class="upload-field">
-                  <label for="datasetSlug">URL 标识</label>
-                  <input id="datasetSlug" name="datasetSlug" type="text" placeholder="chest-ct-lesion-sample" />
-                </div>
-                <div class="upload-field">
-                  <label for="datasetDomain">医学领域</label>
-                  <select id="datasetDomain" name="datasetDomain">
-                    <option>影像</option>
-                    <option>病历 / EHR</option>
-                    <option>文本 / NLP</option>
-                    <option>生理信号</option>
-                    <option>组学</option>
-                    <option>Benchmark</option>
+                  <label for="contentType">内容类型</label>
+                  <select id="contentType" name="contentType">
+                    <option>Tutorial</option>
+                    <option>Video</option>
+                    <option>题库</option>
+                    <option>标准病人</option>
+                    <option>科普</option>
                   </select>
                 </div>
                 <div class="upload-field">
-                  <label for="datasetTask">任务类型</label>
-                  <select id="datasetTask" name="datasetTask">
-                    <option>分类 / 预测</option>
-                    <option>分割 / 检测</option>
-                    <option>问答 / RAG</option>
-                    <option>标注 / 质控</option>
-                    <option>模型评测</option>
-                    <option>研究复现</option>
+                  <label for="contentTitle">标题</label>
+                  <input id="contentTitle" name="contentTitle" type="text" placeholder="例如：医学 RAG 入门教程" />
+                </div>
+                <div class="upload-field">
+                  <label for="contentSlug">URL 标识</label>
+                  <input id="contentSlug" name="contentSlug" type="text" placeholder="medical-rag-intro" />
+                </div>
+                <div class="upload-field">
+                  <label for="contentAudience">适用对象</label>
+                  <select id="contentAudience" name="contentAudience">
+                    <option>医学生</option>
+                    <option>临床医生</option>
+                    <option>科研人员</option>
+                    <option>患者与公众</option>
+                    <option>产品与工程团队</option>
                   </select>
                 </div>
                 <div class="upload-field full">
-                  <label for="datasetSummary">摘要</label>
-                  <textarea id="datasetSummary" name="datasetSummary" placeholder="说明数据来源、样本规模、字段、标注方法、适用场景和主要限制。"></textarea>
+                  <label for="contentSummary">摘要</label>
+                  <textarea id="contentSummary" name="contentSummary" placeholder="说明内容目标、来源依据、适用场景、主要结论、限制和人工审核方式。"></textarea>
                 </div>
                 <div class="upload-field">
-                  <label for="datasetTags">标签</label>
-                  <input id="datasetTags" name="datasetTags" type="text" placeholder="CT, DICOM, segmentation, deidentified" />
+                  <label for="contentTags">标签</label>
+                  <input id="contentTags" name="contentTags" type="text" placeholder="RAG, guideline, tutorial, clinical" />
                 </div>
                 <div class="upload-field">
-                  <label for="datasetLicense">许可</label>
-                  <select id="datasetLicense" name="datasetLicense">
+                  <label for="contentLicense">许可</label>
+                  <select id="contentLicense" name="contentLicense">
                     <option>需审核后开放</option>
                     <option>CC BY 4.0</option>
                     <option>CC BY-NC 4.0</option>
@@ -326,17 +388,17 @@
                   </select>
                 </div>
                 <div class="upload-field">
-                  <label for="datasetVisibility">可见性</label>
-                  <select id="datasetVisibility" name="datasetVisibility">
+                  <label for="contentVisibility">可见性</label>
+                  <select id="contentVisibility" name="contentVisibility">
                     <option>草稿</option>
-                    <option>公开元数据，文件需申请</option>
+                    <option>公开正文，附件需审核</option>
                     <option>公开样例</option>
                     <option>仅限受邀协作者</option>
                   </select>
                 </div>
                 <div class="upload-field">
-                  <label for="datasetVersion">版本说明</label>
-                  <input id="datasetVersion" name="datasetVersion" type="text" placeholder="v1.0 初始提交，含 200 例脱敏样例" />
+                  <label for="contentSource">来源链接</label>
+                  <input id="contentSource" name="contentSource" type="url" placeholder="https://..." />
                 </div>
                 <div class="upload-field full">
                   <label for="datasetImageChoice">相关图片</label>
@@ -364,13 +426,13 @@
             <section class="upload-step">
               <div>
                 <p class="eyebrow">Step 3</p>
-                <h2>医学数据合规检查</h2>
+                <h2>医学内容合规检查</h2>
               </div>
               <div class="upload-checks">
                 <div class="upload-check"><input id="checkDeid" type="checkbox" /><label for="checkDeid">已移除患者姓名、身份证号、联系方式、住院号、影像号、具体地址等可识别信息。</label></div>
-                <div class="upload-check"><input id="checkAuth" type="checkbox" /><label for="checkAuth">已确认数据来源、授权范围、伦理审批或公开许可，不上传无权共享的数据。</label></div>
-                <div class="upload-check"><input id="checkDictionary" type="checkbox" /><label for="checkDictionary">已提供数据字典、字段解释、采集时间范围、缺失值说明和质量控制记录。</label></div>
-                <div class="upload-check"><input id="checkUse" type="checkbox" /><label for="checkUse">已说明用途边界、禁止用途、引用方式和人工审核联系人。</label></div>
+                <div class="upload-check"><input id="checkAuth" type="checkbox" /><label for="checkAuth">已确认素材来源、授权范围、引用方式或公开许可，不上传无权共享的内容。</label></div>
+                <div class="upload-check"><input id="checkEvidence" type="checkbox" /><label for="checkEvidence">已提供参考文献、指南、代码仓库、讲义来源或其他可核查依据。</label></div>
+                <div class="upload-check"><input id="checkUse" type="checkbox" /><label for="checkUse">已说明适用对象、用途边界、禁止用途、主要限制和人工审核联系人。</label></div>
               </div>
             </section>
 
@@ -389,19 +451,20 @@
           <aside class="upload-side-panel">
             <section>
               <p class="eyebrow">Publishing checklist</p>
-              <h2>上架标准</h2>
-              <p>数据集页面会展示标题、摘要、任务、标签、文件格式、许可、更新时间、可用性评分、版本和关联任务。</p>
+              <h2>收录标准</h2>
+              <p>内容页面会展示标题、摘要、栏目、标签、文件格式、许可、更新时间、版本、来源和审核状态。</p>
             </section>
             <ul class="upload-side-list">
-              <li>文件：数据主体、README、数据字典、样例记录</li>
-              <li>发现：搜索关键词、领域标签、任务类型、格式</li>
+              <li>栏目：Tutorial、Video、题库、标准病人或科普</li>
+              <li>文件：正文、附件、封面、讲义、题目或病例脚本</li>
+              <li>发现：搜索关键词、领域标签、适用对象、格式</li>
               <li>许可：共享范围、引用方式、禁止用途</li>
-              <li>合规：脱敏证明、授权说明、人工复核</li>
-              <li>后续：关联众包、Benchmark 或讨论区</li>
+              <li>合规：脱敏检查、授权说明、人工复核</li>
+              <li>后续：关联讨论区、课程页或科普页</li>
             </ul>
             <div class="button-row">
-              <a class="btn" href="crowdsourcing.html">关联众包任务</a>
-              <a class="btn" href="benchmark.html">发布评测集</a>
+              <a class="btn" href="community.html">关联讨论区</a>
+              <a class="btn" href="learning.html">查看内容页</a>
             </div>
           </aside>
         </div>
@@ -410,11 +473,33 @@
 
     <footer class="site-footer">
       <div class="container footer-grid">
-        <div><h3>Freedom AI</h3><p>数据集上传以元数据完整、授权清晰、脱敏可复核为前提。</p></div>
-        <div><h4>数据</h4><a href="datasets.html">数据集</a><a href="dataset-upload.html">添加数据集</a></div>
-        <div><h4>内容</h4><a href="learning.html">内容</a><a href="contribute.html">投稿与收录</a></div>
+        <div><h3>Freedom AI</h3><p>内容上传以来源清晰、授权明确、脱敏可复核为前提。</p></div>
+        <div><h4>内容</h4><a href="learning.html">内容</a><a href="dataset-upload.html">上传内容</a></div>
+        <div><h4>投稿</h4><a href="contribute.html">投稿与收录</a><a href="community.html">讨论区</a></div>
         <div><h4>任务</h4><a href="crowdsourcing.html">众包平台</a><a href="benchmark.html">Benchmark</a></div>
       </div>
     </footer>
+    <script>
+      document.querySelectorAll("[data-content-type]").forEach((card) => {
+        card.addEventListener("click", (event) => {
+          event.preventDefault();
+          const type = card.dataset.contentType;
+          const typeSelect = document.querySelector("#contentType");
+          const form = document.querySelector("#contentUploadForm");
+
+          if (typeSelect && type) {
+            typeSelect.value = type;
+          }
+
+          document.querySelectorAll("[data-content-type]").forEach((item) => item.classList.remove("is-selected"));
+          card.classList.add("is-selected");
+
+          if (form) {
+            form.scrollIntoView({ behavior: "smooth", block: "start" });
+            window.history.replaceState(null, "", `${window.location.pathname}#contentUploadForm`);
+          }
+        });
+      });
+    </script>
   </body>
 </html>

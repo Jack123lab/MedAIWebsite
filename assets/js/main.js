@@ -1,6 +1,7 @@
 const authKey = "hmaiAuthState";
 const postStorageKey = "hmaiForumPosts";
 const reactionStorageKey = "hmaiPostReactions";
+const profileAvatarStorageKey = "hmaiProfileAvatar";
 const apiBase = (window.HMAI_API_BASE || "").replace(/\/$/, "");
 
 const categoryLabels = {
@@ -325,6 +326,54 @@ function getForumPosts() {
 
 function getReactions() {
   return readJson(reactionStorageKey, {});
+}
+
+function renderProfileAvatar() {
+  const image = document.querySelector("#profileAvatarImage");
+  if (!image) return;
+
+  const savedAvatar = localStorage.getItem(profileAvatarStorageKey);
+  if (savedAvatar) image.src = savedAvatar;
+}
+
+function wireProfileAvatarEditor() {
+  const button = document.querySelector("#profileAvatarButton");
+  const input = document.querySelector("#profileAvatarInput");
+  const image = document.querySelector("#profileAvatarImage");
+  if (!button || !input || !image) return;
+
+  renderProfileAvatar();
+
+  button.addEventListener("click", () => input.click());
+  input.addEventListener("change", () => {
+    const file = input.files?.[0];
+    if (!file) return;
+
+    if (!file.type.startsWith("image/")) {
+      alert("请选择图片文件。");
+      input.value = "";
+      return;
+    }
+
+    if (file.size > 2 * 1024 * 1024) {
+      alert("头像图片不能超过 2MB。");
+      input.value = "";
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.addEventListener("load", () => {
+      const result = reader.result;
+      if (typeof result !== "string") return;
+      image.src = result;
+      try {
+        localStorage.setItem(profileAvatarStorageKey, result);
+      } catch {
+        alert("浏览器本地存储空间不足，头像仅在当前页面预览。");
+      }
+    });
+    reader.readAsDataURL(file);
+  });
 }
 
 function hasSensitivePattern(text) {
@@ -1481,6 +1530,7 @@ if (!isProfileRedirecting) {
   wireSiteSearchForms();
   renderSiteSearchResults();
   wireAuthForms();
+  wireProfileAvatarEditor();
   renderProfile();
   renderLikedPosts();
   wireCommunityGate();
