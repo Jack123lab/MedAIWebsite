@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>数据集详情 | Freedom AI</title>
+    <meta name="description" content="Freedom AI 数据集详情页，展示数据集概览、文件、README、版本、许可、可用性和任务关联。" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <style>
+      .dataset-detail-page { background: #f7faf8; }
+      .dataset-hero { border-bottom: 1px solid #dce7e2; background: #fff; }
+      .dataset-hero-inner { display: grid; grid-template-columns: 190px minmax(0, 1fr) 260px; gap: 24px; align-items: center; padding: 34px 0; }
+      .dataset-cover { display: grid; align-content: end; min-height: 150px; border: 1px solid #cfe3dc; border-radius: 8px; padding: 16px; overflow: hidden; color: #fff; background: radial-gradient(circle at 26% 22%, rgba(255,255,255,.86), transparent 16%), linear-gradient(135deg, #0f8a6a, #315f9f 58%, #18293d); box-shadow: 0 14px 34px rgba(23,39,56,.12); }
+      .dataset-cover span { width: fit-content; border-radius: 999px; padding: 5px 9px; background: rgba(7,28,42,.62); font-size: 12px; font-weight: 900; }
+      .dataset-title-block h1 { margin: 6px 0 10px; color: #172738; font-size: clamp(30px, 4vw, 48px); line-height: 1.06; }
+      .dataset-owner { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; color: #667789; font-weight: 750; }
+      .dataset-owner strong { color: #172738; }
+      .dataset-actions-panel { display: grid; gap: 10px; justify-items: stretch; }
+      .dataset-detail-tabs { border-bottom: 1px solid #dce7e2; background: #fff; }
+      .dataset-detail-tabs .container { display: flex; flex-wrap: wrap; gap: 6px; padding-top: 10px; padding-bottom: 10px; }
+      .dataset-detail-tabs a { border-radius: 999px; padding: 8px 12px; color: #405466; font-size: 13px; font-weight: 850; text-decoration: none; }
+      .dataset-detail-tabs a.active, .dataset-detail-tabs a:hover { background: #e8f7f1; color: #0f6b53; }
+      .dataset-detail-layout { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 22px; align-items: start; }
+      .dataset-main-stack, .dataset-side-stack { display: grid; gap: 16px; }
+      .dataset-panel { border: 1px solid #dce7e2; border-radius: 8px; padding: 18px; background: #fff; box-shadow: 0 10px 24px rgba(23,39,56,.05); }
+      .dataset-panel h2, .dataset-panel h3 { margin: 0 0 10px; color: #172738; }
+      .dataset-panel p { color: var(--muted); }
+      .dataset-stat-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+      .dataset-stat { border: 1px solid #e4ebe8; border-radius: 8px; padding: 12px; background: #fbfdfc; }
+      .dataset-stat span { color: #667789; font-size: 12px; font-weight: 800; }
+      .dataset-stat strong { display: block; margin-top: 4px; color: #172738; font-size: 18px; }
+      .file-table { display: grid; gap: 8px; }
+      .file-row { display: grid; grid-template-columns: minmax(0, 1fr) 90px 110px; gap: 10px; align-items: center; border: 1px solid #e4ebe8; border-radius: 8px; padding: 11px 12px; background: #fbfdfc; color: #405466; font-size: 13px; }
+      .file-row strong { color: #172738; }
+      .readme-list { margin: 0; padding-left: 18px; color: #405466; }
+      .readme-list li { margin: 7px 0; }
+      .side-meta-list { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
+      .side-meta-list li { display: flex; justify-content: space-between; gap: 12px; border-bottom: 1px solid #edf3f0; padding-bottom: 9px; color: #667789; font-size: 13px; }
+      .side-meta-list strong { color: #172738; text-align: right; }
+      .citation-box { border: 1px solid #dce7e2; border-radius: 8px; padding: 12px; background: #f8fcfa; color: #405466; font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace; font-size: 12px; overflow-x: auto; }
+      @media (max-width: 980px) { .dataset-hero-inner, .dataset-detail-layout { grid-template-columns: 1fr; } .dataset-actions-panel { justify-items: start; } }
+      @media (max-width: 640px) { .dataset-stat-grid, .file-row { grid-template-columns: 1fr; } }
+    </style>
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/main.js" defer></script>
+  </head>
+  <body class="dataset-detail-page">
+    <header class="site-header">
+      <nav class="nav" aria-label="主导航">
+        <a class="brand" href="index.html"><span class="brand-mark">F</span><span class="brand-text"><strong>Freedom AI</strong><span>医学 AI 社区</span></span></a>
+        <form class="site-search" role="search" action="search.html" method="get" aria-label="站内搜索">
+          <label class="sr-only" for="siteSearchInput">搜索</label>
+          <input id="siteSearchInput" name="q" type="search" placeholder="搜索" autocomplete="off" />
+          <button type="submit">搜索</button>
+        </form>
+        <div class="nav-links">
+          <a href="index.html">首页</a><a href="learning.html">内容</a><a href="network.html">社区</a><a href="community.html">讨论区</a><a href="datasets.html">数据集</a><a href="tools.html">工具库</a><a href="benchmark.html">Benchmark</a><a href="crowdsourcing.html">众包平台</a><a href="profile.html">用户</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="dataset-hero">
+        <div class="container dataset-hero-inner">
+          <div class="dataset-cover" id="datasetCover" aria-hidden="true"><span id="coverLabel">AI 生成封面图</span></div>
+          <div class="dataset-title-block">
+            <p class="eyebrow" id="datasetCategory">Dataset Detail</p>
+            <h1 id="datasetTitle">数据集详情</h1>
+            <div class="dataset-owner"><span>发布者</span><strong id="datasetOwner">Freedom AI Community</strong><span id="datasetUpdated">Updated 2026.06</span><span id="datasetVisibility">公开元数据</span></div>
+          </div>
+          <aside class="dataset-actions-panel">
+            <a class="btn primary" id="primaryAction" href="dataset-upload.html">编辑 / 上传新版本</a>
+            <a class="btn" href="crowdsourcing.html">关联标注任务</a>
+            <a class="btn" href="benchmark.html">发布 Benchmark</a>
+          </aside>
+        </div>
+      </section>
+
+      <nav class="dataset-detail-tabs" aria-label="数据集详情导航">
+        <div class="container"><a class="active" href="#overview">Overview</a><a href="#files">Files</a><a href="#readme">README</a><a href="#versions">Versions</a><a href="#discussion">Discussion</a></div>
+      </nav>
+
+      <section class="section compact">
+        <div class="container dataset-detail-layout">
+          <div class="dataset-main-stack">
+            <section class="dataset-panel" id="overview">
+              <h2>Overview</h2>
+              <div class="dataset-stat-grid">
+                <div class="dataset-stat"><span>文件</span><strong id="statFiles">4</strong></div>
+                <div class="dataset-stat"><span>规模</span><strong id="statSize">-</strong></div>
+                <div class="dataset-stat"><span>可用性</span><strong id="statUsability">-</strong></div>
+                <div class="dataset-stat"><span>访问</span><strong id="statAccess">查看详情</strong></div>
+              </div>
+              <p id="datasetSummary"></p>
+            </section>
+
+            <section class="dataset-panel" id="files">
+              <h2>Files</h2>
+              <div class="file-table" id="fileTable"></div>
+            </section>
+
+            <section class="dataset-panel" id="readme">
+              <h2>README</h2>
+              <p id="readmeIntro"></p>
+              <ul class="readme-list" id="readmeList"></ul>
+            </section>
+
+            <section class="dataset-panel" id="versions">
+              <h2>Versions</h2>
+              <div class="file-table" id="versionTable"></div>
+            </section>
+          </div>
+
+          <aside class="dataset-side-stack">
+            <section class="dataset-panel">
+              <h3>Metadata</h3>
+              <ul class="side-meta-list" id="metadataList"></ul>
+            </section>
+            <section class="dataset-panel">
+              <h3>Usability</h3>
+              <div class="dataset-stat"><span>Completeness</span><strong id="sideUsability">-</strong></div>
+              <p id="usabilityText"></p>
+            </section>
+            <section class="dataset-panel" id="discussion">
+              <h3>Citation</h3>
+              <div class="citation-box" id="citationBox"></div>
+            </section>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div><h3>Freedom AI</h3><p>数据集详情页用于展示上传者、文件、版本、许可和任务连接。</p></div>
+        <div><h4>数据</h4><a href="datasets.html">返回数据集</a><a href="dataset-upload.html">上传数据集</a></div>
+        <div><h4>任务</h4><a href="crowdsourcing.html">众包任务</a><a href="benchmark.html">Benchmark</a></div>
+        <div><h4>社区</h4><a href="community.html">讨论区</a></div>
+      </div>
+    </footer>
+
+    <script>
+      const datasets = {
+        "rubrics": ["Open Hospital Rubrics 医院开放评分表", "Open Hospital Rubrics · Evaluation", "社区评测组", "JSON / CSV", "36 套评分表", "9.2", "开放查看", "面向医院真实任务的开放 Rubric 样例，覆盖数据质量、脱敏合规、临床路径、模型回答审阅和多角色评分字段。", "Rubric"],
+        "patienthub": ["PatientHub 共享案例库", "PatientHub · Case Library", "PatientHub Team", "JSONL / PDF", "260 个脱敏案例", "9.0", "需审核", "共享脱敏病例、患者主诉、检查片段、诊疗路径、随访结局和教学讨论要点，适合标准病人训练与社区案例复盘。", "Case"],
+        "imaging-x": ["Project Imaging-X 医学影像数据集索引", "arXiv 2603.27460 · Imaging Survey", "Imaging-X Contributors", "Survey / Metadata", "1000+ 数据集", "9.4", "开放查看", "开放医学影像数据集的结构化索引，按模态、任务、解剖部位、标注、局限和整合潜力组织。", "Imaging"],
+        "mimic-iv": ["MIMIC-IV 重症监护临床数据库", "MIT Critical Data · EHR", "MIT Critical Data", "CSV", "约 43 万住院记录", "9.6", "需资质申请", "覆盖 ICU 诊疗记录、实验室检查、用药、护理和出入院信息，适合临床预测、病历结构化和可解释性研究。", "EHR"],
+        "chest-ct": ["胸部 CT 病灶标注与影像分割数据集", "TCIA · Imaging", "Radiology Lab", "DICOM", "820 例影像样本", "9.1", "任务关联", "面向肺部病灶检测、分割、报告一致性检查和多中心外部验证，保留标注协议与质控记录。", "CT"],
+        "physionet-signal": ["心电与生命体征时间序列数据集", "PhysioNet · Signal", "PhysioNet Community", "WFDB / CSV", "多通道波形", "9.3", "开放查看", "用于心律失常识别、ICU 早期预警、波形质量控制和多模态临床模型训练。", "Signal"],
+        "guideline-qa": ["医学指南问答评测集", "Happy medical AI · Guideline QA", "Freedom AI", "JSONL", "1,500 个问题", "8.9", "可发布 Benchmark", "覆盖指南推荐、证据等级、适用人群、禁忌、引用来源完整性和模型回答人工复核。", "NLP"],
+        "radiology-mm": ["影像报告与图像配对样例集", "Radiology · Multimodal", "Radiology Group", "DICOM + TXT", "2,400 对样例", "8.7", "关联任务", "连接医学影像、报告摘要、关键发现和异常标签，适合图文检索、报告生成和多模态 RAG 评测。", "Multi-modal"],
+        "biomedical-text": ["生物医学文献实体标注集", "Biomedical Text · NLP", "Biomedical NLP Group", "JSON / BRAT", "12,000 段文本", "8.5", "开放查看", "用于疾病、药物、基因、症状和治疗实体识别，支持文献总结、知识图谱和检索增强应用。", "Bio Text"],
+        "diffusers-metadata": ["Diffusers Metadata 数据集", "Hugging Face · Generative AI", "Hugging Face", "Parquet / JSON", "模型元数据", "8.4", "开放查看", "汇总 diffusers 生态中的模型与管线元数据，适合生成式 AI 工具索引、模型检索和数据集元信息测试。", "AI"],
+        "oncology-omics": ["肿瘤多组学公开样例索引", "Oncology · Omics", "Oncology Data Group", "CSV / TSV", "多癌种样例", "8.2", "开放元数据", "整合基因表达、突变、临床分期和疗效结局字段，适合预后建模与跨模态研究设计。", "Omics"]
+      };
+
+      const params = new URLSearchParams(window.location.search);
+      const id = params.get("id") || "rubrics";
+      const data = datasets[id] || datasets.rubrics;
+      const [title, category, owner, format, scale, usability, access, summary, cover] = data;
+      document.title = `${title} | Freedom AI`;
+      datasetTitle.textContent = title;
+      datasetCategory.textContent = category;
+      datasetOwner.textContent = owner;
+      datasetUpdated.textContent = "Updated 2026.06";
+      datasetVisibility.textContent = access;
+      coverLabel.textContent = cover;
+      statFiles.textContent = "4";
+      statSize.textContent = scale;
+      statUsability.textContent = usability;
+      statAccess.textContent = access;
+      datasetSummary.textContent = summary;
+      sideUsability.textContent = `${usability} / 10`;
+      usabilityText.textContent = "包含数据说明、文件结构、许可、版本记录、用途边界和任务连接。";
+      readmeIntro.textContent = summary;
+      citationBox.textContent = `Freedom AI Community. ${title}. Version 1.0, 2026.`;
+      fileTable.innerHTML = [
+        ["README.md", "8 KB", "说明文档"],
+        ["data_dictionary.csv", "42 KB", "字段字典"],
+        ["sample_records", scale, format],
+        ["quality_report.pdf", "1.8 MB", "质量报告"]
+      ].map((row) => `<div class="file-row"><strong>${row[0]}</strong><span>${row[1]}</span><span>${row[2]}</span></div>`).join("");
+      versionTable.innerHTML = [
+        ["v1.0", "2026.06", "当前版本"],
+        ["v0.2", "2026.05", "内部质控"]
+      ].map((row) => `<div class="file-row"><strong>${row[0]}</strong><span>${row[1]}</span><span>${row[2]}</span></div>`).join("");
+      readmeList.innerHTML = [
+        "说明数据来源、样本规模、字段、标注流程、适用任务和主要限制。",
+        "保留脱敏证明、授权边界、质量控制和人工复核联系人。",
+        "可关联众包任务、Benchmark、讨论区或研究复现页面。"
+      ].map((item) => `<li>${item}</li>`).join("");
+      metadataList.innerHTML = [
+        ["Format", format],
+        ["Scale", scale],
+        ["License", "研究用途授权"],
+        ["Visibility", access],
+        ["Image", "AI 生成或发布者可选"]
+      ].map((row) => `<li><span>${row[0]}</span><strong>${row[1]}</strong></li>`).join("");
+    </script>
+  </body>
+</html>
