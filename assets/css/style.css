@@ -8605,6 +8605,86 @@ body.upload-roadmap-open {
   margin-top: 14px;
 }
 
+.benchmark-compact-card {
+  display: grid;
+  gap: 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 18px;
+  background: #ffffff;
+}
+
+.benchmark-compact-head {
+  display: grid;
+  grid-template-columns: minmax(180px, 0.35fr) minmax(0, 1fr);
+  gap: 18px;
+  align-items: start;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--line);
+}
+
+.benchmark-compact-head .eyebrow,
+.benchmark-compact-head h2,
+.benchmark-compact-head p {
+  margin: 0;
+}
+
+.benchmark-compact-head h2 {
+  color: #172738;
+  font-size: 22px;
+}
+
+.benchmark-compact-head p {
+  color: var(--muted);
+}
+
+.benchmark-compact-specs {
+  display: grid;
+  gap: 0;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.benchmark-compact-specs dl {
+  display: grid;
+  grid-template-columns: 112px minmax(0, 1fr);
+  gap: 14px;
+  margin: 0;
+  padding: 11px 14px;
+  border-bottom: 1px solid var(--line);
+}
+
+.benchmark-compact-specs dl:last-child {
+  border-bottom: 0;
+}
+
+.benchmark-compact-specs dt {
+  color: #172738;
+  font-weight: 900;
+}
+
+.benchmark-compact-specs dd {
+  margin: 0;
+  color: var(--muted);
+}
+
+.benchmark-compact-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.benchmark-compact-tags span {
+  border: 1px solid #d6e6e9;
+  border-radius: 8px;
+  padding: 6px 9px;
+  background: #f6fbfc;
+  color: #00616d;
+  font-size: 12px;
+  font-weight: 800;
+}
+
 .benchmark-table {
   overflow: hidden;
   border: 1px solid var(--line);
@@ -8657,6 +8737,11 @@ body.upload-roadmap-open {
     grid-template-columns: 1fr;
   }
 
+  .benchmark-compact-head {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
   .task-feed aside {
     border-left: 0;
     border-top: 1px solid var(--line);
@@ -8707,6 +8792,16 @@ body.upload-roadmap-open {
 
   .benchmark-example-card:last-child {
     grid-column: auto;
+  }
+
+  .benchmark-compact-card {
+    padding: 14px;
+  }
+
+  .benchmark-compact-specs dl {
+    grid-template-columns: 1fr;
+    gap: 4px;
+    padding: 10px 12px;
   }
 }
 
