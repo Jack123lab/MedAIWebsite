@@ -1,6 +1,7 @@
 const authKey = "hmaiAuthState";
 const postStorageKey = "hmaiForumPosts";
 const reactionStorageKey = "hmaiPostReactions";
+const profileAvatarStorageKey = "hmaiProfileAvatar";
 const apiBase = (window.HMAI_API_BASE || "").replace(/\/$/, "");
 
 const categoryLabels = {
@@ -327,6 +328,54 @@ function getReactions() {
   return readJson(reactionStorageKey, {});
 }
 
+function renderProfileAvatar() {
+  const image = document.querySelector("#profileAvatarImage");
+  if (!image) return;
+
+  const savedAvatar = localStorage.getItem(profileAvatarStorageKey);
+  if (savedAvatar) image.src = savedAvatar;
+}
+
+function wireProfileAvatarEditor() {
+  const button = document.querySelector("#profileAvatarButton");
+  const input = document.querySelector("#profileAvatarInput");
+  const image = document.querySelector("#profileAvatarImage");
+  if (!button || !input || !image) return;
+
+  renderProfileAvatar();
+
+  button.addEventListener("click", () => input.click());
+  input.addEventListener("change", () => {
+    const file = input.files?.[0];
+    if (!file) return;
+
+    if (!file.type.startsWith("image/")) {
+      alert("请选择图片文件。");
+      input.value = "";
+      return;
+    }
+
+    if (file.size > 2 * 1024 * 1024) {
+      alert("头像图片不能超过 2MB。");
+      input.value = "";
+      return;
+    }
+
+    const reader = new FileReader();
+    reader.addEventListener("load", () => {
+      const result = reader.result;
+      if (typeof result !== "string") return;
+      image.src = result;
+      try {
+        localStorage.setItem(profileAvatarStorageKey, result);
+      } catch {
+        alert("浏览器本地存储空间不足，头像仅在当前页面预览。");
+      }
+    });
+    reader.readAsDataURL(file);
+  });
+}
+
 function hasSensitivePattern(text) {
   const patterns = [
     /\b\d{17}[\dXx]\b/,
@@ -602,6 +651,16 @@ function wireForum() {
     return posts;
   }
 
+  function reactionIcon(type, active) {
+    const fill = active ? "currentColor" : "none";
+    const icons = {
+      like: `<svg class="post-action-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M7.8 21H5.1A2.1 2.1 0 0 1 3 18.9v-7.1c0-1.2.9-2.1 2.1-2.1h2.7m0 11.3h8.9c.9 0 1.7-.6 2-1.5l2.1-7.1c.4-1.4-.6-2.8-2-2.8h-5.5l.8-3.8c.2-1-.1-2-.8-2.7L12.6 2 7.8 9.7V21Z" fill="${fill}" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/></svg>`,
+      dislike: `<svg class="post-action-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M16.2 3h2.7A2.1 2.1 0 0 1 21 5.1v7.1c0 1.2-.9 2.1-2.1 2.1h-2.7M16.2 3H7.3c-.9 0-1.7.6-2 1.5l-2.1 7.1c-.4 1.4.6 2.8 2 2.8h5.5l-.8 3.8c-.2 1 .1 2 .8 2.7l.7 1.1 4.8-7.7V3Z" fill="${fill}" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/></svg>`,
+      favorite: `<svg class="post-action-icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20.6s-7.5-4.4-9.2-9.5C1.7 7.6 3.8 4.5 7.1 4.5c1.9 0 3.6 1.1 4.5 2.7.9-1.6 2.6-2.7 4.5-2.7 3.3 0 5.4 3.1 4.3 6.6C19.5 16.2 12 20.6 12 20.6Z" fill="${fill}" stroke="currentColor" stroke-width="1.9" stroke-linejoin="round"/></svg>`,
+    };
+    return icons[type] || "";
+  }
+
   function renderPosts() {
     updateCounts();
     const posts = filteredPosts();
@@ -631,9 +690,9 @@ function wireForum() {
               <div class="post-foot"><span>${post.author}</span><span>${new Date(post.createdAt).toLocaleDateString("zh-CN")}</span><span>${post.replies} 回复</span><span>${post.views} 浏览</span></div>
             </div>
             <div class="post-actions" aria-label="帖子操作">
-              <button class="post-action ${liked ? "active" : ""}" type="button" data-action="like" data-post-id="${post.id}" aria-pressed="${liked}" aria-label="赞" title="赞"><span aria-hidden="true">👍</span><strong>${post.likes + (liked ? 1 : 0)}</strong></button>
-              <button class="post-action ${disliked ? "active negative" : ""}" type="button" data-action="dislike" data-post-id="${post.id}" aria-pressed="${disliked}" aria-label="踩" title="踩"><span aria-hidden="true">👎</span><strong>${(post.dislikes || 0) + (disliked ? 1 : 0)}</strong></button>
-              <button class="post-action ${favorited ? "active favorite" : ""}" type="button" data-action="favorite" data-post-id="${post.id}" aria-pressed="${favorited}" aria-label="收藏" title="收藏"><span aria-hidden="true">♥</span><strong>${post.favorites + (favorited ? 1 : 0)}</strong></button>
+              <button class="post-action ${liked ? "active" : ""}" type="button" data-action="like" data-post-id="${post.id}" aria-pressed="${liked}" aria-label="赞" title="赞">${reactionIcon("like", liked)}<strong>${post.likes + (liked ? 1 : 0)}</strong></button>
+              <button class="post-action ${disliked ? "active negative" : ""}" type="button" data-action="dislike" data-post-id="${post.id}" aria-pressed="${disliked}" aria-label="踩" title="踩">${reactionIcon("dislike", disliked)}<strong>${(post.dislikes || 0) + (disliked ? 1 : 0)}</strong></button>
+              <button class="post-action ${favorited ? "active favorite" : ""}" type="button" data-action="favorite" data-post-id="${post.id}" aria-pressed="${favorited}" aria-label="收藏" title="收藏">${reactionIcon("favorite", favorited)}<strong>${post.favorites + (favorited ? 1 : 0)}</strong></button>
             </div>
           </article>`;
       }).join("")
@@ -1269,6 +1328,37 @@ function wireDatasetBrowser() {
   const emptyNote = document.querySelector("#datasetEmptyNote");
   const state = { filter: "all", search: "", page: 1, pageSize: 4 };
 
+  cards.forEach((card) => {
+    const link = card.querySelector("a[href]");
+    if (!link) return;
+
+    const title = card.querySelector(".dataset-card-head strong")?.textContent?.trim() || "数据集详情";
+    card.dataset.cardLinkReady = "true";
+    card.tabIndex = 0;
+    card.setAttribute("role", "link");
+    card.setAttribute("aria-label", `${title}，打开详情页`);
+
+    const openDatasetLink = () => {
+      if (link.target === "_blank") {
+        window.open(link.href, "_blank", "noopener");
+        return;
+      }
+      window.location.href = link.href;
+    };
+
+    card.addEventListener("click", (event) => {
+      if (event.target.closest("a, button, input, select, textarea")) return;
+      openDatasetLink();
+    });
+
+    card.addEventListener("keydown", (event) => {
+      if (event.key !== "Enter" && event.key !== " ") return;
+      if (event.target.closest("a, button, input, select, textarea")) return;
+      event.preventDefault();
+      openDatasetLink();
+    });
+  });
+
   function renderDatasetCards() {
     const query = state.search.trim().toLowerCase();
     const matches = cards.filter((card) => {
@@ -1440,6 +1530,7 @@ if (!isProfileRedirecting) {
   wireSiteSearchForms();
   renderSiteSearchResults();
   wireAuthForms();
+  wireProfileAvatarEditor();
   renderProfile();
   renderLikedPosts();
   wireCommunityGate();

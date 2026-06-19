@@ -1860,28 +1860,53 @@ body:not(.login-page) {
 }
 
 .post-action {
-  min-height: 40px;
+  min-height: 34px;
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 8px;
-  border: 1px solid var(--line);
-  border-radius: 10px;
-  background: #f8fafb;
-  color: var(--text);
-  padding: 0 10px;
+  justify-content: center;
+  gap: 6px;
+  border: 0;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--muted);
+  padding: 0 8px;
   cursor: pointer;
   font-weight: 800;
+  transition: color 0.16s ease, background 0.16s ease;
+}
+
+.post-action:hover {
+  color: #00aeec;
+  background: rgba(0, 174, 236, 0.08);
+}
+
+.post-action-icon {
+  width: 20px;
+  height: 20px;
+  flex: 0 0 20px;
+  display: block;
+  stroke-linecap: round;
+}
+
+.post-action strong {
+  min-width: 1.4em;
+  font-size: 13px;
+  line-height: 1;
 }
 
 .post-action.active {
-  border-color: rgba(215, 38, 61, 0.28);
-  background: #fff1f3;
+  color: #00aeec;
+  background: rgba(0, 174, 236, 0.12);
+}
+
+.post-action.negative.active {
+  color: #00aeec;
+  background: rgba(0, 174, 236, 0.12);
 }
 
 .post-action.favorite.active {
-  border-color: rgba(176, 137, 0, 0.35);
-  background: #fff9df;
+  color: #ff6699;
+  background: rgba(255, 102, 153, 0.12);
 }
 
 .pagination-bar {
@@ -6789,6 +6814,7 @@ body.case-publish-open {
 .mock-api-section {
   background: rgba(255, 255, 255, 0.62);
 }
+
 .mock-api-standalone {
   display: grid;
   gap: 18px;
@@ -6862,6 +6888,7 @@ body.case-publish-open {
 .api-code code {
   color: inherit;
 }
+
 .api-online-link {
   width: max-content;
   max-width: 100%;
@@ -8481,6 +8508,7 @@ body.upload-roadmap-open {
 .benchmark-example-card,
 .benchmark-detail-card,
 .benchmark-detail-source {
+  position: relative;
   display: grid;
   align-content: start;
   gap: 12px;
@@ -8488,6 +8516,22 @@ body.upload-roadmap-open {
   border-radius: 8px;
   padding: 18px;
   background: #ffffff;
+}
+
+.benchmark-example-card {
+  cursor: pointer;
+}
+
+.benchmark-card-link {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: inherit;
+}
+
+.benchmark-card-link:focus-visible {
+  outline: 3px solid rgba(37, 99, 235, 0.35);
+  outline-offset: 3px;
 }
 
 .benchmark-example-card:last-child {
@@ -8537,6 +8581,8 @@ body.upload-roadmap-open {
 }
 
 .benchmark-example-card .button-row {
+  position: relative;
+  z-index: 2;
   margin-top: auto;
 }
 
@@ -8586,6 +8632,86 @@ body.upload-roadmap-open {
 
 .benchmark-detail-source {
   margin-top: 14px;
+}
+
+.benchmark-compact-card {
+  display: grid;
+  gap: 14px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 18px;
+  background: #ffffff;
+}
+
+.benchmark-compact-head {
+  display: grid;
+  grid-template-columns: minmax(180px, 0.35fr) minmax(0, 1fr);
+  gap: 18px;
+  align-items: start;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--line);
+}
+
+.benchmark-compact-head .eyebrow,
+.benchmark-compact-head h2,
+.benchmark-compact-head p {
+  margin: 0;
+}
+
+.benchmark-compact-head h2 {
+  color: #172738;
+  font-size: 22px;
+}
+
+.benchmark-compact-head p {
+  color: var(--muted);
+}
+
+.benchmark-compact-specs {
+  display: grid;
+  gap: 0;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.benchmark-compact-specs dl {
+  display: grid;
+  grid-template-columns: 112px minmax(0, 1fr);
+  gap: 14px;
+  margin: 0;
+  padding: 11px 14px;
+  border-bottom: 1px solid var(--line);
+}
+
+.benchmark-compact-specs dl:last-child {
+  border-bottom: 0;
+}
+
+.benchmark-compact-specs dt {
+  color: #172738;
+  font-weight: 900;
+}
+
+.benchmark-compact-specs dd {
+  margin: 0;
+  color: var(--muted);
+}
+
+.benchmark-compact-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.benchmark-compact-tags span {
+  border: 1px solid #d6e6e9;
+  border-radius: 8px;
+  padding: 6px 9px;
+  background: #f6fbfc;
+  color: #00616d;
+  font-size: 12px;
+  font-weight: 800;
 }
 
 .benchmark-table {
@@ -8640,6 +8766,11 @@ body.upload-roadmap-open {
     grid-template-columns: 1fr;
   }
 
+  .benchmark-compact-head {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
   .task-feed aside {
     border-left: 0;
     border-top: 1px solid var(--line);
@@ -8690,6 +8821,16 @@ body.upload-roadmap-open {
 
   .benchmark-example-card:last-child {
     grid-column: auto;
+  }
+
+  .benchmark-compact-card {
+    padding: 14px;
+  }
+
+  .benchmark-compact-specs dl {
+    grid-template-columns: 1fr;
+    gap: 4px;
+    padding: 10px 12px;
   }
 }
 
@@ -10680,10 +10821,57 @@ body.upload-roadmap-open {
   overflow: hidden;
 }
 
+.profile-avatar-button {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: block;
+  border: 0;
+  padding: 0;
+  border-radius: 50%;
+  background: transparent;
+  cursor: pointer;
+  overflow: hidden;
+}
+
+.profile-avatar-button:focus-visible {
+  outline: 3px solid rgba(56, 189, 248, 0.72);
+  outline-offset: 3px;
+}
+
 .profile-avatar-card img {
   width: 100%;
   height: 100%;
   object-fit: cover;
+}
+
+.profile-avatar-overlay {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  padding: 0 12px;
+  color: #ffffff;
+  background: rgba(15, 23, 42, 0.58);
+  font-size: 13px;
+  font-weight: 700;
+  line-height: 1.25;
+  text-align: center;
+  opacity: 0;
+  transition: opacity 0.18s ease;
+}
+
+.profile-avatar-button:hover .profile-avatar-overlay,
+.profile-avatar-button:focus-visible .profile-avatar-overlay {
+  opacity: 1;
+}
+
+.profile-avatar-input {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  pointer-events: none;
 }
 
 .primary-profile {
@@ -10875,8 +11063,29 @@ body.upload-roadmap-open {
 
 .post-action.negative.active,
 .medical-community-page .post-action.negative.active {
-  border-color: rgba(163, 61, 69, 0.35);
-  background: #fbefef;
+  color: #00aeec;
+  background: rgba(0, 174, 236, 0.12);
+}
+
+.medical-community-page .post-action {
+  border: 0;
+  color: var(--muted);
+  background: transparent;
+}
+
+.medical-community-page .post-action:hover {
+  color: #00aeec;
+  background: rgba(0, 174, 236, 0.08);
+}
+
+.medical-community-page .post-action.active {
+  color: #00aeec;
+  background: rgba(0, 174, 236, 0.12);
+}
+
+.medical-community-page .post-action.favorite.active {
+  color: #ff6699;
+  background: rgba(255, 102, 153, 0.12);
 }
 
 @media (max-width: 1080px) {
