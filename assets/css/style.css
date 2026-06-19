@@ -6789,6 +6789,19 @@ body.case-publish-open {
 .mock-api-section {
   background: rgba(255, 255, 255, 0.62);
 }
+.mock-api-standalone {
+  display: grid;
+  gap: 18px;
+  border: 1px solid #d8e2e8;
+  border-radius: 8px;
+  padding: 22px;
+  background: #ffffff;
+  box-shadow: 0 18px 42px rgba(11, 55, 70, 0.08);
+}
+
+.mock-api-standalone .section-head.clean {
+  margin-bottom: 0;
+}
 
 .registration-api-card.api-overview {
   grid-column: span 2;
@@ -6849,6 +6862,26 @@ body.case-publish-open {
 .api-code code {
   color: inherit;
 }
+.api-online-link {
+  width: max-content;
+  max-width: 100%;
+  min-height: 32px;
+  display: inline-flex;
+  align-items: center;
+  border: 1px solid #cbdde3;
+  border-radius: 6px;
+  padding: 0 10px;
+  color: var(--primary);
+  background: #f7fbfd;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 900;
+}
+
+.api-online-link:hover {
+  border-color: var(--primary);
+  background: #eef5fb;
+}
 
 @media (max-width: 920px) {
   .data-tools-title-grid,
@@ -6872,6 +6905,10 @@ body.case-publish-open {
   .registration-api-card.api-overview {
     grid-column: auto;
     grid-template-columns: 1fr;
+  }
+
+  .mock-api-standalone {
+    padding: 16px;
   }
 
   .hot-tool-lead { min-height: 260px; }
