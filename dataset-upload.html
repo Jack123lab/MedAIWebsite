@@ -142,6 +142,39 @@
         background: #fbfdfc;
       }
 
+      .dataset-upload-page .image-choice-panel {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 180px;
+        gap: 14px;
+        align-items: stretch;
+        border: 1px solid #dce7e2;
+        border-radius: 8px;
+        padding: 14px;
+        background: #f8fcfa;
+      }
+
+      .dataset-upload-page .ai-image-preview {
+        display: grid;
+        align-content: end;
+        min-height: 126px;
+        border: 1px solid #cfe3dc;
+        border-radius: 8px;
+        padding: 12px;
+        color: #ffffff;
+        font-size: 13px;
+        font-weight: 900;
+        background:
+          radial-gradient(circle at 26% 22%, rgba(255, 255, 255, 0.85), transparent 17%),
+          linear-gradient(135deg, #0f8a6a, #315f9f 58%, #18293d);
+      }
+
+      .dataset-upload-page .ai-image-preview span {
+        width: fit-content;
+        border-radius: 999px;
+        padding: 4px 8px;
+        background: rgba(7, 28, 42, 0.62);
+      }
+
       .dataset-upload-page .upload-check input {
         margin-top: 2px;
       }
@@ -175,6 +208,10 @@
 
       @media (max-width: 640px) {
         .dataset-upload-page .upload-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .dataset-upload-page .image-choice-panel {
           grid-template-columns: 1fr;
         }
 
@@ -300,6 +337,26 @@
                 <div class="upload-field">
                   <label for="datasetVersion">版本说明</label>
                   <input id="datasetVersion" name="datasetVersion" type="text" placeholder="v1.0 初始提交，含 200 例脱敏样例" />
+                </div>
+                <div class="upload-field full">
+                  <label for="datasetImageChoice">相关图片</label>
+                  <div class="image-choice-panel">
+                    <div class="upload-grid">
+                      <div class="upload-field">
+                        <select id="datasetImageChoice" name="datasetImageChoice">
+                          <option>不放置图片</option>
+                          <option>放置相关图片，由 AI 生成</option>
+                        </select>
+                      </div>
+                      <div class="upload-field">
+                        <input id="datasetImagePrompt" name="datasetImagePrompt" type="text" placeholder="AI 生成提示词：如医学影像数据索引、脱敏病历结构化字段" />
+                      </div>
+                      <div class="upload-field full">
+                        <textarea id="datasetImageGuidance" name="datasetImageGuidance" placeholder="图片只用于数据集视觉识别，不展示真实患者、真实影像、机构隐私或可识别信息。"></textarea>
+                      </div>
+                    </div>
+                    <div class="ai-image-preview" aria-hidden="true"><span>AI 生成预览位</span></div>
+                  </div>
                 </div>
               </div>
             </section>

@@ -112,7 +112,7 @@
 
       .data-tools-page .dataset-trending-card.dataset-card {
         display: grid;
-        grid-template-columns: 56px minmax(0, 1fr) minmax(146px, auto);
+        grid-template-columns: 112px minmax(0, 1fr) minmax(146px, auto);
         gap: 14px;
         align-items: center;
         min-height: 112px;
@@ -138,18 +138,84 @@
         display: none !important;
       }
 
-      .data-tools-page .dataset-thumb {
-        width: 48px;
-        height: 48px;
+      .data-tools-page .dataset-visual {
+        position: relative;
+        width: 104px;
+        min-height: 78px;
         display: grid;
-        place-items: center;
+        align-content: end;
+        gap: 4px;
         border: 1px solid #d9e4df;
         border-radius: 8px;
+        padding: 9px;
+        overflow: hidden;
         background: #f2f6f4;
-        color: #0f6b53;
-        font-size: 13px;
+        color: #ffffff;
+        font-size: 12px;
         font-weight: 900;
       }
+
+      .data-tools-page .dataset-visual::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background:
+          radial-gradient(circle at 24% 22%, rgba(255, 255, 255, 0.86), transparent 18%),
+          linear-gradient(135deg, #0f8a6a, #315f9f 58%, #18293d);
+      }
+
+      .data-tools-page .dataset-visual::after {
+        content: "";
+        position: absolute;
+        inset: auto 9px 30px 9px;
+        height: 20px;
+        border: 1px solid rgba(255, 255, 255, 0.55);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.14);
+      }
+
+      .data-tools-page .dataset-visual span,
+      .data-tools-page .dataset-visual small {
+        position: relative;
+        z-index: 1;
+        line-height: 1.1;
+      }
+
+      .data-tools-page .dataset-visual small {
+        width: fit-content;
+        border-radius: 999px;
+        padding: 3px 6px;
+        background: rgba(7, 28, 42, 0.62);
+        font-size: 10px;
+        font-weight: 850;
+      }
+
+      .data-tools-page .dataset-visual.optional {
+        color: #0f6b53;
+        background: #f8fcfa;
+      }
+
+      .data-tools-page .dataset-visual.optional::before {
+        background:
+          linear-gradient(135deg, rgba(15, 138, 106, 0.1), rgba(49, 95, 159, 0.08)),
+          repeating-linear-gradient(135deg, rgba(15, 138, 106, 0.12) 0 8px, transparent 8px 16px);
+      }
+
+      .data-tools-page .dataset-visual.optional::after {
+        border-color: rgba(15, 107, 83, 0.18);
+        background: rgba(255, 255, 255, 0.7);
+      }
+
+      .data-tools-page .dataset-visual.optional small {
+        background: #ffffff;
+        color: #0f6b53;
+      }
+
+      .data-tools-page .visual-imaging::before { background: radial-gradient(circle at 28% 24%, rgba(255,255,255,.86), transparent 16%), linear-gradient(135deg, #162033, #4b6c8f 50%, #b6d3df); }
+      .data-tools-page .visual-ehr::before { background: linear-gradient(135deg, #0f6b53, #5c879b 54%, #e4f2ef); }
+      .data-tools-page .visual-signal::before { background: repeating-linear-gradient(90deg, rgba(255,255,255,.18) 0 6px, transparent 6px 18px), linear-gradient(135deg, #0d5166, #34a58d); }
+      .data-tools-page .visual-nlp::before { background: linear-gradient(135deg, #23466d, #6e8fb2 55%, #e8f1f7); }
+      .data-tools-page .visual-omics::before { background: radial-gradient(circle at 30% 30%, rgba(255,255,255,.85), transparent 12%), radial-gradient(circle at 70% 62%, rgba(255,255,255,.65), transparent 15%), linear-gradient(135deg, #34505f, #16836d); }
 
       .data-tools-page .dataset-card-main {
         min-width: 0;
@@ -253,7 +319,7 @@
         }
 
         .data-tools-page .dataset-trending-card.dataset-card {
-          grid-template-columns: 48px minmax(0, 1fr);
+          grid-template-columns: 104px minmax(0, 1fr);
           align-items: start;
         }
 
@@ -282,9 +348,9 @@
           grid-template-columns: minmax(0, 1fr);
         }
 
-        .data-tools-page .dataset-thumb {
-          width: 44px;
-          height: 44px;
+        .data-tools-page .dataset-visual {
+          width: 100%;
+          min-height: 86px;
         }
       }
     </style>
@@ -354,7 +420,7 @@
 
           <div class="dataset-card-grid dataset-trending-list" aria-live="polite">
             <article class="dataset-card dataset-trending-card" data-dataset-card data-tags="rubric benchmark share hospital evaluation quality nlp ehr compliance">
-              <div class="dataset-thumb" aria-hidden="true">RUB</div>
+              <div class="dataset-visual visual-nlp" aria-hidden="true"><small>AI 生成图</small><span>Rubric</span></div>
               <div class="dataset-card-main">
                 <div class="dataset-card-head"><span>Open Hospital Rubrics · Evaluation</span><strong>Open Hospital Rubrics 医院开放评分表</strong></div>
                 <p>面向医院真实任务的开放 Rubric 样例，覆盖数据质量、脱敏合规、临床路径、模型回答审阅和多角色评分字段。</p>
@@ -363,7 +429,7 @@
               <aside class="dataset-card-stats"><span>浏览 8.9k</span><strong>收藏 690</strong><a href="benchmark.html">查看评测</a></aside>
             </article>
             <article class="dataset-card dataset-trending-card" data-dataset-card data-tags="case patienthub ehr nlp share clinical deidentified education">
-              <div class="dataset-thumb" aria-hidden="true">PH</div>
+              <div class="dataset-visual optional" aria-hidden="true"><small>可选图片</small><span>发布者决定</span></div>
               <div class="dataset-card-main">
                 <div class="dataset-card-head"><span>PatientHub · Case Library</span><strong>PatientHub 共享案例库</strong></div>
                 <p>共享脱敏病例、患者主诉、检查片段、诊疗路径、随访结局和教学讨论要点，适合标准病人训练与社区案例复盘。</p>
@@ -372,7 +438,7 @@
               <aside class="dataset-card-stats"><span>浏览 7.7k</span><strong>收藏 626</strong><a href="community.html">查看案例</a></aside>
             </article>
             <article class="dataset-card dataset-trending-card" data-dataset-card data-tags="imaging benchmark share project imaging x project-x projectx poject-x foundation model survey metadata modality anatomy annotation">
-              <div class="dataset-thumb" aria-hidden="true">PX</div>
+              <div class="dataset-visual visual-imaging" aria-hidden="true"><small>AI 生成图</small><span>Imaging</span></div>
               <div class="dataset-card-main">
                 <div class="dataset-card-head"><span>arXiv 2603.27460 · Imaging Survey</span><strong>Project Imaging-X 医学影像数据集索引</strong></div>
                 <p>基于 1000+ 个开放医学影像数据集的结构化索引，按模态、任务、解剖部位、标注、局限和整合潜力组织，适合基础模型数据发现。</p>
@@ -381,7 +447,7 @@
               <aside class="dataset-card-stats"><span>浏览 10.2k</span><strong>收藏 820</strong><a href="https://arxiv.org/abs/2603.27460" target="_blank" rel="noreferrer">查看论文</a></aside>
             </article>
             <article class="dataset-card dataset-trending-card" data-dataset-card data-tags="ehr benchmark share mimic icu clinical">
-              <div class="dataset-thumb" aria-hidden="true">EHR</div>
+              <div class="dataset-visual visual-ehr" aria-hidden="true"><small>AI 生成图</small><span>EHR</span></div>
               <div class="dataset-card-main">
                 <div class="dataset-card-head"><span>MIT Critical Data · EHR</span><strong>MIMIC-IV 重症监护临床数据库</strong></div>
                 <p>覆盖 ICU 诊疗记录、实验室检查、用药、护理和出入院信息，适合临床预测、病历结构化和可解释性研究。</p>
@@ -390,7 +456,7 @@
               <aside class="dataset-card-stats"><span>浏览 18.4k</span><strong>收藏 1.2k</strong><a href="https://mimic.mit.edu/" target="_blank" rel="noreferrer">查看数据</a></aside>
             </article>
             <article class="dataset-card dataset-trending-card" data-dataset-card data-tags="imaging benchmark share ct radiology oncology">
-              <div class="dataset-thumb" aria-hidden="true">IMG</div>
+              <div class="dataset-visual visual-imaging" aria-hidden="true"><small>AI 生成图</small><span>CT</span></div>
               <div class="dataset-card-main">
                 <div class="dataset-card-head"><span>TCIA · Imaging</span><strong>胸部 CT 病灶标注与影像分割数据集</strong></div>
                 <p>面向肺部病灶检测、分割、报告一致性检查和多中心外部验证，保留标注协议与质控记录。</p>
@@ -399,7 +465,7 @@
               <aside class="dataset-card-stats"><span>浏览 9.8k</span><strong>收藏 740</strong><a href="benchmark.html">进入评测</a></aside>
             </article>
             <article class="dataset-card dataset-trending-card" data-dataset-card data-tags="signal benchmark share ecg icu physiologic">
-              <div class="dataset-thumb" aria-hidden="true">ECG</div>
+              <div class="dataset-visual visual-signal" aria-hidden="true"><small>AI 生成图</small><span>Signal</span></div>
               <div class="dataset-card-main">
                 <div class="dataset-card-head"><span>PhysioNet · Signal</span><strong>心电与生命体征时间序列数据集</strong></div>
                 <p>用于心律失常识别、ICU 早期预警、波形质量控制和多模态临床模型训练。</p>
@@ -408,7 +474,7 @@
               <aside class="dataset-card-stats"><span>浏览 7.6k</span><strong>收藏 612</strong><a href="https://physionet.org/" target="_blank" rel="noreferrer">查看数据</a></aside>
             </article>
             <article class="dataset-card dataset-trending-card" data-dataset-card data-tags="nlp benchmark guideline qa text">
-              <div class="dataset-thumb" aria-hidden="true">NLP</div>
+              <div class="dataset-visual visual-nlp" aria-hidden="true"><small>AI 生成图</small><span>NLP</span></div>
               <div class="dataset-card-main">
                 <div class="dataset-card-head"><span>Happy medical AI · Guideline QA</span><strong>医学指南问答评测集</strong></div>
                 <p>覆盖指南推荐、证据等级、适用人群、禁忌、引用来源完整性和模型回答人工复核。</p>
@@ -417,7 +483,7 @@
               <aside class="dataset-card-stats"><span>浏览 6.4k</span><strong>收藏 488</strong><a href="benchmark.html">发布 Benchmark</a></aside>
             </article>
             <article class="dataset-card dataset-trending-card" data-dataset-card data-tags="imaging nlp benchmark multimodal radiology report">
-              <div class="dataset-thumb" aria-hidden="true">MM</div>
+              <div class="dataset-visual visual-imaging" aria-hidden="true"><small>AI 生成图</small><span>Multi-modal</span></div>
               <div class="dataset-card-main">
                 <div class="dataset-card-head"><span>Radiology · Multimodal</span><strong>影像报告与图像配对样例集</strong></div>
                 <p>连接医学影像、报告摘要、关键发现和异常标签，适合图文检索、报告生成和多模态 RAG 评测。</p>
@@ -426,7 +492,7 @@
               <aside class="dataset-card-stats"><span>浏览 5.9k</span><strong>收藏 421</strong><a href="crowdsourcing.html">关联任务</a></aside>
             </article>
             <article class="dataset-card dataset-trending-card" data-dataset-card data-tags="nlp share literature entity biomedical text">
-              <div class="dataset-thumb" aria-hidden="true">BIO</div>
+              <div class="dataset-visual visual-nlp" aria-hidden="true"><small>AI 生成图</small><span>Bio Text</span></div>
               <div class="dataset-card-main">
                 <div class="dataset-card-head"><span>Biomedical Text · NLP</span><strong>生物医学文献实体标注集</strong></div>
                 <p>用于疾病、药物、基因、症状和治疗实体识别，支持文献总结、知识图谱和检索增强应用。</p>
@@ -435,7 +501,7 @@
               <aside class="dataset-card-stats"><span>浏览 4.2k</span><strong>收藏 309</strong><a href="https://www.ncbi.nlm.nih.gov/research/pubtator/" target="_blank" rel="noreferrer">查看工具</a></aside>
             </article>
             <article class="dataset-card dataset-trending-card" data-dataset-card data-tags="generative benchmark share huggingface diffusers metadata model ai">
-              <div class="dataset-thumb" aria-hidden="true">HF</div>
+              <div class="dataset-visual optional" aria-hidden="true"><small>可选图片</small><span>发布者决定</span></div>
               <div class="dataset-card-main">
                 <div class="dataset-card-head"><span>Hugging Face · Generative AI</span><strong>Diffusers Metadata 数据集</strong></div>
                 <p>汇总 diffusers 生态中的模型与管线元数据，适合生成式 AI 工具索引、模型检索和数据集元信息测试。</p>
@@ -444,7 +510,7 @@
               <aside class="dataset-card-stats"><span>浏览 4.0k</span><strong>收藏 294</strong><a href="https://huggingface.co/datasets/huggingface/diffusers-metadata" target="_blank" rel="noreferrer">查看数据</a></aside>
             </article>
             <article class="dataset-card dataset-trending-card" data-dataset-card data-tags="omics benchmark oncology genomics share">
-              <div class="dataset-thumb" aria-hidden="true">OMX</div>
+              <div class="dataset-visual visual-omics" aria-hidden="true"><small>AI 生成图</small><span>Omics</span></div>
               <div class="dataset-card-main">
                 <div class="dataset-card-head"><span>Oncology · Omics</span><strong>肿瘤多组学公开样例索引</strong></div>
                 <p>整合基因表达、突变、临床分期和疗效结局字段，适合预后建模与跨模态研究设计。</p>
@@ -453,7 +519,7 @@
               <aside class="dataset-card-stats"><span>浏览 3.8k</span><strong>收藏 276</strong><a href="#market-overview">查看字段</a></aside>
             </article>
             <article class="dataset-card dataset-trending-card" data-dataset-card data-tags="ehr imaging share compliance deidentified hospital">
-              <div class="dataset-thumb" aria-hidden="true">SAFE</div>
+              <div class="dataset-visual optional" aria-hidden="true"><small>可选图片</small><span>待生成</span></div>
               <div class="dataset-card-main">
                 <div class="dataset-card-head"><span>Hospital Samples · Compliance</span><strong>医院脱敏样例数据共享区</strong></div>
                 <p>用于机构展示脱敏样例、授权说明、数据字典、质量报告和用途边界，正式共享前进入合规审核。</p>
