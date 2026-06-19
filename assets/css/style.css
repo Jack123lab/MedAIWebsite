@@ -6163,6 +6163,10 @@ body.case-publish-open {
   align-items: center;
 }
 
+.tools-title-single {
+  grid-template-columns: minmax(0, 1fr);
+}
+
 .tool-refresh-card,
 .market-panel,
 .hot-tool-lead,
