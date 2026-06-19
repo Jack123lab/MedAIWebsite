@@ -1269,6 +1269,37 @@ function wireDatasetBrowser() {
   const emptyNote = document.querySelector("#datasetEmptyNote");
   const state = { filter: "all", search: "", page: 1, pageSize: 4 };
 
+  cards.forEach((card) => {
+    const link = card.querySelector("a[href]");
+    if (!link) return;
+
+    const title = card.querySelector(".dataset-card-head strong")?.textContent?.trim() || "数据集详情";
+    card.dataset.cardLinkReady = "true";
+    card.tabIndex = 0;
+    card.setAttribute("role", "link");
+    card.setAttribute("aria-label", `${title}，打开详情页`);
+
+    const openDatasetLink = () => {
+      if (link.target === "_blank") {
+        window.open(link.href, "_blank", "noopener");
+        return;
+      }
+      window.location.href = link.href;
+    };
+
+    card.addEventListener("click", (event) => {
+      if (event.target.closest("a, button, input, select, textarea")) return;
+      openDatasetLink();
+    });
+
+    card.addEventListener("keydown", (event) => {
+      if (event.key !== "Enter" && event.key !== " ") return;
+      if (event.target.closest("a, button, input, select, textarea")) return;
+      event.preventDefault();
+      openDatasetLink();
+    });
+  });
+
   function renderDatasetCards() {
     const query = state.search.trim().toLowerCase();
     const matches = cards.filter((card) => {
