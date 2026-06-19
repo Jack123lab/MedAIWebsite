@@ -8479,6 +8479,7 @@ body.upload-roadmap-open {
 .benchmark-example-card,
 .benchmark-detail-card,
 .benchmark-detail-source {
+  position: relative;
   display: grid;
   align-content: start;
   gap: 12px;
@@ -8486,6 +8487,22 @@ body.upload-roadmap-open {
   border-radius: 8px;
   padding: 18px;
   background: #ffffff;
+}
+
+.benchmark-example-card {
+  cursor: pointer;
+}
+
+.benchmark-card-link {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  border-radius: inherit;
+}
+
+.benchmark-card-link:focus-visible {
+  outline: 3px solid rgba(37, 99, 235, 0.35);
+  outline-offset: 3px;
 }
 
 .benchmark-example-card:last-child {
@@ -8535,6 +8552,8 @@ body.upload-roadmap-open {
 }
 
 .benchmark-example-card .button-row {
+  position: relative;
+  z-index: 2;
   margin-top: auto;
 }
 
