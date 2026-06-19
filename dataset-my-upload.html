@@ -1,0 +1,380 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>我的数据集 | Freedom AI</title>
+    <meta name="description" content="Freedom AI 数据集详情页，参考 Kaggle 数据集页面的信息架构展示上传者、文件、可用性、许可、版本、说明和相关任务。" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <style>
+      .dataset-detail-page {
+        background: #f7faf8;
+      }
+
+      .dataset-hero {
+        border-bottom: 1px solid #dce7e2;
+        background: #ffffff;
+      }
+
+      .dataset-hero-inner {
+        display: grid;
+        grid-template-columns: 190px minmax(0, 1fr) 260px;
+        gap: 24px;
+        align-items: center;
+        padding: 34px 0;
+      }
+
+      .dataset-cover {
+        display: grid;
+        align-content: end;
+        min-height: 150px;
+        border: 1px solid #cfe3dc;
+        border-radius: 8px;
+        padding: 16px;
+        overflow: hidden;
+        color: #ffffff;
+        background:
+          radial-gradient(circle at 26% 22%, rgba(255, 255, 255, 0.86), transparent 16%),
+          linear-gradient(135deg, #0f8a6a, #315f9f 58%, #18293d);
+        box-shadow: 0 14px 34px rgba(23, 39, 56, 0.12);
+      }
+
+      .dataset-cover span {
+        width: fit-content;
+        border-radius: 999px;
+        padding: 5px 9px;
+        background: rgba(7, 28, 42, 0.62);
+        font-size: 12px;
+        font-weight: 900;
+      }
+
+      .dataset-title-block {
+        min-width: 0;
+      }
+
+      .dataset-title-block h1 {
+        margin: 6px 0 10px;
+        color: #172738;
+        font-size: clamp(30px, 4vw, 48px);
+        line-height: 1.06;
+      }
+
+      .dataset-owner {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        align-items: center;
+        color: #667789;
+        font-weight: 750;
+      }
+
+      .dataset-owner strong {
+        color: #172738;
+      }
+
+      .dataset-actions-panel {
+        display: grid;
+        gap: 10px;
+        justify-items: stretch;
+      }
+
+      .dataset-detail-tabs {
+        border-bottom: 1px solid #dce7e2;
+        background: #ffffff;
+      }
+
+      .dataset-detail-tabs .container {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 6px;
+        padding-top: 10px;
+        padding-bottom: 10px;
+      }
+
+      .dataset-detail-tabs a {
+        border-radius: 999px;
+        padding: 8px 12px;
+        color: #405466;
+        font-size: 13px;
+        font-weight: 850;
+        text-decoration: none;
+      }
+
+      .dataset-detail-tabs a.active,
+      .dataset-detail-tabs a:hover {
+        background: #e8f7f1;
+        color: #0f6b53;
+      }
+
+      .dataset-detail-layout {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 320px;
+        gap: 22px;
+        align-items: start;
+      }
+
+      .dataset-main-stack,
+      .dataset-side-stack {
+        display: grid;
+        gap: 16px;
+      }
+
+      .dataset-panel {
+        border: 1px solid #dce7e2;
+        border-radius: 8px;
+        padding: 18px;
+        background: #ffffff;
+        box-shadow: 0 10px 24px rgba(23, 39, 56, 0.05);
+      }
+
+      .dataset-panel h2,
+      .dataset-panel h3 {
+        margin: 0 0 10px;
+        color: #172738;
+      }
+
+      .dataset-panel p {
+        color: var(--muted);
+      }
+
+      .dataset-stat-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 10px;
+      }
+
+      .dataset-stat {
+        border: 1px solid #e4ebe8;
+        border-radius: 8px;
+        padding: 12px;
+        background: #fbfdfc;
+      }
+
+      .dataset-stat span {
+        color: #667789;
+        font-size: 12px;
+        font-weight: 800;
+      }
+
+      .dataset-stat strong {
+        display: block;
+        margin-top: 4px;
+        color: #172738;
+        font-size: 18px;
+      }
+
+      .file-table {
+        display: grid;
+        gap: 8px;
+      }
+
+      .file-row {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 90px 110px;
+        gap: 10px;
+        align-items: center;
+        border: 1px solid #e4ebe8;
+        border-radius: 8px;
+        padding: 11px 12px;
+        background: #fbfdfc;
+        color: #405466;
+        font-size: 13px;
+      }
+
+      .file-row strong {
+        color: #172738;
+      }
+
+      .readme-list {
+        margin: 0;
+        padding-left: 18px;
+        color: #405466;
+      }
+
+      .readme-list li {
+        margin: 7px 0;
+      }
+
+      .side-meta-list {
+        display: grid;
+        gap: 10px;
+        margin: 0;
+        padding: 0;
+        list-style: none;
+      }
+
+      .side-meta-list li {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        border-bottom: 1px solid #edf3f0;
+        padding-bottom: 9px;
+        color: #667789;
+        font-size: 13px;
+      }
+
+      .side-meta-list strong {
+        color: #172738;
+        text-align: right;
+      }
+
+      .citation-box {
+        border: 1px solid #dce7e2;
+        border-radius: 8px;
+        padding: 12px;
+        background: #f8fcfa;
+        color: #405466;
+        font-family: ui-monospace, SFMono-Regular, Consolas, "Liberation Mono", monospace;
+        font-size: 12px;
+        overflow-x: auto;
+      }
+
+      @media (max-width: 980px) {
+        .dataset-hero-inner,
+        .dataset-detail-layout {
+          grid-template-columns: 1fr;
+        }
+
+        .dataset-actions-panel {
+          justify-items: start;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .dataset-stat-grid,
+        .file-row {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/main.js" defer></script>
+  </head>
+  <body class="dataset-detail-page">
+    <header class="site-header">
+      <nav class="nav" aria-label="主导航">
+        <a class="brand" href="index.html"><span class="brand-mark">F</span><span class="brand-text"><strong>Freedom AI</strong><span>医学 AI 社区</span></span></a>
+        <form class="site-search" role="search" action="search.html" method="get" aria-label="站内搜索">
+          <label class="sr-only" for="siteSearchInput">搜索</label>
+          <input id="siteSearchInput" name="q" type="search" placeholder="搜索" autocomplete="off" />
+          <button type="submit">搜索</button>
+        </form>
+        <div class="nav-links">
+          <a href="index.html">首页</a>
+          <a href="learning.html">内容</a>
+          <a href="network.html">社区</a>
+          <a href="community.html">讨论区</a>
+          <a href="datasets.html">数据集</a>
+          <a href="tools.html">工具库</a>
+          <a href="benchmark.html">Benchmark</a>
+          <a href="crowdsourcing.html">众包平台</a>
+          <a href="profile.html">用户</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="dataset-hero">
+        <div class="container dataset-hero-inner">
+          <div class="dataset-cover" aria-hidden="true"><span>AI 生成封面图</span></div>
+          <div class="dataset-title-block">
+            <p class="eyebrow">Dataset Detail</p>
+            <h1>我的医学数据集共享页</h1>
+            <div class="dataset-owner"><span>发布者</span><strong>数据集贡献者</strong><span>Updated 2026.06</span><span>可见性：公开元数据，文件需申请</span></div>
+          </div>
+          <aside class="dataset-actions-panel">
+            <a class="btn primary" href="dataset-upload.html">编辑 / 上传新版本</a>
+            <a class="btn" href="crowdsourcing.html">关联标注任务</a>
+            <a class="btn" href="benchmark.html">发布 Benchmark</a>
+          </aside>
+        </div>
+      </section>
+
+      <nav class="dataset-detail-tabs" aria-label="数据集详情导航">
+        <div class="container">
+          <a class="active" href="#overview">Overview</a>
+          <a href="#files">Files</a>
+          <a href="#readme">README</a>
+          <a href="#versions">Versions</a>
+          <a href="#discussion">Discussion</a>
+        </div>
+      </nav>
+
+      <section class="section compact">
+        <div class="container dataset-detail-layout">
+          <div class="dataset-main-stack">
+            <section class="dataset-panel" id="overview">
+              <h2>Overview</h2>
+              <div class="dataset-stat-grid">
+                <div class="dataset-stat"><span>文件</span><strong>4</strong></div>
+                <div class="dataset-stat"><span>规模</span><strong>1.2 GB</strong></div>
+                <div class="dataset-stat"><span>可用性</span><strong>8.6</strong></div>
+                <div class="dataset-stat"><span>下载</span><strong>需申请</strong></div>
+              </div>
+              <p>这是面向医学 AI 社区的数据集展示模板，参考 Kaggle 数据集详情页的信息层级：先展示数据集身份和动作入口，再展示文件、说明、许可、版本和引用信息。</p>
+            </section>
+
+            <section class="dataset-panel" id="files">
+              <h2>Files</h2>
+              <div class="file-table">
+                <div class="file-row"><strong>README.md</strong><span>8 KB</span><span>说明文档</span></div>
+                <div class="file-row"><strong>data_dictionary.csv</strong><span>42 KB</span><span>字段字典</span></div>
+                <div class="file-row"><strong>sample_records.jsonl</strong><span>26 MB</span><span>脱敏样例</span></div>
+                <div class="file-row"><strong>quality_report.pdf</strong><span>1.8 MB</span><span>质量报告</span></div>
+              </div>
+            </section>
+
+            <section class="dataset-panel" id="readme">
+              <h2>README</h2>
+              <p>数据集发布者需要说明数据来源、样本规模、字段、标注流程、适用任务、限制和审核联系人。图片若启用，应由 AI 生成，只作为视觉识别，不展示真实患者或真实敏感资料。</p>
+              <ul class="readme-list">
+                <li>适用任务：病例结构化、数据质量检查、RAG 评测、标注任务设计。</li>
+                <li>合规要求：去标识化、授权边界、最小必要原则、人工复核。</li>
+                <li>推荐引用：在论文、Benchmark 或任务页面中保留版本号和访问日期。</li>
+              </ul>
+            </section>
+
+            <section class="dataset-panel" id="versions">
+              <h2>Versions</h2>
+              <div class="file-table">
+                <div class="file-row"><strong>v1.0</strong><span>2026.06</span><span>初始提交</span></div>
+                <div class="file-row"><strong>v0.2</strong><span>2026.05</span><span>内部质控</span></div>
+              </div>
+            </section>
+          </div>
+
+          <aside class="dataset-side-stack">
+            <section class="dataset-panel">
+              <h3>Metadata</h3>
+              <ul class="side-meta-list">
+                <li><span>License</span><strong>研究用途授权</strong></li>
+                <li><span>Visibility</span><strong>公开元数据</strong></li>
+                <li><span>Tags</span><strong>EHR, Deidentified, QA</strong></li>
+                <li><span>Task</span><strong>标注 / 质控</strong></li>
+                <li><span>Image</span><strong>AI 生成</strong></li>
+              </ul>
+            </section>
+            <section class="dataset-panel">
+              <h3>Usability</h3>
+              <div class="dataset-stat"><span>Completeness</span><strong>8.6 / 10</strong></div>
+              <p>包含 README、数据字典、样例记录、质量报告、许可说明和版本记录。</p>
+            </section>
+            <section class="dataset-panel" id="discussion">
+              <h3>Citation</h3>
+              <div class="citation-box">Freedom AI Community. My Medical Dataset Sharing Page. Version 1.0, 2026.</div>
+            </section>
+          </aside>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div><h3>Freedom AI</h3><p>数据集详情页用于展示上传者、文件、版本、许可和任务连接。</p></div>
+        <div><h4>数据</h4><a href="datasets.html">返回数据集</a><a href="dataset-upload.html">上传数据集</a></div>
+        <div><h4>任务</h4><a href="crowdsourcing.html">众包任务</a><a href="benchmark.html">Benchmark</a></div>
+        <div><h4>社区</h4><a href="community.html">讨论区</a></div>
+      </div>
+    </footer>
+  </body>
+</html>
