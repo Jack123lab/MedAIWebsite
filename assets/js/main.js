@@ -631,9 +631,9 @@ function wireForum() {
               <div class="post-foot"><span>${post.author}</span><span>${new Date(post.createdAt).toLocaleDateString("zh-CN")}</span><span>${post.replies} 回复</span><span>${post.views} 浏览</span></div>
             </div>
             <div class="post-actions" aria-label="帖子操作">
-              <button class="post-action ${liked ? "active" : ""}" type="button" data-action="like" data-post-id="${post.id}" aria-pressed="${liked}"><span>赞</span><strong>${post.likes + (liked ? 1 : 0)}</strong></button>
-              <button class="post-action ${disliked ? "active negative" : ""}" type="button" data-action="dislike" data-post-id="${post.id}" aria-pressed="${disliked}"><span>踩</span><strong>${(post.dislikes || 0) + (disliked ? 1 : 0)}</strong></button>
-              <button class="post-action ${favorited ? "active favorite" : ""}" type="button" data-action="favorite" data-post-id="${post.id}" aria-pressed="${favorited}"><span>收藏</span><strong>${post.favorites + (favorited ? 1 : 0)}</strong></button>
+              <button class="post-action ${liked ? "active" : ""}" type="button" data-action="like" data-post-id="${post.id}" aria-pressed="${liked}" aria-label="赞" title="赞"><span aria-hidden="true">👍</span><strong>${post.likes + (liked ? 1 : 0)}</strong></button>
+              <button class="post-action ${disliked ? "active negative" : ""}" type="button" data-action="dislike" data-post-id="${post.id}" aria-pressed="${disliked}" aria-label="踩" title="踩"><span aria-hidden="true">👎</span><strong>${(post.dislikes || 0) + (disliked ? 1 : 0)}</strong></button>
+              <button class="post-action ${favorited ? "active favorite" : ""}" type="button" data-action="favorite" data-post-id="${post.id}" aria-pressed="${favorited}" aria-label="收藏" title="收藏"><span aria-hidden="true">♥</span><strong>${post.favorites + (favorited ? 1 : 0)}</strong></button>
             </div>
           </article>`;
       }).join("")
