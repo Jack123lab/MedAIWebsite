@@ -34,17 +34,61 @@
 
     <main>
       <section class="page-title data-tools-title">
-        <div class="container data-tools-title-grid tools-title-single">
-          <div>
+        <div class="container tools-learn-hero">
+          <div class="tools-learn-copy">
             <p class="eyebrow">Tool Library</p>
             <h1>工具库</h1>
-            <p>页面按三层组织：先看基础库与 Mock API，再看可复用 Skill 专栏，最后看可以组合成什么产品场景。具体接口和例子都保留，但路径更短。</p>
-            <div class="tool-reference">
-              <a href="#medical-base-tools">基础库</a>
-              <a href="#mock-registration-api">Mock API</a>
-              <a href="#skill-column">Skill 专栏</a>
-              <a href="#tool-scenarios">场景方案</a>
+            <p>像学习路径一样浏览医学 AI 工具：先选一个入口，再进入基础库、Mock API、Skill 专栏或产品场景。每个模块都保留可直接跳转的链接和可复用接口说明。</p>
+          </div>
+          <nav class="tool-reference tools-learn-tabs" aria-label="工具库路径导航">
+            <a href="#market-overview">全部路径</a>
+            <a href="#medical-base-tools">基础库</a>
+            <a href="#mock-registration-api">Mock API</a>
+            <a href="#skill-column">Skill 专栏</a>
+            <a href="#tool-scenarios">场景方案</a>
+          </nav>
+        </div>
+      </section>
+
+      <section class="section compact" id="market-overview">
+        <div class="container">
+          <div class="tools-learn-heading">
+            <div>
+              <p class="eyebrow">Learning Paths</p>
+              <h2>选择一个工具路径</h2>
             </div>
+            <p>参考课程目录的组织方式，把页面拆成可以直接进入的四类路径；每张卡片对应一个真实模块，而不是抽象介绍。</p>
+          </div>
+
+          <div class="tools-learn-grid">
+            <a class="tools-learn-card" href="#medical-base-tools">
+              <span class="tools-learn-icon">DB</span>
+              <small>Clinical Data Tools</small>
+              <strong>基础库工具</strong>
+              <p>医生库、药品库、医院库，负责为检索、问答、挂号和医院 AI 工作流提供可追溯事实。</p>
+              <em>进入基础库</em>
+            </a>
+            <a class="tools-learn-card" href="#mock-registration-api">
+              <span class="tools-learn-icon">API</span>
+              <small>Mock Registration API</small>
+              <strong>挂号网站 Mock API</strong>
+              <p>演示医院检索、科室选择、医生排班、号源查询和预约草稿创建，并提供在线 Mock JSON。</p>
+              <em>查看 Mock 接口</em>
+            </a>
+            <a class="tools-learn-card" href="#skill-column">
+              <span class="tools-learn-icon">SK</span>
+              <small>Skill Store</small>
+              <strong>Skill 专栏</strong>
+              <p>保留现有 Skill 专栏结构，用作医学 AI 工具库的能力索引、技能分发和工作流说明入口。</p>
+              <em>进入 Skill 专栏</em>
+            </a>
+            <a class="tools-learn-card" href="#tool-scenarios">
+              <span class="tools-learn-icon">AI</span>
+              <small>Product & Scenario Plans</small>
+              <strong>产品或场景方案</strong>
+              <p>把基础库和 Skill 组合成循证 API、虚拟医院、Agentic hospital、AI-native HIS 等方案。</p>
+              <em>查看场景方案</em>
+            </a>
           </div>
         </div>
       </section>
@@ -60,52 +104,125 @@
           </div>
 
           <div class="medical-tool-grid">
-            <a class="medical-tool-card" id="doctor-library-tool" href="network.html#network-results">
+            <article class="medical-tool-card" id="doctor-library-tool">
               <div class="resource-panel-head"><span>Doctor DB</span><strong>医生库</strong></div>
               <p>按姓名、医院、科室、疾病方向、论文、任职和医生排名筛选，支持医生主页自动补全和合作主题推荐。</p>
               <div class="tool-chip-row" aria-label="医生库标签">
                 <span>主任医师</span><span>儿科</span><span>智慧医院</span><span>论文 150+</span>
               </div>
-            </a>
+              <div class="mock-query-box">
+                <span>样例查询</span>
+                <code>doctor?hospital=CUHK-Shenzhen&amp;tag=互联网医疗</code>
+              </div>
+              <a class="medical-tool-action" href="network.html#network-results">进入医生库样例</a>
+            </article>
 
-            <a class="medical-tool-card" id="drug-library-tool" href="#mock-registration-api">
+            <article class="medical-tool-card" id="drug-library-tool">
               <div class="resource-panel-head"><span>Drug DB</span><strong>药品库</strong></div>
               <p>聚合通用名、商品名、适应症、禁忌、相互作用、医保属性和说明书摘要，用于临床问答前的来源校验。</p>
               <div class="tool-chip-row" aria-label="药品库标签">
                 <span>适应症</span><span>禁忌</span><span>相互作用</span><span>医保</span>
               </div>
-            </a>
+              <div class="mock-query-box">
+                <span>样例查询</span>
+                <code>drug?keyword=阿莫西林&amp;field=interaction</code>
+              </div>
+              <a class="medical-tool-action" href="#mock-registration-api">查看 API 接入方式</a>
+            </article>
 
-            <a class="medical-tool-card" id="hospital-library-tool" href="network.html#network-results">
+            <article class="medical-tool-card" id="hospital-library-tool">
               <div class="resource-panel-head"><span>Hospital DB</span><strong>医院库</strong></div>
               <p>支持按地区、等级、专科能力、挂号渠道和 AI 合作方向检索，默认展示深圳龙岗区医院样例。</p>
               <div class="tool-chip-row" aria-label="医院库标签">
                 <span>龙岗区</span><span>三甲/三级</span><span>专科能力</span><span>可认领</span>
               </div>
-            </a>
+              <div class="mock-query-box">
+                <span>样例查询</span>
+                <code>hospital?city=深圳&amp;district=龙岗区&amp;service=挂号</code>
+              </div>
+              <a class="medical-tool-action" href="network.html#network-results">进入医院库样例</a>
+            </article>
           </div>
         </div>
       </section>
 
       <section class="section compact mock-api-section" id="mock-registration-api">
         <div class="container">
-          <div class="section-head clean">
-            <div>
-              <p class="eyebrow">Mock Registration API</p>
-              <h2>挂号网站 Mock API</h2>
-              <p>用于演示医院检索、科室选择、医生排班、号源查询和预约草稿创建。全部为脱敏演示数据，不接入真实挂号系统。</p>
+          <article class="mock-api-standalone">
+            <div class="section-head clean">
+              <div>
+                <p class="eyebrow">Mock Registration API</p>
+                <h2>挂号网站 Mock API</h2>
+                <p>用于演示医院检索、科室选择、医生排班、号源查询和预约草稿创建。全部为脱敏演示数据，不接入真实挂号系统。</p>
+              </div>
+              <a class="mock-data-link" href="assets/data/mock-registration-api.json" target="_blank" rel="noreferrer">查看 Mock JSON</a>
             </div>
-            <a class="mock-data-link" href="assets/data/mock-registration-api.json" target="_blank" rel="noreferrer">查看 Mock JSON</a>
-          </div>
 
-          <a class="tool-skill-column" id="skill-column" href="https://github.com/anbeime/skill" target="_blank" rel="noreferrer" aria-label="打开 anbeime skill GitHub 页面">
+            <div class="registration-api-grid">
+              <article class="registration-api-card api-overview">
+                <div>
+                  <span class="api-method neutral">MOCK</span>
+                  <h3>接入约定</h3>
+                  <p>患者信息只使用 <code>patientToken</code>、<code>visitIntent</code> 和脱敏就诊偏好。预约创建默认返回草稿，需要用户确认后才进入后续流程。</p>
+                  <a class="api-online-link" href="assets/data/mock-registration-api.json" target="_blank" rel="noreferrer">在线查看完整 Mock 数据</a>
+                </div>
+                <pre class="api-code"><code>{
+  "patientToken": "demo_patient_001",
+  "doctorId": "doc-yu-guangjun",
+  "slotId": "slot_20260618_am_03",
+  "visitIntent": "儿科互联网医疗咨询"
+}</code></pre>
+              </article>
+
+              <article class="registration-api-card">
+                <div class="api-path"><span class="api-method get">GET</span><code>/mock/register/hospitals</code></div>
+                <p>按城市、区县、等级和关键词搜索医院。</p>
+                <div class="api-meta"><span>city=深圳</span><span>district=龙岗区</span></div>
+                <a class="api-online-link" href="assets/data/mock-registration-api.json" target="_blank" rel="noreferrer">在线查看 hospitals 数据</a>
+              </article>
+
+              <article class="registration-api-card">
+                <div class="api-path"><span class="api-method get">GET</span><code>/mock/register/departments</code></div>
+                <p>返回医院下可预约科室、开放时段和是否支持线上复诊。</p>
+                <div class="api-meta"><span>hospitalId=hosp-cuhksz-2</span></div>
+                <a class="api-online-link" href="assets/data/mock-registration-api.json" target="_blank" rel="noreferrer">在线查看 departments 数据</a>
+              </article>
+
+              <article class="registration-api-card">
+                <div class="api-path"><span class="api-method get">GET</span><code>/mock/register/doctors</code></div>
+                <p>按科室、职称、擅长疾病和医生排名筛选可预约医生。</p>
+                <div class="api-meta"><span>dept=儿科</span><span>rank=chief</span></div>
+                <a class="api-online-link" href="assets/data/mock-registration-api.json" target="_blank" rel="noreferrer">在线查看 doctors 数据</a>
+              </article>
+
+              <article class="registration-api-card">
+                <div class="api-path"><span class="api-method get">GET</span><code>/mock/register/slots</code></div>
+                <p>查询某医生某天可预约号源，返回时间段、剩余号源和费用字段。</p>
+                <div class="api-meta"><span>date=2026-06-18</span><span>status=available</span></div>
+                <a class="api-online-link" href="assets/data/mock-registration-api.json" target="_blank" rel="noreferrer">在线查看 slots 数据</a>
+              </article>
+
+              <article class="registration-api-card">
+                <div class="api-path"><span class="api-method post">POST</span><code>/mock/register/appointments</code></div>
+                <p>创建预约草稿，返回待确认订单号、就诊提醒和脱敏安全提示。</p>
+                <div class="api-meta"><span>no real booking</span><span>draft only</span></div>
+                <a class="api-online-link" href="assets/data/mock-registration-api.json" target="_blank" rel="noreferrer">在线查看 appointments 草稿</a>
+              </article>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section compact" id="skill-column">
+        <div class="container">
+          <article class="tool-skill-column">
             <div class="tool-skill-head">
               <div>
                 <p class="eyebrow">Skill Store</p>
                 <h3>Skill 专栏</h3>
                 <p>摘录自 anbeime/skill：它把官方 Agent Skills、本地中文技能、备份包和 ClawHub CLI 组织成技能商店，适合迁移为医学 AI 工具库的能力索引、技能分发和工作流说明。</p>
               </div>
-              <span class="tool-skill-link">GitHub</span>
+              <a href="https://github.com/anbeime/skill" target="_blank" rel="noreferrer">GitHub</a>
             </div>
             <div class="tool-skill-stats" aria-label="anbeime skill 数据摘录">
               <div><strong>243</strong><span>总技能</span></div>
@@ -134,53 +251,7 @@
                 </div>
               </section>
             </div>
-          </a>
-
-          <div class="registration-api-grid">
-            <article class="registration-api-card api-overview">
-              <div>
-                <span class="api-method neutral">MOCK</span>
-                <h3>接入约定</h3>
-                <p>患者信息只使用 <code>patientToken</code>、<code>visitIntent</code> 和脱敏就诊偏好。预约创建默认返回草稿，需要用户确认后才进入后续流程。</p>
-              </div>
-              <pre class="api-code"><code>{
-  "patientToken": "demo_patient_001",
-  "doctorId": "doc-yu-guangjun",
-  "slotId": "slot_20260618_am_03",
-  "visitIntent": "儿科互联网医疗咨询"
-}</code></pre>
-            </article>
-
-            <article class="registration-api-card">
-              <div class="api-path"><span class="api-method get">GET</span><code>/mock/register/hospitals</code></div>
-              <p>按城市、区县、等级和关键词搜索医院。</p>
-              <div class="api-meta"><span>city=深圳</span><span>district=龙岗区</span></div>
-            </article>
-
-            <article class="registration-api-card">
-              <div class="api-path"><span class="api-method get">GET</span><code>/mock/register/departments</code></div>
-              <p>返回医院下可预约科室、开放时段和是否支持线上复诊。</p>
-              <div class="api-meta"><span>hospitalId=hosp-cuhksz-2</span></div>
-            </article>
-
-            <article class="registration-api-card">
-              <div class="api-path"><span class="api-method get">GET</span><code>/mock/register/doctors</code></div>
-              <p>按科室、职称、擅长疾病和医生排名筛选可预约医生。</p>
-              <div class="api-meta"><span>dept=儿科</span><span>rank=chief</span></div>
-            </article>
-
-            <article class="registration-api-card">
-              <div class="api-path"><span class="api-method get">GET</span><code>/mock/register/slots</code></div>
-              <p>查询某医生某天可预约号源，返回时间段、剩余号源和费用字段。</p>
-              <div class="api-meta"><span>date=2026-06-18</span><span>status=available</span></div>
-            </article>
-
-            <article class="registration-api-card">
-              <div class="api-path"><span class="api-method post">POST</span><code>/mock/register/appointments</code></div>
-              <p>创建预约草稿，返回待确认订单号、就诊提醒和脱敏安全提示。</p>
-              <div class="api-meta"><span>no real booking</span><span>draft only</span></div>
-            </article>
-          </div>
+          </article>
         </div>
       </section>
 
@@ -188,8 +259,8 @@
         <div class="container">
           <div class="section-head clean">
             <div>
-              <p class="eyebrow">Scenario Stack</p>
-              <h2>六个产品方向</h2>
+              <p class="eyebrow">Product & Scenario Plans</p>
+              <h2>产品或场景方案</h2>
               <p>每个方向都压缩成三件事：用途、可组合的技能能力、一个能直接讲给用户听的例子。</p>
             </div>
           </div>
