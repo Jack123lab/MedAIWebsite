@@ -51,38 +51,38 @@
       </section>
 
       <section class="section compact">
-        <div class="container benchmark-detail-grid">
-          <article class="benchmark-detail-card">
-            <span>01</span>
-            <h2>评测对象</h2>
-            <p>适合评估通用 LLM、医学 LLM、牙科专科模型和带检索增强的临床问答系统。</p>
-            <dl><dt>领域</dt><dd>牙体牙髓、口腔颌面、正畸、牙周、种植等牙科专科。</dd><dt>输出</dt><dd>答案、推理过程、风险提示和必要的置信度说明。</dd></dl>
-          </article>
-          <article class="benchmark-detail-card">
-            <span>02</span>
-            <h2>任务结构</h2>
-            <ul class="benchmark-detail-list">
-              <li><strong>选择题</strong>用于可比对的知识回忆和常规判断。</li>
-              <li><strong>短答题</strong>检查模型能否表达关键诊疗理由。</li>
-              <li><strong>病例题</strong>关注复杂场景下的个体化推理和安全边界。</li>
-            </ul>
-          </article>
-          <article class="benchmark-detail-card">
-            <span>03</span>
-            <h2>指标设计</h2>
-            <p>除准确率外，应拆分推理层级、专科方向、国家地区来源和错误风险等级，避免一个总分掩盖关键失败模式。</p>
-            <dl><dt>核心</dt><dd>Accuracy、reasoning-level score、safety error rate。</dd><dt>分析</dt><dd>按专科、题型、语言和高风险错误做切片。</dd></dl>
-          </article>
-          <article class="benchmark-detail-card">
-            <span>04</span>
-            <h2>站内落地</h2>
-            <p>Freedom AI 可把 GDB 作为牙科临床推理示例任务，接入众包复核、榜单对比和错误样例讨论。</p>
-            <ul class="benchmark-detail-list">
-              <li><strong>数据版本</strong>记录题目版本、语言和授权状态。</li>
-              <li><strong>专家复核</strong>保留牙科医生对争议答案的审核记录。</li>
-              <li><strong>讨论入口</strong>把高风险错误同步到讨论区。</li>
-            </ul>
-          </article>
+        <div class="container benchmark-compact-card">
+          <div class="benchmark-compact-head">
+            <div>
+              <p class="eyebrow">Benchmark Card</p>
+              <h2>简要说明</h2>
+            </div>
+            <p>用于牙科临床推理评测：覆盖通用/医学/牙科模型与 RAG 问答系统，重点看答案、推理、风险提示和置信度。</p>
+          </div>
+          <div class="benchmark-compact-specs" aria-label="GDB 简要结构">
+            <dl>
+              <dt>领域</dt>
+              <dd>牙体牙髓、口腔颌面、正畸、牙周、种植等专科。</dd>
+            </dl>
+            <dl>
+              <dt>题型</dt>
+              <dd>选择题、短答题、病例题，分别对应知识回忆、诊疗理由和个体化推理。</dd>
+            </dl>
+            <dl>
+              <dt>指标</dt>
+              <dd>Accuracy、reasoning-level score、safety error rate，并按专科、题型、语言与高风险错误切片。</dd>
+            </dl>
+            <dl>
+              <dt>站内落地</dt>
+              <dd>作为牙科推理示例任务，接入众包复核、榜单对比、错误样例讨论和专家审核记录。</dd>
+            </dl>
+          </div>
+          <div class="benchmark-compact-tags" aria-label="GDB 管理要点">
+            <span>数据版本</span>
+            <span>语言与授权状态</span>
+            <span>牙科医生复核</span>
+            <span>高风险错误同步讨论区</span>
+          </div>
         </div>
       </section>
 
