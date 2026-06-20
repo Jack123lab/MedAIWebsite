@@ -11634,6 +11634,59 @@ body.upload-roadmap-open {
   margin-top: 14px;
 }
 
+.credential-channel {
+  align-content: start;
+  display: grid;
+  gap: 14px;
+}
+
+.credential-forum-tag {
+  display: grid;
+  gap: 6px;
+  border: 1px solid var(--forum-line);
+  border-radius: 8px;
+  padding: 16px;
+  color: var(--forum-link);
+  background: #ffffff;
+  text-decoration: none;
+}
+
+.credential-forum-tag strong {
+  color: #111827;
+  font-size: 18px;
+}
+
+.credential-forum-tag span {
+  color: var(--forum-muted);
+  font-size: 14px;
+}
+
+.credential-forum-tag.verified {
+  border-color: #e1b000;
+  background: var(--forum-accent-soft);
+}
+
+.clinician-gate-section {
+  padding-top: 28px;
+  padding-bottom: 0;
+}
+
+.clinician-access-card {
+  padding: 22px;
+}
+
+.clinician-forum-locked .clinician-forum-workspace {
+  display: none;
+}
+
+.clinician-forum-unlocked .clinician-gate-section {
+  padding-bottom: 18px;
+}
+
+.clinician-forum-shell {
+  align-items: start;
+}
+
 .verification-page .verification-title {
   padding-bottom: 34px;
 }

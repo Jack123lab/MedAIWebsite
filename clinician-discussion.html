@@ -1,0 +1,222 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>医生/医学生讨论区 | Freedom AI</title>
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/main.js" defer></script>
+  </head>
+  <body class="medical-community-page clinician-forum-page">
+    <header class="site-header">
+      <nav class="nav" aria-label="主导航">
+        <a class="brand" href="index.html"><span class="brand-mark">F</span><span class="brand-text"><strong>Freedom AI</strong><span>医学 AI 社区</span></span></a>
+        <form class="site-search" role="search" action="search.html" method="get" aria-label="站内搜索">
+          <label class="sr-only" for="siteSearchInput">搜索</label>
+          <input id="siteSearchInput" name="q" type="search" placeholder="搜索" autocomplete="off" />
+          <button type="submit">搜索</button>
+        </form>
+        <div class="nav-links">
+          <a href="index.html">首页</a>
+          <a href="learning.html">内容</a>
+          <a href="network.html">社区</a>
+          <a href="community.html">讨论区</a>
+          <a href="datasets.html">数据集</a>
+          <a href="tools.html">工具库</a>
+          <a href="benchmark.html">Benchmark</a>
+          <a href="crowdsourcing.html">众包平台</a>
+          <a href="profile.html">用户</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section id="clinicianForumGate" class="section compact clinician-gate-section" aria-live="polite"></section>
+
+      <section class="page-title forum-title compact-community-hero clinician-forum-workspace">
+        <div class="container forum-title-grid compact-discussion-entry">
+          <div class="discussion-entry-copy">
+            <p class="eyebrow">认证讨论区</p>
+            <h1>医生/医学生专业讨论区</h1>
+            <p>仅面向已完成医生或医学生验证的用户开放，用于承接科室帖、专业伦理评论和需要资格背景的医学 AI 讨论。</p>
+            <nav class="discussion-mini-nav" aria-label="认证讨论区导航">
+              <a href="community.html">返回公开问答区</a>
+              <a class="active" href="clinician-discussion.html">认证专区</a>
+              <a href="doctor-verification.html">认证状态</a>
+            </nav>
+          </div>
+          <div class="discussion-entry-actions">
+            <div class="forum-hero-stats" aria-label="认证专区概览">
+              <span><strong>认证</strong> 医生/医学生</span>
+              <span><strong>伦理</strong> 专业评论</span>
+              <span><strong>科室</strong> 分流讨论</span>
+            </div>
+            <div class="quick-publish-row" aria-label="发布快捷入口">
+              <a class="btn primary" href="#postForm" data-quick-post>发布专业讨论</a>
+              <a class="btn" href="community.html">公开讨论区</a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section compact forum-tag-section clinician-forum-workspace" aria-label="认证讨论标签">
+        <div class="container forum-channel-grid">
+          <section class="forum-channel-panel primary-channel">
+            <div class="channel-head">
+              <p class="eyebrow">专业标签</p>
+              <h2>先按 tag 进入讨论流</h2>
+              <p>专业专区保留医疗伦理评论区，避免伦理问题只出现在科室卡片或发布表单里。</p>
+            </div>
+            <div class="content-type-grid">
+              <button class="type-chip active" type="button" data-forum-filter="all"><strong>全部专业讨论</strong><span>认证用户可见的完整讨论流</span></button>
+              <button class="type-chip" type="button" data-forum-filter="ethics"><strong>医疗伦理评论</strong><span>合规、隐私、授权和责任边界</span></button>
+              <button class="type-chip" type="button" data-forum-filter="clinical"><strong>科室病例</strong><span>脱敏病例和专科路径讨论</span></button>
+              <button class="type-chip" type="button" data-forum-filter="research"><strong>科研设计</strong><span>PICO、统计和论文复现</span></button>
+            </div>
+          </section>
+          <section class="forum-channel-panel">
+            <div class="channel-head compact-head">
+              <p class="eyebrow">准入规则</p>
+              <h2>只开放给认证身份</h2>
+            </div>
+            <ul class="plain-list">
+              <li>医生需通过医师资格或执业证明核验。</li>
+              <li>医学生需通过学生证或在读证明核验。</li>
+              <li>所有帖子仍需完成脱敏，不发布患者可识别信息。</li>
+            </ul>
+          </section>
+        </div>
+      </section>
+
+      <section class="section compact community-protected clinician-forum-workspace">
+        <div class="container forum-shell clinician-forum-shell">
+          <aside class="forum-sidebar" aria-label="认证讨论版块">
+            <section class="forum-block">
+              <h2>专业版块</h2>
+              <nav class="board-nav filter-group" aria-label="版块筛选">
+                <button class="board-link active" type="button" data-forum-filter="all"><span>全部讨论</span><strong id="countAll">0</strong></button>
+                <button class="board-link" type="button" data-forum-filter="clinical"><span>临床文本</span><strong id="countClinical">0</strong></button>
+                <button class="board-link" type="button" data-forum-filter="guideline"><span>指南问答</span><strong id="countGuideline">0</strong></button>
+                <button class="board-link" type="button" data-forum-filter="research"><span>科研设计</span><strong id="countResearch">0</strong></button>
+                <button class="board-link" type="button" data-forum-filter="tool"><span>工具经验</span><strong id="countTool">0</strong></button>
+                <button class="board-link" type="button" data-forum-filter="ethics"><span>合规伦理</span><strong id="countEthics">0</strong></button>
+              </nav>
+            </section>
+          </aside>
+
+          <section class="forum-main" aria-label="认证帖子列表">
+            <div class="forum-toolbar">
+              <div>
+                <h2>认证专区最新讨论</h2>
+                <p>按发布时间排序，伦理评论和科室讨论统一进入这里。</p>
+                <span id="publishModeStatus" class="publish-mode-status">认证浏览模式</span>
+              </div>
+              <div class="forum-tools">
+                <input id="forumSearch" class="forum-search" type="search" placeholder="搜索认证区标题或正文" />
+                <select id="forumSort" class="forum-select" aria-label="排序">
+                  <option value="new">最新发布</option>
+                  <option value="reply">回复最多</option>
+                  <option value="view">浏览最多</option>
+                  <option value="like">点赞最多</option>
+                  <option value="favorite">喜欢最多</option>
+                </select>
+              </div>
+            </div>
+            <div id="postList" class="post-list" aria-live="polite"></div>
+            <div class="pagination-bar" aria-label="帖子分页">
+              <button id="prevPage" class="page-btn" type="button">上一页</button>
+              <span id="pageInfo">第 1 页</span>
+              <button id="nextPage" class="page-btn" type="button">下一页</button>
+            </div>
+          </section>
+
+          <aside class="forum-right" aria-label="认证讨论辅助信息">
+            <section class="forum-block">
+              <h2>讨论边界</h2>
+              <ul class="plain-list">
+                <li>讨论医学 AI 工具时标注适用场景和人工复核方式。</li>
+                <li>涉及伦理争议时优先说明授权、脱敏和审计路径。</li>
+                <li>需要患者资料时只使用无法反识别的最小信息。</li>
+              </ul>
+            </section>
+          </aside>
+        </div>
+      </section>
+
+      <div class="post-composer-popover" id="postComposer" aria-hidden="true">
+        <button class="post-composer-backdrop" type="button" data-close-post-composer aria-label="关闭发布讨论"></button>
+        <section class="post-console post-composer-card" id="postForm" role="dialog" aria-modal="true" aria-labelledby="postComposerTitle">
+          <div class="console-head">
+            <div>
+              <span class="console-kicker">认证专区</span>
+              <h2 id="postComposerTitle">发布专业讨论</h2>
+            </div>
+            <span class="console-status">认证用户</span>
+          </div>
+          <form id="newPostForm" class="post-form">
+            <label>标题<input id="postTitle" type="text" maxlength="80" placeholder="例如：这个病例摘要是否已经足够脱敏？" required /></label>
+            <div class="form-split">
+              <label>版块<select id="postCategory" required><option value="clinical">临床文本</option><option value="guideline">指南问答</option><option value="research">科研设计</option><option value="tool">工具经验</option><option value="ethics">合规伦理</option></select></label>
+              <label>科室/领域<input id="postDept" type="text" maxlength="30" placeholder="如心内科、肿瘤、伦理审查" /></label>
+            </div>
+            <label>正文<textarea id="postBody" rows="7" maxlength="1200" placeholder="请描述专业背景、证据来源、伦理边界和希望获得的帮助。请勿输入患者可识别信息。" required></textarea></label>
+            <div class="privacy-panel">
+              <label class="check-line"><input id="privacyCheck" type="checkbox" required /> 我确认内容不包含患者可识别信息</label>
+              <span>发布后将出现在认证讨论列表；本页面默认保存在当前浏览器。</span>
+            </div>
+            <button class="publish-btn" type="submit">发布到认证讨论区</button>
+          </form>
+          <p id="postStatus" class="form-status" role="status"></p>
+        </section>
+      </div>
+    </main>
+
+    <footer class="site-footer"><div class="container footer-grid"><div><h3>Freedom AI</h3><p>认证讨论区用于医生和医学生之间的专业医学 AI 讨论。</p></div><div><h4>讨论</h4><a href="community.html">公开问答区</a></div><div><h4>认证</h4><a href="doctor-verification.html">医生/医学生认证</a></div><div><h4>个人</h4><a href="profile.html">用户</a></div></div></footer>
+    <script>
+      (() => {
+        const title = document.querySelector("#postTitle");
+        const body = document.querySelector("#postBody");
+        const form = document.querySelector("#postForm");
+        const composer = document.querySelector("#postComposer");
+        const closeButtons = document.querySelectorAll("[data-close-post-composer]");
+        let lastTrigger = null;
+
+        function closeComposer() {
+          if (!composer) return;
+          composer.classList.remove("is-open");
+          composer.setAttribute("aria-hidden", "true");
+          document.body.classList.remove("post-composer-open");
+          if (lastTrigger) lastTrigger.focus();
+        }
+
+        function focusComposer() {
+          if (!form || !body) return;
+          if (title && !title.value.trim()) {
+            title.placeholder = "例如：这个病例摘要是否已经足够脱敏？";
+          }
+          if (composer) {
+            composer.classList.add("is-open");
+            composer.setAttribute("aria-hidden", "false");
+            document.body.classList.add("post-composer-open");
+          }
+          window.setTimeout(() => (title || body).focus(), 120);
+        }
+
+        document.querySelectorAll("[data-quick-post]").forEach((item) => {
+          item.addEventListener("click", (event) => {
+            event.preventDefault();
+            lastTrigger = item;
+            focusComposer();
+          });
+        });
+        closeButtons.forEach((button) => {
+          button.addEventListener("click", closeComposer);
+        });
+        document.addEventListener("keydown", (event) => {
+          if (event.key === "Escape") closeComposer();
+        });
+      })();
+    </script>
+  </body>
+</html>

@@ -95,6 +95,35 @@
         </div>
       </section>
 
+      <section class="section compact forum-tag-section community-protected" aria-label="上方讨论标签">
+        <div class="container forum-channel-grid">
+          <section class="forum-channel-panel primary-channel">
+            <div class="channel-head">
+              <p class="eyebrow">上方讨论板块</p>
+              <h2>按问题类型快速进入评论区</h2>
+              <p>科室帖、伦理问题和专业认证区集中放在讨论流上方，先选择标签，再进入对应讨论列表。</p>
+            </div>
+            <div class="content-type-grid">
+              <button class="type-chip active" type="button" data-forum-filter="all"><strong>全部讨论</strong><span>病例、指南、工具、科研与伦理评论</span></button>
+              <button class="type-chip" type="button" data-forum-filter="ethics"><strong>医疗伦理评论</strong><span>脱敏授权、审计记录、责任边界</span></button>
+              <button class="type-chip" type="button" data-forum-filter="clinical"><strong>科室病例</strong><span>按专科问题进入临床讨论</span></button>
+              <button class="type-chip" type="button" data-forum-filter="guideline"><strong>指南问答</strong><span>证据来源、适用人群、推荐等级</span></button>
+            </div>
+          </section>
+          <section class="forum-channel-panel credential-channel">
+            <div class="channel-head compact-head">
+              <p class="eyebrow">认证专区</p>
+              <h2>医生/医学生讨论区</h2>
+              <p>认证成功后，下面的 tag 会替换为专属讨论区入口，只允许医生或医学生身份进入。</p>
+            </div>
+            <a id="clinicianForumTag" class="credential-forum-tag" href="doctor-verification.html" aria-live="polite">
+              <strong>医生/医学生认证</strong>
+              <span>认证后开放专业讨论区</span>
+            </a>
+          </section>
+        </div>
+      </section>
+
       <section class="section compact community-protected">
         <div class="container forum-shell">
           <aside class="forum-sidebar" aria-label="讨论版块">
@@ -177,7 +206,7 @@
               <p class="eyebrow">科室讨论区</p>
               <h2>科室区域讨论</h2>
               <p>不同专科的问题、证据来源和 AI 使用边界差异很大，建议从对应科室板块发起讨论。</p>
-              <a class="btn primary dept-verify-link" href="doctor-verification.html">医生/医学生认证</a>
+              <a class="btn primary dept-verify-link" href="clinician-discussion.html">医生/医学生专区</a>
             </div>
           </div>
           <div class="dept-board-grid">
