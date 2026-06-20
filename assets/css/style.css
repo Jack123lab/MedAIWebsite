@@ -4577,10 +4577,6 @@ body.medical-workbench-index,
   padding-bottom: 10px;
 }
 
-.agent-home-index .home-news-only .container {
-  width: min(100%, calc(var(--max) * 1.5));
-}
-
 .agent-home-index .home-news-only .section-head.clean {
   margin-bottom: 24px;
   border-bottom: 0;
@@ -4673,7 +4669,7 @@ body.medical-workbench-index,
 }
 
 .agent-home-index .news-scroll-row {
-  height: clamp(132px, 22vh, 176px);
+  height: clamp(198px, 33vh, 264px);
   min-height: 0;
   border-radius: 10px;
   gap: 0;
@@ -5336,11 +5332,11 @@ body.case-publish-open {
   }
 
   .agent-home-index .news-scroll-row {
-    height: 156px;
+    height: 234px;
   }
 
   .agent-home-index .news-source-card {
-    height: 156px;
+    height: 234px;
   }
 
   .agent-home-index .news-source-card div {
