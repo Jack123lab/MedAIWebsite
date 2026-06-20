@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>挂号网站 Mock API | Freedom AI</title>
+    <meta name="description" content="Freedom AI 挂号网站 Mock API，用于演示医院检索、科室选择、医生排班、号源查询和预约草稿创建。" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/main.js" defer></script>
+  </head>
+  <body class="data-tools-page">
+    <header class="site-header">
+      <nav class="nav" aria-label="主导航">
+        <a class="brand" href="index.html"><span class="brand-mark">F</span><span class="brand-text"><strong>Freedom AI</strong><span>医学 AI 社区</span></span></a>
+        <form class="site-search" role="search" action="search.html" method="get" aria-label="站内搜索">
+          <label class="sr-only" for="siteSearchInput">搜索</label>
+          <input id="siteSearchInput" name="q" type="search" placeholder="搜索" autocomplete="off" />
+          <button type="submit">搜索</button>
+        </form>
+        <div class="nav-links">
+          <a href="index.html">首页</a>
+          <a href="learning.html">内容</a>
+          <a href="network.html">社区</a>
+          <a href="community.html">讨论区</a>
+          <a href="datasets.html">数据集</a>
+          <a href="tools.html">工具库</a>
+          <a href="benchmark.html">Benchmark</a>
+          <a href="crowdsourcing.html">众包平台</a>
+          <a href="profile.html">用户</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="page-title data-tools-title">
+        <div class="container tools-learn-hero">
+          <div class="tools-learn-copy">
+            <p class="eyebrow">Mock Registration API</p>
+            <h1>挂号网站 Mock API</h1>
+            <p>用于演示医院检索、科室选择、医生排班、号源查询和预约草稿创建。全部为脱敏演示数据，不接入真实挂号系统。</p>
+          </div>
+          <nav class="tool-reference tools-learn-tabs" aria-label="工具库路径导航">
+            <a href="tools.html">返回工具路径</a>
+            <a href="tools-base.html">基础库</a>
+            <a href="tools-skill.html">Skill 专栏</a>
+            <a href="tools-scenarios.html">场景方案</a>
+          </nav>
+        </div>
+      </section>
+
+      <section class="section compact mock-api-section" id="mock-registration-api">
+        <div class="container">
+          <article class="mock-api-standalone">
+            <div class="section-head clean">
+              <div>
+                <p class="eyebrow">Mock Registration API</p>
+                <h2>挂号网站 Mock API</h2>
+                <p>用于演示医院检索、科室选择、医生排班、号源查询和预约草稿创建。全部为脱敏演示数据，不接入真实挂号系统。</p>
+              </div>
+              <a class="mock-data-link" href="assets/data/mock-registration-api.json" target="_blank" rel="noreferrer">查看 Mock JSON</a>
+            </div>
+
+            <div class="registration-api-grid">
+              <article class="registration-api-card api-overview">
+                <div>
+                  <span class="api-method neutral">MOCK</span>
+                  <h3>接入约定</h3>
+                  <p>患者信息只使用 <code>patientToken</code>、<code>visitIntent</code> 和脱敏就诊偏好。预约创建默认返回草稿，需要用户确认后才进入后续流程。</p>
+                  <a class="api-online-link" href="assets/data/mock-registration-api.json" target="_blank" rel="noreferrer">在线查看完整 Mock 数据</a>
+                </div>
+                <pre class="api-code"><code>{
+  "patientToken": "demo_patient_001",
+  "doctorId": "doc-yu-guangjun",
+  "slotId": "slot_20260618_am_03",
+  "visitIntent": "儿科互联网医疗咨询"
+}</code></pre>
+              </article>
+
+              <article class="registration-api-card">
+                <div class="api-path"><span class="api-method get">GET</span><code>/mock/register/hospitals</code></div>
+                <p>按城市、区县、等级和关键词搜索医院。</p>
+                <div class="api-meta"><span>city=深圳</span><span>district=龙岗区</span></div>
+                <a class="api-online-link" href="assets/data/mock-registration-api.json" target="_blank" rel="noreferrer">在线查看 hospitals 数据</a>
+              </article>
+
+              <article class="registration-api-card">
+                <div class="api-path"><span class="api-method get">GET</span><code>/mock/register/departments</code></div>
+                <p>返回医院下可预约科室、开放时段和是否支持线上复诊。</p>
+                <div class="api-meta"><span>hospitalId=hosp-cuhksz-2</span></div>
+                <a class="api-online-link" href="assets/data/mock-registration-api.json" target="_blank" rel="noreferrer">在线查看 departments 数据</a>
+              </article>
+
+              <article class="registration-api-card">
+                <div class="api-path"><span class="api-method get">GET</span><code>/mock/register/doctors</code></div>
+                <p>按科室、职称、擅长疾病和医生排名筛选可预约医生。</p>
+                <div class="api-meta"><span>dept=儿科</span><span>rank=chief</span></div>
+                <a class="api-online-link" href="assets/data/mock-registration-api.json" target="_blank" rel="noreferrer">在线查看 doctors 数据</a>
+              </article>
+
+              <article class="registration-api-card">
+                <div class="api-path"><span class="api-method get">GET</span><code>/mock/register/slots</code></div>
+                <p>查询某医生某天可预约号源，返回时间段、剩余号源和费用字段。</p>
+                <div class="api-meta"><span>date=2026-06-18</span><span>status=available</span></div>
+                <a class="api-online-link" href="assets/data/mock-registration-api.json" target="_blank" rel="noreferrer">在线查看 slots 数据</a>
+              </article>
+
+              <article class="registration-api-card">
+                <div class="api-path"><span class="api-method post">POST</span><code>/mock/register/appointments</code></div>
+                <p>创建预约草稿，返回待确认订单号、就诊提醒和脱敏安全提示。</p>
+                <div class="api-meta"><span>no real booking</span><span>draft only</span></div>
+                <a class="api-online-link" href="assets/data/mock-registration-api.json" target="_blank" rel="noreferrer">在线查看 appointments 草稿</a>
+              </article>
+            </div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div><h3>Freedom AI</h3><p>挂号 Mock API 只用于脱敏演示和原型说明，不接入真实挂号系统。</p></div>
+        <div><h4>工具</h4><a href="tools.html">工具库</a><a href="tools-base.html">基础库工具</a><a href="tools-mock-registration.html">Mock 挂号 API</a><a href="tools-scenarios.html">场景方案</a></div>
+        <div><h4>数据</h4><a href="datasets.html">数据集</a></div>
+        <div><h4>平台</h4><a href="benchmark.html">评测基准</a><a href="crowdsourcing.html">众包平台</a></div>
+        <div><h4>学习</h4><a href="learning.html">教学</a><a href="community.html">讨论区</a></div>
+      </div>
+    </footer>
+  </body>
+</html>

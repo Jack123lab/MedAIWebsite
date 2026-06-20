@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>产品或场景方案 | Freedom AI</title>
+    <meta name="description" content="Freedom AI 产品或场景方案：循证医疗 API、虚拟医院、Agentic hospital、AI-native HIS、AI-native Up2date 和中医知识图谱。" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/main.js" defer></script>
+  </head>
+  <body class="data-tools-page">
+    <header class="site-header">
+      <nav class="nav" aria-label="主导航">
+        <a class="brand" href="index.html"><span class="brand-mark">F</span><span class="brand-text"><strong>Freedom AI</strong><span>医学 AI 社区</span></span></a>
+        <form class="site-search" role="search" action="search.html" method="get" aria-label="站内搜索">
+          <label class="sr-only" for="siteSearchInput">搜索</label>
+          <input id="siteSearchInput" name="q" type="search" placeholder="搜索" autocomplete="off" />
+          <button type="submit">搜索</button>
+        </form>
+        <div class="nav-links">
+          <a href="index.html">首页</a>
+          <a href="learning.html">内容</a>
+          <a href="network.html">社区</a>
+          <a href="community.html">讨论区</a>
+          <a href="datasets.html">数据集</a>
+          <a href="tools.html">工具库</a>
+          <a href="benchmark.html">Benchmark</a>
+          <a href="crowdsourcing.html">众包平台</a>
+          <a href="profile.html">用户</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="page-title data-tools-title">
+        <div class="container tools-learn-hero">
+          <div class="tools-learn-copy">
+            <p class="eyebrow">Product & Scenario Plans</p>
+            <h1>产品或场景方案</h1>
+            <p>把基础库和 Skill 组合成可以讲清楚、可演示、可继续拆解的医学 AI 产品方向。</p>
+          </div>
+          <nav class="tool-reference tools-learn-tabs" aria-label="工具库路径导航">
+            <a href="tools.html">返回工具路径</a>
+            <a href="tools-base.html">基础库</a>
+            <a href="tools-mock-registration.html">Mock API</a>
+            <a href="tools-skill.html">Skill 专栏</a>
+          </nav>
+        </div>
+      </section>
+
+      <section class="section compact" id="tool-scenarios">
+        <div class="container">
+          <div class="section-head clean">
+            <div>
+              <p class="eyebrow">Product & Scenario Plans</p>
+              <h2>产品或场景方案</h2>
+              <p>每个方向都压缩成三件事：用途、可组合的技能能力、一个能直接讲给用户听的例子。</p>
+            </div>
+          </div>
+
+          <div class="tool-stack-grid">
+            <article class="resource-panel tool-stack-card" id="scenario-evidence">
+              <div class="resource-panel-head"><span>Evidence</span><strong>循证医疗 API</strong></div>
+              <p>多数据库、多指南、多证据等级的检索与引用层，适合医生 Copilot、院内文献助手和标准化问答接口。</p>
+              <div class="market-meta"><span>PubMed</span><span>ClinicalTrials</span><span>OpenFDA</span><span>NICE / WHO / NCCN</span></div>
+              <div class="skill-link-cloud" aria-label="循证医疗 skills">
+                <a href="https://github.com/FreedomIntelligence/OpenClaw-Medical-Skills/tree/main/skills/medical-research-toolkit" target="_blank" rel="noreferrer">medical-research-toolkit</a>
+                <a href="https://github.com/FreedomIntelligence/OpenClaw-Medical-Skills/tree/main/skills/biomcp-server" target="_blank" rel="noreferrer">biomcp-server</a>
+                <a href="https://github.com/FreedomIntelligence/OpenClaw-Medical-Skills/tree/main/skills/tooluniverse-clinical-guidelines" target="_blank" rel="noreferrer">clinical-guidelines</a>
+                <a href="https://github.com/FreedomIntelligence/OpenClaw-Medical-Skills/tree/main/skills/trialgpt-matching" target="_blank" rel="noreferrer">trialgpt-matching</a>
+              </div>
+              <p class="tool-note">例子：给“重症肌无力免疫治疗”输出带 PubMed、ClinicalTrials.gov、OpenFDA 引用的证据摘要与正在招募的试验列表。</p>
+            </article>
+
+            <article class="resource-panel tool-stack-card" id="scenario-virtual-hospital">
+              <div class="resource-panel-head"><span>Simulation</span><strong>虚拟医院</strong></div>
+              <p>面向病例回放、患者数字孪生、训练环境和多角色协作，适合教学、方案模拟和新流程验证。</p>
+              <div class="market-meta"><span>Patient twin</span><span>EHR chat</span><span>Virtual lab</span></div>
+              <div class="skill-link-cloud" aria-label="虚拟医院 skills">
+                <a href="https://github.com/FreedomIntelligence/OpenClaw-Medical-Skills/tree/main/skills/digital-twin-clinical-agent" target="_blank" rel="noreferrer">digital-twin-clinical-agent</a>
+                <a href="https://github.com/FreedomIntelligence/OpenClaw-Medical-Skills/tree/main/skills/chatehr-clinician-assistant" target="_blank" rel="noreferrer">chatehr-clinician-assistant</a>
+                <a href="https://github.com/FreedomIntelligence/OpenClaw-Medical-Skills/tree/main/skills/virtual-lab-agent" target="_blank" rel="noreferrer">virtual-lab-agent</a>
+              </div>
+              <p class="tool-note">例子：做一个“虚拟病区”，让医生或学生先在数字孪生患者上试跑治疗方案、病程总结和多学科讨论。</p>
+            </article>
+
+            <article class="resource-panel tool-stack-card" id="scenario-agentic-hospital">
+              <div class="resource-panel-head"><span>Workflow</span><strong>Agentic hospital</strong></div>
+              <p>把分诊、病历整理、检验结果追踪、照护协调和决策支持做成一条自动接力的医院代理流水线。</p>
+              <div class="market-meta"><span>Summarization</span><span>Coordination</span><span>CDS</span><span>Labs</span></div>
+              <div class="skill-link-cloud" aria-label="Agentic hospital skills">
+                <a href="https://github.com/FreedomIntelligence/OpenClaw-Medical-Skills/tree/main/skills/clinical-note-summarization" target="_blank" rel="noreferrer">clinical-note-summarization</a>
+                <a href="https://github.com/FreedomIntelligence/OpenClaw-Medical-Skills/tree/main/skills/lab-results" target="_blank" rel="noreferrer">lab-results</a>
+                <a href="https://github.com/FreedomIntelligence/OpenClaw-Medical-Skills/tree/main/skills/care-coordination" target="_blank" rel="noreferrer">care-coordination</a>
+                <a href="https://github.com/FreedomIntelligence/OpenClaw-Medical-Skills/tree/main/skills/clinical-decision-support" target="_blank" rel="noreferrer">clinical-decision-support</a>
+              </div>
+              <p class="tool-note">例子：门诊分诊后自动生成 SOAP，拉取异常化验，整理随访任务，再把决策支持结果推给医生复核。</p>
+            </article>
+
+            <article class="resource-panel tool-stack-card" id="scenario-his">
+              <div class="resource-panel-head"><span>System</span><strong>AI-native HIS</strong></div>
+              <p>把 FHIR、EHR、病历 Copilot 和结构化数据服务接到 HIS 中，让 AI 不只是外部助手，而是系统原生能力。</p>
+              <div class="market-meta"><span>FHIR</span><span>EHR</span><span>Copilot</span></div>
+              <div class="skill-link-cloud" aria-label="AI-native HIS skills">
+                <a href="https://github.com/FreedomIntelligence/OpenClaw-Medical-Skills/tree/main/skills/ehr-fhir-integration" target="_blank" rel="noreferrer">ehr-fhir-integration</a>
+                <a href="https://github.com/FreedomIntelligence/OpenClaw-Medical-Skills/tree/main/skills/chatehr-clinician-assistant" target="_blank" rel="noreferrer">chatehr-clinician-assistant</a>
+                <a href="https://github.com/FreedomIntelligence/OpenClaw-Medical-Skills/tree/main/skills/clinical-note-summarization" target="_blank" rel="noreferrer">clinical-note-summarization</a>
+              </div>
+              <p class="tool-note">例子：在 HIS 里直接问“最近一次肌酐是多少”“总结最近 3 次肿瘤科门诊”，系统返回结构化答案并保留审计链。</p>
+            </article>
+
+            <article class="resource-panel tool-stack-card" id="scenario-up2date">
+              <div class="resource-panel-head"><span>Knowledge</span><strong>AI-native Up2date</strong></div>
+              <p>持续更新、自动带来源、支持指南和最新研究并读的 AI-native 临床知识系统，而不只是静态文档库。</p>
+              <div class="market-meta"><span>Guidelines</span><span>Research lookup</span><span>Daily brief</span></div>
+              <div class="skill-link-cloud" aria-label="AI-native Up2date skills">
+                <a href="https://github.com/FreedomIntelligence/OpenClaw-Medical-Skills/tree/main/skills/tooluniverse-clinical-guidelines" target="_blank" rel="noreferrer">clinical-guidelines</a>
+                <a href="https://github.com/FreedomIntelligence/OpenClaw-Medical-Skills/tree/main/skills/medical-specialty-briefs" target="_blank" rel="noreferrer">medical-specialty-briefs</a>
+                <a href="https://github.com/FreedomIntelligence/OpenClaw-Medical-Skills/tree/main/skills/research-lookup" target="_blank" rel="noreferrer">research-lookup</a>
+              </div>
+              <p class="tool-note">例子：给心内科做一个“AI-native Up2date”，每天整理过去 7 天的新指南、RCT、JAMA/NEJM 文章并生成临床 takeaway。</p>
+            </article>
+
+            <article class="resource-panel tool-stack-card" id="scenario-tcm-kg">
+              <div class="resource-panel-head"><span>TCM</span><strong>中医知识图谱</strong></div>
+              <p>把中医体质、证候、症状、方剂、药材与现代知识图谱推理结合，做成教育、研究和临床知识检索的 Graph-RAG 模块。</p>
+              <div class="market-meta"><span>体质辨识</span><span>Graph-RAG</span><span>多跳推理</span></div>
+              <div class="skill-link-cloud" aria-label="中医知识图谱 skills">
+                <a href="https://github.com/FreedomIntelligence/OpenClaw-Medical-Skills/tree/main/skills/tcm-constitution-analyzer" target="_blank" rel="noreferrer">tcm-constitution-analyzer</a>
+                <a href="https://github.com/FreedomIntelligence/OpenClaw-Medical-Skills/tree/main/skills/kragen-knowledge-graph" target="_blank" rel="noreferrer">kragen-knowledge-graph</a>
+              </div>
+              <p class="tool-note">例子：构建“证候 - 症状 - 方剂 - 药材 - 现代机制”五层图谱，用 Graph-RAG 回答复方配伍和疾病机制问题。</p>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div><h3>Freedom AI</h3><p>场景方案把基础库和 Skill 组合成可演示的医学 AI 产品方向。</p></div>
+        <div><h4>工具</h4><a href="tools.html">工具库</a><a href="tools-base.html">基础库工具</a><a href="tools-mock-registration.html">Mock 挂号 API</a><a href="tools-scenarios.html">场景方案</a></div>
+        <div><h4>数据</h4><a href="datasets.html">数据集</a></div>
+        <div><h4>平台</h4><a href="benchmark.html">评测基准</a><a href="crowdsourcing.html">众包平台</a></div>
+        <div><h4>学习</h4><a href="learning.html">教学</a><a href="community.html">讨论区</a></div>
+      </div>
+    </footer>
+  </body>
+</html>
