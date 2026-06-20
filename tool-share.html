@@ -26,6 +26,10 @@
       .tool-field input[type="file"] { padding: 10px; background: #fbfdfc; cursor: pointer; }
       .tool-field textarea { min-height: 110px; resize: vertical; }
       .tool-file-hint { color: var(--muted); font-size: 12px; line-height: 1.5; }
+      .tool-submit-message { display: none; border: 1px solid #d5e2dd; border-radius: 8px; padding: 11px 12px; background: #fbfdfc; color: #405466; font-size: 13px; font-weight: 750; }
+      .tool-submit-message.is-visible { display: block; }
+      .tool-submit-message.is-error { border-color: #f0c2b8; background: #fff6f4; color: #9f2f17; }
+      .tool-submit-message.is-success { border-color: #b9dfcf; background: #f1fbf6; color: #0f6b53; }
       .tool-check-list { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
       .tool-check-list li { border: 1px solid #e4ebe8; border-radius: 8px; padding: 11px; background: #fbfdfc; color: #405466; font-size: 13px; font-weight: 750; }
       .tool-preview { display: grid; align-content: end; min-height: 130px; border: 1px solid #cfe3dc; border-radius: 8px; padding: 14px; color: #fff; background: radial-gradient(circle at 26% 22%, rgba(255,255,255,.85), transparent 17%), linear-gradient(135deg, #0f8a6a, #315f9f 58%, #18293d); }
@@ -71,7 +75,7 @@
 
       <section class="section compact">
         <div class="container tool-share-grid">
-          <form class="tool-share-card" action="#" method="post" enctype="multipart/form-data">
+          <form class="tool-share-card" id="toolShareForm" action="#" method="post" enctype="multipart/form-data">
             <section class="tool-step">
               <div><p class="eyebrow">Step 1</p><h2>工具身份</h2></div>
               <div class="tool-form-grid">
@@ -100,6 +104,7 @@
             <section class="tool-step">
               <div><p class="eyebrow">Step 3</p><h2>提交</h2></div>
               <div class="button-row"><button class="btn primary" type="submit">保存为待审核工具</button><a class="btn" href="tools.html">取消</a></div>
+              <p class="tool-submit-message" id="toolSubmitMessage" aria-live="polite"></p>
             </section>
           </form>
 
@@ -125,5 +130,50 @@
         <div><h4>任务</h4><a href="benchmark.html">Benchmark</a><a href="crowdsourcing.html">众包平台</a></div>
       </div>
     </footer>
+    <script>
+      const toolShareForm = document.querySelector("#toolShareForm");
+      const toolUrlInput = document.querySelector("#toolUrl");
+      const toolFilesInput = document.querySelector("#toolFiles");
+      const toolSubmitMessage = document.querySelector("#toolSubmitMessage");
+
+      function setToolSubmitMessage(type, message) {
+        toolSubmitMessage.textContent = message;
+        toolSubmitMessage.className = `tool-submit-message is-visible is-${type}`;
+      }
+
+      function clearToolSourceValidity() {
+        toolUrlInput.setCustomValidity("");
+        toolSubmitMessage.className = "tool-submit-message";
+        toolSubmitMessage.textContent = "";
+      }
+
+      [toolUrlInput, toolFilesInput].forEach((field) => {
+        field.addEventListener("input", clearToolSourceValidity);
+        field.addEventListener("change", clearToolSourceValidity);
+      });
+
+      toolShareForm.addEventListener("submit", (event) => {
+        event.preventDefault();
+        clearToolSourceValidity();
+
+        const hasToolUrl = toolUrlInput.value.trim().length > 0;
+        const hasToolFiles = toolFilesInput.files.length > 0;
+
+        if (!hasToolUrl && !hasToolFiles) {
+          const message = "请填写工具链接或至少上传一个工具文件，才能提交分享工具。";
+          toolUrlInput.setCustomValidity(message);
+          setToolSubmitMessage("error", message);
+          toolUrlInput.reportValidity();
+          return;
+        }
+
+        if (!toolShareForm.checkValidity()) {
+          toolShareForm.reportValidity();
+          return;
+        }
+
+        setToolSubmitMessage("success", "已保存为待审核工具。");
+      });
+    </script>
   </body>
 </html>
