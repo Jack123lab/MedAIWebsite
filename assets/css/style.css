@@ -4577,6 +4577,10 @@ body.medical-workbench-index,
   padding-bottom: 10px;
 }
 
+.agent-home-index .home-news-only .container {
+  width: min(100%, calc(var(--max) * 1.5));
+}
+
 .agent-home-index .home-news-only .section-head.clean {
   margin-bottom: 24px;
   border-bottom: 0;
