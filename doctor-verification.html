@@ -94,9 +94,25 @@
       (() => {
         const form = document.querySelector("#verificationForm");
         const status = document.querySelector("#verificationStatus");
+        const roleLabels = { doctor: "执业医生", student: "医学生/研究生" };
+        const proofMap = { doctor: "license", student: "student_card" };
         form?.addEventListener("submit", (event) => {
           event.preventDefault();
-          status.textContent = "认证申请已提交，等待人工审核。";
+          const data = new FormData(form);
+          const role = data.get("role") || "doctor";
+          const authState = {
+            status: "verified",
+            role,
+            roleLabel: roleLabels[role] || "认证用户",
+            proofType: proofMap[role] || "license",
+            name: data.get("realName") || "认证用户",
+            realName: data.get("realName") || "",
+            institution: data.get("institution") || "",
+            specialty: data.get("specialty") || "",
+            verifiedAt: new Date().toISOString(),
+          };
+          localStorage.setItem("hmaiAuthState", JSON.stringify(authState));
+          status.innerHTML = '认证已通过。本机演示状态已更新，可进入 <a href="clinician-discussion.html">医生/医学生讨论区</a>。';
           form.reset();
         });
       })();

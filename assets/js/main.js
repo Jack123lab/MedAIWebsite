@@ -19,6 +19,7 @@ const forumTagLabels = {
   tool: "Tools",
   research: "Research",
   ethics: "Governance",
+  clinician: "医生/医学生",
   medicalLLM: "Medical LLMs",
   agent: "Agent",
   aiHealthcare: "AI for Healthcare",
@@ -29,7 +30,7 @@ const siteNavItems = [
   { href: "index.html", label: "首页", active: ["index.html", "gmai-license.html", ""] },
   { href: "learning.html", label: "内容", active: ["learning.html", "learning-item.html", "tutorials.html", "learning-videos.html", "learning-tutorial.html", "learning-question-bank.html", "learning-standardized-patient.html", "teaching-open-tutorials.html", "teaching-question-bank.html", "teaching-videos.html", "teaching-virtual-patient.html"] },
   { href: "network.html", label: "社区", active: ["network.html", "network-yu-guangjun.html"] },
-  { href: "community.html", label: "讨论区", active: ["community.html"] },
+  { href: "community.html", label: "讨论区", active: ["community.html", "clinician-discussion.html"] },
   { href: "datasets.html", label: "数据集", active: ["datasets.html"] },
   { href: "tools.html", label: "工具库", active: ["tools.html", "demos.html", "datasets-tools.html"] },
   { href: "benchmark.html", label: "Benchmark", active: ["benchmark.html", "benchmark-gdb.html", "benchmark-liveclin.html", "benchmark-healthbench-tcm.html", "benchmark-doctors-last-exam.html", "benchmark-cmb.html"] },
@@ -597,9 +598,38 @@ function wireCommunityGate() {
   gate.remove();
 }
 
+function wireClinicianForumAccess() {
+  const tag = document.querySelector("#clinicianForumTag");
+  const auth = getAuthState();
+  const verified = hasCommunityCredential(auth);
+  if (tag) {
+    tag.href = verified ? "clinician-discussion.html" : "doctor-verification.html";
+    tag.classList.toggle("verified", verified);
+    tag.innerHTML = verified
+      ? `<strong>医生/医学生专区</strong><span>${escapeHtml(auth.roleLabel || "已认证用户")}可进入专业讨论区</span>`
+      : `<strong>医生/医学生认证</strong><span>认证成功后替换为专业讨论区入口</span>`;
+  }
+
+  const legacyLink = document.querySelector(".dept-verify-link");
+  if (legacyLink && !verified) {
+    legacyLink.href = "doctor-verification.html";
+    legacyLink.textContent = "医生/医学生认证";
+  }
+
+  const gate = document.querySelector("#clinicianForumGate");
+  if (!gate) return;
+
+  document.body.classList.toggle("clinician-forum-locked", !verified);
+  document.body.classList.toggle("clinician-forum-unlocked", verified);
+  gate.innerHTML = verified
+    ? `<div class="container"><div class="community-gate-card verified clinician-access-card"><span class="tag green">已通过认证</span><h2>欢迎进入医生/医学生讨论区</h2><p>${escapeHtml(auth.name || "认证用户")}，请继续遵守脱敏、授权和人工复核规则。</p></div></div>`
+    : `<div class="container"><div class="community-gate-card clinician-access-card"><span class="tag red">需要认证</span><h1>医生/医学生讨论区仅认证后开放</h1><p>请先完成医生资格或医学生在读证明验证。认证成功后，社区页上方的“医生/医学生认证”tag 会替换为本页面入口。</p><div class="button-row"><a class="btn primary" href="doctor-verification.html">前往认证</a><a class="btn" href="community.html">返回公开问答区</a></div></div></div>`;
+}
+
 function wireForum() {
   const postList = document.querySelector("#postList");
   if (!postList) return;
+  if (document.body.classList.contains("clinician-forum-page") && !hasCommunityCredential()) return;
   if (document.querySelector("#communityGate") && !hasCommunityCredential()) return;
 
   const state = { filter: "all", tag: "all", search: "", sort: "new", page: 1, pageSize: 5 };
@@ -1624,6 +1654,7 @@ if (!isProfileRedirecting) {
   renderProfile();
   renderLikedPosts();
   wireCommunityGate();
+  wireClinicianForumAccess();
   wireForum();
   wireDoctorWorkspace();
   wireDatasetBrowser();
