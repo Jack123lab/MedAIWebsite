@@ -36,11 +36,11 @@
       <section class="page-title data-tools-title">
         <div class="container tools-learn-hero">
           <div class="tools-header-row">
-            <div class="tools-learn-copy">
-              <p class="eyebrow">Tool Library</p>
-              <h1>工具库</h1>
-              <p>像学习路径一样浏览医学 AI 工具：先选一个入口，再进入基础库、Mock API、Skill 专栏或产品场景。每个模块都保留可直接跳转的链接和可复用接口说明。</p>
-            </div>
+            <form class="tools-page-search" role="search" action="search.html" method="get" aria-label="搜索工具">
+              <label class="sr-only" for="toolPageSearch">搜索工具</label>
+              <input id="toolPageSearch" name="q" type="search" placeholder="搜索工具、API、Skill 或场景" autocomplete="off" />
+              <button type="submit">搜索</button>
+            </form>
             <a class="btn primary tools-share-btn" href="tool-share.html"><span aria-hidden="true">+</span> 分享工具</a>
           </div>
           <nav class="tool-reference tools-learn-tabs" aria-label="工具库路径导航">
@@ -58,9 +58,8 @@
           <div class="tools-learn-heading">
             <div>
               <p class="eyebrow">Learning Paths</p>
-              <h2>选择一个工具路径</h2>
+              <h2>工具展示</h2>
             </div>
-            <p>参考课程目录的组织方式，把页面拆成可以直接进入的四类路径；每张卡片对应一个真实模块，而不是抽象介绍。</p>
           </div>
 
           <div class="tools-learn-grid">
