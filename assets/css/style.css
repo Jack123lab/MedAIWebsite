@@ -8755,6 +8755,39 @@ body.upload-roadmap-open {
   display: inline;
 }
 
+.network-page .network-header-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  align-items: center;
+  padding-left: 2px;
+}
+
+.network-page .network-header-links a {
+  min-height: 30px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #cbdce4;
+  border-radius: 999px;
+  padding: 5px 10px;
+  color: #185f79;
+  background: #f8fbfc;
+  font-size: 12px;
+  font-weight: 800;
+  line-height: 1.1;
+  text-decoration: none;
+  transition: border-color 0.18s ease, background 0.18s ease, color 0.18s ease;
+}
+
+.network-page .network-header-links a:hover,
+.network-page .network-header-links a:focus {
+  border-color: #185f79;
+  color: #ffffff;
+  background: #185f79;
+  outline: 0;
+}
+
 .network-topic-strip {
   padding-top: 18px;
   padding-bottom: 12px;
