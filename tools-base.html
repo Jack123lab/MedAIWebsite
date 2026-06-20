@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>基础库工具 | Freedom AI</title>
+    <meta name="description" content="Freedom AI 基础库工具：医生库、药品库、医院库。" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/main.js" defer></script>
+  </head>
+  <body class="data-tools-page">
+    <header class="site-header">
+      <nav class="nav" aria-label="主导航">
+        <a class="brand" href="index.html"><span class="brand-mark">F</span><span class="brand-text"><strong>Freedom AI</strong><span>医学 AI 社区</span></span></a>
+        <form class="site-search" role="search" action="search.html" method="get" aria-label="站内搜索">
+          <label class="sr-only" for="siteSearchInput">搜索</label>
+          <input id="siteSearchInput" name="q" type="search" placeholder="搜索" autocomplete="off" />
+          <button type="submit">搜索</button>
+        </form>
+        <div class="nav-links">
+          <a href="index.html">首页</a>
+          <a href="learning.html">内容</a>
+          <a href="network.html">社区</a>
+          <a href="community.html">讨论区</a>
+          <a href="datasets.html">数据集</a>
+          <a href="tools.html">工具库</a>
+          <a href="benchmark.html">Benchmark</a>
+          <a href="crowdsourcing.html">众包平台</a>
+          <a href="profile.html">用户</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="page-title data-tools-title">
+        <div class="container tools-learn-hero">
+          <div class="tools-learn-copy">
+            <p class="eyebrow">Clinical Data Tools</p>
+            <h1>基础库工具</h1>
+            <p>医生库、药品库、医院库负责回答“谁、在哪、用什么”，给搜索、问答、挂号和医院 AI 工作流提供可追溯数据。</p>
+          </div>
+          <nav class="tool-reference tools-learn-tabs" aria-label="工具库路径导航">
+            <a href="tools.html">返回工具路径</a>
+            <a href="tools-mock-registration.html">Mock API</a>
+            <a href="tools-skill.html">Skill 专栏</a>
+            <a href="tools-scenarios.html">场景方案</a>
+          </nav>
+        </div>
+      </section>
+
+      <section class="section compact" id="medical-base-tools">
+        <div class="container">
+          <div class="section-head clean">
+            <div>
+              <p class="eyebrow">Clinical Data Tools</p>
+              <h2>医生库、药品库、医院库</h2>
+              <p>三类基础库负责回答“谁、在哪、用什么”。它们不单独成产品，而是给搜索、问答、挂号和医院 AI 工作流提供可追溯数据。</p>
+            </div>
+          </div>
+
+          <div class="medical-tool-grid">
+            <article class="medical-tool-card" id="doctor-library-tool">
+              <div class="resource-panel-head"><span>Doctor DB</span><strong>医生库</strong></div>
+              <p>按姓名、医院、科室、疾病方向、论文、任职和医生排名筛选，支持医生主页自动补全和合作主题推荐。</p>
+              <div class="tool-chip-row" aria-label="医生库标签">
+                <span>主任医师</span><span>儿科</span><span>智慧医院</span><span>论文 150+</span>
+              </div>
+              <div class="mock-query-box">
+                <span>样例查询</span>
+                <code>doctor?hospital=CUHK-Shenzhen&amp;tag=互联网医疗</code>
+              </div>
+              <a class="medical-tool-action" href="network.html#network-results">进入医生库样例</a>
+            </article>
+
+            <article class="medical-tool-card" id="drug-library-tool">
+              <div class="resource-panel-head"><span>Drug DB</span><strong>药品库</strong></div>
+              <p>聚合通用名、商品名、适应症、禁忌、相互作用、医保属性和说明书摘要，用于临床问答前的来源校验。</p>
+              <div class="tool-chip-row" aria-label="药品库标签">
+                <span>适应症</span><span>禁忌</span><span>相互作用</span><span>医保</span>
+              </div>
+              <div class="mock-query-box">
+                <span>样例查询</span>
+                <code>drug?keyword=阿莫西林&amp;field=interaction</code>
+              </div>
+              <a class="medical-tool-action" href="tools-mock-registration.html">查看 API 接入方式</a>
+            </article>
+
+            <article class="medical-tool-card" id="hospital-library-tool">
+              <div class="resource-panel-head"><span>Hospital DB</span><strong>医院库</strong></div>
+              <p>支持按地区、等级、专科能力、挂号渠道和 AI 合作方向检索，默认展示深圳龙岗区医院样例。</p>
+              <div class="tool-chip-row" aria-label="医院库标签">
+                <span>龙岗区</span><span>三甲/三级</span><span>专科能力</span><span>可认领</span>
+              </div>
+              <div class="mock-query-box">
+                <span>样例查询</span>
+                <code>hospital?city=深圳&amp;district=龙岗区&amp;service=挂号</code>
+              </div>
+              <a class="medical-tool-action" href="network.html#network-results">进入医院库样例</a>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div><h3>Freedom AI</h3><p>基础库工具把医生、药品、医院信息整理成可调用的医学 AI 数据层。</p></div>
+        <div><h4>工具</h4><a href="tools.html">工具库</a><a href="tools-base.html">基础库工具</a><a href="tools-mock-registration.html">Mock 挂号 API</a><a href="tools-scenarios.html">场景方案</a></div>
+        <div><h4>数据</h4><a href="datasets.html">数据集</a></div>
+        <div><h4>平台</h4><a href="benchmark.html">评测基准</a><a href="crowdsourcing.html">众包平台</a></div>
+        <div><h4>学习</h4><a href="learning.html">教学</a><a href="community.html">讨论区</a></div>
+      </div>
+    </footer>
+  </body>
+</html>
