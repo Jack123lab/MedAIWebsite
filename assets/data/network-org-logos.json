@@ -1,0 +1,16 @@
+[
+  {
+    "name": "香港中文大学（深圳）附属第二医院",
+    "type": "hospital",
+    "officialSite": "https://www.nhdisz.cn/",
+    "logo": "",
+    "source": "fallback"
+  },
+  {
+    "name": "国家健康医疗大数据研究院（深圳）",
+    "type": "institute",
+    "officialSite": "",
+    "logo": "",
+    "source": "fallback"
+  }
+]

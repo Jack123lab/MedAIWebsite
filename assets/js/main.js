@@ -1475,6 +1475,96 @@ function wireCourseContentFilters() {
   renderCourseItems();
 }
 
+function wireNetworkOrgLogos() {
+  const logos = Array.from(document.querySelectorAll(".network-org-logo[data-org-name]"));
+  if (!logos.length) return;
+
+  const loaded = new Map();
+
+  function resolveUrl(url, base) {
+    try {
+      return new URL(url, base).toString();
+    } catch {
+      return "";
+    }
+  }
+
+  function canLoadImage(url) {
+    if (!url) return Promise.resolve(false);
+    if (loaded.has(url)) return loaded.get(url);
+    const promise = new Promise((resolve) => {
+      const image = new Image();
+      image.referrerPolicy = "no-referrer";
+      image.onload = () => resolve(true);
+      image.onerror = () => resolve(false);
+      image.src = url;
+    });
+    loaded.set(url, promise);
+    return promise;
+  }
+
+  function applyLogo(node, url, source) {
+    node.classList.add("has-logo-image");
+    node.dataset.logoSource = source;
+    node.style.backgroundImage = `url("${url}")`;
+  }
+
+  async function setLogo(node) {
+    const uploaded = node.dataset.uploadLogo || "";
+    const crawled = node.dataset.crawledLogo || "";
+    const officialSite = node.dataset.officialSite || "";
+    const directCandidates = [uploaded, crawled].filter(Boolean);
+
+    for (const candidate of directCandidates) {
+      const absolute = resolveUrl(candidate, window.location.href);
+      if (await canLoadImage(absolute)) {
+        applyLogo(node, absolute, uploaded === candidate ? "upload" : "crawler");
+        return;
+      }
+    }
+
+    if (!officialSite) {
+      node.dataset.logoSource = "fallback";
+      return;
+    }
+
+    const officialCandidates = [
+      "/favicon.ico",
+      "/favicon.png",
+      "/apple-touch-icon.png",
+      "/apple-touch-icon-precomposed.png",
+      "/logo.png",
+    ].map((path) => resolveUrl(path, officialSite));
+
+    for (const candidate of officialCandidates) {
+      if (await canLoadImage(candidate)) {
+        applyLogo(node, candidate, "official-site");
+        return;
+      }
+    }
+
+    node.dataset.logoSource = "fallback";
+  }
+
+  async function hydrateCrawlerResults() {
+    try {
+      const response = await fetch("assets/data/network-org-logos.json", { cache: "no-store" });
+      if (!response.ok) return;
+      const records = await response.json();
+      const byName = new Map(records.map((record) => [record.name, record.logo]).filter((entry) => entry[0] && entry[1]));
+      logos.forEach((node) => {
+        if (!node.dataset.uploadLogo && !node.dataset.crawledLogo) {
+          node.dataset.crawledLogo = byName.get(node.dataset.orgName) || "";
+        }
+      });
+    } catch {
+      return;
+    }
+  }
+
+  hydrateCrawlerResults().finally(() => logos.forEach((node) => setLogo(node)));
+}
+
 function wireNetworkSearch() {
   const root = document.querySelector("[data-network-search-root]");
   const results = Array.from(document.querySelectorAll("[data-network-result]"));
@@ -1538,6 +1628,7 @@ if (!isProfileRedirecting) {
   wireDoctorWorkspace();
   wireDatasetBrowser();
   wireCourseContentFilters();
+  wireNetworkOrgLogos();
   wireNetworkSearch();
   wireHotToolFeed();
   wireHomeNewsScroll();
