@@ -23,7 +23,9 @@
       .tool-field.full { grid-column: 1 / -1; }
       .tool-field label { color: #172738; font-size: 13px; font-weight: 850; }
       .tool-field input, .tool-field select, .tool-field textarea { width: 100%; border: 1px solid #d5e2dd; border-radius: 8px; padding: 11px 12px; background: #fff; color: #172738; font: inherit; }
+      .tool-field input[type="file"] { padding: 10px; background: #fbfdfc; cursor: pointer; }
       .tool-field textarea { min-height: 110px; resize: vertical; }
+      .tool-file-hint { color: var(--muted); font-size: 12px; line-height: 1.5; }
       .tool-check-list { display: grid; gap: 10px; margin: 0; padding: 0; list-style: none; }
       .tool-check-list li { border: 1px solid #e4ebe8; border-radius: 8px; padding: 11px; background: #fbfdfc; color: #405466; font-size: 13px; font-weight: 750; }
       .tool-preview { display: grid; align-content: end; min-height: 130px; border: 1px solid #cfe3dc; border-radius: 8px; padding: 14px; color: #fff; background: radial-gradient(circle at 26% 22%, rgba(255,255,255,.85), transparent 17%), linear-gradient(135deg, #0f8a6a, #315f9f 58%, #18293d); }
@@ -69,7 +71,7 @@
 
       <section class="section compact">
         <div class="container tool-share-grid">
-          <form class="tool-share-card" action="#" method="post">
+          <form class="tool-share-card" action="#" method="post" enctype="multipart/form-data">
             <section class="tool-step">
               <div><p class="eyebrow">Step 1</p><h2>工具身份</h2></div>
               <div class="tool-form-grid">
@@ -77,6 +79,11 @@
                 <div class="tool-field"><label for="toolType">工具类型</label><select id="toolType" name="toolType"><option>Web 工具</option><option>开源项目</option><option>MCP / API</option><option>Prompt 模板</option><option>Agent workflow</option><option>临床数据工具</option></select></div>
                 <div class="tool-field"><label for="toolUrl">工具链接</label><input id="toolUrl" name="toolUrl" type="url" placeholder="https://github.com/example/tool" /></div>
                 <div class="tool-field"><label for="toolLicense">许可 / 访问</label><select id="toolLicense" name="toolLicense"><option>免费开放</option><option>开源许可</option><option>需申请</option><option>机构内部</option><option>商业产品</option></select></div>
+                <div class="tool-field full">
+                  <label for="toolFiles">上传工具文件</label>
+                  <input id="toolFiles" name="toolFiles" type="file" multiple accept=".py,.java,.cpp,.cc,.cxx,.c,.h,.hpp,.pdf,.html,.htm,text/x-python,text/x-java-source,text/x-c,text/x-c++src,application/pdf,text/html" />
+                  <span class="tool-file-hint">支持 Python、Java、C++、C、PDF、HTML 等文件，可上传源码、说明文档或演示页面。</span>
+                </div>
                 <div class="tool-field full"><label for="toolSummary">工具说明</label><textarea id="toolSummary" name="toolSummary" placeholder="说明适用场景、输入输出、依赖数据、限制、风险和人工审核方式。"></textarea></div>
               </div>
             </section>
@@ -100,7 +107,7 @@
             <section><p class="eyebrow">Tool Card</p><h2>展示方式</h2><p>审核通过后，工具会形成独立卡片，显示名称、类型、入口、适用场景、许可、风险提示和关联数据集。</p></section>
             <div class="tool-preview" aria-hidden="true"><span>工具封面 / 图标位</span></div>
             <ul class="tool-check-list">
-              <li>提供可访问链接、仓库或 API 文档。</li>
+              <li>提供可访问链接、仓库、API 文档，或上传工具源码 / 文档文件。</li>
               <li>说明输入输出、限制和人工复核流程。</li>
               <li>若处理医疗数据，需说明脱敏与授权边界。</li>
               <li>可关联数据集、Benchmark 或众包任务。</li>
