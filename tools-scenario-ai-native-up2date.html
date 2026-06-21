@@ -1,0 +1,168 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AI-native Up2date | Freedom AI</title>
+    <meta
+      name="description"
+      content="Freedom AI AI-native Up2date 页面，展示如何把指南、RCT、顶刊研究和专科简报组织成持续更新的知识系统。"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/main.js" defer></script>
+  </head>
+  <body class="data-tools-page">
+    <header class="site-header">
+      <nav class="nav" aria-label="主导航">
+        <a class="brand" href="index.html"><span class="brand-mark">F</span><span class="brand-text"><strong>Freedom AI</strong><span>医学 AI 社区</span></span></a>
+        <form class="site-search" role="search" action="search.html" method="get" aria-label="站内搜索">
+          <label class="sr-only" for="siteSearchInput">搜索</label>
+          <input id="siteSearchInput" name="q" type="search" placeholder="搜索" autocomplete="off" />
+          <button type="submit">搜索</button>
+        </form>
+        <div class="nav-links">
+          <a href="index.html">首页</a>
+          <a href="learning.html">内容</a>
+          <a href="network.html">社区</a>
+          <a href="community.html">讨论区</a>
+          <a href="datasets.html">数据集</a>
+          <a href="tools.html">工具库</a>
+          <a href="benchmark.html">评测</a>
+          <a href="crowdsourcing.html">众包</a>
+          <a href="blog.html">博客</a>
+          <a href="profile.html">用户</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="page-title data-tools-title">
+        <div class="container tools-learn-hero">
+          <div class="tools-learn-copy">
+            <p class="eyebrow">Living Knowledge System</p>
+            <h1>AI-native Up2date</h1>
+            <p>AI-native Up2date 不是简单复刻一个知识库名字，而是把指南、RCT、顶刊研究和专科简报组织成持续更新、带来源、能按专科视角阅读的动态临床知识系统。</p>
+            <div class="tool-action-row">
+              <a class="btn primary" href="tools-scenarios.html">返回场景总页</a>
+              <a class="btn" href="tools-scenario-evidence-api.html">查看循证医疗 API</a>
+            </div>
+          </div>
+          <nav class="tool-reference tools-learn-tabs" aria-label="场景导航">
+            <a href="#modules">知识模块</a>
+            <a href="#workflow">更新流程</a>
+            <a href="#stack">技术栈</a>
+            <a href="#sample">样例输出</a>
+          </nav>
+          <div class="tool-skill-stats" aria-label="AI-native Up2date 指标">
+            <div><strong>3</strong><span>内容层：指南 / 研究 / 简报</span></div>
+            <div><strong>7d</strong><span>适合构建周更或日更窗口</span></div>
+            <div><strong>1</strong><span>统一专科知识入口</span></div>
+            <div><strong>100%</strong><span>来源与更新时间可见</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section compact" id="modules">
+        <div class="container">
+          <div class="section-head clean">
+            <div>
+              <p class="eyebrow">Knowledge Modules</p>
+              <h2>推荐的内容结构</h2>
+              <p>完整页面的关键是让用户知道他进入后看到什么，而不是只说“这里会自动更新知识”。</p>
+            </div>
+          </div>
+          <div class="medical-tool-grid">
+            <article class="medical-tool-card"><div class="resource-panel-head"><span>Guidelines</span><strong>指南层</strong></div><p>回答“当前标准推荐是什么”，适合做科室首页和疾病问题页的底层知识基线。</p></article>
+            <article class="medical-tool-card"><div class="resource-panel-head"><span>Research</span><strong>研究层</strong></div><p>回答“最近有什么新研究、RCT、系统综述和改变实践的结果”，适合追踪变化。</p></article>
+            <article class="medical-tool-card"><div class="resource-panel-head"><span>Briefs</span><strong>专科简报层</strong></div><p>把过去 7 天或 30 天的研究变化压缩成适合临床快速阅读的卡片或简报。</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section compact" id="workflow">
+        <div class="container">
+          <div class="section-head clean">
+            <div>
+              <p class="eyebrow">Update Workflow</p>
+              <h2>推荐的更新流水线</h2>
+              <p>AI-native Up2date 的真正价值在于持续更新机制，而不是一次性写好的静态内容页。</p>
+            </div>
+          </div>
+          <div class="registration-api-grid">
+            <article class="registration-api-card"><div class="api-path"><span class="api-method neutral">STEP 1</span><code>source ingestion</code></div><p>抓取指南源、重点期刊、试验平台和医学新闻来源的新增条目。</p></article>
+            <article class="registration-api-card"><div class="api-path"><span class="api-method neutral">STEP 2</span><code>screen and cluster</code></div><p>按专科、疾病、治疗线和影响级别做筛选、去重和主题聚类。</p></article>
+            <article class="registration-api-card"><div class="api-path"><span class="api-method neutral">STEP 3</span><code>clinical summary</code></div><p>生成一句话临床 takeaway、来源链接和适用场景标签。</p></article>
+            <article class="registration-api-card"><div class="api-path"><span class="api-method neutral">STEP 4</span><code>knowledge page update</code></div><p>更新专科首页、疾病主题页和科室简报页，记录更新时间和来源差异。</p></article>
+            <article class="registration-api-card"><div class="api-path"><span class="api-method neutral">STEP 5</span><code>distribution</code></div><p>把更新内容分发到晨会、科室周报、医生工作台或内容平台中。</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section compact" id="stack">
+        <div class="container">
+          <div class="section-head clean">
+            <div>
+              <p class="eyebrow">Skill Stack</p>
+              <h2>最适合支撑 Up2date 的能力</h2>
+              <p>这类页面的关键不是单次回答，而是“持续摄入 + 持续整理 + 持续分发”的组合能力。</p>
+            </div>
+          </div>
+          <div class="tool-stack-grid">
+            <article class="resource-panel tool-stack-card">
+              <div class="resource-panel-head"><span>Guideline Engine</span><strong>tooluniverse-clinical-guidelines</strong></div>
+              <p>负责指南层，确保专科知识页的底层推荐有权威来源可追溯。</p>
+              <div class="skill-link-cloud"><a href="https://github.com/FreedomIntelligence/OpenClaw-Medical-Skills/tree/main/skills/tooluniverse-clinical-guidelines" target="_blank" rel="noreferrer">查看 Skill</a></div>
+            </article>
+            <article class="resource-panel tool-stack-card">
+              <div class="resource-panel-head"><span>Specialty Briefing</span><strong>medical-specialty-briefs</strong></div>
+              <p>负责把更新内容压缩成适合临床阅读的专科简报，是日更 / 周更页面的核心模块。</p>
+              <div class="skill-link-cloud"><a href="https://github.com/FreedomIntelligence/OpenClaw-Medical-Skills/tree/main/skills/medical-specialty-briefs" target="_blank" rel="noreferrer">查看 Skill</a></div>
+            </article>
+            <article class="resource-panel tool-stack-card">
+              <div class="resource-panel-head"><span>Current Research</span><strong>research-lookup</strong></div>
+              <p>负责补足“最新研究”层，适合回答“最近有没有新论文 / 新研究方向”。</p>
+              <div class="skill-link-cloud"><a href="https://github.com/FreedomIntelligence/OpenClaw-Medical-Skills/tree/main/skills/research-lookup" target="_blank" rel="noreferrer">查看 Skill</a></div>
+            </article>
+            <article class="resource-panel tool-stack-card">
+              <div class="resource-panel-head"><span>Evidence Base</span><strong>medical-research-toolkit</strong></div>
+              <p>作为底层检索入口，为特定主题页提供补充文献、药物和试验信息。</p>
+              <div class="skill-link-cloud"><a href="https://github.com/FreedomIntelligence/OpenClaw-Medical-Skills/tree/main/skills/medical-research-toolkit" target="_blank" rel="noreferrer">查看 Skill</a></div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section compact" id="sample">
+        <div class="container">
+          <article class="registration-api-card api-overview">
+            <div>
+              <span class="api-method neutral">SAMPLE</span>
+              <h3>推荐的页面输出样式</h3>
+              <p>这一类页面最适合把“知识更新”表现为简洁卡片，而不是长篇文本堆叠。</p>
+              <div class="api-meta"><span>专科首页</span><span>晨会快讯</span><span>RCT 更新</span></div>
+            </div>
+            <pre class="api-code"><code>心内科今日更新
+
+- 指南更新：高风险房颤抗凝策略新增条目
+- 新研究：某 SGLT2 试验发布亚组分析
+- 一句话结论：对高龄合并肾功能受损患者需重新评估给药路径
+- 来源：AHA / JAMA / ClinicalTrials.gov
+- 更新时间：2026-06-21</code></pre>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div><h3>Freedom AI</h3><p>AI-native Up2date 页面适合展示“动态知识服务”如何在专科、科室和内容平台中持续产生价值。</p></div>
+        <div><h4>返回</h4><a href="tools-scenarios.html">场景总页</a><a href="tools.html">工具总览</a></div>
+        <div><h4>相关页</h4><a href="tools-scenario-evidence-api.html">循证医疗 API</a><a href="tools-scenario-ai-native-his.html">AI-native HIS</a></div>
+        <div><h4>支撑页</h4><a href="tools-skill.html">Skill 专栏</a><a href="tools-base.html">基础库工具</a></div>
+        <div><h4>平台</h4><a href="blog.html">Blog</a><a href="datasets.html">数据集</a></div>
+      </div>
+    </footer>
+  </body>
+</html>

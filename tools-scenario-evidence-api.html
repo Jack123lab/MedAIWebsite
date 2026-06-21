@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>循证医疗 API | Freedom AI</title>
+    <meta
+      name="description"
+      content="Freedom AI 循证医疗 API 页面，完整说明文献、指南、临床试验和药物安全信号如何组成统一证据接口。"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/main.js" defer></script>
+  </head>
+  <body class="data-tools-page">
+    <header class="site-header">
+      <nav class="nav" aria-label="主导航">
+        <a class="brand" href="index.html"><span class="brand-mark">F</span><span class="brand-text"><strong>Freedom AI</strong><span>医学 AI 社区</span></span></a>
+        <form class="site-search" role="search" action="search.html" method="get" aria-label="站内搜索">
+          <label class="sr-only" for="siteSearchInput">搜索</label>
+          <input id="siteSearchInput" name="q" type="search" placeholder="搜索" autocomplete="off" />
+          <button type="submit">搜索</button>
+        </form>
+        <div class="nav-links">
+          <a href="index.html">首页</a>
+          <a href="learning.html">内容</a>
+          <a href="network.html">社区</a>
+          <a href="community.html">讨论区</a>
+          <a href="datasets.html">数据集</a>
+          <a href="tools.html">工具库</a>
+          <a href="benchmark.html">评测</a>
+          <a href="crowdsourcing.html">众包</a>
+          <a href="blog.html">博客</a>
+          <a href="profile.html">用户</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="page-title data-tools-title">
+        <div class="container tools-learn-hero">
+          <div class="tools-learn-copy">
+            <p class="eyebrow">Evidence Platform</p>
+            <h1>循证医疗 API</h1>
+            <p>把医学文献、权威指南、临床试验和药物安全数据收束成一个统一证据接口，目标是让医生、研究员或医学团队拿到“有来源、有时间戳、有证据层级”的回答，而不是普通聊天结论。</p>
+            <div class="tool-action-row">
+              <a class="btn primary" href="tools-scenarios.html">返回场景总页</a>
+              <a class="btn" href="tools.html">返回工具总览</a>
+            </div>
+          </div>
+          <nav class="tool-reference tools-learn-tabs" aria-label="场景导航">
+            <a href="#product-definition">产品定义</a>
+            <a href="#workflow">工作流</a>
+            <a href="#skill-stack">技术栈</a>
+            <a href="#delivery">落地阶段</a>
+          </nav>
+          <div class="tool-skill-stats" aria-label="循证医疗 API 指标">
+            <div><strong>14+</strong><span>生物医学数据库</span></div>
+            <div><strong>12+</strong><span>权威指南来源</span></div>
+            <div><strong>3</strong><span>核心输出：证据摘要 / 试验列表 / 风险信号</span></div>
+            <div><strong>1</strong><span>统一证据查询入口</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section compact" id="product-definition">
+        <div class="container">
+          <div class="section-head clean">
+            <div>
+              <p class="eyebrow">Product Definition</p>
+              <h2>这页到底在做什么</h2>
+              <p>它不是一个“医学搜索框”，而是一层可追溯的循证服务，把问题拆成证据检索、指南对照、临床试验匹配和药物安全复核四件事。</p>
+            </div>
+          </div>
+          <div class="medical-tool-grid">
+            <article class="medical-tool-card">
+              <div class="resource-panel-head"><span>Target Users</span><strong>目标用户</strong></div>
+              <p>医生 Copilot、医学事务团队、临床科研助理、专科知识平台、研究生训练项目。</p>
+              <div class="tool-chip-row"><span>临床</span><span>科研</span><span>医学事务</span><span>内容平台</span></div>
+            </article>
+            <article class="medical-tool-card">
+              <div class="resource-panel-head"><span>Primary Outputs</span><strong>主要输出</strong></div>
+              <p>结构化证据摘要、带来源引用的问答、正在招募的临床试验列表、OpenFDA 风险信号提示。</p>
+              <div class="tool-chip-row"><span>引用</span><span>证据等级</span><span>试验匹配</span><span>安全提示</span></div>
+            </article>
+            <article class="medical-tool-card">
+              <div class="resource-panel-head"><span>Success Criteria</span><strong>成功标准</strong></div>
+              <p>所有回答都有来源、可回链、可复查，并明确区分“指南推荐”“研究发现”和“模型总结”。</p>
+              <div class="tool-chip-row"><span>可追溯</span><span>可复核</span><span>可更新</span><span>有边界</span></div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section compact" id="workflow">
+        <div class="container">
+          <div class="section-head clean">
+            <div>
+              <p class="eyebrow">Workflow</p>
+              <h2>从提问到交付的五步工作流</h2>
+              <p>页面适合直接展示给产品、医院或合作方，说明系统怎么把自然语言问题转成证据化输出。</p>
+            </div>
+          </div>
+          <div class="registration-api-grid">
+            <article class="registration-api-card"><div class="api-path"><span class="api-method neutral">STEP 1</span><code>question normalization</code></div><p>把用户问题规范成疾病、疗法、终点、患者特征和时间窗，必要时转成英文医学术语。</p></article>
+            <article class="registration-api-card"><div class="api-path"><span class="api-method neutral">STEP 2</span><code>multi-source retrieval</code></div><p>并行检索 PubMed、ClinicalTrials.gov、OpenFDA、OpenTargets 和权威指南源，避免单源回答。</p></article>
+            <article class="registration-api-card"><div class="api-path"><span class="api-method neutral">STEP 3</span><code>evidence synthesis</code></div><p>把综述、RCT、试验招募、指南语句和安全信号合并为一份结构化证据摘要。</p></article>
+            <article class="registration-api-card"><div class="api-path"><span class="api-method neutral">STEP 4</span><code>grade and compare</code></div><p>标记证据类型、来源日期和推荐等级，区分“标准治疗”“探索性研究”和“风险提醒”。</p></article>
+            <article class="registration-api-card"><div class="api-path"><span class="api-method neutral">STEP 5</span><code>human review</code></div><p>最终输出进入医生或研究员复核，不直接代替临床决策，保留审计日志和源链接。</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section compact" id="skill-stack">
+        <div class="container">
+          <div class="section-head clean">
+            <div>
+              <p class="eyebrow">Skill Stack</p>
+              <h2>OpenClaw / MCP 技术栈</h2>
+              <p>页面里的“工具”并不是抽象名词，而是可以明确映射到已经存在的 skill、MCP 服务和下游前端组件。</p>
+            </div>
+          </div>
+          <div class="tool-stack-grid">
+            <article class="resource-panel tool-stack-card">
+              <div class="resource-panel-head"><span>Unified Retrieval</span><strong>medical-research-toolkit</strong></div>
+              <p>统一查询 ChEMBL、PubMed、ClinicalTrials.gov、OpenTargets、OpenFDA、OMIM 等来源，是证据层的主入口。</p>
+              <div class="skill-link-cloud">
+                <a href="https://github.com/FreedomIntelligence/OpenClaw-Medical-Skills/tree/main/skills/medical-research-toolkit" target="_blank" rel="noreferrer">查看 Skill</a>
+              </div>
+            </article>
+            <article class="resource-panel tool-stack-card">
+              <div class="resource-panel-head"><span>Guideline Layer</span><strong>tooluniverse-clinical-guidelines</strong></div>
+              <p>覆盖 NICE、WHO、ADA、AHA、NCCN、GIN、TRIP 等来源，用来回答“标准治疗是什么”。</p>
+              <div class="skill-link-cloud">
+                <a href="https://github.com/FreedomIntelligence/OpenClaw-Medical-Skills/tree/main/skills/tooluniverse-clinical-guidelines" target="_blank" rel="noreferrer">查看 Skill</a>
+              </div>
+            </article>
+            <article class="resource-panel tool-stack-card">
+              <div class="resource-panel-head"><span>MCP Gateway</span><strong>biomcp-server</strong></div>
+              <p>把 PubMed、PubTator3、ClinicalTrials.gov 和变异查询变成 MCP 服务，适合挂到智能体和工作台里。</p>
+              <div class="skill-link-cloud">
+                <a href="https://github.com/FreedomIntelligence/OpenClaw-Medical-Skills/tree/main/skills/biomcp-server" target="_blank" rel="noreferrer">查看 Skill</a>
+              </div>
+            </article>
+            <article class="resource-panel tool-stack-card">
+              <div class="resource-panel-head"><span>Trial Matching</span><strong>trialgpt-matching</strong></div>
+              <p>当用户提供病人画像时，可以输出带理由的试验 shortlist，并说明哪些关键字段尚未提供。</p>
+              <div class="skill-link-cloud">
+                <a href="https://github.com/FreedomIntelligence/OpenClaw-Medical-Skills/tree/main/skills/trialgpt-matching" target="_blank" rel="noreferrer">查看 Skill</a>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section compact">
+        <div class="container">
+          <article class="registration-api-card api-overview">
+            <div>
+              <span class="api-method neutral">OUTPUT</span>
+              <h3>推荐展示的返回结构</h3>
+              <p>这类页面适合展示给产品和合作方看，说明最终不是返回一大段文本，而是返回可消费的结构化结果。</p>
+              <div class="api-meta"><span>summary</span><span>guidelines</span><span>trials</span><span>safety</span></div>
+            </div>
+            <pre class="api-code"><code>{
+  "question": "重症肌无力免疫治疗有哪些证据？",
+  "summary": "当前标准治疗包括糖皮质激素、免疫抑制剂和针对特定分型的生物制剂。",
+  "guidelines": [
+    "NICE guidance: long-term immunosuppression should be individualized",
+    "WHO / society recommendations: monitor infection and adverse events"
+  ],
+  "active_trials": 6,
+  "safety_flags": [
+    "需关注感染风险",
+    "需评估免疫抑制相关并发症"
+  ],
+  "review_required": true
+}</code></pre>
+          </article>
+        </div>
+      </section>
+
+      <section class="section compact" id="delivery">
+        <div class="container">
+          <div class="section-head clean">
+            <div>
+              <p class="eyebrow">Delivery Plan</p>
+              <h2>建议的三阶段落地</h2>
+              <p>同一个场景可以先做成内部工作台，再做成 API 服务，最后再嵌入更多业务系统。</p>
+            </div>
+          </div>
+          <div class="resource-directory-grid">
+            <article class="resource-panel">
+              <div class="resource-panel-head"><span>Phase 1</span><strong>内部证据工作台</strong></div>
+              <p>先给研究助理或医学事务团队使用，验证问题类型、查询频次和输出格式。</p>
+            </article>
+            <article class="resource-panel">
+              <div class="resource-panel-head"><span>Phase 2</span><strong>统一 Evidence API</strong></div>
+              <p>将证据检索、指南对照和试验匹配服务化，供医生 Copilot、内容平台或问答系统调用。</p>
+            </article>
+            <article class="resource-panel">
+              <div class="resource-panel-head"><span>Phase 3</span><strong>嵌入式临床知识层</strong></div>
+              <p>与 AI-native HIS、AI-native Up2date 联动，形成“问题 - 证据 - 决策支持 - 复核”的闭环。</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section compact">
+        <div class="container">
+          <div class="section-head clean">
+            <div>
+              <p class="eyebrow">Governance</p>
+              <h2>必须明确写出的边界</h2>
+              <p>医学场景里，页面完整不只是内容多，更重要的是把不能做什么也写清楚。</p>
+            </div>
+          </div>
+          <div class="medical-tool-grid">
+            <article class="medical-tool-card"><div class="resource-panel-head"><span>Not Diagnosis</span><strong>不直接给个体诊疗结论</strong></div><p>输出是证据整理和来源引用，不代替床旁治疗决策。</p></article>
+            <article class="medical-tool-card"><div class="resource-panel-head"><span>Freshness</span><strong>标记来源时间</strong></div><p>所有指南、文章和试验都应显示日期或检索时间，避免“最新”被误解。</p></article>
+            <article class="medical-tool-card"><div class="resource-panel-head"><span>Audit</span><strong>保留审计链</strong></div><p>记录问题、使用的工具、返回来源和人工复核结果，方便后续质量追踪。</p></article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div><h3>Freedom AI</h3><p>循证医疗 API 适合成为医学 AI 体系里的“证据底座”，为问答、知识平台和决策支持提供统一来源层。</p></div>
+        <div><h4>返回</h4><a href="tools-scenarios.html">场景总页</a><a href="tools.html">工具总览</a></div>
+        <div><h4>相关页</h4><a href="tools-scenario-ai-native-up2date.html">AI-native Up2date</a><a href="tools-scenario-agentic-hospital.html">Agentic Hospital</a></div>
+        <div><h4>支撑页</h4><a href="tools-skill.html">Skill 专栏</a><a href="tools-base.html">基础库工具</a></div>
+        <div><h4>平台</h4><a href="datasets.html">数据集</a><a href="benchmark.html">评测基准</a></div>
+      </div>
+    </footer>
+  </body>
+</html>

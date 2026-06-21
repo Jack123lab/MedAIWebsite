@@ -2,12 +2,14 @@
 <html lang="zh-CN">
   <head>
     <meta charset="utf-8" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>工具库 | Freedom AI</title>
     <meta name="description" content="Freedom AI 工具库以基础工具、挂号 Mock API、Skill 专栏、医学 AI 产品场景和科普工具整理医生库、药品库、医院库、医院 AI 工作流与内容生产工具。" />
     <link rel="stylesheet" href="assets/css/style.css" />
     <script src="assets/js/config.js"></script>
     <script src="assets/js/main.js" defer></script>
+    <script src="assets/js/language-switch.js" defer></script>
   </head>
   <body class="data-tools-page">
     <header class="site-header">
@@ -25,10 +27,18 @@
           <a href="community.html">讨论区</a>
           <a href="datasets.html">数据集</a>
           <a href="tools.html">工具库</a>
-          <a href="benchmark.html">Benchmark</a>
-          <a href="crowdsourcing.html">众包平台</a>
-          <a href="blog.html">Blog</a>
+          <a href="benchmark.html">评测</a>
+          <a href="crowdsourcing.html">众包</a>
+          <a href="blog.html">博客</a>
           <a href="profile.html">用户</a>
+        </div>
+        <div class="language-switch" data-language-switch aria-label="Language">
+          <button class="language-trigger" type="button" data-language-trigger aria-haspopup="listbox" aria-expanded="false">
+            <span class="language-trigger-icon" aria-hidden="true">文</span>
+            <span data-language-current>中文</span>
+            <span class="language-trigger-caret" aria-hidden="true">⌄</span>
+          </button>
+          <div class="language-menu" data-language-menu role="listbox" aria-label="Language list" hidden></div>
         </div>
       </nav>
     </header>
@@ -44,9 +54,16 @@
             </form>
             <a class="btn primary tools-share-btn" href="tool-share.html"><span aria-hidden="true">+</span> 分享工具</a>
           </div>
-          <nav class="tool-reference tools-learn-tabs" aria-label="工具库路径导航">
-            <a href="#market-overview">全部路径</a>
-            <a href="tools-base.html">基础库</a>
+
+          <div class="tools-learn-copy">
+            <p class="eyebrow">Tool Library</p>
+            <h1>工具库</h1>
+            <p>这套工具页不再只是工具名称集合，而是把基础数据库、Mock 接口、Skill 能力层和完整产品场景拆成一组可浏览、可解释、可继续扩写的独立页面。</p>
+          </div>
+
+          <nav class="tool-reference tools-learn-tabs" aria-label="工具路径导航">
+            <a href="#route-grid">全部路径</a>
+            <a href="tools-base.html">基础库工具</a>
             <a href="tools-mock-registration.html">Mock API</a>
             <a href="tools-skill.html">Skill 专栏</a>
             <a href="tools-scenarios.html">场景方案</a>
@@ -55,13 +72,14 @@
         </div>
       </section>
 
-      <section class="section compact" id="market-overview">
+      <section class="section compact" id="route-grid">
         <div class="container">
           <div class="tools-learn-heading">
             <div>
               <p class="eyebrow">Learning Paths</p>
-              <h2>工具展示</h2>
+              <h2>四条主要路径</h2>
             </div>
+            <p>从事实数据、接口流程、技能能力到产品场景，这四条路共同组成了完整的医学 AI 工具体系。</p>
           </div>
 
           <div class="tools-learn-grid">
@@ -69,29 +87,29 @@
               <span class="tools-learn-icon">DB</span>
               <small>Clinical Data Tools</small>
               <strong>基础库工具</strong>
-              <p>医生库、药品库、医院库，负责为检索、问答、挂号和医院 AI 工作流提供可追溯事实。</p>
-              <em>进入基础库</em>
+              <p>医生库、药品库、医院库，负责给搜索、问答、医生主页、挂号引导和医院 AI 工作流提供事实底座。</p>
+              <em>进入基础库页</em>
             </a>
             <a class="tools-learn-card" href="tools-mock-registration.html">
               <span class="tools-learn-icon">API</span>
-              <small>Mock Registration API</small>
+              <small>Mock Registration</small>
               <strong>挂号网站 Mock API</strong>
-              <p>演示医院检索、科室选择、医生排班、号源查询和预约草稿创建，并提供在线 Mock JSON。</p>
-              <em>查看 Mock 接口</em>
+              <p>完整演示医院检索、科室选择、医生排班、号源查询和预约草稿创建的脱敏接口链路。</p>
+              <em>进入 Mock API 页</em>
             </a>
             <a class="tools-learn-card" href="tools-skill.html">
               <span class="tools-learn-icon">SK</span>
               <small>Skill Store</small>
               <strong>Skill 专栏</strong>
-              <p>保留现有 Skill 专栏结构，用作医学 AI 工具库的能力索引、技能分发和工作流说明入口。</p>
-              <em>进入 Skill 专栏</em>
+              <p>把 OpenClaw Medical Skills、通用技能商店和本地工作流能力组织成可以装配的能力层。</p>
+              <em>进入 Skill 页</em>
             </a>
             <a class="tools-learn-card" href="tools-scenarios.html">
               <span class="tools-learn-icon">AI</span>
-              <small>Product & Scenario Plans</small>
-              <strong>产品或场景方案</strong>
-              <p>把基础库和 Skill 组合成循证 API、虚拟医院、Agentic hospital、AI-native HIS 等方案。</p>
-              <em>查看场景方案</em>
+              <small>Scenario Plans</small>
+              <strong>产品场景方案</strong>
+              <p>把基础库和 Skills 组合成循证医疗 API、虚拟医院、Agentic Hospital、AI-native HIS 等完整页面。</p>
+              <em>进入场景页</em>
             </a>
             <a class="tools-learn-card" href="tools-science.html">
               <span class="tools-learn-icon">AV</span>
@@ -103,15 +121,58 @@
           </div>
         </div>
       </section>
+
+      <section class="section compact">
+        <div class="container market-grid">
+          <article class="market-panel featured">
+            <span class="tag blue">How to Read</span>
+            <h2>先看“是什么”，再看“怎么接”</h2>
+            <p>建议先从场景页理解产品目标，再回到 Skill、基础库和 Mock API 页面看底层能力与接入方式。</p>
+            <div class="market-meta"><span>先产品</span><span>后接口</span><span>再扩技能</span></div>
+          </article>
+          <article class="market-panel">
+            <span class="tag gold">Build</span>
+            <h2>从工具到工作台</h2>
+            <p>页面设计重点是把单点工具转成工作台、门户或 Copilot，而不止是暴露一个接口名字。</p>
+            <div class="price-row"><strong>完整页面优先</strong><span>更适合演示与汇报</span></div>
+          </article>
+          <article class="market-panel">
+            <span class="tag green">Review</span>
+            <h2>医疗边界必须可见</h2>
+            <p>所有页面都会明确写出适用对象、人工复核点和数据边界，避免“看起来很强但不能落地”。</p>
+            <div class="price-row"><strong>强调治理</strong><span>保留来源与审计链</span></div>
+          </article>
+        </div>
+      </section>
+
+      <section class="section compact">
+        <div class="container">
+          <div class="section-head clean">
+            <div>
+              <p class="eyebrow">Featured Scenario Pages</p>
+              <h2>当前重点场景页</h2>
+              <p>下面这些页已经被拆成了独立完整页面，适合直接对外展示或继续深化为产品稿。</p>
+            </div>
+          </div>
+          <div class="registration-api-grid">
+            <a class="tools-learn-card" href="tools-scenario-evidence-api.html"><span class="tools-learn-icon">EBM</span><small>Evidence</small><strong>循证医疗 API</strong><p>统一证据入口，适合医生 Copilot、内容平台和研究团队。</p><em>查看页面</em></a>
+            <a class="tools-learn-card" href="tools-scenario-virtual-hospital.html"><span class="tools-learn-icon">SIM</span><small>Simulation</small><strong>虚拟医院</strong><p>数字孪生患者、教学演练、病例回放和 MDT 协作。</p><em>查看页面</em></a>
+            <a class="tools-learn-card" href="tools-scenario-agentic-hospital.html"><span class="tools-learn-icon">AGT</span><small>Workflow</small><strong>Agentic Hospital</strong><p>多代理协同处理分诊、病历、检验和照护协调。</p><em>查看页面</em></a>
+            <a class="tools-learn-card" href="tools-scenario-ai-native-his.html"><span class="tools-learn-icon">HIS</span><small>System</small><strong>AI-native HIS</strong><p>在 HIS 内构建原生智能层，支持摘要、问答和结构化写回。</p><em>查看页面</em></a>
+            <a class="tools-learn-card" href="tools-scenario-ai-native-up2date.html"><span class="tools-learn-icon">UPD</span><small>Knowledge</small><strong>AI-native Up2date</strong><p>把指南与研究组织成持续更新的临床知识系统。</p><em>查看页面</em></a>
+            <a class="tools-learn-card" href="tools-scenario-tcm-knowledge-graph.html"><span class="tools-learn-icon">TCM</span><small>Graph</small><strong>中医知识图谱</strong><p>用 Graph-RAG 连接体质、证候、方剂和现代机制。</p><em>查看页面</em></a>
+          </div>
+        </div>
+      </section>
     </main>
 
     <footer class="site-footer">
       <div class="container footer-grid">
         <div><h3>Freedom AI</h3><p>工具库现在按基础工具、Skill 专栏、产品场景和科普工具组织，强调医学 MCP、可组合工作流、可追溯临床知识服务和内容生产能力。</p></div>
-        <div><h4>工具</h4><a href="tools.html">工具库</a><a href="tools-base.html">基础库工具</a><a href="tools-mock-registration.html">Mock 挂号 API</a><a href="tools-scenarios.html">场景方案</a><a href="tools-science.html">科普工具</a></div>
-        <div><h4>数据</h4><a href="datasets.html">数据集</a></div>
-        <div><h4>平台</h4><a href="benchmark.html">评测基准</a><a href="crowdsourcing.html">众包平台</a></div>
-        <div><h4>学习</h4><a href="learning.html">教学</a><a href="community.html">讨论区</a></div>
+        <div><h4>路线页</h4><a href="tools-base.html">基础库工具</a><a href="tools-mock-registration.html">Mock API</a><a href="tools-skill.html">Skill 专栏</a><a href="tools-scenarios.html">场景方案</a><a href="tools-science.html">科普工具</a></div>
+        <div><h4>重点页</h4><a href="tools-scenario-evidence-api.html">循证医疗 API</a><a href="tools-scenario-ai-native-his.html">AI-native HIS</a></div>
+        <div><h4>平台</h4><a href="datasets.html">数据集</a><a href="benchmark.html">评测基准</a><a href="community.html">讨论区</a></div>
+        <div><h4>更多</h4><a href="learning.html">内容</a><a href="network.html">社区</a><a href="blog.html">博客</a></div>
       </div>
     </footer>
   </body>

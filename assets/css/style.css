@@ -1502,6 +1502,26 @@ h1 {
 .privacy-panel.light { background: var(--surface-soft); }
 .privacy-panel span { display: block; color: var(--muted); font-size: 12px; margin-top: 6px; }
 
+.auth-points-note {
+  display: grid;
+  gap: 3px;
+  border: 1px solid #eadc9b;
+  border-radius: 8px;
+  padding: 11px 12px;
+  background: #fffdf3;
+}
+
+.auth-points-note strong {
+  color: #6f4f00;
+  font-size: 14px;
+}
+
+.auth-points-note span {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.5;
+}
+
 .check-line {
   display: flex !important;
   grid-template-columns: none !important;
@@ -11651,7 +11671,7 @@ body.upload-roadmap-open {
 }
 
 .profile-page .profile-meta {
-  grid-template-columns: repeat(4, auto minmax(0, 1fr));
+  grid-template-columns: repeat(2, auto minmax(0, 1fr));
   gap: 5px 10px;
   margin-top: 11px;
   font-size: 12px;
@@ -11809,6 +11829,219 @@ body.upload-roadmap-open {
   color: var(--primary);
 }
 
+.profile-workspace-card {
+  display: grid;
+  gap: 14px;
+}
+
+.profile-workspace-card .profile-panel-head {
+  margin-bottom: 0;
+}
+
+.profile-mini-form {
+  display: grid;
+  gap: 12px;
+  margin: 0;
+}
+
+.profile-mini-form.stacked {
+  border-top: 1px solid var(--line);
+  padding-top: 14px;
+}
+
+.profile-mini-form label {
+  display: grid;
+  gap: 6px;
+  color: #344154;
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.profile-mini-form input,
+.profile-mini-form select,
+.profile-mini-form textarea {
+  width: 100%;
+  border: 1px solid var(--line);
+  border-radius: 6px;
+  padding: 10px 11px;
+  background: #fff;
+  color: var(--text);
+  font: inherit;
+  font-size: 14px;
+}
+
+.profile-mini-form textarea {
+  resize: vertical;
+}
+
+.profile-tool-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.profile-tool-card,
+.knowledge-base-item,
+.medical-record-summary div,
+.achievement-list article {
+  display: grid;
+  gap: 6px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 12px;
+  background: #f8fafb;
+}
+
+.profile-tool-card strong,
+.knowledge-base-item strong,
+.medical-record-summary strong,
+.achievement-list strong {
+  color: #172738;
+  font-size: 14px;
+  line-height: 1.35;
+}
+
+.profile-tool-card span,
+.knowledge-base-item span,
+.knowledge-base-item p,
+.medical-record-summary span,
+.achievement-list span {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.55;
+}
+
+.profile-tool-output {
+  min-height: 64px;
+  border: 1px dashed #b7c5cf;
+  border-radius: 8px;
+  padding: 13px;
+  background: #f8fafb;
+  color: var(--muted);
+}
+
+.profile-tool-output:empty::before {
+  content: "生成或提问后，结果会出现在这里。";
+}
+
+.profile-tool-output strong {
+  display: block;
+  margin-bottom: 8px;
+  color: #172738;
+}
+
+.profile-tool-output ol,
+.profile-tool-output ul {
+  margin: 0;
+  padding-left: 20px;
+}
+
+.knowledge-base-list,
+.medical-record-summary,
+.achievement-list {
+  display: grid;
+  gap: 10px;
+}
+
+.knowledge-base-item {
+  background: #ffffff;
+}
+
+.knowledge-base-item span {
+  color: #8a6200;
+  font-weight: 900;
+}
+
+.medical-record-summary small {
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.points-overview {
+  display: grid;
+  grid-template-columns: 180px minmax(0, 1fr);
+  gap: 12px;
+}
+
+.points-total {
+  display: grid;
+  gap: 4px;
+  border: 1px solid #eadc9b;
+  border-radius: 8px;
+  padding: 14px;
+  background: #fffdf3;
+}
+
+.points-total span,
+.points-total em {
+  color: #6f4f00;
+  font-size: 12px;
+  font-style: normal;
+  font-weight: 800;
+}
+
+.points-total strong {
+  color: #172738;
+  font-size: 32px;
+  line-height: 1;
+}
+
+.points-ledger {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.points-ledger span {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  padding: 10px;
+  color: var(--muted);
+  background: #ffffff;
+  font-size: 12px;
+}
+
+.points-ledger strong {
+  color: var(--secondary);
+}
+
+.achievement-list {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+
+.achievement-list article {
+  background: #ffffff;
+}
+
+.achievement-list article::before {
+  content: "未解锁";
+  width: fit-content;
+  border-radius: 999px;
+  padding: 2px 8px;
+  color: #667585;
+  background: #eef1f4;
+  font-size: 11px;
+  font-weight: 900;
+}
+
+.achievement-list article.unlocked {
+  border-color: #c9dfdc;
+  background: #f4fbf9;
+}
+
+.achievement-list article.unlocked::before {
+  content: "已解锁";
+  color: #19796f;
+  background: #e1f3ef;
+}
+
+.point-task-list a span {
+  color: #6f4f00;
+}
+
 .profile-page .access-list a {
   padding: 10px;
   font-size: 13px;
@@ -11869,6 +12102,15 @@ body.upload-roadmap-open {
   .profile-space-layout {
     grid-template-columns: 1fr;
   }
+
+  .profile-tool-grid,
+  .achievement-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .points-overview {
+    grid-template-columns: 1fr;
+  }
 }
 
 @media (max-width: 720px) {
@@ -11907,6 +12149,13 @@ body.upload-roadmap-open {
   .profile-space-tabs a {
     padding: 0 10px;
     font-size: 13px;
+  }
+
+  .profile-tool-grid,
+  .points-ledger,
+  .achievement-list,
+  .form-split {
+    grid-template-columns: 1fr;
   }
 
   .post-actions {

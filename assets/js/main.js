@@ -2,6 +2,9 @@ const authKey = "hmaiAuthState";
 const postStorageKey = "hmaiForumPosts";
 const reactionStorageKey = "hmaiPostReactions";
 const profileAvatarStorageKey = "hmaiProfileAvatar";
+const pointsStorageKey = "hmaiPointsLedger";
+const privateKnowledgeStorageKey = "hmaiPrivateKnowledge";
+const medicalRecordStorageKey = "hmaiMedicalRecord";
 const apiBase = (window.HMAI_API_BASE || "").replace(/\/$/, "");
 
 const categoryLabels = {
@@ -44,6 +47,7 @@ const siteNavItems = [
   { href: "benchmark.html", label: "Benchmark", active: ["benchmark.html", "benchmark-gdb.html", "benchmark-liveclin.html", "benchmark-healthbench-tcm.html", "benchmark-doctors-last-exam.html", "benchmark-cmb.html", "benchmark-long-tailed-medqa.html", "benchmark-med-x.html"] },
   { href: "crowdsourcing.html", label: "众包平台", active: ["crowdsourcing.html"] },
   { href: "blog.html", label: "Blog", active: ["blog.html"] },
+  { href: "https://ahamed.top/chat", label: "AI 问诊", active: [], external: true },
   { href: "profile.html", label: "用户", active: ["profile.html", "auth.html", "doctor.html"] },
 ];
 
@@ -69,7 +73,8 @@ function normalizeSiteHeader() {
     if (!links) return;
     links.innerHTML = siteNavItems.map((item) => {
       const active = item.active.includes(currentPath) ? ' class="active"' : "";
-      return `<a${active} href="${item.href}">${item.label}</a>`;
+      const external = item.external ? ' target="_blank" rel="noreferrer"' : "";
+      return `<a${active} href="${item.href}"${external}>${item.label}</a>`;
     }).join("");
   });
 }
@@ -377,6 +382,119 @@ function writeJson(key, value) {
   localStorage.setItem(key, JSON.stringify(value));
 }
 
+function todayKey() {
+  return new Date().toISOString().slice(0, 10);
+}
+
+function getPointsLedger() {
+  return readJson(pointsStorageKey, { events: [], claimed: {} });
+}
+
+function awardPoints(label, amount, onceKey = "") {
+  const ledger = getPointsLedger();
+  ledger.events = Array.isArray(ledger.events) ? ledger.events : [];
+  ledger.claimed = ledger.claimed || {};
+  if (onceKey && ledger.claimed[onceKey]) return false;
+  ledger.events.unshift({
+    label,
+    amount,
+    createdAt: new Date().toISOString(),
+  });
+  if (onceKey) ledger.claimed[onceKey] = true;
+  writeJson(pointsStorageKey, ledger);
+  return true;
+}
+
+function getPointTotal() {
+  return getPointsLedger().events.reduce((total, event) => total + (Number(event.amount) || 0), 0);
+}
+
+function awardDailyLogin() {
+  return awardPoints("每日登录", 10, `daily-login-${todayKey()}`);
+}
+
+const defaultKnowledgeItems = [
+  {
+    title: "高血压家庭监测流程",
+    source: "个人指南",
+    content: "连续 7 天早晚测量血压，记录坐位静息值；若多次超过 140/90 mmHg，应结合症状、用药依从性和复诊计划综合判断。",
+  },
+  {
+    title: "门诊复诊提问清单",
+    source: "个人模板",
+    content: "复诊前整理近期症状变化、用药变化、检查结果、最担心的问题，以及希望医生帮助决策的事项。",
+  },
+];
+
+function getPrivateKnowledge() {
+  const stored = readJson(privateKnowledgeStorageKey, null);
+  return Array.isArray(stored) && stored.length ? stored : defaultKnowledgeItems;
+}
+
+function savePrivateKnowledge(items) {
+  writeJson(privateKnowledgeStorageKey, items);
+}
+
+function getMedicalRecord() {
+  return readJson(medicalRecordStorageKey, {
+    allergies: "",
+    conditions: "",
+    medications: "",
+    checkups: "",
+    notes: "",
+    updatedAt: "",
+  });
+}
+
+function saveMedicalRecord(record) {
+  writeJson(medicalRecordStorageKey, record);
+}
+
+function getAchievements(auth = getAuthState()) {
+  const ledger = getPointsLedger();
+  const points = getPointTotal();
+  const knowledge = getPrivateKnowledge();
+  const medicalRecord = getMedicalRecord();
+  const hasMedicalRecord = ["allergies", "conditions", "medications", "checkups", "notes"].some((key) => medicalRecord[key]);
+  return [
+    {
+      title: "社区新居民",
+      text: "完成注册并领取 100 积分。",
+      unlocked: !!ledger.claimed.signup,
+    },
+    {
+      title: "港中深通行证",
+      text: "使用港中深学号或校园邮箱登录。",
+      unlocked: !!auth.studentId,
+    },
+    {
+      title: "认证共创者",
+      text: "完成医生或医学生资格认证。",
+      unlocked: auth.status === "verified",
+    },
+    {
+      title: "科普创作者",
+      text: "使用创作空间生成科普工具素材。",
+      unlocked: !!ledger.claimed.creator_tool,
+    },
+    {
+      title: "私人知识库",
+      text: "沉淀自己的指南、流程或判断标准。",
+      unlocked: knowledge.length > defaultKnowledgeItems.length || !!ledger.claimed.knowledge_base,
+    },
+    {
+      title: "健康档案管理员",
+      text: "维护个人病历本和复诊提醒。",
+      unlocked: hasMedicalRecord,
+    },
+    {
+      title: "积分探索者",
+      text: "累计获得 200 积分。",
+      unlocked: points >= 200,
+    },
+  ];
+}
+
 function getAuthState() {
   return readJson(authKey, { status: "guest", name: "访客", role: "guest", roleLabel: "访客" });
 }
@@ -494,7 +612,7 @@ function updateAuthCard() {
   card.innerHTML = `
     <span>${statusText}</span>
     <strong>${state.name || "访客"}</strong>
-    <p>${state.roleLabel || "完成身份信息后，可进入社区、投稿和医生工作区演示。"}</p>
+    <p>${state.roleLabel || "完成身份信息后，可进入社区、投稿和医生工作区演示。"} · 当前积分 ${getPointTotal()}</p>
   `;
 }
 
@@ -516,6 +634,7 @@ function renderProfile() {
     <p>${escapeHtml(state.roleLabel || "普通访问者")}</p>
     <dl class="profile-meta">
       <dt>联系方式</dt><dd>${escapeHtml(state.contact || "待填写")}</dd>
+      <dt>港中深账号</dt><dd>${escapeHtml(state.studentId || "未绑定")}</dd>
       <dt>机构/学校</dt><dd>${escapeHtml(state.institution || "待补充")}</dd>
       <dt>科室/专业</dt><dd>${escapeHtml(state.specialty || "待补充")}</dd>
       <dt>社区凭证</dt><dd>${escapeHtml(communityCredentialText(state))}</dd>
@@ -549,11 +668,14 @@ function renderProfileList(selector, posts, emptyText, metaBuilder) {
 function renderProfileStats({ submissions, likes, dislikes, comments }) {
   const stats = document.querySelector("#profileStats");
   if (!stats) return;
+  const unlockedCount = getAchievements().filter((achievement) => achievement.unlocked).length;
   const items = [
     ["投稿", submissions.length],
     ["点赞", likes.length],
     ["踩", dislikes.length],
     ["评论", comments.length],
+    ["积分", getPointTotal()],
+    ["成就", unlockedCount],
   ];
   stats.innerHTML = items.map(([label, value]) => `<span><strong>${value}</strong>${label}</span>`).join("");
 }
@@ -571,6 +693,175 @@ function renderProfileDesign() {
       <strong>${escapeHtml(title)}</strong>
       <span>${escapeHtml(text)}</span>
     </a>`).join("");
+}
+
+function renderCreatorSpace() {
+  const list = document.querySelector("#creatorToolList");
+  if (!list) return;
+  const tools = [
+    ["科普文章", "把专业问题改写成患者能理解的解释。"],
+    ["门诊问答卡", "整理常见问题、注意事项和复诊提醒。"],
+    ["短视频脚本", "生成 60 秒医学科普口播结构。"],
+    ["海报要点", "压缩成适合社区传播的三点式提示。"],
+  ];
+  list.innerHTML = tools.map(([title, text]) => `
+    <article class="profile-tool-card">
+      <strong>${escapeHtml(title)}</strong>
+      <span>${escapeHtml(text)}</span>
+    </article>`).join("");
+}
+
+function renderKnowledgeBase() {
+  const list = document.querySelector("#knowledgeBaseList");
+  if (!list) return;
+  const items = getPrivateKnowledge();
+  list.innerHTML = items.map((item, index) => `
+    <article class="knowledge-base-item">
+      <span>${escapeHtml(item.source || "个人知识")}</span>
+      <strong>${escapeHtml(item.title || `知识片段 ${index + 1}`)}</strong>
+      <p>${escapeHtml(item.content || "")}</p>
+    </article>`).join("");
+}
+
+function renderMedicalRecord() {
+  const summary = document.querySelector("#medicalRecordSummary");
+  if (!summary) return;
+  const record = getMedicalRecord();
+  const fields = [
+    ["过敏史", record.allergies || "未填写"],
+    ["慢病/重点问题", record.conditions || "未填写"],
+    ["长期用药", record.medications || "未填写"],
+    ["最近检查", record.checkups || "未填写"],
+    ["就医提醒", record.notes || "未填写"],
+  ];
+  summary.innerHTML = `
+    ${fields.map(([label, value]) => `<div><strong>${escapeHtml(label)}</strong><span>${escapeHtml(value)}</span></div>`).join("")}
+    <small>${record.updatedAt ? `最近更新：${new Date(record.updatedAt).toLocaleString("zh-CN")}` : "内容仅保存在本地浏览器，请勿填写身份证号、住院号等敏感标识。"}</small>`;
+}
+
+function fillMedicalRecordForm() {
+  const record = getMedicalRecord();
+  const fields = {
+    recordAllergies: "allergies",
+    recordConditions: "conditions",
+    recordMedications: "medications",
+    recordCheckups: "checkups",
+    recordNotes: "notes",
+  };
+  Object.entries(fields).forEach(([id, key]) => {
+    const input = document.querySelector(`#${id}`);
+    if (input) input.value = record[key] || "";
+  });
+}
+
+function renderPointsSystem() {
+  const overview = document.querySelector("#pointsOverview");
+  const achievementsRoot = document.querySelector("#achievementList");
+  const taskRoot = document.querySelector("#profilePointTasks");
+  if (!overview && !achievementsRoot && !taskRoot) return;
+
+  const ledger = getPointsLedger();
+  const total = getPointTotal();
+  const achievements = getAchievements();
+  const unlocked = achievements.filter((achievement) => achievement.unlocked);
+  if (overview) {
+    const recent = ledger.events.slice(0, 4);
+    overview.innerHTML = `
+      <div class="points-total"><span>当前积分</span><strong>${total}</strong><em>${unlocked.length}/${achievements.length} 个成就</em></div>
+      <div class="points-ledger">
+        ${recent.length ? recent.map((event) => `<span><strong>+${Number(event.amount) || 0}</strong>${escapeHtml(event.label)}</span>`).join("") : "<span>注册、登录和共创后会出现积分记录。</span>"}
+      </div>`;
+  }
+  if (achievementsRoot) {
+    achievementsRoot.innerHTML = achievements.map((achievement) => `
+      <article class="${achievement.unlocked ? "unlocked" : "locked"}">
+        <strong>${escapeHtml(achievement.title)}</strong>
+        <span>${escapeHtml(achievement.text)}</span>
+      </article>`).join("");
+  }
+  if (taskRoot) {
+    taskRoot.innerHTML = `
+      <a href="auth.html?next=profile.html&reason=profile"><strong>每日登录</strong><span>每天 +10 积分</span></a>
+      <a href="#profile-creator-space"><strong>创作科普</strong><span>首次使用 +15 积分</span></a>
+      <a href="#profile-knowledge-base"><strong>维护知识库</strong><span>首次新增 +20 积分</span></a>
+      <a href="#profile-medical-record"><strong>完善病历本</strong><span>首次保存 +30 积分</span></a>`;
+  }
+}
+
+function renderProfileExperience() {
+  renderCreatorSpace();
+  renderKnowledgeBase();
+  fillMedicalRecordForm();
+  renderMedicalRecord();
+  renderPointsSystem();
+}
+
+function refreshProfileExperience() {
+  renderProfile();
+  renderLikedPosts();
+  renderProfileExperience();
+}
+
+function wireProfileExperience() {
+  document.querySelector("#scienceToolButton")?.addEventListener("click", () => {
+    const topic = document.querySelector("#scienceTopic")?.value.trim() || "一个常见医学问题";
+    const audience = document.querySelector("#scienceAudience")?.selectedOptions?.[0]?.textContent || "患者与家属";
+    const output = document.querySelector("#scienceToolOutput");
+    awardPoints("使用科普工具", 15, "creator_tool");
+    if (output) {
+      output.innerHTML = `
+        <strong>${escapeHtml(topic)}</strong>
+        <ol>
+          <li>先用一句话解释：这件事为什么重要。</li>
+          <li>给 ${escapeHtml(audience)} 三个可执行建议，避免诊断化承诺。</li>
+          <li>补充何时需要线下就医，以及哪些信息需要带给医生。</li>
+        </ol>`;
+    }
+    refreshProfileExperience();
+  });
+
+  document.querySelector("#knowledgeBaseForm")?.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const title = document.querySelector("#knowledgeTitle")?.value.trim() || "未命名知识片段";
+    const source = document.querySelector("#knowledgeSource")?.value.trim() || "个人知识";
+    const content = document.querySelector("#knowledgeContent")?.value.trim();
+    if (!content) return;
+    const items = getPrivateKnowledge();
+    items.unshift({ title, source, content });
+    savePrivateKnowledge(items);
+    awardPoints("新增个人知识库", 20, "knowledge_base");
+    event.currentTarget.reset();
+    refreshProfileExperience();
+  });
+
+  document.querySelector("#knowledgeQuestionForm")?.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const question = document.querySelector("#knowledgeQuestion")?.value.trim() || "如何处理这个问题？";
+    const items = getPrivateKnowledge().slice(0, 3);
+    const answer = document.querySelector("#knowledgeAnswer");
+    awardPoints("使用个人知识库问答", 10, "knowledge_qa");
+    if (answer) {
+      answer.innerHTML = `
+        <strong>${escapeHtml(question)}</strong>
+        <p>根据你的个人知识库，优先参考：${items.map((item) => escapeHtml(item.title)).join("、")}。建议回答时先说明适用范围，再列出行动步骤，并提醒用户结合线下医生判断。</p>
+        <ul>${items.map((item) => `<li>${escapeHtml(item.content)}</li>`).join("")}</ul>`;
+    }
+    refreshProfileExperience();
+  });
+
+  document.querySelector("#medicalRecordForm")?.addEventListener("submit", (event) => {
+    event.preventDefault();
+    saveMedicalRecord({
+      allergies: document.querySelector("#recordAllergies")?.value.trim() || "",
+      conditions: document.querySelector("#recordConditions")?.value.trim() || "",
+      medications: document.querySelector("#recordMedications")?.value.trim() || "",
+      checkups: document.querySelector("#recordCheckups")?.value.trim() || "",
+      notes: document.querySelector("#recordNotes")?.value.trim() || "",
+      updatedAt: new Date().toISOString(),
+    });
+    awardPoints("完善个人病历本", 30, "medical_record");
+    refreshProfileExperience();
+  });
 }
 
 function renderLikedPosts() {
@@ -626,15 +917,34 @@ function wireAuthForms() {
     updateAuthCard();
     loginForm.addEventListener("submit", (event) => {
       event.preventDefault();
+      const contact = document.querySelector("#loginContact")?.value.trim() || "";
+      const studentId = document.querySelector("#loginStudentId")?.value.trim() || "";
+      const status = document.querySelector("#loginStatus");
+      if (!contact && !studentId) {
+        if (status) status.textContent = "请填写邮箱/手机号，或直接填写港中深学号/校园邮箱登录。";
+        return;
+      }
+      const isCuhkszLogin = !!studentId;
+      const signupAwarded = awardPoints("注册送积分", 100, "signup");
+      const dailyAwarded = awardDailyLogin();
       setAuthState({
         name: document.querySelector("#loginName").value.trim(),
-        contact: document.querySelector("#loginContact").value.trim(),
+        contact: contact || studentId,
+        studentId,
         status: "logged_in",
-        roleLabel: "已登录用户",
+        role: isCuhkszLogin ? "student" : "guest",
+        roleLabel: isCuhkszLogin ? "港中深学号用户" : "已登录用户",
+        institution: isCuhkszLogin ? "The Chinese University of Hong Kong, Shenzhen" : getAuthState().institution,
         loggedInAt: new Date().toISOString(),
       });
       const nextUrl = getSafeNextUrl();
-      document.querySelector("#loginStatus").textContent = nextUrl ? "登录状态已保存，正在返回个人页面。" : "登录状态已保存，可继续提交资格审核。";
+      const pointNotes = [
+        signupAwarded ? "+100 注册积分" : "",
+        dailyAwarded ? "+10 每日登录" : "",
+      ].filter(Boolean).join("，");
+      document.querySelector("#loginStatus").textContent = nextUrl
+        ? `登录状态已保存${pointNotes ? `（${pointNotes}）` : ""}，正在返回个人页面。`
+        : `登录状态已保存${pointNotes ? `（${pointNotes}）` : ""}，可继续提交资格审核。`;
       updateAuthCard();
       if (nextUrl) window.setTimeout(() => { window.location.href = nextUrl; }, 320);
     });
@@ -665,7 +975,10 @@ function wireAuthForms() {
       const role = document.querySelector("#credentialRole").value || "doctor";
       const proofType = role === "doctor" ? "license" : "student_card";
       setAuthState({ status: "verified", role, proofType, roleLabel: roleLabels[role] });
-      document.querySelector("#reviewStatus").textContent = "演示状态已设为已认证，可进入社区。";
+      const awarded = awardPoints("完成资格认证", 50, "verified");
+      document.querySelector("#reviewStatus").textContent = awarded
+        ? "演示状态已设为已认证，可进入社区。已获得 50 认证积分。"
+        : "演示状态已设为已认证，可进入社区。";
       updateAuthCard();
     });
   }
@@ -1746,6 +2059,8 @@ if (!isProfileRedirecting) {
   wireProfileAvatarEditor();
   renderProfile();
   renderLikedPosts();
+  renderProfileExperience();
+  wireProfileExperience();
   wireCommunityGate();
   wireClinicianForumAccess();
   wireForum();

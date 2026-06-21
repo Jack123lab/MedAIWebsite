@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>中医知识图谱 | Freedom AI</title>
+    <meta
+      name="description"
+      content="Freedom AI 中医知识图谱页面，完整展示体质、证候、症状、方剂、药材与现代机制如何组成 Graph-RAG 场景。"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/main.js" defer></script>
+  </head>
+  <body class="data-tools-page">
+    <header class="site-header">
+      <nav class="nav" aria-label="主导航">
+        <a class="brand" href="index.html"><span class="brand-mark">F</span><span class="brand-text"><strong>Freedom AI</strong><span>医学 AI 社区</span></span></a>
+        <form class="site-search" role="search" action="search.html" method="get" aria-label="站内搜索">
+          <label class="sr-only" for="siteSearchInput">搜索</label>
+          <input id="siteSearchInput" name="q" type="search" placeholder="搜索" autocomplete="off" />
+          <button type="submit">搜索</button>
+        </form>
+        <div class="nav-links">
+          <a href="index.html">首页</a>
+          <a href="learning.html">内容</a>
+          <a href="network.html">社区</a>
+          <a href="community.html">讨论区</a>
+          <a href="datasets.html">数据集</a>
+          <a href="tools.html">工具库</a>
+          <a href="benchmark.html">评测</a>
+          <a href="crowdsourcing.html">众包</a>
+          <a href="blog.html">博客</a>
+          <a href="profile.html">用户</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="page-title data-tools-title">
+        <div class="container tools-learn-hero">
+          <div class="tools-learn-copy">
+            <p class="eyebrow">TCM Graph-RAG</p>
+            <h1>中医知识图谱</h1>
+            <p>这页强调把中医体质、证候、症状、方剂、药材和现代机制连成一张可追溯的知识图谱，再用 Graph-RAG 解决多跳问答、教学解释和研究探索问题。</p>
+            <div class="tool-action-row">
+              <a class="btn primary" href="tools-scenarios.html">返回场景总页</a>
+              <a class="btn" href="benchmark-healthbench-tcm.html">查看中医评测页</a>
+            </div>
+          </div>
+          <nav class="tool-reference tools-learn-tabs" aria-label="场景导航">
+            <a href="#schema">图谱结构</a>
+            <a href="#workflow">推理流程</a>
+            <a href="#stack">技术栈</a>
+            <a href="#governance">边界</a>
+          </nav>
+          <div class="tool-skill-stats" aria-label="中医知识图谱指标">
+            <div><strong>5</strong><span>核心节点：体质 / 证候 / 症状 / 方剂 / 药材</span></div>
+            <div><strong>1</strong><span>Graph-RAG 推理入口</span></div>
+            <div><strong>2</strong><span>主要能力：解释 / 检索</span></div>
+            <div><strong>100%</strong><span>必须标记来源与学派边界</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section compact" id="schema">
+        <div class="container">
+          <div class="section-head clean">
+            <div>
+              <p class="eyebrow">Graph Schema</p>
+              <h2>推荐的图谱骨架</h2>
+              <p>完整页面的关键，是先把“图谱里到底有什么节点和关系”讲明白，避免抽象地说一个知识图谱平台。</p>
+            </div>
+          </div>
+          <div class="medical-tool-grid">
+            <article class="medical-tool-card"><div class="resource-panel-head"><span>Constitution</span><strong>体质层</strong></div><p>把体质辨识结果作为入口，连接个体长期倾向、养生建议和易感方向。</p></article>
+            <article class="medical-tool-card"><div class="resource-panel-head"><span>Syndrome</span><strong>证候层</strong></div><p>把症状、舌脉、病机和常见辨证模式联系起来，构成中医推理的中间层。</p></article>
+            <article class="medical-tool-card"><div class="resource-panel-head"><span>Formula</span><strong>方剂与药材层</strong></div><p>把方剂、药材、加减法和现代机制证据连接起来，支撑问答与教学解释。</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section compact" id="workflow">
+        <div class="container">
+          <div class="section-head clean">
+            <div>
+              <p class="eyebrow">Reasoning Workflow</p>
+              <h2>Graph-RAG 的典型推理流程</h2>
+              <p>这一部分适合清楚说明：系统不是凭空生成，而是沿着图谱节点和关联路径给出回答。</p>
+            </div>
+          </div>
+          <div class="registration-api-grid">
+            <article class="registration-api-card"><div class="api-path"><span class="api-method neutral">STEP 1</span><code>query normalization</code></div><p>把自然语言问题规范成体质、证候、症状、方剂或药材相关实体。</p></article>
+            <article class="registration-api-card"><div class="api-path"><span class="api-method neutral">STEP 2</span><code>graph expansion</code></div><p>从问题节点出发扩展相邻节点，找到可能相关的证候、方剂、药材和现代机制关系。</p></article>
+            <article class="registration-api-card"><div class="api-path"><span class="api-method neutral">STEP 3</span><code>evidence retrieval</code></div><p>补充方剂解释、现代研究、教学资料或规则库内容，构成混合检索结果。</p></article>
+            <article class="registration-api-card"><div class="api-path"><span class="api-method neutral">STEP 4</span><code>path explanation</code></div><p>生成“为什么会从某症状走到某证候，再走到某方剂”的可解释路径。</p></article>
+            <article class="registration-api-card"><div class="api-path"><span class="api-method neutral">STEP 5</span><code>boundary annotation</code></div><p>标记知识来源、适用学派和现代证据充分性，避免把所有结论都说成确定事实。</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section compact" id="stack">
+        <div class="container">
+          <div class="section-head clean">
+            <div>
+              <p class="eyebrow">Skill Stack</p>
+              <h2>支撑这页的能力模块</h2>
+              <p>一部分能力来自中医体质与问答，另一部分来自图谱增强检索和多跳推理。</p>
+            </div>
+          </div>
+          <div class="tool-stack-grid">
+            <article class="resource-panel tool-stack-card">
+              <div class="resource-panel-head"><span>Constitution</span><strong>tcm-constitution-analyzer</strong></div>
+              <p>负责体质辨识、体质特征分析和养生建议，是很多中医个体化页面的起点层。</p>
+              <div class="skill-link-cloud"><a href="https://github.com/FreedomIntelligence/OpenClaw-Medical-Skills/tree/main/skills/tcm-constitution-analyzer" target="_blank" rel="noreferrer">查看 Skill</a></div>
+            </article>
+            <article class="resource-panel tool-stack-card">
+              <div class="resource-panel-head"><span>Graph-RAG</span><strong>kragen-knowledge-graph</strong></div>
+              <p>负责图谱增强检索与多跳推理，适合连接方剂、药材、疾病机制和研究证据。</p>
+              <div class="skill-link-cloud"><a href="https://github.com/FreedomIntelligence/OpenClaw-Medical-Skills/tree/main/skills/kragen-knowledge-graph" target="_blank" rel="noreferrer">查看 Skill</a></div>
+            </article>
+            <article class="resource-panel tool-stack-card">
+              <div class="resource-panel-head"><span>Benchmark</span><strong>中医评测页</strong></div>
+              <p>可与站内中医评测页配合，形成“知识图谱构建 - 问答验证 - 评测闭环”的完整路线。</p>
+              <div class="skill-link-cloud"><a href="benchmark-healthbench-tcm.html">查看中医评测页</a></div>
+            </article>
+            <article class="resource-panel tool-stack-card">
+              <div class="resource-panel-head"><span>Knowledge Layer</span><strong>站内知识与内容页</strong></div>
+              <p>可与教学页、内容页和病例库协作，把图谱结果变成教学解释、检索入口和专题内容。</p>
+              <div class="skill-link-cloud"><a href="learning.html">查看内容页</a></div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section compact" id="governance">
+        <div class="container">
+          <div class="section-head clean">
+            <div>
+              <p class="eyebrow">Boundary</p>
+              <h2>这类页面最需要写清楚的边界</h2>
+              <p>中医知识图谱页面如果不写边界，很容易把教学解释、学派经验和现代证据混在一起。</p>
+            </div>
+          </div>
+          <div class="medical-tool-grid">
+            <article class="medical-tool-card"><div class="resource-panel-head"><span>Source</span><strong>区分来源类型</strong></div><p>要明确知识来自经典文献、现代教材、规则库还是现代研究证据。</p></article>
+            <article class="medical-tool-card"><div class="resource-panel-head"><span>School</span><strong>标记学派和适用范围</strong></div><p>不同学派的辨证与配伍路径可能不同，不能默认只有一种标准答案。</p></article>
+            <article class="medical-tool-card"><div class="resource-panel-head"><span>Use</span><strong>以解释和教学为主</strong></div><p>优先支持教学、研究和知识检索，不把图谱输出包装成直接临床决策。</p></article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div><h3>Freedom AI</h3><p>中医知识图谱页适合把“图谱结构 + 推理路径 + 边界说明”一次性讲完整，便于做教学和研究展示。</p></div>
+        <div><h4>返回</h4><a href="tools-scenarios.html">场景总页</a><a href="tools.html">工具总览</a></div>
+        <div><h4>相关页</h4><a href="tools-scenario-ai-native-up2date.html">AI-native Up2date</a><a href="benchmark-healthbench-tcm.html">中医评测页</a></div>
+        <div><h4>支撑页</h4><a href="tools-skill.html">Skill 专栏</a><a href="learning.html">内容页</a></div>
+        <div><h4>平台</h4><a href="datasets.html">数据集</a><a href="community.html">讨论区</a></div>
+      </div>
+    </footer>
+  </body>
+</html>

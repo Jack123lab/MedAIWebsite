@@ -1,0 +1,195 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>虚拟医院 | Freedom AI</title>
+    <meta
+      name="description"
+      content="Freedom AI 虚拟医院方案页，展示数字孪生患者、多角色模拟、教学演练与病例回放如何组成完整的虚拟医院环境。"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/main.js" defer></script>
+  </head>
+  <body class="data-tools-page">
+    <header class="site-header">
+      <nav class="nav" aria-label="主导航">
+        <a class="brand" href="index.html"><span class="brand-mark">F</span><span class="brand-text"><strong>Freedom AI</strong><span>医学 AI 社区</span></span></a>
+        <form class="site-search" role="search" action="search.html" method="get" aria-label="站内搜索">
+          <label class="sr-only" for="siteSearchInput">搜索</label>
+          <input id="siteSearchInput" name="q" type="search" placeholder="搜索" autocomplete="off" />
+          <button type="submit">搜索</button>
+        </form>
+        <div class="nav-links">
+          <a href="index.html">首页</a>
+          <a href="learning.html">内容</a>
+          <a href="network.html">社区</a>
+          <a href="community.html">讨论区</a>
+          <a href="datasets.html">数据集</a>
+          <a href="tools.html">工具库</a>
+          <a href="benchmark.html">评测</a>
+          <a href="crowdsourcing.html">众包</a>
+          <a href="blog.html">博客</a>
+          <a href="profile.html">用户</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="page-title data-tools-title">
+        <div class="container tools-learn-hero">
+          <div class="tools-learn-copy">
+            <p class="eyebrow">Simulation</p>
+            <h1>虚拟医院</h1>
+            <p>虚拟医院不是一个“聊天病人”，而是一个由数字孪生患者、病区流程、MDT 协作和教学复盘组成的模拟环境，适合住培教学、方案演练和新流程验证。</p>
+            <div class="tool-action-row">
+              <a class="btn primary" href="tools-scenarios.html">返回场景总页</a>
+              <a class="btn" href="teaching-virtual-patient.html">查看教学虚拟病人页</a>
+            </div>
+          </div>
+          <nav class="tool-reference tools-learn-tabs" aria-label="场景导航">
+            <a href="#modules">模块</a>
+            <a href="#workflow">工作流</a>
+            <a href="#stack">技术栈</a>
+            <a href="#delivery">落地方式</a>
+          </nav>
+          <div class="tool-skill-stats" aria-label="虚拟医院指标">
+            <div><strong>4</strong><span>核心区域：门诊 / 病区 / MDT / 教学复盘</span></div>
+            <div><strong>3</strong><span>参与角色：老师 / 学员 / 虚拟患者</span></div>
+            <div><strong>1</strong><span>数字孪生患者引擎</span></div>
+            <div><strong>0</strong><span>不接入真实诊疗执行</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section compact" id="modules">
+        <div class="container">
+          <div class="section-head clean">
+            <div>
+              <p class="eyebrow">Core Modules</p>
+              <h2>虚拟医院的四个核心模块</h2>
+              <p>这页适合直接讲产品结构，说明用户进入系统后到底会看到哪些空间和工具。</p>
+            </div>
+          </div>
+          <div class="medical-tool-grid">
+            <article class="medical-tool-card"><div class="resource-panel-head"><span>Outpatient</span><strong>模拟门诊</strong></div><p>医生或学员围绕主诉、病史、检查选择和解释沟通展开问诊，系统记录全流程。</p></article>
+            <article class="medical-tool-card"><div class="resource-panel-head"><span>Ward</span><strong>虚拟病区</strong></div><p>用数字孪生患者承接病程变化、治疗反馈和随时间演进的检验与影像结果。</p></article>
+            <article class="medical-tool-card"><div class="resource-panel-head"><span>MDT</span><strong>多学科讨论室</strong></div><p>让不同角色围绕同一病例提出判断、补充证据和协商方案，适合训练协作。</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section compact" id="workflow">
+        <div class="container">
+          <div class="section-head clean">
+            <div>
+              <p class="eyebrow">Workflow</p>
+              <h2>一个训练案例如何在系统里跑完</h2>
+              <p>把流程写清楚，页面才像完整产品，而不只是“可以模拟病例”的一句话。</p>
+            </div>
+          </div>
+          <div class="registration-api-grid">
+            <article class="registration-api-card"><div class="api-path"><span class="api-method neutral">STEP 1</span><code>case import</code></div><p>从脱敏病例、教学案例或研究样本导入基础资料，生成可演练的初始患者状态。</p></article>
+            <article class="registration-api-card"><div class="api-path"><span class="api-method neutral">STEP 2</span><code>twin initialization</code></div><p>按病史、化验、影像和时间轴初始化数字孪生患者，决定哪些信息可见、哪些需通过追问获取。</p></article>
+            <article class="registration-api-card"><div class="api-path"><span class="api-method neutral">STEP 3</span><code>interaction</code></div><p>学员进行问诊、下检查、提出诊断和治疗，系统根据预设病程或模拟模型反馈结果。</p></article>
+            <article class="registration-api-card"><div class="api-path"><span class="api-method neutral">STEP 4</span><code>mdt / compare</code></div><p>教师或多角色代理进入 MDT 环节，对照不同方案、解释依据、比较路径优劣。</p></article>
+            <article class="registration-api-card"><div class="api-path"><span class="api-method neutral">STEP 5</span><code>debrief</code></div><p>系统输出复盘报告，记录错过的关键信号、提问质量、证据使用情况和沟通表现。</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section compact" id="stack">
+        <div class="container">
+          <div class="section-head clean">
+            <div>
+              <p class="eyebrow">Skill Stack</p>
+              <h2>底层能力怎么拼起来</h2>
+              <p>虚拟医院通常要同时具备病历问答、数字孪生、角色协作和教学反馈，这里把它们明确映射到现有能力层。</p>
+            </div>
+          </div>
+          <div class="tool-stack-grid">
+            <article class="resource-panel tool-stack-card">
+              <div class="resource-panel-head"><span>Patient Twin</span><strong>digital-twin-clinical-agent</strong></div>
+              <p>负责构建患者数字孪生，用于模拟病程变化、治疗响应和反事实比较。</p>
+              <div class="skill-link-cloud"><a href="https://github.com/FreedomIntelligence/OpenClaw-Medical-Skills/tree/main/skills/digital-twin-clinical-agent" target="_blank" rel="noreferrer">查看 Skill</a></div>
+            </article>
+            <article class="resource-panel tool-stack-card">
+              <div class="resource-panel-head"><span>Chart QA</span><strong>chatehr-clinician-assistant</strong></div>
+              <p>负责病历聊天、病程摘要和出院小结，是病区与门诊交互层的主要入口。</p>
+              <div class="skill-link-cloud"><a href="https://github.com/FreedomIntelligence/OpenClaw-Medical-Skills/tree/main/skills/chatehr-clinician-assistant" target="_blank" rel="noreferrer">查看 Skill</a></div>
+            </article>
+            <article class="resource-panel tool-stack-card">
+              <div class="resource-panel-head"><span>Multi-Agent</span><strong>virtual-lab-agent</strong></div>
+              <p>负责多角色协作与假设对抗，适合映射成 MDT 讨论或多学科训练空间。</p>
+              <div class="skill-link-cloud"><a href="https://github.com/FreedomIntelligence/OpenClaw-Medical-Skills/tree/main/skills/virtual-lab-agent" target="_blank" rel="noreferrer">查看 Skill</a></div>
+            </article>
+            <article class="resource-panel tool-stack-card">
+              <div class="resource-panel-head"><span>Teaching</span><strong>虚拟病人教学页</strong></div>
+              <p>现有教学虚拟病人页可以作为虚拟医院中的训练入口，用于连接住培、病例课和沟通训练。</p>
+              <div class="skill-link-cloud"><a href="teaching-virtual-patient.html">查看现有教学页</a></div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section compact">
+        <div class="container">
+          <article class="registration-api-card api-overview">
+            <div>
+              <span class="api-method neutral">SCENARIO</span>
+              <h3>推荐展示的典型训练案例</h3>
+              <p>用一个页面说明虚拟医院“怎么被用”，通常比单纯堆技术名词更容易被理解。</p>
+              <div class="api-meta"><span>住培</span><span>MDT</span><span>病例回放</span><span>沟通训练</span></div>
+            </div>
+            <pre class="api-code"><code>案例：儿童呼吸道感染复诊场景
+
+1. 学员进入门诊接诊，完成问诊与风险识别
+2. 系统按病史反馈体温、化验和影像结果
+3. 学员给出初步诊断与处理建议
+4. 教师切换到 MDT 视角，比较两种处置路径
+5. 系统输出复盘：遗漏提问、检查冗余、沟通表述和风险提示</code></pre>
+          </article>
+        </div>
+      </section>
+
+      <section class="section compact" id="delivery">
+        <div class="container">
+          <div class="section-head clean">
+            <div>
+              <p class="eyebrow">Delivery</p>
+              <h2>适合怎样落地</h2>
+              <p>虚拟医院通常先从教学和流程验证起步，再逐渐扩展到研究沙盒或更复杂的数字孪生平台。</p>
+            </div>
+          </div>
+          <div class="resource-directory-grid">
+            <article class="resource-panel"><div class="resource-panel-head"><span>Phase 1</span><strong>教学训练版</strong></div><p>用脱敏病例和规则化反馈建立最基础的住培或研究生训练环境。</p></article>
+            <article class="resource-panel"><div class="resource-panel-head"><span>Phase 2</span><strong>病例回放版</strong></div><p>加入病程时间轴、检查回看和 MDT 讨论，用于复杂案例复盘与流程复训。</p></article>
+            <article class="resource-panel"><div class="resource-panel-head"><span>Phase 3</span><strong>数字孪生版</strong></div><p>引入更多真实世界数据与模型，形成面向研究与模拟验证的虚拟医院平台。</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section compact">
+        <div class="container">
+          <div class="medical-tool-grid">
+            <article class="medical-tool-card"><div class="resource-panel-head"><span>Boundary</span><strong>只用于训练与模拟</strong></div><p>页面必须清楚标注不用于真实患者即时诊疗，不输出真实医嘱。</p></article>
+            <article class="medical-tool-card"><div class="resource-panel-head"><span>Data</span><strong>只用脱敏或模拟数据</strong></div><p>病例、病历和检查结果都需脱敏，避免真实身份信息进入演练环境。</p></article>
+            <article class="medical-tool-card"><div class="resource-panel-head"><span>Review</span><strong>复盘优先于评分</strong></div><p>系统最重要的价值是帮助训练者看清思路和盲点，而不是只给一个分数。</p></article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div><h3>Freedom AI</h3><p>虚拟医院适合成为教学、训练和模拟验证场景中的旗舰页面，让“病例 + 病程 + 角色 + 复盘”真正组合起来。</p></div>
+        <div><h4>返回</h4><a href="tools-scenarios.html">场景总页</a><a href="tools.html">工具总览</a></div>
+        <div><h4>相关页</h4><a href="tools-scenario-agentic-hospital.html">Agentic Hospital</a><a href="teaching-virtual-patient.html">教学虚拟病人</a></div>
+        <div><h4>支撑页</h4><a href="tools-skill.html">Skill 专栏</a><a href="tools-base.html">基础库工具</a></div>
+        <div><h4>平台</h4><a href="datasets.html">数据集</a><a href="community.html">讨论区</a></div>
+      </div>
+    </footer>
+  </body>
+</html>

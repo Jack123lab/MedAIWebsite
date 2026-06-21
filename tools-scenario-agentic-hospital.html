@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Agentic Hospital | Freedom AI</title>
+    <meta
+      name="description"
+      content="Freedom AI Agentic Hospital 页面，完整说明多代理医院工作流如何覆盖分诊、病历总结、检验追踪、照护协调和决策支持。"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/main.js" defer></script>
+  </head>
+  <body class="data-tools-page">
+    <header class="site-header">
+      <nav class="nav" aria-label="主导航">
+        <a class="brand" href="index.html"><span class="brand-mark">F</span><span class="brand-text"><strong>Freedom AI</strong><span>医学 AI 社区</span></span></a>
+        <form class="site-search" role="search" action="search.html" method="get" aria-label="站内搜索">
+          <label class="sr-only" for="siteSearchInput">搜索</label>
+          <input id="siteSearchInput" name="q" type="search" placeholder="搜索" autocomplete="off" />
+          <button type="submit">搜索</button>
+        </form>
+        <div class="nav-links">
+          <a href="index.html">首页</a>
+          <a href="learning.html">内容</a>
+          <a href="network.html">社区</a>
+          <a href="community.html">讨论区</a>
+          <a href="datasets.html">数据集</a>
+          <a href="tools.html">工具库</a>
+          <a href="benchmark.html">评测</a>
+          <a href="crowdsourcing.html">众包</a>
+          <a href="blog.html">博客</a>
+          <a href="profile.html">用户</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="page-title data-tools-title">
+        <div class="container tools-learn-hero">
+          <div class="tools-learn-copy">
+            <p class="eyebrow">Workflow Orchestration</p>
+            <h1>Agentic Hospital</h1>
+            <p>这不是“一个超强医生助手”，而是一组在医院流程里分工协作的代理系统，负责把分诊、病历整理、检验追踪、照护协调和决策支持串成一条自动接力的服务链。</p>
+            <div class="tool-action-row">
+              <a class="btn primary" href="tools-scenarios.html">返回场景总页</a>
+              <a class="btn" href="tools-scenario-ai-native-his.html">查看 AI-native HIS</a>
+            </div>
+          </div>
+          <nav class="tool-reference tools-learn-tabs" aria-label="场景导航">
+            <a href="#agents">代理角色</a>
+            <a href="#workflow">工作流</a>
+            <a href="#stack">技术栈</a>
+            <a href="#governance">治理</a>
+          </nav>
+          <div class="tool-skill-stats" aria-label="Agentic Hospital 指标">
+            <div><strong>5</strong><span>主代理角色</span></div>
+            <div><strong>1</strong><span>统一任务总线</span></div>
+            <div><strong>3</strong><span>输出层：摘要 / 提醒 / 建议</span></div>
+            <div><strong>100%</strong><span>人工复核不可跳过</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section compact" id="agents">
+        <div class="container">
+          <div class="section-head clean">
+            <div>
+              <p class="eyebrow">Agent Roles</p>
+              <h2>五个最关键的代理角色</h2>
+              <p>完整页面的重点，是把“agentic”具体化为清晰的角色职责，而不是一句空泛的多智能体协作。</p>
+            </div>
+          </div>
+          <div class="registration-api-grid">
+            <article class="registration-api-card"><div class="api-path"><span class="api-method neutral">01</span><code>triage agent</code></div><p>接收主诉和基本信息，判断分流方向、紧急程度和需要优先补齐的数据。</p></article>
+            <article class="registration-api-card"><div class="api-path"><span class="api-method neutral">02</span><code>note agent</code></div><p>把原始病历、口述记录和外部资料整理成 SOAP 或结构化摘要。</p></article>
+            <article class="registration-api-card"><div class="api-path"><span class="api-method neutral">03</span><code>lab agent</code></div><p>跟踪化验和检验结果，识别异常、提醒复查并推动后续任务触发。</p></article>
+            <article class="registration-api-card"><div class="api-path"><span class="api-method neutral">04</span><code>care coordination agent</code></div><p>负责随访、会诊、转诊、患者提醒和多科室之间的任务交接。</p></article>
+            <article class="registration-api-card"><div class="api-path"><span class="api-method neutral">05</span><code>decision support agent</code></div><p>调用指南和证据层，为医生提供待复核的治疗建议、风险提醒和下一步检查建议。</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section compact" id="workflow">
+        <div class="container">
+          <div class="section-head clean">
+            <div>
+              <p class="eyebrow">Operational Flow</p>
+              <h2>一个门诊或病区任务如何串起来</h2>
+              <p>这条流程线适合做成产品示意图、投标说明或院内汇报里的核心逻辑页面。</p>
+            </div>
+          </div>
+          <article class="registration-api-card api-overview">
+            <div>
+              <span class="api-method neutral">FLOW</span>
+              <h3>推荐展示的典型链路</h3>
+              <p>下面这条链路把“多代理工作流”翻译成医院里真实会发生的任务接力。</p>
+              <div class="api-meta"><span>分诊</span><span>摘要</span><span>检验</span><span>会诊</span><span>决策支持</span></div>
+            </div>
+            <pre class="api-code"><code>主诉进入 -> triage agent 分流
+          -> note agent 生成 SOAP
+          -> lab agent 监控关键异常
+          -> care coordination agent 安排会诊 / 随访
+          -> decision support agent 提供待复核建议
+          -> 医生确认并写回系统</code></pre>
+          </article>
+        </div>
+      </section>
+
+      <section class="section compact" id="stack">
+        <div class="container">
+          <div class="section-head clean">
+            <div>
+              <p class="eyebrow">Skill Stack</p>
+              <h2>与已有能力的对应关系</h2>
+              <p>每一个代理都应有清晰的能力映射，方便后续做服务拆分、失败回滚和人工接管。</p>
+            </div>
+          </div>
+          <div class="tool-stack-grid">
+            <article class="resource-panel tool-stack-card">
+              <div class="resource-panel-head"><span>Documentation</span><strong>clinical-note-summarization</strong></div>
+              <p>负责 SOAP 生成、矛盾点提示、缺失信息列举和结构化病历草稿。</p>
+              <div class="skill-link-cloud"><a href="https://github.com/FreedomIntelligence/OpenClaw-Medical-Skills/tree/main/skills/clinical-note-summarization" target="_blank" rel="noreferrer">查看 Skill</a></div>
+            </article>
+            <article class="resource-panel tool-stack-card">
+              <div class="resource-panel-head"><span>Lab Tracking</span><strong>lab-results</strong></div>
+              <p>用于监控检验回报、异常结果提醒和与后续任务的自动联动。</p>
+              <div class="skill-link-cloud"><a href="https://github.com/FreedomIntelligence/OpenClaw-Medical-Skills/tree/main/skills/lab-results" target="_blank" rel="noreferrer">查看 Skill</a></div>
+            </article>
+            <article class="resource-panel tool-stack-card">
+              <div class="resource-panel-head"><span>Care Routing</span><strong>care-coordination</strong></div>
+              <p>将会诊、转诊、随访和跨科室任务编排纳入统一的协调代理。</p>
+              <div class="skill-link-cloud"><a href="https://github.com/FreedomIntelligence/OpenClaw-Medical-Skills/tree/main/skills/care-coordination" target="_blank" rel="noreferrer">查看 Skill</a></div>
+            </article>
+            <article class="resource-panel tool-stack-card">
+              <div class="resource-panel-head"><span>Recommendation</span><strong>clinical-decision-support</strong></div>
+              <p>把证据层结果整理成临床建议报告，但最终输出始终需要医生复核。</p>
+              <div class="skill-link-cloud"><a href="https://github.com/FreedomIntelligence/OpenClaw-Medical-Skills/tree/main/skills/clinical-decision-support" target="_blank" rel="noreferrer">查看 Skill</a></div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section compact" id="governance">
+        <div class="container">
+          <div class="section-head clean">
+            <div>
+              <p class="eyebrow">Governance</p>
+              <h2>什么时候适合做，什么时候不能越界</h2>
+              <p>多代理页面最容易被误解成“自动化替代医生”，所以边界写法必须直接而明确。</p>
+            </div>
+          </div>
+          <div class="medical-tool-grid">
+            <article class="medical-tool-card"><div class="resource-panel-head"><span>Write-back</span><strong>自动写回必须受控</strong></div><p>任何自动写回 HIS 或任务系统的动作，都必须有明确责任人和回滚策略。</p></article>
+            <article class="medical-tool-card"><div class="resource-panel-head"><span>Human Gate</span><strong>关键决策节点保留人工门</strong></div><p>涉及诊断、治疗、出院和会诊升级的节点，代理只给建议，不直接执行。</p></article>
+            <article class="medical-tool-card"><div class="resource-panel-head"><span>Trace</span><strong>每个代理都要留痕</strong></div><p>需要记录哪个代理做了什么、用到了哪些输入、触发了什么输出，便于审核。</p></article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div><h3>Freedom AI</h3><p>Agentic Hospital 适合做成“流程操作系统”页面，展示医院任务是如何被多个代理协同处理而非单点回答的。</p></div>
+        <div><h4>返回</h4><a href="tools-scenarios.html">场景总页</a><a href="tools.html">工具总览</a></div>
+        <div><h4>相关页</h4><a href="tools-scenario-ai-native-his.html">AI-native HIS</a><a href="tools-scenario-evidence-api.html">循证医疗 API</a></div>
+        <div><h4>支撑页</h4><a href="tools-skill.html">Skill 专栏</a><a href="tools-base.html">基础库工具</a></div>
+        <div><h4>平台</h4><a href="community.html">讨论区</a><a href="benchmark.html">评测基准</a></div>
+      </div>
+    </footer>
+  </body>
+</html>
