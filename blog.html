@@ -1,0 +1,425 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Blog | Freedom AI</title>
+    <meta name="description" content="Freedom AI Blog 聚合医学 AI 媒体报道、研究导读、项目进展和社区发布。" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <script src="assets/js/main.js" defer></script>
+  </head>
+  <body class="blog-page">
+    <header class="site-header">
+      <nav class="nav" aria-label="主导航">
+        <a class="brand" href="index.html"><span class="brand-mark">F</span><span class="brand-text"><strong>Freedom AI</strong><span>医学 AI 社区</span></span></a>
+        <form class="site-search" role="search" action="search.html" method="get" aria-label="站内搜索">
+          <label class="sr-only" for="siteSearchInput">搜索</label>
+          <input id="siteSearchInput" name="q" type="search" placeholder="搜索" autocomplete="off" />
+          <button type="submit">搜索</button>
+        </form>
+        <div class="nav-links">
+          <a href="index.html">首页</a>
+          <a href="learning.html">内容</a>
+          <a href="network.html">社区</a>
+          <a href="community.html">讨论区</a>
+          <a href="datasets.html">数据集</a>
+          <a href="tools.html">工具库</a>
+          <a href="benchmark.html">Benchmark</a>
+          <a href="crowdsourcing.html">众包平台</a>
+          <a href="blog.html" class="active">Blog</a>
+          <a href="profile.html">用户</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="page-title blog-title">
+        <div class="container blog-title-grid">
+          <div>
+            <p class="eyebrow">Freedom AI Blog</p>
+            <h1>Blog & Media Coverage</h1>
+            <p>聚合 FreedomAI Lab、医学大模型、多模态长上下文、评测安全与开放模型相关的媒体报道和研究导读。</p>
+          </div>
+          <div class="blog-hero-card" aria-label="Blog 汇总状态">
+            <img src="assets/images/happy-medical-ai-mark.svg" alt="" />
+            <span>Community Articles</span>
+            <strong>11</strong>
+            <small>media reports and research notes</small>
+            <button class="btn primary" type="button" data-blog-open>发布文章</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="section compact blog-browser-section">
+        <div class="container">
+          <div class="blog-filter-bar" aria-label="Blog filters">
+            <button class="active" type="button" data-blog-filter="all">All</button>
+            <button type="button" data-blog-filter="media">Media Coverage</button>
+            <button type="button" data-blog-filter="medical">Medical AI</button>
+            <button type="button" data-blog-filter="multimodal">Multimodal AI</button>
+            <button type="button" data-blog-filter="agents">Agents & Simulation</button>
+            <button type="button" data-blog-filter="models">Models & Data</button>
+            <button type="button" data-blog-filter="evaluation">Evaluation & Safety</button>
+          </div>
+
+          <div class="blog-layout">
+            <section class="blog-feed" aria-labelledby="blog-feed-title">
+              <article class="blog-feature-card" data-blog-card data-blog-topics="media medical multimodal agents models evaluation freedomai">
+                <div class="blog-source-badge freedom">FI</div>
+                <div>
+                  <div class="blog-meta"><span>FreedomAI Lab</span><span>June 9, 2026</span><span>3 min read</span></div>
+                  <h2><a href="https://freedomintelligence.github.io/blog/2026/freedomai-media-roundup/" target="_blank" rel="noreferrer">FreedomAI Lab 媒体报道与研究脉络：从医疗大模型到多模态智能体</a></h2>
+                  <p>基于机器之心、量子位、PaperWeekly 等公开报道与项目链接，梳理 CUHKSZ FreedomAI Lab 在开放医疗智能、多模态长上下文、社会模拟与移动智能体方向的研究进展。</p>
+                  <div class="blog-card-tags"><span>FreedomAI</span><span>media</span><span>medical-llm</span><span>open-source</span></div>
+                </div>
+              </article>
+
+              <div class="section-head clean blog-feed-head">
+                <div>
+                  <p class="eyebrow">Community Articles</p>
+                  <h2 id="blog-feed-title">媒体报道条目</h2>
+                  <p>按来源、方向和可追溯链接组织，方便继续扩展成长期维护的 Blog feed。</p>
+                </div>
+                <a class="btn" href="https://freedomintelligence.github.io/blog/" target="_blank" rel="noreferrer">FreedomAI Blog</a>
+              </div>
+
+              <div class="blog-grid" data-blog-list>
+                <article class="blog-card" data-blog-card data-blog-topics="media evaluation qbitai">
+                  <div class="blog-source-badge qbit">Q</div>
+                  <div class="blog-card-body">
+                    <div class="blog-meta"><span>量子位 / QbitAI</span><span>2023</span><span>Evaluation & Safety</span></div>
+                    <h3><a href="https://www.qbitai.com/2023/07/69117.html" target="_blank" rel="noreferrer">大模型惨遭人类大范围攻击！国内专家组团投毒，GPT-4也Hold不住</a></h3>
+                    <p>报道关注大模型红队攻击与模型对比评测；文末注明模型对比界面由香港中文大学（深圳）王本友教授团队和魔搭社区共同开发。</p>
+                    <div class="blog-card-tags"><span>QbitAI</span><span>red-team</span><span>model-comparison</span></div>
+                    <div class="blog-link-row"><a href="https://www.qbitai.com/2023/07/69117.html" target="_blank" rel="noreferrer">量子位网页</a><a href="https://mp.weixin.qq.com/s/l3zwXBBoQPaLCoynGGnevA" target="_blank" rel="noreferrer">公众号原链</a></div>
+                  </div>
+                </article>
+
+                <article class="blog-card" data-blog-card data-blog-topics="media medical models paperweekly">
+                  <div class="blog-source-badge paper">PW</div>
+                  <div class="blog-card-body">
+                    <div class="blog-meta"><span>PaperWeekly</span><span>Medical AI</span><span>1 min read</span></div>
+                    <h3><a href="https://mp.weixin.qq.com/s?__biz=MzIwMTc4ODE0Mw==&mid=2247624585&idx=3&sn=2738a85994cec0f8b20e2500c5d563e1&chksm=96e43809a193b11f327428cd38e626272a1499af6824cf4eb953b040f3167882d5258a3d5ae3&scene=126&sessionid=0" target="_blank" rel="noreferrer">开源中文医疗大模型华佗GPT来了，真人医生盲测效果优于ChatGPT</a></h3>
+                    <p>相关点包括香港中文大学（深圳）、深圳市大数据研究院、王本友教授团队与 HuatuoGPT 中文医疗问答模型。</p>
+                    <div class="blog-card-tags"><span>HuatuoGPT</span><span>medical-llm</span><span>open-source</span></div>
+                    <div class="blog-link-row"><a href="https://mp.weixin.qq.com/s?__biz=MzIwMTc4ODE0Mw==&mid=2247624585&idx=3&sn=2738a85994cec0f8b20e2500c5d563e1&chksm=96e43809a193b11f327428cd38e626272a1499af6824cf4eb953b040f3167882d5258a3d5ae3&scene=126&sessionid=0" target="_blank" rel="noreferrer">公众号原链</a><a href="https://www.python88.com/topic/155876" target="_blank" rel="noreferrer">镜像页</a><a href="https://freedomintelligence.github.io/blog/2026/media-huatuogpt/" target="_blank" rel="noreferrer">FreedomAI 摘要</a></div>
+                  </div>
+                </article>
+
+                <article class="blog-card" data-blog-card data-blog-topics="media multimodal models paperweekly">
+                  <div class="blog-source-badge paper">PW</div>
+                  <div class="blog-card-body">
+                    <div class="blog-meta"><span>PaperWeekly</span><span>Multimodal AI</span><span>Long-context</span></div>
+                    <h3><a href="https://mp.weixin.qq.com/s?__biz=MzIwMTc4ODE0Mw==&mid=2247685068&idx=3&sn=cfa3e74011d850908de5543ec5abe715&chksm=9705cd04e675960fdccc62a83cc02948beab26b4b70ede86ec30bac99b60ed860a3607966ad4&scene=126&sessionid=0" target="_blank" rel="noreferrer">单卡千图推理！港中深等提出全新混合架构多模态大模型LongLLaVA</a></h3>
+                    <p>相关点包括香港中文大学（深圳）、王熙栋、LongLLaVA 与 FreedomIntelligence，多模态长上下文能力是核心线索。</p>
+                    <div class="blog-card-tags"><span>LongLLaVA</span><span>multimodal</span><span>long-context</span></div>
+                    <div class="blog-link-row"><a href="https://mp.weixin.qq.com/s?__biz=MzIwMTc4ODE0Mw==&mid=2247685068&idx=3&sn=cfa3e74011d850908de5543ec5abe715&chksm=9705cd04e675960fdccc62a83cc02948beab26b4b70ede86ec30bac99b60ed860a3607966ad4&scene=126&sessionid=0" target="_blank" rel="noreferrer">公众号原链</a><a href="https://blog.csdn.net/c9Yv2cf9I06K2A9E/article/details/142544603" target="_blank" rel="noreferrer">镜像页</a><a href="https://freedomintelligence.github.io/blog/2026/media-longllava/" target="_blank" rel="noreferrer">FreedomAI 摘要</a></div>
+                  </div>
+                </article>
+
+                <article class="blog-card" data-blog-card data-blog-topics="media medical evaluation paperweekly">
+                  <div class="blog-source-badge paper">PW</div>
+                  <div class="blog-card-body">
+                    <div class="blog-meta"><span>PaperWeekly</span><span>Medical Benchmark</span><span>Evaluation</span></div>
+                    <h3><a href="https://blog.csdn.net/c9Yv2cf9I06K2A9E/article/details/132632499" target="_blank" rel="noreferrer">SuperAlignment in Medical Science: 中文医疗大模型评估基准CMB</a></h3>
+                    <p>PaperWeekly 原创相关报道，关联王熙栋、香港中文大学（深圳）、深圳市大数据研究院与 CMB 中文医疗大模型评估基准。</p>
+                    <div class="blog-card-tags"><span>CMB</span><span>medical-benchmark</span><span>evaluation</span></div>
+                    <div class="blog-link-row"><a href="https://blog.csdn.net/c9Yv2cf9I06K2A9E/article/details/132632499" target="_blank" rel="noreferrer">镜像页</a><a href="https://www.sohu.com/a/717301678_121119001" target="_blank" rel="noreferrer">转载验证页</a><a href="https://freedomintelligence.github.io/blog/2026/media-cmb/" target="_blank" rel="noreferrer">FreedomAI 摘要</a></div>
+                  </div>
+                </article>
+
+                <article class="blog-card" data-blog-card data-blog-topics="media models paperweekly">
+                  <div class="blog-source-badge paper">PW</div>
+                  <div class="blog-card-body">
+                    <div class="blog-meta"><span>PaperWeekly</span><span>Models & Data</span><span>Dialogue</span></div>
+                    <h3><a href="https://www.python88.com/topic/163925" target="_blank" rel="noreferrer">ShareGPT平替！利用苏格拉底提问模拟器更好地蒸馏ChatGPT对话能力</a></h3>
+                    <p>关联深圳市大数据研究院、香港中文大学（深圳）和王本友教授团队，围绕 SocraticChat / PlatoLM 对话数据和模型蒸馏。</p>
+                    <div class="blog-card-tags"><span>SocraticChat</span><span>PlatoLM</span><span>dialogue-data</span></div>
+                    <div class="blog-link-row"><a href="https://www.python88.com/topic/163925" target="_blank" rel="noreferrer">镜像页</a><a href="https://www.sohu.com/a/733642675_121119001" target="_blank" rel="noreferrer">转载验证页</a><a href="https://freedomintelligence.github.io/blog/2026/media-socraticchat-platolm/" target="_blank" rel="noreferrer">FreedomAI 摘要</a></div>
+                  </div>
+                </article>
+
+                <article class="blog-card" data-blog-card data-blog-topics="media agents models">
+                  <div class="blog-source-badge machine">M</div>
+                  <div class="blog-card-body">
+                    <div class="blog-meta"><span>机器之心</span><span>Agents & Simulation</span><span>June 10, 2026</span></div>
+                    <h3><a href="https://freedomintelligence.github.io/blog/2026/media-twinmarket/" target="_blank" rel="noreferrer">TwinMarket：千个虚拟投资者与金融市场涌现</a></h3>
+                    <p>FreedomAI Blog 对机器之心报道做了摘要，连接多智能体金融市场模拟、虚拟投资者行为建模和项目资源。</p>
+                    <div class="blog-card-tags"><span>TwinMarket</span><span>social-simulation</span><span>financial-ai</span></div>
+                    <div class="blog-link-row"><a href="https://freedomintelligence.github.io/blog/2026/media-twinmarket/" target="_blank" rel="noreferrer">FreedomAI 摘要</a><a href="https://github.com/FreedomIntelligence/TwinMarket" target="_blank" rel="noreferrer">项目</a></div>
+                  </div>
+                </article>
+
+                <article class="blog-card" data-blog-card data-blog-topics="media agents multimodal evaluation">
+                  <div class="blog-source-badge machine">M</div>
+                  <div class="blog-card-body">
+                    <div class="blog-meta"><span>机器之心</span><span>Agent Harness</span><span>June 10, 2026</span></div>
+                    <h3><a href="https://freedomintelligence.github.io/blog/2026/media-phoneharness/" target="_blank" rel="noreferrer">PhoneHarness：AI 手机时代需要怎样的 Agent Harness</a></h3>
+                    <p>条目聚焦手机 Agent 真实任务、屏幕理解、混合动作空间与可验证评测环境，适合作为移动智能体方向入口。</p>
+                    <div class="blog-card-tags"><span>PhoneHarness</span><span>mobile-agent</span><span>GUI-agent</span></div>
+                    <div class="blog-link-row"><a href="https://freedomintelligence.github.io/blog/2026/media-phoneharness/" target="_blank" rel="noreferrer">FreedomAI 摘要</a><a href="https://phoneharness.github.io/" target="_blank" rel="noreferrer">项目主页</a></div>
+                  </div>
+                </article>
+
+                <article class="blog-card" data-blog-card data-blog-topics="media models">
+                  <div class="blog-source-badge machine">M</div>
+                  <div class="blog-card-body">
+                    <div class="blog-meta"><span>机器之心</span><span>Models & Data</span><span>June 10, 2026</span></div>
+                    <h3><a href="https://freedomintelligence.github.io/blog/2026/media-phoenix-chimera/" target="_blank" rel="noreferrer">Phoenix / Chimera：GPT-4 评测与开放多语言模型</a></h3>
+                    <p>报道涉及港中文（深圳）王本友教授团队开源的 Phoenix / Chimera 及 LLMZoo 相关工作。</p>
+                    <div class="blog-card-tags"><span>Phoenix</span><span>Chimera</span><span>LLMZoo</span></div>
+                    <div class="blog-link-row"><a href="https://freedomintelligence.github.io/blog/2026/media-phoenix-chimera/" target="_blank" rel="noreferrer">FreedomAI 摘要</a><a href="https://github.com/FreedomIntelligence/LLMZoo" target="_blank" rel="noreferrer">项目</a></div>
+                  </div>
+                </article>
+
+                <article class="blog-card" data-blog-card data-blog-topics="media medical multimodal agents">
+                  <div class="blog-source-badge machine">M</div>
+                  <div class="blog-card-body">
+                    <div class="blog-meta"><span>机器之心</span><span>Biomedical AI</span><span>June 10, 2026</span></div>
+                    <h3><a href="https://freedomintelligence.github.io/blog/2026/media-microverse/" target="_blank" rel="noreferrer">MicroVerse：AI 模拟看不见的微观世界</a></h3>
+                    <p>聚焦微观世界建模、多模态科学模拟、MicroWorldBench 评测设置与开源项目资源维护。</p>
+                    <div class="blog-card-tags"><span>MicroVerse</span><span>world-model</span><span>biomedical-ai</span></div>
+                    <div class="blog-link-row"><a href="https://freedomintelligence.github.io/blog/2026/media-microverse/" target="_blank" rel="noreferrer">FreedomAI 摘要</a><a href="https://github.com/FreedomIntelligence/MicroVerse" target="_blank" rel="noreferrer">项目</a></div>
+                  </div>
+                </article>
+
+                <article class="blog-card" data-blog-card data-blog-topics="media models paperweekly">
+                  <div class="blog-source-badge paper">PW</div>
+                  <div class="blog-card-body">
+                    <div class="blog-meta"><span>PaperWeekly</span><span>Models & Data</span><span>June 10, 2026</span></div>
+                    <h3><a href="https://freedomintelligence.github.io/blog/2026/media-irgan-paperweekly/" target="_blank" rel="noreferrer">IRGAN 入选 2017 年度 NLP 论文 TOP10</a></h3>
+                    <p>FreedomAI Blog 整理 PaperWeekly 年度 NLP 论文评选记录，作为团队早期信息检索和生成对抗网络研究脉络补充。</p>
+                    <div class="blog-card-tags"><span>IRGAN</span><span>NLP</span><span>PaperWeekly</span></div>
+                    <div class="blog-link-row"><a href="https://freedomintelligence.github.io/blog/2026/media-irgan-paperweekly/" target="_blank" rel="noreferrer">FreedomAI 摘要</a></div>
+                  </div>
+                </article>
+              </div>
+
+              <p class="empty-state blog-empty" hidden>当前标签下暂无内容。</p>
+            </section>
+
+            <aside class="blog-side" aria-label="Blog side rail">
+              <section class="rail-box">
+                <h2>来源</h2>
+                <div class="blog-source-list">
+                  <a href="https://www.qbitai.com/2023/07/69117.html" target="_blank" rel="noreferrer"><span>QbitAI</span><strong>红队攻击与模型对比</strong></a>
+                  <a href="https://freedomintelligence.github.io/blog/" target="_blank" rel="noreferrer"><span>FreedomAI Blog</span><strong>研究导读与媒体摘要</strong></a>
+                  <a href="https://blog.csdn.net/c9Yv2cf9I06K2A9E/article/details/132632499" target="_blank" rel="noreferrer"><span>PaperWeekly</span><strong>CMB 与医疗大模型报道</strong></a>
+                </div>
+              </section>
+              <section class="rail-box warning">
+                <h2>投稿入口</h2>
+                <p>报道、论文解读、工具发布、项目进展和社区案例可从 Blog 发布入口进入，也可走正式投稿页面。</p>
+                <a class="btn full-width" href="contribute.html">投稿与收录</a>
+              </section>
+            </aside>
+          </div>
+        </div>
+      </section>
+
+      <div class="blog-publish-dialog" id="blogPublishDialog" role="dialog" aria-modal="true" aria-labelledby="blogPublishTitle" hidden>
+        <div class="blog-publish-backdrop" data-blog-close></div>
+        <form class="blog-publish-panel" id="blogPublishForm">
+          <button class="case-publish-close" type="button" data-blog-close aria-label="关闭发布窗口">×</button>
+          <div class="section-head clean">
+            <div>
+              <p class="eyebrow">New Article</p>
+              <h2 id="blogPublishTitle">发布文章</h2>
+            </div>
+          </div>
+          <label>标题<input id="blogPostTitle" type="text" maxlength="80" required /></label>
+          <label>来源 / 作者<input id="blogPostSource" type="text" maxlength="40" placeholder="如 PaperWeekly、FreedomAI Lab" required /></label>
+          <label>标签<input id="blogPostTags" type="text" maxlength="80" placeholder="medical, evaluation, models" /></label>
+          <label>链接<input id="blogPostUrl" type="url" placeholder="https://..." /></label>
+          <label>摘要<textarea id="blogPostSummary" rows="5" maxlength="420" required></textarea></label>
+          <div class="case-publish-actions">
+            <button class="btn" type="button" data-blog-close>取消</button>
+            <button class="btn primary" type="submit">发布</button>
+          </div>
+          <p id="blogPublishStatus" class="form-status" role="status"></p>
+        </form>
+      </div>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div><h3>Freedom AI</h3><p>Blog 用于整理媒体报道、研究导读、项目进展和社区文章。</p></div>
+        <div><h4>Blog</h4><a href="blog.html">媒体报道</a><a href="contribute.html">投稿</a></div>
+        <div><h4>研究</h4><a href="benchmark.html">Benchmark</a><a href="learning.html">内容</a></div>
+        <div><h4>社区</h4><a href="community.html">讨论区</a><a href="crowdsourcing.html">众包平台</a></div>
+      </div>
+    </footer>
+
+    <script>
+      (function () {
+        const storageKey = "hmaiBlogPosts";
+        const filterButtons = Array.from(document.querySelectorAll("[data-blog-filter]"));
+        const list = document.querySelector("[data-blog-list]");
+        const empty = document.querySelector(".blog-empty");
+        const dialog = document.querySelector("#blogPublishDialog");
+        const form = document.querySelector("#blogPublishForm");
+        const status = document.querySelector("#blogPublishStatus");
+
+        function escapeHtml(value) {
+          return String(value || "").replace(/[&<>"']/g, (char) => ({
+            "&": "&amp;",
+            "<": "&lt;",
+            ">": "&gt;",
+            '"': "&quot;",
+            "'": "&#39;",
+          }[char]));
+        }
+
+        function safeUrl(value) {
+          if (!value) return "";
+          try {
+            const url = new URL(value, window.location.href);
+            return ["http:", "https:"].includes(url.protocol) ? url.href : "";
+          } catch {
+            return "";
+          }
+        }
+
+        function initials(value) {
+          const clean = String(value || "Blog").trim();
+          const latin = clean.match(/[A-Za-z]/g);
+          if (latin?.length) return latin.slice(0, 2).join("").toUpperCase();
+          return clean.slice(0, 2);
+        }
+
+        function readPosts() {
+          try {
+            return JSON.parse(localStorage.getItem(storageKey) || "[]");
+          } catch {
+            return [];
+          }
+        }
+
+        function writePosts(posts) {
+          localStorage.setItem(storageKey, JSON.stringify(posts.slice(0, 30)));
+        }
+
+        function topicString(tags) {
+          const normalized = String(tags || "")
+            .split(/[,，\s]+/)
+            .map((tag) => tag.trim().toLowerCase())
+            .filter(Boolean);
+          return ["media", "local", ...normalized].join(" ");
+        }
+
+        function cardTemplate(post) {
+          const url = safeUrl(post.url);
+          const title = escapeHtml(post.title);
+          const source = escapeHtml(post.source || "Community");
+          const summary = escapeHtml(post.summary);
+          const tags = String(post.tags || "community")
+            .split(/[,，]+/)
+            .map((tag) => tag.trim())
+            .filter(Boolean)
+            .slice(0, 4);
+          const tagHtml = tags.length
+            ? tags.map((tag) => `<span>${escapeHtml(tag)}</span>`).join("")
+            : "<span>community</span>";
+          const titleHtml = url
+            ? `<a href="${escapeHtml(url)}" target="_blank" rel="noreferrer">${title}</a>`
+            : title;
+          const linkHtml = url
+            ? `<div class="blog-link-row"><a href="${escapeHtml(url)}" target="_blank" rel="noreferrer">查看原文</a></div>`
+            : "";
+
+          return `
+            <article class="blog-card local-post" data-blog-card data-blog-topics="${escapeHtml(topicString(post.tags))}">
+              <div class="blog-source-badge local">${escapeHtml(initials(post.source))}</div>
+              <div class="blog-card-body">
+                <div class="blog-meta"><span>${source}</span><span>Local post</span></div>
+                <h3>${titleHtml}</h3>
+                <p>${summary}</p>
+                <div class="blog-card-tags">${tagHtml}</div>
+                ${linkHtml}
+              </div>
+            </article>`;
+        }
+
+        function cards() {
+          return Array.from(document.querySelectorAll("[data-blog-card]"));
+        }
+
+        function setFilter(filter) {
+          let visibleCount = 0;
+          const active = filter || "all";
+          cards().forEach((card) => {
+            const topics = (card.dataset.blogTopics || "").toLowerCase().split(/\s+/);
+            const visible = active === "all" || topics.includes(active);
+            card.hidden = !visible;
+            if (visible) visibleCount += 1;
+          });
+          filterButtons.forEach((button) => {
+            const isActive = button.dataset.blogFilter === active;
+            button.classList.toggle("active", isActive);
+            button.setAttribute("aria-pressed", String(isActive));
+          });
+          if (empty) empty.hidden = visibleCount > 0;
+        }
+
+        function renderLocalPosts() {
+          if (!list) return;
+          readPosts().forEach((post) => {
+            list.insertAdjacentHTML("afterbegin", cardTemplate(post));
+          });
+        }
+
+        function openDialog() {
+          if (!dialog) return;
+          dialog.hidden = false;
+          status.textContent = "";
+          setTimeout(() => document.querySelector("#blogPostTitle")?.focus(), 0);
+        }
+
+        function closeDialog() {
+          if (!dialog) return;
+          dialog.hidden = true;
+        }
+
+        filterButtons.forEach((button) => {
+          button.addEventListener("click", () => setFilter(button.dataset.blogFilter || "all"));
+        });
+
+        document.querySelectorAll("[data-blog-open]").forEach((button) => {
+          button.addEventListener("click", openDialog);
+        });
+
+        document.querySelectorAll("[data-blog-close]").forEach((button) => {
+          button.addEventListener("click", closeDialog);
+        });
+
+        document.addEventListener("keydown", (event) => {
+          if (event.key === "Escape" && dialog && !dialog.hidden) closeDialog();
+        });
+
+        form?.addEventListener("submit", (event) => {
+          event.preventDefault();
+          const post = {
+            title: document.querySelector("#blogPostTitle")?.value.trim(),
+            source: document.querySelector("#blogPostSource")?.value.trim(),
+            tags: document.querySelector("#blogPostTags")?.value.trim(),
+            url: document.querySelector("#blogPostUrl")?.value.trim(),
+            summary: document.querySelector("#blogPostSummary")?.value.trim(),
+            createdAt: new Date().toISOString(),
+          };
+          if (!post.title || !post.source || !post.summary) return;
+          const posts = readPosts();
+          posts.push(post);
+          writePosts(posts);
+          list?.insertAdjacentHTML("afterbegin", cardTemplate(post));
+          form.reset();
+          status.textContent = "已发布到本地 Blog 列表。";
+          setFilter("all");
+          setTimeout(closeDialog, 650);
+        });
+
+        renderLocalPosts();
+        setFilter("all");
+      })();
+    </script>
+  </body>
+</html>

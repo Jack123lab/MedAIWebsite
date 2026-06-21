@@ -35,6 +35,7 @@ const siteNavItems = [
   { href: "tools.html", label: "工具库", active: ["tools.html", "demos.html", "datasets-tools.html"] },
   { href: "benchmark.html", label: "Benchmark", active: ["benchmark.html", "benchmark-gdb.html", "benchmark-liveclin.html", "benchmark-healthbench-tcm.html", "benchmark-doctors-last-exam.html", "benchmark-cmb.html"] },
   { href: "crowdsourcing.html", label: "众包平台", active: ["crowdsourcing.html"] },
+  { href: "blog.html", label: "Blog", active: ["blog.html"] },
   { href: "profile.html", label: "用户", active: ["profile.html", "auth.html", "doctor.html"] },
 ];
 
@@ -173,6 +174,12 @@ const siteSearchIndex = [
     url: "crowdsourcing.html",
     category: "协作",
     text: "众包 标注 评测 题库 资料治理 医生 学生 机构 任务 合作",
+  },
+  {
+    title: "Blog",
+    url: "blog.html",
+    category: "媒体报道",
+    text: "Blog 媒体报道 PaperWeekly 量子位 QbitAI FreedomAI HuatuoGPT LongLLaVA CMB SocraticChat PlatoLM 大模型 评测 安全 多模态 智能体",
   },
   {
     title: "成果",

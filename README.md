@@ -14,6 +14,7 @@
 - `research.html`：成果收录
 - `demos.html`：工具示例
 - `contribute.html`：投稿与收录
+- `blog.html`：媒体报道、研究导读与社区文章
 
 ## 静态资源
 
