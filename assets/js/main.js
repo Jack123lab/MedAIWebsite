@@ -130,6 +130,12 @@ const siteSearchIndex = [
     text: "工具库 医学 AI 工具 MCP 文献 检索 指南 问答 报告 结构化 免费开放",
   },
   {
+    title: "科普工具",
+    url: "tools-science.html",
+    category: "工具",
+    text: "科普工具 医学科普 视频生成 图片生成 插图生成 音视频工具 字幕 配音 转写 海报 封面 图文卡片",
+  },
+  {
     title: "工具示例",
     url: "demos.html",
     category: "工具",
