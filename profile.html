@@ -1,4 +1,4 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="zh-CN">
   <head>
     <meta charset="utf-8" />
@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="assets/css/style.css" />
     <script src="assets/js/config.js"></script>
     <script src="assets/js/main.js" defer></script>
+    <script src="assets/js/language-switch.js" defer></script>
   </head>
   <body class="profile-page" data-requires-auth="true">
         <header class="site-header">
@@ -28,6 +29,14 @@
           <a href="crowdsourcing.html">众包</a>
           <a href="blog.html">博客</a>
           <a class="active" href="profile.html">用户</a>
+        </div>
+        <div class="language-switch" data-language-switch aria-label="Language">
+          <button class="language-trigger" type="button" data-language-trigger aria-haspopup="listbox" aria-expanded="false">
+            <span class="language-trigger-icon" aria-hidden="true">文</span>
+            <span data-language-current>中文</span>
+            <span class="language-trigger-caret" aria-hidden="true">⌄</span>
+          </button>
+          <div class="language-menu" data-language-menu role="listbox" aria-label="Language list" hidden></div>
         </div>
       </nav>
     </header>
@@ -59,6 +68,10 @@
             <a href="#profile-likes">点赞</a>
             <a href="#profile-dislikes">踩</a>
             <a href="#profile-design">个人设计</a>
+            <a href="#profile-creator-space">创作空间</a>
+            <a href="#profile-knowledge-base">知识库</a>
+            <a href="#profile-medical-record">病历本</a>
+            <a href="#profile-achievements">积分成就</a>
             <a href="#profile-comments">评论</a>
           </nav>
         </div>
@@ -67,6 +80,66 @@
       <section class="section compact profile-space-section">
         <div class="container profile-space-layout">
           <div class="profile-main-column">
+            <section id="profile-creator-space" class="profile-content-card profile-workspace-card">
+              <div class="profile-panel-head">
+                <div><span>创作空间</span><h2>科普工具</h2></div>
+                <button id="scienceToolButton" class="btn primary" type="button">生成科普提纲</button>
+              </div>
+              <div id="creatorToolList" class="profile-tool-grid"></div>
+              <form id="scienceToolForm" class="profile-mini-form">
+                <label>科普主题<input id="scienceTopic" type="text" maxlength="80" placeholder="如：高血压患者如何理解家庭血压监测" /></label>
+                <label>面向人群<select id="scienceAudience"><option value="patients">患者与家属</option><option value="students">医学生</option><option value="public">公众传播</option></select></label>
+              </form>
+              <div id="scienceToolOutput" class="profile-tool-output" aria-live="polite"></div>
+            </section>
+
+            <section id="profile-knowledge-base" class="profile-content-card profile-workspace-card">
+              <div class="profile-panel-head">
+                <div><span>个人知识库</span><h2>独有指南与问答</h2></div>
+              </div>
+              <div id="knowledgeBaseList" class="knowledge-base-list"></div>
+              <form id="knowledgeBaseForm" class="profile-mini-form stacked">
+                <div class="form-split">
+                  <label>指南名称<input id="knowledgeTitle" type="text" maxlength="80" placeholder="如：我的门诊随访流程" /></label>
+                  <label>来源/标签<input id="knowledgeSource" type="text" maxlength="60" placeholder="如：个人指南、科室共识" /></label>
+                </div>
+                <label>知识片段<textarea id="knowledgeContent" rows="3" maxlength="420" placeholder="写入你常用的独有指南、流程或判断标准。静态原型仅保存在本地浏览器。"></textarea></label>
+                <button class="btn" type="submit">加入知识库</button>
+              </form>
+              <form id="knowledgeQuestionForm" class="profile-mini-form stacked">
+                <label>用我的知识库回答<input id="knowledgeQuestion" type="text" maxlength="120" placeholder="输入问题，回答会引用你的个人指南片段" /></label>
+                <button class="btn primary" type="submit">知识库回答</button>
+              </form>
+              <div id="knowledgeAnswer" class="profile-tool-output" aria-live="polite"></div>
+            </section>
+
+            <section id="profile-medical-record" class="profile-content-card profile-workspace-card">
+              <div class="profile-panel-head">
+                <div><span>个人病历本</span><h2>个人医疗档案</h2></div>
+              </div>
+              <form id="medicalRecordForm" class="profile-mini-form stacked">
+                <div class="form-split">
+                  <label>过敏史<input id="recordAllergies" type="text" maxlength="120" placeholder="如：青霉素过敏；无则填无" /></label>
+                  <label>慢病/重点问题<input id="recordConditions" type="text" maxlength="160" placeholder="如：高血压、哮喘、术后随访" /></label>
+                </div>
+                <div class="form-split">
+                  <label>长期用药<input id="recordMedications" type="text" maxlength="160" placeholder="药名、剂量、频率" /></label>
+                  <label>最近检查<input id="recordCheckups" type="text" maxlength="160" placeholder="如：血压、血糖、影像、化验" /></label>
+                </div>
+                <label>就医提醒<textarea id="recordNotes" rows="3" maxlength="420" placeholder="记录复诊时间、医生提醒、需要追问的问题。不要填写身份证号、住院号等敏感信息。"></textarea></label>
+                <button class="btn primary" type="submit">保存病历本</button>
+              </form>
+              <div id="medicalRecordSummary" class="medical-record-summary" aria-live="polite"></div>
+            </section>
+
+            <section id="profile-achievements" class="profile-content-card profile-workspace-card">
+              <div class="profile-panel-head">
+                <div><span>积分与成就</span><h2>成长系统</h2></div>
+              </div>
+              <div id="pointsOverview" class="points-overview"></div>
+              <div id="achievementList" class="achievement-list"></div>
+            </section>
+
             <section id="profile-submissions" class="profile-content-card">
               <div class="profile-panel-head">
                 <div><span>投稿</span><h2>我的投稿</h2></div>
@@ -119,6 +192,13 @@
                 <a href="doctor.html"><strong>医生工作区</strong><span>执业医生认证通过后进入</span></a>
                 <a href="auth.html"><strong>资格审核</strong><span>提交医生资格或在读证明</span></a>
               </div>
+            </section>
+
+            <section class="profile-content-card">
+              <div class="profile-panel-head">
+                <div><span>积分</span><h2>成长任务</h2></div>
+              </div>
+              <div id="profilePointTasks" class="access-list point-task-list"></div>
             </section>
 
             <section class="profile-content-card">

@@ -1,0 +1,165 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>AI-native HIS | Freedom AI</title>
+    <meta
+      name="description"
+      content="Freedom AI AI-native HIS 页面，展示 FHIR、病历 Copilot、结构化摘要与系统写回如何组成原生医院信息系统智能层。"
+    />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/main.js" defer></script>
+  </head>
+  <body class="data-tools-page">
+    <header class="site-header">
+      <nav class="nav" aria-label="主导航">
+        <a class="brand" href="index.html"><span class="brand-mark">F</span><span class="brand-text"><strong>Freedom AI</strong><span>医学 AI 社区</span></span></a>
+        <form class="site-search" role="search" action="search.html" method="get" aria-label="站内搜索">
+          <label class="sr-only" for="siteSearchInput">搜索</label>
+          <input id="siteSearchInput" name="q" type="search" placeholder="搜索" autocomplete="off" />
+          <button type="submit">搜索</button>
+        </form>
+        <div class="nav-links">
+          <a href="index.html">首页</a>
+          <a href="learning.html">内容</a>
+          <a href="network.html">社区</a>
+          <a href="community.html">讨论区</a>
+          <a href="datasets.html">数据集</a>
+          <a class="active" href="tools.html">工具库</a>
+          <a href="benchmark.html">评测</a>
+          <a href="crowdsourcing.html">众包</a>
+          <a href="blog.html">博客</a>
+          <a href="profile.html">用户</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="page-title data-tools-title">
+        <div class="container tools-learn-hero">
+          <div class="tools-learn-copy">
+            <p class="eyebrow">System Native AI</p>
+            <h1>AI-native HIS</h1>
+            <p>AI-native HIS 的核心，不是给 HIS 外面再挂一个聊天框，而是把病历摘要、结构化写回、FHIR 检索、临床问答和审计留痕直接做成系统原生能力。</p>
+            <div class="tool-action-row">
+              <a class="btn primary" href="tools-scenarios.html">返回场景总页</a>
+              <a class="btn" href="tools-base.html">查看基础库工具</a>
+            </div>
+          </div>
+          <nav class="tool-reference tools-learn-tabs" aria-label="场景导航">
+            <a href="#modules">模块</a>
+            <a href="#workflow">工作流</a>
+            <a href="#stack">技术栈</a>
+            <a href="#delivery">落地阶段</a>
+          </nav>
+          <div class="tool-skill-stats" aria-label="AI-native HIS 指标">
+            <div><strong>4</strong><span>核心工作台模块</span></div>
+            <div><strong>1</strong><span>FHIR / EHR 统一数据接口</span></div>
+            <div><strong>3</strong><span>摘要、问答、写回三类动作</span></div>
+            <div><strong>100%</strong><span>必须带审计与权限控制</span></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section compact" id="modules">
+        <div class="container">
+          <div class="section-head clean">
+            <div>
+              <p class="eyebrow">Core Modules</p>
+              <h2>推荐的工作台模块</h2>
+              <p>这一页适合明确告诉医院或合作方：AI-native HIS 不是模糊概念，而是若干可以逐步建设的具体模块。</p>
+            </div>
+          </div>
+          <div class="medical-tool-grid">
+            <article class="medical-tool-card"><div class="resource-panel-head"><span>Timeline</span><strong>患者时间轴</strong></div><p>将住院、门诊、检验、影像和治疗节点统一呈现在同一时间轴中，减少多页面跳转。</p></article>
+            <article class="medical-tool-card"><div class="resource-panel-head"><span>Copilot</span><strong>病历 Copilot</strong></div><p>支持“总结最近 3 次门诊”“提取最新肌酐”“生成 SOAP 草稿”等直接操作。</p></article>
+            <article class="medical-tool-card"><div class="resource-panel-head"><span>Write-back</span><strong>结构化写回</strong></div><p>把医生确认后的摘要、编码建议和任务状态以受控方式写回系统。</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section compact" id="workflow">
+        <div class="container">
+          <div class="section-head clean">
+            <div>
+              <p class="eyebrow">Workflow</p>
+              <h2>一条典型的 AI-native HIS 使用链路</h2>
+              <p>完整页面需要告诉人们：医生进入系统以后，AI 到底在哪里帮上忙，又在哪一步停下来等人工确认。</p>
+            </div>
+          </div>
+          <div class="registration-api-grid">
+            <article class="registration-api-card"><div class="api-path"><span class="api-method neutral">STEP 1</span><code>open chart</code></div><p>医生打开患者视图后，系统自动聚合最近病历、检验、用药和待办任务。</p></article>
+            <article class="registration-api-card"><div class="api-path"><span class="api-method neutral">STEP 2</span><code>summarize</code></div><p>病历 Copilot 生成结构化摘要，标出关键指标、异常结果和未完成事项。</p></article>
+            <article class="registration-api-card"><div class="api-path"><span class="api-method neutral">STEP 3</span><code>ask / retrieve</code></div><p>医生可以直接提问，系统通过 FHIR / EHR 接口检索对应数据并返回可复查答案。</p></article>
+            <article class="registration-api-card"><div class="api-path"><span class="api-method neutral">STEP 4</span><code>draft write-back</code></div><p>系统为病历或任务生成草稿，但不自动提交，等待医生确认或修改。</p></article>
+            <article class="registration-api-card"><div class="api-path"><span class="api-method neutral">STEP 5</span><code>audit</code></div><p>写回动作、引用来源和编辑痕迹被记录在审计链中，便于追踪和回看。</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section compact" id="stack">
+        <div class="container">
+          <div class="section-head clean">
+            <div>
+              <p class="eyebrow">Skill Stack</p>
+              <h2>底层能力如何支撑这页</h2>
+              <p>AI-native HIS 最依赖的是 EHR 接口、临床摘要和问答能力，证据层则作为补充增强。</p>
+            </div>
+          </div>
+          <div class="tool-stack-grid">
+            <article class="resource-panel tool-stack-card">
+              <div class="resource-panel-head"><span>FHIR</span><strong>ehr-fhir-integration</strong></div>
+              <p>负责标准化读取患者、诊断、观察、用药和操作等 FHIR 资源，是原生数据层入口。</p>
+              <div class="skill-link-cloud"><a href="https://github.com/FreedomIntelligence/OpenClaw-Medical-Skills/tree/main/skills/ehr-fhir-integration" target="_blank" rel="noreferrer">查看 Skill</a></div>
+            </article>
+            <article class="resource-panel tool-stack-card">
+              <div class="resource-panel-head"><span>Chart QA</span><strong>chatehr-clinician-assistant</strong></div>
+              <p>负责自然语言问答和图表摘要，适合嵌到医生工作站的右侧智能面板。</p>
+              <div class="skill-link-cloud"><a href="https://github.com/FreedomIntelligence/OpenClaw-Medical-Skills/tree/main/skills/chatehr-clinician-assistant" target="_blank" rel="noreferrer">查看 Skill</a></div>
+            </article>
+            <article class="resource-panel tool-stack-card">
+              <div class="resource-panel-head"><span>Structuring</span><strong>clinical-note-summarization</strong></div>
+              <p>负责 SOAP 结构化、矛盾点提示和缺失信息提醒，是“草稿写回”阶段的重要能力。</p>
+              <div class="skill-link-cloud"><a href="https://github.com/FreedomIntelligence/OpenClaw-Medical-Skills/tree/main/skills/clinical-note-summarization" target="_blank" rel="noreferrer">查看 Skill</a></div>
+            </article>
+            <article class="resource-panel tool-stack-card">
+              <div class="resource-panel-head"><span>Evidence Add-on</span><strong>循证医疗 API</strong></div>
+              <p>当系统需要把床旁问题进一步映射到指南和文献时，可接入独立的证据层作为增强模块。</p>
+              <div class="skill-link-cloud"><a href="tools-scenario-evidence-api.html">查看相关页面</a></div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section compact" id="delivery">
+        <div class="container">
+          <div class="section-head clean">
+            <div>
+              <p class="eyebrow">Delivery</p>
+              <h2>建议的推进顺序</h2>
+              <p>AI-native HIS 通常不适合一步到位，而是应从只读摘要层逐步发展到受控写回层。</p>
+            </div>
+          </div>
+          <div class="resource-directory-grid">
+            <article class="resource-panel"><div class="resource-panel-head"><span>Phase 1</span><strong>只读摘要层</strong></div><p>先做时间轴、检验汇总和病历摘要，不改变临床系统的核心输入流程。</p></article>
+            <article class="resource-panel"><div class="resource-panel-head"><span>Phase 2</span><strong>问答与草稿层</strong></div><p>开放自然语言问答和病历草稿，但所有结果仍停留在待确认状态。</p></article>
+            <article class="resource-panel"><div class="resource-panel-head"><span>Phase 3</span><strong>受控写回层</strong></div><p>在审计、权限和回滚机制完善后，逐步开放结构化写回和任务触发能力。</p></article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div><h3>Freedom AI</h3><p>AI-native HIS 页面适合向医院信息中心解释“AI 进入 HIS 后到底长什么样”，强调原生集成而不是外挂。</p></div>
+        <div><h4>返回</h4><a href="tools-scenarios.html">场景总页</a><a href="tools.html">工具总览</a></div>
+        <div><h4>相关页</h4><a href="tools-scenario-agentic-hospital.html">Agentic Hospital</a><a href="tools-scenario-evidence-api.html">循证医疗 API</a></div>
+        <div><h4>支撑页</h4><a href="tools-base.html">基础库工具</a><a href="tools-skill.html">Skill 专栏</a></div>
+        <div><h4>平台</h4><a href="datasets.html">数据集</a><a href="benchmark.html">评测基准</a></div>
+      </div>
+    </footer>
+  </body>
+</html>

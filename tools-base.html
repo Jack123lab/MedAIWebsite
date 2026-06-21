@@ -2,9 +2,13 @@
 <html lang="zh-CN">
   <head>
     <meta charset="utf-8" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>基础库工具 | Freedom AI</title>
-    <meta name="description" content="Freedom AI 基础库工具：医生库、药品库、医院库。" />
+    <meta
+      name="description"
+      content="Freedom AI 基础库工具页，完整说明医生库、药品库和医院库如何作为医学 AI 产品的事实底座。"
+    />
     <link rel="stylesheet" href="assets/css/style.css" />
     <script src="assets/js/config.js"></script>
     <script src="assets/js/main.js" defer></script>
@@ -39,15 +43,27 @@
           <div class="tools-learn-copy">
             <p class="eyebrow">Clinical Data Tools</p>
             <h1>基础库工具</h1>
-            <p>医生库、药品库、医院库负责回答“谁、在哪、用什么”，给搜索、问答、挂号和医院 AI 工作流提供可追溯数据。</p>
+            <p>医生库、药品库、医院库负责回答“是谁、在哪、用什么”的基础问题。它们本身不一定是独立产品，但几乎所有医学 AI 页面都要依赖这一层事实底座。</p>
+            <div class="tool-action-row">
+              <a class="btn primary" href="tools-mock-registration.html">查看 Mock API</a>
+              <a class="btn" href="tools-scenarios.html">查看场景方案</a>
+            </div>
           </div>
-          <nav class="tool-reference tools-learn-tabs" aria-label="工具库路径导航">
-            <a href="tools.html">返回工具路径</a>
+          <nav class="tool-reference tools-learn-tabs" aria-label="工具路径导航">
+            <a href="tools.html">返回工具总览</a>
+            <a href="#medical-base-tools">基础库模块</a>
+            <a href="#integration">组合方式</a>
             <a href="tools-mock-registration.html">Mock API</a>
             <a href="tools-skill.html">Skill 专栏</a>
             <a href="tools-scenarios.html">场景方案</a>
             <a href="tools-science.html">科普工具</a>
           </nav>
+          <div class="tool-skill-stats" aria-label="基础库工具指标">
+            <div><strong>3</strong><span>核心基础库</span></div>
+            <div><strong>1</strong><span>适合挂号与问答的统一事实层</span></div>
+            <div><strong>4</strong><span>常见用途：搜索 / 卡片 / 推荐 / 路由</span></div>
+            <div><strong>0</strong><span>不直接做临床决策</span></div>
+          </div>
         </div>
       </section>
 
@@ -55,19 +71,17 @@
         <div class="container">
           <div class="section-head clean">
             <div>
-              <p class="eyebrow">Clinical Data Tools</p>
+              <p class="eyebrow">Three Libraries</p>
               <h2>医生库、药品库、医院库</h2>
-              <p>三类基础库负责回答“谁、在哪、用什么”。它们不单独成产品，而是给搜索、问答、挂号和医院 AI 工作流提供可追溯数据。</p>
+              <p>这三类基础库构成了很多页面背后的事实层。医生相关页面用医生库，挂号或就医引导用医院库，治疗信息与禁忌提醒则要依赖药品库。</p>
             </div>
           </div>
 
           <div class="medical-tool-grid">
             <article class="medical-tool-card" id="doctor-library-tool">
               <div class="resource-panel-head"><span>Doctor DB</span><strong>医生库</strong></div>
-              <p>按姓名、医院、科室、疾病方向、论文、任职和医生排名筛选，支持医生主页自动补全和合作主题推荐。</p>
-              <div class="tool-chip-row" aria-label="医生库标签">
-                <span>主任医师</span><span>儿科</span><span>智慧医院</span><span>论文 150+</span>
-              </div>
+              <p>按姓名、医院、科室、职称、研究方向、代表论文和合作标签组织医生信息，适合医生主页和合作推荐页。</p>
+              <div class="tool-chip-row"><span>姓名</span><span>医院</span><span>科室</span><span>标签</span></div>
               <div class="mock-query-box">
                 <span>样例查询</span>
                 <code>doctor?hospital=CUHK-Shenzhen&amp;tag=互联网医疗</code>
@@ -77,23 +91,19 @@
 
             <article class="medical-tool-card" id="drug-library-tool">
               <div class="resource-panel-head"><span>Drug DB</span><strong>药品库</strong></div>
-              <p>聚合通用名、商品名、适应症、禁忌、相互作用、医保属性和说明书摘要，用于临床问答前的来源校验。</p>
-              <div class="tool-chip-row" aria-label="药品库标签">
-                <span>适应症</span><span>禁忌</span><span>相互作用</span><span>医保</span>
-              </div>
+              <p>按通用名、商品名、适应症、禁忌、相互作用和医保属性组织药品信息，适合作为问答和说明解释前的校验层。</p>
+              <div class="tool-chip-row"><span>适应症</span><span>禁忌</span><span>相互作用</span><span>医保</span></div>
               <div class="mock-query-box">
                 <span>样例查询</span>
                 <code>drug?keyword=阿莫西林&amp;field=interaction</code>
               </div>
-              <a class="medical-tool-action" href="tools-mock-registration.html">查看 API 接入方式</a>
+              <a class="medical-tool-action" href="tools-mock-registration.html">查看挂号流程接入</a>
             </article>
 
             <article class="medical-tool-card" id="hospital-library-tool">
               <div class="resource-panel-head"><span>Hospital DB</span><strong>医院库</strong></div>
-              <p>支持按地区、等级、专科能力、挂号渠道和 AI 合作方向检索，默认展示深圳龙岗区医院样例。</p>
-              <div class="tool-chip-row" aria-label="医院库标签">
-                <span>龙岗区</span><span>三甲/三级</span><span>专科能力</span><span>可认领</span>
-              </div>
+              <p>按地区、等级、专科能力、挂号渠道和 AI 合作方向组织医院信息，适合就医导航和场景路由页。</p>
+              <div class="tool-chip-row"><span>地区</span><span>等级</span><span>专科</span><span>挂号渠道</span></div>
               <div class="mock-query-box">
                 <span>样例查询</span>
                 <code>hospital?city=深圳&amp;district=龙岗区&amp;service=挂号</code>
@@ -103,15 +113,58 @@
           </div>
         </div>
       </section>
+
+      <section class="section compact">
+        <div class="container">
+          <div class="section-head clean">
+            <div>
+              <p class="eyebrow">Common Outputs</p>
+              <h2>这层数据通常会输出什么</h2>
+              <p>基础库的价值不在“字段很多”，而在它可以稳定支持上层页面需要的卡片、筛选、推荐和路由动作。</p>
+            </div>
+          </div>
+          <div class="resource-directory-grid">
+            <article class="resource-panel">
+              <div class="resource-panel-head"><span>Search Result</span><strong>检索卡片</strong></div>
+              <p>适合搜索结果页、医生主页列表、药品说明结果和医院就医导航卡片。</p>
+            </article>
+            <article class="resource-panel">
+              <div class="resource-panel-head"><span>Entity Profile</span><strong>实体详情页</strong></div>
+              <p>支持医生详情、药品详情、医院详情和关联关系展示，例如擅长方向或挂号渠道。</p>
+            </article>
+            <article class="resource-panel">
+              <div class="resource-panel-head"><span>Routing Layer</span><strong>场景路由层</strong></div>
+              <p>给上层页面决定下一步跳到哪里，比如进入挂号流程、进入专科内容页或进入合作页面。</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section compact" id="integration">
+        <div class="container">
+          <article class="registration-api-card api-overview">
+            <div>
+              <span class="api-method neutral">INTEGRATION</span>
+              <h3>推荐的组合方式</h3>
+              <p>基础库通常不会单独售卖，而是作为其他页面的“事实底座”。下面这个组合方式最容易讲清楚价值。</p>
+              <div class="api-meta"><span>基础库</span><span>Mock API</span><span>Skill 层</span><span>场景页</span></div>
+            </div>
+            <pre class="api-code"><code>医生库 / 药品库 / 医院库
+        -> 为搜索、卡片和实体详情提供基础事实
+        -> 交给 Mock API 或 Skill 层补流程能力
+        -> 最终被组装进挂号、知识服务、医院工作台或 Agent 页面</code></pre>
+          </article>
+        </div>
+      </section>
     </main>
 
     <footer class="site-footer">
       <div class="container footer-grid">
-        <div><h3>Freedom AI</h3><p>基础库工具把医生、药品、医院信息整理成可调用的医学 AI 数据层。</p></div>
-        <div><h4>工具</h4><a href="tools.html">工具库</a><a href="tools-base.html">基础库工具</a><a href="tools-mock-registration.html">Mock 挂号 API</a><a href="tools-scenarios.html">场景方案</a><a href="tools-science.html">科普工具</a></div>
-        <div><h4>数据</h4><a href="datasets.html">数据集</a></div>
-        <div><h4>平台</h4><a href="benchmark.html">评测基准</a><a href="crowdsourcing.html">众包平台</a></div>
-        <div><h4>学习</h4><a href="learning.html">教学</a><a href="community.html">讨论区</a></div>
+        <div><h3>Freedom AI</h3><p>基础库工具把医生、药品、医院信息整理成可调用的医学 AI 数据层，让上层产品页不再悬空。</p></div>
+        <div><h4>工具</h4><a href="tools.html">工具总览</a><a href="tools-base.html">基础库工具</a><a href="tools-mock-registration.html">Mock API</a><a href="tools-skill.html">Skill 专栏</a><a href="tools-science.html">科普工具</a></div>
+        <div><h4>场景</h4><a href="tools-scenarios.html">场景方案</a><a href="tools-scenario-ai-native-his.html">AI-native HIS</a></div>
+        <div><h4>平台</h4><a href="network.html">社区</a><a href="datasets.html">数据集</a><a href="benchmark.html">评测基准</a></div>
+        <div><h4>更多</h4><a href="community.html">讨论区</a><a href="learning.html">内容</a></div>
       </div>
     </footer>
   </body>

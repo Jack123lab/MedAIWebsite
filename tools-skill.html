@@ -2,9 +2,13 @@
 <html lang="zh-CN">
   <head>
     <meta charset="utf-8" />
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Skill 专栏 | Freedom AI</title>
-    <meta name="description" content="Freedom AI Skill 专栏，用于医学 AI 工具库的能力索引、技能分发和工作流说明。" />
+    <meta
+      name="description"
+      content="Freedom AI Skill 专栏，完整说明 OpenClaw Medical Skills、通用技能商店与本地中文工作流能力如何构成医学 AI 能力层。"
+    />
     <link rel="stylesheet" href="assets/css/style.css" />
     <script src="assets/js/config.js"></script>
     <script src="assets/js/main.js" defer></script>
@@ -39,68 +43,122 @@
           <div class="tools-learn-copy">
             <p class="eyebrow">Skill Store</p>
             <h1>Skill 专栏</h1>
-            <p>把官方 Agent Skills、本地中文技能、备份包和 ClawHub CLI 组织成医学 AI 工具库的能力入口。</p>
+            <p>Skill 页负责回答“这些页面背后到底装了什么能力”。它把医学专用 skills、通用文档处理 skills 和本地工作流能力组织成可装配的能力层。</p>
+            <div class="tool-action-row">
+              <a class="btn primary" href="https://github.com/FreedomIntelligence/OpenClaw-Medical-Skills" target="_blank" rel="noreferrer">查看 OpenClaw Medical Skills</a>
+              <a class="btn" href="tools-scenarios.html">查看场景页</a>
+            </div>
           </div>
-          <nav class="tool-reference tools-learn-tabs" aria-label="工具库路径导航">
-            <a href="tools.html">返回工具路径</a>
+          <nav class="tool-reference tools-learn-tabs" aria-label="工具路径导航">
+            <a href="tools.html">返回工具总览</a>
+            <a href="#skill-sources">能力来源</a>
+            <a href="#medical-skill-stack">医学技能栈</a>
+            <a href="#scenario-links">场景映射</a>
             <a href="tools-base.html">基础库</a>
             <a href="tools-mock-registration.html">Mock API</a>
             <a href="tools-scenarios.html">场景方案</a>
             <a href="tools-science.html">科普工具</a>
           </nav>
+          <div class="tool-skill-stats" aria-label="Skill 专栏指标">
+            <div><strong>869</strong><span>医学专用 skills 参考库</span></div>
+            <div><strong>3</strong><span>能力层：医学 / 通用 / 本地工作流</span></div>
+            <div><strong>6</strong><span>重点映射场景</span></div>
+            <div><strong>1</strong><span>统一能力装配入口</span></div>
+          </div>
         </div>
       </section>
 
-      <section class="section compact" id="skill-column">
+      <section class="section compact" id="skill-sources">
+        <div class="container">
+          <div class="section-head clean">
+            <div>
+              <p class="eyebrow">Skill Sources</p>
+              <h2>三类能力来源</h2>
+              <p>Skill 页的重点不是把仓库罗列一遍，而是把能力来源分类清楚，让后续产品页知道应该从哪里拿能力。</p>
+            </div>
+          </div>
+          <div class="resource-directory-grid">
+            <article class="resource-panel">
+              <div class="resource-panel-head"><span>Medical</span><strong>医学专用 Skills</strong></div>
+              <p>以 OpenClaw Medical Skills 为代表，覆盖文献、指南、ClinicalTrials、数字孪生、EHR/FHIR、Graph-RAG 等能力。</p>
+            </article>
+            <article class="resource-panel">
+              <div class="resource-panel-head"><span>General</span><strong>通用技能商店</strong></div>
+              <p>面向文档处理、PPT、PDF、网页、前端设计、自动化和多智能体协作的通用技能层。</p>
+            </article>
+            <article class="resource-panel">
+              <div class="resource-panel-head"><span>Local Workflow</span><strong>本地中文工作流</strong></div>
+              <p>围绕中文页面、原型说明、课程、数据治理和本地内容编排形成的站内工作流能力。</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section compact" id="medical-skill-stack">
         <div class="container">
           <article class="tool-skill-column">
             <div class="tool-skill-head">
               <div>
-                <p class="eyebrow">Skill Store</p>
-                <h3>Skill 专栏</h3>
-                <p>摘录自 anbeime/skill：它把官方 Agent Skills、本地中文技能、备份包和 ClawHub CLI 组织成技能商店，适合迁移为医学 AI 工具库的能力索引、技能分发和工作流说明。</p>
+                <p class="eyebrow">Medical Skill Stack</p>
+                <h3>面向医学 AI 页面最常用的一组能力</h3>
+                <p>如果目标是把一个医学 AI 页面讲完整，最常见的组合不是“一个超强模型”，而是检索、结构化、工作流、知识图谱和前端演示能力同时到位。</p>
               </div>
-              <a href="https://github.com/anbeime/skill" target="_blank" rel="noreferrer">GitHub</a>
-            </div>
-            <div class="tool-skill-stats" aria-label="anbeime skill 数据摘录">
-              <div><strong>243</strong><span>总技能</span></div>
-              <div><strong>182</strong><span>官方技能</span></div>
-              <div><strong>61</strong><span>本地技能</span></div>
-              <div><strong>24h</strong><span>自动同步</span></div>
+              <a class="tool-skill-link" href="https://github.com/FreedomIntelligence/OpenClaw-Medical-Skills" target="_blank" rel="noreferrer">GitHub</a>
             </div>
             <div class="tool-skill-grid">
               <section>
-                <h4>知识和库摘录</h4>
-                <ul>
-                  <li>官方技能来源包括 Anthropic、Vercel、Cloudflare、Hugging Face、Trail of Bits、Sentry 等团队。</li>
-                  <li>本地中文技能覆盖内容创作、视频、PPT、语音、文档处理、智能体协作、产品管理和可视化。</li>
-                  <li>支持 JSON / CSV 数据导出，可用于工具目录、能力画像和二次开发。</li>
-                </ul>
+                <h4>证据与知识层</h4>
+                <div class="tool-skill-tags">
+                  <span>medical-research-toolkit</span>
+                  <span>tooluniverse-clinical-guidelines</span>
+                  <span>biomcp-server</span>
+                  <span>research-lookup</span>
+                  <span>medical-specialty-briefs</span>
+                  <span>kragen-knowledge-graph</span>
+                </div>
               </section>
               <section>
-                <h4>适合医学 AI 工具库的技能方向</h4>
+                <h4>流程与系统层</h4>
                 <div class="tool-skill-tags">
-                  <span>docx / xlsx / pdf / pptx 文档处理</span>
-                  <span>paper-analysis-assistant 论文分析</span>
-                  <span>agent-team 多智能体协作</span>
-                  <span>ai-drawio 流程图绘制</span>
-                  <span>frontend-design 工具界面设计</span>
-                  <span>tts / asr 语音转写与合成</span>
+                  <span>ehr-fhir-integration</span>
+                  <span>chatehr-clinician-assistant</span>
+                  <span>clinical-note-summarization</span>
+                  <span>care-coordination</span>
+                  <span>lab-results</span>
+                  <span>clinical-decision-support</span>
                 </div>
               </section>
             </div>
           </article>
         </div>
       </section>
+
+      <section class="section compact" id="scenario-links">
+        <div class="container">
+          <div class="section-head clean">
+            <div>
+              <p class="eyebrow">Scenario Mapping</p>
+              <h2>能力层如何映射到场景页</h2>
+              <p>Skill 页最终还是要服务具体产品方向，下面这组链接说明“哪些技能最适合先装到哪个页面里”。</p>
+            </div>
+          </div>
+          <div class="tools-learn-grid">
+            <a class="tools-learn-card" href="tools-scenario-evidence-api.html"><span class="tools-learn-icon">EBM</span><small>Evidence Stack</small><strong>循证医疗 API</strong><p>优先使用 medical-research-toolkit、clinical-guidelines 和 biomcp-server。</p><em>查看场景页</em></a>
+            <a class="tools-learn-card" href="tools-scenario-virtual-hospital.html"><span class="tools-learn-icon">SIM</span><small>Simulation Stack</small><strong>虚拟医院</strong><p>优先使用 digital-twin、ChatEHR 和 virtual-lab-agent。</p><em>查看场景页</em></a>
+            <a class="tools-learn-card" href="tools-scenario-agentic-hospital.html"><span class="tools-learn-icon">AGT</span><small>Workflow Stack</small><strong>Agentic Hospital</strong><p>优先使用 note summarization、lab、coordination 和 CDS。</p><em>查看场景页</em></a>
+            <a class="tools-learn-card" href="tools-scenario-ai-native-his.html"><span class="tools-learn-icon">HIS</span><small>System Stack</small><strong>AI-native HIS</strong><p>优先使用 FHIR、EHR Chat、结构化摘要和可写回接口。</p><em>查看场景页</em></a>
+          </div>
+        </div>
+      </section>
     </main>
 
     <footer class="site-footer">
       <div class="container footer-grid">
-        <div><h3>Freedom AI</h3><p>Skill 专栏保留原有结构，用作医学 AI 工具能力索引。</p></div>
-        <div><h4>工具</h4><a href="tools.html">工具库</a><a href="tools-base.html">基础库工具</a><a href="tools-mock-registration.html">Mock 挂号 API</a><a href="tools-scenarios.html">场景方案</a><a href="tools-science.html">科普工具</a></div>
-        <div><h4>数据</h4><a href="datasets.html">数据集</a></div>
-        <div><h4>平台</h4><a href="benchmark.html">评测基准</a><a href="crowdsourcing.html">众包平台</a></div>
-        <div><h4>学习</h4><a href="learning.html">教学</a><a href="community.html">讨论区</a></div>
+        <div><h3>Freedom AI</h3><p>Skill 专栏把医学 AI 页面背后的能力层说清楚，方便从“会做什么”过渡到“怎么组出来”。</p></div>
+        <div><h4>工具</h4><a href="tools.html">工具总览</a><a href="tools-base.html">基础库工具</a><a href="tools-mock-registration.html">Mock API</a><a href="tools-scenarios.html">场景方案</a><a href="tools-science.html">科普工具</a></div>
+        <div><h4>重点页</h4><a href="tools-scenario-evidence-api.html">循证医疗 API</a><a href="tools-scenario-ai-native-his.html">AI-native HIS</a></div>
+        <div><h4>平台</h4><a href="datasets.html">数据集</a><a href="benchmark.html">评测基准</a><a href="community.html">讨论区</a></div>
+        <div><h4>更多</h4><a href="learning.html">内容</a><a href="network.html">社区</a></div>
       </div>
     </footer>
   </body>

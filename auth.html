@@ -1,9 +1,9 @@
-﻿<!doctype html>
+<!doctype html>
 <html lang="zh-CN">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>登录与资格审核 | Freedom AI</title>
+    <title>登录、积分与资格审核 | Freedom AI</title>
     <link rel="stylesheet" href="assets/css/style.css" />
     <script src="assets/js/main.js" defer></script>
   </head>
@@ -35,9 +35,9 @@
       <section class="page-title auth-title">
         <div class="container auth-title-grid">
           <div>
-            <p class="eyebrow">身份与审核</p>
-            <h1>登录与资格审核</h1>
-            <p>社区仅面向认证通过的执业医生和医学生开放浏览与发帖。医生需提交医师资格或执业证明，医学生需提交学生证或在读证明。</p>
+            <p class="eyebrow">身份、积分与审核</p>
+            <h1>登录、积分与资格审核</h1>
+            <p>支持使用港中深学号或校园邮箱直接登录。注册即送积分，完成认证、共创科普工具、维护知识库和个人病历本都可以继续获得积分与成就。</p>
           </div>
           <div id="authStateCard" class="auth-state-card" aria-live="polite"></div>
         </div>
@@ -54,7 +54,12 @@
             </div>
             <form id="loginForm" class="auth-form">
               <label>显示名称<input id="loginName" type="text" maxlength="30" placeholder="用于讨论区显示" required /></label>
-              <label>邮箱或手机号<input id="loginContact" type="text" maxlength="60" placeholder="用于接收审核结果" required /></label>
+              <label>港中深学号或校园邮箱<input id="loginStudentId" type="text" maxlength="60" placeholder="支持直接使用学号登录" /></label>
+              <label>邮箱或手机号<input id="loginContact" type="text" maxlength="60" placeholder="可选，用于接收审核结果" /></label>
+              <div class="auth-points-note">
+                <strong>注册送 100 积分</strong>
+                <span>每日登录额外 +10，港中深学号用户可直接进入个人中心继续完善资料。</span>
+              </div>
               <button class="btn primary full-width" type="submit">保存登录状态</button>
             </form>
             <p class="form-status" id="loginStatus" role="status"></p>
@@ -96,7 +101,8 @@
               <div><strong>1. 登录</strong><span>保存显示名称和联系方式</span></div>
               <div><strong>2. 提交材料</strong><span>医师资格/执业证明或学生在读证明</span></div>
               <div><strong>3. 人工审核</strong><span>审核通过后开放社区浏览与发帖</span></div>
-              <div><strong>4. 脱敏检查</strong><span>发帖前检测身份证号、手机号、住院号等敏感内容</span></div>
+              <div><strong>4. 积分成长</strong><span>注册、认证、创作、知识库和病历本维护都会获得积分</span></div>
+              <div><strong>5. 脱敏检查</strong><span>发帖前检测身份证号、手机号、住院号等敏感内容</span></div>
             </div>
             <div class="access-list compact-notice">
               <a href="network-yu-guangjun.html">
