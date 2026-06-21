@@ -1363,7 +1363,7 @@ function wireDatasetBrowser() {
   const prevButton = document.querySelector("[data-dataset-page='prev']");
   const nextButton = document.querySelector("[data-dataset-page='next']");
   const emptyNote = document.querySelector("#datasetEmptyNote");
-  const state = { filter: "all", search: "", page: 1, pageSize: 4 };
+  const state = { filter: "all", search: "", page: 1, pageSize: 10 };
 
   cards.forEach((card) => {
     const link = card.querySelector("a[href]");
