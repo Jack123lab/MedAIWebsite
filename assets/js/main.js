@@ -10,6 +10,10 @@ const categoryLabels = {
   research: "科研设计",
   tool: "工具经验",
   ethics: "合规伦理",
+  career: "实习和招聘",
+  collaboration: "科研和产业合作",
+  model: "模型",
+  policy: "政策解读",
 };
 
 const forumTagLabels = {
@@ -19,6 +23,10 @@ const forumTagLabels = {
   tool: "Tools",
   research: "Research",
   ethics: "Governance",
+  career: "Internship & Hiring",
+  collaboration: "Research & Industry",
+  model: "Models",
+  policy: "Policy",
   clinician: "医生/医学生",
   medicalLLM: "Medical LLMs",
   agent: "Agent",
@@ -33,7 +41,7 @@ const siteNavItems = [
   { href: "community.html", label: "讨论区", active: ["community.html", "clinician-discussion.html"] },
   { href: "datasets.html", label: "数据集", active: ["datasets.html"] },
   { href: "tools.html", label: "工具库", active: ["tools.html", "demos.html", "datasets-tools.html"] },
-  { href: "benchmark.html", label: "Benchmark", active: ["benchmark.html", "benchmark-gdb.html", "benchmark-liveclin.html", "benchmark-healthbench-tcm.html", "benchmark-doctors-last-exam.html", "benchmark-cmb.html"] },
+  { href: "benchmark.html", label: "Benchmark", active: ["benchmark.html", "benchmark-gdb.html", "benchmark-liveclin.html", "benchmark-healthbench-tcm.html", "benchmark-doctors-last-exam.html", "benchmark-cmb.html", "benchmark-long-tailed-medqa.html", "benchmark-med-x.html"] },
   { href: "crowdsourcing.html", label: "众包平台", active: ["crowdsourcing.html"] },
   { href: "blog.html", label: "Blog", active: ["blog.html"] },
   { href: "profile.html", label: "用户", active: ["profile.html", "auth.html", "doctor.html"] },
@@ -113,7 +121,7 @@ const siteSearchIndex = [
     title: "讨论区",
     url: "community.html",
     category: "社区",
-    text: "讨论区 病例 指南 问答 临床文本 科研设计 工具经验 合规伦理 医生 医学生 认证",
+    text: "讨论区 病例 指南 问答 临床文本 科研设计 工具经验 合规伦理 实习 招聘 实习招聘 科研和产业合作 科研合作 产业合作 模型 政策解读 政策 医生 医学生 认证",
   },
   {
     title: "数据集",
@@ -126,6 +134,12 @@ const siteSearchIndex = [
     url: "tools.html",
     category: "工具",
     text: "工具库 医学 AI 工具 MCP 文献 检索 指南 问答 报告 结构化 免费开放",
+  },
+  {
+    title: "科普工具",
+    url: "tools-science.html",
+    category: "工具",
+    text: "科普工具 医学科普 视频生成 图片生成 插图生成 音视频工具 字幕 配音 转写 海报 封面 图文卡片",
   },
   {
     title: "工具示例",
@@ -168,6 +182,18 @@ const siteSearchIndex = [
     url: "benchmark-cmb.html",
     category: "评测",
     text: "CMB Comprehensive Medical Benchmark Chinese 中文医学 benchmark 医学考试 临床咨询 本土语境 中医",
+  },
+  {
+    title: "Long-tailed-MedQA",
+    url: "benchmark-long-tailed-medqa.html",
+    category: "评测",
+    text: "Long-tailed-MedQA long tail rare disease rare diseases medical QA benchmark 罕见病 长尾问题 医学问答 鉴别诊断 风险提示",
+  },
+  {
+    title: "Med-X",
+    url: "benchmark-med-x.html",
+    category: "评测",
+    text: "Med-X omni-modal multimodal medical prediction benchmark 超多模态 文本 影像 病理 检验 组学 波形 EHR 预测任务 风险分层 预后预测",
   },
   {
     title: "众包平台",
@@ -276,6 +302,66 @@ const seedPosts = [
     favorites: 19,
     pinned: false,
     tags: ["ethics", "aiHealthcare"],
+  },
+  {
+    id: "seed-career-recruitment",
+    title: "医学 AI 项目实习和招聘应该写清哪些信息？",
+    category: "career",
+    dept: "实习 / 招聘 / 合作",
+    body: "建议说明岗位方向、远程或线下要求、导师或团队、时间投入、技能栈、数据合规边界和申请方式，避免只写泛泛的招募口号。",
+    author: "社区招聘组",
+    createdAt: "2026-06-10T18:20:00+08:00",
+    replies: 6,
+    views: 186,
+    likes: 14,
+    favorites: 9,
+    pinned: false,
+    tags: ["career", "aiHealthcare"],
+  },
+  {
+    id: "seed-research-industry-collab",
+    title: "医院和企业做医学 AI 试点合作前要对齐哪些边界？",
+    category: "collaboration",
+    dept: "科研合作 / 产业转化",
+    body: "建议先明确临床场景、数据授权、伦理审批、评测指标、试点周期、知识产权、发表计划和退出机制，再进入产品验证。",
+    author: "产学研合作组",
+    createdAt: "2026-06-09T14:10:00+08:00",
+    replies: 8,
+    views: 228,
+    likes: 18,
+    favorites: 11,
+    pinned: false,
+    tags: ["collaboration", "aiHealthcare"],
+  },
+  {
+    id: "seed-model-selection",
+    title: "医学场景选通用模型还是专科模型？",
+    category: "model",
+    dept: "模型 / Benchmark",
+    body: "可以从任务风险、证据引用、中文医学能力、多模态输入、工具调用、部署成本和人工复核流程几个维度比较。",
+    author: "模型评测组",
+    createdAt: "2026-06-08T16:45:00+08:00",
+    replies: 11,
+    views: 302,
+    likes: 22,
+    favorites: 14,
+    pinned: false,
+    tags: ["model", "medicalLLM", "agent"],
+  },
+  {
+    id: "seed-policy-ai-hospital",
+    title: "医疗 AI 产品进入医院前，政策和合规要先看什么？",
+    category: "policy",
+    dept: "政策解读 / 医院治理",
+    body: "建议固定梳理医疗器械属性、算法备案、数据安全、患者告知、医生责任、采购流程和持续监测要求。",
+    author: "政策解读组",
+    createdAt: "2026-06-07T10:30:00+08:00",
+    replies: 10,
+    views: 256,
+    likes: 20,
+    favorites: 13,
+    pinned: false,
+    tags: ["policy", "ethics", "aiHealthcare"],
   },
 ];
 
@@ -660,7 +746,7 @@ function wireForum() {
       acc[post.category] = (acc[post.category] || 0) + 1;
       return acc;
     }, { all: 0 });
-    const ids = { all: "countAll", clinical: "countClinical", guideline: "countGuideline", research: "countResearch", tool: "countTool", ethics: "countEthics" };
+    const ids = { all: "countAll", clinical: "countClinical", guideline: "countGuideline", research: "countResearch", tool: "countTool", ethics: "countEthics", career: "countCareer", collaboration: "countCollaboration", model: "countModel", policy: "countPolicy" };
     Object.entries(ids).forEach(([key, id]) => {
       const node = document.querySelector(`#${id}`);
       if (node) node.textContent = counts[key] || 0;
