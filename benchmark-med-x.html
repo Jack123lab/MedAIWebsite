@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Med-X | Freedom AI Benchmark</title>
+    <meta name="description" content="Med-X 医学 AI benchmark 详情页，聚焦文本、影像、病理、检验、组学、波形和时序 EHR 的超多模态预测任务。" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <script src="assets/js/main.js" defer></script>
+  </head>
+  <body class="benchmark-detail-page">
+    <header class="site-header">
+      <nav class="nav" aria-label="主导航">
+        <a class="brand" href="index.html"><span class="brand-mark">F</span><span class="brand-text"><strong>Freedom AI</strong><span>医学 AI 社区</span></span></a>
+        <form class="site-search" role="search" action="search.html" method="get" aria-label="站内搜索">
+          <label class="sr-only" for="siteSearchInput">搜索</label>
+          <input id="siteSearchInput" name="q" type="search" placeholder="搜索" autocomplete="off" />
+          <button type="submit">搜索</button>
+        </form>
+        <div class="nav-links">
+          <a href="index.html">首页</a>
+          <a href="learning.html">内容</a>
+          <a href="network.html">社区</a>
+          <a href="community.html">讨论区</a>
+          <a href="datasets.html">数据集</a>
+          <a href="tools.html">工具库</a>
+          <a href="benchmark.html">Benchmark</a>
+          <a href="crowdsourcing.html">众包平台</a>
+          <a href="blog.html">Blog</a>
+          <a href="profile.html">用户</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="page-title">
+        <div class="container">
+          <p class="eyebrow">Omni-modal Prediction</p>
+          <h1>Med-X</h1>
+          <p>面向超多模态医学场景的预测任务集合，把临床文本、医学影像、病理切片、检验指标、组学、波形信号和时序 EHR 放进同一评测框架。</p>
+          <div class="benchmark-detail-meta">
+            <span>text + imaging</span>
+            <span>pathology + labs</span>
+            <span>omics + waveform</span>
+            <span>prediction tasks</span>
+          </div>
+          <div class="button-row">
+            <a class="btn primary" href="datasets.html">关联数据集</a>
+            <a class="btn" href="benchmark.html">返回 Benchmark</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section compact">
+        <div class="container benchmark-detail-grid">
+          <article class="benchmark-detail-card">
+            <span>01</span>
+            <h2>评测目标</h2>
+            <p>Med-X 用预测任务检验模型能否真正融合多源医学信号，而不是只依赖文本摘要或单一模态捷径。</p>
+            <dl><dt>输入</dt><dd>病历文本、放射影像、病理图像、检验表格、组学特征、生命体征波形和时序记录。</dd><dt>输出</dt><dd>诊断辅助、风险分层、预后预测、治疗反应预测或再入院风险。</dd></dl>
+          </article>
+          <article class="benchmark-detail-card">
+            <span>02</span>
+            <h2>任务结构</h2>
+            <ul class="benchmark-detail-list">
+              <li><strong>跨模态预测</strong>要求模型同时利用文本、图像、表格和时间序列特征。</li>
+              <li><strong>缺失模态鲁棒性</strong>测试部分模态缺失、质量较差或采集时间不一致时的表现。</li>
+              <li><strong>临床可解释性</strong>要求输出关键证据、模态贡献和可能的偏差来源。</li>
+            </ul>
+          </article>
+          <article class="benchmark-detail-card">
+            <span>03</span>
+            <h2>指标设计</h2>
+            <p>除了 AUROC、AUPRC 和校准误差，Med-X 也关注模型在不同医院、不同设备、不同人群切片上的稳定性。</p>
+            <dl><dt>核心</dt><dd>AUROC、AUPRC、calibration、decision curve、missing-modality robustness。</dd><dt>风险</dt><dd>单模态捷径、跨域失效、亚群体不公平、对低质量图像或异常波形过度自信。</dd></dl>
+          </article>
+          <article class="benchmark-detail-card">
+            <span>04</span>
+            <h2>站内落地</h2>
+            <p>适合和数据集模块联动，把多模态样例、脱敏规则、提交格式、模型报告和医生复核结果一起沉淀。</p>
+            <ul class="benchmark-detail-list">
+              <li><strong>数据组织</strong>按患者级样本统一索引多模态文件和结构化字段。</li>
+              <li><strong>提交规范</strong>保留预测分数、解释证据、使用模态和失败样例。</li>
+              <li><strong>榜单切片</strong>按任务、模态组合、医院来源、时间跨度和人群亚组展示。</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="section compact alt-band">
+        <div class="container">
+          <article class="benchmark-detail-source">
+            <h2>后续扩展</h2>
+            <p>后续可以从影像报告、ICU 时序、病理切片和检验指标开始拆分子任务，再逐步合并为超多模态综合 leaderboard。</p>
+            <div class="button-row"><a class="btn primary" href="datasets.html">浏览数据集</a><a class="btn" href="crowdsourcing.html">发布复核任务</a></div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer"><div class="container footer-grid"><div><h3>Freedom AI</h3><p>Benchmark 关注准确性、证据、鲁棒性和安全边界。</p></div><div><h4>资源</h4><a href="datasets.html">数据集</a><a href="tools.html">工具库</a></div><div><h4>众包</h4><a href="crowdsourcing.html">评测任务</a></div><div><h4>学习</h4><a href="learning.html">教学</a></div></div></footer>
+  </body>
+</html>

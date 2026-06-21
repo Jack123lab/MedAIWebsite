@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Long-tailed-MedQA | Freedom AI Benchmark</title>
+    <meta name="description" content="Long-tailed-MedQA 医学 AI benchmark 详情页，聚焦罕见病、低频症状和长尾临床问题问答评测。" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <script src="assets/js/main.js" defer></script>
+  </head>
+  <body class="benchmark-detail-page">
+    <header class="site-header">
+      <nav class="nav" aria-label="主导航">
+        <a class="brand" href="index.html"><span class="brand-mark">F</span><span class="brand-text"><strong>Freedom AI</strong><span>医学 AI 社区</span></span></a>
+        <form class="site-search" role="search" action="search.html" method="get" aria-label="站内搜索">
+          <label class="sr-only" for="siteSearchInput">搜索</label>
+          <input id="siteSearchInput" name="q" type="search" placeholder="搜索" autocomplete="off" />
+          <button type="submit">搜索</button>
+        </form>
+        <div class="nav-links">
+          <a href="index.html">首页</a>
+          <a href="learning.html">内容</a>
+          <a href="network.html">社区</a>
+          <a href="community.html">讨论区</a>
+          <a href="datasets.html">数据集</a>
+          <a href="tools.html">工具库</a>
+          <a href="benchmark.html">Benchmark</a>
+          <a href="crowdsourcing.html">众包平台</a>
+          <a href="blog.html">Blog</a>
+          <a href="profile.html">用户</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="page-title">
+        <div class="container">
+          <p class="eyebrow">Long-tail Medical QA</p>
+          <h1>Long-tailed-MedQA</h1>
+          <p>面向罕见病、低频症状、少见检查组合和容易被忽略的长尾临床问题，构建更能暴露模型知识盲区与安全风险的医学问答 benchmark。</p>
+          <div class="benchmark-detail-meta">
+            <span>rare diseases</span>
+            <span>long-tail symptoms</span>
+            <span>differential diagnosis</span>
+            <span>safety review</span>
+          </div>
+          <div class="button-row">
+            <a class="btn primary" href="crowdsourcing.html">发起专家标注</a>
+            <a class="btn" href="benchmark.html">返回 Benchmark</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section compact">
+        <div class="container benchmark-detail-grid">
+          <article class="benchmark-detail-card">
+            <span>01</span>
+            <h2>评测目标</h2>
+            <p>常规医学问答容易集中在高频疾病和标准考试题。Long-tailed-MedQA 专门拉出低频、复杂和容易误判的问题，评估模型在真实临床长尾场景中的稳健性。</p>
+            <dl><dt>输入</dt><dd>罕见病表现、非典型症状、复杂病史、检查结果和患者追问。</dd><dt>输出</dt><dd>回答、鉴别诊断、下一步建议、证据依据和明确的不确定性提示。</dd></dl>
+          </article>
+          <article class="benchmark-detail-card">
+            <span>02</span>
+            <h2>任务结构</h2>
+            <ul class="benchmark-detail-list">
+              <li><strong>罕见病问答</strong>考察模型是否知道少见疾病的关键线索、危险信号和转诊建议。</li>
+              <li><strong>长尾症状推理</strong>用非典型主诉测试模型是否过早收敛到常见病。</li>
+              <li><strong>证据与边界</strong>要求回答说明依据、不能确定的部分，以及何时需要人工医生介入。</li>
+            </ul>
+          </article>
+          <article class="benchmark-detail-card">
+            <span>03</span>
+            <h2>指标设计</h2>
+            <p>除准确率外，更关注模型是否漏掉危险诊断、是否给出误导性安慰、是否在证据不足时过度自信。</p>
+            <dl><dt>核心</dt><dd>answer accuracy、differential coverage、evidence completeness、uncertainty calibration。</dd><dt>风险</dt><dd>漏诊、错误用药建议、延误就医、对罕见病症状的幻觉解释。</dd></dl>
+          </article>
+          <article class="benchmark-detail-card">
+            <span>04</span>
+            <h2>站内落地</h2>
+            <p>适合连接众包平台，由医生、医学生和疾病领域专家共同审核题目、标准答案和高风险错误类型。</p>
+            <ul class="benchmark-detail-list">
+              <li><strong>题目来源</strong>病例讨论、罕见病指南、患者教育材料和专家自拟题。</li>
+              <li><strong>审核流程</strong>每题保留来源、版本、标注人和复核记录。</li>
+              <li><strong>榜单切片</strong>按疾病系统、症状类型、证据等级和风险等级展示结果。</li>
+            </ul>
+          </article>
+        </div>
+      </section>
+
+      <section class="section compact alt-band">
+        <div class="container">
+          <article class="benchmark-detail-source">
+            <h2>后续扩展</h2>
+            <p>后续可以补充数据下载、提交格式、医生基线和公开 leaderboard，让长尾医学问答从题库逐步变成可复查、可复现的社区评测任务。</p>
+            <div class="button-row"><a class="btn primary" href="crowdsourcing.html">发布众包任务</a><a class="btn" href="datasets.html">关联数据集</a></div>
+          </article>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer"><div class="container footer-grid"><div><h3>Freedom AI</h3><p>Benchmark 关注准确性、证据、鲁棒性和安全边界。</p></div><div><h4>资源</h4><a href="datasets.html">数据集</a><a href="tools.html">工具库</a></div><div><h4>众包</h4><a href="crowdsourcing.html">评测任务</a></div><div><h4>学习</h4><a href="learning.html">教学</a></div></div></footer>
+  </body>
+</html>

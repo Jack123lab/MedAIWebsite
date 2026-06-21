@@ -33,7 +33,7 @@ const siteNavItems = [
   { href: "community.html", label: "讨论区", active: ["community.html", "clinician-discussion.html"] },
   { href: "datasets.html", label: "数据集", active: ["datasets.html"] },
   { href: "tools.html", label: "工具库", active: ["tools.html", "demos.html", "datasets-tools.html"] },
-  { href: "benchmark.html", label: "Benchmark", active: ["benchmark.html", "benchmark-gdb.html", "benchmark-liveclin.html", "benchmark-healthbench-tcm.html", "benchmark-doctors-last-exam.html", "benchmark-cmb.html"] },
+  { href: "benchmark.html", label: "Benchmark", active: ["benchmark.html", "benchmark-gdb.html", "benchmark-liveclin.html", "benchmark-healthbench-tcm.html", "benchmark-doctors-last-exam.html", "benchmark-cmb.html", "benchmark-long-tailed-medqa.html", "benchmark-med-x.html"] },
   { href: "crowdsourcing.html", label: "众包平台", active: ["crowdsourcing.html"] },
   { href: "blog.html", label: "Blog", active: ["blog.html"] },
   { href: "profile.html", label: "用户", active: ["profile.html", "auth.html", "doctor.html"] },
@@ -168,6 +168,18 @@ const siteSearchIndex = [
     url: "benchmark-cmb.html",
     category: "评测",
     text: "CMB Comprehensive Medical Benchmark Chinese 中文医学 benchmark 医学考试 临床咨询 本土语境 中医",
+  },
+  {
+    title: "Long-tailed-MedQA",
+    url: "benchmark-long-tailed-medqa.html",
+    category: "评测",
+    text: "Long-tailed-MedQA long tail rare disease rare diseases medical QA benchmark 罕见病 长尾问题 医学问答 鉴别诊断 风险提示",
+  },
+  {
+    title: "Med-X",
+    url: "benchmark-med-x.html",
+    category: "评测",
+    text: "Med-X omni-modal multimodal medical prediction benchmark 超多模态 文本 影像 病理 检验 组学 波形 EHR 预测任务 风险分层 预后预测",
   },
   {
     title: "众包平台",
