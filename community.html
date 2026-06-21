@@ -38,19 +38,20 @@
           <div class="discussion-entry-copy">
             <p class="eyebrow">讨论区</p>
             <h1>讨论区目录与问答流</h1>
-            <p>Reddit-like 的医学 AI 讨论入口，保留问答、论文、工具、产品发布和成果发布的专业目录，并把问答流作为当前主入口。</p>
+            <p>Reddit-like 的医学 AI 讨论入口，保留问答、论文、工具、产品发布、成果发布、实习和招聘的专业目录，并把问答流作为当前主入口。</p>
             <nav class="discussion-mini-nav" aria-label="讨论区目录">
               <a class="active" href="community.html">问答区</a>
               <a href="research.html">论文</a>
               <a href="tools.html">工具</a>
               <a href="datasets-tools.html">产品</a>
               <a href="crowdsourcing.html">成果</a>
+              <a href="#internship-recruitment">实习和招聘</a>
             </nav>
           </div>
           <div class="discussion-entry-actions">
             <div class="forum-hero-stats" aria-label="社区概览">
               <span><strong>8</strong> 科室板块</span>
-              <span><strong>5</strong> 讨论类型</span>
+              <span><strong>6</strong> 讨论类型</span>
               <span><strong>72h</strong> 热帖周期</span>
             </div>
             <div class="quick-publish-row" aria-label="发布快捷入口">
@@ -109,6 +110,7 @@
               <button class="type-chip" type="button" data-forum-filter="ethics"><strong>医疗伦理评论</strong><span>脱敏授权、审计记录、责任边界</span></button>
               <button class="type-chip" type="button" data-forum-filter="clinical"><strong>科室病例</strong><span>按专科问题进入临床讨论</span></button>
               <button class="type-chip" type="button" data-forum-filter="guideline"><strong>指南问答</strong><span>证据来源、适用人群、推荐等级</span></button>
+              <button class="type-chip" type="button" data-forum-filter="career"><strong>实习和招聘</strong><span>实验室、医院、企业与项目协作机会</span></button>
             </div>
           </section>
           <section class="forum-channel-panel credential-channel">
@@ -137,6 +139,7 @@
                 <button class="board-link" type="button" data-forum-filter="research"><span>科研设计</span><strong id="countResearch">0</strong></button>
                 <button class="board-link" type="button" data-forum-filter="tool"><span>工具经验</span><strong id="countTool">0</strong></button>
                 <button class="board-link" type="button" data-forum-filter="ethics"><span>合规伦理</span><strong id="countEthics">0</strong></button>
+                <button class="board-link" type="button" data-forum-filter="career"><span>实习和招聘</span><strong id="countCareer">0</strong></button>
               </nav>
             </section>
 
@@ -200,6 +203,25 @@
         </div>
       </section>
 
+      <section id="internship-recruitment" class="section compact alt-band community-protected" aria-label="实习和招聘">
+        <div class="container">
+          <div class="section-head clean">
+            <div>
+              <p class="eyebrow">Internship & Hiring</p>
+              <h2>实习和招聘</h2>
+              <p>发布医学 AI 方向的实习、科研助理、工程开发、产品运营和医院合作岗位，也可以把招募帖同步到讨论流继续问答。</p>
+            </div>
+            <a class="btn primary" href="#postForm" data-quick-post>发布招募帖</a>
+          </div>
+          <div class="clinical-cards">
+            <article class="clinical-card"><span>Intern</span><h3>学生实习</h3><p>医学 AI、数据治理、内容整理、Benchmark 复现和社区运营方向，适合本科生、硕士和医学生参与。</p><a href="#postForm" data-quick-post>发布实习机会</a></article>
+            <article class="clinical-card"><span>Research</span><h3>科研助理 / RA</h3><p>参与论文复现、临床证据整理、评测集构建、医生访谈和多中心协作材料准备。</p><a href="#postForm" data-quick-post>发布科研岗位</a></article>
+            <article class="clinical-card"><span>Engineering</span><h3>AI 工程与产品</h3><p>招募前端、后端、Agent、RAG、MCP、数据平台、产品经理和临床转化运营伙伴。</p><a href="#postForm" data-quick-post>发布工程岗位</a></article>
+            <article class="clinical-card"><span>Hospital</span><h3>医院与机构合作</h3><p>面向医院科室、研究院、企业和公益机构，收集试点合作、联合课题和真实场景验证机会。</p><a href="about.html#recruitment-title">查看加入方式</a></article>
+          </div>
+        </div>
+      </section>
+
       <section class="section compact dept-forum-section community-protected" aria-label="按科室进入论坛">
         <div class="container">
           <div class="section-head clean">
@@ -246,7 +268,7 @@
         <form id="newPostForm" class="post-form">
           <label>标题<input id="postTitle" type="text" maxlength="80" placeholder="例如：这个工具在心内科问答中如何验证可靠性？" required /></label>
           <div class="form-split">
-            <label>版块<select id="postCategory" required><option value="clinical">临床文本</option><option value="guideline">指南问答</option><option value="research">科研设计</option><option value="tool">工具经验</option><option value="ethics">合规伦理</option></select></label>
+            <label>版块<select id="postCategory" required><option value="clinical">临床文本</option><option value="guideline">指南问答</option><option value="research">科研设计</option><option value="tool">工具经验</option><option value="ethics">合规伦理</option><option value="career">实习和招聘</option></select></label>
             <label>科室/领域<input id="postDept" type="text" maxlength="30" placeholder="如心内科、肿瘤、影像" /></label>
           </div>
           <label>正文<textarea id="postBody" rows="7" maxlength="1200" placeholder="请描述问题背景、已尝试方法、希望获得的帮助。请勿输入患者可识别信息。" required></textarea></label>

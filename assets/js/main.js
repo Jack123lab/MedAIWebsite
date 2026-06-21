@@ -10,6 +10,7 @@ const categoryLabels = {
   research: "科研设计",
   tool: "工具经验",
   ethics: "合规伦理",
+  career: "实习和招聘",
 };
 
 const forumTagLabels = {
@@ -19,6 +20,7 @@ const forumTagLabels = {
   tool: "Tools",
   research: "Research",
   ethics: "Governance",
+  career: "Internship & Hiring",
   clinician: "医生/医学生",
   medicalLLM: "Medical LLMs",
   agent: "Agent",
@@ -113,7 +115,7 @@ const siteSearchIndex = [
     title: "讨论区",
     url: "community.html",
     category: "社区",
-    text: "讨论区 病例 指南 问答 临床文本 科研设计 工具经验 合规伦理 医生 医学生 认证",
+    text: "讨论区 病例 指南 问答 临床文本 科研设计 工具经验 合规伦理 实习 招聘 实习招聘 医生 医学生 认证",
   },
   {
     title: "数据集",
@@ -288,6 +290,21 @@ const seedPosts = [
     favorites: 19,
     pinned: false,
     tags: ["ethics", "aiHealthcare"],
+  },
+  {
+    id: "seed-career-recruitment",
+    title: "医学 AI 项目实习和招聘应该写清哪些信息？",
+    category: "career",
+    dept: "实习 / 招聘 / 合作",
+    body: "建议说明岗位方向、远程或线下要求、导师或团队、时间投入、技能栈、数据合规边界和申请方式，避免只写泛泛的招募口号。",
+    author: "社区招聘组",
+    createdAt: "2026-06-10T18:20:00+08:00",
+    replies: 6,
+    views: 186,
+    likes: 14,
+    favorites: 9,
+    pinned: false,
+    tags: ["career", "aiHealthcare"],
   },
 ];
 
@@ -672,7 +689,7 @@ function wireForum() {
       acc[post.category] = (acc[post.category] || 0) + 1;
       return acc;
     }, { all: 0 });
-    const ids = { all: "countAll", clinical: "countClinical", guideline: "countGuideline", research: "countResearch", tool: "countTool", ethics: "countEthics" };
+    const ids = { all: "countAll", clinical: "countClinical", guideline: "countGuideline", research: "countResearch", tool: "countTool", ethics: "countEthics", career: "countCareer" };
     Object.entries(ids).forEach(([key, id]) => {
       const node = document.querySelector(`#${id}`);
       if (node) node.textContent = counts[key] || 0;
