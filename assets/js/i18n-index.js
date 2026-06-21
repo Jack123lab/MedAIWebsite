@@ -1,6 +1,27 @@
 (() => {
   const storageKey = "medaiHomeLanguage";
-  const supportedLanguages = ["zh", "en", "ar"];
+  const languageOptions = [
+    { code: "zh", short: "中文", native: "中文", english: "Chinese", htmlLang: "zh-CN", dir: "ltr" },
+    { code: "en", short: "EN", native: "English", english: "English", htmlLang: "en", dir: "ltr" },
+    { code: "ar", short: "AR", native: "العربية", english: "Arabic", htmlLang: "ar", dir: "rtl" },
+    { code: "es", short: "ES", native: "Español", english: "Spanish", htmlLang: "es", dir: "ltr" },
+    { code: "fr", short: "FR", native: "Français", english: "French", htmlLang: "fr", dir: "ltr" },
+    { code: "de", short: "DE", native: "Deutsch", english: "German", htmlLang: "de", dir: "ltr" },
+    { code: "ja", short: "日本語", native: "日本語", english: "Japanese", htmlLang: "ja", dir: "ltr" },
+    { code: "ko", short: "한국어", native: "한국어", english: "Korean", htmlLang: "ko", dir: "ltr" },
+    { code: "ru", short: "RU", native: "Русский", english: "Russian", htmlLang: "ru", dir: "ltr" },
+    { code: "pt", short: "PT", native: "Português", english: "Portuguese", htmlLang: "pt", dir: "ltr" },
+    { code: "hi", short: "HI", native: "हिन्दी", english: "Hindi", htmlLang: "hi", dir: "ltr" },
+    { code: "id", short: "ID", native: "Bahasa Indonesia", english: "Indonesian", htmlLang: "id", dir: "ltr" },
+    { code: "vi", short: "VI", native: "Tiếng Việt", english: "Vietnamese", htmlLang: "vi", dir: "ltr" },
+    { code: "th", short: "TH", native: "ไทย", english: "Thai", htmlLang: "th", dir: "ltr" },
+    { code: "tr", short: "TR", native: "Türkçe", english: "Turkish", htmlLang: "tr", dir: "ltr" },
+    { code: "fa", short: "FA", native: "فارسی", english: "Persian", htmlLang: "fa", dir: "rtl" },
+    { code: "it", short: "IT", native: "Italiano", english: "Italian", htmlLang: "it", dir: "ltr" },
+    { code: "nl", short: "NL", native: "Nederlands", english: "Dutch", htmlLang: "nl", dir: "ltr" },
+  ];
+  const supportedLanguages = languageOptions.map((language) => language.code);
+  const languageMeta = Object.fromEntries(languageOptions.map((language) => [language.code, language]));
 
   const translations = {
     zh: {
@@ -22,6 +43,7 @@
         "tools.html": "工具库",
         "benchmark.html": "Benchmark",
         "crowdsourcing.html": "众包平台",
+        "blog.html": "博客",
         "profile.html": "用户",
       },
       newsSectionLabel: "新闻滚动图片栏",
@@ -136,6 +158,7 @@
         "tools.html": "Tools",
         "benchmark.html": "Benchmark",
         "crowdsourcing.html": "Crowdsourcing",
+        "blog.html": "Blog",
         "profile.html": "Profile",
       },
       newsSectionLabel: "News carousel",
@@ -250,6 +273,7 @@
         "tools.html": "الأدوات",
         "benchmark.html": "Benchmark",
         "crowdsourcing.html": "التعهيد الجماعي",
+        "blog.html": "المدونة",
         "profile.html": "الملف الشخصي",
       },
       newsSectionLabel: "شريط الأخبار",
@@ -347,6 +371,391 @@
     },
   };
 
+  function mergeTranslation(base, override) {
+    if (!override || typeof override !== "object" || Array.isArray(override)) return override ?? base;
+    const merged = { ...base };
+    Object.entries(override).forEach(([key, value]) => {
+      if (value && typeof value === "object" && !Array.isArray(value) && typeof value !== "function") {
+        merged[key] = mergeTranslation(base?.[key] || {}, value);
+        return;
+      }
+      merged[key] = value;
+    });
+    return merged;
+  }
+
+  const compactTranslations = {
+    es: {
+      title: "Freedom AI | Noticias de IA médica y agente",
+      description: "La página de Freedom AI reúne noticias de IA médica y un compositor de Agent para consultar novedades y hacer preguntas rápidamente.",
+      navLabel: "Navegación principal",
+      brandSubtitle: "Comunidad de IA médica",
+      searchLabel: "Buscar en el sitio",
+      searchPlaceholder: "Buscar",
+      searchButton: "Buscar",
+      nav: { "index.html": "Inicio", "learning.html": "Contenido", "network.html": "Comunidad", "community.html": "Foro", "datasets.html": "Datos", "tools.html": "Herramientas", "benchmark.html": "Benchmark", "crowdsourcing.html": "Colaboración", "blog.html": "Blog", "profile.html": "Perfil" },
+      previousNews: "Noticia anterior",
+      nextNews: "Noticia siguiente",
+      newsPosition: "Posición de noticias",
+      newsDot: (index) => `Noticia ${index + 1}`,
+      detail: "Ver detalles →",
+      agentSectionLabel: "Compositor del agente",
+      agentInputLabel: "Escribe una pregunta",
+      agentPlaceholder: "Enviar mensaje a Freedom AI",
+      modelMenuLabel: "Elegir modelo",
+      sendLabel: "Enviar",
+      answerHint: "Escribe una pregunta y pulsa Enter para empezar.",
+      publishCase: "Publicar este caso en el foro",
+      caseDialog: { close: "Cerrar ventana de publicación", title: "Publicar este caso en el foro", intro: "El sistema organizará el contenido como una plantilla de caso desidentificado.", privacy: "Confirmo que el caso está desidentificado y puede usarse para discusión comunitaria", dept: "Departamento / campo", category: "Tipo de material", files: "Archivos complementarios", note: "Notas adicionales", previewTitle: "Plantilla para confirmar", previewButton: "Preparar plantilla", cancel: "Cancelar", submit: "Confirmar y publicar" },
+      footer: { intro: "Noticias, herramientas y comunidad de IA médica.", institutions: "Instituciones", institutionRail: "Carrusel de logos institucionales", license: "Licencia", contact: "Contacto", contactLink: "Contacto: ydexiang1@gmail.com", subscribe: "Actualizaciones por correo" },
+    },
+    fr: {
+      title: "Freedom AI | Actualités IA médicale et agent",
+      description: "La page Freedom AI regroupe un carrousel d'actualités en IA médicale et un agent pour poser rapidement des questions.",
+      navLabel: "Navigation principale",
+      brandSubtitle: "Communauté d'IA médicale",
+      searchLabel: "Recherche sur le site",
+      searchPlaceholder: "Rechercher",
+      searchButton: "Rechercher",
+      nav: { "index.html": "Accueil", "learning.html": "Contenu", "network.html": "Communauté", "community.html": "Forum", "datasets.html": "Jeux de données", "tools.html": "Outils", "benchmark.html": "Benchmark", "crowdsourcing.html": "Contribution", "blog.html": "Blog", "profile.html": "Profil" },
+      previousNews: "Actualité précédente",
+      nextNews: "Actualité suivante",
+      newsPosition: "Position des actualités",
+      newsDot: (index) => `Actualité ${index + 1}`,
+      detail: "Voir les détails →",
+      agentSectionLabel: "Agent",
+      agentInputLabel: "Saisir une question",
+      agentPlaceholder: "Envoyer un message à Freedom AI",
+      modelMenuLabel: "Choisir un modèle",
+      sendLabel: "Envoyer",
+      answerHint: "Tapez une question puis appuyez sur Entrée.",
+      publishCase: "Publier ce cas dans le forum",
+      caseDialog: { close: "Fermer la fenêtre de publication", title: "Publier ce cas dans le forum", intro: "Le système préparera le contenu sous forme de cas désidentifié.", privacy: "Je confirme que ce cas est désidentifié et peut être discuté par la communauté", dept: "Service / domaine", category: "Type de contenu", files: "Fichiers complémentaires", note: "Notes supplémentaires", previewTitle: "Modèle à confirmer", previewButton: "Préparer le modèle", cancel: "Annuler", submit: "Confirmer et publier" },
+      footer: { intro: "Actualités, outils et communauté pour l'IA médicale.", institutions: "Institutions", institutionRail: "Carrousel de logos institutionnels", license: "Licence", contact: "Contact", contactLink: "Contact : ydexiang1@gmail.com", subscribe: "Mises à jour par e-mail" },
+    },
+    de: {
+      title: "Freedom AI | Medizinische KI-News und Agent",
+      description: "Freedom AI bündelt medizinische KI-News und einen Agent-Komponisten für schnelle Fragen und Updates.",
+      navLabel: "Hauptnavigation",
+      brandSubtitle: "Community für medizinische KI",
+      searchLabel: "Seitensuche",
+      searchPlaceholder: "Suchen",
+      searchButton: "Suchen",
+      nav: { "index.html": "Start", "learning.html": "Inhalte", "network.html": "Community", "community.html": "Forum", "datasets.html": "Datensätze", "tools.html": "Tools", "benchmark.html": "Benchmark", "crowdsourcing.html": "Crowdsourcing", "blog.html": "Blog", "profile.html": "Profil" },
+      previousNews: "Vorherige Meldung",
+      nextNews: "Nächste Meldung",
+      newsPosition: "Nachrichtenposition",
+      newsDot: (index) => `Meldung ${index + 1}`,
+      detail: "Details ansehen →",
+      agentSectionLabel: "Agent-Eingabe",
+      agentInputLabel: "Frage eingeben",
+      agentPlaceholder: "Nachricht an Freedom AI",
+      modelMenuLabel: "Modell auswählen",
+      sendLabel: "Senden",
+      answerHint: "Frage eingeben und Enter drücken.",
+      publishCase: "Diesen Fall im Forum veröffentlichen",
+      caseDialog: { close: "Veröffentlichungsfenster schließen", title: "Diesen Fall im Forum veröffentlichen", intro: "Das System bereitet den Inhalt als de-identifizierte Falldiskussion vor.", privacy: "Ich bestätige, dass der Fall de-identifiziert ist", dept: "Abteilung / Fachgebiet", category: "Materialtyp", files: "Zusatzdateien", note: "Zusätzliche Notizen", previewTitle: "Vorlage prüfen", previewButton: "Vorlage vorbereiten", cancel: "Abbrechen", submit: "Bestätigen und veröffentlichen" },
+      footer: { intro: "Medizinische KI-News, Tools und Community-Zugänge.", institutions: "Institutionen", institutionRail: "Logo-Karussell der Institutionen", license: "Lizenz", contact: "Kontakt", contactLink: "Kontakt: ydexiang1@gmail.com", subscribe: "E-Mail-Updates" },
+    },
+    ja: {
+      title: "Freedom AI | 医療AIニュースとエージェント",
+      description: "Freedom AI は医療AIニュースのカルーセルと Agent 入力欄をまとめ、最新情報と質問にすばやくアクセスできます。",
+      navLabel: "メインナビゲーション",
+      brandSubtitle: "医療AIコミュニティ",
+      searchLabel: "サイト内検索",
+      searchPlaceholder: "検索",
+      searchButton: "検索",
+      nav: { "index.html": "ホーム", "learning.html": "コンテンツ", "network.html": "コミュニティ", "community.html": "フォーラム", "datasets.html": "データセット", "tools.html": "ツール", "benchmark.html": "Benchmark", "crowdsourcing.html": "クラウド協力", "blog.html": "ブログ", "profile.html": "プロフィール" },
+      previousNews: "前のニュース",
+      nextNews: "次のニュース",
+      newsPosition: "ニュース位置",
+      newsDot: (index) => `ニュース ${index + 1}`,
+      detail: "詳細を見る →",
+      agentSectionLabel: "Agent 入力欄",
+      agentInputLabel: "質問を入力",
+      agentPlaceholder: "Freedom AI にメッセージ",
+      modelMenuLabel: "モデルを選択",
+      sendLabel: "送信",
+      answerHint: "質問を入力して Enter を押してください。",
+      publishCase: "このケースをフォーラムに投稿",
+      caseDialog: { close: "投稿ウィンドウを閉じる", title: "このケースをフォーラムに投稿", intro: "内容は匿名化されたケース討論テンプレートとして整理されます。", privacy: "このケースが匿名化され、コミュニティ討論に使えることを確認します", dept: "診療科 / 分野", category: "資料タイプ", files: "補足資料", note: "補足メモ", previewTitle: "確認用テンプレート", previewButton: "テンプレート作成", cancel: "キャンセル", submit: "確認して投稿" },
+      footer: { intro: "医療AIニュース、ツール、コミュニティ入口。", institutions: "機関", institutionRail: "機関ロゴ一覧", license: "ライセンス", contact: "連絡先", contactLink: "連絡先: ydexiang1@gmail.com", subscribe: "メール更新" },
+    },
+    ko: {
+      title: "Freedom AI | 의료 AI 뉴스와 에이전트",
+      description: "Freedom AI는 의료 AI 뉴스와 Agent 입력창을 제공해 최신 소식과 모델 질문을 빠르게 확인할 수 있습니다.",
+      navLabel: "기본 내비게이션",
+      brandSubtitle: "의료 AI 커뮤니티",
+      searchLabel: "사이트 검색",
+      searchPlaceholder: "검색",
+      searchButton: "검색",
+      nav: { "index.html": "홈", "learning.html": "콘텐츠", "network.html": "커뮤니티", "community.html": "포럼", "datasets.html": "데이터셋", "tools.html": "도구", "benchmark.html": "Benchmark", "crowdsourcing.html": "크라우드소싱", "blog.html": "블로그", "profile.html": "프로필" },
+      previousNews: "이전 뉴스",
+      nextNews: "다음 뉴스",
+      newsPosition: "뉴스 위치",
+      newsDot: (index) => `뉴스 ${index + 1}`,
+      detail: "자세히 보기 →",
+      agentSectionLabel: "Agent 입력창",
+      agentInputLabel: "질문 입력",
+      agentPlaceholder: "Freedom AI에 메시지 보내기",
+      modelMenuLabel: "모델 선택",
+      sendLabel: "보내기",
+      answerHint: "질문을 입력하고 Enter를 누르세요.",
+      publishCase: "이 사례를 포럼에 게시",
+      caseDialog: { close: "게시 창 닫기", title: "이 사례를 포럼에 게시", intro: "시스템은 내용을 비식별 사례 토론 템플릿으로 정리합니다.", privacy: "이 사례가 비식별 처리되어 커뮤니티 토론에 사용할 수 있음을 확인합니다", dept: "부서 / 분야", category: "자료 유형", files: "추가 자료", note: "추가 설명", previewTitle: "확인할 템플릿", previewButton: "템플릿 정리", cancel: "취소", submit: "확인 후 게시" },
+      footer: { intro: "의료 AI 뉴스, 도구, 커뮤니티 입구.", institutions: "기관", institutionRail: "기관 로고 목록", license: "라이선스", contact: "연락처", contactLink: "연락처: ydexiang1@gmail.com", subscribe: "이메일 업데이트" },
+    },
+    ru: {
+      title: "Freedom AI | Новости медицинского ИИ и агент",
+      description: "Freedom AI объединяет новости медицинского ИИ и поле Agent для быстрых вопросов и обновлений.",
+      navLabel: "Основная навигация",
+      brandSubtitle: "Сообщество медицинского ИИ",
+      searchLabel: "Поиск по сайту",
+      searchPlaceholder: "Поиск",
+      searchButton: "Поиск",
+      nav: { "index.html": "Главная", "learning.html": "Контент", "network.html": "Сообщество", "community.html": "Форум", "datasets.html": "Данные", "tools.html": "Инструменты", "benchmark.html": "Benchmark", "crowdsourcing.html": "Краудсорсинг", "blog.html": "Блог", "profile.html": "Профиль" },
+      previousNews: "Предыдущая новость",
+      nextNews: "Следующая новость",
+      newsPosition: "Позиция новости",
+      newsDot: (index) => `Новость ${index + 1}`,
+      detail: "Подробнее →",
+      agentSectionLabel: "Окно Agent",
+      agentInputLabel: "Введите вопрос",
+      agentPlaceholder: "Написать Freedom AI",
+      modelMenuLabel: "Выбрать модель",
+      sendLabel: "Отправить",
+      answerHint: "Введите вопрос и нажмите Enter.",
+      publishCase: "Опубликовать случай на форуме",
+      caseDialog: { close: "Закрыть окно публикации", title: "Опубликовать случай на форуме", intro: "Система оформит материал как деидентифицированный клинический случай.", privacy: "Подтверждаю, что случай деидентифицирован", dept: "Отделение / область", category: "Тип материала", files: "Дополнительные файлы", note: "Дополнительные заметки", previewTitle: "Шаблон для проверки", previewButton: "Подготовить шаблон", cancel: "Отмена", submit: "Подтвердить и опубликовать" },
+      footer: { intro: "Новости, инструменты и сообщество медицинского ИИ.", institutions: "Институции", institutionRail: "Карусель логотипов институций", license: "Лицензия", contact: "Контакт", contactLink: "Контакт: ydexiang1@gmail.com", subscribe: "E-mail обновления" },
+    },
+    pt: {
+      title: "Freedom AI | Notícias de IA médica e agente",
+      description: "A página Freedom AI reúne notícias de IA médica e um compositor Agent para atualizações e perguntas rápidas.",
+      navLabel: "Navegação principal",
+      brandSubtitle: "Comunidade de IA médica",
+      searchLabel: "Pesquisar no site",
+      searchPlaceholder: "Pesquisar",
+      searchButton: "Pesquisar",
+      nav: { "index.html": "Início", "learning.html": "Conteúdo", "network.html": "Comunidade", "community.html": "Fórum", "datasets.html": "Dados", "tools.html": "Ferramentas", "benchmark.html": "Benchmark", "crowdsourcing.html": "Colaboração", "blog.html": "Blog", "profile.html": "Perfil" },
+      previousNews: "Notícia anterior",
+      nextNews: "Próxima notícia",
+      newsPosition: "Posição da notícia",
+      newsDot: (index) => `Notícia ${index + 1}`,
+      detail: "Ver detalhes →",
+      agentSectionLabel: "Compositor do agente",
+      agentInputLabel: "Digite uma pergunta",
+      agentPlaceholder: "Enviar mensagem para Freedom AI",
+      modelMenuLabel: "Escolher modelo",
+      sendLabel: "Enviar",
+      answerHint: "Digite uma pergunta e pressione Enter.",
+      publishCase: "Publicar este caso no fórum",
+      caseDialog: { close: "Fechar janela de publicação", title: "Publicar este caso no fórum", intro: "O sistema organizará o conteúdo como um caso desidentificado.", privacy: "Confirmo que o caso está desidentificado", dept: "Departamento / área", category: "Tipo de material", files: "Arquivos complementares", note: "Notas adicionais", previewTitle: "Modelo para confirmar", previewButton: "Preparar modelo", cancel: "Cancelar", submit: "Confirmar e publicar" },
+      footer: { intro: "Notícias, ferramentas e comunidade de IA médica.", institutions: "Instituições", institutionRail: "Carrossel de logotipos institucionais", license: "Licença", contact: "Contato", contactLink: "Contato: ydexiang1@gmail.com", subscribe: "Atualizações por e-mail" },
+    },
+    hi: {
+      title: "Freedom AI | मेडिकल AI समाचार और एजेंट",
+      description: "Freedom AI मेडिकल AI समाचार और Agent कंपोजर को एक जगह रखता है ताकि अपडेट और प्रश्न जल्दी देखे जा सकें।",
+      navLabel: "मुख्य नेविगेशन",
+      brandSubtitle: "मेडिकल AI समुदाय",
+      searchLabel: "साइट खोज",
+      searchPlaceholder: "खोजें",
+      searchButton: "खोजें",
+      nav: { "index.html": "होम", "learning.html": "सामग्री", "network.html": "समुदाय", "community.html": "फोरम", "datasets.html": "डेटासेट", "tools.html": "टूल", "benchmark.html": "Benchmark", "crowdsourcing.html": "क्राउडसोर्सिंग", "blog.html": "ब्लॉग", "profile.html": "प्रोफाइल" },
+      previousNews: "पिछला समाचार",
+      nextNews: "अगला समाचार",
+      newsPosition: "समाचार स्थिति",
+      newsDot: (index) => `समाचार ${index + 1}`,
+      detail: "विवरण देखें →",
+      agentSectionLabel: "Agent कंपोजर",
+      agentInputLabel: "प्रश्न लिखें",
+      agentPlaceholder: "Freedom AI को संदेश भेजें",
+      modelMenuLabel: "मॉडल चुनें",
+      sendLabel: "भेजें",
+      answerHint: "प्रश्न लिखें और Enter दबाएं।",
+      publishCase: "इस केस को फोरम में प्रकाशित करें",
+      caseDialog: { close: "प्रकाशन विंडो बंद करें", title: "इस केस को फोरम में प्रकाशित करें", intro: "सिस्टम सामग्री को पहचान-रहित केस चर्चा टेम्पलेट के रूप में व्यवस्थित करेगा।", privacy: "मैं पुष्टि करता/करती हूं कि केस पहचान-रहित है", dept: "विभाग / क्षेत्र", category: "सामग्री प्रकार", files: "पूरक फाइलें", note: "अतिरिक्त नोट्स", previewTitle: "पुष्टि हेतु टेम्पलेट", previewButton: "टेम्पलेट तैयार करें", cancel: "रद्द करें", submit: "पुष्टि कर प्रकाशित करें" },
+      footer: { intro: "मेडिकल AI समाचार, टूल और समुदाय।", institutions: "संस्थान", institutionRail: "संस्थान लोगो सूची", license: "लाइसेंस", contact: "संपर्क", contactLink: "संपर्क: ydexiang1@gmail.com", subscribe: "ईमेल अपडेट" },
+    },
+    id: {
+      title: "Freedom AI | Berita AI medis dan agen",
+      description: "Freedom AI menyatukan berita AI medis dan komposer Agent untuk pembaruan serta pertanyaan cepat.",
+      navLabel: "Navigasi utama",
+      brandSubtitle: "Komunitas AI medis",
+      searchLabel: "Cari situs",
+      searchPlaceholder: "Cari",
+      searchButton: "Cari",
+      nav: { "index.html": "Beranda", "learning.html": "Konten", "network.html": "Komunitas", "community.html": "Forum", "datasets.html": "Dataset", "tools.html": "Alat", "benchmark.html": "Benchmark", "crowdsourcing.html": "Crowdsourcing", "blog.html": "Blog", "profile.html": "Profil" },
+      previousNews: "Berita sebelumnya",
+      nextNews: "Berita berikutnya",
+      newsPosition: "Posisi berita",
+      newsDot: (index) => `Berita ${index + 1}`,
+      detail: "Lihat detail →",
+      agentSectionLabel: "Komposer Agent",
+      agentInputLabel: "Masukkan pertanyaan",
+      agentPlaceholder: "Kirim pesan ke Freedom AI",
+      modelMenuLabel: "Pilih model",
+      sendLabel: "Kirim",
+      answerHint: "Ketik pertanyaan lalu tekan Enter.",
+      publishCase: "Publikasikan kasus ini ke forum",
+      caseDialog: { close: "Tutup jendela publikasi", title: "Publikasikan kasus ini ke forum", intro: "Sistem akan menyusun konten sebagai kasus yang telah dideidentifikasi.", privacy: "Saya mengonfirmasi kasus ini telah dideidentifikasi", dept: "Departemen / bidang", category: "Jenis materi", files: "File tambahan", note: "Catatan tambahan", previewTitle: "Template untuk dikonfirmasi", previewButton: "Siapkan template", cancel: "Batal", submit: "Konfirmasi dan publikasikan" },
+      footer: { intro: "Berita, alat, dan komunitas AI medis.", institutions: "Institusi", institutionRail: "Carousel logo institusi", license: "Lisensi", contact: "Kontak", contactLink: "Kontak: ydexiang1@gmail.com", subscribe: "Pembaruan email" },
+    },
+    vi: {
+      title: "Freedom AI | Tin tức AI y tế và tác nhân",
+      description: "Freedom AI gom tin tức AI y tế và hộp Agent để xem cập nhật và đặt câu hỏi nhanh.",
+      navLabel: "Điều hướng chính",
+      brandSubtitle: "Cộng đồng AI y tế",
+      searchLabel: "Tìm kiếm trang",
+      searchPlaceholder: "Tìm kiếm",
+      searchButton: "Tìm",
+      nav: { "index.html": "Trang chủ", "learning.html": "Nội dung", "network.html": "Cộng đồng", "community.html": "Diễn đàn", "datasets.html": "Dữ liệu", "tools.html": "Công cụ", "benchmark.html": "Benchmark", "crowdsourcing.html": "Cộng tác", "blog.html": "Blog", "profile.html": "Hồ sơ" },
+      previousNews: "Tin trước",
+      nextNews: "Tin tiếp theo",
+      newsPosition: "Vị trí tin",
+      newsDot: (index) => `Tin ${index + 1}`,
+      detail: "Xem chi tiết →",
+      agentSectionLabel: "Hộp Agent",
+      agentInputLabel: "Nhập câu hỏi",
+      agentPlaceholder: "Gửi tin nhắn tới Freedom AI",
+      modelMenuLabel: "Chọn mô hình",
+      sendLabel: "Gửi",
+      answerHint: "Nhập câu hỏi rồi nhấn Enter.",
+      publishCase: "Đăng ca này lên diễn đàn",
+      caseDialog: { close: "Đóng cửa sổ đăng", title: "Đăng ca này lên diễn đàn", intro: "Hệ thống sẽ sắp xếp nội dung thành mẫu thảo luận ca đã khử định danh.", privacy: "Tôi xác nhận ca này đã khử định danh", dept: "Khoa / lĩnh vực", category: "Loại tài liệu", files: "Tệp bổ sung", note: "Ghi chú bổ sung", previewTitle: "Mẫu cần xác nhận", previewButton: "Chuẩn bị mẫu", cancel: "Hủy", submit: "Xác nhận và đăng" },
+      footer: { intro: "Tin tức, công cụ và cộng đồng AI y tế.", institutions: "Tổ chức", institutionRail: "Băng chuyền logo tổ chức", license: "Giấy phép", contact: "Liên hệ", contactLink: "Liên hệ: ydexiang1@gmail.com", subscribe: "Cập nhật qua email" },
+    },
+    th: {
+      title: "Freedom AI | ข่าว AI การแพทย์และเอเจนต์",
+      description: "Freedom AI รวมข่าว AI การแพทย์และกล่อง Agent สำหรับติดตามอัปเดตและถามคำถามอย่างรวดเร็ว",
+      navLabel: "การนำทางหลัก",
+      brandSubtitle: "ชุมชน AI การแพทย์",
+      searchLabel: "ค้นหาในเว็บไซต์",
+      searchPlaceholder: "ค้นหา",
+      searchButton: "ค้นหา",
+      nav: { "index.html": "หน้าแรก", "learning.html": "เนื้อหา", "network.html": "ชุมชน", "community.html": "ฟอรัม", "datasets.html": "ชุดข้อมูล", "tools.html": "เครื่องมือ", "benchmark.html": "Benchmark", "crowdsourcing.html": "ระดมความร่วมมือ", "blog.html": "บล็อก", "profile.html": "โปรไฟล์" },
+      previousNews: "ข่าวก่อนหน้า",
+      nextNews: "ข่าวถัดไป",
+      newsPosition: "ตำแหน่งข่าว",
+      newsDot: (index) => `ข่าว ${index + 1}`,
+      detail: "ดูรายละเอียด →",
+      agentSectionLabel: "กล่อง Agent",
+      agentInputLabel: "ป้อนคำถาม",
+      agentPlaceholder: "ส่งข้อความถึง Freedom AI",
+      modelMenuLabel: "เลือกโมเดล",
+      sendLabel: "ส่ง",
+      answerHint: "พิมพ์คำถามแล้วกด Enter",
+      publishCase: "เผยแพร่เคสนี้ไปยังฟอรัม",
+      caseDialog: { close: "ปิดหน้าต่างเผยแพร่", title: "เผยแพร่เคสนี้ไปยังฟอรัม", intro: "ระบบจะจัดเนื้อหาเป็นเทมเพลตเคสที่ลบข้อมูลระบุตัวตนแล้ว", privacy: "ฉันยืนยันว่าเคสนี้ลบข้อมูลระบุตัวตนแล้ว", dept: "แผนก / สาขา", category: "ประเภทข้อมูล", files: "ไฟล์เพิ่มเติม", note: "บันทึกเพิ่มเติม", previewTitle: "เทมเพลตสำหรับยืนยัน", previewButton: "เตรียมเทมเพลต", cancel: "ยกเลิก", submit: "ยืนยันและเผยแพร่" },
+      footer: { intro: "ข่าว เครื่องมือ และชุมชน AI การแพทย์", institutions: "สถาบัน", institutionRail: "แถบโลโก้สถาบัน", license: "สัญญาอนุญาต", contact: "ติดต่อ", contactLink: "ติดต่อ: ydexiang1@gmail.com", subscribe: "อัปเดตทางอีเมล" },
+    },
+    tr: {
+      title: "Freedom AI | Tıbbi AI haberleri ve ajan",
+      description: "Freedom AI, tıbbi AI haberleri ve hızlı sorular için Agent kutusunu bir araya getirir.",
+      navLabel: "Ana gezinme",
+      brandSubtitle: "Tıbbi AI topluluğu",
+      searchLabel: "Sitede ara",
+      searchPlaceholder: "Ara",
+      searchButton: "Ara",
+      nav: { "index.html": "Ana sayfa", "learning.html": "İçerik", "network.html": "Topluluk", "community.html": "Forum", "datasets.html": "Veri setleri", "tools.html": "Araçlar", "benchmark.html": "Benchmark", "crowdsourcing.html": "Kitle katkısı", "blog.html": "Blog", "profile.html": "Profil" },
+      previousNews: "Önceki haber",
+      nextNews: "Sonraki haber",
+      newsPosition: "Haber konumu",
+      newsDot: (index) => `Haber ${index + 1}`,
+      detail: "Ayrıntıları gör →",
+      agentSectionLabel: "Agent kutusu",
+      agentInputLabel: "Soru gir",
+      agentPlaceholder: "Freedom AI'ye mesaj gönder",
+      modelMenuLabel: "Model seç",
+      sendLabel: "Gönder",
+      answerHint: "Bir soru yazıp Enter'a basın.",
+      publishCase: "Bu vakayı forumda yayınla",
+      caseDialog: { close: "Yayın penceresini kapat", title: "Bu vakayı forumda yayınla", intro: "Sistem içeriği kimliksizleştirilmiş vaka tartışması olarak düzenler.", privacy: "Bu vakanın kimliksizleştirildiğini onaylıyorum", dept: "Bölüm / alan", category: "Materyal türü", files: "Ek dosyalar", note: "Ek notlar", previewTitle: "Onaylanacak şablon", previewButton: "Şablonu hazırla", cancel: "İptal", submit: "Onayla ve yayınla" },
+      footer: { intro: "Tıbbi AI haberleri, araçları ve topluluğu.", institutions: "Kurumlar", institutionRail: "Kurum logo listesi", license: "Lisans", contact: "İletişim", contactLink: "İletişim: ydexiang1@gmail.com", subscribe: "E-posta güncellemeleri" },
+    },
+    fa: {
+      title: "Freedom AI | اخبار هوش مصنوعی پزشکی و عامل",
+      description: "Freedom AI اخبار هوش مصنوعی پزشکی و کادر Agent را برای پیگیری سریع و پرسش از مدل‌ها فراهم می‌کند.",
+      navLabel: "ناوبری اصلی",
+      brandSubtitle: "جامعه هوش مصنوعی پزشکی",
+      searchLabel: "جستجوی سایت",
+      searchPlaceholder: "جستجو",
+      searchButton: "جستجو",
+      nav: { "index.html": "خانه", "learning.html": "محتوا", "network.html": "جامعه", "community.html": "انجمن", "datasets.html": "داده‌ها", "tools.html": "ابزارها", "benchmark.html": "Benchmark", "crowdsourcing.html": "همکاری جمعی", "blog.html": "وبلاگ", "profile.html": "پروفایل" },
+      previousNews: "خبر قبلی",
+      nextNews: "خبر بعدی",
+      newsPosition: "جایگاه خبر",
+      newsDot: (index) => `خبر ${index + 1}`,
+      detail: "مشاهده جزئیات ←",
+      agentSectionLabel: "کادر Agent",
+      agentInputLabel: "پرسش را وارد کنید",
+      agentPlaceholder: "پیام به Freedom AI",
+      modelMenuLabel: "انتخاب مدل",
+      sendLabel: "ارسال",
+      answerHint: "پرسش را بنویسید و Enter را بزنید.",
+      publishCase: "انتشار این مورد در انجمن",
+      caseDialog: { close: "بستن پنجره انتشار", title: "انتشار این مورد در انجمن", intro: "سامانه محتوا را به صورت قالب بحث مورد ناشناس‌سازی‌شده تنظیم می‌کند.", privacy: "تایید می‌کنم این مورد ناشناس‌سازی شده است", dept: "بخش / حوزه", category: "نوع محتوا", files: "فایل‌های تکمیلی", note: "یادداشت‌های تکمیلی", previewTitle: "قالب برای تایید", previewButton: "آماده‌سازی قالب", cancel: "لغو", submit: "تایید و انتشار" },
+      footer: { intro: "اخبار، ابزارها و جامعه هوش مصنوعی پزشکی.", institutions: "موسسات", institutionRail: "فهرست لوگوهای موسسات", license: "مجوز", contact: "تماس", contactLink: "تماس: ydexiang1@gmail.com", subscribe: "به‌روزرسانی ایمیلی" },
+    },
+    it: {
+      title: "Freedom AI | Notizie di IA medica e agente",
+      description: "Freedom AI raccoglie notizie di IA medica e un composer Agent per aggiornamenti e domande rapide.",
+      navLabel: "Navigazione principale",
+      brandSubtitle: "Comunità di IA medica",
+      searchLabel: "Cerca nel sito",
+      searchPlaceholder: "Cerca",
+      searchButton: "Cerca",
+      nav: { "index.html": "Home", "learning.html": "Contenuti", "network.html": "Comunità", "community.html": "Forum", "datasets.html": "Dataset", "tools.html": "Strumenti", "benchmark.html": "Benchmark", "crowdsourcing.html": "Crowdsourcing", "blog.html": "Blog", "profile.html": "Profilo" },
+      previousNews: "Notizia precedente",
+      nextNews: "Notizia successiva",
+      newsPosition: "Posizione notizie",
+      newsDot: (index) => `Notizia ${index + 1}`,
+      detail: "Vedi dettagli →",
+      agentSectionLabel: "Composer Agent",
+      agentInputLabel: "Inserisci una domanda",
+      agentPlaceholder: "Invia un messaggio a Freedom AI",
+      modelMenuLabel: "Scegli modello",
+      sendLabel: "Invia",
+      answerHint: "Scrivi una domanda e premi Enter.",
+      publishCase: "Pubblica questo caso nel forum",
+      caseDialog: { close: "Chiudi finestra di pubblicazione", title: "Pubblica questo caso nel forum", intro: "Il sistema organizzerà il contenuto come caso de-identificato.", privacy: "Confermo che il caso è de-identificato", dept: "Reparto / campo", category: "Tipo di materiale", files: "File supplementari", note: "Note aggiuntive", previewTitle: "Template da confermare", previewButton: "Prepara template", cancel: "Annulla", submit: "Conferma e pubblica" },
+      footer: { intro: "Notizie, strumenti e comunità di IA medica.", institutions: "Istituzioni", institutionRail: "Carosello loghi istituzionali", license: "Licenza", contact: "Contatto", contactLink: "Contatto: ydexiang1@gmail.com", subscribe: "Aggiornamenti email" },
+    },
+    nl: {
+      title: "Freedom AI | Medische AI-nieuws en agent",
+      description: "Freedom AI brengt medisch AI-nieuws en een Agent-composer samen voor snelle updates en vragen.",
+      navLabel: "Hoofdnavigatie",
+      brandSubtitle: "Medische AI-community",
+      searchLabel: "Zoeken op site",
+      searchPlaceholder: "Zoeken",
+      searchButton: "Zoeken",
+      nav: { "index.html": "Home", "learning.html": "Content", "network.html": "Community", "community.html": "Forum", "datasets.html": "Datasets", "tools.html": "Tools", "benchmark.html": "Benchmark", "crowdsourcing.html": "Crowdsourcing", "blog.html": "Blog", "profile.html": "Profiel" },
+      previousNews: "Vorig nieuws",
+      nextNews: "Volgend nieuws",
+      newsPosition: "Nieuwspositie",
+      newsDot: (index) => `Nieuws ${index + 1}`,
+      detail: "Details bekijken →",
+      agentSectionLabel: "Agent-composer",
+      agentInputLabel: "Voer een vraag in",
+      agentPlaceholder: "Stuur een bericht naar Freedom AI",
+      modelMenuLabel: "Kies model",
+      sendLabel: "Verzenden",
+      answerHint: "Typ een vraag en druk op Enter.",
+      publishCase: "Publiceer deze casus op het forum",
+      caseDialog: { close: "Publicatievenster sluiten", title: "Publiceer deze casus op het forum", intro: "Het systeem ordent de inhoud als een gede-identificeerde casus.", privacy: "Ik bevestig dat deze casus gede-identificeerd is", dept: "Afdeling / veld", category: "Materiaaltype", files: "Aanvullende bestanden", note: "Aanvullende notities", previewTitle: "Template om te bevestigen", previewButton: "Template voorbereiden", cancel: "Annuleren", submit: "Bevestigen en publiceren" },
+      footer: { intro: "Medische AI-nieuws, tools en community.", institutions: "Instellingen", institutionRail: "Logo-carrousel van instellingen", license: "Licentie", contact: "Contact", contactLink: "Contact: ydexiang1@gmail.com", subscribe: "E-mailupdates" },
+    },
+  };
+
+  Object.entries(compactTranslations).forEach(([code, override]) => {
+    const meta = languageMeta[code];
+    translations[code] = mergeTranslation(translations.en, {
+      htmlLang: meta.htmlLang,
+      dir: meta.dir,
+      ...override,
+    });
+  });
+
   function getLanguage() {
     const requested = new URLSearchParams(window.location.search).get("lang");
     if (supportedLanguages.includes(requested)) return requested;
@@ -394,6 +803,30 @@
     }[char]));
   }
 
+  function renderLanguageMenu() {
+    const menu = document.querySelector("[data-language-menu]");
+    if (!menu) return;
+    menu.innerHTML = languageOptions.map((language) => `
+      <button class="language-option" type="button" role="option" data-language-option="${escapeHtml(language.code)}" aria-selected="false">
+        <span class="language-option-text">
+          <span class="language-option-native">${escapeHtml(language.native)}</span>
+          <span class="language-option-english">${escapeHtml(language.english)}</span>
+        </span>
+        <span class="language-option-code">${escapeHtml(language.short)}</span>
+      </button>
+    `).join("");
+  }
+
+  function setLanguageMenuOpen(open) {
+    const root = document.querySelector("[data-language-switch]");
+    const trigger = document.querySelector("[data-language-trigger]");
+    const menu = document.querySelector("[data-language-menu]");
+    if (!root || !trigger || !menu) return;
+    root.classList.toggle("is-open", open);
+    trigger.setAttribute("aria-expanded", String(open));
+    menu.hidden = !open;
+  }
+
   function localizeSubmittedAnswer(language) {
     const dict = translations[language];
     const output = document.querySelector("#agentAnswer");
@@ -415,6 +848,7 @@
 
   function applyLanguage(language) {
     const dict = translations[language] || translations.zh;
+    const meta = languageMeta[language] || languageMeta.zh;
     localStorage.setItem(storageKey, language);
 
     document.documentElement.lang = dict.htmlLang;
@@ -505,21 +939,42 @@
       if (text) text.textContent = label;
     });
 
+    setText("[data-language-current]", meta.short);
+    setAttr("[data-language-menu]", "aria-label", dict.languageMenuLabel || "Language list");
     document.querySelectorAll("[data-language-option]").forEach((button) => {
       const active = button.dataset.languageOption === language;
       button.classList.toggle("active", active);
-      button.setAttribute("aria-pressed", String(active));
+      button.setAttribute("aria-selected", String(active));
     });
 
     localizeSubmittedAnswer(language);
   }
 
   function wireLanguageSwitch() {
-    document.querySelector("[data-language-switch]")?.addEventListener("click", (event) => {
+    const root = document.querySelector("[data-language-switch]");
+    root?.addEventListener("click", (event) => {
+      const trigger = event.target.closest("[data-language-trigger]");
+      if (trigger) {
+        setLanguageMenuOpen(trigger.getAttribute("aria-expanded") !== "true");
+        return;
+      }
+
       const button = event.target.closest("[data-language-option]");
       if (!button) return;
       const language = button.dataset.languageOption || "zh";
-      if (supportedLanguages.includes(language)) applyLanguage(language);
+      if (supportedLanguages.includes(language)) {
+        applyLanguage(language);
+        setLanguageMenuOpen(false);
+      }
+    });
+
+    document.addEventListener("click", (event) => {
+      if (root?.contains(event.target)) return;
+      setLanguageMenuOpen(false);
+    });
+
+    document.addEventListener("keydown", (event) => {
+      if (event.key === "Escape") setLanguageMenuOpen(false);
     });
 
     document.querySelector("#agentQuestionForm")?.addEventListener("submit", () => {
@@ -528,6 +983,7 @@
   }
 
   function boot() {
+    renderLanguageMenu();
     wireLanguageSwitch();
     applyLanguage(getLanguage());
   }
