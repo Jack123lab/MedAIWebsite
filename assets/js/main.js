@@ -515,6 +515,8 @@ function redirectGuestProfile() {
   if (!document.body.classList.contains("profile-page")) return false;
   const state = getAuthState();
   if (state.status && state.status !== "guest") return false;
+  const shouldAuthorize = window.confirm("个人主页需要登录或授权后访问。是否前往授权页面？");
+  if (!shouldAuthorize) return false;
   window.location.replace("auth.html?next=profile.html&reason=profile");
   return true;
 }
