@@ -476,12 +476,12 @@ function renderProfileDesign() {
   const list = document.querySelector("#profileDesignList");
   if (!list) return;
   const designItems = [
-    ["医学资料名片", "展示机构、科室、认证状态和社区凭证。"],
+    ["个人主页", "维护医生/学者公开主页，可连接论文、机构关系和认领流程。"],
     ["投稿模板", "病例、指南、工具、科研设计四类内容模板。"],
     ["AI Agent 方案", "把个人常用 Prompt 和审核流程沉淀为方案卡。"],
   ];
-  list.innerHTML = designItems.map(([title, text]) => `
-    <a class="profile-design-item" href="community.html#postForm">
+  list.innerHTML = designItems.map(([title, text], index) => `
+    <a class="profile-design-item" href="${index === 0 ? "network-yu-guangjun.html" : "community.html#postForm"}">
       <strong>${escapeHtml(title)}</strong>
       <span>${escapeHtml(text)}</span>
     </a>`).join("");
