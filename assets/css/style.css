@@ -286,15 +286,15 @@ a { color: inherit; }
 }
 
 .home-language-switch .language-trigger {
-  min-height: 30px;
-  gap: 5px;
+  min-height: 26px;
+  gap: 4px;
   border: 1px solid rgba(203, 217, 226, 0.96);
   border-radius: 999px;
-  padding: 0 8px 0 6px;
+  padding: 0 7px 0 5px;
   color: var(--primary);
   background: #ffffff;
-  box-shadow: 0 8px 18px rgba(17, 42, 62, 0.08);
-  font-size: 12px;
+  box-shadow: 0 6px 14px rgba(17, 42, 62, 0.07);
+  font-size: 11px;
   font-weight: 900;
 }
 
@@ -316,14 +316,14 @@ a { color: inherit; }
 }
 
 .language-trigger-icon {
-  width: 18px;
-  height: 18px;
+  width: 16px;
+  height: 16px;
   display: inline-grid !important;
   place-items: center;
   border-radius: 50% !important;
   color: #ffffff !important;
   background: var(--primary) !important;
-  font-size: 11px;
+  font-size: 10px;
 }
 
 .home-language-switch .language-trigger:hover .language-trigger-icon,
@@ -333,25 +333,25 @@ a { color: inherit; }
 }
 
 .language-trigger-caret {
-  font-size: 11px;
+  font-size: 10px;
   transform: translateY(-1px);
 }
 
 .language-menu {
   position: absolute;
-  top: calc(100% + 8px);
+  top: calc(100% + 6px);
   right: 0;
   z-index: 95;
-  width: min(260px, calc(100vw - 28px));
+  width: min(232px, calc(100vw - 28px));
   max-height: min(430px, calc(100vh - 110px));
   display: grid;
-  gap: 4px;
+  gap: 3px;
   overflow: auto;
   border: 1px solid rgba(203, 217, 226, 0.96);
   border-radius: 8px;
-  padding: 8px;
+  padding: 7px;
   background: rgba(255, 255, 255, 0.98);
-  box-shadow: 0 20px 48px rgba(17, 42, 62, 0.18);
+  box-shadow: 0 16px 38px rgba(17, 42, 62, 0.16);
   backdrop-filter: blur(12px);
 }
 
@@ -360,12 +360,12 @@ a { color: inherit; }
 }
 
 .language-option {
-  min-height: 38px;
+  min-height: 34px;
   width: 100%;
   justify-content: space-between;
-  gap: 12px;
+  gap: 10px;
   border-radius: 6px !important;
-  padding: 6px 8px !important;
+  padding: 5px 7px !important;
   color: var(--text) !important;
   text-align: left;
 }
@@ -386,25 +386,25 @@ a { color: inherit; }
 }
 
 .language-option-native {
-  font-size: 13px;
+  font-size: 12px;
   font-weight: 900;
 }
 
 .language-option-english {
   color: currentColor;
   opacity: 0.72;
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 700;
 }
 
 .language-option-code {
-  min-width: 34px;
+  min-width: 30px;
   justify-content: center;
   border-radius: 999px !important;
-  padding: 3px 6px !important;
+  padding: 2px 5px !important;
   color: currentColor !important;
   background: rgba(24, 95, 121, 0.09) !important;
-  font-size: 11px;
+  font-size: 10px;
   font-weight: 900;
 }
 

@@ -75,6 +75,9 @@ function normalizeSiteHeader() {
       const external = item.external ? ' target="_blank" rel="noreferrer"' : "";
       return `<a${active} href="${item.href}"${external}>${item.label}</a>`;
     }).join("");
+
+    const languageSwitch = nav.querySelector("[data-language-switch]");
+    languageSwitch?.classList.add("home-language-switch");
   });
 }
 
