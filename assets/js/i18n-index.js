@@ -91,6 +91,7 @@
       modelMenuLabel: "选择模型",
       sendLabel: "发送",
       answerHint: "输入问题后按 Enter 开始。",
+      agentPortalLink: "进入 Ahamed Home",
       publishCase: "发布这个案例到讨论区",
       reply(question, model) {
         return [
@@ -206,6 +207,7 @@
       modelMenuLabel: "Choose a model",
       sendLabel: "Send",
       answerHint: "Type a question and press Enter to begin.",
+      agentPortalLink: "Open Ahamed Home",
       publishCase: "Publish this case to the forum",
       reply(question, model) {
         return [
@@ -321,6 +323,7 @@
       modelMenuLabel: "اختر النموذج",
       sendLabel: "إرسال",
       answerHint: "اكتب سؤالا واضغط Enter للبدء.",
+      agentPortalLink: "فتح Ahamed Home",
       publishCase: "نشر هذه الحالة في المنتدى",
       reply(question, model) {
         return [
@@ -902,6 +905,7 @@
       const answerText = answer.querySelector("p");
       if (answerText) answerText.textContent = dict.answerHint;
     }
+    setText("[data-agent-portal-link]", dict.agentPortalLink || translations.en.agentPortalLink);
 
     setAttr(".case-publish-close", "aria-label", dict.caseDialog.close);
     setText(".case-publish-panel .eyebrow", dict.caseDialog.eyebrow);

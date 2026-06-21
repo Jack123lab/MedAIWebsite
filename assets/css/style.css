@@ -5227,6 +5227,31 @@ body.medical-workbench-index,
   margin-top: 4px;
 }
 
+.agent-portal-link {
+  justify-self: center;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 38px;
+  border: 1px solid #cbdde3;
+  border-radius: 999px;
+  padding: 0 16px;
+  color: #172738;
+  background: rgba(255, 255, 255, 0.86);
+  font-size: 13px;
+  font-weight: 850;
+  text-decoration: none;
+  box-shadow: 0 10px 22px rgba(17, 42, 62, 0.08);
+}
+
+.agent-portal-link:hover,
+.agent-portal-link:focus-visible {
+  border-color: #172738;
+  color: #ffffff;
+  background: #172738;
+  outline: none;
+}
+
 body.case-publish-open {
   overflow: hidden;
 }

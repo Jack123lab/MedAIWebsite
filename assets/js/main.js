@@ -1,6 +1,8 @@
 const authKey = "hmaiAuthState";
 const postStorageKey = "hmaiForumPosts";
 const reactionStorageKey = "hmaiPostReactions";
+const researchPaperStorageKey = "hmaiResearchPapers";
+const researchPaperLikeStorageKey = "hmaiResearchPaperLikes";
 const profileAvatarStorageKey = "hmaiProfileAvatar";
 const pointsStorageKey = "hmaiPointsLedger";
 const privateKnowledgeStorageKey = "hmaiPrivateKnowledge";
@@ -372,6 +374,89 @@ const seedPosts = [
   },
 ];
 
+const seedResearchPapers = [
+  {
+    id: "paper-med-ai-workflow-safety",
+    title: "Evaluating medical AI assistants in real clinical workflows",
+    source: "NEJM AI / Clinical workflow",
+    year: "2026",
+    type: "临床验证",
+    specialty: "内科综合",
+    authors: "Clinical AI Evaluation Group",
+    summary: "围绕真实临床工作流评价医学 AI 助手，重点观察医生介入、错误纠正、患者安全事件和责任边界。",
+    discussion: "模型建议是否改变医生决策？错误如何被发现、记录和复盘？",
+    link: "https://www.nejm.org/ai",
+    submittedBy: "编辑部",
+    submitterType: "editor",
+    createdAt: "2026-06-18T09:00:00+08:00",
+    likes: 18,
+  },
+  {
+    id: "paper-multimodal-radiology-pathology",
+    title: "Multimodal foundation models for radiology, pathology, and text",
+    source: "Nature Medicine / Multimodal AI",
+    year: "2026",
+    type: "多模态",
+    specialty: "影像病理",
+    authors: "Multimodal Medicine Consortium",
+    summary: "讨论影像、病理和临床文本联合建模在诊断辅助中的表现，以及外部验证、亚组偏倚和可解释性要求。",
+    discussion: "多模态模型的增益来自图像、文本还是数据泄漏？不同设备和人群是否稳定？",
+    link: "https://www.nature.com/nm/",
+    submittedBy: "医学 AI 周更",
+    submitterType: "editor",
+    createdAt: "2026-06-17T10:30:00+08:00",
+    likes: 24,
+  },
+  {
+    id: "paper-trial-matching-llm",
+    title: "Large language models for clinical trial matching and patient screening",
+    source: "medRxiv / Clinical research",
+    year: "2026",
+    type: "临床科研",
+    specialty: "肿瘤与血液",
+    authors: "Trial Matching Study Team",
+    summary: "用 LLM 解析入排标准并匹配患者画像，核心关注召回率、人工复核成本和公平性。",
+    discussion: "自动筛选是否会放大人群偏倚？如何保留人工可解释路径？",
+    link: "https://www.medrxiv.org/",
+    submittedBy: "Agent 论文助手",
+    submitterType: "agent",
+    createdAt: "2026-06-16T15:15:00+08:00",
+    likes: 15,
+  },
+  {
+    id: "paper-ehr-reasoning-failures",
+    title: "Stress testing EHR reasoning failures in medical language models",
+    source: "arXiv / Safety",
+    year: "2026",
+    type: "安全评测",
+    specialty: "合规伦理",
+    authors: "Medical LLM Safety Lab",
+    summary: "从 EHR 多步推理失败、幻觉压力测试和不确定性提示角度审视医学大模型的真实风险。",
+    discussion: "模型何时应该拒答或提示不确定？错误解释是否比错误答案本身更危险？",
+    link: "https://arxiv.org/",
+    submittedBy: "模型评测组",
+    submitterType: "editor",
+    createdAt: "2026-06-15T18:40:00+08:00",
+    likes: 20,
+  },
+  {
+    id: "paper-ai-nursing-oncology-governance",
+    title: "AI governance and nursing leadership in oncology care pathways",
+    source: "JAMA Network / Oncology",
+    year: "2026",
+    type: "治理框架",
+    specialty: "肿瘤护理",
+    authors: "Oncology AI Governance Group",
+    summary: "聚焦肿瘤护理路径中的 AI 审计、患者解释、治疗线判断和 MDT 协作边界。",
+    discussion: "科室级 AI 使用制度如何覆盖护理、随访、患者教育和不良事件反馈？",
+    link: "https://jamanetwork.com/",
+    submittedBy: "个人投稿样例",
+    submitterType: "person",
+    createdAt: "2026-06-14T11:20:00+08:00",
+    likes: 13,
+  },
+];
+
 function readJson(key, fallback) {
   try {
     return JSON.parse(localStorage.getItem(key)) || fallback;
@@ -515,8 +600,12 @@ function redirectGuestProfile() {
   if (!document.body.classList.contains("profile-page")) return false;
   const state = getAuthState();
   if (state.status && state.status !== "guest") return false;
-  window.location.replace("auth.html?next=profile.html&reason=profile");
-  return true;
+  const shouldRedirect = window.confirm("你还没有登录。是否跳转到登录页面？");
+  if (shouldRedirect) {
+    window.location.href = "auth.html?next=profile.html&reason=profile";
+    return true;
+  }
+  return false;
 }
 
 function hasCommunityCredential(auth = getAuthState()) {
@@ -540,6 +629,29 @@ function getForumPosts() {
 
 function getReactions() {
   return readJson(reactionStorageKey, {});
+}
+
+function getResearchPaperLikes() {
+  return readJson(researchPaperLikeStorageKey, {});
+}
+
+function getSubmittedResearchPapers() {
+  const stored = readJson(researchPaperStorageKey, []);
+  return Array.isArray(stored) ? stored : [];
+}
+
+function saveSubmittedResearchPapers(papers) {
+  writeJson(researchPaperStorageKey, papers);
+}
+
+function getResearchPapers() {
+  const submitted = getSubmittedResearchPapers();
+  const submittedIds = new Set(submitted.map((paper) => paper.id));
+  return [...submitted, ...seedResearchPapers.filter((paper) => !submittedIds.has(paper.id))];
+}
+
+function getResearchPaperLikeCount(paper, likes = getResearchPaperLikes()) {
+  return (Number(paper.likes) || 0) + (likes[paper.id] ? 1 : 0);
 }
 
 function renderProfileAvatar() {
@@ -650,6 +762,16 @@ function profileReactionPosts(type) {
 }
 
 function profileListItem(post, metaLabel) {
+  if (post.itemType === "research-paper") {
+    return `
+      <a class="profile-feed-item" href="research.html#research-paper-hub">
+        <span class="tag green">论文</span>
+        <strong>${escapeHtml(post.title)}</strong>
+        <p>${escapeHtml(post.summary || post.discussion || "")}</p>
+        <small>${escapeHtml(post.specialty || "未标注领域")} · ${escapeHtml(metaLabel)}</small>
+      </a>`;
+  }
+
   return `
     <a class="profile-feed-item" href="community.html">
       <span class="tag blue">${escapeHtml(categoryLabels[post.category] || "讨论")}</span>
@@ -870,15 +992,30 @@ function renderLikedPosts() {
   const state = getAuthState();
   const posts = getForumPosts();
   const reactions = getReactions();
-  const submissions = posts.filter((post) => state.name && post.author === state.name);
-  const likes = posts.filter((post) => reactions[post.id]?.liked || reactions[post.id]?.favorited);
+  const researchLikes = getResearchPaperLikes();
+  const papers = getResearchPapers();
+  const userName = state.name && state.name !== "访客" ? state.name : "";
+  const paperSubmissions = getSubmittedResearchPapers()
+    .filter((paper) => paper.submitterType === "person" && (!userName || paper.submittedBy === userName))
+    .map((paper) => ({ ...paper, itemType: "research-paper" }));
+  const likedPapers = papers
+    .filter((paper) => researchLikes[paper.id])
+    .map((paper) => ({ ...paper, itemType: "research-paper" }));
+  const submissions = [
+    ...posts.filter((post) => state.name && post.author === state.name),
+    ...paperSubmissions,
+  ];
+  const likes = [
+    ...posts.filter((post) => reactions[post.id]?.liked || reactions[post.id]?.favorited),
+    ...likedPapers,
+  ];
   const dislikes = profileReactionPosts("disliked");
   const comments = submissions.filter((post) => `${post.title} ${post.body}`.includes("评论"));
 
   renderProfileStats({ submissions, likes, dislikes, comments });
   renderProfileDesign();
-  renderProfileList("#profileSubmissionList", submissions, "还没有投稿。发布讨论、资料或复现笔记后会出现在这里。", (post) => `${post.views || 0} 浏览 · ${post.replies || 0} 回复`);
-  renderProfileList("#profileLikesList", likes, "还没有点赞记录。点赞、收藏过的讨论会汇总到这里。", (post) => `${(post.likes || 0) + (reactions[post.id]?.liked ? 1 : 0)} 赞`);
+  renderProfileList("#profileSubmissionList", submissions, "还没有投稿。发布讨论、资料、论文或复现笔记后会出现在这里。", (post) => post.itemType === "research-paper" ? `${post.source || "论文来源"} · 个人提交` : `${post.views || 0} 浏览 · ${post.replies || 0} 回复`);
+  renderProfileList("#profileLikesList", likes, "还没有点赞记录。点赞过的讨论和论文会汇总到这里。", (post) => post.itemType === "research-paper" ? `${getResearchPaperLikeCount(post, researchLikes)} 赞 · ${post.source || "论文"}` : `${(post.likes || 0) + (reactions[post.id]?.liked ? 1 : 0)} 赞`);
   renderProfileList("#profileDislikesList", dislikes, "还没有踩过的内容。对不适合的讨论点踩后会出现在这里。", (post) => `${(post.dislikes || 0) + (reactions[post.id]?.disliked ? 1 : 0)} 踩`);
   renderProfileList("#profileCommentsList", comments, "还没有评论动态。评论式投稿会沉淀到这里。", (post) => new Date(post.createdAt).toLocaleDateString("zh-CN"));
 }
@@ -897,6 +1034,135 @@ function toggleReaction(postId, type) {
   if (type === "favorite") reactions[postId].favorited = !reactions[postId].favorited;
   writeJson(reactionStorageKey, reactions);
   renderLikedPosts();
+}
+
+function createResearchPaper(input) {
+  const auth = getAuthState();
+  const submitterType = input.submitterType || "person";
+  const paper = {
+    id: `paper-${Date.now()}-${Math.random().toString(16).slice(2)}`,
+    title: input.title || "未命名医学 AI 论文",
+    source: input.source || "未标注来源",
+    year: input.year || new Date().getFullYear().toString(),
+    type: input.type || "论文线索",
+    specialty: input.specialty || "医学 AI",
+    authors: input.authors || "待补充作者",
+    summary: input.summary || "待补充摘要。",
+    discussion: input.discussion || "建议补充临床价值、证据质量、局限性和落地风险。",
+    link: input.link || "research.html#research-paper-hub",
+    submittedBy: submitterType === "agent" ? "Agent 论文助手" : (auth.name && auth.name !== "访客" ? auth.name : "个人用户"),
+    submitterType,
+    createdAt: new Date().toISOString(),
+    likes: 0,
+  };
+  const papers = getSubmittedResearchPapers();
+  papers.unshift(paper);
+  saveSubmittedResearchPapers(papers);
+  return paper;
+}
+
+function renderResearchPapers() {
+  const list = document.querySelector("#researchPaperList");
+  if (!list) return;
+  const likes = getResearchPaperLikes();
+  const papers = getResearchPapers();
+  list.innerHTML = papers.map((paper) => {
+    const liked = !!likes[paper.id];
+    const count = getResearchPaperLikeCount(paper, likes);
+    return `
+      <article class="research-paper-card" data-research-paper-id="${escapeHtml(paper.id)}">
+        <div class="research-paper-card-head">
+          <span class="tag ${paper.submitterType === "agent" ? "gold" : "blue"}">${escapeHtml(paper.type || "论文")}</span>
+          <small>${escapeHtml(paper.submittedBy || "编辑部")} · ${escapeHtml(paper.year || "2026")}</small>
+        </div>
+        <h3>${escapeHtml(paper.title)}</h3>
+        <p>${escapeHtml(paper.summary || "")}</p>
+        <dl>
+          <dt>来源</dt><dd>${escapeHtml(paper.source || "未标注")}</dd>
+          <dt>作者</dt><dd>${escapeHtml(paper.authors || "待补充")}</dd>
+          <dt>领域</dt><dd>${escapeHtml(paper.specialty || "医学 AI")}</dd>
+          <dt>讨论</dt><dd>${escapeHtml(paper.discussion || "建议补充讨论问题。")}</dd>
+        </dl>
+        <div class="research-paper-actions">
+          <button class="paper-like-button${liked ? " active" : ""}" type="button" data-paper-like="${escapeHtml(paper.id)}" aria-pressed="${liked}">
+            <span aria-hidden="true">♥</span>
+            <strong>${count}</strong>
+            <em>${liked ? "已点赞" : "点赞"}</em>
+          </button>
+          <a href="${escapeHtml(paper.link || "research.html#research-paper-hub")}" target="_blank" rel="noreferrer">查看来源</a>
+        </div>
+      </article>`;
+  }).join("");
+}
+
+function toggleResearchPaperLike(paperId) {
+  const likes = getResearchPaperLikes();
+  likes[paperId] = !likes[paperId];
+  if (!likes[paperId]) delete likes[paperId];
+  writeJson(researchPaperLikeStorageKey, likes);
+  if (likes[paperId]) awardPoints("点赞论文", 2, `paper-like-${paperId}`);
+  renderResearchPapers();
+  renderLikedPosts();
+}
+
+function wireResearchHub() {
+  const root = document.querySelector("[data-research-hub]");
+  if (!root) return;
+  const form = document.querySelector("#paperSubmissionForm");
+  const status = document.querySelector("#paperSubmissionStatus");
+
+  renderResearchPapers();
+
+  root.addEventListener("click", (event) => {
+    const likeButton = event.target.closest("[data-paper-like]");
+    if (likeButton) {
+      toggleResearchPaperLike(likeButton.dataset.paperLike);
+      return;
+    }
+
+    const agentButton = event.target.closest("[data-agent-paper-submit]");
+    if (!agentButton) return;
+    const paper = createResearchPaper({
+      submitterType: "agent",
+      title: "Agent 推荐：医学 AI 论文应优先标注外部验证和临床风险",
+      source: "Agent curated / Weekly scan",
+      type: "Agent 提交",
+      specialty: "安全评测",
+      authors: "Agent 论文助手",
+      summary: "智能体根据近期论文观察生成的论文线索：建议优先关注外部验证、临床工作流、模型失败模式和医生复核成本。",
+      discussion: "这类论文是否足以进入医生工作流？需要哪些真实世界指标和审计记录？",
+      link: "research.html#research-paper-hub",
+    });
+    renderResearchPapers();
+    if (status) status.textContent = `智能体已提交论文线索：《${paper.title}》。`;
+  });
+
+  form?.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const title = document.querySelector("#paperTitle")?.value.trim();
+    const source = document.querySelector("#paperSource")?.value.trim();
+    const link = document.querySelector("#paperLink")?.value.trim();
+    const summary = document.querySelector("#paperSummary")?.value.trim();
+    if (!title || !summary) {
+      if (status) status.textContent = "请至少填写论文标题和推荐理由。";
+      return;
+    }
+    const paper = createResearchPaper({
+      submitterType: document.querySelector("#paperSubmitterType")?.value || "person",
+      title,
+      source,
+      link,
+      type: document.querySelector("#paperType")?.value || "个人提交",
+      specialty: document.querySelector("#paperSpecialty")?.value.trim() || "医学 AI",
+      authors: document.querySelector("#paperAuthors")?.value.trim() || "待补充作者",
+      summary,
+      discussion: document.querySelector("#paperDiscussion")?.value.trim() || "请社区一起判断临床价值、证据质量和局限性。",
+    });
+    form.reset();
+    renderResearchPapers();
+    renderLikedPosts();
+    if (status) status.textContent = `已提交论文：《${paper.title}》。点赞记录和个人提交可在用户页查看。`;
+  });
 }
 
 function wireFilters() {
@@ -2071,6 +2337,7 @@ if (!isProfileRedirecting) {
   wireCourseContentFilters();
   wireNetworkOrgLogos();
   wireNetworkSearch();
+  wireResearchHub();
   wireHotToolFeed();
   wireHomeNewsScroll();
   wireHomeAgent();
