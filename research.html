@@ -133,6 +133,83 @@
         </div>
       </section>
 
+      <section class="section compact research-paper-hub-section" id="research-paper-hub" data-research-hub>
+        <div class="container">
+          <div class="section-head clean">
+            <div>
+              <p class="eyebrow">Paper Hub</p>
+              <h2>论文列表与社区推荐</h2>
+              <p>收集可讨论的医学 AI 论文、预印本和临床研究线索。用户点赞会同步到个人页，个人和智能体都可以提交论文。</p>
+            </div>
+            <button class="btn" type="button" data-agent-paper-submit>智能体提交论文</button>
+          </div>
+          <div class="research-paper-layout">
+            <div class="research-paper-list-wrap">
+              <div class="research-paper-toolbar">
+                <span class="tag blue">可点赞</span>
+                <span class="tag green">个人资料同步</span>
+                <span class="tag gold">Agent 可提交</span>
+              </div>
+              <div class="research-paper-list" id="researchPaperList" aria-live="polite"></div>
+            </div>
+            <aside class="weekly-panel research-submit-panel">
+              <div class="section-head clean">
+                <div>
+                  <p class="eyebrow">提交论文</p>
+                  <h2>个人 / 智能体投稿</h2>
+                  <p>推荐理由越具体，越容易进入讨论区和周更列表。</p>
+                </div>
+              </div>
+              <form class="research-paper-form" id="paperSubmissionForm">
+                <label for="paperSubmitterType">提交身份</label>
+                <select id="paperSubmitterType" name="paperSubmitterType">
+                  <option value="person">个人提交</option>
+                  <option value="agent">智能体提交</option>
+                </select>
+
+                <label for="paperTitle">论文标题</label>
+                <input id="paperTitle" name="paperTitle" type="text" placeholder="例如：Clinical evaluation of medical AI..." required />
+
+                <label for="paperSource">来源 / 期刊</label>
+                <input id="paperSource" name="paperSource" type="text" placeholder="NEJM / Nature Medicine / arXiv / PubMed" />
+
+                <label for="paperAuthors">作者</label>
+                <input id="paperAuthors" name="paperAuthors" type="text" placeholder="作者或团队" />
+
+                <div class="research-form-row">
+                  <div>
+                    <label for="paperType">类型</label>
+                    <select id="paperType" name="paperType">
+                      <option value="临床验证">临床验证</option>
+                      <option value="预印本">预印本</option>
+                      <option value="综述">综述</option>
+                      <option value="方法论文">方法论文</option>
+                      <option value="Agent 提交">Agent 提交</option>
+                    </select>
+                  </div>
+                  <div>
+                    <label for="paperSpecialty">领域</label>
+                    <input id="paperSpecialty" name="paperSpecialty" type="text" placeholder="影像 / 肿瘤 / EHR" />
+                  </div>
+                </div>
+
+                <label for="paperLink">来源链接</label>
+                <input id="paperLink" name="paperLink" type="url" placeholder="https://..." />
+
+                <label for="paperSummary">推荐理由</label>
+                <textarea id="paperSummary" name="paperSummary" rows="4" placeholder="说明核心贡献、临床价值或为什么值得讨论。" required></textarea>
+
+                <label for="paperDiscussion">建议讨论问题</label>
+                <textarea id="paperDiscussion" name="paperDiscussion" rows="3" placeholder="例如：如何验证外部泛化？是否会改变医生工作流？"></textarea>
+
+                <button class="btn primary" type="submit">提交到论文列表</button>
+              </form>
+              <p class="form-status" id="paperSubmissionStatus" role="status"></p>
+            </aside>
+          </div>
+        </div>
+      </section>
+
       <section class="section compact weekly-update-section" id="weekly-updates">
         <div class="container">
           <div class="section-head clean">

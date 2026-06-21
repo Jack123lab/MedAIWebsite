@@ -6307,6 +6307,167 @@ body.case-publish-open {
   grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
+.research-paper-hub-section {
+  background: #f7fbfb;
+}
+
+.research-paper-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) 360px;
+  gap: 18px;
+  align-items: start;
+}
+
+.research-paper-list-wrap,
+.research-paper-list {
+  display: grid;
+  gap: 12px;
+}
+
+.research-paper-toolbar,
+.research-paper-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.research-paper-card {
+  display: grid;
+  gap: 12px;
+  min-width: 0;
+  border: 1px solid #d8e2e8;
+  border-radius: 8px;
+  padding: 18px;
+  background: #ffffff;
+  box-shadow: 0 16px 34px rgba(11, 55, 70, 0.05);
+}
+
+.research-paper-card-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: center;
+}
+
+.research-paper-card-head small {
+  color: #5f7180;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+.research-paper-card h3 {
+  margin: 0;
+  color: #172738;
+  font-size: 20px;
+  line-height: 1.35;
+}
+
+.research-paper-card p,
+.research-paper-card dd,
+.research-submit-panel p,
+.form-status {
+  margin: 0;
+  color: #536474;
+}
+
+.research-paper-card dl {
+  display: grid;
+  grid-template-columns: 72px minmax(0, 1fr);
+  gap: 8px 12px;
+  margin: 0;
+  border-top: 1px solid #e4ebef;
+  padding-top: 12px;
+}
+
+.research-paper-card dt {
+  color: #172738;
+  font-weight: 800;
+}
+
+.research-paper-actions a,
+.paper-like-button {
+  min-height: 34px;
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  border: 1px solid #d8e2e8;
+  border-radius: 6px;
+  padding: 0 11px;
+  background: #ffffff;
+  color: var(--primary);
+  font-size: 13px;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+.paper-like-button {
+  cursor: pointer;
+  font-family: inherit;
+}
+
+.paper-like-button strong {
+  color: #172738;
+}
+
+.paper-like-button em {
+  font-style: normal;
+}
+
+.paper-like-button.active {
+  border-color: rgba(20, 116, 133, 0.45);
+  background: #e8f6f4;
+  color: #0f6870;
+}
+
+.research-submit-panel {
+  position: sticky;
+  top: 86px;
+}
+
+.research-paper-form {
+  display: grid;
+  gap: 10px;
+}
+
+.research-paper-form label {
+  color: #172738;
+  font-size: 13px;
+  font-weight: 900;
+}
+
+.research-paper-form input,
+.research-paper-form select,
+.research-paper-form textarea {
+  width: 100%;
+  border: 1px solid #d8e2e8;
+  border-radius: 6px;
+  padding: 10px 11px;
+  background: #ffffff;
+  color: #172738;
+  font: inherit;
+}
+
+.research-paper-form textarea {
+  resize: vertical;
+}
+
+.research-form-row {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  gap: 10px;
+}
+
+.research-form-row > div {
+  display: grid;
+  gap: 10px;
+}
+
+.form-status {
+  min-height: 20px;
+  font-size: 14px;
+}
+
 .physician-ai-radar-section {
   background:
     linear-gradient(rgba(20, 116, 133, 0.04) 1px, transparent 1px),
@@ -6466,11 +6627,17 @@ body.case-publish-open {
   .research-title-grid,
   .weekly-mechanism-grid,
   .discussion-column-grid,
+  .research-paper-layout,
+  .research-form-row,
   .standard-grid,
   .watch-card-grid,
   .physician-radar-grid,
   .product-watch-row {
     grid-template-columns: 1fr;
+  }
+
+  .research-submit-panel {
+    position: static;
   }
 
   .product-watch-row > a {

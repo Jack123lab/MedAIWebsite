@@ -1010,7 +1010,7 @@ function renderLikedPosts() {
     ...likedPapers,
   ];
   const dislikes = profileReactionPosts("disliked");
-  const comments = submissions.filter((post) => `${post.title} ${post.body}`.includes("评论"));
+  const comments = submissions.filter((post) => `${post.title} ${post.body || ""}`.includes("评论"));
 
   renderProfileStats({ submissions, likes, dislikes, comments });
   renderProfileDesign();
