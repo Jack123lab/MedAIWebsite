@@ -39,12 +39,12 @@ const siteNavItems = [
   { href: "learning.html", label: "内容", active: ["learning.html", "learning-item.html", "tutorials.html", "learning-videos.html", "learning-tutorial.html", "learning-question-bank.html", "learning-standardized-patient.html", "teaching-open-tutorials.html", "teaching-question-bank.html", "teaching-videos.html", "teaching-virtual-patient.html"] },
   { href: "network.html", label: "社区", active: ["network.html", "network-yu-guangjun.html"] },
   { href: "community.html", label: "讨论区", active: ["community.html", "clinician-discussion.html"] },
-  { href: "datasets.html", label: "数据集", active: ["datasets.html"] },
-  { href: "tools.html", label: "工具库", active: ["tools.html", "demos.html", "datasets-tools.html"] },
-  { href: "benchmark.html", label: "Benchmark", active: ["benchmark.html", "benchmark-gdb.html", "benchmark-liveclin.html", "benchmark-healthbench-tcm.html", "benchmark-doctors-last-exam.html", "benchmark-cmb.html", "benchmark-long-tailed-medqa.html", "benchmark-med-x.html"] },
-  { href: "crowdsourcing.html", label: "众包平台", active: ["crowdsourcing.html"] },
-  { href: "blog.html", label: "Blog", active: ["blog.html"] },
-  { href: "profile.html", label: "用户", active: ["profile.html", "auth.html", "doctor.html"] },
+  { href: "datasets.html", label: "数据集", active: ["datasets.html", "dataset-detail.html", "dataset-upload.html", "dataset-my-upload.html"] },
+  { href: "tools.html", label: "工具库", active: ["tools.html", "demos.html", "datasets-tools.html", "tool-share.html", "tools-base.html", "tools-mock-registration.html", "tools-scenarios.html", "tools-science.html", "tools-skill.html"] },
+  { href: "benchmark.html", label: "评测", active: ["benchmark.html", "benchmark-gdb.html", "benchmark-liveclin.html", "benchmark-healthbench-tcm.html", "benchmark-doctors-last-exam.html", "benchmark-cmb.html", "benchmark-long-tailed-medqa.html", "benchmark-med-x.html"] },
+  { href: "crowdsourcing.html", label: "众包", active: ["crowdsourcing.html"] },
+  { href: "blog.html", label: "博客", active: ["blog.html"] },
+  { href: "profile.html", label: "用户", active: ["profile.html", "auth.html", "doctor.html", "doctor-verification.html"] },
 ];
 
 function normalizeSiteHeader() {
