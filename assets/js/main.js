@@ -41,12 +41,25 @@ const forumTagLabels = {
 
 const siteNavItems = [
   { href: "index.html", label: "首页", active: ["index.html", "gmai-license.html", ""] },
-  { href: "learning.html", label: "内容", active: ["learning.html", "learning-item.html", "tutorials.html", "learning-videos.html", "learning-tutorial.html", "learning-question-bank.html", "learning-standardized-patient.html", "teaching-open-tutorials.html", "teaching-question-bank.html", "teaching-videos.html", "teaching-virtual-patient.html"] },
+  {
+    href: "learning.html",
+    label: "内容",
+    active: ["learning.html", "learning-item.html"],
+    children: [
+      { href: "tutorials.html", label: "Tutorial", active: ["tutorials.html", "learning-tutorial.html", "teaching-open-tutorials.html"] },
+      { href: "learning-videos.html", label: "Video", active: ["learning-videos.html", "teaching-videos.html"] },
+      { href: "learning-question-bank.html", label: "题库", active: ["learning-question-bank.html", "teaching-question-bank.html"] },
+      { href: "learning-standardized-patient.html", label: "标准病人", active: ["learning-standardized-patient.html", "teaching-virtual-patient.html"] },
+      { href: "popular-science.html", label: "科普", active: ["popular-science.html"] },
+      { href: "blog.html", label: "Blog", active: ["blog.html"] },
+    ],
+  },
   { href: "community.html", label: "社区", active: ["community.html", "community-original.html", "clinician-discussion.html", "medical-community.html", "network-yu-guangjun.html"] },
   {
+    href: "datasets-tools.html",
     label: "专栏",
+    active: ["datasets-tools.html"],
     children: [
-      { href: "datasets-tools.html", label: "资源索引", active: ["datasets-tools.html"] },
       { href: "datasets.html", label: "数据集", active: ["datasets.html", "dataset-detail.html", "dataset-upload.html", "dataset-my-upload.html"] },
       { href: "tools.html", label: "工具栏", active: ["tools.html", "demos.html", "tool-share.html", "tools-base.html", "tools-mock-registration.html", "tools-scenarios.html", "tools-science.html", "tools-skill.html", "tools-scenario-agentic-hospital.html", "tools-scenario-ai-native-his.html", "tools-scenario-ai-native-up2date.html", "tools-scenario-evidence-api.html", "tools-scenario-tcm-knowledge-graph.html", "tools-scenario-virtual-hospital.html"] },
       { href: "benchmark.html", label: "评测", active: ["benchmark.html", "benchmark-gdb.html", "benchmark-liveclin.html", "benchmark-healthbench-tcm.html", "benchmark-doctors-last-exam.html", "benchmark-cmb.html", "benchmark-long-tailed-medqa.html", "benchmark-med-x.html"] },
@@ -84,8 +97,11 @@ function normalizeSiteHeader() {
           const active = child.active.includes(currentPath) ? ' class="active"' : "";
           return `<a${active} href="${child.href}" role="menuitem">${child.label}</a>`;
         }).join("");
-        const active = item.children.some((child) => child.active.includes(currentPath)) ? " active" : "";
-        return `<div class="nav-dropdown nav-column-dropdown${active}"><button class="nav-fold-title" type="button" aria-haspopup="true"><span>${item.label}</span><span class="nav-arrow" aria-hidden="true"></span></button><div class="nav-dept-menu nav-column-menu" role="menu" aria-label="${item.label}">${childLinks}</div></div>`;
+        const active = (item.active || []).includes(currentPath) || item.children.some((child) => child.active.includes(currentPath)) ? " active" : "";
+        const trigger = item.href
+          ? `<a class="nav-fold-title" href="${item.href}" aria-haspopup="true"><span>${item.label}</span><span class="nav-arrow" aria-hidden="true"></span></a>`
+          : `<button class="nav-fold-title" type="button" aria-haspopup="true"><span>${item.label}</span><span class="nav-arrow" aria-hidden="true"></span></button>`;
+        return `<div class="nav-dropdown nav-column-dropdown${active}">${trigger}<div class="nav-dept-menu nav-column-menu" role="menu" aria-label="${item.label}">${childLinks}</div></div>`;
       }
       const active = item.active.includes(currentPath) ? ' class="active"' : "";
       const external = item.external ? ' target="_blank" rel="noreferrer"' : "";

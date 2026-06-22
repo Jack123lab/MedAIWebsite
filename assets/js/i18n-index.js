@@ -43,7 +43,7 @@
         "tools.html": "工具库",
         "benchmark.html": "评测",
         "crowdsourcing.html": "众包",
-        "blog.html": "博客",
+        "blog.html": "Blog",
         "profile.html": "用户",
       },
       newsSectionLabel: "新闻滚动图片栏",
