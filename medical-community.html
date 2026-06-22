@@ -1,0 +1,317 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>医学社区 | Freedom AI</title>
+    <meta name="description" content="Freedom AI 医学专家网络，展示医生、医院、机构，并支持论文、期刊、奖项和会议等学术内容检索。" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <script src="assets/js/main.js" defer></script>
+    <script src="assets/js/language-switch.js" defer></script>
+  </head>
+  <body class="network-page">
+        <header class="site-header">
+      <nav class="nav" aria-label="主导航">
+        <a class="brand" href="index.html"><span class="brand-mark">F</span><span class="brand-text"><strong>Freedom AI</strong><span>医学 AI 社区</span></span></a>
+        <form class="site-search" role="search" action="search.html" method="get" aria-label="站内搜索">
+          <label class="sr-only" for="siteSearchInput">搜索</label>
+          <input id="siteSearchInput" name="q" type="search" placeholder="搜索" autocomplete="off" />
+          <button type="submit">搜索</button>
+        </form>
+        <div class="nav-links">
+          <a href="index.html">首页</a>
+          <a href="learning.html">内容</a>
+          <a class="active" href="network.html">社区</a>
+          <a href="community.html">讨论区</a>
+          <a href="datasets.html">数据集</a>
+          <a href="tools.html">工具库</a>
+          <a href="benchmark.html">评测</a>
+          <a href="crowdsourcing.html">众包</a>
+          <a href="blog.html">博客</a>
+          <a href="profile.html">用户</a>
+        </div>
+        <div class="language-switch home-language-switch" data-language-switch aria-label="Language">
+          <button class="language-trigger" type="button" data-language-trigger aria-haspopup="listbox" aria-expanded="false">
+            <span class="language-trigger-icon" aria-hidden="true">文</span>
+            <span data-language-current>中文</span>
+            <span class="language-trigger-caret" aria-hidden="true">⌄</span>
+          </button>
+          <div class="language-menu" data-language-menu role="listbox" aria-label="Language list" hidden></div>
+        </div>
+      </nav>
+    </header>
+    <main>
+      <section class="section compact network-hot-news" aria-label="热门例子滚动栏">
+        <div class="container">
+          <div class="network-hot-news-head">
+            <h2>热门例子</h2>
+          </div>
+          <div class="news-carousel-frame network-news-carousel" data-news-carousel>
+            <button class="news-carousel-arrow prev" type="button" data-news-scroll="prev" aria-label="上一条热门例子">‹</button>
+            <div class="home-row-grid news-row-grid news-scroll-row network-news-row" aria-label="热门例子新闻栏目">
+              <a class="news-source-card network-news-card" href="network-yu-guangjun.html">
+                <img src="https://www.nhdisz.cn/upload/main/contentmanage/article/image/2024/03/06/babe3576bc7e4e0aaa0a19c92471a67c.jpg" alt="于广军教授" referrerpolicy="no-referrer" />
+                <div>
+                  <span>医生主页</span>
+                  <strong>于广军 / Guangjun Yu</strong>
+                  <p>医疗大数据、互联网医疗、智慧医院、高危儿管理、多动症医教结合。</p>
+                  <small>查看人物 →</small>
+                </div>
+              </a>
+              <a class="news-source-card network-news-card" href="network-yu-guangjun.html#affiliation-network">
+                <img src="assets/images/paper-hot-dxy.svg" alt="医院与临床协作热点视觉摘要" />
+                <div>
+                  <span>医院节点</span>
+                  <strong class="network-inline-org-name"><span class="network-org-logo hospital" aria-hidden="true" data-org-name="香港中文大学（深圳）附属第二医院" data-logo-type="hospital" data-official-site="https://www.nhdisz.cn/" data-upload-logo="" data-crawled-logo="" title="未上传 logo 时自动从机构官网寻找"><i></i></span>香港中文大学（深圳）附属第二医院</strong>
+                  <p>从医生主页延展到临床基地、智慧医院、AI 试点和真实世界任务。</p>
+                  <small>查看机构关联 →</small>
+                </div>
+              </a>
+              <a class="news-source-card network-news-card" href="network-yu-guangjun.html#papers">
+                <img src="assets/images/paper-hot-jama.svg" alt="AI 临床决策论文热点视觉摘要" />
+                <div>
+                  <span>论文案例</span>
+                  <strong>AI 临床决策支持系统评价框架</strong>
+                  <p>把论文、期刊、作者和 Benchmark 任务连接起来，形成可追溯的学术证据链。</p>
+                  <small>查看论文 →</small>
+                </div>
+              </a>
+              <a class="news-source-card network-news-card" href="network-yu-guangjun.html#conferences">
+                <img src="assets/images/paper-hot-nature.svg" alt="医学人工智能会议热点视觉摘要" />
+                <div>
+                  <span>会议报告</span>
+                  <strong>基于大数据的医学人工智能研究与应用</strong>
+                  <p>用新闻流方式展示会议、报告、主题和后续共识研究的关联入口。</p>
+                  <small>查看报告 →</small>
+                </div>
+              </a>
+            </div>
+            <button class="news-carousel-arrow next" type="button" data-news-scroll="next" aria-label="下一条热门例子">›</button>
+            <div class="news-carousel-dots" aria-label="热门例子位置">
+              <button class="active" type="button" data-news-dot="0" aria-label="第 1 条热门例子" aria-current="true"></button>
+              <button type="button" data-news-dot="1" aria-label="第 2 条热门例子"></button>
+              <button type="button" data-news-dot="2" aria-label="第 3 条热门例子"></button>
+              <button type="button" data-news-dot="3" aria-label="第 4 条热门例子"></button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <nav class="network-type-strip" aria-label="医学网络类型">
+        <div class="container network-type-links">
+          <a href="#network-results" data-network-filter-trigger="doctor"><strong>Doctor</strong><span>医生</span></a>
+          <a href="#network-results" data-network-filter-trigger="hospital"><strong>Hospital</strong><span>医院</span></a>
+          <a href="#network-results" data-network-filter-trigger="institution"><strong>Institution</strong><span>机构</span></a>
+        </div>
+      </nav>
+
+      <section class="section compact alt-band" id="network-results">
+        <div class="container network-search-shell" data-network-search-root>
+          <div class="section-head clean">
+            <div>
+              <p class="eyebrow">AMiner-style Search</p>
+              <h2>医学网络检索</h2>
+              <p>结果可以是医生、医院、机构，也可以是论文、期刊、奖项和会议。当前是静态演示，后续可接入真实作者库和论文索引。</p>
+            </div>
+          </div>
+          <div class="network-quick-search">
+            <label class="sr-only" for="networkSearchInput">搜索医生、医院、机构、论文、期刊、奖项、会议</label>
+            <input id="networkSearchInput" type="search" placeholder="搜索：于广军、智慧医院、JMIR、白玉兰奖..." data-network-search />
+          </div>
+          <div class="network-filter-row" aria-label="医学网络结果类型">
+            <button class="active" type="button" data-network-filter="all">全部</button>
+            <button type="button" data-network-filter="doctor">医生</button>
+            <button type="button" data-network-filter="hospital">医院</button>
+            <button type="button" data-network-filter="institution">机构</button>
+            <button type="button" data-network-filter="paper">论文</button>
+            <button type="button" data-network-filter="journal">期刊</button>
+            <button type="button" data-network-filter="award">奖项</button>
+            <button type="button" data-network-filter="conference">会议</button>
+          </div>
+          <div class="network-workspace">
+            <div class="network-result-list">
+              <a class="network-result-card person" href="network-yu-guangjun.html" data-network-result data-type="doctor" data-keywords="于广军 guangjun yu 医生 教授 医疗大数据 互联网医疗 智慧医院 高危儿 多动症 医教结合 cuhk">
+                <img src="https://www.nhdisz.cn/upload/main/contentmanage/article/image/2024/03/06/babe3576bc7e4e0aaa0a19c92471a67c.jpg" alt="于广军教授" referrerpolicy="no-referrer" />
+                <div>
+                  <span class="tag green">医生</span>
+                  <h3>于广军 / Guangjun Yu</h3>
+                  <p>港中大（深圳）医学院副院长，国家健康医疗大数据研究院（深圳）院长，研究方向包括医疗大数据、互联网医疗和智慧医院。</p>
+                  <div class="network-meta-strip"><span>论文 150+</span><span>专著 10+</span><span>可认领</span></div>
+                </div>
+              </a>
+              <a class="network-result-card" href="network-yu-guangjun.html#affiliation-network" data-network-result data-type="hospital" data-keywords="香港中文大学深圳附属第二医院 医院 第二附属医院 智慧医院 医疗大数据">
+                <div>
+                  <span class="tag blue">医院</span>
+                  <div class="network-org-title">
+                    <span class="network-org-logo hospital" aria-hidden="true" data-org-name="香港中文大学（深圳）附属第二医院" data-logo-type="hospital" data-official-site="https://www.nhdisz.cn/" data-upload-logo="" data-crawled-logo="" title="未上传 logo 时自动从机构官网寻找"><i></i></span>
+                    <h3>香港中文大学（深圳）附属第二医院</h3>
+                  </div>
+                  <p>医生主页关联的临床机构，可展示专科能力、真实世界数据、AI 试点和院内任务。</p>
+                  <div class="network-meta-strip"><span>临床基地</span><span>智慧医院</span><span>可认领</span></div>
+                </div>
+              </a>
+              <a class="network-result-card" href="network-yu-guangjun.html#affiliation-network" data-network-result data-type="institution" data-keywords="国家健康医疗大数据研究院 深圳 机构 医疗人工智能 医疗信息化">
+                <div>
+                  <span class="tag gold">机构</span>
+                  <div class="network-org-title">
+                    <span class="network-org-logo institute" aria-hidden="true" data-org-name="国家健康医疗大数据研究院（深圳）" data-logo-type="institute" data-official-site="" data-upload-logo="" data-crawled-logo="" title="未上传 logo 时自动从机构官网寻找"><i></i></span>
+                    <h3>国家健康医疗大数据研究院（深圳）</h3>
+                  </div>
+                  <p>面向医疗大数据、医疗人工智能和医疗信息化的研究机构，可作为论文、项目、会议和人才网络的组织节点。</p>
+                  <div class="network-meta-strip"><span>研究院</span><span>医疗 AI</span><span>机构主页</span></div>
+                </div>
+              </a>
+              <a class="network-result-card" href="network-yu-guangjun.html#papers" data-network-result data-type="paper" data-keywords="paper 论文 evaluation framework artificial intelligence clinical decision support systems mixed methods JMIR medical internet research">
+                <div>
+                  <span class="tag green">论文</span>
+                  <h3>Evaluation Framework for Successful Artificial Intelligence-Enabled Clinical Decision Support Systems</h3>
+                  <p>JMIR 2021，围绕 AI 临床决策支持系统的评价框架，可连接医生、机构、期刊和 Benchmark 任务。</p>
+                  <div class="network-meta-strip"><span>JMIR</span><span>AI-CDSS</span><span>2021</span></div>
+                </div>
+              </a>
+              <a class="network-result-card" href="network-yu-guangjun.html#papers" data-network-result data-type="paper" data-keywords="paper 论文 wechat calling system outpatient services shanghai children's hospital pak j med sci">
+                <div>
+                  <span class="tag green">论文</span>
+                  <h3>Improvement in outpatient services using the WeChat calling system</h3>
+                  <p>Pak J Med Sci 2021，展示互联网医疗和门诊服务流程优化方向。</p>
+                  <div class="network-meta-strip"><span>门诊服务</span><span>WeChat</span><span>2021</span></div>
+                </div>
+              </a>
+              <a class="network-result-card" href="network-yu-guangjun.html#journals" data-network-result data-type="journal" data-keywords="journal 期刊 JMIR World Journal of Pediatrics Frontiers Pediatrics Gut Microbes Orphanet">
+                <div>
+                  <span class="tag blue">期刊</span>
+                  <h3>Journal of Medical Internet Research / World Journal of Pediatrics</h3>
+                  <p>个人主页可按期刊聚合论文，帮助快速查看互联网医疗、儿科和医学 AI 相关发表渠道。</p>
+                  <div class="network-meta-strip"><span>JMIR</span><span>WJP</span><span>Front Pediatr</span></div>
+                </div>
+              </a>
+              <a class="network-result-card" href="network-yu-guangjun.html#awards" data-network-result data-type="award" data-keywords="award 奖项 国家百千万人才 有突出贡献专家 白玉兰奖 科技进步二等奖 领军人才">
+                <div>
+                  <span class="tag gold">奖项</span>
+                  <h3>国家百千万人才工程 / 上海儿童工作白玉兰奖</h3>
+                  <p>奖项与人才计划作为人物主页的重要可信度信号，可被机构主页和会议页面引用。</p>
+                  <div class="network-meta-strip"><span>人才计划</span><span>政府奖项</span><span>团队荣誉</span></div>
+                </div>
+              </a>
+              <a class="network-result-card" href="network-yu-guangjun.html#conferences" data-network-result data-type="conference" data-keywords="conference 会议 学术报告 医学人工智能 PRIMARY-AI 基于大数据的医学人工智能研究与应用">
+                <div>
+                  <span class="tag green">会议</span>
+                  <h3>基于大数据的医学人工智能研究与应用</h3>
+                  <p>会议/报告条目可聚合演讲主题、主办机构、相关论文和后续共识研究。</p>
+                  <div class="network-meta-strip"><span>学术报告</span><span>医学 AI</span><span>大数据</span></div>
+                </div>
+              </a>
+            </div>
+
+            <aside class="people-graph-panel" aria-label="人物图谱可视化工具">
+              <div class="people-graph-head">
+                <span>People Graph</span>
+                <h3>于广军人物图谱</h3>
+                <p>把人物、同事机构、论文合作者、论文和期刊放在一张关系图里，适合后续接入作者库和论文索引。</p>
+              </div>
+              <svg class="people-graph" viewBox="0 0 620 520" role="img" aria-labelledby="peopleGraphTitle peopleGraphDesc">
+                <title id="peopleGraphTitle">于广军人物图谱</title>
+                <desc id="peopleGraphDesc">中心节点为于广军，连接机构同事、论文合作者、论文、期刊和会议报告。</desc>
+                <defs>
+                  <marker id="graphArrow" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
+                    <path d="M0,0 L9,4.5 L0,9 Z"></path>
+                  </marker>
+                </defs>
+
+                <g class="graph-links">
+                  <path class="relation affiliation" d="M310 250 C230 210 170 170 116 126"></path>
+                  <path class="relation affiliation" d="M310 250 C224 276 166 324 116 382"></path>
+                  <path class="relation coworker" d="M310 250 C404 190 452 142 504 98"></path>
+                  <path class="relation coauthor" d="M310 250 C398 238 456 222 526 206"></path>
+                  <path class="relation coauthor" d="M310 250 C418 282 466 330 520 386"></path>
+                  <path class="relation paper" d="M310 250 C284 340 270 390 256 450"></path>
+                  <path class="relation paper" d="M310 250 C258 190 232 160 202 116"></path>
+                  <path class="relation venue" d="M256 450 C320 458 380 458 452 442"></path>
+                  <path class="relation venue" d="M202 116 C248 88 300 72 372 72"></path>
+                </g>
+
+                <a href="network-yu-guangjun.html" class="graph-node graph-node-main" aria-label="查看于广军主页">
+                  <circle cx="310" cy="250" r="52"></circle>
+                  <text x="310" y="244">于广军</text>
+                  <text x="310" y="266">Guangjun Yu</text>
+                </a>
+
+                <a href="network-yu-guangjun.html#affiliation-network" class="graph-node graph-node-organization" aria-label="查看香港中文大学深圳医学院关联">
+                  <rect x="42" y="76" width="148" height="70" rx="14"></rect>
+                  <text x="66" y="116" class="graph-node-logo">U</text>
+                  <text x="116" y="104">港中大（深圳）</text>
+                  <text x="116" y="125">医学院</text>
+                </a>
+                <a href="network-yu-guangjun.html#affiliation-network" class="graph-node graph-node-organization" aria-label="查看国家健康医疗大数据研究院深圳关联">
+                  <rect x="42" y="352" width="148" height="72" rx="14"></rect>
+                  <text x="66" y="393" class="graph-node-logo">R</text>
+                  <text x="116" y="381">健康医疗</text>
+                  <text x="116" y="402">大数据研究院</text>
+                </a>
+
+                <a href="network-yu-guangjun.html#papers" class="graph-node graph-node-person" aria-label="查看 Mengting Ji 论文合作者关系">
+                  <circle cx="504" cy="98" r="42"></circle>
+                  <text x="504" y="94">Mengting</text>
+                  <text x="504" y="113">Ji</text>
+                </a>
+                <a href="network-yu-guangjun.html#papers" class="graph-node graph-node-person" aria-label="查看 Hui Lu 论文合作者关系">
+                  <circle cx="526" cy="206" r="38"></circle>
+                  <text x="526" y="203">Hui</text>
+                  <text x="526" y="220">Lu</text>
+                </a>
+                <a href="network-yu-guangjun.html#papers" class="graph-node graph-node-person" aria-label="查看 Georgi Genchev 论文合作者关系">
+                  <circle cx="520" cy="386" r="44"></circle>
+                  <text x="520" y="381">Georgi</text>
+                  <text x="520" y="400">Genchev</text>
+                </a>
+
+                <a href="network-yu-guangjun.html#papers" class="graph-node graph-node-paper" aria-label="查看 AI 临床决策支持系统评价框架论文">
+                  <rect x="178" y="416" width="156" height="70" rx="13"></rect>
+                  <text x="256" y="444">AI-CDSS</text>
+                  <text x="256" y="464">评价框架论文</text>
+                </a>
+                <a href="network-yu-guangjun.html#papers" class="graph-node graph-node-paper" aria-label="查看 WeChat calling system 门诊服务论文">
+                  <rect x="126" y="82" width="152" height="70" rx="13"></rect>
+                  <text x="202" y="110">WeChat</text>
+                  <text x="202" y="130">门诊服务论文</text>
+                </a>
+
+                <a href="network-yu-guangjun.html#journals" class="graph-node graph-node-venue" aria-label="查看 JMIR 期刊关联">
+                  <rect x="376" y="42" width="118" height="58" rx="12"></rect>
+                  <text x="435" y="76">JMIR</text>
+                </a>
+                <a href="network-yu-guangjun.html#conferences" class="graph-node graph-node-venue" aria-label="查看医学人工智能会议关联">
+                  <rect x="392" y="412" width="120" height="58" rx="12"></rect>
+                  <text x="452" y="436">医学 AI</text>
+                  <text x="452" y="454">会议</text>
+                </a>
+
+                <g class="graph-edge-labels">
+                  <text x="186" y="196">任职/同事</text>
+                  <text x="420" y="162">论文合作者</text>
+                  <text x="342" y="368">共同发表</text>
+                  <text x="330" y="92">发表渠道</text>
+                </g>
+              </svg>
+
+              <div class="people-graph-legend" aria-label="图谱关系类型">
+                <span><i class="legend-person"></i>人物</span>
+                <span><i class="legend-organization"></i>机构/同事</span>
+                <span><i class="legend-paper"></i>论文</span>
+                <span><i class="legend-venue"></i>期刊/会议</span>
+              </div>
+              <div class="people-graph-notes">
+                <a href="network-yu-guangjun.html#papers"><strong>论文合作者</strong><span>Mengting Ji、Hui Lu、Georgi Genchev 等来自公开论文作者列表。</span></a>
+                <a href="https://www.jmir.org/2021/6/e25929" target="_blank" rel="noreferrer"><strong>作者来源</strong><span>JMIR 2021 AI-CDSS evaluation framework 论文作者列表。</span></a>
+                <a href="network-yu-guangjun.html#affiliation-network"><strong>同事网络</strong><span>以医院、学院、研究院作为可展开的同事和机构节点。</span></a>
+              </div>
+            </aside>
+          </div>
+          <p class="empty-state network-empty-state" hidden>暂无匹配结果。</p>
+        </div>
+      </section>
+
+    </main>
+    <footer class="site-footer"><div class="container footer-grid"><div><h3>Freedom AI</h3><p>社区主页用于连接医生、医院、机构、论文、期刊、奖项和会议。</p></div><div><h4>医生</h4><a href="network-yu-guangjun.html">于广军主页</a></div><div><h4>资源</h4><a href="datasets.html">数据集</a><a href="tools.html">工具库</a></div><div><h4>讨论</h4><a href="community.html">讨论区</a></div></div></footer>
+  </body>
+</html>
