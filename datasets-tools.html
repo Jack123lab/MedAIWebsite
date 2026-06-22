@@ -3,199 +3,251 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>资源索引 | Freedom AI</title>
-    <meta name="description" content="Freedom AI 资源索引，将数据集、工具库和 Benchmark 三类医学 AI 资源汇总到一个清晰入口。" />
+    <title>数据集 | Happy medical AI</title>
+    <meta name="description" content="Happy medical AI 医学 AI 数据集目录，参考 Kaggle Models 的搜索、标签筛选和 Trending 列表结构。" />
     <link rel="stylesheet" href="assets/css/style.css" />
     <style>
-      .resource-index-page {
-        background: #f7f7f4;
+      .data-tools-page {
+        background: #f6f8fa;
       }
 
-      .resource-index-main {
-        padding: 34px 0 54px;
+      .models-page-shell {
+        padding: 24px 0 42px;
       }
 
-      .resource-index-hero {
+      .models-title-bar {
         display: grid;
-        grid-template-columns: minmax(0, 0.95fr) minmax(260px, 0.55fr);
-        gap: 28px;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 18px;
         align-items: end;
-        margin-bottom: 26px;
-        border-bottom: 1px solid #deded8;
-        padding-bottom: 24px;
+        margin-bottom: 18px;
       }
 
-      .resource-index-hero h1 {
+      .models-title-bar h1 {
+        margin: 0 0 6px;
+        color: #172738;
+        font-size: 34px;
+        line-height: 1.15;
+      }
+
+      .models-title-bar p {
         max-width: 760px;
-        margin: 0 0 12px;
-        color: #111827;
-        font-size: clamp(34px, 5vw, 58px);
-        line-height: 1.08;
-        letter-spacing: 0;
-      }
-
-      .resource-index-hero p {
-        max-width: 720px;
         margin: 0;
-        color: #68717d;
-        font-size: 17px;
-        line-height: 1.75;
+        color: #667585;
       }
 
-      .resource-index-note {
-        justify-self: end;
-        max-width: 310px;
-        border: 1px solid #deded8;
+      .dataset-add-btn {
+        min-height: 42px;
+        white-space: nowrap;
+      }
+
+      .dataset-add-btn span {
+        margin-right: 4px;
+        font-size: 18px;
+        font-weight: 900;
+        line-height: 1;
+      }
+
+      .models-search-panel {
+        display: grid;
+        gap: 12px;
+        margin-bottom: 20px;
+        border: 1px solid #dce4ea;
         border-radius: 8px;
-        padding: 16px;
+        padding: 14px;
         background: #ffffff;
-        color: #4b5563;
-        font-size: 14px;
-        line-height: 1.65;
       }
 
-      .resource-index-grid {
+      .dataset-search-row {
         display: grid;
-        grid-template-columns: repeat(3, minmax(0, 1fr));
-        gap: 16px;
       }
 
-      .resource-index-card {
-        min-width: 0;
-        display: grid;
-        grid-template-rows: auto 1fr;
-        border: 1px solid #deded8;
-        border-radius: 8px;
-        overflow: hidden;
-        background: #ffffff;
-        color: inherit;
-        text-decoration: none;
-        transition: border-color 0.16s ease, transform 0.16s ease;
-      }
-
-      .resource-index-card:hover {
-        border-color: #c7b56b;
-        transform: translateY(-2px);
-      }
-
-      .resource-index-card:focus-visible {
-        outline: 3px solid rgba(240, 180, 41, 0.42);
-        outline-offset: 4px;
-      }
-
-      .resource-index-visual {
-        min-height: 210px;
-        display: grid;
-        align-items: end;
-        border-bottom: 1px solid #deded8;
-        background: #f2f4ef;
-      }
-
-      .resource-index-visual svg {
-        display: block;
+      .dataset-search-row .forum-search {
         width: 100%;
-        height: 210px;
-      }
-
-      .resource-index-body {
-        display: grid;
-        gap: 14px;
-        padding: 20px;
-      }
-
-      .resource-index-kicker {
-        color: #9a6a00;
-        font-size: 13px;
-        font-weight: 800;
-      }
-
-      .resource-index-body h2 {
-        margin: 0;
-        color: #111827;
-        font-size: 25px;
-        line-height: 1.24;
-      }
-
-      .resource-index-body p {
-        margin: 0;
-        color: #68717d;
+        min-height: 48px;
+        border-color: #d7e0e7;
+        border-radius: 8px;
+        background: #ffffff;
         font-size: 15px;
-        line-height: 1.7;
       }
 
-      .resource-index-tags {
+      .dataset-domain-tags {
         display: flex;
         flex-wrap: wrap;
-        gap: 7px;
-        margin: 0;
-        padding: 0;
-        list-style: none;
+        gap: 8px;
       }
 
-      .resource-index-tags li {
-        border: 1px solid #e3e3dc;
+      .dataset-domain-tags .filter-btn {
+        min-height: 34px;
         border-radius: 999px;
-        padding: 4px 9px;
-        background: #f8f8f5;
-        color: #4b5563;
-        font-size: 12px;
+        border-color: #d7e0e7;
+        background: #ffffff;
+        color: #405466;
+      }
+
+      .dataset-domain-tags .filter-btn.active,
+      .dataset-domain-tags .filter-btn:hover {
+        border-color: #1b75bb;
+        background: #eaf4ff;
+        color: #125a92;
+      }
+
+      .dataset-trending-head {
+        display: flex;
+        align-items: baseline;
+        justify-content: space-between;
+        gap: 12px;
+        margin-bottom: 10px;
+      }
+
+      .dataset-trending-head h2 {
+        margin: 0;
+        color: #172738;
+        font-size: 22px;
+      }
+
+      .dataset-trending-head span {
+        color: #667585;
+        font-size: 13px;
         font-weight: 700;
       }
 
-      .resource-index-link {
-        align-self: end;
-        color: #111827;
-        font-size: 14px;
+      .dataset-trending-list {
+        display: grid;
+        gap: 10px;
+      }
+
+      .dataset-trending-card {
+        display: grid;
+        grid-template-columns: 58px minmax(0, 1fr) minmax(170px, auto);
+        gap: 14px;
+        align-items: center;
+        min-height: 118px;
+        border: 1px solid #dce4ea;
+        border-radius: 8px;
+        padding: 14px 16px;
+        background: #ffffff;
+        color: inherit;
+      }
+
+      .dataset-trending-card[hidden] {
+        display: none !important;
+      }
+
+      .dataset-thumb {
+        width: 50px;
+        height: 50px;
+        display: grid;
+        place-items: center;
+        border: 1px solid #d7e0e7;
+        border-radius: 8px;
+        background: #f1f5f8;
+        color: #125a92;
+        font-size: 13px;
         font-weight: 900;
       }
 
-      .resource-index-card:hover .resource-index-link {
-        color: #9a6a00;
+      .dataset-card-main {
+        min-width: 0;
+        display: grid;
+        gap: 7px;
       }
 
-      .resource-index-footer {
-        margin-top: 26px;
-        border: 1px solid #deded8;
-        border-radius: 8px;
-        padding: 18px 20px;
-        background: #fffdf3;
-        color: #4b5563;
+      .dataset-card-head {
+        display: grid;
+        gap: 3px;
+      }
+
+      .dataset-card-head span {
+        color: #667585;
+        font-size: 12px;
+        font-weight: 800;
+      }
+
+      .dataset-card-head strong {
+        color: #172738;
+        font-size: 17px;
+        line-height: 1.35;
+      }
+
+      .dataset-trending-card p {
+        margin: 0;
+        color: #667585;
         font-size: 14px;
-        line-height: 1.7;
+        line-height: 1.55;
       }
 
-      @media (max-width: 920px) {
-        .resource-index-hero,
-        .resource-index-grid {
+      .dataset-meta-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 7px;
+      }
+
+      .dataset-meta-row span {
+        border: 1px solid #e3e9ee;
+        border-radius: 999px;
+        padding: 3px 8px;
+        background: #f8fafb;
+        color: #405466;
+        font-size: 12px;
+        font-weight: 750;
+      }
+
+      .dataset-card-stats {
+        display: grid;
+        gap: 5px;
+        justify-items: end;
+        color: #667585;
+        font-size: 12px;
+        text-align: right;
+        white-space: nowrap;
+      }
+
+      .dataset-card-stats strong {
+        color: #172738;
+        font-size: 15px;
+      }
+
+      .dataset-card-stats a {
+        color: #125a92;
+        font-weight: 900;
+        text-decoration: none;
+      }
+
+      .dataset-empty-note {
+        display: none;
+        border: 1px dashed #cfd8df;
+        border-radius: 8px;
+        padding: 18px;
+        color: #667585;
+        background: #ffffff;
+      }
+
+      .dataset-empty-note.is-visible {
+        display: block;
+      }
+
+      @media (max-width: 820px) {
+        .models-title-bar,
+        .dataset-trending-card {
           grid-template-columns: 1fr;
         }
 
-        .resource-index-note {
-          justify-self: stretch;
-          max-width: none;
-        }
-      }
-
-      @media (max-width: 560px) {
-        .resource-index-main {
-          padding: 24px 0 38px;
+        .dataset-add-btn {
+          justify-self: start;
         }
 
-        .resource-index-visual,
-        .resource-index-visual svg {
-          height: 178px;
-          min-height: 178px;
-        }
-
-        .resource-index-body {
-          padding: 17px;
+        .dataset-card-stats {
+          justify-items: start;
+          text-align: left;
         }
       }
     </style>
+    <script src="assets/js/config.js"></script>
     <script src="assets/js/main.js" defer></script>
   </head>
-  <body class="resource-index-page">
-    <header class="site-header">
+  <body class="data-tools-page">
+        <header class="site-header">
       <nav class="nav" aria-label="主导航">
         <a class="brand" href="index.html"><span class="brand-mark">F</span><span class="brand-text"><strong>Freedom AI</strong><span>医学 AI 社区</span></span></a>
         <form class="site-search" role="search" action="search.html" method="get" aria-label="站内搜索">
@@ -208,7 +260,9 @@
           <a href="learning.html">内容</a>
           <a href="network.html">社区</a>
           <a href="community.html">讨论区</a>
-          <a class="active" href="datasets-tools.html">资源索引</a>
+          <a href="datasets.html">数据集</a>
+          <a class="active" href="tools.html">工具库</a>
+          <a href="benchmark.html">评测</a>
           <a href="crowdsourcing.html">众包</a>
           <a href="blog.html">博客</a>
           <a href="profile.html">用户</a>
@@ -216,121 +270,142 @@
       </nav>
     </header>
 
-    <main class="resource-index-main">
-      <section class="container" aria-label="医学 AI 资源索引">
-        <div class="resource-index-hero">
+    <main class="models-page-shell">
+      <section class="container" aria-label="数据集目录">
+        <div class="models-title-bar">
           <div>
-            <p class="eyebrow">Resource Index</p>
-            <h1>数据集、工具与 Benchmark 的统一入口</h1>
-            <p>把三类常用资源放在同一层级浏览。先判断要找的是数据来源、可复用工具，还是评测任务，再进入对应页面继续查看细节。</p>
+            <p class="eyebrow">Kaggle-style Dataset Models</p>
+            <h1>医学 AI 数据集</h1>
+            <p>保留上传入口、搜索框和标签筛选，按 Trending Models 的紧凑列表方式呈现数据集。</p>
           </div>
-          <aside class="resource-index-note">
-            每张目录卡都保留独立页面入口。索引页只承担分流和结构说明，不替代原有内容。
-          </aside>
+          <a class="btn primary dataset-add-btn" href="contribute.html"><span aria-hidden="true">+</span> 上传工具 / 数据集</a>
         </div>
 
-        <div class="resource-index-grid">
-          <a class="resource-index-card" href="datasets.html" aria-label="进入数据集页面">
-            <div class="resource-index-visual" aria-hidden="true">
-              <svg viewBox="0 0 520 260" role="img">
-                <rect width="520" height="260" fill="#f2f4ef" />
-                <rect x="46" y="42" width="172" height="132" rx="8" fill="#ffffff" stroke="#d8d8cf" />
-                <rect x="72" y="66" width="118" height="12" rx="6" fill="#d29b20" />
-                <rect x="72" y="94" width="96" height="10" rx="5" fill="#c9c9c2" />
-                <rect x="72" y="118" width="126" height="10" rx="5" fill="#deded8" />
-                <rect x="72" y="142" width="74" height="10" rx="5" fill="#deded8" />
-                <rect x="252" y="70" width="222" height="34" rx="8" fill="#ffffff" stroke="#d8d8cf" />
-                <rect x="274" y="82" width="78" height="10" rx="5" fill="#c9c9c2" />
-                <rect x="252" y="124" width="222" height="34" rx="8" fill="#ffffff" stroke="#d8d8cf" />
-                <rect x="274" y="136" width="128" height="10" rx="5" fill="#d29b20" />
-                <rect x="252" y="178" width="222" height="34" rx="8" fill="#ffffff" stroke="#d8d8cf" />
-                <rect x="274" y="190" width="104" height="10" rx="5" fill="#c9c9c2" />
-              </svg>
-            </div>
-            <div class="resource-index-body">
-              <span class="resource-index-kicker">Data Catalog</span>
-              <h2>数据集</h2>
-              <p>浏览医学影像、病历文本、生理信号、组学和合规共享样例，适合训练、验证与任务发布前的数据查找。</p>
-              <ul class="resource-index-tags" aria-label="数据集范围">
-                <li>影像</li>
-                <li>病历</li>
-                <li>文本</li>
-                <li>合规共享</li>
-              </ul>
-              <span class="resource-index-link">进入数据集页面</span>
-            </div>
-          </a>
+        <div class="models-search-panel">
+          <div class="dataset-search-row" aria-label="数据集搜索">
+            <input id="datasetSearch" class="forum-search" type="search" placeholder="搜索数据集、模型、任务、科室或格式" />
+          </div>
 
-          <a class="resource-index-card" href="tools.html" aria-label="进入工具库页面">
-            <div class="resource-index-visual" aria-hidden="true">
-              <svg viewBox="0 0 520 260" role="img">
-                <rect width="520" height="260" fill="#f2f4ef" />
-                <rect x="52" y="44" width="416" height="150" rx="8" fill="#ffffff" stroke="#d8d8cf" />
-                <rect x="78" y="70" width="122" height="18" rx="9" fill="#d29b20" />
-                <rect x="78" y="110" width="156" height="12" rx="6" fill="#c9c9c2" />
-                <rect x="78" y="138" width="120" height="12" rx="6" fill="#deded8" />
-                <rect x="282" y="74" width="118" height="72" rx="8" fill="#fffdf3" stroke="#eadb9d" />
-                <path d="M315 109h52M341 83v52" stroke="#9a6a00" stroke-width="10" stroke-linecap="round" />
-                <rect x="116" y="208" width="82" height="12" rx="6" fill="#c9c9c2" />
-                <rect x="220" y="208" width="82" height="12" rx="6" fill="#d29b20" />
-                <rect x="324" y="208" width="82" height="12" rx="6" fill="#c9c9c2" />
-              </svg>
-            </div>
-            <div class="resource-index-body">
-              <span class="resource-index-kicker">Tool Library</span>
-              <h2>工具库</h2>
-              <p>进入基础数据库工具、Mock API、Skill 专栏和产品场景方案，便于把医学知识服务接入具体工作流。</p>
-              <ul class="resource-index-tags" aria-label="工具库范围">
-                <li>基础库</li>
-                <li>Mock API</li>
-                <li>Skill</li>
-                <li>场景方案</li>
-              </ul>
-              <span class="resource-index-link">进入工具库页面</span>
-            </div>
-          </a>
-
-          <a class="resource-index-card" href="benchmark.html" aria-label="进入 Benchmark 页面">
-            <div class="resource-index-visual" aria-hidden="true">
-              <svg viewBox="0 0 520 260" role="img">
-                <rect width="520" height="260" fill="#f2f4ef" />
-                <rect x="54" y="44" width="412" height="166" rx="8" fill="#ffffff" stroke="#d8d8cf" />
-                <rect x="86" y="72" width="78" height="116" rx="6" fill="#fffdf3" stroke="#eadb9d" />
-                <rect x="102" y="142" width="46" height="30" rx="4" fill="#d29b20" />
-                <rect x="202" y="72" width="78" height="116" rx="6" fill="#f8f8f5" stroke="#d8d8cf" />
-                <rect x="218" y="112" width="46" height="60" rx="4" fill="#c9c9c2" />
-                <rect x="318" y="72" width="78" height="116" rx="6" fill="#f8f8f5" stroke="#d8d8cf" />
-                <rect x="334" y="94" width="46" height="78" rx="4" fill="#9a6a00" opacity="0.78" />
-                <path d="M86 204h310" stroke="#c9c9c2" stroke-width="8" stroke-linecap="round" />
-              </svg>
-            </div>
-            <div class="resource-index-body">
-              <span class="resource-index-kicker">Evaluation</span>
-              <h2>Benchmark</h2>
-              <p>查看医学 AI 评测实例、榜单和任务发布流程，用于比较模型、工具或系统在真实医学任务中的表现。</p>
-              <ul class="resource-index-tags" aria-label="Benchmark 范围">
-                <li>评测实例</li>
-                <li>排行榜</li>
-                <li>错误分析</li>
-                <li>任务发布</li>
-              </ul>
-              <span class="resource-index-link">进入 Benchmark 页面</span>
-            </div>
-          </a>
+          <div class="dataset-domain-tags" role="group" aria-label="数据集标签筛选">
+            <button class="filter-btn active" type="button" data-dataset-filter="all">全部</button>
+            <button class="filter-btn" type="button" data-dataset-filter="imaging">影像</button>
+            <button class="filter-btn" type="button" data-dataset-filter="ehr">EHR / 病历</button>
+            <button class="filter-btn" type="button" data-dataset-filter="nlp">文本 / NLP</button>
+            <button class="filter-btn" type="button" data-dataset-filter="signal">生理信号</button>
+            <button class="filter-btn" type="button" data-dataset-filter="omics">组学</button>
+            <button class="filter-btn" type="button" data-dataset-filter="generative">生成式 AI</button>
+            <button class="filter-btn" type="button" data-dataset-filter="benchmark">Benchmark</button>
+            <button class="filter-btn" type="button" data-dataset-filter="share">合规共享</button>
+          </div>
         </div>
 
-        <p class="resource-index-footer">
-          目录层只做入口归并，原页面内容保持独立。需要具体数据、工具或评测细节时，直接点击卡片名称进入对应页面。
-        </p>
+        <div class="dataset-trending-head">
+          <h2>Trending Datasets</h2>
+          <span>按浏览、收藏和任务热度排序</span>
+        </div>
+
+        <div class="dataset-trending-list" aria-live="polite">
+          <article class="dataset-trending-card" data-dataset-card data-tags="ehr benchmark share mimic icu clinical">
+            <div class="dataset-thumb" aria-hidden="true">EHR</div>
+            <div class="dataset-card-main">
+              <div class="dataset-card-head"><span>MIT Critical Data · EHR</span><strong>MIMIC-IV 重症监护临床数据库</strong></div>
+              <p>覆盖 ICU 诊疗记录、实验室检查、用药、护理和出入院信息，适合临床预测、病历结构化和可解释性研究。</p>
+              <div class="dataset-meta-row"><span>CSV</span><span>约 43 万住院记录</span><span>Updated 2026.05</span><span>Usability 9.6</span></div>
+            </div>
+            <aside class="dataset-card-stats"><span>浏览 18.4k</span><strong>收藏 1.2k</strong><a href="https://mimic.mit.edu/" target="_blank" rel="noreferrer">查看数据</a></aside>
+          </article>
+
+          <article class="dataset-trending-card" data-dataset-card data-tags="imaging benchmark share ct radiology oncology">
+            <div class="dataset-thumb" aria-hidden="true">IMG</div>
+            <div class="dataset-card-main">
+              <div class="dataset-card-head"><span>TCIA · Imaging</span><strong>胸部 CT 病灶标注与影像分割数据集</strong></div>
+              <p>面向肺部病灶检测、分割、报告一致性检查和多中心外部验证，保留标注协议与质控记录。</p>
+              <div class="dataset-meta-row"><span>DICOM</span><span>820 例影像样本</span><span>Updated 2026.04</span><span>Usability 9.1</span></div>
+            </div>
+            <aside class="dataset-card-stats"><span>浏览 9.8k</span><strong>收藏 740</strong><a href="benchmark.html">进入评测</a></aside>
+          </article>
+
+          <article class="dataset-trending-card" data-dataset-card data-tags="signal benchmark share ecg icu physiologic">
+            <div class="dataset-thumb" aria-hidden="true">ECG</div>
+            <div class="dataset-card-main">
+              <div class="dataset-card-head"><span>PhysioNet · Signal</span><strong>心电与生命体征时间序列数据集</strong></div>
+              <p>用于心律失常识别、ICU 早期预警、波形质量控制和多模态临床模型训练。</p>
+              <div class="dataset-meta-row"><span>WFDB / CSV</span><span>多通道波形</span><span>Updated 2026.03</span><span>Usability 9.3</span></div>
+            </div>
+            <aside class="dataset-card-stats"><span>浏览 7.6k</span><strong>收藏 612</strong><a href="https://physionet.org/" target="_blank" rel="noreferrer">查看数据</a></aside>
+          </article>
+
+          <article class="dataset-trending-card" data-dataset-card data-tags="nlp benchmark guideline qa text">
+            <div class="dataset-thumb" aria-hidden="true">NLP</div>
+            <div class="dataset-card-main">
+              <div class="dataset-card-head"><span>Happy medical AI · Guideline QA</span><strong>医学指南问答评测集</strong></div>
+              <p>覆盖指南推荐、证据等级、适用人群、禁忌、引用来源完整性和模型回答人工复核。</p>
+              <div class="dataset-meta-row"><span>JSONL</span><span>1,500 个问题</span><span>Updated 2026.06</span><span>Usability 8.9</span></div>
+            </div>
+            <aside class="dataset-card-stats"><span>浏览 6.4k</span><strong>收藏 488</strong><a href="benchmark.html">发布 Benchmark</a></aside>
+          </article>
+
+          <article class="dataset-trending-card" data-dataset-card data-tags="imaging nlp benchmark multimodal radiology report">
+            <div class="dataset-thumb" aria-hidden="true">MM</div>
+            <div class="dataset-card-main">
+              <div class="dataset-card-head"><span>Radiology · Multimodal</span><strong>影像报告与图像配对样例集</strong></div>
+              <p>连接医学影像、报告摘要、关键发现和异常标签，适合图文检索、报告生成和多模态 RAG 评测。</p>
+              <div class="dataset-meta-row"><span>DICOM + TXT</span><span>2,400 对样例</span><span>Updated 2026.02</span><span>Usability 8.7</span></div>
+            </div>
+            <aside class="dataset-card-stats"><span>浏览 5.9k</span><strong>收藏 421</strong><a href="crowdsourcing.html">关联任务</a></aside>
+          </article>
+
+          <article class="dataset-trending-card" data-dataset-card data-tags="nlp share literature entity biomedical text">
+            <div class="dataset-thumb" aria-hidden="true">BIO</div>
+            <div class="dataset-card-main">
+              <div class="dataset-card-head"><span>Biomedical Text · NLP</span><strong>生物医学文献实体标注集</strong></div>
+              <p>用于疾病、药物、基因、症状和治疗实体识别，支持文献总结、知识图谱和检索增强应用。</p>
+              <div class="dataset-meta-row"><span>JSON / BRAT</span><span>12,000 段文本</span><span>Updated 2026.01</span><span>Usability 8.5</span></div>
+            </div>
+            <aside class="dataset-card-stats"><span>浏览 4.2k</span><strong>收藏 309</strong><a href="https://www.ncbi.nlm.nih.gov/research/pubtator/" target="_blank" rel="noreferrer">查看工具</a></aside>
+          </article>
+
+          <article class="dataset-trending-card" data-dataset-card data-tags="generative benchmark share huggingface diffusers metadata model ai">
+            <div class="dataset-thumb" aria-hidden="true">HF</div>
+            <div class="dataset-card-main">
+              <div class="dataset-card-head"><span>Hugging Face · Generative AI</span><strong>Diffusers Metadata 数据集</strong></div>
+              <p>汇总 diffusers 生态中的模型与管线元数据，适合生成式 AI 工具索引、模型检索和数据集元信息测试。</p>
+              <div class="dataset-meta-row"><span>Parquet / JSON</span><span>模型元数据</span><span>Updated 2026.06</span><span>Usability 8.4</span></div>
+            </div>
+            <aside class="dataset-card-stats"><span>浏览 4.0k</span><strong>收藏 294</strong><a href="https://huggingface.co/datasets/huggingface/diffusers-metadata" target="_blank" rel="noreferrer">查看数据</a></aside>
+          </article>
+
+          <article class="dataset-trending-card" data-dataset-card data-tags="omics benchmark oncology genomics share">
+            <div class="dataset-thumb" aria-hidden="true">OMX</div>
+            <div class="dataset-card-main">
+              <div class="dataset-card-head"><span>Oncology · Omics</span><strong>肿瘤多组学公开样例索引</strong></div>
+              <p>整合基因表达、突变、临床分期和疗效结局字段，适合预后建模与跨模态研究设计。</p>
+              <div class="dataset-meta-row"><span>CSV / TSV</span><span>多癌种样例</span><span>Updated 2025.12</span><span>Usability 8.2</span></div>
+            </div>
+            <aside class="dataset-card-stats"><span>浏览 3.8k</span><strong>收藏 276</strong><a href="community.html">查看讨论</a></aside>
+          </article>
+
+          <article class="dataset-trending-card" data-dataset-card data-tags="ehr imaging share compliance deidentified hospital">
+            <div class="dataset-thumb" aria-hidden="true">SAFE</div>
+            <div class="dataset-card-main">
+              <div class="dataset-card-head"><span>Hospital Samples · Compliance</span><strong>医院脱敏样例数据共享区</strong></div>
+              <p>用于机构展示脱敏样例、授权说明、数据字典、质量报告和用途边界，正式共享前进入合规审核。</p>
+              <div class="dataset-meta-row"><span>CSV / PDF</span><span>审核后开放</span><span>Updated 2026.06</span><span>Usability 8.0</span></div>
+            </div>
+            <aside class="dataset-card-stats"><span>浏览 3.1k</span><strong>收藏 244</strong><a href="contribute.html">添加数据</a></aside>
+          </article>
+        </div>
+
+        <p id="datasetEmptyNote" class="dataset-empty-note" role="status">没有找到匹配的数据集，请更换搜索词或标签。</p>
       </section>
     </main>
 
     <footer class="site-footer">
       <div class="container footer-grid">
-        <div><h3>Freedom AI</h3><p>医学 AI 数据、工具和评测资源的统一索引。</p></div>
-        <div><h4>资源</h4><a href="datasets.html">数据集</a><a href="tools.html">工具库</a><a href="benchmark.html">Benchmark</a></div>
-        <div><h4>协作</h4><a href="crowdsourcing.html">众包平台</a><a href="community.html">讨论区</a></div>
-        <div><h4>搜索</h4><a href="search.html">站内搜索</a></div>
+        <div><h3>Happy medical AI</h3><p>医学 AI 数据集目录用于快速搜索、筛选和进入对应数据资源。</p></div>
+        <div><h4>上传</h4><a href="contribute.html">上传工具 / 数据集</a></div>
+        <div><h4>评测</h4><a href="benchmark.html">Benchmark</a></div>
+        <div><h4>讨论</h4><a href="community.html">讨论区</a></div>
       </div>
     </footer>
   </body>
