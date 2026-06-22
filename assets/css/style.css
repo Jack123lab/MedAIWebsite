@@ -10558,6 +10558,43 @@ body.upload-roadmap-open {
   padding: 14px;
 }
 
+.affiliation-map .affiliation-card-link {
+  display: block;
+  border: 1px solid #d8e2e8;
+  border-radius: 8px;
+  padding: 14px;
+  color: inherit;
+  background: #f7fafb;
+  text-decoration: none;
+  transition: border-color 0.16s ease, box-shadow 0.16s ease, transform 0.16s ease;
+}
+
+.affiliation-map .affiliation-card-link:hover,
+.affiliation-map .affiliation-card-link:focus {
+  border-color: #9bc4ce;
+  box-shadow: 0 10px 24px rgba(17, 42, 62, 0.1);
+  outline: 0;
+  transform: translateY(-1px);
+}
+
+.affiliation-card-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.affiliation-card-tags em {
+  border: 1px solid #d8e2e8;
+  border-radius: 999px;
+  padding: 4px 8px;
+  color: #1f796f;
+  background: #ffffff;
+  font-size: 11px;
+  font-style: normal;
+  font-weight: 900;
+}
+
 .scholar-paper-list article,
 .timeline-list article {
   border-top: 1px solid #d8e2e8;
