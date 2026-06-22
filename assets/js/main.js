@@ -54,7 +54,7 @@ const siteNavItems = [
       { href: "blog.html", label: "Blog", active: ["blog.html"] },
     ],
   },
-  { href: "community.html", label: "社区", active: ["community.html", "community-original.html", "clinician-discussion.html", "medical-community.html", "network-yu-guangjun.html"] },
+  { href: "community.html", label: "社区", active: ["community.html", "community-original.html", "clinician-discussion.html", "medical-community.html", "network-yu-guangjun.html", "hospital-cuhk-shenzhen.html"] },
   {
     href: "datasets-tools.html",
     label: "专栏",
@@ -155,6 +155,12 @@ const siteSearchIndex = [
     url: "network-yu-guangjun.html",
     category: "医生",
     text: "于广军 Guangjun Yu 医生 教授 医疗大数据 互联网医疗 智慧医院 高危儿管理 多动症 医教结合 论文 奖项 会议 认领主页",
+  },
+  {
+    title: "香港中文大学（深圳）医院",
+    url: "hospital-cuhk-shenzhen.html",
+    category: "医院",
+    text: "香港中文大学深圳医院 CUHK Shenzhen Medical Center 医院 科室 医生团队 过敏反应科 肾内科 儿科 中医科 皮肤科 医学影像科 检验科 智慧医院 三级甲等 综合医院 龙岗 坂田",
   },
   {
     title: "社区",
