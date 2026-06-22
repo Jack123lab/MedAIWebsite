@@ -82,74 +82,6 @@
         </div>
       </section>
 
-      <section class="section compact community-hot-section community-protected" aria-label="最热论文与工具">
-        <div class="container community-hot-grid">
-          <section class="hot-news-brief">
-            <div class="compact-section-head">
-              <p class="eyebrow">热点新闻区</p>
-              <h2>最热论文与工具</h2>
-            </div>
-            <div class="news-brief-list">
-              <a class="news-brief-card" href="research.html"><span>论文</span><strong>多模态病历结构化评测进入科室协作阶段</strong><p>适合在问答流中继续讨论数据字段、标注一致性和人工复核。</p></a>
-              <a class="news-brief-card" href="tools.html"><span>工具</span><strong>医学 RAG 可靠性清单更新</strong><p>关注引用来源、指南版本、适用人群和错误回收机制。</p></a>
-            </div>
-          </section>
-          <section class="daily-tool-brief">
-            <span>每日最热工具</span>
-            <h3>华佗 GPT</h3>
-            <p>中文医学问答与医疗大模型研究入口，适合作为今日工具体验与验证讨论的主帖。</p>
-            <div class="tool-action-row compact-actions">
-              <a class="btn primary" href="https://www.huatuogpt.cn/" target="_blank" rel="noreferrer">官网</a>
-              <a class="btn" href="#postForm" data-quick-post>讨论这个工具</a>
-            </div>
-          </section>
-          <aside class="tool-rank-panel" aria-label="每日工具排名">
-            <div class="rank-panel-head">
-              <span>排名</span>
-              <strong>右侧工具排名</strong>
-            </div>
-            <ol class="tool-rank-list">
-              <li><span>第一名</span><strong>华佗 GPT</strong><a href="https://www.huatuogpt.cn/" target="_blank" rel="noreferrer">官网</a></li>
-              <li><span>第二名</span><strong>MedGemma</strong><a href="https://github.com/google-health/medgemma" target="_blank" rel="noreferrer">项目</a></li>
-              <li><span>第三名</span><strong>MONAI</strong><a href="https://www.monai.io/" target="_blank" rel="noreferrer">官网</a></li>
-            </ol>
-          </aside>
-        </div>
-      </section>
-
-      <section class="section compact forum-tag-section community-protected" aria-label="上方讨论标签">
-        <div class="container forum-channel-grid">
-          <section class="forum-channel-panel primary-channel">
-            <div class="channel-head">
-              <p class="eyebrow">上方讨论板块</p>
-              <h2>按问题类型快速进入评论区</h2>
-              <p>科室帖、伦理问题和专业认证区集中放在讨论流上方，先选择标签，再进入对应讨论列表。</p>
-            </div>
-            <div class="content-type-grid">
-              <button class="type-chip active" type="button" data-forum-filter="all"><strong>全部讨论</strong><span>病例、指南、工具、科研与伦理评论</span></button>
-              <button class="type-chip" type="button" data-forum-filter="ethics"><strong>医疗伦理评论</strong><span>脱敏授权、审计记录、责任边界</span></button>
-              <button class="type-chip" type="button" data-forum-filter="clinical"><strong>科室病例</strong><span>按专科问题进入临床讨论</span></button>
-              <button class="type-chip" type="button" data-forum-filter="guideline"><strong>指南问答</strong><span>证据来源、适用人群、推荐等级</span></button>
-              <button class="type-chip" type="button" data-forum-filter="career"><strong>实习和招聘</strong><span>实验室、医院、企业与项目协作机会</span></button>
-              <button class="type-chip" type="button" data-forum-filter="collaboration"><strong>科研和产业合作</strong><span>联合课题、试点验证、产学研转化</span></button>
-              <button class="type-chip" type="button" data-forum-filter="model"><strong>模型</strong><span>基础模型、专科模型、评测与部署</span></button>
-              <button class="type-chip" type="button" data-forum-filter="policy"><strong>政策解读</strong><span>监管动态、合规要求、医院治理</span></button>
-            </div>
-          </section>
-          <section class="forum-channel-panel credential-channel">
-            <div class="channel-head compact-head">
-              <p class="eyebrow">认证专区</p>
-              <h2>医生/医学生讨论区</h2>
-              <p>认证成功后，下面的 tag 会替换为专属讨论区入口，只允许医生或医学生身份进入。</p>
-            </div>
-            <a id="clinicianForumTag" class="credential-forum-tag" href="doctor-verification.html" aria-live="polite">
-              <strong>医生/医学生认证</strong>
-              <span>认证后开放专业讨论区</span>
-            </a>
-          </section>
-        </div>
-      </section>
-
       <section class="section compact community-protected">
         <div class="container forum-shell">
           <aside class="forum-sidebar" aria-label="讨论版块">
@@ -206,24 +138,105 @@
             </div>
           </section>
 
-          <aside class="forum-right" aria-label="讨论辅助信息">
-            <section class="forum-block">
-              <h2>热门讨论</h2>
-              <ol class="hot-list">
-                <li><a href="#">如何评估医学 RAG 回答是否可靠</a></li>
-                <li><a href="#">文献总结 Prompt 的常见误区</a></li>
-                <li><a href="#">病历结构化字段该如何设计</a></li>
-              </ol>
-            </section>
-
-            <section class="forum-block">
-              <h2>推荐模板</h2>
-              <pre class="mini-template">问题背景：
-涉及资料：
-已尝试方法：
-期望输出：
-人工审核方式：
-是否脱敏：是</pre>
+          <aside class="forum-right community-network-rail" aria-label="医学网络检索">
+            <section class="forum-block network-search-shell community-network-search" data-network-search-root>
+              <div class="section-head clean">
+                <div>
+                  <p class="eyebrow">AMiner-style Search</p>
+                  <h2>医学网络检索</h2>
+                  <p>检索医生、医院、机构、论文、期刊、奖项和会议。</p>
+                </div>
+              </div>
+              <div class="network-quick-search">
+                <label class="sr-only" for="communityNetworkSearchInput">搜索医生、医院、机构、论文、期刊、奖项、会议</label>
+                <input id="communityNetworkSearchInput" type="search" placeholder="搜索：于广军、JMIR、智慧医院..." data-network-search />
+              </div>
+              <div class="network-filter-row" aria-label="医学网络结果类型">
+                <button class="active" type="button" data-network-filter="all">全部</button>
+                <button type="button" data-network-filter="doctor">医生</button>
+                <button type="button" data-network-filter="hospital">医院</button>
+                <button type="button" data-network-filter="institution">机构</button>
+                <button type="button" data-network-filter="paper">论文</button>
+                <button type="button" data-network-filter="journal">期刊</button>
+                <button type="button" data-network-filter="award">奖项</button>
+                <button type="button" data-network-filter="conference">会议</button>
+              </div>
+              <div class="network-workspace">
+                <div class="network-result-list">
+                  <a class="network-result-card person" href="network-yu-guangjun.html" data-network-result data-type="doctor" data-keywords="于广军 guangjun yu 医生 教授 医疗大数据 互联网医疗 智慧医院 高危儿 多动症 医教结合 cuhk">
+                    <img src="https://www.nhdisz.cn/upload/main/contentmanage/article/image/2024/03/06/babe3576bc7e4e0aaa0a19c92471a67c.jpg" alt="于广军教授" referrerpolicy="no-referrer" />
+                    <div>
+                      <span class="tag green">医生</span>
+                      <h3>于广军 / Guangjun Yu</h3>
+                      <p>港中大（深圳）医学院副院长，国家健康医疗大数据研究院（深圳）院长。</p>
+                      <div class="network-meta-strip"><span>论文 150+</span><span>专著 10+</span><span>可认领</span></div>
+                    </div>
+                  </a>
+                  <a class="network-result-card" href="network-yu-guangjun.html#affiliation-network" data-network-result data-type="hospital" data-keywords="香港中文大学深圳附属第二医院 医院 第二附属医院 智慧医院 医疗大数据">
+                    <div>
+                      <span class="tag blue">医院</span>
+                      <div class="network-org-title">
+                        <span class="network-org-logo hospital" aria-hidden="true" data-org-name="香港中文大学（深圳）附属第二医院" data-logo-type="hospital" data-official-site="https://www.nhdisz.cn/" data-upload-logo="" data-crawled-logo="" title="未上传 logo 时自动从机构官网寻找"><i></i></span>
+                        <h3>香港中文大学（深圳）附属第二医院</h3>
+                      </div>
+                      <p>医生主页关联的临床机构，可展示专科能力、真实世界数据、AI 试点和院内任务。</p>
+                      <div class="network-meta-strip"><span>临床基地</span><span>智慧医院</span><span>可认领</span></div>
+                    </div>
+                  </a>
+                  <a class="network-result-card" href="network-yu-guangjun.html#affiliation-network" data-network-result data-type="institution" data-keywords="国家健康医疗大数据研究院 深圳 机构 医疗人工智能 医疗信息化">
+                    <div>
+                      <span class="tag gold">机构</span>
+                      <div class="network-org-title">
+                        <span class="network-org-logo institute" aria-hidden="true" data-org-name="国家健康医疗大数据研究院（深圳）" data-logo-type="institute" data-official-site="" data-upload-logo="" data-crawled-logo="" title="未上传 logo 时自动从机构官网寻找"><i></i></span>
+                        <h3>国家健康医疗大数据研究院（深圳）</h3>
+                      </div>
+                      <p>面向医疗大数据、医疗人工智能和医疗信息化的研究机构。</p>
+                      <div class="network-meta-strip"><span>研究院</span><span>医疗 AI</span><span>机构主页</span></div>
+                    </div>
+                  </a>
+                  <a class="network-result-card" href="network-yu-guangjun.html#papers" data-network-result data-type="paper" data-keywords="paper 论文 evaluation framework artificial intelligence clinical decision support systems mixed methods JMIR medical internet research">
+                    <div>
+                      <span class="tag green">论文</span>
+                      <h3>Evaluation Framework for Successful Artificial Intelligence-Enabled Clinical Decision Support Systems</h3>
+                      <p>JMIR 2021，围绕 AI 临床决策支持系统的评价框架。</p>
+                      <div class="network-meta-strip"><span>JMIR</span><span>AI-CDSS</span><span>2021</span></div>
+                    </div>
+                  </a>
+                  <a class="network-result-card" href="network-yu-guangjun.html#papers" data-network-result data-type="paper" data-keywords="paper 论文 wechat calling system outpatient services shanghai children's hospital pak j med sci">
+                    <div>
+                      <span class="tag green">论文</span>
+                      <h3>Improvement in outpatient services using the WeChat calling system</h3>
+                      <p>Pak J Med Sci 2021，展示互联网医疗和门诊服务流程优化方向。</p>
+                      <div class="network-meta-strip"><span>门诊服务</span><span>WeChat</span><span>2021</span></div>
+                    </div>
+                  </a>
+                  <a class="network-result-card" href="network-yu-guangjun.html#journals" data-network-result data-type="journal" data-keywords="journal 期刊 JMIR World Journal of Pediatrics Frontiers Pediatrics Gut Microbes Orphanet">
+                    <div>
+                      <span class="tag blue">期刊</span>
+                      <h3>Journal of Medical Internet Research / World Journal of Pediatrics</h3>
+                      <p>按期刊聚合论文，查看互联网医疗、儿科和医学 AI 相关发表渠道。</p>
+                      <div class="network-meta-strip"><span>JMIR</span><span>WJP</span><span>Front Pediatr</span></div>
+                    </div>
+                  </a>
+                  <a class="network-result-card" href="network-yu-guangjun.html#awards" data-network-result data-type="award" data-keywords="award 奖项 国家百千万人才 有突出贡献专家 白玉兰奖 科技进步二等奖 领军人才">
+                    <div>
+                      <span class="tag gold">奖项</span>
+                      <h3>国家百千万人才工程 / 上海儿童工作白玉兰奖</h3>
+                      <p>奖项与人才计划作为人物主页的重要可信度信号。</p>
+                      <div class="network-meta-strip"><span>人才计划</span><span>政府奖项</span><span>团队荣誉</span></div>
+                    </div>
+                  </a>
+                  <a class="network-result-card" href="network-yu-guangjun.html#conferences" data-network-result data-type="conference" data-keywords="conference 会议 学术报告 医学人工智能 PRIMARY-AI 基于大数据的医学人工智能研究与应用">
+                    <div>
+                      <span class="tag green">会议</span>
+                      <h3>基于大数据的医学人工智能研究与应用</h3>
+                      <p>会议/报告条目可聚合演讲主题、主办机构、相关论文和后续共识研究。</p>
+                      <div class="network-meta-strip"><span>学术报告</span><span>医学 AI</span><span>大数据</span></div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+              <p class="empty-state network-empty-state" hidden>暂无匹配结果。</p>
             </section>
           </aside>
         </div>
