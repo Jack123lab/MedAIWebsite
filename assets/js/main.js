@@ -79,7 +79,10 @@ function normalizeSiteHeader() {
 
     const links = nav.querySelector(".nav-links");
     if (!links) return;
-    links.innerHTML = siteNavItems.map((item) => {
+    const navItems = currentPath === "network.html"
+      ? siteNavItems.filter((item) => item.href !== "network.html" && item.href !== "community.html")
+      : siteNavItems;
+    links.innerHTML = navItems.map((item) => {
       if (item.children) {
         const childLinks = item.children.map((child) => {
           const active = child.active.includes(currentPath) ? ' class="active"' : "";
