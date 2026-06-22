@@ -11771,55 +11771,94 @@ body.upload-roadmap-open {
   font-size: 13px;
 }
 
-.medical-community-page .community-network-search .community-knowledge-graph {
-  position: static;
+.knowledge-graph-list {
+  display: grid;
   gap: 10px;
   margin-top: 12px;
+  border: 1px solid #d8e2e8;
+  border-radius: 8px;
   padding: 12px;
-  box-shadow: none;
+  background: #ffffff;
 }
 
-.medical-community-page .community-network-search .community-knowledge-graph .people-graph-head h3 {
+.knowledge-graph-list-head {
+  display: grid;
+  gap: 4px;
+}
+
+.knowledge-graph-list-head span {
+  color: #1f796f;
+  font-size: 11px;
+  font-weight: 900;
+  text-transform: uppercase;
+}
+
+.knowledge-graph-list-head h3 {
+  margin: 0;
+  color: #172738;
   font-size: 15px;
+  line-height: 1.3;
 }
 
-.medical-community-page .community-network-search .community-knowledge-graph .people-graph-head p {
+.knowledge-graph-list-head p {
+  margin: 0;
+  color: #536474;
   font-size: 12px;
   line-height: 1.45;
 }
 
-.medical-community-page .community-network-search .community-knowledge-graph .people-graph {
-  min-height: 245px;
+.knowledge-graph-list-item {
+  display: grid;
+  grid-template-columns: 46px minmax(0, 1fr);
+  gap: 10px;
+  align-items: center;
+  border: 1px solid #e4ebef;
+  border-radius: 8px;
+  padding: 9px;
+  color: inherit;
+  background: #f8fbfc;
+  text-decoration: none;
 }
 
-.medical-community-page .community-network-search .community-knowledge-graph .graph-links path {
-  marker-end: url("#communityGraphArrow");
+.knowledge-graph-list-item img {
+  width: 46px;
+  height: 46px;
+  border-radius: 8px;
+  object-fit: cover;
 }
 
-#communityGraphArrow path {
-  fill: #7c8b96;
+.knowledge-graph-list-item strong,
+.knowledge-graph-list-item span {
+  display: block;
 }
 
-.medical-community-page .community-network-search .community-knowledge-graph .graph-node text {
-  font-size: 15px;
+.knowledge-graph-list-item strong {
+  color: #172738;
+  font-size: 13px;
+  line-height: 1.3;
 }
 
-.medical-community-page .community-network-search .community-knowledge-graph .graph-edge-labels text {
+.knowledge-graph-list-item span {
+  margin-top: 3px;
+  color: #536474;
   font-size: 11px;
+  line-height: 1.35;
 }
 
-.medical-community-page .community-network-search .community-knowledge-graph .people-graph-legend {
-  grid-template-columns: 1fr 1fr;
-  gap: 6px;
+.knowledge-graph-list-item:hover,
+.knowledge-graph-list-item:focus {
+  border-color: #9bc4ce;
+  background: #eef6f7;
+  outline: 0;
 }
 
-.medical-community-page .community-network-search .community-knowledge-graph .people-graph-notes a {
-  padding: 8px;
+.scholar-knowledge-graph {
+  position: static;
+  margin-top: 12px;
 }
 
-.medical-community-page .community-network-search .community-knowledge-graph .people-graph-notes span {
-  font-size: 11px;
-  line-height: 1.4;
+.scholar-knowledge-graph .people-graph {
+  min-height: 410px;
 }
 
 .medical-community-page .forum-main {

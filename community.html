@@ -235,109 +235,20 @@
                     </div>
                   </a>
                 </div>
-                <aside class="people-graph-panel community-knowledge-graph" aria-label="医学网络知识图谱">
-                  <div class="people-graph-head">
-                    <span>People Graph</span>
-                    <h3>于广军人物图谱</h3>
-                    <p>把人物、同事机构、论文合作者、论文和期刊放在一张关系图里。</p>
+                <div class="knowledge-graph-list" aria-label="医生知识图谱入口">
+                  <div class="knowledge-graph-list-head">
+                    <span>Knowledge Graph</span>
+                    <h3>医生知识图谱</h3>
+                    <p>图谱放在对应医生主页内，点击条目进入后查看关系网络。</p>
                   </div>
-                  <svg class="people-graph" viewBox="0 0 620 520" role="img" aria-labelledby="communityPeopleGraphTitle communityPeopleGraphDesc">
-                    <title id="communityPeopleGraphTitle">于广军人物图谱</title>
-                    <desc id="communityPeopleGraphDesc">中心节点为于广军，连接机构同事、论文合作者、论文、期刊和会议报告。</desc>
-                    <defs>
-                      <marker id="communityGraphArrow" markerWidth="9" markerHeight="9" refX="8" refY="4.5" orient="auto">
-                        <path d="M0,0 L9,4.5 L0,9 Z"></path>
-                      </marker>
-                    </defs>
-
-                    <g class="graph-links">
-                      <path class="relation affiliation" d="M310 250 C230 210 170 170 116 126"></path>
-                      <path class="relation affiliation" d="M310 250 C224 276 166 324 116 382"></path>
-                      <path class="relation coworker" d="M310 250 C404 190 452 142 504 98"></path>
-                      <path class="relation coauthor" d="M310 250 C398 238 456 222 526 206"></path>
-                      <path class="relation coauthor" d="M310 250 C418 282 466 330 520 386"></path>
-                      <path class="relation paper" d="M310 250 C284 340 270 390 256 450"></path>
-                      <path class="relation paper" d="M310 250 C258 190 232 160 202 116"></path>
-                      <path class="relation venue" d="M256 450 C320 458 380 458 452 442"></path>
-                      <path class="relation venue" d="M202 116 C248 88 300 72 372 72"></path>
-                    </g>
-
-                    <a href="network-yu-guangjun.html" class="graph-node graph-node-main" aria-label="查看于广军主页">
-                      <circle cx="310" cy="250" r="52"></circle>
-                      <text x="310" y="244">于广军</text>
-                      <text x="310" y="266">Guangjun Yu</text>
-                    </a>
-
-                    <a href="network-yu-guangjun.html#affiliation-network" class="graph-node graph-node-organization" aria-label="查看香港中文大学深圳医学院关联">
-                      <rect x="42" y="76" width="148" height="70" rx="14"></rect>
-                      <text x="66" y="116" class="graph-node-logo">U</text>
-                      <text x="116" y="104">港中大（深圳）</text>
-                      <text x="116" y="125">医学院</text>
-                    </a>
-                    <a href="network-yu-guangjun.html#affiliation-network" class="graph-node graph-node-organization" aria-label="查看国家健康医疗大数据研究院深圳关联">
-                      <rect x="42" y="352" width="148" height="72" rx="14"></rect>
-                      <text x="66" y="393" class="graph-node-logo">R</text>
-                      <text x="116" y="381">健康医疗</text>
-                      <text x="116" y="402">大数据研究院</text>
-                    </a>
-
-                    <a href="network-yu-guangjun.html#papers" class="graph-node graph-node-person" aria-label="查看 Mengting Ji 论文合作者关系">
-                      <circle cx="504" cy="98" r="42"></circle>
-                      <text x="504" y="94">Mengting</text>
-                      <text x="504" y="113">Ji</text>
-                    </a>
-                    <a href="network-yu-guangjun.html#papers" class="graph-node graph-node-person" aria-label="查看 Hui Lu 论文合作者关系">
-                      <circle cx="526" cy="206" r="38"></circle>
-                      <text x="526" y="203">Hui</text>
-                      <text x="526" y="220">Lu</text>
-                    </a>
-                    <a href="network-yu-guangjun.html#papers" class="graph-node graph-node-person" aria-label="查看 Georgi Genchev 论文合作者关系">
-                      <circle cx="520" cy="386" r="44"></circle>
-                      <text x="520" y="381">Georgi</text>
-                      <text x="520" y="400">Genchev</text>
-                    </a>
-
-                    <a href="network-yu-guangjun.html#papers" class="graph-node graph-node-paper" aria-label="查看 AI 临床决策支持系统评价框架论文">
-                      <rect x="178" y="416" width="156" height="70" rx="13"></rect>
-                      <text x="256" y="444">AI-CDSS</text>
-                      <text x="256" y="464">评价框架论文</text>
-                    </a>
-                    <a href="network-yu-guangjun.html#papers" class="graph-node graph-node-paper" aria-label="查看 WeChat calling system 门诊服务论文">
-                      <rect x="126" y="82" width="152" height="70" rx="13"></rect>
-                      <text x="202" y="110">WeChat</text>
-                      <text x="202" y="130">门诊服务论文</text>
-                    </a>
-
-                    <a href="network-yu-guangjun.html#journals" class="graph-node graph-node-venue" aria-label="查看 JMIR 期刊关联">
-                      <rect x="376" y="42" width="118" height="58" rx="12"></rect>
-                      <text x="435" y="76">JMIR</text>
-                    </a>
-                    <a href="network-yu-guangjun.html#conferences" class="graph-node graph-node-venue" aria-label="查看医学人工智能会议关联">
-                      <rect x="392" y="412" width="120" height="58" rx="12"></rect>
-                      <text x="452" y="436">医学 AI</text>
-                      <text x="452" y="454">会议</text>
-                    </a>
-
-                    <g class="graph-edge-labels">
-                      <text x="186" y="196">任职/同事</text>
-                      <text x="420" y="162">论文合作者</text>
-                      <text x="342" y="368">共同发表</text>
-                      <text x="330" y="92">发表渠道</text>
-                    </g>
-                  </svg>
-
-                  <div class="people-graph-legend" aria-label="图谱关系类型">
-                    <span><i class="legend-person"></i>人物</span>
-                    <span><i class="legend-organization"></i>机构/同事</span>
-                    <span><i class="legend-paper"></i>论文</span>
-                    <span><i class="legend-venue"></i>期刊/会议</span>
-                  </div>
-                  <div class="people-graph-notes">
-                    <a href="network-yu-guangjun.html#papers"><strong>论文合作者</strong><span>Mengting Ji、Hui Lu、Georgi Genchev 等来自公开论文作者列表。</span></a>
-                    <a href="https://www.jmir.org/2021/6/e25929" target="_blank" rel="noreferrer"><strong>作者来源</strong><span>JMIR 2021 AI-CDSS evaluation framework 论文作者列表。</span></a>
-                    <a href="network-yu-guangjun.html#affiliation-network"><strong>同事网络</strong><span>以医院、学院、研究院作为可展开的同事和机构节点。</span></a>
-                  </div>
-                </aside>
+                  <a class="knowledge-graph-list-item" href="network-yu-guangjun.html#knowledge-graph" data-network-result data-type="doctor" data-keywords="于广军 guangjun yu 医生 知识图谱 人物图谱 关系图 机构 论文合作者 期刊 会议">
+                    <img src="https://www.nhdisz.cn/upload/main/contentmanage/article/image/2024/03/06/babe3576bc7e4e0aaa0a19c92471a67c.jpg" alt="于广军教授" referrerpolicy="no-referrer" />
+                    <div>
+                      <strong>于广军人物图谱</strong>
+                      <span>医生主页 · 机构关系 · 论文合作者 · 期刊/会议</span>
+                    </div>
+                  </a>
+                </div>
               </div>
               <p class="empty-state network-empty-state" hidden>暂无匹配结果。</p>
             </section>
