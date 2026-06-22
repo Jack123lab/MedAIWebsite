@@ -46,7 +46,6 @@ const siteNavItems = [
   { href: "community.html", label: "讨论区", active: ["community.html", "clinician-discussion.html"] },
   { href: "datasets-tools.html", label: "资源索引", active: ["datasets-tools.html", "datasets.html", "dataset-detail.html", "dataset-upload.html", "dataset-my-upload.html", "tools.html", "demos.html", "tool-share.html", "tools-base.html", "tools-mock-registration.html", "tools-scenarios.html", "tools-science.html", "tools-skill.html", "tools-scenario-agentic-hospital.html", "tools-scenario-ai-native-his.html", "tools-scenario-ai-native-up2date.html", "tools-scenario-evidence-api.html", "tools-scenario-tcm-knowledge-graph.html", "tools-scenario-virtual-hospital.html", "benchmark.html", "benchmark-gdb.html", "benchmark-liveclin.html", "benchmark-healthbench-tcm.html", "benchmark-doctors-last-exam.html", "benchmark-cmb.html", "benchmark-long-tailed-medqa.html", "benchmark-med-x.html"] },
   { href: "crowdsourcing.html", label: "众包", active: ["crowdsourcing.html"] },
-  { href: "blog.html", label: "博客", active: ["blog.html"] },
   { href: "profile.html", label: "用户", active: ["profile.html", "auth.html", "doctor.html", "doctor-verification.html"] },
 ];
 
