@@ -42,8 +42,7 @@ const forumTagLabels = {
 const siteNavItems = [
   { href: "index.html", label: "首页", active: ["index.html", "gmai-license.html", ""] },
   { href: "learning.html", label: "内容", active: ["learning.html", "learning-item.html", "tutorials.html", "learning-videos.html", "learning-tutorial.html", "learning-question-bank.html", "learning-standardized-patient.html", "teaching-open-tutorials.html", "teaching-question-bank.html", "teaching-videos.html", "teaching-virtual-patient.html"] },
-  { href: "network.html", label: "社区", active: ["network.html", "network-yu-guangjun.html"] },
-  { href: "community.html", label: "讨论区", active: ["community.html", "clinician-discussion.html"] },
+  { href: "community.html", label: "社区", active: ["community.html", "community-original.html", "clinician-discussion.html", "medical-community.html", "network-yu-guangjun.html"] },
   {
     label: "专栏",
     children: [
@@ -79,10 +78,7 @@ function normalizeSiteHeader() {
 
     const links = nav.querySelector(".nav-links");
     if (!links) return;
-    const navItems = currentPath === "network.html"
-      ? siteNavItems.filter((item) => item.href !== "network.html" && item.href !== "community.html")
-      : siteNavItems;
-    links.innerHTML = navItems.map((item) => {
+    links.innerHTML = siteNavItems.map((item) => {
       if (item.children) {
         const childLinks = item.children.map((child) => {
           const active = child.active.includes(currentPath) ? ' class="active"' : "";
@@ -133,8 +129,8 @@ const siteSearchIndex = [
     text: "GMAI License Generalist Medical AI 协议 医学 AI 许可 模型 数据 工具 评测 隐私 安全 人工监督 合规",
   },
   {
-    title: "社区",
-    url: "network.html",
+    title: "医学社区",
+    url: "medical-community.html",
     category: "社区",
     text: "社区 医生 医院 研究者 个人主页 论文 获奖 任职 治疗专长 专家网络",
   },
@@ -145,10 +141,10 @@ const siteSearchIndex = [
     text: "于广军 Guangjun Yu 医生 教授 医疗大数据 互联网医疗 智慧医院 高危儿管理 多动症 医教结合 论文 奖项 会议 认领主页",
   },
   {
-    title: "讨论区",
+    title: "社区",
     url: "community.html",
     category: "社区",
-    text: "讨论区 病例 指南 问答 临床文本 科研设计 工具经验 合规伦理 实习 招聘 实习招聘 科研和产业合作 科研合作 产业合作 模型 政策解读 政策 医生 医学生 认证",
+    text: "社区 病例 指南 问答 临床文本 科研设计 工具经验 合规伦理 实习 招聘 实习招聘 科研和产业合作 科研合作 产业合作 模型 政策解读 政策 医生 医学生 认证",
   },
   {
     title: "数据集",
