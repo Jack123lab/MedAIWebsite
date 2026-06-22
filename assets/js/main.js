@@ -46,7 +46,7 @@ const siteNavItems = [
     label: "内容",
     active: ["learning.html", "learning-item.html"],
     children: [
-      { href: "tutorials.html", label: "Tutorial", active: ["tutorials.html", "learning-tutorial.html", "teaching-open-tutorials.html"] },
+      { href: "learning-tutorial.html", label: "Tutorial", active: ["tutorials.html", "learning-tutorial.html", "teaching-open-tutorials.html"] },
       { href: "learning-videos.html", label: "Video", active: ["learning-videos.html", "teaching-videos.html"] },
       { href: "learning-question-bank.html", label: "题库", active: ["learning-question-bank.html", "teaching-question-bank.html"] },
       { href: "learning-standardized-patient.html", label: "标准病人", active: ["learning-standardized-patient.html", "teaching-virtual-patient.html"] },
