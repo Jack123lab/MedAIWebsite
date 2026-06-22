@@ -499,6 +499,7 @@ html[dir="rtl"] .home-footer-grid > div:last-child {
 }
 
 .nav-fold-title:hover,
+.nav-dropdown.active .nav-fold-title,
 .nav-fold.active .nav-fold-title,
 .nav-fold.is-open .nav-fold-title {
   color: var(--primary);
@@ -698,6 +699,20 @@ html[dir="rtl"] .home-footer-grid > div:last-child {
   color: var(--primary);
   background: #fff;
   font-size: 12px;
+}
+
+.nav-column-dropdown .nav-fold-title {
+  white-space: nowrap;
+}
+
+.nav-column-menu {
+  width: 132px;
+  grid-template-columns: 1fr;
+}
+
+.nav-column-menu a {
+  justify-content: center;
+  white-space: nowrap;
 }
 
 .container {
@@ -7663,6 +7678,7 @@ body:not(.login-page) {
 .nav-links a:hover,
 .nav-links a.active,
 .nav-fold-title:hover,
+.nav-dropdown.active .nav-fold-title,
 .nav-fold.active .nav-fold-title,
 .nav-fold.is-open .nav-fold-title {
   color: #111827;
@@ -8473,6 +8489,7 @@ p,
 .nav-links a:hover,
 .nav-links a.active,
 .nav-fold-title:hover,
+.nav-dropdown.active .nav-fold-title,
 .nav-fold.active .nav-fold-title,
 .nav-fold.is-open .nav-fold-title {
   color: #054c58;

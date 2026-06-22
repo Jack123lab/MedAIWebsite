@@ -44,7 +44,17 @@ const siteNavItems = [
   { href: "learning.html", label: "内容", active: ["learning.html", "learning-item.html", "tutorials.html", "learning-videos.html", "learning-tutorial.html", "learning-question-bank.html", "learning-standardized-patient.html", "teaching-open-tutorials.html", "teaching-question-bank.html", "teaching-videos.html", "teaching-virtual-patient.html"] },
   { href: "network.html", label: "社区", active: ["network.html", "network-yu-guangjun.html"] },
   { href: "community.html", label: "讨论区", active: ["community.html", "clinician-discussion.html"] },
-  { href: "datasets-tools.html", label: "资源索引", active: ["datasets-tools.html", "datasets.html", "dataset-detail.html", "dataset-upload.html", "dataset-my-upload.html", "tools.html", "demos.html", "tool-share.html", "tools-base.html", "tools-mock-registration.html", "tools-scenarios.html", "tools-science.html", "tools-skill.html", "tools-scenario-agentic-hospital.html", "tools-scenario-ai-native-his.html", "tools-scenario-ai-native-up2date.html", "tools-scenario-evidence-api.html", "tools-scenario-tcm-knowledge-graph.html", "tools-scenario-virtual-hospital.html", "benchmark.html", "benchmark-gdb.html", "benchmark-liveclin.html", "benchmark-healthbench-tcm.html", "benchmark-doctors-last-exam.html", "benchmark-cmb.html", "benchmark-long-tailed-medqa.html", "benchmark-med-x.html"] },
+  {
+    label: "专栏",
+    children: [
+      { href: "datasets-tools.html", label: "资源索引", active: ["datasets-tools.html"] },
+      { href: "datasets.html", label: "数据集", active: ["datasets.html", "dataset-detail.html", "dataset-upload.html", "dataset-my-upload.html"] },
+      { href: "tools.html", label: "工具栏", active: ["tools.html", "demos.html", "tool-share.html", "tools-base.html", "tools-mock-registration.html", "tools-scenarios.html", "tools-science.html", "tools-skill.html", "tools-scenario-agentic-hospital.html", "tools-scenario-ai-native-his.html", "tools-scenario-ai-native-up2date.html", "tools-scenario-evidence-api.html", "tools-scenario-tcm-knowledge-graph.html", "tools-scenario-virtual-hospital.html"] },
+      { href: "benchmark.html", label: "评测", active: ["benchmark.html", "benchmark-gdb.html", "benchmark-liveclin.html", "benchmark-healthbench-tcm.html", "benchmark-doctors-last-exam.html", "benchmark-cmb.html", "benchmark-long-tailed-medqa.html", "benchmark-med-x.html"] },
+      { href: "research.html", label: "论文", active: ["research.html"] },
+      { href: "community.html#model-discussion", label: "模型", active: [] },
+    ],
+  },
   { href: "crowdsourcing.html", label: "众包", active: ["crowdsourcing.html"] },
   { href: "profile.html", label: "用户", active: ["profile.html", "auth.html", "doctor.html", "doctor-verification.html"] },
 ];
@@ -70,6 +80,14 @@ function normalizeSiteHeader() {
     const links = nav.querySelector(".nav-links");
     if (!links) return;
     links.innerHTML = siteNavItems.map((item) => {
+      if (item.children) {
+        const childLinks = item.children.map((child) => {
+          const active = child.active.includes(currentPath) ? ' class="active"' : "";
+          return `<a${active} href="${child.href}" role="menuitem">${child.label}</a>`;
+        }).join("");
+        const active = item.children.some((child) => child.active.includes(currentPath)) ? " active" : "";
+        return `<div class="nav-dropdown nav-column-dropdown${active}"><button class="nav-fold-title" type="button" aria-haspopup="true"><span>${item.label}</span><span class="nav-arrow" aria-hidden="true"></span></button><div class="nav-dept-menu nav-column-menu" role="menu" aria-label="${item.label}">${childLinks}</div></div>`;
+      }
       const active = item.active.includes(currentPath) ? ' class="active"' : "";
       const external = item.external ? ' target="_blank" rel="noreferrer"' : "";
       return `<a${active} href="${item.href}"${external}>${item.label}</a>`;
