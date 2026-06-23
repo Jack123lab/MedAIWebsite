@@ -38,6 +38,49 @@
       </nav>
     </header>
     <main>
+      <section class="section compact weekly-update-section paper-weekly-top" id="weekly-updates">
+        <div class="container">
+          <div class="news-carousel-frame" data-news-carousel>
+            <button class="news-carousel-arrow prev" type="button" data-news-scroll="prev" aria-label="上一篇论文">‹</button>
+            <div class="home-row-grid news-row-grid news-scroll-row paper-weekly-row" aria-label="每周更新论文滚动栏目">
+              <a class="news-source-card paper-weekly-card" href="https://arxiv.org/abs/2606.16890v1" target="_blank" rel="noreferrer">
+                <img src="assets/images/paper-shot-arxiv-260616890.png" alt="arXiv 论文页面截图：EHR 问答组合推理失败研究" />
+                <div>
+                  <span>本周更新 · arXiv</span>
+                  <strong>组合推理深度预测临床 AI 失败</strong>
+                  <p>真实 EHR 问答场景中，多跳推理问题会让医学模型错误率显著上升，适合讨论临床部署前的风险分层。</p>
+                  <small>查看论文 →</small>
+                </div>
+              </a>
+              <a class="news-source-card paper-weekly-card" href="https://arxiv.org/abs/2606.01301" target="_blank" rel="noreferrer">
+                <img src="assets/images/paper-shot-arxiv-260601301.png" alt="arXiv 论文页面截图：Med-HEAL 医学幻觉缓解研究" />
+                <div>
+                  <span>本周更新 · arXiv</span>
+                  <strong>Med-HEAL 医学 LLM 幻觉分析与缓解</strong>
+                  <p>围绕复杂电子病历问答中的幻觉识别、自我批判和检索增强，适合进入合规伦理与安全审计讨论。</p>
+                  <small>查看论文 →</small>
+                </div>
+              </a>
+              <a class="news-source-card paper-weekly-card" href="https://arxiv.org/abs/2606.22318" target="_blank" rel="noreferrer">
+                <img src="assets/images/paper-shot-arxiv-260622318.png" alt="arXiv 论文页面截图：临床 AI Prompt 随机对照方案" />
+                <div>
+                  <span>本周更新 · arXiv</span>
+                  <strong>临床 AI Prompt 组件级随机评估方案</strong>
+                  <p>把 Prompt 作为临床干预组件进行预注册和随机评估，为工具经验、科研设计和医生工作流验证提供模板。</p>
+                  <small>查看论文 →</small>
+                </div>
+              </a>
+            </div>
+            <button class="news-carousel-arrow next" type="button" data-news-scroll="next" aria-label="下一篇论文">›</button>
+            <div class="news-carousel-dots" aria-label="每周更新位置">
+              <button class="active" type="button" data-news-dot="0" aria-label="第 1 篇论文" aria-current="true"></button>
+              <button type="button" data-news-dot="1" aria-label="第 2 篇论文"></button>
+              <button type="button" data-news-dot="2" aria-label="第 3 篇论文"></button>
+            </div>
+          </div>
+        </div>
+      </section>
+
       <section class="page-title research-watch-title">
         <div class="container research-title-grid">
           <div>
@@ -183,69 +226,6 @@
               </form>
               <p class="form-status" id="paperSubmissionStatus" role="status"></p>
             </aside>
-          </div>
-        </div>
-      </section>
-
-      <section class="section compact weekly-update-section" id="weekly-updates">
-        <div class="container">
-          <div class="section-head clean">
-            <div>
-              <p class="eyebrow">本周精选</p>
-              <h2>本周精选论文</h2>
-              <p>下列为栏目样例，正式周更时替换标题、来源、链接和讨论问题。</p>
-            </div>
-            <a class="btn" href="contribute.html">提交论文线索</a>
-          </div>
-          <div class="paper-scroll" aria-label="本周精选论文滚动列表">
-            <article class="watch-card paper-feature-card" data-category="paper">
-              <div class="paper-shot">
-                <div class="paper-shot-top"><span>Clinical AI Safety</span><strong>Priority Review</strong></div>
-                <h3>Safety and Effectiveness of Medical LLMs in Real Clinical Workflows</h3>
-                <div class="paper-shot-authors">Clinical validation group · 2026</div>
-                <div class="paper-shot-abstract"><span></span><span></span><span></span><span></span></div>
-                <div class="paper-shot-figure"><span></span><span></span><span></span></div>
-              </div>
-              <div class="paper-feature-copy">
-                <div class="watch-card-head"><span class="tag blue">临床验证</span><strong>NEJM / JAMA / Lancet 级别优先</strong></div>
-                <h3>医学大模型在真实临床工作流中的安全性与有效性评价</h3>
-                <p>关注终点设计、医生介入方式、错误类型、患者安全事件和真实世界部署边界。</p>
-                <dl><dt>讨论问题</dt><dd>模型建议是否改变医生决策？错误如何被发现和纠正？</dd><dt>建议板块</dt><dd>内科综合 / 合规伦理 / 工具经验</dd></dl>
-                <div class="watch-actions"><a href="community.html#dept-internal">进入讨论</a><a href="contribute.html">补充来源</a></div>
-              </div>
-            </article>
-            <article class="watch-card paper-feature-card" data-category="paper">
-              <div class="paper-shot paper-shot-green">
-                <div class="paper-shot-top"><span>Multimodal AI</span><strong>Imaging</strong></div>
-                <h3>Joint Modeling of Imaging, Pathology, and Clinical Text for Diagnosis</h3>
-                <div class="paper-shot-authors">Nature Medicine / Radiology watch · 2026</div>
-                <div class="paper-shot-abstract"><span></span><span></span><span></span><span></span></div>
-                <div class="paper-shot-figure"><span></span><span></span><span></span></div>
-              </div>
-              <div class="paper-feature-copy">
-                <div class="watch-card-head"><span class="tag green">多模态 AI</span><strong>Nature Medicine / Radiology 等来源</strong></div>
-                <h3>影像、病理与文本联合建模在诊断辅助中的表现</h3>
-                <p>重点记录数据集来源、外部验证、亚组表现、临床可解释性和偏倚风险。</p>
-                <dl><dt>讨论问题</dt><dd>多模态模型的“增益”来自图像、文本还是数据泄漏？</dd><dt>建议板块</dt><dd>影像病理 / 科研设计</dd></dl>
-                <div class="watch-actions"><a href="community.html#dept-imaging">进入讨论</a><a href="contribute.html">补充来源</a></div>
-              </div>
-            </article>
-            <article class="watch-card paper-feature-card" data-category="paper">
-              <div class="paper-shot paper-shot-gold">
-                <div class="paper-shot-top"><span>Clinical Trial AI</span><strong>Preprint</strong></div>
-                <h3>AI Assisted Trial Screening and Patient Matching Methods</h3>
-                <div class="paper-shot-authors">medRxiv / arXiv watch · 2026</div>
-                <div class="paper-shot-abstract"><span></span><span></span><span></span><span></span></div>
-                <div class="paper-shot-figure"><span></span><span></span><span></span></div>
-              </div>
-              <div class="paper-feature-copy">
-                <div class="watch-card-head"><span class="tag gold">临床科研</span><strong>medRxiv / arXiv 预印本需标注未同行评议</strong></div>
-                <h3>AI 辅助临床试验筛选与患者匹配方法</h3>
-                <p>关注入排标准解析、召回率/准确率、人工复核成本和伦理授权机制。</p>
-                <dl><dt>讨论问题</dt><dd>自动筛选是否会放大人群偏倚？如何保留人工可解释路径？</dd><dt>建议板块</dt><dd>肿瘤与血液 / 科研设计 / 合规伦理</dd></dl>
-                <div class="watch-actions"><a href="community.html#dept-oncology">进入讨论</a><a href="contribute.html">补充来源</a></div>
-              </div>
-            </article>
           </div>
         </div>
       </section>
