@@ -1,12 +1,7 @@
 const authKey = "hmaiAuthState";
 const postStorageKey = "hmaiForumPosts";
 const reactionStorageKey = "hmaiPostReactions";
-const researchPaperStorageKey = "hmaiResearchPapers";
-const researchPaperLikeStorageKey = "hmaiResearchPaperLikes";
 const profileAvatarStorageKey = "hmaiProfileAvatar";
-const pointsStorageKey = "hmaiPointsLedger";
-const privateKnowledgeStorageKey = "hmaiPrivateKnowledge";
-const medicalRecordStorageKey = "hmaiMedicalRecord";
 const apiBase = (window.HMAI_API_BASE || "").replace(/\/$/, "");
 
 const categoryLabels = {
@@ -15,10 +10,6 @@ const categoryLabels = {
   research: "科研设计",
   tool: "工具经验",
   ethics: "合规伦理",
-  career: "实习和招聘",
-  collaboration: "科研和产业合作",
-  model: "模型",
-  policy: "政策解读",
 };
 
 const forumTagLabels = {
@@ -28,10 +19,6 @@ const forumTagLabels = {
   tool: "Tools",
   research: "Research",
   ethics: "Governance",
-  career: "Internship & Hiring",
-  collaboration: "Research & Industry",
-  model: "Models",
-  policy: "Policy",
   clinician: "医生/医学生",
   medicalLLM: "Medical LLMs",
   agent: "Agent",
@@ -41,34 +28,14 @@ const forumTagLabels = {
 
 const siteNavItems = [
   { href: "index.html", label: "首页", active: ["index.html", "gmai-license.html", ""] },
-  {
-    href: "learning.html",
-    label: "内容",
-    active: ["learning.html", "learning-item.html"],
-    children: [
-      { href: "learning-tutorial.html", label: "Tutorial", active: ["tutorials.html", "learning-tutorial.html", "teaching-open-tutorials.html"] },
-      { href: "learning-videos.html", label: "Video", active: ["learning-videos.html", "teaching-videos.html"] },
-      { href: "learning-question-bank.html", label: "题库", active: ["learning-question-bank.html", "teaching-question-bank.html"] },
-      { href: "learning-standardized-patient.html", label: "标准病人", active: ["learning-standardized-patient.html", "teaching-virtual-patient.html"] },
-      { href: "popular-science.html", label: "科普", active: ["popular-science.html"] },
-      { href: "blog.html", label: "Blog", active: ["blog.html"] },
-    ],
-  },
-  { href: "community.html", label: "社区", active: ["community.html", "community-original.html", "clinician-discussion.html", "medical-community.html", "network-yu-guangjun.html", "hospital-cuhk-shenzhen.html"] },
-  {
-    href: "datasets-tools.html",
-    label: "专栏",
-    active: ["datasets-tools.html"],
-    children: [
-      { href: "datasets.html", label: "数据集", active: ["datasets.html", "dataset-detail.html", "dataset-upload.html", "dataset-my-upload.html"] },
-      { href: "tools.html", label: "工具栏", active: ["tools.html", "demos.html", "tool-share.html", "tools-base.html", "tools-mock-registration.html", "tools-scenarios.html", "tools-science.html", "tools-skill.html", "tools-scenario-agentic-hospital.html", "tools-scenario-ai-native-his.html", "tools-scenario-ai-native-up2date.html", "tools-scenario-evidence-api.html", "tools-scenario-tcm-knowledge-graph.html", "tools-scenario-virtual-hospital.html"] },
-      { href: "benchmark.html", label: "评测", active: ["benchmark.html", "benchmark-gdb.html", "benchmark-liveclin.html", "benchmark-healthbench-tcm.html", "benchmark-doctors-last-exam.html", "benchmark-cmb.html", "benchmark-long-tailed-medqa.html", "benchmark-med-x.html"] },
-      { href: "research.html", label: "论文", active: ["research.html"] },
-      { href: "community.html#model-discussion", label: "模型", active: [] },
-    ],
-  },
-  { href: "crowdsourcing.html", label: "众包", active: ["crowdsourcing.html"] },
-  { href: "profile.html", label: "用户", active: ["profile.html", "auth.html", "doctor.html", "doctor-verification.html"] },
+  { href: "learning.html", label: "内容", active: ["learning.html", "learning-item.html", "tutorials.html", "learning-videos.html", "learning-tutorial.html", "learning-question-bank.html", "learning-standardized-patient.html", "teaching-open-tutorials.html", "teaching-question-bank.html", "teaching-videos.html", "teaching-virtual-patient.html"] },
+  { href: "network.html", label: "社区", active: ["network.html", "network-yu-guangjun.html"] },
+  { href: "community.html", label: "讨论区", active: ["community.html", "clinician-discussion.html", "model-discussion.html"] },
+  { href: "datasets.html", label: "数据集", active: ["datasets.html"] },
+  { href: "tools.html", label: "工具库", active: ["tools.html", "demos.html", "datasets-tools.html"] },
+  { href: "benchmark.html", label: "Benchmark", active: ["benchmark.html", "benchmark-gdb.html", "benchmark-liveclin.html", "benchmark-healthbench-tcm.html", "benchmark-doctors-last-exam.html", "benchmark-cmb.html"] },
+  { href: "crowdsourcing.html", label: "众包平台", active: ["crowdsourcing.html"] },
+  { href: "profile.html", label: "用户", active: ["profile.html", "auth.html", "doctor.html"] },
 ];
 
 function normalizeSiteHeader() {
@@ -92,24 +59,9 @@ function normalizeSiteHeader() {
     const links = nav.querySelector(".nav-links");
     if (!links) return;
     links.innerHTML = siteNavItems.map((item) => {
-      if (item.children) {
-        const childLinks = item.children.map((child) => {
-          const active = child.active.includes(currentPath) ? ' class="active"' : "";
-          return `<a${active} href="${child.href}" role="menuitem">${child.label}</a>`;
-        }).join("");
-        const active = (item.active || []).includes(currentPath) || item.children.some((child) => child.active.includes(currentPath)) ? " active" : "";
-        const trigger = item.href
-          ? `<a class="nav-fold-title" href="${item.href}" aria-haspopup="true"><span>${item.label}</span><span class="nav-arrow" aria-hidden="true"></span></a>`
-          : `<button class="nav-fold-title" type="button" aria-haspopup="true"><span>${item.label}</span><span class="nav-arrow" aria-hidden="true"></span></button>`;
-        return `<div class="nav-dropdown nav-column-dropdown${active}">${trigger}<div class="nav-dept-menu nav-column-menu" role="menu" aria-label="${item.label}">${childLinks}</div></div>`;
-      }
       const active = item.active.includes(currentPath) ? ' class="active"' : "";
-      const external = item.external ? ' target="_blank" rel="noreferrer"' : "";
-      return `<a${active} href="${item.href}"${external}>${item.label}</a>`;
+      return `<a${active} href="${item.href}">${item.label}</a>`;
     }).join("");
-
-    const languageSwitch = nav.querySelector("[data-language-switch]");
-    languageSwitch?.classList.add("home-language-switch");
   });
 }
 
@@ -145,8 +97,8 @@ const siteSearchIndex = [
     text: "GMAI License Generalist Medical AI 协议 医学 AI 许可 模型 数据 工具 评测 隐私 安全 人工监督 合规",
   },
   {
-    title: "医学社区",
-    url: "medical-community.html",
+    title: "社区",
+    url: "network.html",
     category: "社区",
     text: "社区 医生 医院 研究者 个人主页 论文 获奖 任职 治疗专长 专家网络",
   },
@@ -157,16 +109,10 @@ const siteSearchIndex = [
     text: "于广军 Guangjun Yu 医生 教授 医疗大数据 互联网医疗 智慧医院 高危儿管理 多动症 医教结合 论文 奖项 会议 认领主页",
   },
   {
-    title: "香港中文大学（深圳）医院",
-    url: "hospital-cuhk-shenzhen.html",
-    category: "医院",
-    text: "香港中文大学深圳医院 CUHK Shenzhen Medical Center 医院 科室 医生团队 过敏反应科 肾内科 儿科 中医科 皮肤科 医学影像科 检验科 智慧医院 三级甲等 综合医院 龙岗 坂田",
-  },
-  {
-    title: "社区",
+    title: "讨论区",
     url: "community.html",
     category: "社区",
-    text: "社区 病例 指南 问答 临床文本 科研设计 工具经验 合规伦理 实习 招聘 实习招聘 科研和产业合作 科研合作 产业合作 模型 政策解读 政策 医生 医学生 认证",
+    text: "讨论区 病例 指南 问答 临床文本 科研设计 工具经验 合规伦理 医生 医学生 认证",
   },
   {
     title: "数据集",
@@ -179,12 +125,6 @@ const siteSearchIndex = [
     url: "tools.html",
     category: "工具",
     text: "工具库 医学 AI 工具 MCP 文献 检索 指南 问答 报告 结构化 免费开放",
-  },
-  {
-    title: "科普工具",
-    url: "tools-science.html",
-    category: "工具",
-    text: "科普工具 医学科普 视频生成 图片生成 插图生成 音视频工具 字幕 配音 转写 海报 封面 图文卡片",
   },
   {
     title: "工具示例",
@@ -229,28 +169,10 @@ const siteSearchIndex = [
     text: "CMB Comprehensive Medical Benchmark Chinese 中文医学 benchmark 医学考试 临床咨询 本土语境 中医",
   },
   {
-    title: "Long-tailed-MedQA",
-    url: "benchmark-long-tailed-medqa.html",
-    category: "评测",
-    text: "Long-tailed-MedQA long tail rare disease rare diseases medical QA benchmark 罕见病 长尾问题 医学问答 鉴别诊断 风险提示",
-  },
-  {
-    title: "Med-X",
-    url: "benchmark-med-x.html",
-    category: "评测",
-    text: "Med-X omni-modal multimodal medical prediction benchmark 超多模态 文本 影像 病理 检验 组学 波形 EHR 预测任务 风险分层 预后预测",
-  },
-  {
     title: "众包平台",
     url: "crowdsourcing.html",
     category: "协作",
     text: "众包 标注 评测 题库 资料治理 医生 学生 机构 任务 合作",
-  },
-  {
-    title: "Blog",
-    url: "blog.html",
-    category: "媒体报道",
-    text: "Blog 媒体报道 PaperWeekly 量子位 QbitAI FreedomAI HuatuoGPT LongLLaVA CMB SocraticChat PlatoLM 大模型 评测 安全 多模态 智能体",
   },
   {
     title: "成果",
@@ -348,149 +270,6 @@ const seedPosts = [
     pinned: false,
     tags: ["ethics", "aiHealthcare"],
   },
-  {
-    id: "seed-career-recruitment",
-    title: "医学 AI 项目实习和招聘应该写清哪些信息？",
-    category: "career",
-    dept: "实习 / 招聘 / 合作",
-    body: "建议说明岗位方向、远程或线下要求、导师或团队、时间投入、技能栈、数据合规边界和申请方式，避免只写泛泛的招募口号。",
-    author: "社区招聘组",
-    createdAt: "2026-06-10T18:20:00+08:00",
-    replies: 6,
-    views: 186,
-    likes: 14,
-    favorites: 9,
-    pinned: false,
-    tags: ["career", "aiHealthcare"],
-  },
-  {
-    id: "seed-research-industry-collab",
-    title: "医院和企业做医学 AI 试点合作前要对齐哪些边界？",
-    category: "collaboration",
-    dept: "科研合作 / 产业转化",
-    body: "建议先明确临床场景、数据授权、伦理审批、评测指标、试点周期、知识产权、发表计划和退出机制，再进入产品验证。",
-    author: "产学研合作组",
-    createdAt: "2026-06-09T14:10:00+08:00",
-    replies: 8,
-    views: 228,
-    likes: 18,
-    favorites: 11,
-    pinned: false,
-    tags: ["collaboration", "aiHealthcare"],
-  },
-  {
-    id: "seed-model-selection",
-    title: "医学场景选通用模型还是专科模型？",
-    category: "model",
-    dept: "模型 / Benchmark",
-    body: "可以从任务风险、证据引用、中文医学能力、多模态输入、工具调用、部署成本和人工复核流程几个维度比较。",
-    author: "模型评测组",
-    createdAt: "2026-06-08T16:45:00+08:00",
-    replies: 11,
-    views: 302,
-    likes: 22,
-    favorites: 14,
-    pinned: false,
-    tags: ["model", "medicalLLM", "agent"],
-  },
-  {
-    id: "seed-policy-ai-hospital",
-    title: "医疗 AI 产品进入医院前，政策和合规要先看什么？",
-    category: "policy",
-    dept: "政策解读 / 医院治理",
-    body: "建议固定梳理医疗器械属性、算法备案、数据安全、患者告知、医生责任、采购流程和持续监测要求。",
-    author: "政策解读组",
-    createdAt: "2026-06-07T10:30:00+08:00",
-    replies: 10,
-    views: 256,
-    likes: 20,
-    favorites: 13,
-    pinned: false,
-    tags: ["policy", "ethics", "aiHealthcare"],
-  },
-];
-
-const seedResearchPapers = [
-  {
-    id: "paper-med-ai-workflow-safety",
-    title: "Evaluating medical AI assistants in real clinical workflows",
-    source: "NEJM AI / Clinical workflow",
-    year: "2026",
-    type: "临床验证",
-    specialty: "内科综合",
-    authors: "Clinical AI Evaluation Group",
-    summary: "围绕真实临床工作流评价医学 AI 助手，重点观察医生介入、错误纠正、患者安全事件和责任边界。",
-    discussion: "模型建议是否改变医生决策？错误如何被发现、记录和复盘？",
-    link: "https://www.nejm.org/ai",
-    submittedBy: "编辑部",
-    submitterType: "editor",
-    createdAt: "2026-06-18T09:00:00+08:00",
-    likes: 18,
-  },
-  {
-    id: "paper-multimodal-radiology-pathology",
-    title: "Multimodal foundation models for radiology, pathology, and text",
-    source: "Nature Medicine / Multimodal AI",
-    year: "2026",
-    type: "多模态",
-    specialty: "影像病理",
-    authors: "Multimodal Medicine Consortium",
-    summary: "讨论影像、病理和临床文本联合建模在诊断辅助中的表现，以及外部验证、亚组偏倚和可解释性要求。",
-    discussion: "多模态模型的增益来自图像、文本还是数据泄漏？不同设备和人群是否稳定？",
-    link: "https://www.nature.com/nm/",
-    submittedBy: "医学 AI 周更",
-    submitterType: "editor",
-    createdAt: "2026-06-17T10:30:00+08:00",
-    likes: 24,
-  },
-  {
-    id: "paper-trial-matching-llm",
-    title: "Large language models for clinical trial matching and patient screening",
-    source: "medRxiv / Clinical research",
-    year: "2026",
-    type: "临床科研",
-    specialty: "肿瘤与血液",
-    authors: "Trial Matching Study Team",
-    summary: "用 LLM 解析入排标准并匹配患者画像，核心关注召回率、人工复核成本和公平性。",
-    discussion: "自动筛选是否会放大人群偏倚？如何保留人工可解释路径？",
-    link: "https://www.medrxiv.org/",
-    submittedBy: "Agent 论文助手",
-    submitterType: "agent",
-    createdAt: "2026-06-16T15:15:00+08:00",
-    likes: 15,
-  },
-  {
-    id: "paper-ehr-reasoning-failures",
-    title: "Stress testing EHR reasoning failures in medical language models",
-    source: "arXiv / Safety",
-    year: "2026",
-    type: "安全评测",
-    specialty: "合规伦理",
-    authors: "Medical LLM Safety Lab",
-    summary: "从 EHR 多步推理失败、幻觉压力测试和不确定性提示角度审视医学大模型的真实风险。",
-    discussion: "模型何时应该拒答或提示不确定？错误解释是否比错误答案本身更危险？",
-    link: "https://arxiv.org/",
-    submittedBy: "模型评测组",
-    submitterType: "editor",
-    createdAt: "2026-06-15T18:40:00+08:00",
-    likes: 20,
-  },
-  {
-    id: "paper-ai-nursing-oncology-governance",
-    title: "AI governance and nursing leadership in oncology care pathways",
-    source: "JAMA Network / Oncology",
-    year: "2026",
-    type: "治理框架",
-    specialty: "肿瘤护理",
-    authors: "Oncology AI Governance Group",
-    summary: "聚焦肿瘤护理路径中的 AI 审计、患者解释、治疗线判断和 MDT 协作边界。",
-    discussion: "科室级 AI 使用制度如何覆盖护理、随访、患者教育和不良事件反馈？",
-    link: "https://jamanetwork.com/",
-    submittedBy: "个人投稿样例",
-    submitterType: "person",
-    createdAt: "2026-06-14T11:20:00+08:00",
-    likes: 13,
-  },
 ];
 
 function readJson(key, fallback) {
@@ -503,119 +282,6 @@ function readJson(key, fallback) {
 
 function writeJson(key, value) {
   localStorage.setItem(key, JSON.stringify(value));
-}
-
-function todayKey() {
-  return new Date().toISOString().slice(0, 10);
-}
-
-function getPointsLedger() {
-  return readJson(pointsStorageKey, { events: [], claimed: {} });
-}
-
-function awardPoints(label, amount, onceKey = "") {
-  const ledger = getPointsLedger();
-  ledger.events = Array.isArray(ledger.events) ? ledger.events : [];
-  ledger.claimed = ledger.claimed || {};
-  if (onceKey && ledger.claimed[onceKey]) return false;
-  ledger.events.unshift({
-    label,
-    amount,
-    createdAt: new Date().toISOString(),
-  });
-  if (onceKey) ledger.claimed[onceKey] = true;
-  writeJson(pointsStorageKey, ledger);
-  return true;
-}
-
-function getPointTotal() {
-  return getPointsLedger().events.reduce((total, event) => total + (Number(event.amount) || 0), 0);
-}
-
-function awardDailyLogin() {
-  return awardPoints("每日登录", 10, `daily-login-${todayKey()}`);
-}
-
-const defaultKnowledgeItems = [
-  {
-    title: "高血压家庭监测流程",
-    source: "个人指南",
-    content: "连续 7 天早晚测量血压，记录坐位静息值；若多次超过 140/90 mmHg，应结合症状、用药依从性和复诊计划综合判断。",
-  },
-  {
-    title: "门诊复诊提问清单",
-    source: "个人模板",
-    content: "复诊前整理近期症状变化、用药变化、检查结果、最担心的问题，以及希望医生帮助决策的事项。",
-  },
-];
-
-function getPrivateKnowledge() {
-  const stored = readJson(privateKnowledgeStorageKey, null);
-  return Array.isArray(stored) && stored.length ? stored : defaultKnowledgeItems;
-}
-
-function savePrivateKnowledge(items) {
-  writeJson(privateKnowledgeStorageKey, items);
-}
-
-function getMedicalRecord() {
-  return readJson(medicalRecordStorageKey, {
-    allergies: "",
-    conditions: "",
-    medications: "",
-    checkups: "",
-    notes: "",
-    updatedAt: "",
-  });
-}
-
-function saveMedicalRecord(record) {
-  writeJson(medicalRecordStorageKey, record);
-}
-
-function getAchievements(auth = getAuthState()) {
-  const ledger = getPointsLedger();
-  const points = getPointTotal();
-  const knowledge = getPrivateKnowledge();
-  const medicalRecord = getMedicalRecord();
-  const hasMedicalRecord = ["allergies", "conditions", "medications", "checkups", "notes"].some((key) => medicalRecord[key]);
-  return [
-    {
-      title: "社区新居民",
-      text: "完成注册并领取 100 积分。",
-      unlocked: !!ledger.claimed.signup,
-    },
-    {
-      title: "港中深通行证",
-      text: "使用港中深学号或校园邮箱登录。",
-      unlocked: !!auth.studentId,
-    },
-    {
-      title: "认证共创者",
-      text: "完成医生或医学生资格认证。",
-      unlocked: auth.status === "verified",
-    },
-    {
-      title: "科普创作者",
-      text: "使用创作空间生成科普工具素材。",
-      unlocked: !!ledger.claimed.creator_tool,
-    },
-    {
-      title: "私人知识库",
-      text: "沉淀自己的指南、流程或判断标准。",
-      unlocked: knowledge.length > defaultKnowledgeItems.length || !!ledger.claimed.knowledge_base,
-    },
-    {
-      title: "健康档案管理员",
-      text: "维护个人病历本和复诊提醒。",
-      unlocked: hasMedicalRecord,
-    },
-    {
-      title: "积分探索者",
-      text: "累计获得 200 积分。",
-      unlocked: points >= 200,
-    },
-  ];
 }
 
 function getAuthState() {
@@ -636,12 +302,8 @@ function redirectGuestProfile() {
   if (!document.body.classList.contains("profile-page")) return false;
   const state = getAuthState();
   if (state.status && state.status !== "guest") return false;
-  const shouldAuthorize = window.confirm("个人主页需要登录或授权后访问。是否前往授权页面？");
-  if (shouldAuthorize) {
-    window.location.href = "auth.html?next=profile.html&reason=profile";
-    return true;
-  }
-  return false;
+  window.location.replace("auth.html?next=profile.html&reason=profile");
+  return true;
 }
 
 function hasCommunityCredential(auth = getAuthState()) {
@@ -665,29 +327,6 @@ function getForumPosts() {
 
 function getReactions() {
   return readJson(reactionStorageKey, {});
-}
-
-function getResearchPaperLikes() {
-  return readJson(researchPaperLikeStorageKey, {});
-}
-
-function getSubmittedResearchPapers() {
-  const stored = readJson(researchPaperStorageKey, []);
-  return Array.isArray(stored) ? stored : [];
-}
-
-function saveSubmittedResearchPapers(papers) {
-  writeJson(researchPaperStorageKey, papers);
-}
-
-function getResearchPapers() {
-  const submitted = getSubmittedResearchPapers();
-  const submittedIds = new Set(submitted.map((paper) => paper.id));
-  return [...submitted, ...seedResearchPapers.filter((paper) => !submittedIds.has(paper.id))];
-}
-
-function getResearchPaperLikeCount(paper, likes = getResearchPaperLikes()) {
-  return (Number(paper.likes) || 0) + (likes[paper.id] ? 1 : 0);
 }
 
 function renderProfileAvatar() {
@@ -762,7 +401,7 @@ function updateAuthCard() {
   card.innerHTML = `
     <span>${statusText}</span>
     <strong>${state.name || "访客"}</strong>
-    <p>${state.roleLabel || "完成身份信息后，可进入社区、投稿和医生工作区演示。"} · 当前积分 ${getPointTotal()}</p>
+    <p>${state.roleLabel || "完成身份信息后，可进入社区、投稿和医生工作区演示。"}</p>
   `;
 }
 
@@ -784,7 +423,6 @@ function renderProfile() {
     <p>${escapeHtml(state.roleLabel || "普通访问者")}</p>
     <dl class="profile-meta">
       <dt>联系方式</dt><dd>${escapeHtml(state.contact || "待填写")}</dd>
-      <dt>港中深账号</dt><dd>${escapeHtml(state.studentId || "未绑定")}</dd>
       <dt>机构/学校</dt><dd>${escapeHtml(state.institution || "待补充")}</dd>
       <dt>科室/专业</dt><dd>${escapeHtml(state.specialty || "待补充")}</dd>
       <dt>社区凭证</dt><dd>${escapeHtml(communityCredentialText(state))}</dd>
@@ -798,16 +436,6 @@ function profileReactionPosts(type) {
 }
 
 function profileListItem(post, metaLabel) {
-  if (post.itemType === "research-paper") {
-    return `
-      <a class="profile-feed-item" href="research.html#research-paper-hub">
-        <span class="tag green">论文</span>
-        <strong>${escapeHtml(post.title)}</strong>
-        <p>${escapeHtml(post.summary || post.discussion || "")}</p>
-        <small>${escapeHtml(post.specialty || "未标注领域")} · ${escapeHtml(metaLabel)}</small>
-      </a>`;
-  }
-
   return `
     <a class="profile-feed-item" href="community.html">
       <span class="tag blue">${escapeHtml(categoryLabels[post.category] || "讨论")}</span>
@@ -828,14 +456,11 @@ function renderProfileList(selector, posts, emptyText, metaBuilder) {
 function renderProfileStats({ submissions, likes, dislikes, comments }) {
   const stats = document.querySelector("#profileStats");
   if (!stats) return;
-  const unlockedCount = getAchievements().filter((achievement) => achievement.unlocked).length;
   const items = [
     ["投稿", submissions.length],
     ["点赞", likes.length],
     ["踩", dislikes.length],
     ["评论", comments.length],
-    ["积分", getPointTotal()],
-    ["成就", unlockedCount],
   ];
   stats.innerHTML = items.map(([label, value]) => `<span><strong>${value}</strong>${label}</span>`).join("");
 }
@@ -844,214 +469,30 @@ function renderProfileDesign() {
   const list = document.querySelector("#profileDesignList");
   if (!list) return;
   const designItems = [
-    ["个人主页", "维护医生/学者公开主页，可连接论文、机构关系和认领流程。"],
+    ["医学资料名片", "展示机构、科室、认证状态和社区凭证。"],
     ["投稿模板", "病例、指南、工具、科研设计四类内容模板。"],
     ["AI Agent 方案", "把个人常用 Prompt 和审核流程沉淀为方案卡。"],
   ];
-  list.innerHTML = designItems.map(([title, text], index) => `
-    <a class="profile-design-item" href="${index === 0 ? "network-yu-guangjun.html" : "community.html#postForm"}">
+  list.innerHTML = designItems.map(([title, text]) => `
+    <a class="profile-design-item" href="community.html#postForm">
       <strong>${escapeHtml(title)}</strong>
       <span>${escapeHtml(text)}</span>
     </a>`).join("");
-}
-
-function renderCreatorSpace() {
-  const list = document.querySelector("#creatorToolList");
-  if (!list) return;
-  const tools = [
-    ["科普文章", "把专业问题改写成患者能理解的解释。"],
-    ["门诊问答卡", "整理常见问题、注意事项和复诊提醒。"],
-    ["短视频脚本", "生成 60 秒医学科普口播结构。"],
-    ["海报要点", "压缩成适合社区传播的三点式提示。"],
-  ];
-  list.innerHTML = tools.map(([title, text]) => `
-    <article class="profile-tool-card">
-      <strong>${escapeHtml(title)}</strong>
-      <span>${escapeHtml(text)}</span>
-    </article>`).join("");
-}
-
-function renderKnowledgeBase() {
-  const list = document.querySelector("#knowledgeBaseList");
-  if (!list) return;
-  const items = getPrivateKnowledge();
-  list.innerHTML = items.map((item, index) => `
-    <article class="knowledge-base-item">
-      <span>${escapeHtml(item.source || "个人知识")}</span>
-      <strong>${escapeHtml(item.title || `知识片段 ${index + 1}`)}</strong>
-      <p>${escapeHtml(item.content || "")}</p>
-    </article>`).join("");
-}
-
-function renderMedicalRecord() {
-  const summary = document.querySelector("#medicalRecordSummary");
-  if (!summary) return;
-  const record = getMedicalRecord();
-  const fields = [
-    ["过敏史", record.allergies || "未填写"],
-    ["慢病/重点问题", record.conditions || "未填写"],
-    ["长期用药", record.medications || "未填写"],
-    ["最近检查", record.checkups || "未填写"],
-    ["就医提醒", record.notes || "未填写"],
-  ];
-  summary.innerHTML = `
-    ${fields.map(([label, value]) => `<div><strong>${escapeHtml(label)}</strong><span>${escapeHtml(value)}</span></div>`).join("")}
-    <small>${record.updatedAt ? `最近更新：${new Date(record.updatedAt).toLocaleString("zh-CN")}` : "内容仅保存在本地浏览器，请勿填写身份证号、住院号等敏感标识。"}</small>`;
-}
-
-function fillMedicalRecordForm() {
-  const record = getMedicalRecord();
-  const fields = {
-    recordAllergies: "allergies",
-    recordConditions: "conditions",
-    recordMedications: "medications",
-    recordCheckups: "checkups",
-    recordNotes: "notes",
-  };
-  Object.entries(fields).forEach(([id, key]) => {
-    const input = document.querySelector(`#${id}`);
-    if (input) input.value = record[key] || "";
-  });
-}
-
-function renderPointsSystem() {
-  const overview = document.querySelector("#pointsOverview");
-  const achievementsRoot = document.querySelector("#achievementList");
-  const taskRoot = document.querySelector("#profilePointTasks");
-  if (!overview && !achievementsRoot && !taskRoot) return;
-
-  const ledger = getPointsLedger();
-  const total = getPointTotal();
-  const achievements = getAchievements();
-  const unlocked = achievements.filter((achievement) => achievement.unlocked);
-  if (overview) {
-    const recent = ledger.events.slice(0, 4);
-    overview.innerHTML = `
-      <div class="points-total"><span>当前积分</span><strong>${total}</strong><em>${unlocked.length}/${achievements.length} 个成就</em></div>
-      <div class="points-ledger">
-        ${recent.length ? recent.map((event) => `<span><strong>+${Number(event.amount) || 0}</strong>${escapeHtml(event.label)}</span>`).join("") : "<span>注册、登录和共创后会出现积分记录。</span>"}
-      </div>`;
-  }
-  if (achievementsRoot) {
-    achievementsRoot.innerHTML = achievements.map((achievement) => `
-      <article class="${achievement.unlocked ? "unlocked" : "locked"}">
-        <strong>${escapeHtml(achievement.title)}</strong>
-        <span>${escapeHtml(achievement.text)}</span>
-      </article>`).join("");
-  }
-  if (taskRoot) {
-    taskRoot.innerHTML = `
-      <a href="auth.html?next=profile.html&reason=profile"><strong>每日登录</strong><span>每天 +10 积分</span></a>
-      <a href="#profile-creator-space"><strong>创作科普</strong><span>首次使用 +15 积分</span></a>
-      <a href="#profile-knowledge-base"><strong>维护知识库</strong><span>首次新增 +20 积分</span></a>
-      <a href="#profile-medical-record"><strong>完善病历本</strong><span>首次保存 +30 积分</span></a>`;
-  }
-}
-
-function renderProfileExperience() {
-  renderCreatorSpace();
-  renderKnowledgeBase();
-  fillMedicalRecordForm();
-  renderMedicalRecord();
-  renderPointsSystem();
-}
-
-function refreshProfileExperience() {
-  renderProfile();
-  renderLikedPosts();
-  renderProfileExperience();
-}
-
-function wireProfileExperience() {
-  document.querySelector("#scienceToolButton")?.addEventListener("click", () => {
-    const topic = document.querySelector("#scienceTopic")?.value.trim() || "一个常见医学问题";
-    const audience = document.querySelector("#scienceAudience")?.selectedOptions?.[0]?.textContent || "患者与家属";
-    const output = document.querySelector("#scienceToolOutput");
-    awardPoints("使用科普工具", 15, "creator_tool");
-    if (output) {
-      output.innerHTML = `
-        <strong>${escapeHtml(topic)}</strong>
-        <ol>
-          <li>先用一句话解释：这件事为什么重要。</li>
-          <li>给 ${escapeHtml(audience)} 三个可执行建议，避免诊断化承诺。</li>
-          <li>补充何时需要线下就医，以及哪些信息需要带给医生。</li>
-        </ol>`;
-    }
-    refreshProfileExperience();
-  });
-
-  document.querySelector("#knowledgeBaseForm")?.addEventListener("submit", (event) => {
-    event.preventDefault();
-    const title = document.querySelector("#knowledgeTitle")?.value.trim() || "未命名知识片段";
-    const source = document.querySelector("#knowledgeSource")?.value.trim() || "个人知识";
-    const content = document.querySelector("#knowledgeContent")?.value.trim();
-    if (!content) return;
-    const items = getPrivateKnowledge();
-    items.unshift({ title, source, content });
-    savePrivateKnowledge(items);
-    awardPoints("新增个人知识库", 20, "knowledge_base");
-    event.currentTarget.reset();
-    refreshProfileExperience();
-  });
-
-  document.querySelector("#knowledgeQuestionForm")?.addEventListener("submit", (event) => {
-    event.preventDefault();
-    const question = document.querySelector("#knowledgeQuestion")?.value.trim() || "如何处理这个问题？";
-    const items = getPrivateKnowledge().slice(0, 3);
-    const answer = document.querySelector("#knowledgeAnswer");
-    awardPoints("使用个人知识库问答", 10, "knowledge_qa");
-    if (answer) {
-      answer.innerHTML = `
-        <strong>${escapeHtml(question)}</strong>
-        <p>根据你的个人知识库，优先参考：${items.map((item) => escapeHtml(item.title)).join("、")}。建议回答时先说明适用范围，再列出行动步骤，并提醒用户结合线下医生判断。</p>
-        <ul>${items.map((item) => `<li>${escapeHtml(item.content)}</li>`).join("")}</ul>`;
-    }
-    refreshProfileExperience();
-  });
-
-  document.querySelector("#medicalRecordForm")?.addEventListener("submit", (event) => {
-    event.preventDefault();
-    saveMedicalRecord({
-      allergies: document.querySelector("#recordAllergies")?.value.trim() || "",
-      conditions: document.querySelector("#recordConditions")?.value.trim() || "",
-      medications: document.querySelector("#recordMedications")?.value.trim() || "",
-      checkups: document.querySelector("#recordCheckups")?.value.trim() || "",
-      notes: document.querySelector("#recordNotes")?.value.trim() || "",
-      updatedAt: new Date().toISOString(),
-    });
-    awardPoints("完善个人病历本", 30, "medical_record");
-    refreshProfileExperience();
-  });
 }
 
 function renderLikedPosts() {
   const state = getAuthState();
   const posts = getForumPosts();
   const reactions = getReactions();
-  const researchLikes = getResearchPaperLikes();
-  const papers = getResearchPapers();
-  const userName = state.name && state.name !== "访客" ? state.name : "";
-  const paperSubmissions = getSubmittedResearchPapers()
-    .filter((paper) => paper.submitterType === "person" && (!userName || paper.submittedBy === userName))
-    .map((paper) => ({ ...paper, itemType: "research-paper" }));
-  const likedPapers = papers
-    .filter((paper) => researchLikes[paper.id])
-    .map((paper) => ({ ...paper, itemType: "research-paper" }));
-  const submissions = [
-    ...posts.filter((post) => state.name && post.author === state.name),
-    ...paperSubmissions,
-  ];
-  const likes = [
-    ...posts.filter((post) => reactions[post.id]?.liked || reactions[post.id]?.favorited),
-    ...likedPapers,
-  ];
+  const submissions = posts.filter((post) => state.name && post.author === state.name);
+  const likes = posts.filter((post) => reactions[post.id]?.liked || reactions[post.id]?.favorited);
   const dislikes = profileReactionPosts("disliked");
-  const comments = submissions.filter((post) => `${post.title} ${post.body || ""}`.includes("评论"));
+  const comments = submissions.filter((post) => `${post.title} ${post.body}`.includes("评论"));
 
   renderProfileStats({ submissions, likes, dislikes, comments });
   renderProfileDesign();
-  renderProfileList("#profileSubmissionList", submissions, "还没有投稿。发布讨论、资料、论文或复现笔记后会出现在这里。", (post) => post.itemType === "research-paper" ? `${post.source || "论文来源"} · 个人提交` : `${post.views || 0} 浏览 · ${post.replies || 0} 回复`);
-  renderProfileList("#profileLikesList", likes, "还没有点赞记录。点赞过的讨论和论文会汇总到这里。", (post) => post.itemType === "research-paper" ? `${getResearchPaperLikeCount(post, researchLikes)} 赞 · ${post.source || "论文"}` : `${(post.likes || 0) + (reactions[post.id]?.liked ? 1 : 0)} 赞`);
+  renderProfileList("#profileSubmissionList", submissions, "还没有投稿。发布讨论、资料或复现笔记后会出现在这里。", (post) => `${post.views || 0} 浏览 · ${post.replies || 0} 回复`);
+  renderProfileList("#profileLikesList", likes, "还没有点赞记录。点赞、收藏过的讨论会汇总到这里。", (post) => `${(post.likes || 0) + (reactions[post.id]?.liked ? 1 : 0)} 赞`);
   renderProfileList("#profileDislikesList", dislikes, "还没有踩过的内容。对不适合的讨论点踩后会出现在这里。", (post) => `${(post.dislikes || 0) + (reactions[post.id]?.disliked ? 1 : 0)} 踩`);
   renderProfileList("#profileCommentsList", comments, "还没有评论动态。评论式投稿会沉淀到这里。", (post) => new Date(post.createdAt).toLocaleDateString("zh-CN"));
 }
@@ -1070,135 +511,6 @@ function toggleReaction(postId, type) {
   if (type === "favorite") reactions[postId].favorited = !reactions[postId].favorited;
   writeJson(reactionStorageKey, reactions);
   renderLikedPosts();
-}
-
-function createResearchPaper(input) {
-  const auth = getAuthState();
-  const submitterType = input.submitterType || "person";
-  const paper = {
-    id: `paper-${Date.now()}-${Math.random().toString(16).slice(2)}`,
-    title: input.title || "未命名医学 AI 论文",
-    source: input.source || "未标注来源",
-    year: input.year || new Date().getFullYear().toString(),
-    type: input.type || "论文线索",
-    specialty: input.specialty || "医学 AI",
-    authors: input.authors || "待补充作者",
-    summary: input.summary || "待补充摘要。",
-    discussion: input.discussion || "建议补充临床价值、证据质量、局限性和落地风险。",
-    link: input.link || "research.html#research-paper-hub",
-    submittedBy: submitterType === "agent" ? "Agent 论文助手" : (auth.name && auth.name !== "访客" ? auth.name : "个人用户"),
-    submitterType,
-    createdAt: new Date().toISOString(),
-    likes: 0,
-  };
-  const papers = getSubmittedResearchPapers();
-  papers.unshift(paper);
-  saveSubmittedResearchPapers(papers);
-  return paper;
-}
-
-function renderResearchPapers() {
-  const list = document.querySelector("#researchPaperList");
-  if (!list) return;
-  const likes = getResearchPaperLikes();
-  const papers = getResearchPapers();
-  list.innerHTML = papers.map((paper) => {
-    const liked = !!likes[paper.id];
-    const count = getResearchPaperLikeCount(paper, likes);
-    return `
-      <article class="research-paper-card" data-research-paper-id="${escapeHtml(paper.id)}">
-        <div class="research-paper-card-head">
-          <span class="tag ${paper.submitterType === "agent" ? "gold" : "blue"}">${escapeHtml(paper.type || "论文")}</span>
-          <small>${escapeHtml(paper.submittedBy || "编辑部")} · ${escapeHtml(paper.year || "2026")}</small>
-        </div>
-        <h3>${escapeHtml(paper.title)}</h3>
-        <p>${escapeHtml(paper.summary || "")}</p>
-        <dl>
-          <dt>来源</dt><dd>${escapeHtml(paper.source || "未标注")}</dd>
-          <dt>作者</dt><dd>${escapeHtml(paper.authors || "待补充")}</dd>
-          <dt>领域</dt><dd>${escapeHtml(paper.specialty || "医学 AI")}</dd>
-          <dt>讨论</dt><dd>${escapeHtml(paper.discussion || "建议补充讨论问题。")}</dd>
-        </dl>
-        <div class="research-paper-actions">
-          <button class="paper-like-button${liked ? " active" : ""}" type="button" data-paper-like="${escapeHtml(paper.id)}" aria-pressed="${liked}">
-            <span aria-hidden="true">♥</span>
-            <strong>${count}</strong>
-            <em>${liked ? "已点赞" : "点赞"}</em>
-          </button>
-          <a href="${escapeHtml(paper.link || "research.html#research-paper-hub")}" target="_blank" rel="noreferrer">查看来源</a>
-        </div>
-      </article>`;
-  }).join("");
-}
-
-function toggleResearchPaperLike(paperId) {
-  const likes = getResearchPaperLikes();
-  likes[paperId] = !likes[paperId];
-  if (!likes[paperId]) delete likes[paperId];
-  writeJson(researchPaperLikeStorageKey, likes);
-  if (likes[paperId]) awardPoints("点赞论文", 2, `paper-like-${paperId}`);
-  renderResearchPapers();
-  renderLikedPosts();
-}
-
-function wireResearchHub() {
-  const root = document.querySelector("[data-research-hub]");
-  if (!root) return;
-  const form = document.querySelector("#paperSubmissionForm");
-  const status = document.querySelector("#paperSubmissionStatus");
-
-  renderResearchPapers();
-
-  root.addEventListener("click", (event) => {
-    const likeButton = event.target.closest("[data-paper-like]");
-    if (likeButton) {
-      toggleResearchPaperLike(likeButton.dataset.paperLike);
-      return;
-    }
-
-    const agentButton = event.target.closest("[data-agent-paper-submit]");
-    if (!agentButton) return;
-    const paper = createResearchPaper({
-      submitterType: "agent",
-      title: "Agent 推荐：医学 AI 论文应优先标注外部验证和临床风险",
-      source: "Agent curated / Weekly scan",
-      type: "Agent 提交",
-      specialty: "安全评测",
-      authors: "Agent 论文助手",
-      summary: "智能体根据近期论文观察生成的论文线索：建议优先关注外部验证、临床工作流、模型失败模式和医生复核成本。",
-      discussion: "这类论文是否足以进入医生工作流？需要哪些真实世界指标和审计记录？",
-      link: "research.html#research-paper-hub",
-    });
-    renderResearchPapers();
-    if (status) status.textContent = `智能体已提交论文线索：《${paper.title}》。`;
-  });
-
-  form?.addEventListener("submit", (event) => {
-    event.preventDefault();
-    const title = document.querySelector("#paperTitle")?.value.trim();
-    const source = document.querySelector("#paperSource")?.value.trim();
-    const link = document.querySelector("#paperLink")?.value.trim();
-    const summary = document.querySelector("#paperSummary")?.value.trim();
-    if (!title || !summary) {
-      if (status) status.textContent = "请至少填写论文标题和推荐理由。";
-      return;
-    }
-    const paper = createResearchPaper({
-      submitterType: document.querySelector("#paperSubmitterType")?.value || "person",
-      title,
-      source,
-      link,
-      type: document.querySelector("#paperType")?.value || "个人提交",
-      specialty: document.querySelector("#paperSpecialty")?.value.trim() || "医学 AI",
-      authors: document.querySelector("#paperAuthors")?.value.trim() || "待补充作者",
-      summary,
-      discussion: document.querySelector("#paperDiscussion")?.value.trim() || "请社区一起判断临床价值、证据质量和局限性。",
-    });
-    form.reset();
-    renderResearchPapers();
-    renderLikedPosts();
-    if (status) status.textContent = `已提交论文：《${paper.title}》。点赞记录和个人提交可在用户页查看。`;
-  });
 }
 
 function wireFilters() {
@@ -1221,34 +533,15 @@ function wireAuthForms() {
     updateAuthCard();
     loginForm.addEventListener("submit", (event) => {
       event.preventDefault();
-      const contact = document.querySelector("#loginContact")?.value.trim() || "";
-      const studentId = document.querySelector("#loginStudentId")?.value.trim() || "";
-      const status = document.querySelector("#loginStatus");
-      if (!contact && !studentId) {
-        if (status) status.textContent = "请填写邮箱/手机号，或直接填写港中深学号/校园邮箱登录。";
-        return;
-      }
-      const isCuhkszLogin = !!studentId;
-      const signupAwarded = awardPoints("注册送积分", 100, "signup");
-      const dailyAwarded = awardDailyLogin();
       setAuthState({
         name: document.querySelector("#loginName").value.trim(),
-        contact: contact || studentId,
-        studentId,
+        contact: document.querySelector("#loginContact").value.trim(),
         status: "logged_in",
-        role: isCuhkszLogin ? "student" : "guest",
-        roleLabel: isCuhkszLogin ? "港中深学号用户" : "已登录用户",
-        institution: isCuhkszLogin ? "The Chinese University of Hong Kong, Shenzhen" : getAuthState().institution,
+        roleLabel: "已登录用户",
         loggedInAt: new Date().toISOString(),
       });
       const nextUrl = getSafeNextUrl();
-      const pointNotes = [
-        signupAwarded ? "+100 注册积分" : "",
-        dailyAwarded ? "+10 每日登录" : "",
-      ].filter(Boolean).join("，");
-      document.querySelector("#loginStatus").textContent = nextUrl
-        ? `登录状态已保存${pointNotes ? `（${pointNotes}）` : ""}，正在返回个人页面。`
-        : `登录状态已保存${pointNotes ? `（${pointNotes}）` : ""}，可继续提交资格审核。`;
+      document.querySelector("#loginStatus").textContent = nextUrl ? "登录状态已保存，正在返回个人页面。" : "登录状态已保存，可继续提交资格审核。";
       updateAuthCard();
       if (nextUrl) window.setTimeout(() => { window.location.href = nextUrl; }, 320);
     });
@@ -1279,10 +572,7 @@ function wireAuthForms() {
       const role = document.querySelector("#credentialRole").value || "doctor";
       const proofType = role === "doctor" ? "license" : "student_card";
       setAuthState({ status: "verified", role, proofType, roleLabel: roleLabels[role] });
-      const awarded = awardPoints("完成资格认证", 50, "verified");
-      document.querySelector("#reviewStatus").textContent = awarded
-        ? "演示状态已设为已认证，可进入社区。已获得 50 认证积分。"
-        : "演示状态已设为已认证，可进入社区。";
+      document.querySelector("#reviewStatus").textContent = "演示状态已设为已认证，可进入社区。";
       updateAuthCard();
     });
   }
@@ -1363,7 +653,7 @@ function wireForum() {
       acc[post.category] = (acc[post.category] || 0) + 1;
       return acc;
     }, { all: 0 });
-    const ids = { all: "countAll", clinical: "countClinical", guideline: "countGuideline", research: "countResearch", tool: "countTool", ethics: "countEthics", career: "countCareer", collaboration: "countCollaboration", model: "countModel", policy: "countPolicy" };
+    const ids = { all: "countAll", clinical: "countClinical", guideline: "countGuideline", research: "countResearch", tool: "countTool", ethics: "countEthics" };
     Object.entries(ids).forEach(([key, id]) => {
       const node = document.querySelector(`#${id}`);
       if (node) node.textContent = counts[key] || 0;
@@ -2066,7 +1356,7 @@ function wireDatasetBrowser() {
   const prevButton = document.querySelector("[data-dataset-page='prev']");
   const nextButton = document.querySelector("[data-dataset-page='next']");
   const emptyNote = document.querySelector("#datasetEmptyNote");
-  const state = { filter: "all", search: "", page: 1, pageSize: 10 };
+  const state = { filter: "all", search: "", page: 1, pageSize: 4 };
 
   cards.forEach((card) => {
     const link = card.querySelector("a[href]");
@@ -2215,96 +1505,6 @@ function wireCourseContentFilters() {
   renderCourseItems();
 }
 
-function wireNetworkOrgLogos() {
-  const logos = Array.from(document.querySelectorAll(".network-org-logo[data-org-name]"));
-  if (!logos.length) return;
-
-  const loaded = new Map();
-
-  function resolveUrl(url, base) {
-    try {
-      return new URL(url, base).toString();
-    } catch {
-      return "";
-    }
-  }
-
-  function canLoadImage(url) {
-    if (!url) return Promise.resolve(false);
-    if (loaded.has(url)) return loaded.get(url);
-    const promise = new Promise((resolve) => {
-      const image = new Image();
-      image.referrerPolicy = "no-referrer";
-      image.onload = () => resolve(true);
-      image.onerror = () => resolve(false);
-      image.src = url;
-    });
-    loaded.set(url, promise);
-    return promise;
-  }
-
-  function applyLogo(node, url, source) {
-    node.classList.add("has-logo-image");
-    node.dataset.logoSource = source;
-    node.style.backgroundImage = `url("${url}")`;
-  }
-
-  async function setLogo(node) {
-    const uploaded = node.dataset.uploadLogo || "";
-    const crawled = node.dataset.crawledLogo || "";
-    const officialSite = node.dataset.officialSite || "";
-    const directCandidates = [uploaded, crawled].filter(Boolean);
-
-    for (const candidate of directCandidates) {
-      const absolute = resolveUrl(candidate, window.location.href);
-      if (await canLoadImage(absolute)) {
-        applyLogo(node, absolute, uploaded === candidate ? "upload" : "crawler");
-        return;
-      }
-    }
-
-    if (!officialSite) {
-      node.dataset.logoSource = "fallback";
-      return;
-    }
-
-    const officialCandidates = [
-      "/favicon.ico",
-      "/favicon.png",
-      "/apple-touch-icon.png",
-      "/apple-touch-icon-precomposed.png",
-      "/logo.png",
-    ].map((path) => resolveUrl(path, officialSite));
-
-    for (const candidate of officialCandidates) {
-      if (await canLoadImage(candidate)) {
-        applyLogo(node, candidate, "official-site");
-        return;
-      }
-    }
-
-    node.dataset.logoSource = "fallback";
-  }
-
-  async function hydrateCrawlerResults() {
-    try {
-      const response = await fetch("assets/data/network-org-logos.json", { cache: "no-store" });
-      if (!response.ok) return;
-      const records = await response.json();
-      const byName = new Map(records.map((record) => [record.name, record.logo]).filter((entry) => entry[0] && entry[1]));
-      logos.forEach((node) => {
-        if (!node.dataset.uploadLogo && !node.dataset.crawledLogo) {
-          node.dataset.crawledLogo = byName.get(node.dataset.orgName) || "";
-        }
-      });
-    } catch {
-      return;
-    }
-  }
-
-  hydrateCrawlerResults().finally(() => logos.forEach((node) => setLogo(node)));
-}
-
 function wireNetworkSearch() {
   const root = document.querySelector("[data-network-search-root]");
   const results = Array.from(document.querySelectorAll("[data-network-result]"));
@@ -2363,17 +1563,13 @@ if (!isProfileRedirecting) {
   wireProfileAvatarEditor();
   renderProfile();
   renderLikedPosts();
-  renderProfileExperience();
-  wireProfileExperience();
   wireCommunityGate();
   wireClinicianForumAccess();
   wireForum();
   wireDoctorWorkspace();
   wireDatasetBrowser();
   wireCourseContentFilters();
-  wireNetworkOrgLogos();
   wireNetworkSearch();
-  wireResearchHub();
   wireHotToolFeed();
   wireHomeNewsScroll();
   wireHomeAgent();

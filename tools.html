@@ -2,16 +2,15 @@
 <html lang="zh-CN">
   <head>
     <meta charset="utf-8" />
-    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>工具库 | Freedom AI</title>
-    <meta name="description" content="Freedom AI 工具库以基础工具、挂号 Mock API、Skill 专栏、医学 AI 产品场景和科普工具整理医生库、药品库、医院库、医院 AI 工作流与内容生产工具。" />
+    <title>AhaMed 医学 AI 工作台 | Freedom AI</title>
+    <meta name="description" content="Freedom AI 工具库接入 AhaMed 医学大模型评测与对话能力，提供动态聊天、模型模式、Skills 工作流和工具路径导航。" />
     <link rel="stylesheet" href="assets/css/style.css" />
     <script src="assets/js/config.js"></script>
-    <script src="assets/js/main.js?v=community-nav-20260622" defer></script>
-    <script src="assets/js/language-switch.js" defer></script>
+    <script src="assets/js/main.js" defer></script>
+    <script src="assets/js/ahamed-tools.js" defer></script>
   </head>
-  <body class="data-tools-page">
+  <body class="data-tools-page ahamed-tools-page">
     <header class="site-header">
       <nav class="nav" aria-label="主导航">
         <a class="brand" href="index.html"><span class="brand-mark">F</span><span class="brand-text"><strong>Freedom AI</strong><span>医学 AI 社区</span></span></a>
@@ -23,122 +22,188 @@
         <div class="nav-links">
           <a href="index.html">首页</a>
           <a href="learning.html">内容</a>
-          <a href="community.html">社区</a>
-          <div class="nav-dropdown nav-column-dropdown active">
-            <button class="nav-fold-title" type="button" aria-haspopup="true"><span>专栏</span><span class="nav-arrow" aria-hidden="true"></span></button>
-            <div class="nav-dept-menu nav-column-menu" role="menu" aria-label="专栏">
-              <a href="datasets-tools.html" role="menuitem">资源索引</a>
-              <a href="datasets.html" role="menuitem">数据集</a>
-              <a class="active" href="tools.html" role="menuitem">工具栏</a>
-              <a href="benchmark.html" role="menuitem">评测</a>
-              <a href="research.html" role="menuitem">论文</a>
-              <a href="community.html#model-discussion" role="menuitem">模型</a>
-            </div>
-          </div>
-          <a href="crowdsourcing.html">众包</a>
-          <a href="blog.html">博客</a>
+          <a href="network.html">社区</a>
+          <a href="community.html">讨论区</a>
+          <a href="datasets.html">数据集</a>
+          <a class="active" href="tools.html">工具库</a>
+          <a href="benchmark.html">Benchmark</a>
+          <a href="crowdsourcing.html">众包平台</a>
           <a href="profile.html">用户</a>
-        </div>
-        <div class="language-switch home-language-switch" data-language-switch aria-label="Language">
-          <button class="language-trigger" type="button" data-language-trigger aria-haspopup="listbox" aria-expanded="false">
-            <span class="language-trigger-icon" aria-hidden="true">文</span>
-            <span data-language-current>中文</span>
-            <span class="language-trigger-caret" aria-hidden="true">⌄</span>
-          </button>
-          <div class="language-menu" data-language-menu role="listbox" aria-label="Language list" hidden></div>
         </div>
       </nav>
     </header>
 
-    <main>
-      <section class="page-title data-tools-title">
-        <div class="container tools-learn-hero">
-          <div class="tools-header-row">
-            <form class="tools-page-search" role="search" action="search.html" method="get" aria-label="搜索工具">
-              <label class="sr-only" for="toolPageSearch">搜索工具</label>
-              <input id="toolPageSearch" name="q" type="search" placeholder="搜索工具、API、Skill 或场景" autocomplete="off" />
-              <button type="submit">搜索</button>
-            </form>
-            <a class="btn primary tools-share-btn" href="tool-share.html"><span aria-hidden="true">+</span> 分享工具</a>
-          </div>
+    <main class="ahamed-shell">
+      <section class="ahamed-chat-hero" aria-labelledby="ahamedTitle">
+        <div class="ahamed-bg-grid" aria-hidden="true"></div>
+        <div class="container ahamed-chat-layout">
+          <aside class="ahamed-side-panel" aria-label="AhaMed 接入信息">
+            <div class="ahamed-panel-head">
+              <span>AhaMed Connector</span>
+              <strong>FreedomIntelligence/AhaMed</strong>
+            </div>
+            <p>AhaMed 是医学大模型评测与对话平台，支持随机对战、指定对战、直接对话、Elo 排行榜和 Skills 工具调用。</p>
+            <div class="ahamed-status-list">
+              <button class="ahamed-status active" type="button" data-mode="direct"><span>Direct</span><strong>单模型医学问答</strong></button>
+              <button class="ahamed-status" type="button" data-mode="battle"><span>Battle</span><strong>双模型答案对比</strong></button>
+              <button class="ahamed-status" type="button" data-mode="skills"><span>Skills</span><strong>工具增强工作流</strong></button>
+            </div>
+            <div class="ahamed-connector-card">
+              <label for="ahamedEndpoint">AhaMed API Base URL</label>
+              <div class="ahamed-endpoint-row">
+                <input id="ahamedEndpoint" type="url" value="https://ahamed.top" autocomplete="off" />
+                <button type="button" id="ahamedPing">检测</button>
+              </div>
+              <p id="ahamedPingResult">本地演示默认使用模拟流式回答；接入同源 AhaMed 部署时可替换为真实 API。</p>
+            </div>
+            <div class="ahamed-side-links">
+              <a href="https://github.com/FreedomIntelligence/AhaMed" target="_blank" rel="noreferrer">GitHub 仓库</a>
+              <a href="https://ahamed.top/chat" target="_blank" rel="noreferrer">打开 AhaMed Chat</a>
+              <a href="tools-skill.html">查看 Skill 专栏</a>
+            </div>
+          </aside>
 
-          <nav class="tool-reference tools-learn-tabs" aria-label="工具路径导航">
-            <a href="#route-grid">全部路径</a>
-            <a href="tools-base.html">基础库工具</a>
-            <a href="tools-mock-registration.html">Mock API</a>
-            <a href="tools-skill.html">Skill 专栏</a>
-            <a href="tools-scenarios.html">场景方案</a>
-            <a href="tools-science.html">科普工具</a>
-          </nav>
+          <section class="ahamed-chat-card" aria-label="医学 AI 动态对话">
+            <div class="ahamed-topbar">
+              <div class="ahamed-mode-switch" role="tablist" aria-label="对话模式">
+                <button type="button" class="active" data-chat-mode="direct">直接对话</button>
+                <button type="button" data-chat-mode="battle">模型对战</button>
+              </div>
+              <div class="ahamed-tools-toggle">
+                <span>Skills</span>
+                <button type="button" id="skillsToggle" aria-pressed="true"><span></span></button>
+              </div>
+            </div>
+
+            <div class="ahamed-brand-zone">
+              <img src="assets/images/ahamed-logo-bg.webp" alt="AhaMed" />
+              <div>
+                <p class="eyebrow">AhaMed Medical LLM Arena</p>
+                <h1 id="ahamedTitle">医学 AI 工作台</h1>
+                <p>选择场景、输入医学问题，快速体验 AhaMed 风格的问答、对战与工具增强流程。</p>
+              </div>
+            </div>
+
+            <div class="ahamed-logo-loop" aria-label="能力模块">
+              <span>ChatGPT</span><span>DeepSeek</span><span>Qwen</span><span>Medical Skills</span><span>Document QA</span><span>OCR</span><span>Search</span><span>Benchmark</span>
+            </div>
+
+            <div class="ahamed-thread" id="ahamedThread" aria-live="polite">
+              <article class="ahamed-message assistant">
+                <div class="ahamed-avatar">A</div>
+                <div class="ahamed-bubble">
+                  <strong>AhaMed Assistant</strong>
+                  <p>你好，有什么医学 AI 工具或临床问题需要验证？你可以尝试问“帮我比较胸痛分诊的诊疗路径”，或打开 Skills 让回答包含检索、指南和结构化输出。</p>
+                </div>
+              </article>
+            </div>
+
+            <div class="ahamed-suggestions" aria-label="提示词建议">
+              <button type="button">急诊胸痛患者如何分诊？</button>
+              <button type="button">把指南证据整理成表格</button>
+              <button type="button">比较两个模型的鉴别诊断</button>
+            </div>
+
+            <form class="ahamed-input" id="ahamedForm">
+              <label class="sr-only" for="ahamedPrompt">输入医学问题</label>
+              <textarea id="ahamedPrompt" rows="3" placeholder="输入医学问题、工具需求或评测任务..."></textarea>
+              <div class="ahamed-input-actions">
+                <div class="ahamed-attach-row">
+                  <button type="button" title="添加文件">添加文件</button>
+                  <button type="button" title="技能开关">技能</button>
+                </div>
+                <button class="ahamed-send" type="submit" aria-label="发送">▶</button>
+              </div>
+            </form>
+            <p class="ahamed-disclaimer">AI 回答仅供研究、教学和工具验证参考，不构成诊疗建议。</p>
+          </section>
         </div>
       </section>
 
-      <section class="section compact" id="route-grid">
+      <section class="section compact ahamed-community-merge" id="tools-community" data-community-api="http://localhost:3010/api/community?category=tools&pageSize=12">
+        <div class="container">
+          <div class="ahamed-community-head">
+            <div>
+              <p class="eyebrow">Local Community</p>
+              <h2>工具分享社区</h2>
+              <p>融合本地 AhaMed 社区页 <a href="http://localhost:3010/community?category=tools" target="_blank" rel="noreferrer">/community?category=tools</a>，把工具文章、模型合集、数据集和 Benchmark 入口放进同一个工作台。</p>
+            </div>
+            <div class="ahamed-community-actions">
+              <span id="communitySyncStatus">正在连接本地社区...</span>
+              <a href="http://localhost:3010/community?category=tools" target="_blank" rel="noreferrer">打开原页面</a>
+            </div>
+          </div>
+
+          <div class="ahamed-collection-strip" aria-label="AhaMed 社区集合">
+            <a href="http://localhost:3010/community/models" target="_blank" rel="noreferrer">
+              <img src="assets/images/community-llms-Photoroom.webp" alt="" />
+              <span>医疗大模型合集</span>
+            </a>
+            <a href="http://localhost:3010/community/datasets" target="_blank" rel="noreferrer">
+              <img src="assets/images/community-data-Photoroom.webp" alt="" />
+              <span>开源数据集合集</span>
+            </a>
+            <a href="http://localhost:3010/community/benchmarks" target="_blank" rel="noreferrer">
+              <img src="assets/images/community-bench-Photoroom.webp" alt="" />
+              <span>医疗 Benchmark 合集</span>
+            </a>
+          </div>
+
+          <div class="ahamed-community-toolbar">
+            <div class="ahamed-community-tabs" aria-label="社区分类">
+              <button type="button" class="active" data-community-filter="all">全部</button>
+              <button type="button" data-community-filter="agent">Agent</button>
+              <button type="button" data-community-filter="evidence">循证</button>
+              <button type="button" data-community-filter="document">文档</button>
+              <button type="button" data-community-filter="workflow">工作流</button>
+            </div>
+            <label class="ahamed-community-search">
+              <span>搜索</span>
+              <input id="communitySearch" type="search" placeholder="搜索工具分享..." autocomplete="off" />
+            </label>
+          </div>
+
+          <div class="ahamed-community-grid" id="communityToolGrid" aria-live="polite"></div>
+        </div>
+      </section>
+
+      <section class="section compact ahamed-tool-routes" id="market-overview">
         <div class="container">
           <div class="tools-learn-heading">
             <div>
-              <p class="eyebrow">Learning Paths</p>
-              <h2>工具栏</h2>
+              <p class="eyebrow">Tool Routes</p>
+              <h2>AhaMed 可组合工具路径</h2>
             </div>
-            <p>从事实数据、接口流程、技能能力到产品场景，这四条路共同组成了完整的医学 AI 工具体系。</p>
           </div>
-
           <div class="tools-learn-grid">
             <a class="tools-learn-card" href="tools-base.html">
               <span class="tools-learn-icon">DB</span>
               <small>Clinical Data Tools</small>
               <strong>基础库工具</strong>
-              <p>医生库、药品库、医院库，负责给搜索、问答、医生主页、挂号引导和医院 AI 工作流提供事实底座。</p>
-              <em>进入基础库页</em>
+              <p>医生库、药品库、医院库，为检索、问答、挂号和医院 AI 工作流提供可追溯事实。</p>
+              <em>进入基础库</em>
             </a>
             <a class="tools-learn-card" href="tools-mock-registration.html">
               <span class="tools-learn-icon">API</span>
-              <small>Mock Registration</small>
+              <small>Mock Registration API</small>
               <strong>挂号网站 Mock API</strong>
-              <p>完整演示医院检索、科室选择、医生排班、号源查询和预约草稿创建的脱敏接口链路。</p>
-              <em>进入 Mock API 页</em>
+              <p>演示医院检索、科室选择、医生排班、号源查询和预约草稿创建。</p>
+              <em>查看 Mock 接口</em>
             </a>
             <a class="tools-learn-card" href="tools-skill.html">
               <span class="tools-learn-icon">SK</span>
               <small>Skill Store</small>
-              <strong>Skill 专栏</strong>
-              <p>把 OpenClaw Medical Skills、通用技能商店和本地工作流能力组织成可以装配的能力层。</p>
-              <em>进入 Skill 页</em>
+              <strong>AhaMed Skills</strong>
+              <p>接入医学检索、文档解析、OCR、表格处理和结构化报告等可调用能力。</p>
+              <em>进入 Skill 专栏</em>
             </a>
             <a class="tools-learn-card" href="tools-scenarios.html">
               <span class="tools-learn-icon">AI</span>
-              <small>Scenario Plans</small>
-              <strong>产品场景方案</strong>
-              <p>把基础库和 Skills 组合成循证医疗 API、虚拟医院、Agentic Hospital、AI-native HIS 等完整页面。</p>
-              <em>进入场景页</em>
+              <small>Product & Scenario Plans</small>
+              <strong>产品或场景方案</strong>
+              <p>把基础库和 Skill 组合成循证 API、虚拟医院、Agentic hospital、AI-native HIS 等方案。</p>
+              <em>查看场景方案</em>
             </a>
-            <a class="tools-learn-card" href="tools-science.html">
-              <span class="tools-learn-icon">AV</span>
-              <small>Science Communication Tools</small>
-              <strong>科普工具</strong>
-              <p>辅助医学科普视频生成、图片生成、插图生成、音视频处理和多平台素材生产。</p>
-              <em>进入科普工具</em>
-            </a>
-          </div>
-        </div>
-      </section>
-
-      <section class="section compact">
-        <div class="container">
-          <div class="section-head clean">
-            <div>
-              <p class="eyebrow">Featured Scenario Pages</p>
-              <h2>当前重点场景页</h2>
-              <p>下面这些页已经被拆成了独立完整页面，适合直接对外展示或继续深化为产品稿。</p>
-            </div>
-          </div>
-          <div class="registration-api-grid">
-            <a class="tools-learn-card" href="tools-scenario-evidence-api.html"><span class="tools-learn-icon">EBM</span><small>Evidence</small><strong>循证医疗 API</strong><p>统一证据入口，适合医生 Copilot、内容平台和研究团队。</p><em>查看页面</em></a>
-            <a class="tools-learn-card" href="tools-scenario-virtual-hospital.html"><span class="tools-learn-icon">SIM</span><small>Simulation</small><strong>虚拟医院</strong><p>数字孪生患者、教学演练、病例回放和 MDT 协作。</p><em>查看页面</em></a>
-            <a class="tools-learn-card" href="tools-scenario-agentic-hospital.html"><span class="tools-learn-icon">AGT</span><small>Workflow</small><strong>Agentic Hospital</strong><p>多代理协同处理分诊、病历、检验和照护协调。</p><em>查看页面</em></a>
-            <a class="tools-learn-card" href="tools-scenario-ai-native-his.html"><span class="tools-learn-icon">HIS</span><small>System</small><strong>AI-native HIS</strong><p>在 HIS 内构建原生智能层，支持摘要、问答和结构化写回。</p><em>查看页面</em></a>
-            <a class="tools-learn-card" href="tools-scenario-ai-native-up2date.html"><span class="tools-learn-icon">UPD</span><small>Knowledge</small><strong>AI-native Up2date</strong><p>把指南与研究组织成持续更新的临床知识系统。</p><em>查看页面</em></a>
-            <a class="tools-learn-card" href="tools-scenario-tcm-knowledge-graph.html"><span class="tools-learn-icon">TCM</span><small>Graph</small><strong>中医知识图谱</strong><p>用 Graph-RAG 连接体质、证候、方剂和现代机制。</p><em>查看页面</em></a>
           </div>
         </div>
       </section>
@@ -146,11 +211,11 @@
 
     <footer class="site-footer">
       <div class="container footer-grid">
-        <div><h3>Freedom AI</h3><p>工具库现在按基础工具、Skill 专栏、产品场景和科普工具组织，强调医学 MCP、可组合工作流、可追溯临床知识服务和内容生产能力。</p></div>
-        <div><h4>路线页</h4><a href="tools-base.html">基础库工具</a><a href="tools-mock-registration.html">Mock API</a><a href="tools-skill.html">Skill 专栏</a><a href="tools-scenarios.html">场景方案</a><a href="tools-science.html">科普工具</a></div>
-        <div><h4>重点页</h4><a href="tools-scenario-evidence-api.html">循证医疗 API</a><a href="tools-scenario-ai-native-his.html">AI-native HIS</a></div>
-        <div><h4>平台</h4><a href="datasets.html">数据集</a><a href="benchmark.html">评测基准</a><a href="community.html">社区</a></div>
-        <div><h4>更多</h4><a href="learning.html">内容</a><a href="community.html">社区</a><a href="blog.html">博客</a></div>
+        <div><h3>Freedom AI</h3><p>工具库已升级为 AhaMed 风格动态工作台，保留工具路径，并面向医学问答、模型评测和 Skill 工作流。</p></div>
+        <div><h4>工具</h4><a href="tools.html">工具库</a><a href="tools-base.html">基础库工具</a><a href="tools-mock-registration.html">Mock 挂号 API</a><a href="tools-scenarios.html">场景方案</a></div>
+        <div><h4>AhaMed</h4><a href="https://github.com/FreedomIntelligence/AhaMed" target="_blank" rel="noreferrer">GitHub</a><a href="https://ahamed.top/chat" target="_blank" rel="noreferrer">在线 Chat</a></div>
+        <div><h4>平台</h4><a href="benchmark.html">评测基准</a><a href="crowdsourcing.html">众包平台</a></div>
+        <div><h4>学习</h4><a href="learning.html">教学</a><a href="community.html">讨论区</a></div>
       </div>
     </footer>
   </body>
