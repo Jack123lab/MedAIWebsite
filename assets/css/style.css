@@ -4817,15 +4817,25 @@ body.medical-workbench-index,
 }
 
 .paper-weekly-row {
+  gap: 0;
+  overflow: hidden;
+  padding: 0;
   padding-bottom: 16px;
   scroll-snap-type: x mandatory;
+  scrollbar-width: none;
+}
+
+.paper-weekly-row::-webkit-scrollbar {
+  display: none;
 }
 
 .paper-weekly-card {
-  flex-basis: min(82vw, 860px);
+  flex: 0 0 100%;
+  width: 100%;
   min-height: clamp(340px, 48vh, 510px);
   border-color: rgba(177, 207, 214, 0.98);
   box-shadow: 0 18px 44px rgba(17, 42, 62, 0.1);
+  scroll-snap-align: center;
 }
 
 .paper-weekly-card img {
