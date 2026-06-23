@@ -1,0 +1,394 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>医疗大模型专题 | Freedom AI</title>
+    <meta name="description" content="医疗大模型、专科大模型与医学 AI 应用场景专题，覆盖临床推理、影像、药物研发、评测与合规。" />
+    <link rel="stylesheet" href="assets/css/style.css" />
+    <style>
+      .model-topic-page { --model-accent: #185f79; --model-accent-2: #238276; --model-ink: #132332; --model-muted: #5f7180; }
+      .model-topic-hero {
+        padding: 58px 0 42px;
+        color: #eaf4f8;
+        background:
+          linear-gradient(rgba(134, 221, 213, 0.05) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(134, 221, 213, 0.05) 1px, transparent 1px),
+          linear-gradient(135deg, #071724 0%, #0b2d40 58%, #11475b 100%);
+        background-size: 32px 32px, 32px 32px, auto;
+        border-bottom: 1px solid rgba(134, 221, 213, 0.18);
+      }
+      .model-topic-hero-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(320px, 0.72fr); gap: 28px; align-items: center; }
+      .model-topic-copy h1 { max-width: 760px; margin: 0 0 16px; color: #fff; font-size: clamp(34px, 6vw, 58px); line-height: 1.06; }
+      .model-topic-copy p:not(.eyebrow) { max-width: 720px; margin-bottom: 0; color: #c9dce5; font-size: 17px; }
+      .model-topic-actions { display: flex; gap: 10px; flex-wrap: wrap; margin-top: 24px; }
+      .model-visual-panel { overflow: hidden; border: 1px solid rgba(134, 221, 213, 0.22); border-radius: 8px; background: rgba(255, 255, 255, 0.08); box-shadow: var(--shadow-lift); }
+      .model-visual-panel img { width: 100%; min-height: 210px; object-fit: cover; background: rgba(255, 255, 255, 0.06); }
+      .model-visual-stack { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; background: rgba(134, 221, 213, 0.16); }
+      .model-visual-stack span { min-height: 58px; display: grid; place-items: center; padding: 10px; color: #dff7f4; background: rgba(7, 23, 36, 0.72); font-size: 12px; font-weight: 900; text-align: center; }
+      .model-topic-browser { padding-top: 34px; }
+      .model-topic-toolbar { display: grid; grid-template-columns: minmax(0, 1fr) minmax(240px, 340px); gap: 18px; align-items: end; margin-bottom: 18px; }
+      .model-topic-toolbar h2 { margin: 0 0 8px; color: var(--model-ink); font-size: 30px; line-height: 1.18; }
+      .model-topic-toolbar p:not(.eyebrow) { max-width: 780px; margin: 0; color: var(--model-muted); }
+      .model-search-box input { width: 100%; height: 44px; border: 1px solid rgba(24, 95, 121, 0.22); border-radius: 8px; padding: 0 14px; color: var(--model-ink); background: rgba(255, 255, 255, 0.86); font: inherit; outline: none; box-shadow: 0 12px 28px rgba(17, 42, 62, 0.06); }
+      .model-search-box input:focus { border-color: var(--model-accent); box-shadow: 0 0 0 3px rgba(24, 95, 121, 0.12); }
+      .model-topic-tabs { display: flex; gap: 8px; flex-wrap: wrap; margin-bottom: 18px; }
+      .model-topic-tabs button { min-height: 38px; border: 1px solid rgba(24, 95, 121, 0.18); border-radius: 8px; padding: 0 13px; color: var(--model-ink); background: rgba(255, 255, 255, 0.72); font: inherit; font-size: 13px; font-weight: 800; cursor: pointer; transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease, color 0.18s ease; }
+      .model-topic-tabs button:hover, .model-topic-tabs button:focus-visible { transform: translateY(-1px); border-color: var(--model-accent); }
+      .model-topic-tabs button.active { color: #fff; background: var(--model-accent); border-color: var(--model-accent); }
+      .model-topic-layout { display: grid; grid-template-columns: 280px minmax(0, 1fr); gap: 18px; align-items: start; }
+      .model-topic-brief { position: sticky; top: 84px; display: grid; gap: 10px; border: 1px solid rgba(24, 95, 121, 0.18); border-radius: 8px; padding: 18px; background: linear-gradient(135deg, rgba(24, 95, 121, 0.08), rgba(35, 130, 118, 0.06)), rgba(255, 255, 255, 0.86); box-shadow: 0 16px 36px rgba(17, 42, 62, 0.07); }
+      .model-topic-brief span, .model-resource-card .model-card-head span, .model-source-grid article span { color: var(--model-accent-2); font-size: 12px; font-weight: 900; }
+      .model-topic-brief h3 { margin: 0; color: var(--model-ink); font-size: 22px; line-height: 1.24; }
+      .model-topic-brief p { margin: 0; color: var(--model-muted); font-size: 14px; }
+      .model-topic-brief a { justify-self: start; color: var(--model-accent); font-weight: 900; text-decoration: none; }
+      .model-card-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+      .model-resource-card { min-height: 270px; display: grid; grid-template-rows: auto 1fr auto auto; gap: 13px; border: 1px solid rgba(24, 95, 121, 0.16); border-radius: 8px; padding: 18px; background: rgba(255, 255, 255, 0.84); box-shadow: 0 12px 28px rgba(17, 42, 62, 0.06); }
+      .model-resource-card:hover { border-color: rgba(24, 95, 121, 0.34); transform: translateY(-2px); }
+      .model-card-head { display: grid; gap: 5px; }
+      .model-card-head strong { color: var(--model-ink); font-size: 20px; line-height: 1.25; }
+      .model-card-head small { color: var(--model-muted); font-size: 13px; }
+      .model-resource-card p { margin: 0; color: var(--model-muted); font-size: 14px; line-height: 1.62; }
+      .model-task-list { display: flex; gap: 6px; flex-wrap: wrap; }
+      .model-task-list span { border: 1px solid rgba(24, 95, 121, 0.12); border-radius: 6px; padding: 4px 8px; color: var(--model-accent); background: rgba(24, 95, 121, 0.06); font-size: 12px; font-weight: 800; }
+      .model-resource-card a { justify-self: start; color: var(--model-accent); font-weight: 900; text-decoration: none; }
+      .model-empty-state { margin: 16px 0 0; border: 1px dashed rgba(24, 95, 121, 0.25); border-radius: 8px; padding: 16px; color: var(--model-muted); background: rgba(255, 255, 255, 0.68); }
+      .model-source-section { padding-top: 12px; }
+      .model-source-grid { display: grid; grid-template-columns: minmax(0, 1.2fr) repeat(3, minmax(0, 0.72fr)); gap: 14px; align-items: stretch; }
+      .model-source-grid article, .model-source-grid a { border: 1px solid rgba(24, 95, 121, 0.16); border-radius: 8px; padding: 18px; background: rgba(255, 255, 255, 0.82); box-shadow: 0 12px 28px rgba(17, 42, 62, 0.06); text-decoration: none; }
+      .model-source-grid h2 { margin: 6px 0 8px; color: var(--model-ink); font-size: 24px; line-height: 1.2; }
+      .model-source-grid p, .model-source-grid span { margin: 0; color: var(--model-muted); font-size: 14px; }
+      .model-source-grid a { display: grid; align-content: start; gap: 8px; }
+      .model-source-grid a strong { color: var(--model-ink); font-size: 18px; }
+      @media (prefers-reduced-motion: reduce) {
+        .model-topic-tabs button, .model-resource-card { transition: none; }
+        .model-topic-tabs button:hover, .model-resource-card:hover { transform: none; }
+      }
+      @media (max-width: 1080px) {
+        .model-topic-layout, .model-source-grid { grid-template-columns: 1fr; }
+        .model-topic-brief { position: static; }
+        .model-card-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+      }
+      @media (max-width: 760px) {
+        .model-topic-hero { padding: 34px 0 28px; }
+        .model-topic-hero-grid, .model-topic-toolbar { grid-template-columns: 1fr; }
+        .model-topic-copy h1 { font-size: 34px; }
+        .model-card-grid { grid-template-columns: 1fr; }
+      }
+    </style>
+    <script src="assets/js/config.js"></script>
+    <script src="assets/js/main.js" defer></script>
+  </head>
+  <body class="medical-community-page model-topic-page">
+    <header class="site-header">
+      <nav class="nav" aria-label="主导航">
+        <a class="brand" href="index.html"><span class="brand-mark">F</span><span class="brand-text"><strong>Freedom AI</strong><span>医学 AI 社区</span></span></a>
+        <form class="site-search" role="search" action="search.html" method="get" aria-label="站内搜索">
+          <label class="sr-only" for="siteSearchInput">搜索</label>
+          <input id="siteSearchInput" name="q" type="search" placeholder="搜索" autocomplete="off" />
+          <button type="submit">搜索</button>
+        </form>
+        <div class="nav-links">
+          <a href="index.html">首页</a>
+          <a href="learning.html">内容</a>
+          <a href="network.html">社区</a>
+          <a href="community.html">讨论区</a>
+          <a href="datasets.html">数据集</a>
+          <a href="tools.html">工具库</a>
+          <a href="benchmark.html">Benchmark</a>
+          <a href="crowdsourcing.html">众包平台</a>
+          <a href="profile.html">用户</a>
+        </div>
+      </nav>
+    </header>
+
+    <main>
+      <section class="model-topic-hero">
+        <div class="container model-topic-hero-grid">
+          <div class="model-topic-copy">
+            <p class="eyebrow">医疗大模型专题</p>
+            <h1>把热门医疗模型放进真实应用场景里看</h1>
+            <p>从盲测评估、临床推理、医学影像到药物研发，按专题整理排名靠前和讨论度高的医疗 AI 模型，方便医生、研究者和开发者快速比较。</p>
+            <div class="model-topic-actions">
+              <a class="btn primary" href="#topicBrowser">查看专题</a>
+              <a class="btn" href="community.html#postForm">发起讨论</a>
+            </div>
+          </div>
+          <aside class="model-visual-panel" aria-label="医疗模型专题概览">
+            <img src="assets/images/paper-hot-nature.svg" alt="医学 AI 前沿内容视觉摘要" />
+            <div class="model-visual-stack">
+              <span>Blind Eval</span>
+              <span>Clinical Reasoning</span>
+              <span>Medical Imaging</span>
+              <span>Drug Discovery</span>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section id="topicBrowser" class="section compact model-topic-browser" data-model-topic-browser>
+        <div class="container">
+          <div class="model-topic-toolbar">
+            <div>
+              <p class="eyebrow">探索应用场景</p>
+              <h2>按专题筛选医疗大模型</h2>
+              <p>专题参考 AhaMed 的应用场景呈现方式，并结合 Nature、Benchmark、模型官方资料和公开社区讨论进行精炼。</p>
+            </div>
+            <label class="model-search-box">
+              <span class="sr-only">搜索模型或专题</span>
+              <input type="search" data-model-search placeholder="搜索模型、任务或机构" />
+            </label>
+          </div>
+
+          <div class="model-topic-tabs" role="tablist" aria-label="模型专题筛选">
+            <button class="active" type="button" data-model-filter="all">全部</button>
+            <button type="button" data-model-filter="evaluation">盲测评估</button>
+            <button type="button" data-model-filter="reasoning">临床推理</button>
+            <button type="button" data-model-filter="imaging">医学影像</button>
+            <button type="button" data-model-filter="drug">药物研发</button>
+            <button type="button" data-model-filter="specialty">专科大模型</button>
+          </div>
+
+          <div class="model-topic-layout">
+            <aside class="model-topic-brief" aria-label="当前专题简介">
+              <span data-topic-count>0 个模型</span>
+              <h3 data-topic-title>全部专题</h3>
+              <p data-topic-summary>查看医疗大模型、专科模型和多模态模型在不同医学任务中的代表性应用。</p>
+              <a data-topic-link href="https://ahamed.top/" target="_blank" rel="noreferrer">查看参考资源</a>
+            </aside>
+            <div>
+              <div id="modelCardGrid" class="model-card-grid" aria-live="polite"></div>
+              <p class="model-empty-state" data-model-empty hidden>没有找到匹配的模型专题，请换一个关键词。</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section compact model-source-section">
+        <div class="container model-source-grid">
+          <article>
+            <span>内容资源</span>
+            <h2>持续跟踪论文、榜单和产品发布</h2>
+            <p>每个专题保留外部来源入口，后续可以接入 API 或 CMS，把模型排名、论文链接和社区投票实时更新。</p>
+          </article>
+          <a href="https://www.nature.com/nm/" target="_blank" rel="noreferrer"><strong>Nature Medicine</strong><span>医学 AI、临床验证、多模态模型</span></a>
+          <a href="https://ahamed.top/" target="_blank" rel="noreferrer"><strong>AhaMed</strong><span>医疗大模型盲测与社区评估</span></a>
+          <a href="benchmark.html"><strong>站内 Benchmark</strong><span>考试、问答、影像、工具调用评测</span></a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <div class="container footer-grid">
+        <div><h3>Freedom AI</h3><p>医疗大模型专题页用于连接模型、评测、论文与临床讨论。</p></div>
+        <div><h4>讨论</h4><a href="community.html">问答区</a><a href="clinician-discussion.html">医生专区</a></div>
+        <div><h4>评测</h4><a href="benchmark.html">Benchmark</a><a href="https://ahamed.top/" target="_blank" rel="noreferrer">AhaMed</a></div>
+        <div><h4>资源</h4><a href="research.html">论文</a><a href="tools.html">工具库</a></div>
+      </div>
+    </footer>
+
+    <script>
+      (() => {
+        const topics = {
+          all: {
+            title: "全部专题",
+            summary: "查看医疗大模型、专科模型和多模态模型在不同医学任务中的代表性应用。",
+            link: "https://ahamed.top/"
+          },
+          evaluation: {
+            title: "医疗大模型盲测评估",
+            summary: "通过匿名对战、医生偏好和公开 Benchmark，观察模型在真实医学问答中的稳定性。",
+            link: "https://ahamed.top/"
+          },
+          reasoning: {
+            title: "临床推理与诊断分析",
+            summary: "关注复杂病例总结、鉴别诊断、检查建议、治疗路径和人工复核边界。",
+            link: "https://www.nature.com/articles/s41591-024-02885-3"
+          },
+          imaging: {
+            title: "医学影像智能解读",
+            summary: "整理放射、病理和多模态报告生成模型，适合影像病理团队评估。",
+            link: "https://www.microsoft.com/en-us/research/project/maira/"
+          },
+          drug: {
+            title: "药物研发与分子设计",
+            summary: "关注蛋白结构、分子相互作用、靶点发现和药物设计中的 AI 模型。",
+            link: "https://www.nature.com/articles/s41586-024-07487-w"
+          },
+          specialty: {
+            title: "专科大模型",
+            summary: "面向中文医学、放射影像、眼科、病理、科研问答等具体专科场景。",
+            link: "https://github.com/google-health/medgemma"
+          }
+        };
+
+        const models = [
+          {
+            name: "AhaMed 盲测平台",
+            org: "AhaMed",
+            topic: "evaluation",
+            badge: "社区评估",
+            summary: "通过匿名对战和社区投票比较医疗大模型回答质量，适合作为站内模型讨论入口。",
+            tasks: ["盲测对战", "社区投票", "模型排名"],
+            source: "https://ahamed.top/"
+          },
+          {
+            name: "GPT-4o / o 系列",
+            org: "OpenAI",
+            topic: "evaluation",
+            badge: "通用强模型",
+            summary: "在多轮医学问答、文本理解和工具协作中常作为强基线，适合纳入盲测专题。",
+            tasks: ["医学问答", "病例摘要", "工具调用"],
+            source: "https://openai.com/index/healthbench/"
+          },
+          {
+            name: "Gemini 2.5 Pro",
+            org: "Google",
+            topic: "evaluation",
+            badge: "多模态强模型",
+            summary: "在公开竞技场和多模态任务中讨论度高，可作为跨文本、图像和长上下文评测对象。",
+            tasks: ["多模态问答", "长上下文", "临床资料总结"],
+            source: "https://medarena.ai/"
+          },
+          {
+            name: "Med-PaLM 2",
+            org: "Google Research",
+            topic: "reasoning",
+            badge: "医学问答",
+            summary: "面向医学考试、临床问答和专家级医学推理的代表性研究模型。",
+            tasks: ["鉴别诊断", "医学考试", "治疗建议核查"],
+            source: "https://www.nature.com/articles/s41591-024-02885-3"
+          },
+          {
+            name: "Med-Gemini",
+            org: "Google Research",
+            topic: "reasoning",
+            badge: "临床推理",
+            summary: "强调医学推理、检索增强和多模态理解，可用于复杂病例和证据链分析专题。",
+            tasks: ["病例推理", "检索增强", "多模态解释"],
+            source: "https://research.google/blog/advancing-medical-ai-with-med-gemini/"
+          },
+          {
+            name: "AMIE",
+            org: "Google Research",
+            topic: "reasoning",
+            badge: "会诊对话",
+            summary: "用于探索诊疗对话、病史采集和医生沟通质量评估，适合标准化病人训练讨论。",
+            tasks: ["病史采集", "会诊对话", "沟通质量"],
+            source: "https://research.google/blog/amie-a-research-ai-system-for-diagnostic-medical-reasoning-and-conversations/"
+          },
+          {
+            name: "MAIRA-2",
+            org: "Microsoft Research",
+            topic: "imaging",
+            badge: "放射报告",
+            summary: "面向胸片报告生成和放射工作流评估，适合影像科讨论报告质量与责任边界。",
+            tasks: ["胸片报告", "影像描述", "报告质控"],
+            source: "https://www.microsoft.com/en-us/research/project/maira/"
+          },
+          {
+            name: "MedGemma",
+            org: "Google Health",
+            topic: "imaging",
+            badge: "开放模型",
+            summary: "面向健康 AI 开发的开放模型家族，支持文本和图像方向的医学应用原型。",
+            tasks: ["医学文本", "医学图像", "本地原型"],
+            source: "https://github.com/google-health/medgemma"
+          },
+          {
+            name: "BiomedCLIP",
+            org: "Microsoft Research",
+            topic: "imaging",
+            badge: "图文检索",
+            summary: "生物医学图文基础模型，适合文献图像检索、病理图像标签和科研素材整理。",
+            tasks: ["图文匹配", "病理检索", "科研图谱"],
+            source: "https://arxiv.org/abs/2303.00915"
+          },
+          {
+            name: "AlphaFold 3",
+            org: "Google DeepMind",
+            topic: "drug",
+            badge: "分子结构",
+            summary: "用于蛋白、核酸、小分子等生物分子相互作用建模，是药物研发专题的核心模型之一。",
+            tasks: ["结构预测", "相互作用", "靶点研究"],
+            source: "https://www.nature.com/articles/s41586-024-07487-w"
+          },
+          {
+            name: "TxGemma",
+            org: "Google DeepMind",
+            topic: "drug",
+            badge: "治疗研发",
+            summary: "面向药物和治疗研发流程的模型方向，可放入候选分子筛选和转化研究讨论。",
+            tasks: ["药物研发", "候选筛选", "转化研究"],
+            source: "https://deepmind.google/discover/blog/"
+          },
+          {
+            name: "华佗 GPT",
+            org: "中文医学大模型",
+            topic: "specialty",
+            badge: "中文医疗",
+            summary: "中文医学问答和临床文本处理讨论度高，适合作为中文场景专题入口。",
+            tasks: ["中文问答", "病历文本", "科室讨论"],
+            source: "https://www.huatuogpt.cn/"
+          }
+        ];
+
+        const root = document.querySelector("[data-model-topic-browser]");
+        if (!root) return;
+
+        const grid = root.querySelector("#modelCardGrid");
+        const search = root.querySelector("[data-model-search]");
+        const buttons = Array.from(root.querySelectorAll("[data-model-filter]"));
+        const empty = root.querySelector("[data-model-empty]");
+        const count = root.querySelector("[data-topic-count]");
+        const title = root.querySelector("[data-topic-title]");
+        const summary = root.querySelector("[data-topic-summary]");
+        const link = root.querySelector("[data-topic-link]");
+        const state = { topic: "all", query: "" };
+
+        function renderModels() {
+          const query = state.query.trim().toLowerCase();
+          const visible = models.filter((model) => {
+            const matchesTopic = state.topic === "all" || model.topic === state.topic;
+            const text = `${model.name} ${model.org} ${model.summary} ${model.tasks.join(" ")}`.toLowerCase();
+            return matchesTopic && (!query || text.includes(query));
+          });
+          const topic = topics[state.topic] || topics.all;
+          if (count) count.textContent = `${visible.length} 个模型`;
+          if (title) title.textContent = topic.title;
+          if (summary) summary.textContent = topic.summary;
+          if (link) link.href = topic.link;
+          if (empty) empty.hidden = visible.length > 0;
+          if (!grid) return;
+          grid.innerHTML = visible.map((model) => `
+            <article class="model-resource-card">
+              <div class="model-card-head">
+                <span>${model.badge}</span>
+                <strong>${model.name}</strong>
+                <small>${model.org}</small>
+              </div>
+              <p>${model.summary}</p>
+              <div class="model-task-list">${model.tasks.map((task) => `<span>${task}</span>`).join("")}</div>
+              <a href="${model.source}" target="_blank" rel="noreferrer">查看来源</a>
+            </article>
+          `).join("");
+        }
+
+        buttons.forEach((button) => {
+          button.addEventListener("click", () => {
+            state.topic = button.dataset.modelFilter || "all";
+            buttons.forEach((item) => item.classList.toggle("active", item === button));
+            renderModels();
+          });
+        });
+
+        search?.addEventListener("input", (event) => {
+          state.query = event.target.value || "";
+          renderModels();
+        });
+
+        renderModels();
+      })();
+    </script>
+  </body>
+</html>
