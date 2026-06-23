@@ -6,6 +6,7 @@
     <title>论文与产品周更 | Freedom AI</title>
     <link rel="stylesheet" href="assets/css/style.css" />
     <script src="assets/js/main.js?v=community-nav-20260622" defer></script>
+    <script src="assets/js/language-switch.js" defer></script>
   </head>
   <body data-requires-auth="true">
               <header class="site-header">
@@ -34,6 +35,14 @@
           <a href="crowdsourcing.html">众包</a>
           <a href="blog.html">博客</a>
           <a href="profile.html">用户</a>
+        </div>
+        <div class="language-switch home-language-switch" data-language-switch aria-label="Language">
+          <button class="language-trigger" type="button" data-language-trigger aria-haspopup="listbox" aria-expanded="false">
+            <span class="language-trigger-icon" aria-hidden="true">文</span>
+            <span data-language-current>中文</span>
+            <span class="language-trigger-caret" aria-hidden="true">⌄</span>
+          </button>
+          <div class="language-menu" data-language-menu role="listbox" aria-label="Language list" hidden></div>
         </div>
       </nav>
     </header>
@@ -96,70 +105,11 @@
         </div>
       </section>
 
-      <section class="section compact physician-ai-radar-section" id="physician-ai-radar">
-        <div class="container">
-          <div class="section-head clean">
-            <div>
-              <p class="eyebrow">医生需求雷达</p>
-              <h2>医生需求驱动的 AI 热点雷达</h2>
-              <p>根据 PubMed、ClinicalTrials.gov、arXiv 等公开来源检索结果，将医学 AI 热点按医生真实工作流重排：先看是否影响诊疗、文书、风险与科室协作，再进入论文或产品讨论。</p>
-            </div>
-            <a class="btn" href="community.html#dept-internal">发起医生讨论</a>
-          </div>
-          <div class="physician-radar-grid">
-            <article class="radar-card urgent">
-              <div class="radar-card-head"><span class="tag blue">文书减负</span><strong>PubMed</strong></div>
-              <h3>AI 病历记录助手进入全科与门诊病历书写场景</h3>
-              <p>近期 PubMed 条目出现关于挪威全科 AI 病历记录助手的质性研究，提示医生最关心的不是“自动写完”，而是医患沟通、责任归属、病历准确性和审核成本。</p>
-              <dl><dt>医生需求</dt><dd>减少键盘时间，保留医生最终审核权。</dd><dt>风险检查</dt><dd>错写否认症状、遗漏用药史、录音授权和数据出境。</dd></dl>
-              <div class="watch-actions"><a href="https://pubmed.ncbi.nlm.nih.gov/42235527/" target="_blank" rel="noreferrer">查看 PubMed</a><a href="community.html#dept-internal">讨论门诊落地</a></div>
-            </article>
-            <article class="radar-card">
-              <div class="radar-card-head"><span class="tag green">急诊决策</span><strong>ClinicalTrials.gov</strong></div>
-              <h3>急诊 AI 决策支持正在进入临床试验验证</h3>
-              <p>ClinicalTrials.gov 可见急诊科 AI 决策工具、围术期液体管理、HFrEF 治疗决策支持等注册研究，说明热点正在从离线评测走向真实流程验证。</p>
-              <dl><dt>医生需求</dt><dd>快速汇总 EHR、检验和病程，给出可追溯建议。</dd><dt>风险检查</dt><dd>延误抢救、过度报警、责任边界和医嘱覆盖。</dd></dl>
-              <div class="watch-actions"><a href="https://clinicaltrials.gov/study/NCT06902675" target="_blank" rel="noreferrer">急诊试验</a><a href="https://clinicaltrials.gov/study/NCT07380555" target="_blank" rel="noreferrer">心衰试验</a></div>
-            </article>
-            <article class="radar-card">
-              <div class="radar-card-head"><span class="tag gold">安全审计</span><strong>arXiv</strong></div>
-              <h3>医学大模型热点转向 EHR 推理失败与幻觉压力测试</h3>
-              <p>arXiv 近期出现 EHR 问答组合推理失败、医学 LLM 安全压力测试、医疗幻觉缓解等主题。医生侧应关注复杂病程、多步推理和不确定性提示。</p>
-              <dl><dt>医生需求</dt><dd>知道模型何时不可靠，而不仅是平均准确率。</dd><dt>风险检查</dt><dd>把错误答案包装成合理解释，或漏标证据来源。</dd></dl>
-              <div class="watch-actions"><a href="https://arxiv.org/abs/2606.16890v1" target="_blank" rel="noreferrer">EHR 推理</a><a href="https://arxiv.org/abs/2606.01301" target="_blank" rel="noreferrer">幻觉控制</a></div>
-            </article>
-            <article class="radar-card">
-              <div class="radar-card-head"><span class="tag blue">肿瘤治理</span><strong>PubMed</strong></div>
-              <h3>肿瘤临床 AI 审计与护理领导力成为治理议题</h3>
-              <p>肿瘤场景更容易同时涉及分期、治疗线、合并症、随访和患者教育。PubMed 近期条目强调保障框架，适合作为科室级 AI 使用制度讨论。</p>
-              <dl><dt>医生需求</dt><dd>把模型建议嵌入 MDT、随访和护理路径。</dd><dt>风险检查</dt><dd>亚组偏倚、治疗线误判、患者解释和审计记录。</dd></dl>
-              <div class="watch-actions"><a href="https://pubmed.ncbi.nlm.nih.gov/42199817/" target="_blank" rel="noreferrer">查看 PubMed</a><a href="community.html#dept-oncology">肿瘤讨论</a></div>
-            </article>
-            <article class="radar-card">
-              <div class="radar-card-head"><span class="tag green">影像皮肤</span><strong>ClinicalTrials.gov</strong></div>
-              <h3>皮肤、乳腺、影像类 AI 仍是最容易临床验证的热点</h3>
-              <p>皮肤病诊断辅助、黑色素瘤厚度评估、乳腺筛查等研究持续出现，医生应重点看外部验证、亚组表现、假阴性处理和是否改变诊疗路径。</p>
-              <dl><dt>医生需求</dt><dd>提高初筛效率，给基层或专科门诊提供第二意见。</dd><dt>风险检查</dt><dd>图像质量、肤色/设备偏倚、转诊阈值和解释不足。</dd></dl>
-              <div class="watch-actions"><a href="https://clinicaltrials.gov/study/NCT06788665" target="_blank" rel="noreferrer">黑色素瘤设备</a><a href="community.html#dept-imaging">影像讨论</a></div>
-            </article>
-            <article class="radar-card">
-              <div class="radar-card-head"><span class="tag gold">监管产品</span><strong>FDA / NMPA</strong></div>
-              <h3>医生需要追踪“能不能用”而不只是“模型有多强”</h3>
-              <p>医疗 AI 热点最终会落在适应证、审批状态、医院采购、数据合规和不良事件反馈上。周更应固定记录监管入口、产品说明书和真实世界监测要求。</p>
-              <dl><dt>医生需求</dt><dd>判断工具是否可用于本科室，以及是否需要患者告知。</dd><dt>风险检查</dt><dd>越适应证使用、黑箱更新、责任转移和审计缺失。</dd></dl>
-              <div class="watch-actions"><a href="https://www.fda.gov/medical-devices/digital-health-center-excellence/artificial-intelligence-and-machine-learning-medical-devices" target="_blank" rel="noreferrer">FDA AI/ML</a><a href="https://www.nmpa.gov.cn/" target="_blank" rel="noreferrer">NMPA</a></div>
-            </article>
-          </div>
-        </div>
-      </section>
-
       <section class="section compact research-paper-hub-section" id="research-paper-hub" data-research-hub>
         <div class="container">
           <div class="section-head clean">
             <div>
-              <p class="eyebrow">Paper Hub</p>
-              <h2>论文列表与社区推荐</h2>
-              <p>收集可讨论的医学 AI 论文、预印本和临床研究线索。用户点赞会同步到个人页，个人和智能体都可以提交论文。</p>
+              <h2>Paper Hub</h2>
             </div>
             <button class="btn" type="button" data-agent-paper-submit>智能体提交论文</button>
           </div>
@@ -226,6 +176,49 @@
               </form>
               <p class="form-status" id="paperSubmissionStatus" role="status"></p>
             </aside>
+          </div>
+        </div>
+      </section>
+
+      <section class="section compact physician-ai-radar-section" id="physician-ai-radar">
+        <div class="container">
+          <div class="section-head clean">
+            <div>
+              <h2>医生需求雷达</h2>
+            </div>
+            <a class="btn" href="community.html#dept-internal">发起讨论</a>
+          </div>
+          <div class="physician-radar-grid">
+            <article class="radar-card urgent">
+              <div class="radar-card-head"><span class="tag blue">文书减负</span><strong>PubMed</strong></div>
+              <h3>能否减少键盘时间，同时保留医生最终审核权？</h3>
+              <div class="watch-actions"><a href="https://pubmed.ncbi.nlm.nih.gov/42235527/" target="_blank" rel="noreferrer">PubMed</a><a href="community.html#dept-internal">门诊落地</a></div>
+            </article>
+            <article class="radar-card">
+              <div class="radar-card-head"><span class="tag green">急诊决策</span><strong>ClinicalTrials.gov</strong></div>
+              <h3>能否快速汇总 EHR、检验和病程，并避免延误抢救？</h3>
+              <div class="watch-actions"><a href="https://clinicaltrials.gov/study/NCT06902675" target="_blank" rel="noreferrer">急诊试验</a><a href="https://clinicaltrials.gov/study/NCT07380555" target="_blank" rel="noreferrer">心衰试验</a></div>
+            </article>
+            <article class="radar-card">
+              <div class="radar-card-head"><span class="tag gold">安全审计</span><strong>arXiv</strong></div>
+              <h3>模型何时不可靠？是否明确标注证据来源？</h3>
+              <div class="watch-actions"><a href="https://arxiv.org/abs/2606.16890v1" target="_blank" rel="noreferrer">EHR 推理</a><a href="https://arxiv.org/abs/2606.01301" target="_blank" rel="noreferrer">幻觉控制</a></div>
+            </article>
+            <article class="radar-card">
+              <div class="radar-card-head"><span class="tag blue">肿瘤治理</span><strong>PubMed</strong></div>
+              <h3>模型建议能否嵌入 MDT、随访和护理路径？</h3>
+              <div class="watch-actions"><a href="https://pubmed.ncbi.nlm.nih.gov/42199817/" target="_blank" rel="noreferrer">PubMed</a><a href="community.html#dept-oncology">肿瘤讨论</a></div>
+            </article>
+            <article class="radar-card">
+              <div class="radar-card-head"><span class="tag green">影像皮肤</span><strong>ClinicalTrials.gov</strong></div>
+              <h3>外部验证、亚组偏倚和假阴性处理是否充分？</h3>
+              <div class="watch-actions"><a href="https://clinicaltrials.gov/study/NCT06788665" target="_blank" rel="noreferrer">黑色素瘤设备</a><a href="community.html#dept-imaging">影像讨论</a></div>
+            </article>
+            <article class="radar-card">
+              <div class="radar-card-head"><span class="tag gold">监管产品</span><strong>FDA / NMPA</strong></div>
+              <h3>工具能否用于本科室？适应证、告知和审计是否清楚？</h3>
+              <div class="watch-actions"><a href="https://www.fda.gov/medical-devices/digital-health-center-excellence/artificial-intelligence-and-machine-learning-medical-devices" target="_blank" rel="noreferrer">FDA AI/ML</a><a href="https://www.nmpa.gov.cn/" target="_blank" rel="noreferrer">NMPA</a></div>
+            </article>
           </div>
         </div>
       </section>
